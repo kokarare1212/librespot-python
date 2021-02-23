@@ -1,0 +1,4 @@
+defusedxml
+protobuf
+pycryptodome
+requests
