@@ -9,6 +9,17 @@ class Utils:
         return Utils.bytes_to_hex(buffer)
 
     @staticmethod
+    def truncate_middle(s: str, length: int) -> str:
+        if length <= 1:
+            raise TypeError()
+
+        first = length / 2
+        result = s[:first]
+        result += "..."
+        result += s[len(s) - (length - first):]
+        return result
+
+    @staticmethod
     def split(s: str, c: str):
         return s.split(c)
 

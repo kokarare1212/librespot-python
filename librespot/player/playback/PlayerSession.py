@@ -3,4 +3,5 @@ from librespot.standard import Closeable
 
 
 class PlayerSession(Closeable):
-    pass
+    class Listener:
+        pass

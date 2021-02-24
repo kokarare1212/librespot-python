@@ -9,8 +9,7 @@ setuptools.setup(
     author="kokarare1212",
     url="https://github.com/kokarare1212/librespot-python",
     license="Apache-2.0",
-    packages=setuptools.find_packages("src"),
-    package_dir={"": "src"},
+    packages=setuptools.find_packages("."),
     install_requires=["defusedxml", "protobuf", "pycryptodome", "requests"],
     classifiers=[
         "Development Status :: 1 - Planning",
