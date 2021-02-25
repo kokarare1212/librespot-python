@@ -10,6 +10,15 @@ We **DO NOT** encourage piracy and **DO NOT** support any form of downloader/rec
 ## Getting Started
 ### Prerequisites
 * [Python](https://python.org/)
+### Installation
+Stable Version
+```commandline
+pip install librespot
+```
+Snapshot Version
+```commandline
+pip install git+https://github.com/kokarare1212/librespot-python
+```
 ## Usage
 Coming soon
 ## Roadmap
