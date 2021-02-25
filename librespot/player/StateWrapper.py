@@ -1,12 +1,13 @@
 from __future__ import annotations
 from librespot.core import Session
+from librespot.dealer import DealerClient
 from librespot.player import Player, PlayerConfiguration
 from librespot.player.state import DeviceStateHandler
 from librespot.proto import Connect
 from librespot.proto.Player import ContextPlayerOptions, PlayerState, Restrictions, Suppressions
 
 
-class StateWrapper(DeviceStateHandler.Listener):
+class StateWrapper(DeviceStateHandler.Listener, DealerClient.MessageListener):
     _state: PlayerState = None
     _session: Session = None
     _player: Player = None
@@ -18,6 +19,9 @@ class StateWrapper(DeviceStateHandler.Listener):
         self._player = player
         self._device = DeviceStateHandler(session, self, conf)
         self._state = self._init_state()
+
+        self._device.add_listener(self)
+        self._session.dealer().add_message_listener(self, "spotify:user:attributes:update", "hm://playlist/", "hm://collection/collection/" + self._session.username() + "/json")
 
     def _init_state(self) -> PlayerState:
         return PlayerState(
@@ -34,5 +38,12 @@ class StateWrapper(DeviceStateHandler.Listener):
             is_playing=False
         )
 
+    def add_listener(self, listener: DeviceStateHandler.Listener):
+        self._device.add_listener(listener)
+
     def ready(self) -> None:
         self._device.update_state(Connect.PutStateReason.NEW_DEVICE, 0, self._state)
+
+    def on_message(self, uri: str, headers: dict[str, str],
+                       payload: bytes):
+        pass

@@ -35,6 +35,9 @@ class DeviceStateHandler:
             self._LOGGER.debug("Updated Spotify-Connection-Id: {}".format(self._connectionId))
             self._notify_ready()
 
+    def add_listener(self, listener: DeviceStateHandler.Listener):
+        self._listeners.append(listener)
+
     def _notify_ready(self) -> None:
         for listener in self._listeners:
             listener.ready()

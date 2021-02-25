@@ -139,3 +139,7 @@ cython_debug/
 
 # for PyCharm
 .idea/
+
+# ignore Some (Files/Directories)
+credentials.json
+test.py
