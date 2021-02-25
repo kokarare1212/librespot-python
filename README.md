@@ -20,7 +20,18 @@ Snapshot Version
 pip install git+https://github.com/kokarare1212/librespot-python
 ```
 ## Usage
-Coming soon
+Get Spotify's OAuth token
+```python
+from librespot.core import Session
+
+
+session = Session.Builder() \
+    .user_pass("<Username>", "<Password>") \
+    .create()
+
+aceess_token = session.tokens().get("playlist-read")
+```
+Please read [this document](https://librespot-python.rtfd.io) for detailed specifications.
 ## Roadmap
 Coming soon
 ## License
