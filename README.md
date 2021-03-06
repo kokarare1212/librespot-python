@@ -40,6 +40,5 @@ Distributed under the Apache-2.0 License. See `LICENSE.txt` for more information
 ## Related Projects
 * [Librespot](https://github.com/librespot-org/librespot) (Concept)
 * [Librespot-Java](https://github.com/librespot-org/librespot-java) (Core)
-* [PySpotify2](https://github.com/pymedia/pyspotify2) (Shannon)
 ## Special thanks
 Coming soon
