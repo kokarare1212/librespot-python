@@ -10,14 +10,12 @@ class CipherPair:
     receive_nonce = 0
 
     def __init__(self, send_key: bytes, receive_key: bytes):
-        # self.send_cipher = Shannon()
-        # self.send_cipher.key(send_key)
-        self.send_cipher = Shannon(send_key)
+        self.send_cipher = Shannon()
+        self.send_cipher.key(send_key)
         self.send_nonce = 0
 
-        # self.receive_cipher = Shannon()
-        # self.receive_cipher.key(receive_key)
-        self.receive_cipher = Shannon(receive_key)
+        self.receive_cipher = Shannon()
+        self.receive_cipher.key(receive_key)
         self.receive_nonce = 0
 
     def send_encoded(self, conn, cmd: bytes, payload: bytes):
@@ -31,7 +29,6 @@ class CipherPair:
 
         buffer = self.send_cipher.encrypt(buffer)
 
-        # mac = self.send_cipher.finish(bytes(4))
         mac = self.send_cipher.finish(4)
 
         conn.write(buffer)
