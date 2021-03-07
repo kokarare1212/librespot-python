@@ -233,8 +233,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
 
         self._LOGGER.info("Connection successfully!")
 
-    def authenticate(self,
-                     credentials: Authentication.LoginCredentials) -> None:
+    def _authenticate(self,
+                      credentials: Authentication.LoginCredentials) -> None:
         self._authenticate_partial(credentials, False)
 
         with self._authLock:
@@ -707,7 +707,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                               self.device_id),
                 ApResolver.get_random_accesspoint())
             session._connect()
-            session.authenticate(self.login_credentials)
+            session._authenticate(self.login_credentials)
             return session
 
     class Configuration:

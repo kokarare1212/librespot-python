@@ -3,7 +3,7 @@ from librespot.common import Utils
 from librespot.core import Session
 from librespot.core.PacketsReceiver import PacketsReceiver
 from librespot.crypto import Packet
-from librespot.standard import BytesInputStream, BytesOutputStream
+from librespot.standard import BytesInputStream, ByteArrayOutputStream
 import logging
 import queue
 import threading
@@ -30,13 +30,13 @@ class AudioKeyManager(PacketsReceiver):
             seq = self._seqHolder
             self._seqHolder += 1
 
-        out = BytesOutputStream()
-        out.write(file_id)
-        out.write(gid)
-        out.write_int(seq)
-        out.write(self._ZERO_SHORT)
+        out = ByteArrayOutputStream()
+        out.write(buffer=bytearray(file_id))
+        out.write(buffer=bytearray(gid))
+        out.write(buffer=bytearray(Utils.to_byte_array(seq)))
+        out.write(buffer=bytearray(self._ZERO_SHORT))
 
-        self._session.send(Packet.Type.request_key, out.buffer)
+        self._session.send(Packet.Type.request_key, out.to_bytes())
 
         callback = AudioKeyManager.SyncCallback(self)
         self._callbacks[seq] = callback
