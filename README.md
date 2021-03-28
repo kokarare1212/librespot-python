@@ -34,7 +34,7 @@ aceess_token = session.tokens().get("playlist-read")
 ```
 Please read [this document](https://librespot-python.rtfd.io) for detailed specifications.
 ## Roadmap
-Coming soon
+Please read [ROADMAP.md](https://github.com/kokarare1212/librespot-python/blob/main/ROADMAP.md).
 ## License
 Distributed under the Apache-2.0 License. See `LICENSE.txt` for more information.
 ## Related Projects
