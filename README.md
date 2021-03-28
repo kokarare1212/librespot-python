@@ -12,11 +12,11 @@ We **DO NOT** encourage piracy and **DO NOT** support any form of downloader/rec
 ### Prerequisites
 * [Python](https://python.org/)
 ### Installation
-Stable Version **\* still not working.**
+Stable Version **\*still not working.**
 ```commandline
 pip install librespot
 ```
-Snapshot Version **Recommended**
+Snapshot Version \***Recommended**
 ```commandline
 pip install git+https://github.com/kokarare1212/librespot-python
 ```
