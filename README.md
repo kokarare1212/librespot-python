@@ -21,7 +21,7 @@ Snapshot Version \***Recommended**
 pip install git+https://github.com/kokarare1212/librespot-python
 ```
 ## Usage
-Get Spotify's OAuth token
+### Get Spotify's OAuth token
 ```python
 from librespot.core import Session
 
@@ -31,6 +31,22 @@ session = Session.Builder() \
     .create()
 
 aceess_token = session.tokens().get("playlist-read")
+```
+### Get Music Stream
+\*Currently, music streaming is supported, but it may cause unintended behavior.
+```python
+from librespot.core import Session
+
+
+session = Session.Builder() \
+    .user_pass("<Username>", "<Password>") \
+    .create()
+
+track_id = TrackId.from_uri("<TrackID(ex, spotify:track:xxxxxxxxxxxxxxxxxxxxxx)>")
+
+stream = session.content_feeder().load(track_id, VorbisOnlyAudioQuality(AudioQuality.AudioQuality.VERY_HIGH), False, None)
+
+# stream.input_stream.stream().read() to get one byte of the music stream
 ```
 Please read [this document](https://librespot-python.rtfd.io) for detailed specifications.
 ## Roadmap
