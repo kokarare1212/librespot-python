@@ -7,7 +7,8 @@ Open Source Spotify Client
 This project was developed to make the music streaming service Spotify available on any device.
 ## Note
 It is still in the idea stage, so there is a possibility of unintended behavior or major specification changes.  
-We **DO NOT** encourage piracy and **DO NOT** support any form of downloader/recorder designed with the help of this repository and in general anything that goes against the Spotify ToS.
+We **DO NOT** encourage piracy and **DO NOT** support any form of downloader/recorder designed with the help of this repository and in general anything that goes against the Spotify ToS.  
+For other guidelines, please see [CODE_OF_CONDUCT.md](https://github.com/kokarare1212/librespot-python/blob/main/CODE_OF_CONDUCT.md).
 ## Getting Started
 ### Prerequisites
 * [Python](https://python.org/)
