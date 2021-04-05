@@ -51,6 +51,8 @@ stream = session.content_feeder().load(track_id, VorbisOnlyAudioQuality(AudioQua
 Please read [this document](https://librespot-python.rtfd.io) for detailed specifications.
 ## Roadmap
 Please read [ROADMAP.md](https://github.com/kokarare1212/librespot-python/blob/main/ROADMAP.md).
+## Contributing
+Pull requests are welcome.
 ## License
 Distributed under the Apache-2.0 License. See `LICENSE.txt` for more information.
 ## Related Projects
