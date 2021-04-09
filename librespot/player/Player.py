@@ -5,7 +5,8 @@ import sched
 import time
 
 from librespot.core.Session import Session
-from librespot.player import PlayerConfiguration, StateWrapper
+from librespot.player import PlayerConfiguration
+from librespot.player import StateWrapper
 from librespot.player.metrics import PlaybackMetrics
 from librespot.player.mixing import AudioSink
 from librespot.player.playback.PlayerSession import PlayerSession
