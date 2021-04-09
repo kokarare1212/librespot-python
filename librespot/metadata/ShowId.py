@@ -20,7 +20,8 @@ class ShowId(SpotifyId.SpotifyId):
         matcher = ShowId._PATTERN.search(uri)
         if matcher is not None:
             show_id = matcher.group(1)
-            return ShowId(Utils.bytes_to_hex(ShowId._BASE62.decode(show_id, 16)))
+            return ShowId(
+                Utils.bytes_to_hex(ShowId._BASE62.decode(show_id, 16)))
         else:
             raise TypeError("Not a Spotify show ID: {}".format(uri))
 
@@ -37,8 +38,7 @@ class ShowId(SpotifyId.SpotifyId):
 
     def to_spotify_uri(self) -> str:
         return "spotify:show:{}".format(
-            ShowId._BASE62.encode(Utils.hex_to_bytes(self._hexId))
-        )
+            ShowId._BASE62.encode(Utils.hex_to_bytes(self._hexId)))
 
     def hex_id(self) -> str:
         return self._hexId

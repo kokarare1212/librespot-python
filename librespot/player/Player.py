@@ -37,7 +37,8 @@ class Player(Closeable, PlayerSession.Listener, AudioSink.Listener):
         self._init_state()
 
     def _init_state(self):
-        self._state = StateWrapper.StateWrapper(self._session, self, self._conf)
+        self._state = StateWrapper.StateWrapper(self._session, self,
+                                                self._conf)
 
         class Anonymous(DeviceStateHandler.Listener):
             _player: Player = None
@@ -53,7 +54,8 @@ class Player(Closeable, PlayerSession.Listener, AudioSink.Listener):
                 endpoint: DeviceStateHandler.Endpoint,
                 data: DeviceStateHandler.CommandBody,
             ) -> None:
-                self._player._LOGGER.debug("Received command: {}".format(endpoint))
+                self._player._LOGGER.debug(
+                    "Received command: {}".format(endpoint))
 
         self._deviceStateListener = Anonymous(self)
         self._state.add_listener(self._deviceStateListener)
