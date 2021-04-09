@@ -18,8 +18,7 @@ class AlbumId(SpotifyId.SpotifyId):
         matcher = AlbumId._PATTERN.search(uri)
         if matcher is not None:
             album_id = matcher.group(1)
-            return AlbumId(
-                Utils.bytes_to_hex(AlbumId._BASE62.decode(album_id, 16)))
+            return AlbumId(Utils.bytes_to_hex(AlbumId._BASE62.decode(album_id, 16)))
         else:
             raise TypeError("Not a Spotify album ID: {}.f".format(uri))
 
@@ -33,7 +32,8 @@ class AlbumId(SpotifyId.SpotifyId):
 
     def to_mercury_uri(self) -> str:
         return "spotify:album:{}".format(
-            AlbumId._BASE62.encode(Utils.hex_to_bytes(self._hexId)))
+            AlbumId._BASE62.encode(Utils.hex_to_bytes(self._hexId))
+        )
 
     def hex_id(self) -> str:
         return self._hexId
