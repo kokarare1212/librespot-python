@@ -1,8 +1,5 @@
 from __future__ import annotations
-from librespot.common import Utils
-from librespot.core import Session
-from librespot.player import PlayerConfiguration
-from librespot.proto import Connect, Player
+
 import base64
 import concurrent.futures
 import enum
@@ -11,6 +8,12 @@ import time
 import typing
 import urllib.parse
 
+from librespot.common import Utils
+from librespot.core import Session
+from librespot.player import PlayerConfiguration
+from librespot.proto import Connect
+from librespot.proto import Player
+
 
 class DeviceStateHandler:
     _LOGGER: logging = logging.getLogger(__name__)
@@ -18,7 +21,8 @@ class DeviceStateHandler:
     _deviceInfo: Connect.DeviceInfo = None
     _listeners: list[DeviceStateHandler.Listener] = list()
     _putState: Connect.PutStateRequest = None
-    _putStateWorker: concurrent.futures.ThreadPoolExecutor = concurrent.futures.ThreadPoolExecutor()
+    _putStateWorker: concurrent.futures.ThreadPoolExecutor = (
+        concurrent.futures.ThreadPoolExecutor())
     _connectionId: str = None
 
     def __init__(self, session: Session, player, conf: PlayerConfiguration):
@@ -29,10 +33,10 @@ class DeviceStateHandler:
     def _update_connection_id(self, newer: str) -> None:
         newer = urllib.parse.unquote(newer, "UTF-8")
 
-        if self._connectionId is None or \
-                self._connectionId != newer:
+        if self._connectionId is None or self._connectionId != newer:
             self._connectionId = newer
-            self._LOGGER.debug("Updated Spotify-Connection-Id: {}".format(self._connectionId))
+            self._LOGGER.debug("Updated Spotify-Connection-Id: {}".format(
+                self._connectionId))
             self._notify_ready()
 
     def add_listener(self, listener: DeviceStateHandler.Listener):
@@ -42,7 +46,12 @@ class DeviceStateHandler:
         for listener in self._listeners:
             listener.ready()
 
-    def update_state(self, reason: Connect.PutStateReason, player_time: int, state: Player.PlayerState):
+    def update_state(
+        self,
+        reason: Connect.PutStateReason,
+        player_time: int,
+        state: Player.PlayerState,
+    ):
         if self._connectionId is None:
             raise TypeError()
 
@@ -61,7 +70,9 @@ class DeviceStateHandler:
     def _put_connect_state(self, req: Connect.PutStateRequest):
         self._session.api().put_connect_state(self._connectionId, req)
         self._LOGGER.info("Put state. ts: {}, connId: {}, reason: {}".format(
-            req.client_side_timestamp, Utils.truncate_middle(self._connectionId, 10), req.put_state_reason
+            req.client_side_timestamp,
+            Utils.truncate_middle(self._connectionId, 10),
+            req.put_state_reason,
         ))
 
     class Endpoint(enum.Enum):
@@ -76,7 +87,11 @@ class DeviceStateHandler:
         def ready(self) -> None:
             pass
 
-        def command(self, endpoint: DeviceStateHandler.Endpoint, data: DeviceStateHandler.CommandBody) -> None:
+        def command(
+            self,
+            endpoint: DeviceStateHandler.Endpoint,
+            data: DeviceStateHandler.CommandBody,
+        ) -> None:
             pass
 
         def volume_changed(self) -> None:

@@ -1,7 +1,10 @@
 from __future__ import annotations
-from librespot.common import Base62, Utils
-from librespot.metadata import SpotifyId
+
 import re
+
+from librespot.common import Base62
+from librespot.common import Utils
+from librespot.metadata import SpotifyId
 
 
 class ShowId(SpotifyId.SpotifyId):
@@ -24,8 +27,7 @@ class ShowId(SpotifyId.SpotifyId):
 
     @staticmethod
     def from_base62(base62: str) -> ShowId:
-        return ShowId(
-            Utils.bytes_to_hex(ShowId._BASE62.decode(base62, 16)))
+        return ShowId(Utils.bytes_to_hex(ShowId._BASE62.decode(base62, 16)))
 
     @staticmethod
     def from_hex(hex_str: str) -> ShowId:

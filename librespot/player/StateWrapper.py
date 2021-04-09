@@ -1,10 +1,15 @@
 from __future__ import annotations
+
 from librespot.core import Session
 from librespot.dealer import DealerClient
-from librespot.player import Player, PlayerConfiguration
+from librespot.player import Player
+from librespot.player import PlayerConfiguration
 from librespot.player.state import DeviceStateHandler
 from librespot.proto import Connect
-from librespot.proto.Player import ContextPlayerOptions, PlayerState, Restrictions, Suppressions
+from librespot.proto.Player import ContextPlayerOptions
+from librespot.proto.Player import PlayerState
+from librespot.proto.Player import Restrictions
+from librespot.proto.Player import Suppressions
 
 
 class StateWrapper(DeviceStateHandler.Listener, DealerClient.MessageListener):
@@ -21,29 +26,32 @@ class StateWrapper(DeviceStateHandler.Listener, DealerClient.MessageListener):
         self._state = self._init_state()
 
         self._device.add_listener(self)
-        self._session.dealer().add_message_listener(self, "spotify:user:attributes:update", "hm://playlist/", "hm://collection/collection/" + self._session.username() + "/json")
+        self._session.dealer().add_message_listener(
+            self,
+            "spotify:user:attributes:update",
+            "hm://playlist/",
+            "hm://collection/collection/" + self._session.username() + "/json",
+        )
 
     def _init_state(self) -> PlayerState:
         return PlayerState(
             playback_speed=1.0,
             suppressions=Suppressions(),
             context_restrictions=Restrictions(),
-            options=ContextPlayerOptions(
-                repeating_context=False,
-                shuffling_context=False,
-                repeating_track=False
-            ),
+            options=ContextPlayerOptions(repeating_context=False,
+                                         shuffling_context=False,
+                                         repeating_track=False),
             position_as_of_timestamp=0,
             position=0,
-            is_playing=False
+            is_playing=False,
         )
 
     def add_listener(self, listener: DeviceStateHandler.Listener):
         self._device.add_listener(listener)
 
     def ready(self) -> None:
-        self._device.update_state(Connect.PutStateReason.NEW_DEVICE, 0, self._state)
+        self._device.update_state(Connect.PutStateReason.NEW_DEVICE, 0,
+                                  self._state)
 
-    def on_message(self, uri: str, headers: dict[str, str],
-                       payload: bytes):
+    def on_message(self, uri: str, headers: dict[str, str], payload: bytes):
         pass

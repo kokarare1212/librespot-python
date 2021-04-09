@@ -1,9 +1,11 @@
 from __future__ import annotations
+
 from librespot.player import PlayerConfiguration
 
 
 class AudioSink:
-    def __init__(self, conf: PlayerConfiguration, listener: AudioSink.Listener):
+    def __init__(self, conf: PlayerConfiguration,
+                 listener: AudioSink.Listener):
         pass
 
     class Listener:
