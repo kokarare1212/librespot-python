@@ -60,11 +60,11 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
     _authLock: threading.Condition = threading.Condition()
     _authLockBool: bool = False
     _client: requests.Session = None
-    _closeListeners: list[Session.CloseListener] = list()
+    _closeListeners: list[Session.CloseListener] = []
     _closeListenersLock: threading.Condition = threading.Condition()
-    _reconnectionListeners: list[Session.ReconnectionListener] = list()
+    _reconnectionListeners: list[Session.ReconnectionListener] = []
     _reconnectionListenersLock: threading.Condition = threading.Condition()
-    _userAttributes: dict[str, str] = dict()
+    _userAttributes: dict[str, str] = {}
     _conn: Session.ConnectionHolder = None
     _cipherPair: CipherPair = None
     _receiver: Session.Receiver = None
@@ -379,10 +379,10 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
         with self._closeListenersLock:
             for listener in self._closeListeners:
                 listener.on_closed()
-            self._closeListeners: list[Session.CloseListener] = list()
+            self._closeListeners: list[Session.CloseListener] = []
 
         self._reconnectionListeners: list[
-            Session.ReconnectionListener] = list()
+            Session.ReconnectionListener] = []
 
         self._LOGGER.info("Closed session. device_id: {}".format(
             self._inner.device_id))
