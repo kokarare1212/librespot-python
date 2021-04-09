@@ -22,8 +22,7 @@ class AlbumId(SpotifyId.SpotifyId):
             album_id = matcher.group(1)
             return AlbumId(
                 Utils.bytes_to_hex(AlbumId._BASE62.decode(album_id, 16)))
-        else:
-            raise TypeError("Not a Spotify album ID: {}.f".format(uri))
+        raise TypeError("Not a Spotify album ID: {}.f".format(uri))
 
     @staticmethod
     def from_base62(base62: str) -> AlbumId:

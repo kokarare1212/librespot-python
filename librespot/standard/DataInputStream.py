@@ -13,10 +13,9 @@ class DataInputStream(FilterInputStream, DataInput):
              length: int = None) -> int:
         if b is not None and offset is None and length is None:
             return self.input_stream.read(b, 0, len(b))
-        elif b is not None and offset is not None and length is not None:
+        if b is not None and offset is not None and length is not None:
             return self.input_stream.read(b, offset, length)
-        else:
-            raise TypeError()
+        raise TypeError()
 
     def read_fully(self,
                    b: bytearray = None,

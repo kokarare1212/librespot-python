@@ -22,8 +22,7 @@ class ArtistId(SpotifyId.SpotifyId):
             artist_id = matcher.group(1)
             return ArtistId(
                 Utils.bytes_to_hex(ArtistId._BASE62.decode(artist_id, 16)))
-        else:
-            raise TypeError("Not a Spotify artist ID: {}".format(uri))
+        raise TypeError("Not a Spotify artist ID: {}".format(uri))
 
     @staticmethod
     def from_base62(base62: str) -> ArtistId:

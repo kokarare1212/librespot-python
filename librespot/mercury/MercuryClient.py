@@ -73,8 +73,7 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
         resp = self.send_sync(request.request)
         if 200 <= resp.status_code < 300:
             return json.loads(resp.payload[0])
-        else:
-            raise MercuryClient.MercuryException(resp)
+        raise MercuryClient.MercuryException(resp)
 
     def send(self, request: RawMercuryRequest, callback) -> int:
         buffer = BytesOutputStream()

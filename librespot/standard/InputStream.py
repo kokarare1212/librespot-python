@@ -35,11 +35,10 @@ class InputStream(Closeable):
                         return 0
                     self.ensure_open()
                     return -1
-                elif b is None and offset is None and length is None:
+                if b is None and offset is None and length is None:
                     self.ensure_open()
                     return -1
-                else:
-                    raise TypeError()
+                raise TypeError()
 
             def read_all_bytes(self):
                 self.ensure_open()
@@ -83,7 +82,7 @@ class InputStream(Closeable):
              length: int = None) -> int:
         if b is None and offset is None and length is None:
             return self.internal_read()
-        elif b is not None and offset is None and length is None:
+        if b is not None and offset is None and length is None:
             offset = 0
             length = len(b)
         elif not (b is not None and offset is not None and length is not None):
@@ -165,7 +164,7 @@ class InputStream(Closeable):
                 remaining -= count
 
             return result
-        elif b is not None and offset is not None and length is not None:
+        if b is not None and offset is not None and length is not None:
             if len(b) < (offset + length):
                 raise IndexError()
 
@@ -176,8 +175,7 @@ class InputStream(Closeable):
                     break
                 n += count
             return n
-        else:
-            raise TypeError()
+        raise TypeError()
 
     def skip(self, n: int) -> int:
         remaining = n

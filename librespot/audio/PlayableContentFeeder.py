@@ -87,9 +87,8 @@ class PlayableContentFeeder:
             if track is not None:
                 return CdnFeedHelper.load_track(self.session, track, file,
                                                 resp, preload, halt_lister)
-            else:
-                return CdnFeedHelper.load_episode(self.session, episode, file,
-                                                  resp, preload, halt_lister)
+            return CdnFeedHelper.load_episode(self.session, episode, file,
+                                              resp, preload, halt_lister)
         elif resp.result == StorageResolve.StorageResolveResponse.Result.STORAGE:
             if track is None:
                 # return StorageFeedHelper

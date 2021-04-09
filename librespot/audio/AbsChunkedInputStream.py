@@ -153,7 +153,7 @@ class AbsChunkedInputStream(InputStream, HaltListener):
              length: int = None) -> int:
         if b is None and offset is None and length is None:
             return self.internal_read()
-        elif not (b is not None and offset is not None and length is not None):
+        if not (b is not None and offset is not None and length is not None):
             raise TypeError()
 
         if self.closed:
