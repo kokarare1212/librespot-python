@@ -5,7 +5,6 @@
 
 # Customize each tool. If analyses fail, try adjusting each option referencing the following example.
 linter:
-
 #   # Flake8 example. See https://help.sider.review/tools/python/flake8
 #   flake8:
 #     root_dir: project/
