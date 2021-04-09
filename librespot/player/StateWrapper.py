@@ -1,15 +1,12 @@
 from __future__ import annotations
+
 from librespot.core import Session
 from librespot.dealer import DealerClient
 from librespot.player import Player, PlayerConfiguration
 from librespot.player.state import DeviceStateHandler
 from librespot.proto import Connect
-from librespot.proto.Player import (
-    ContextPlayerOptions,
-    PlayerState,
-    Restrictions,
-    Suppressions,
-)
+from librespot.proto.Player import (ContextPlayerOptions, PlayerState,
+                                    Restrictions, Suppressions)
 
 
 class StateWrapper(DeviceStateHandler.Listener, DealerClient.MessageListener):

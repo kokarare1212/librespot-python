@@ -1,4 +1,9 @@
 from __future__ import annotations
+
+import logging
+import sched
+import time
+
 from librespot.core.Session import Session
 from librespot.player import PlayerConfiguration, StateWrapper
 from librespot.player.metrics import PlaybackMetrics
@@ -6,9 +11,6 @@ from librespot.player.mixing import AudioSink
 from librespot.player.playback.PlayerSession import PlayerSession
 from librespot.player.state.DeviceStateHandler import DeviceStateHandler
 from librespot.standard.Closeable import Closeable
-import logging
-import sched
-import time
 
 
 class Player(Closeable, PlayerSession.Listener, AudioSink.Listener):

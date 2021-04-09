@@ -1,8 +1,5 @@
 from __future__ import annotations
-from librespot.common import Utils
-from librespot.core import Session
-from librespot.player import PlayerConfiguration
-from librespot.proto import Connect, Player
+
 import base64
 import concurrent.futures
 import enum
@@ -10,6 +7,11 @@ import logging
 import time
 import typing
 import urllib.parse
+
+from librespot.common import Utils
+from librespot.core import Session
+from librespot.player import PlayerConfiguration
+from librespot.proto import Connect, Player
 
 
 class DeviceStateHandler:

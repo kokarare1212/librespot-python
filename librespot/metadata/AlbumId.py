@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+import re
+
 from librespot.common import Base62, Utils
 from librespot.metadata import SpotifyId
-import re
 
 
 class AlbumId(SpotifyId.SpotifyId):
