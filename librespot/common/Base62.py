@@ -59,10 +59,9 @@ class Base62:
                 out += bytes([0])
 
             return self.reverse(out)
-        elif len(out) > estimated_length:
+        if len(out) > estimated_length:
             return self.reverse(out[:estimated_length])
-        else:
-            return self.reverse(out)
+        return self.reverse(out)
 
     def estimate_output_length(self, input_length: int, source_base: int,
                                target_base: int):

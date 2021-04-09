@@ -45,11 +45,10 @@ class AudioKeyManager(PacketsReceiver):
         if key is None:
             if retry:
                 return self.get_audio_key(gid, file_id, False)
-            else:
-                raise RuntimeError(
-                    "Failed fetching audio key! gid: {}, fileId: {}".format(
-                        Utils.Utils.bytes_to_hex(gid),
-                        Utils.Utils.bytes_to_hex(file_id)))
+            raise RuntimeError(
+                "Failed fetching audio key! gid: {}, fileId: {}".format(
+                    Utils.Utils.bytes_to_hex(gid),
+                    Utils.Utils.bytes_to_hex(file_id)))
 
         return key
 

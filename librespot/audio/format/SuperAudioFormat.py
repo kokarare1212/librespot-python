@@ -10,18 +10,17 @@ class SuperAudioFormat(enum.Enum):
     @staticmethod
     def get(audio_format: Metadata.AudioFile.Format):
         if audio_format == Metadata.AudioFile.Format.OGG_VORBIS_96 or \
-                audio_format == Metadata.AudioFile.Format.OGG_VORBIS_160 or \
-                audio_format == Metadata.AudioFile.Format.OGG_VORBIS_320:
+                        audio_format == Metadata.AudioFile.Format.OGG_VORBIS_160 or \
+                        audio_format == Metadata.AudioFile.Format.OGG_VORBIS_320:
             return SuperAudioFormat.VORBIS
-        elif audio_format == Metadata.AudioFile.Format.MP3_256 or \
-                audio_format == Metadata.AudioFile.Format.MP3_320 or \
-                audio_format == Metadata.AudioFile.Format.MP3_160 or \
-                audio_format == Metadata.AudioFile.Format.MP3_96 or \
-                audio_format == Metadata.AudioFile.Format.MP3_160_ENC:
+        if audio_format == Metadata.AudioFile.Format.MP3_256 or \
+                        audio_format == Metadata.AudioFile.Format.MP3_320 or \
+                        audio_format == Metadata.AudioFile.Format.MP3_160 or \
+                        audio_format == Metadata.AudioFile.Format.MP3_96 or \
+                        audio_format == Metadata.AudioFile.Format.MP3_160_ENC:
             return SuperAudioFormat.MP3
-        elif audio_format == Metadata.AudioFile.Format.AAC_24 or \
-                audio_format == Metadata.AudioFile.Format.AAC_48 or \
-                audio_format == Metadata.AudioFile.Format.AAC_24_NORM:
+        if audio_format == Metadata.AudioFile.Format.AAC_24 or \
+                        audio_format == Metadata.AudioFile.Format.AAC_48 or \
+                        audio_format == Metadata.AudioFile.Format.AAC_24_NORM:
             return SuperAudioFormat.AAC
-        else:
-            raise RuntimeError("Unknown audio format: {}".format(audio_format))
+        raise RuntimeError("Unknown audio format: {}".format(audio_format))

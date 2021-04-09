@@ -21,8 +21,7 @@ class TrackId(PlayableId, SpotifyId):
             track_id = search.group(1)
             return TrackId(
                 Utils.bytes_to_hex(PlayableId.BASE62.decode(track_id, 16)))
-        else:
-            raise RuntimeError("Not a Spotify track ID: {}".format(uri))
+        raise RuntimeError("Not a Spotify track ID: {}".format(uri))
 
     @staticmethod
     def from_base62(base62: str) -> TrackId:

@@ -79,9 +79,8 @@ class CdnManager:
             self._LOGGER.debug("Fetched CDN url for {}: {}".format(
                 Utils.bytes_to_hex(file_id), url))
             return url
-        else:
-            raise CdnManager.CdnException(
-                "Could not retrieve CDN url! result: {}".format(proto.result))
+        raise CdnManager.CdnException(
+            "Could not retrieve CDN url! result: {}".format(proto.result))
 
     class CdnException(Exception):
         def __init__(self, ex):
@@ -228,8 +227,7 @@ class CdnManager:
             if self._streamId.is_episode():
                 return "episode_gid: {}".format(
                     self._streamId.get_episode_gid())
-            else:
-                return "file_id: {}".format(self._streamId.get_file_id())
+            return "file_id: {}".format(self._streamId.get_file_id())
 
         def decrypt_time_ms(self) -> int:
             return self._audioDecrypt.decrypt_time_ms()

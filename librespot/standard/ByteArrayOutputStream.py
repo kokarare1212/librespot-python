@@ -31,7 +31,7 @@ class ByteArrayOutputStream(OutputStream):
         if byte is not None and buffer is None and offset is None and length is None:
             self.internal_write(byte)
             return
-        elif byte is None and buffer is not None and offset is None and length is None:
+        if byte is None and buffer is not None and offset is None and length is None:
             offset = 0
             length = len(buffer)
         elif not (byte is None and buffer is not None and offset is not None

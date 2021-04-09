@@ -94,7 +94,7 @@ class EventService:
                 self.body.write(byte=0x09)
                 self.body.write(byte=c)
                 return self
-            elif s is not None:
+            if s is not None:
                 self.body.write(byte=0x09)
                 self.append_no_delimiter(s)
                 return self

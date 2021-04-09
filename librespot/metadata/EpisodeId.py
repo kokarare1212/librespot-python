@@ -20,8 +20,7 @@ class EpisodeId(SpotifyId.SpotifyId, PlayableId):
             return EpisodeId(
                 Utils.Utils.bytes_to_hex(
                     PlayableId.BASE62.decode(episode_id, 16)))
-        else:
-            TypeError("Not a Spotify episode ID: {}".format(uri))
+        TypeError("Not a Spotify episode ID: {}".format(uri))
 
     @staticmethod
     def from_base62(base62: str) -> EpisodeId:

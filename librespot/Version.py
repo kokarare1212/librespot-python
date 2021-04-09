@@ -9,10 +9,9 @@ class Version:
     def platform() -> Platform:
         if platform.system() == "Windows":
             return Platform.PLATFORM_WIN32_X86
-        elif platform.system() == "Darwin":
+        if platform.system() == "Darwin":
             return Platform.PLATFORM_OSX_X86
-        else:
-            return Platform.PLATFORM_LINUX_X86
+        return Platform.PLATFORM_LINUX_X86
         pass
 
     @staticmethod

@@ -30,8 +30,7 @@ class Utils:
         fmt = '%%0%dx' % (width // 4)
         if i == 0:
             return bytes([0])
-        else:
-            return binascii.unhexlify(fmt % i)
+        return binascii.unhexlify(fmt % i)
 
     @staticmethod
     def bytes_to_hex(buffer: bytes) -> str:
