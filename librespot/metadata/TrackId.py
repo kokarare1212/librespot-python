@@ -1,8 +1,10 @@
 from __future__ import annotations
+
+import re
+
 from librespot.common import Utils
 from librespot.metadata import SpotifyId
 from librespot.metadata.PlayableId import PlayableId
-import re
 
 
 class TrackId(PlayableId, SpotifyId):

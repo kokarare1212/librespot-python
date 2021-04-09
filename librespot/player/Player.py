@@ -1,14 +1,17 @@
 from __future__ import annotations
+
+import logging
+import sched
+import time
+
 from librespot.core.Session import Session
-from librespot.player import PlayerConfiguration, StateWrapper
+from librespot.player import PlayerConfiguration
+from librespot.player import StateWrapper
 from librespot.player.metrics import PlaybackMetrics
 from librespot.player.mixing import AudioSink
 from librespot.player.playback.PlayerSession import PlayerSession
 from librespot.player.state.DeviceStateHandler import DeviceStateHandler
 from librespot.standard.Closeable import Closeable
-import logging
-import sched
-import time
 
 
 class Player(Closeable, PlayerSession.Listener, AudioSink.Listener):
@@ -46,8 +49,11 @@ class Player(Closeable, PlayerSession.Listener, AudioSink.Listener):
             def ready(self) -> None:
                 pass
 
-            def command(self, endpoint: DeviceStateHandler.Endpoint,
-                        data: DeviceStateHandler.CommandBody) -> None:
+            def command(
+                self,
+                endpoint: DeviceStateHandler.Endpoint,
+                data: DeviceStateHandler.CommandBody,
+            ) -> None:
                 self._player._LOGGER.debug(
                     "Received command: {}".format(endpoint))
 

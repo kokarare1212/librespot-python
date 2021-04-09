@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from librespot.player import PlayerConfiguration
 
 
