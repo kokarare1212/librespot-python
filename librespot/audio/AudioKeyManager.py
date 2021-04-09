@@ -15,7 +15,7 @@ class AudioKeyManager(PacketsReceiver):
     _AUDIO_KEY_REQUEST_TIMEOUT: int = 20
     _seqHolder: int = 0
     _seqHolderLock: threading.Condition = threading.Condition()
-    _callbacks: dict[int, AudioKeyManager.Callback] = dict()
+    _callbacks: dict[int, AudioKeyManager.Callback] = {}
     _session: Session = None
 
     def __init__(self, session: Session):

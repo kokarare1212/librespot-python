@@ -15,7 +15,7 @@ import threading
 class ChannelManager(Closeable, PacketsReceiver.PacketsReceiver):
     CHUNK_SIZE: int = 128 * 1024
     _LOGGER: logging = logging.getLogger(__name__)
-    _channels: dict[int, Channel] = dict()
+    _channels: dict[int, Channel] = {}
     _seqHolder: int = 0
     _seqHolderLock: threading.Condition = threading.Condition()
     _executorService: concurrent.futures.ThreadPoolExecutor = concurrent.futures.ThreadPoolExecutor(

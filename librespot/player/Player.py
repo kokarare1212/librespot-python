@@ -22,7 +22,7 @@ class Player(Closeable, PlayerSession.Listener, AudioSink.Listener):
     _conf: PlayerConfiguration = None
     _events: Player.EventsDispatcher = None
     _sink: AudioSink = None
-    _metrics: dict[str, PlaybackMetrics] = dict()
+    _metrics: dict[str, PlaybackMetrics] = {}
     _state: StateWrapper = None
     _playerSession: PlayerSession = None
     _releaseLineFuture = None
