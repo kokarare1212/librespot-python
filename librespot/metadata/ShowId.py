@@ -24,8 +24,7 @@ class ShowId(SpotifyId.SpotifyId):
 
     @staticmethod
     def from_base62(base62: str) -> ShowId:
-        return ShowId(
-            Utils.bytes_to_hex(ShowId._BASE62.decode(base62, 16)))
+        return ShowId(Utils.bytes_to_hex(ShowId._BASE62.decode(base62, 16)))
 
     @staticmethod
     def from_hex(hex_str: str) -> ShowId:

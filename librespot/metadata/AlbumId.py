@@ -25,8 +25,7 @@ class AlbumId(SpotifyId.SpotifyId):
 
     @staticmethod
     def from_base62(base62: str) -> AlbumId:
-        return AlbumId(
-            Utils.bytes_to_hex(AlbumId._BASE62.decode(base62, 16)))
+        return AlbumId(Utils.bytes_to_hex(AlbumId._BASE62.decode(base62, 16)))
 
     @staticmethod
     def from_hex(hex_str: str) -> AlbumId:

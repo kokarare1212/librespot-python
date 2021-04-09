@@ -18,15 +18,14 @@ class TrackId(PlayableId, SpotifyId):
         if search is not None:
             track_id = search.group(1)
             return TrackId(
-                Utils.bytes_to_hex(PlayableId.BASE62.decode(
-                    track_id, 16)))
+                Utils.bytes_to_hex(PlayableId.BASE62.decode(track_id, 16)))
         else:
             raise RuntimeError("Not a Spotify track ID: {}".format(uri))
 
     @staticmethod
     def from_base62(base62: str) -> TrackId:
-        return TrackId(
-            Utils.bytes_to_hex(PlayableId.BASE62.decode(base62, 16)))
+        return TrackId(Utils.bytes_to_hex(PlayableId.BASE62.decode(base62,
+                                                                   16)))
 
     @staticmethod
     def from_hex(hex_str: str) -> TrackId:

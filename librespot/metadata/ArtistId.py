@@ -18,15 +18,14 @@ class ArtistId(SpotifyId.SpotifyId):
         if matcher is not None:
             artist_id = matcher.group(1)
             return ArtistId(
-                Utils.bytes_to_hex(ArtistId._BASE62.decode(
-                    artist_id, 16)))
+                Utils.bytes_to_hex(ArtistId._BASE62.decode(artist_id, 16)))
         else:
             raise TypeError("Not a Spotify artist ID: {}".format(uri))
 
     @staticmethod
     def from_base62(base62: str) -> ArtistId:
-        return ArtistId(
-            Utils.bytes_to_hex(ArtistId._BASE62.decode(base62, 16)))
+        return ArtistId(Utils.bytes_to_hex(ArtistId._BASE62.decode(base62,
+                                                                   16)))
 
     @staticmethod
     def from_hex(hex_str: str) -> ArtistId:
