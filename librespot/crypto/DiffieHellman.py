@@ -1,7 +1,5 @@
-from binascii import unhexlify
 from librespot.common.Utils import Utils
 import os
-import struct
 
 
 class DiffieHellman:

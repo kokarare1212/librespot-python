@@ -1,6 +1,5 @@
 from librespot.standard.DataInput import DataInput
 from librespot.standard.FilterInputStream import FilterInputStream
-from librespot.standard.InputStream import InputStream
 
 
 class DataInputStream(FilterInputStream, DataInput):
