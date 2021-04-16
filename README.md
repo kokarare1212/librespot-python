@@ -56,7 +56,7 @@ Please read [ROADMAP.md](https://github.com/kokarare1212/librespot-python/blob/m
 ## Contributing
 Pull requests are welcome.
 ## License
-Distributed under the Apache-2.0 License. See `LICENSE.txt` for more information.
+Distributed under the Apache-2.0 License. See [LICENSE.txt](https://github.com/kokarare1212/librespot-python/blob/main/LICENSE.txt) for more information.
 ## Related Projects
 * [Librespot](https://github.com/librespot-org/librespot) (Concept)
 * [Librespot-Java](https://github.com/librespot-org/librespot-java) (Core)
