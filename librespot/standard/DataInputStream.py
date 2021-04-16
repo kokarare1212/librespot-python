@@ -94,14 +94,14 @@ class DataInputStream(FilterInputStream, DataInput):
 
     def read_long(self) -> int:
         self.read_fully(self.read_buffer, 0, 8)
-        return (self.read_buffer[0] << 56) + \
-               ((self.read_buffer[1] & 255) << 48) + \
-               ((self.read_buffer[2] & 255) << 40) + \
-               ((self.read_buffer[3] & 255) << 32) + \
-               ((self.read_buffer[4] & 255) << 24) + \
-               ((self.read_buffer[5] & 255) << 16) + \
-               ((self.read_buffer[6] & 255) << 8) + \
-               ((self.read_buffer[7] & 255) << 0)
+        return ((self.read_buffer[0] << 56) +
+                ((self.read_buffer[1] & 255) << 48) +
+                ((self.read_buffer[2] & 255) << 40) +
+                ((self.read_buffer[3] & 255) << 32) +
+                ((self.read_buffer[4] & 255) << 24) +
+                ((self.read_buffer[5] & 255) << 16) +
+                ((self.read_buffer[6] & 255) << 8) +
+                ((self.read_buffer[7] & 255) << 0))
 
     def read_float(self) -> float:
         pass
