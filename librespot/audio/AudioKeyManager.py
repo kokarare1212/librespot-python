@@ -8,7 +8,8 @@ from librespot.common import Utils
 from librespot.core import Session
 from librespot.core.PacketsReceiver import PacketsReceiver
 from librespot.crypto import Packet
-from librespot.standard import ByteArrayOutputStream, BytesInputStream
+from librespot.standard import ByteArrayOutputStream
+from librespot.standard import BytesInputStream
 
 
 class AudioKeyManager(PacketsReceiver):
