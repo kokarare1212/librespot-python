@@ -1,5 +1,6 @@
-from librespot.common.Utils import Utils
 import os
+
+from librespot.common.Utils import Utils
 
 
 class DiffieHellman:
