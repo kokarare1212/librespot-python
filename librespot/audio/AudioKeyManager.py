@@ -107,5 +107,4 @@ class AudioKeyManager(PacketsReceiver):
                 return self.reference.get(block=False)
 
     class AesKeyException(IOError):
-        def __init__(self, ex):
-            super().__init__(ex)
+        pass

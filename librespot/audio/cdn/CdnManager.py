@@ -83,8 +83,7 @@ class CdnManager:
             "Could not retrieve CDN url! result: {}".format(proto.result))
 
     class CdnException(Exception):
-        def __init__(self, ex):
-            super().__init__(ex)
+        pass
 
     class InternalResponse:
         _buffer: bytearray
@@ -269,9 +268,6 @@ class CdnManager:
             def __init__(self, streamer, retry_on_chunk_error: bool):
                 self.streamer: CdnManager.Streamer = streamer
                 super().__init__(retry_on_chunk_error)
-
-            def close(self) -> None:
-                super().close()
 
             def buffer(self) -> list[bytearray]:
                 return self.streamer._buffer

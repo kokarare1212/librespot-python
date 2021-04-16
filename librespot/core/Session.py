@@ -661,9 +661,6 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
     class Builder(AbsBuilder):
         login_credentials: Authentication.LoginCredentials = None
 
-        def __init__(self, conf: Session.Configuration = None):
-            super().__init__(conf)
-
         def stored(self):
             pass
 
