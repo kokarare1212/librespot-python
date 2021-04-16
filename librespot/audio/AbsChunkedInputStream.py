@@ -222,8 +222,6 @@ class AbsChunkedInputStream(InputStream, HaltListener):
         return self._decoded_length
 
     class ChunkException(IOError):
-        def __init__(self, cause):
-            super().__init__(cause)
 
         @staticmethod
         def from_stream_error(stream_error: int):

@@ -19,5 +19,4 @@ class SpotifyId:
         pass
 
     class SpotifyIdParsingException(Exception):
-        def __init__(self, cause):
-            super().__init__(cause)
+        pass

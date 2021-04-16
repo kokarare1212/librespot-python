@@ -4,8 +4,6 @@ from librespot.standard.InputStream import InputStream
 
 
 class DataInputStream(FilterInputStream, DataInput):
-    def __init__(self, input_stream: InputStream):
-        super().__init__(input_stream)
 
     def read(self,
              b: bytearray = None,
