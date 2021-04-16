@@ -222,7 +222,6 @@ class AbsChunkedInputStream(InputStream, HaltListener):
         return self._decoded_length
 
     class ChunkException(IOError):
-
         @staticmethod
         def from_stream_error(stream_error: int):
             return AbsChunkedInputStream.ChunkException(
