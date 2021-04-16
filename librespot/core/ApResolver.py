@@ -7,8 +7,7 @@ class ApResolver:
 
     @staticmethod
     def request(service_type: str):
-        response = requests.get("{}?type={}".format(ApResolver.base_url,
-                                                    service_type))
+        response = requests.get("{}?type={}".format(ApResolver.base_url, service_type))
         return response.json()
 
     @staticmethod
