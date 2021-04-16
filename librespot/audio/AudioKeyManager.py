@@ -1,12 +1,14 @@
 from __future__ import annotations
+
+import logging
+import queue
+import threading
+
 from librespot.common import Utils
 from librespot.core import Session
 from librespot.core.PacketsReceiver import PacketsReceiver
 from librespot.crypto import Packet
-from librespot.standard import BytesInputStream, ByteArrayOutputStream
-import logging
-import queue
-import threading
+from librespot.standard import ByteArrayOutputStream, BytesInputStream
 
 
 class AudioKeyManager(PacketsReceiver):
