@@ -21,10 +21,7 @@ class AudioKeyManager(PacketsReceiver):
     def __init__(self, session: Session):
         self._session = session
 
-    def get_audio_key(self,
-                      gid: bytes,
-                      file_id: bytes,
-                      retry: bool = True) -> bytes:
+    def get_audio_key(self, gid: bytes, file_id: bytes, retry: bool = True) -> bytes:
         seq: int
         with self._seqHolderLock:
             seq = self._seqHolder
@@ -47,8 +44,9 @@ class AudioKeyManager(PacketsReceiver):
                 return self.get_audio_key(gid, file_id, False)
             raise RuntimeError(
                 "Failed fetching audio key! gid: {}, fileId: {}".format(
-                    Utils.Utils.bytes_to_hex(gid),
-                    Utils.Utils.bytes_to_hex(file_id)))
+                    Utils.Utils.bytes_to_hex(gid), Utils.Utils.bytes_to_hex(file_id)
+                )
+            )
 
         return key
 
@@ -58,8 +56,7 @@ class AudioKeyManager(PacketsReceiver):
 
         callback = self._callbacks.get(seq)
         if callback is None:
-            self._LOGGER.warning(
-                "Couldn't find callback for seq: {}".format(seq))
+            self._LOGGER.warning("Couldn't find callback for seq: {}".format(seq))
             return
 
         if packet.is_cmd(Packet.Type.aes_key):
@@ -71,7 +68,9 @@ class AudioKeyManager(PacketsReceiver):
         else:
             self._LOGGER.warning(
                 "Couldn't handle packet, cmd: {}, length: {}".format(
-                    packet.cmd, len(packet.payload)))
+                    packet.cmd, len(packet.payload)
+                )
+            )
 
     class Callback:
         def key(self, key: bytes) -> None:
@@ -95,15 +94,15 @@ class AudioKeyManager(PacketsReceiver):
 
         def error(self, code: int) -> None:
             self._audioKeyManager._LOGGER.fatal(
-                "Audio key error, code: {}".format(code))
+                "Audio key error, code: {}".format(code)
+            )
             with self.reference_lock:
                 self.reference.put(None)
                 self.reference_lock.notify_all()
 
         def wait_response(self) -> bytes:
             with self.reference_lock:
-                self.reference_lock.wait(
-                    AudioKeyManager._AUDIO_KEY_REQUEST_TIMEOUT)
+                self.reference_lock.wait(AudioKeyManager._AUDIO_KEY_REQUEST_TIMEOUT)
                 return self.reference.get(block=False)
 
     class AesKeyException(IOError):
