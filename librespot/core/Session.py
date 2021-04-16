@@ -46,266 +46,264 @@ from librespot.Version import Version
 
 class Session(Closeable, SubListener, DealerClient.MessageListener):
     _LOGGER: logging = logging.getLogger(__name__)
-    _serverKey: bytes = bytes(
-        [
-            0xAC,
-            0xE0,
-            0x46,
-            0x0B,
-            0xFF,
-            0xC2,
-            0x30,
-            0xAF,
-            0xF4,
-            0x6B,
-            0xFE,
-            0xC3,
-            0xBF,
-            0xBF,
-            0x86,
-            0x3D,
-            0xA1,
-            0x91,
-            0xC6,
-            0xCC,
-            0x33,
-            0x6C,
-            0x93,
-            0xA1,
-            0x4F,
-            0xB3,
-            0xB0,
-            0x16,
-            0x12,
-            0xAC,
-            0xAC,
-            0x6A,
-            0xF1,
-            0x80,
-            0xE7,
-            0xF6,
-            0x14,
-            0xD9,
-            0x42,
-            0x9D,
-            0xBE,
-            0x2E,
-            0x34,
-            0x66,
-            0x43,
-            0xE3,
-            0x62,
-            0xD2,
-            0x32,
-            0x7A,
-            0x1A,
-            0x0D,
-            0x92,
-            0x3B,
-            0xAE,
-            0xDD,
-            0x14,
-            0x02,
-            0xB1,
-            0x81,
-            0x55,
-            0x05,
-            0x61,
-            0x04,
-            0xD5,
-            0x2C,
-            0x96,
-            0xA4,
-            0x4C,
-            0x1E,
-            0xCC,
-            0x02,
-            0x4A,
-            0xD4,
-            0xB2,
-            0x0C,
-            0x00,
-            0x1F,
-            0x17,
-            0xED,
-            0xC2,
-            0x2F,
-            0xC4,
-            0x35,
-            0x21,
-            0xC8,
-            0xF0,
-            0xCB,
-            0xAE,
-            0xD2,
-            0xAD,
-            0xD7,
-            0x2B,
-            0x0F,
-            0x9D,
-            0xB3,
-            0xC5,
-            0x32,
-            0x1A,
-            0x2A,
-            0xFE,
-            0x59,
-            0xF3,
-            0x5A,
-            0x0D,
-            0xAC,
-            0x68,
-            0xF1,
-            0xFA,
-            0x62,
-            0x1E,
-            0xFB,
-            0x2C,
-            0x8D,
-            0x0C,
-            0xB7,
-            0x39,
-            0x2D,
-            0x92,
-            0x47,
-            0xE3,
-            0xD7,
-            0x35,
-            0x1A,
-            0x6D,
-            0xBD,
-            0x24,
-            0xC2,
-            0xAE,
-            0x25,
-            0x5B,
-            0x88,
-            0xFF,
-            0xAB,
-            0x73,
-            0x29,
-            0x8A,
-            0x0B,
-            0xCC,
-            0xCD,
-            0x0C,
-            0x58,
-            0x67,
-            0x31,
-            0x89,
-            0xE8,
-            0xBD,
-            0x34,
-            0x80,
-            0x78,
-            0x4A,
-            0x5F,
-            0xC9,
-            0x6B,
-            0x89,
-            0x9D,
-            0x95,
-            0x6B,
-            0xFC,
-            0x86,
-            0xD7,
-            0x4F,
-            0x33,
-            0xA6,
-            0x78,
-            0x17,
-            0x96,
-            0xC9,
-            0xC3,
-            0x2D,
-            0x0D,
-            0x32,
-            0xA5,
-            0xAB,
-            0xCD,
-            0x05,
-            0x27,
-            0xE2,
-            0xF7,
-            0x10,
-            0xA3,
-            0x96,
-            0x13,
-            0xC4,
-            0x2F,
-            0x99,
-            0xC0,
-            0x27,
-            0xBF,
-            0xED,
-            0x04,
-            0x9C,
-            0x3C,
-            0x27,
-            0x58,
-            0x04,
-            0xB6,
-            0xB2,
-            0x19,
-            0xF9,
-            0xC1,
-            0x2F,
-            0x02,
-            0xE9,
-            0x48,
-            0x63,
-            0xEC,
-            0xA1,
-            0xB6,
-            0x42,
-            0xA0,
-            0x9D,
-            0x48,
-            0x25,
-            0xF8,
-            0xB3,
-            0x9D,
-            0xD0,
-            0xE8,
-            0x6A,
-            0xF9,
-            0x48,
-            0x4D,
-            0xA1,
-            0xC2,
-            0xBA,
-            0x86,
-            0x30,
-            0x42,
-            0xEA,
-            0x9D,
-            0xB3,
-            0x08,
-            0x6C,
-            0x19,
-            0x0E,
-            0x48,
-            0xB3,
-            0x9D,
-            0x66,
-            0xEB,
-            0x00,
-            0x06,
-            0xA2,
-            0x5A,
-            0xEE,
-            0xA1,
-            0x1B,
-            0x13,
-            0x87,
-            0x3C,
-            0xD7,
-            0x19,
-            0xE6,
-            0x55,
-            0xBD,
-        ]
-    )
+    _serverKey: bytes = bytes([
+        0xAC,
+        0xE0,
+        0x46,
+        0x0B,
+        0xFF,
+        0xC2,
+        0x30,
+        0xAF,
+        0xF4,
+        0x6B,
+        0xFE,
+        0xC3,
+        0xBF,
+        0xBF,
+        0x86,
+        0x3D,
+        0xA1,
+        0x91,
+        0xC6,
+        0xCC,
+        0x33,
+        0x6C,
+        0x93,
+        0xA1,
+        0x4F,
+        0xB3,
+        0xB0,
+        0x16,
+        0x12,
+        0xAC,
+        0xAC,
+        0x6A,
+        0xF1,
+        0x80,
+        0xE7,
+        0xF6,
+        0x14,
+        0xD9,
+        0x42,
+        0x9D,
+        0xBE,
+        0x2E,
+        0x34,
+        0x66,
+        0x43,
+        0xE3,
+        0x62,
+        0xD2,
+        0x32,
+        0x7A,
+        0x1A,
+        0x0D,
+        0x92,
+        0x3B,
+        0xAE,
+        0xDD,
+        0x14,
+        0x02,
+        0xB1,
+        0x81,
+        0x55,
+        0x05,
+        0x61,
+        0x04,
+        0xD5,
+        0x2C,
+        0x96,
+        0xA4,
+        0x4C,
+        0x1E,
+        0xCC,
+        0x02,
+        0x4A,
+        0xD4,
+        0xB2,
+        0x0C,
+        0x00,
+        0x1F,
+        0x17,
+        0xED,
+        0xC2,
+        0x2F,
+        0xC4,
+        0x35,
+        0x21,
+        0xC8,
+        0xF0,
+        0xCB,
+        0xAE,
+        0xD2,
+        0xAD,
+        0xD7,
+        0x2B,
+        0x0F,
+        0x9D,
+        0xB3,
+        0xC5,
+        0x32,
+        0x1A,
+        0x2A,
+        0xFE,
+        0x59,
+        0xF3,
+        0x5A,
+        0x0D,
+        0xAC,
+        0x68,
+        0xF1,
+        0xFA,
+        0x62,
+        0x1E,
+        0xFB,
+        0x2C,
+        0x8D,
+        0x0C,
+        0xB7,
+        0x39,
+        0x2D,
+        0x92,
+        0x47,
+        0xE3,
+        0xD7,
+        0x35,
+        0x1A,
+        0x6D,
+        0xBD,
+        0x24,
+        0xC2,
+        0xAE,
+        0x25,
+        0x5B,
+        0x88,
+        0xFF,
+        0xAB,
+        0x73,
+        0x29,
+        0x8A,
+        0x0B,
+        0xCC,
+        0xCD,
+        0x0C,
+        0x58,
+        0x67,
+        0x31,
+        0x89,
+        0xE8,
+        0xBD,
+        0x34,
+        0x80,
+        0x78,
+        0x4A,
+        0x5F,
+        0xC9,
+        0x6B,
+        0x89,
+        0x9D,
+        0x95,
+        0x6B,
+        0xFC,
+        0x86,
+        0xD7,
+        0x4F,
+        0x33,
+        0xA6,
+        0x78,
+        0x17,
+        0x96,
+        0xC9,
+        0xC3,
+        0x2D,
+        0x0D,
+        0x32,
+        0xA5,
+        0xAB,
+        0xCD,
+        0x05,
+        0x27,
+        0xE2,
+        0xF7,
+        0x10,
+        0xA3,
+        0x96,
+        0x13,
+        0xC4,
+        0x2F,
+        0x99,
+        0xC0,
+        0x27,
+        0xBF,
+        0xED,
+        0x04,
+        0x9C,
+        0x3C,
+        0x27,
+        0x58,
+        0x04,
+        0xB6,
+        0xB2,
+        0x19,
+        0xF9,
+        0xC1,
+        0x2F,
+        0x02,
+        0xE9,
+        0x48,
+        0x63,
+        0xEC,
+        0xA1,
+        0xB6,
+        0x42,
+        0xA0,
+        0x9D,
+        0x48,
+        0x25,
+        0xF8,
+        0xB3,
+        0x9D,
+        0xD0,
+        0xE8,
+        0x6A,
+        0xF9,
+        0x48,
+        0x4D,
+        0xA1,
+        0xC2,
+        0xBA,
+        0x86,
+        0x30,
+        0x42,
+        0xEA,
+        0x9D,
+        0xB3,
+        0x08,
+        0x6C,
+        0x19,
+        0x0E,
+        0x48,
+        0xB3,
+        0x9D,
+        0x66,
+        0xEB,
+        0x00,
+        0x06,
+        0xA2,
+        0x5A,
+        0xEE,
+        0xA1,
+        0x1B,
+        0x13,
+        0x87,
+        0x3C,
+        0xD7,
+        0x19,
+        0xE6,
+        0x55,
+        0xBD,
+    ])
     _keys: DiffieHellman = None
     _inner: Session.Inner = None
     _scheduler: sched.scheduler = sched.scheduler(time.time)
@@ -343,9 +341,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
         self._conn = Session.ConnectionHolder.create(addr, inner.conf)
         self._client = Session._create_client(self._inner.conf)
 
-        self._LOGGER.info(
-            "Created new session! device_id: {}, ap: {}".format(inner.device_id, addr)
-        )
+        self._LOGGER.info("Created new session! device_id: {}, ap: {}".format(
+            inner.device_id, addr))
 
     @staticmethod
     def _create_client(conf: Session.Configuration) -> requests.Session:
@@ -387,12 +384,12 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
 
         client_hello = Keyexchange.ClientHello(
             build_info=Version.standard_build_info(),
-            cryptosuites_supported=[Keyexchange.Cryptosuite.CRYPTO_SUITE_SHANNON],
+            cryptosuites_supported=[
+                Keyexchange.Cryptosuite.CRYPTO_SUITE_SHANNON
+            ],
             login_crypto_hello=Keyexchange.LoginCryptoHelloUnion(
                 diffie_hellman=Keyexchange.LoginCryptoDiffieHellmanHello(
-                    gc=self._keys.public_key_array(), server_keys_known=1
-                ),
-            ),
+                    gc=self._keys.public_key_array(), server_keys_known=1), ),
             client_nonce=nonce,
             padding=bytes([0x1E]),
         )
@@ -421,22 +418,21 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
         ap_response_message.ParseFromString(buffer)
         shared_key = Utils.to_byte_array(
             self._keys.compute_shared_key(
-                ap_response_message.challenge.login_crypto_challenge.diffie_hellman.gs
-            )
-        )
+                ap_response_message.challenge.login_crypto_challenge.
+                diffie_hellman.gs))
 
         # Check gs_signature
 
         rsa = RSA.construct((int.from_bytes(self._serverKey, "big"), 65537))
         pkcs1_v1_5 = PKCS1_v1_5.new(rsa)
         sha1 = SHA1.new()
-        sha1.update(
-            ap_response_message.challenge.login_crypto_challenge.diffie_hellman.gs
-        )
+        sha1.update(ap_response_message.challenge.login_crypto_challenge.
+                    diffie_hellman.gs)
         # noinspection PyTypeChecker
         if not pkcs1_v1_5.verify(
-            sha1,
-            ap_response_message.challenge.login_crypto_challenge.diffie_hellman.gs_signature,
+                sha1,
+                ap_response_message.challenge.login_crypto_challenge.
+                diffie_hellman.gs_signature,
         ):
             raise RuntimeError("Failed signature check!")
 
@@ -459,14 +455,13 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
         client_response_plaintext = Keyexchange.ClientResponsePlaintext(
             login_crypto_response=Keyexchange.LoginCryptoResponseUnion(
                 diffie_hellman=Keyexchange.LoginCryptoDiffieHellmanResponse(
-                    hmac=challenge
-                )
-            ),
+                    hmac=challenge)),
             pow_response=Keyexchange.PoWResponseUnion(),
             crypto_response=Keyexchange.CryptoResponseUnion(),
         )
 
-        client_response_plaintext_bytes = client_response_plaintext.SerializeToString()
+        client_response_plaintext_bytes = client_response_plaintext.SerializeToString(
+        )
         length = 4 + len(client_response_plaintext_bytes)
         self._conn.write_int(length)
         self._conn.write(client_response_plaintext_bytes)
@@ -476,12 +471,10 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             self._conn.set_timeout(1)
             scrap = self._conn.read(4)
             if 4 == len(scrap):
-                length = (
-                    (scrap[0] << 24)
-                    | (scrap[1] << 16)
-                    | (scrap[2] << 8)
-                    | (scrap[3] & 0xFF)
-                )
+                length = ((scrap[0] << 24)
+                          | (scrap[1] << 16)
+                          | (scrap[2] << 8)
+                          | (scrap[3] & 0xFF))
                 payload = self._conn.read(length - 4)
                 failed = Keyexchange.APResponseMessage()
                 failed.ParseFromString(payload)
@@ -498,7 +491,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
 
         self._LOGGER.info("Connection successfully!")
 
-    def _authenticate(self, credentials: Authentication.LoginCredentials) -> None:
+    def _authenticate(self,
+                      credentials: Authentication.LoginCredentials) -> None:
         self._authenticate_partial(credentials, False)
 
         with self._authLock:
@@ -521,15 +515,15 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
         # TimeProvider.init(self)
         self._dealer.connect()
 
-        self._LOGGER.info(
-            "Authenticated as {}!".format(self._apWelcome.canonical_username)
-        )
+        self._LOGGER.info("Authenticated as {}!".format(
+            self._apWelcome.canonical_username))
         self.mercury().interested_in("spotify:user:attributes:update", self)
-        self.dealer().add_message_listener(self, "hm://connect-state/v1/connect/logout")
+        self.dealer().add_message_listener(
+            self, "hm://connect-state/v1/connect/logout")
 
-    def _authenticate_partial(
-        self, credentials: Authentication.LoginCredentials, remove_lock: bool
-    ) -> None:
+    def _authenticate_partial(self,
+                              credentials: Authentication.LoginCredentials,
+                              remove_lock: bool) -> None:
         if self._cipherPair is None:
             raise RuntimeError("Connection not established!")
 
@@ -544,9 +538,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             version_string=Version.version_string(),
         )
 
-        self._send_unchecked(
-            Packet.Type.login, client_response_encrypted.SerializeToString()
-        )
+        self._send_unchecked(Packet.Type.login,
+                             client_response_encrypted.SerializeToString())
 
         packet = self._cipherPair.receive_encoded(self._conn)
         if packet.is_cmd(Packet.Type.ap_welcome):
@@ -562,7 +555,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             preferred_locale += bytes([0x00, 0x00, 0x10, 0x00, 0x02])
             preferred_locale += "preferred-locale".encode()
             preferred_locale += self._inner.preferred_locale.encode()
-            self._send_unchecked(Packet.Type.preferred_locale, preferred_locale)
+            self._send_unchecked(Packet.Type.preferred_locale,
+                                 preferred_locale)
 
             if remove_lock:
                 with self._authLock:
@@ -572,8 +566,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             if self._inner.conf.store_credentials:
                 reusable = self._apWelcome.reusable_auth_credentials
                 reusable_type = Authentication.AuthenticationType.Name(
-                    self._apWelcome.reusable_auth_credentials_type
-                )
+                    self._apWelcome.reusable_auth_credentials_type)
 
                 if self._inner.conf.stored_credentials_file is None:
                     raise TypeError()
@@ -596,9 +589,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             raise RuntimeError("Unknown CMD 0x" + packet.cmd.hex())
 
     def close(self) -> None:
-        self._LOGGER.info(
-            "Closing session. device_id: {}".format(self._inner.device_id)
-        )
+        self._LOGGER.info("Closing session. device_id: {}".format(
+            self._inner.device_id))
 
         self._closing = True
 
@@ -653,7 +645,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
 
         self._reconnectionListeners: list[Session.ReconnectionListener] = []
 
-        self._LOGGER.info("Closed session. device_id: {}".format(self._inner.device_id))
+        self._LOGGER.info("Closed session. device_id: {}".format(
+            self._inner.device_id))
 
     def _send_unchecked(self, cmd: bytes, payload: bytes) -> None:
         self._cipherPair.send_encoded(self._conn, cmd, payload)
@@ -796,8 +789,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             self._receiver.stop()
 
         self._conn = Session.ConnectionHolder.create(
-            ApResolver.get_random_accesspoint(), self._inner.conf
-        )
+            ApResolver.get_random_accesspoint(), self._inner.conf)
         self._connect()
         self._authenticate_partial(
             Authentication.LoginCredentials(
@@ -808,9 +800,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             True,
         )
 
-        self._LOGGER.info(
-            "Re-authenticated as {}!".format(self._apWelcome.canonical_username)
-        )
+        self._LOGGER.info("Re-authenticated as {}!".format(
+            self._apWelcome.canonical_username))
 
         with self._reconnectionListenersLock:
             for listener in self._reconnectionListeners:
@@ -820,11 +811,13 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
         if listener not in self._closeListeners:
             self._closeListeners.append(listener)
 
-    def add_reconnection_listener(self, listener: ReconnectionListener) -> None:
+    def add_reconnection_listener(self,
+                                  listener: ReconnectionListener) -> None:
         if listener not in self._reconnectionListeners:
             self._reconnectionListeners.append(listener)
 
-    def remove_reconnection_listener(self, listener: ReconnectionListener) -> None:
+    def remove_reconnection_listener(self,
+                                     listener: ReconnectionListener) -> None:
         self._reconnectionListeners.remove(listener)
 
     def _parse_product_info(self, data) -> None:
@@ -841,14 +834,12 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
         for i in range(len(product)):
             self._userAttributes[product[i].tag] = product[i].text
 
-        self._LOGGER.debug("Parsed product info: {}".format(self._userAttributes))
+        self._LOGGER.debug("Parsed product info: {}".format(
+            self._userAttributes))
 
     def get_user_attribute(self, key: str, fallback: str = None) -> str:
-        return (
-            self._userAttributes.get(key)
-            if self._userAttributes.get(key) is not None
-            else fallback
-        )
+        return (self._userAttributes.get(key)
+                if self._userAttributes.get(key) is not None else fallback)
 
     def event(self, resp: MercuryClient.Response) -> None:
         if resp.uri == "spotify:user:attributes:update":
@@ -857,11 +848,11 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
 
             for pair in attributes_update.pairs_list:
                 self._userAttributes[pair.key] = pair.value
-                self._LOGGER.info(
-                    "Updated user attribute: {} -> {}".format(pair.key, pair.value)
-                )
+                self._LOGGER.info("Updated user attribute: {} -> {}".format(
+                    pair.key, pair.value))
 
-    def on_message(self, uri: str, headers: dict[str, str], payload: bytes) -> None:
+    def on_message(self, uri: str, headers: dict[str, str],
+                   payload: bytes) -> None:
         if uri == "hm://connect-state/v1/connect/logout":
             self.close()
 
@@ -895,9 +886,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             self.conf = conf
             self.device_type = device_type
             self.device_name = device_name
-            self.device_id = (
-                device_id if device_id is not None else Utils.random_hex_string(40)
-            )
+            self.device_id = (device_id if device_id is not None else
+                              Utils.random_hex_string(40))
 
     class AbsBuilder:
         conf = None
@@ -931,8 +921,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             return self
 
         def set_device_type(
-            self, device_type: Connect.DeviceType
-        ) -> Session.AbsBuilder:
+                self, device_type: Connect.DeviceType) -> Session.AbsBuilder:
             self.device_type = device_type
             return self
 
@@ -942,7 +931,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
         def stored(self):
             pass
 
-        def stored_file(self, stored_credentials: str = None) -> Session.Builder:
+        def stored_file(self,
+                        stored_credentials: str = None) -> Session.Builder:
             if stored_credentials is None:
                 stored_credentials = self.conf.stored_credentials_file
             if os.path.isfile(stored_credentials):
@@ -954,7 +944,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                 else:
                     try:
                         self.login_credentials = Authentication.LoginCredentials(
-                            typ=Authentication.AuthenticationType.Value(obj["type"]),
+                            typ=Authentication.AuthenticationType.Value(
+                                obj["type"]),
                             username=obj["username"],
                             auth_data=base64.b64decode(obj["credentials"]),
                         )
@@ -1058,75 +1049,77 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
 
             # Stored credentials
             store_credentials: bool = True
-            stored_credentials_file: str = os.path.join(os.getcwd(), "credentials.json")
+            stored_credentials_file: str = os.path.join(
+                os.getcwd(), "credentials.json")
 
             # Fetching
             retry_on_chunk_error: bool = None
 
             def set_proxy_enabled(
-                self, proxy_enabled: bool
-            ) -> Session.Configuration.Builder:
+                    self,
+                    proxy_enabled: bool) -> Session.Configuration.Builder:
                 self.proxyEnabled = proxy_enabled
                 return self
 
             def set_proxy_type(
-                self, proxy_type: Proxy.Type
-            ) -> Session.Configuration.Builder:
+                    self,
+                    proxy_type: Proxy.Type) -> Session.Configuration.Builder:
                 self.proxyType = proxy_type
                 return self
 
             def set_proxy_address(
-                self, proxy_address: str
-            ) -> Session.Configuration.Builder:
+                    self, proxy_address: str) -> Session.Configuration.Builder:
                 self.proxyAddress = proxy_address
                 return self
 
-            def set_proxy_auth(self, proxy_auth: bool) -> Session.Configuration.Builder:
+            def set_proxy_auth(
+                    self, proxy_auth: bool) -> Session.Configuration.Builder:
                 self.proxyAuth = proxy_auth
                 return self
 
             def set_proxy_username(
-                self, proxy_username: str
-            ) -> Session.Configuration.Builder:
+                    self,
+                    proxy_username: str) -> Session.Configuration.Builder:
                 self.proxyUsername = proxy_username
                 return self
 
             def set_proxy_password(
-                self, proxy_password: str
-            ) -> Session.Configuration.Builder:
+                    self,
+                    proxy_password: str) -> Session.Configuration.Builder:
                 self.proxyPassword = proxy_password
                 return self
 
             def set_cache_enabled(
-                self, cache_enabled: bool
-            ) -> Session.Configuration.Builder:
+                    self,
+                    cache_enabled: bool) -> Session.Configuration.Builder:
                 self.cache_enabled = cache_enabled
                 return self
 
-            def set_cache_dir(self, cache_dir: str) -> Session.Configuration.Builder:
+            def set_cache_dir(self,
+                              cache_dir: str) -> Session.Configuration.Builder:
                 self.cache_dir = cache_dir
                 return self
 
             def set_do_cache_clean_up(
-                self, do_cache_clean_up: bool
-            ) -> Session.Configuration.Builder:
+                    self,
+                    do_cache_clean_up: bool) -> Session.Configuration.Builder:
                 self.do_cache_clean_up = do_cache_clean_up
                 return self
 
             def set_store_credentials(
-                self, store_credentials: bool
-            ) -> Session.Configuration.Builder:
+                    self,
+                    store_credentials: bool) -> Session.Configuration.Builder:
                 self.store_credentials = store_credentials
                 return self
 
             def set_stored_credential_file(
-                self, stored_credential_file: str
+                    self, stored_credential_file: str
             ) -> Session.Configuration.Builder:
                 self.stored_credentials_file = stored_credential_file
                 return self
 
             def set_retry_on_chunk_error(
-                self, retry_on_chunk_error: bool
+                    self, retry_on_chunk_error: bool
             ) -> Session.Configuration.Builder:
                 self.retry_on_chunk_error = retry_on_chunk_error
                 return self
@@ -1177,7 +1170,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             self.sock = sock
 
         @staticmethod
-        def create(addr: str, conf: Session.Configuration) -> Session.ConnectionHolder:
+        def create(addr: str,
+                   conf: Session.Configuration) -> Session.ConnectionHolder:
             ap_addr = addr.split(":")[0]
             ap_port = int(addr.split(":")[1])
             if not conf.proxyEnabled or conf.proxyType is Proxy.Type.DIRECT:
@@ -1189,9 +1183,11 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                 sock = socket.socket()
                 sock.connect((conf.proxyAddress, conf.proxyPort))
 
-                sock.send("CONNECT {}:{} HTTP/1.0\n".format(ap_addr, ap_port).encode())
+                sock.send("CONNECT {}:{} HTTP/1.0\n".format(ap_addr,
+                                                            ap_port).encode())
                 if conf.proxyAuth:
-                    sock.send("Proxy-Authorization: {}\n".format(None).encode())
+                    sock.send(
+                        "Proxy-Authorization: {}\n".format(None).encode())
 
                 sock.send(b"\n")
 
@@ -1256,21 +1252,18 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                 try:
                     # noinspection PyProtectedMember
                     packet = self.session._cipherPair.receive_encoded(
-                        self.session._conn
-                    )
+                        self.session._conn)
                     cmd = Packet.Type.parse(packet.cmd)
                     if cmd is None:
                         self.session._LOGGER.info(
-                            "Skipping unknown command cmd: 0x{}, payload: {}".format(
-                                Utils.bytes_to_hex(packet.cmd), packet.payload
-                            )
-                        )
+                            "Skipping unknown command cmd: 0x{}, payload: {}".
+                            format(Utils.bytes_to_hex(packet.cmd),
+                                   packet.payload))
                         continue
                 except RuntimeError as ex:
                     if self.running:
                         self.session._LOGGER.fatal(
-                            "Failed reading packet! {}".format(ex)
-                        )
+                            "Failed reading packet! {}".format(ex))
                         # noinspection PyProtectedMember
                         self.session._reconnect()
                     break
@@ -1282,16 +1275,17 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                     # noinspection PyProtectedMember
                     if self.session._scheduledReconnect is not None:
                         # noinspection PyProtectedMember
-                        self.session._scheduler.cancel(self.session._scheduledReconnect)
+                        self.session._scheduler.cancel(
+                            self.session._scheduledReconnect)
 
                     def anonymous():
-                        self._LOGGER.warning("Socket timed out. Reconnecting...")
+                        self._LOGGER.warning(
+                            "Socket timed out. Reconnecting...")
                         self.session._reconnect()
 
                     # noinspection PyProtectedMember
                     self.session.scheduled_reconnect = self.session._scheduler.enter(
-                        2 * 60 + 5, 1, anonymous
-                    )
+                        2 * 60 + 5, 1, anonymous)
                     self.session.send(Packet.Type.pong, packet.payload)
                     continue
                 elif cmd == Packet.Type.pong_ack:
@@ -1299,8 +1293,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                 elif cmd == Packet.Type.country_code:
                     self.session.country_code = packet.payload.decode()
                     self.session._LOGGER.info(
-                        "Received country_code: {}".format(self.session.country_code)
-                    )
+                        "Received country_code: {}".format(
+                            self.session.country_code))
                     continue
                 elif cmd == Packet.Type.license_version:
                     license_version = BytesInputStream(packet.payload)
@@ -1309,34 +1303,26 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                         buffer = license_version.read()
                         self.session._LOGGER.info(
                             "Received license_version: {}, {}".format(
-                                license_id, buffer.decode()
-                            )
-                        )
+                                license_id, buffer.decode()))
                     else:
                         self.session._LOGGER.info(
-                            "Received license_version: {}".format(license_id)
-                        )
+                            "Received license_version: {}".format(license_id))
                     continue
                 elif cmd == Packet.Type.unknown_0x10:
-                    self.session._LOGGER.debug(
-                        "Received 0x10: {}".format(Utils.bytes_to_hex(packet.payload))
-                    )
+                    self.session._LOGGER.debug("Received 0x10: {}".format(
+                        Utils.bytes_to_hex(packet.payload)))
                     continue
-                elif (
-                    cmd == Packet.Type.mercury_sub
-                    or cmd == Packet.Type.mercury_unsub
-                    or cmd == Packet.Type.mercury_event
-                    or cmd == Packet.Type.mercury_req
-                ):
+                elif (cmd == Packet.Type.mercury_sub
+                      or cmd == Packet.Type.mercury_unsub
+                      or cmd == Packet.Type.mercury_event
+                      or cmd == Packet.Type.mercury_req):
                     self.session.mercury().dispatch(packet)
                     continue
                 elif cmd == Packet.Type.aes_key or cmd == Packet.Type.aes_key_error:
                     self.session.audio_key().dispatch(packet)
                     continue
-                elif (
-                    cmd == Packet.Type.channel_error
-                    or cmd == Packet.Type.stream_chunk_res
-                ):
+                elif (cmd == Packet.Type.channel_error
+                      or cmd == Packet.Type.stream_chunk_res):
                     self.session.channel().dispatch(packet)
                     continue
                 elif cmd == Packet.Type.product_info:
@@ -1344,8 +1330,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                     self.session._parse_product_info(packet.payload)
                     continue
                 else:
-                    self.session._LOGGER.info(
-                        "Skipping {}".format(Utils.bytes_to_hex(cmd))
-                    )
+                    self.session._LOGGER.info("Skipping {}".format(
+                        Utils.bytes_to_hex(cmd)))
 
             self.session._LOGGER.debug("Session.Receiver stopped")
