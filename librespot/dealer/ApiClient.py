@@ -4,8 +4,13 @@ import typing
 import requests
 
 from librespot.core.ApResolver import ApResolver
-from librespot.metadata import AlbumId, ArtistId, EpisodeId, ShowId, TrackId
-from librespot.proto import Connect, Metadata
+from librespot.metadata import AlbumId
+from librespot.metadata import ArtistId
+from librespot.metadata import EpisodeId
+from librespot.metadata import ShowId
+from librespot.metadata import TrackId
+from librespot.proto import Connect
+from librespot.proto import Metadata
 from librespot.standard import Closeable
 
 
