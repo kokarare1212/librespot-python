@@ -51,6 +51,15 @@ stream = session.content_feeder().load(track_id, VorbisOnlyAudioQuality(AudioQua
 # stream.input_stream.stream().read() to get one byte of the music stream
 ```
 Please read [this document](https://librespot-python.rtfd.io) for detailed specifications.
+
+## Debug
+To display the debug information, you need to inject the following code at the top of the code.
+```python
+import logging
+
+
+logging.basicConfig(level=logging.DEBUG)
+```
 ## Roadmap
 Please read [ROADMAP.md](https://github.com/kokarare1212/librespot-python/blob/main/ROADMAP.md).
 ## Contributing
