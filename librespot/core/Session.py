@@ -382,7 +382,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                 listener.on_closed()
             self._closeListeners: typing.List[Session.CloseListener] = []
 
-        self._reconnectionListeners: typing.List[Session.ReconnectionListener] = []
+        self._reconnectionListeners: typing.List[
+            Session.ReconnectionListener] = []
 
         self._LOGGER.info("Closed session. device_id: {}".format(
             self._inner.device_id))

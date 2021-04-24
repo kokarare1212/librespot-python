@@ -249,7 +249,8 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
         payload: typing.List[bytes]
         status_code: int
 
-        def __init__(self, header: Mercury.Header, payload: typing.List[bytes]):
+        def __init__(self, header: Mercury.Header,
+                     payload: typing.List[bytes]):
             self.uri = header.uri
             self.status_code = header.status_code
             self.payload = payload[1:]

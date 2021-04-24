@@ -55,5 +55,6 @@ class StateWrapper(DeviceStateHandler.Listener, DealerClient.MessageListener):
         self._device.update_state(Connect.PutStateReason.NEW_DEVICE, 0,
                                   self._state)
 
-    def on_message(self, uri: str, headers: typing.Dict[str, str], payload: bytes):
+    def on_message(self, uri: str, headers: typing.Dict[str, str],
+                   payload: bytes):
         pass

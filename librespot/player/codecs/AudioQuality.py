@@ -27,7 +27,8 @@ class AudioQuality(enum.Enum):
             return AudioQuality.VERY_HIGH
         raise RuntimeError("Unknown format: {}".format(format))
 
-    def get_matches(self, files: typing.List[AudioFile]) -> typing.List[AudioFile]:
+    def get_matches(self,
+                    files: typing.List[AudioFile]) -> typing.List[AudioFile]:
         file_list = []
         for file in files:
             if hasattr(file, "format") and AudioQuality.get_quality(
