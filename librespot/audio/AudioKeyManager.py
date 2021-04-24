@@ -1,4 +1,7 @@
 from __future__ import annotations
+
+import struct
+
 from librespot.common import Utils
 from librespot.core import Session
 from librespot.core.PacketsReceiver import PacketsReceiver
@@ -34,7 +37,7 @@ class AudioKeyManager(PacketsReceiver):
         out = ByteArrayOutputStream()
         out.write(buffer=bytearray(file_id))
         out.write(buffer=bytearray(gid))
-        out.write(buffer=bytearray(Utils.to_byte_array(seq)))
+        out.write(buffer=bytearray(struct.pack(">i", seq)))
         out.write(buffer=bytearray(self._ZERO_SHORT))
 
         self._session.send(Packet.Type.request_key, out.to_bytes())

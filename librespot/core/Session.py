@@ -852,7 +852,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
 
     class SpotifyAuthenticationException(Exception):
         def __init__(self, login_failed: Keyexchange.APLoginFailed):
-            super().__init__(login_failed.error_code.name)
+            super().__init__(Keyexchange.ErrorCode.Name(login_failed.error_code))
 
     class Accumulator:
         buffer: bytes = bytes()
@@ -974,12 +974,11 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                         self.session._LOGGER.fatal(
                             "Failed reading packet! {}".format(ex))
                         # noinspection PyProtectedMember
-                        self.session._reconnect()
+                        # self.session._reconnect()
                     break
 
                 if not self.running:
                     break
-
                 if cmd == Packet.Type.ping:
                     # noinspection PyProtectedMember
                     if self.session._scheduledReconnect is not None:
