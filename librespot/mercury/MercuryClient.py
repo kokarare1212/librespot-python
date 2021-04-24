@@ -1,15 +1,18 @@
 from __future__ import annotations
-from librespot.common import Utils
-from librespot.core import Session, PacketsReceiver
-from librespot.crypto import Packet
-from librespot.mercury import JsonMercuryRequest, RawMercuryRequest, SubListener
-from librespot.standard import BytesInputStream, BytesOutputStream, Closeable
-from librespot.proto import Mercury, Pubsub
+
 import json
 import logging
 import queue
 import threading
 import typing
+
+from librespot.common import Utils
+from librespot.core import PacketsReceiver, Session
+from librespot.crypto import Packet
+from librespot.mercury import (JsonMercuryRequest, RawMercuryRequest,
+                               SubListener)
+from librespot.proto import Mercury, Pubsub
+from librespot.standard import BytesInputStream, BytesOutputStream, Closeable
 
 
 class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
