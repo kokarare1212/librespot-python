@@ -31,7 +31,7 @@ class ApiClient(Closeable):
         return request
 
     def send(self, method: str, suffix: str, headers: typing.Union[None, typing.Dict[str,
-                                                                       str]],
+                                                                                     str]],
              body: typing.Union[None, bytes]) -> requests.Response:
         resp = self._session.client().send(
             self.build_request(method, suffix, headers, body))
