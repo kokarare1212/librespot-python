@@ -1,5 +1,6 @@
 from __future__ import annotations
 from librespot.standard.Closeable import Closeable
+import typing
 
 
 class DealerClient(Closeable):
@@ -14,6 +15,6 @@ class DealerClient(Closeable):
         pass
 
     class MessageListener:
-        def on_message(self, uri: str, headers: dict[str, str],
+        def on_message(self, uri: str, headers: typing.Dict[str, str],
                        payload: bytes):
             pass

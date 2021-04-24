@@ -2,9 +2,9 @@ from librespot.core.ApResolver import ApResolver
 from librespot.metadata import AlbumId, ArtistId, EpisodeId, TrackId, ShowId
 from librespot.proto import Connect, Metadata
 from librespot.standard import Closeable
-from typing import Union
 import logging
 import requests
+import typing
 
 
 class ApiClient(Closeable):
@@ -17,8 +17,8 @@ class ApiClient(Closeable):
         self._baseUrl = "https://{}".format(ApResolver.get_random_spclient())
 
     def build_request(self, method: str, suffix: str,
-                      headers: Union[None, dict[str, str]],
-                      body: Union[None, bytes]) -> requests.PreparedRequest:
+                      headers: typing.Union[None, typing.Dict[str, str]],
+                      body: typing.Union[None, bytes]) -> requests.PreparedRequest:
         request = requests.PreparedRequest()
         request.method = method
         request.data = body
@@ -30,9 +30,9 @@ class ApiClient(Closeable):
         request.url = self._baseUrl + suffix
         return request
 
-    def send(self, method: str, suffix: str, headers: Union[None, dict[str,
+    def send(self, method: str, suffix: str, headers: typing.Union[None, typing.Dict[str,
                                                                        str]],
-             body: Union[None, bytes]) -> requests.Response:
+             body: typing.Union[None, bytes]) -> requests.Response:
         resp = self._session.client().send(
             self.build_request(method, suffix, headers, body))
         return resp

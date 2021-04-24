@@ -1,6 +1,7 @@
 from __future__ import annotations
 from librespot.proto.Metadata import AudioFile
 import enum
+import typing
 
 
 class AudioQuality(enum.Enum):
@@ -26,7 +27,7 @@ class AudioQuality(enum.Enum):
             return AudioQuality.VERY_HIGH
         raise RuntimeError("Unknown format: {}".format(format))
 
-    def get_matches(self, files: list[AudioFile]) -> list[AudioFile]:
+    def get_matches(self, files: typing.List[AudioFile]) -> typing.List[AudioFile]:
         file_list = []
         for file in files:
             if hasattr(file, "format") and AudioQuality.get_quality(

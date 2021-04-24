@@ -12,7 +12,7 @@ class AbsChunkedInputStream(InputStream, HaltListener):
     preload_chunk_retries: typing.Final[int] = 2
     max_chunk_tries: typing.Final[int] = 128
     wait_lock: threading.Condition = threading.Condition()
-    retries: list[int]
+    retries: typing.List[int]
     retry_on_chunk_error: bool
     chunk_exception = None
     wait_for_chunk: int = -1
@@ -22,7 +22,7 @@ class AbsChunkedInputStream(InputStream, HaltListener):
     _decoded_length: int = 0
 
     def __init__(self, retry_on_chunk_error: bool):
-        self.retries: typing.Final[list[int]] = [
+        self.retries: typing.Final[typing.List[int]] = [
             0 for _ in range(self.chunks())
         ]
         self.retry_on_chunk_error = retry_on_chunk_error
@@ -30,7 +30,7 @@ class AbsChunkedInputStream(InputStream, HaltListener):
     def is_closed(self) -> bool:
         return self.closed
 
-    def buffer(self) -> list[bytearray]:
+    def buffer(self) -> typing.List[bytearray]:
         raise NotImplementedError()
 
     def size(self) -> int:
@@ -83,10 +83,10 @@ class AbsChunkedInputStream(InputStream, HaltListener):
 
         return k
 
-    def requested_chunks(self) -> list[bool]:
+    def requested_chunks(self) -> typing.List[bool]:
         raise NotImplementedError()
 
-    def available_chunks(self) -> list[bool]:
+    def available_chunks(self) -> typing.List[bool]:
         raise NotImplementedError()
 
     def chunks(self) -> int:

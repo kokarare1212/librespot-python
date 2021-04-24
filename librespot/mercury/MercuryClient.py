@@ -17,11 +17,11 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
     _MERCURY_REQUEST_TIMEOUT: int = 3
     _seqHolder: int = 1
     _seqHolderLock: threading.Condition = threading.Condition()
-    _callbacks: dict[int, Callback] = {}
+    _callbacks: typing.Dict[int, Callback] = {}
     _removeCallbackLock: threading.Condition = threading.Condition()
-    _subscriptions: list[MercuryClient.InternalSubListener] = []
+    _subscriptions: typing.List[MercuryClient.InternalSubListener] = []
     _subscriptionsLock: threading.Condition = threading.Condition()
-    _partials: dict[int, bytes] = {}
+    _partials: typing.Dict[int, bytes] = {}
     _session: Session = None
 
     def __init__(self, session: Session):
@@ -246,10 +246,10 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
 
     class Response:
         uri: str
-        payload: list[bytes]
+        payload: typing.List[bytes]
         status_code: int
 
-        def __init__(self, header: Mercury.Header, payload: list[bytes]):
+        def __init__(self, header: Mercury.Header, payload: typing.List[bytes]):
             self.uri = header.uri
             self.status_code = header.status_code
             self.payload = payload[1:]

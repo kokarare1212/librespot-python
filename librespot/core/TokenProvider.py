@@ -2,19 +2,20 @@ from __future__ import annotations
 from librespot.core import Session, TimeProvider
 from librespot.mercury import MercuryRequests
 import logging
+import typing
 
 
 class TokenProvider:
     _LOGGER: logging = logging.getLogger(__name__)
     _TOKEN_EXPIRE_THRESHOLD = 10
     _session: Session = None
-    _tokens: list[TokenProvider.StoredToken] = []
+    _tokens: typing.List[TokenProvider.StoredToken] = []
 
     def __init__(self, session: Session):
         self._session = session
 
     def find_token_with_all_scopes(
-            self, scopes: list[str]) -> TokenProvider.StoredToken:
+            self, scopes: typing.List[str]) -> TokenProvider.StoredToken:
         for token in self._tokens:
             if token.has_scopes(scopes):
                 return token
@@ -55,7 +56,7 @@ class TokenProvider:
     class StoredToken:
         expires_in: int
         access_token: str
-        scopes: list[str]
+        scopes: typing.List[str]
         timestamp: int
 
         def __init__(self, obj):
@@ -76,7 +77,7 @@ class TokenProvider:
 
             return False
 
-        def has_scopes(self, sc: list[str]) -> bool:
+        def has_scopes(self, sc: typing.List[str]) -> bool:
             for s in sc:
                 if not self.has_scope(s):
                     return False

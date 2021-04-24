@@ -29,7 +29,7 @@ from librespot.core import Session
 
 
 session = Session.Builder() \
-    .user_pass("<Username>", "<Password>") \
+    .user_pass("Username", "Password") \
     .create()
 
 aceess_token = session.tokens().get("playlist-read")
@@ -38,16 +38,16 @@ aceess_token = session.tokens().get("playlist-read")
 \*Currently, music streaming is supported, but it may cause unintended behavior.
 ```python
 from librespot.core import Session
+from librespot.metadata import TrackId
+from librespot.player.codecs import AudioQuality, VorbisOnlyAudioQuality
 
 
 session = Session.Builder() \
-    .user_pass("<Username>", "<Password>") \
+    .user_pass("Username", "Password") \
     .create()
 
-track_id = TrackId.from_uri("<TrackID(ex, spotify:track:xxxxxxxxxxxxxxxxxxxxxx)>")
-
+track_id = TrackId.from_uri("spotify:track:xxxxxxxxxxxxxxxxxxxxxx")
 stream = session.content_feeder().load(track_id, VorbisOnlyAudioQuality(AudioQuality.AudioQuality.VERY_HIGH), False, None)
-
 # stream.input_stream.stream().read() to get one byte of the music stream
 ```
 Please read [this document](https://librespot-python.rtfd.io) for detailed specifications.

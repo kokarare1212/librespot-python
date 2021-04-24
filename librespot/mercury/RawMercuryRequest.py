@@ -1,11 +1,12 @@
 from librespot.proto import Mercury
+import typing
 
 
 class RawMercuryRequest:
     header: Mercury.Header
-    payload: list[bytes]
+    payload: typing.List[bytes]
 
-    def __init__(self, header: Mercury.Header, payload: list[bytes]):
+    def __init__(self, header: Mercury.Header, payload: typing.List[bytes]):
         self.header = header
         self.payload = payload
 
@@ -40,7 +41,7 @@ class RawMercuryRequest:
 
     class Builder:
         header_dict: dict
-        payload: list[bytes]
+        payload: typing.List[bytes]
 
         def __init__(self):
             self.header_dict = {}

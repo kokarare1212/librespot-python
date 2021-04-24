@@ -19,7 +19,7 @@ class DeviceStateHandler:
     _LOGGER: logging = logging.getLogger(__name__)
     _session: Session = None
     _deviceInfo: Connect.DeviceInfo = None
-    _listeners: list[DeviceStateHandler.Listener] = []
+    _listeners: typing.List[DeviceStateHandler.Listener] = []
     _putState: Connect.PutStateRequest = None
     _putStateWorker: concurrent.futures.ThreadPoolExecutor = (
         concurrent.futures.ThreadPoolExecutor())
