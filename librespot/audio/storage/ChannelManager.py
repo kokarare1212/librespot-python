@@ -1,16 +1,17 @@
 from __future__ import annotations
 
+import concurrent.futures
+import logging
 import queue
+import threading
+import typing
 
 from librespot.audio.storage import AudioFile
 from librespot.common import Utils
 from librespot.core import PacketsReceiver, Session
 from librespot.crypto import Packet
-from librespot.standard import BytesInputStream, BytesOutputStream, Closeable, Runnable
-import concurrent.futures
-import logging
-import threading
-import typing
+from librespot.standard import (BytesInputStream, BytesOutputStream, Closeable,
+                                Runnable)
 
 
 class ChannelManager(Closeable, PacketsReceiver.PacketsReceiver):

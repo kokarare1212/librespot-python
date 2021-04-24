@@ -1,8 +1,10 @@
 from __future__ import annotations
-from librespot.core import Session, TimeProvider
-from librespot.mercury import MercuryRequests
+
 import logging
 import typing
+
+from librespot.core import Session, TimeProvider
+from librespot.mercury import MercuryRequests
 
 
 class TokenProvider:

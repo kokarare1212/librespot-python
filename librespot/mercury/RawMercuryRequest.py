@@ -1,5 +1,6 @@
-from librespot.proto import Mercury
 import typing
+
+from librespot.proto import Mercury
 
 
 class RawMercuryRequest:

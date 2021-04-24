@@ -11,8 +11,7 @@ import urllib.parse
 from librespot.common import Utils
 from librespot.core import Session
 from librespot.player import PlayerConfiguration
-from librespot.proto import Connect
-from librespot.proto import Player
+from librespot.proto import Connect, Player
 
 
 class DeviceStateHandler:
