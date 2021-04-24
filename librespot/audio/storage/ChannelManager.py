@@ -10,12 +10,13 @@ from librespot.standard import BytesInputStream, BytesOutputStream, Closeable, R
 import concurrent.futures
 import logging
 import threading
+import typing
 
 
 class ChannelManager(Closeable, PacketsReceiver.PacketsReceiver):
     CHUNK_SIZE: int = 128 * 1024
     _LOGGER: logging = logging.getLogger(__name__)
-    _channels: dict[int, Channel] = {}
+    _channels: typing.Dict[int, Channel] = {}
     _seqHolder: int = 0
     _seqHolderLock: threading.Condition = threading.Condition()
     _executorService: concurrent.futures.ThreadPoolExecutor = concurrent.futures.ThreadPoolExecutor(

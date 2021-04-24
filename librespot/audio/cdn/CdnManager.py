@@ -87,9 +87,9 @@ class CdnManager:
 
     class InternalResponse:
         _buffer: bytearray
-        _headers: dict[str, str]
+        _headers: typing.Dict[str, str]
 
-        def __init__(self, buffer: bytearray, headers: dict[str, str]):
+        def __init__(self, buffer: bytearray, headers: typing.Dict[str, str]):
             self._buffer = buffer
             self._headers = headers
 
@@ -163,9 +163,9 @@ class CdnManager:
         _audioDecrypt: AudioDecrypt = None
         _cdnUrl = None
         _size: int
-        _buffer: list[bytearray]
-        _available: list[bool]
-        _requested: list[bool]
+        _buffer: typing.List[bytearray]
+        _available: typing.List[bool]
+        _requested: typing.List[bool]
         _chunks: int
         _internalStream: CdnManager.Streamer.InternalStream = None
         _haltListener: HaltListener = None
@@ -269,16 +269,16 @@ class CdnManager:
                 self.streamer: CdnManager.Streamer = streamer
                 super().__init__(retry_on_chunk_error)
 
-            def buffer(self) -> list[bytearray]:
+            def buffer(self) -> typing.List[bytearray]:
                 return self.streamer._buffer
 
             def size(self) -> int:
                 return self.streamer._size
 
-            def requested_chunks(self) -> list[bool]:
+            def requested_chunks(self) -> typing.List[bool]:
                 return self.streamer._requested
 
-            def available_chunks(self) -> list[bool]:
+            def available_chunks(self) -> typing.List[bool]:
                 return self.streamer._available
 
             def chunks(self) -> int:

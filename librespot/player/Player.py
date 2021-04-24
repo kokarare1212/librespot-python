@@ -3,6 +3,7 @@ from __future__ import annotations
 import logging
 import sched
 import time
+import typing
 
 from librespot.core.Session import Session
 from librespot.player import PlayerConfiguration
@@ -22,7 +23,7 @@ class Player(Closeable, PlayerSession.Listener, AudioSink.Listener):
     _conf: PlayerConfiguration = None
     _events: Player.EventsDispatcher = None
     _sink: AudioSink = None
-    _metrics: dict[str, PlaybackMetrics] = {}
+    _metrics: typing.Dict[str, PlaybackMetrics] = {}
     _state: StateWrapper = None
     _playerSession: PlayerSession = None
     _releaseLineFuture = None
