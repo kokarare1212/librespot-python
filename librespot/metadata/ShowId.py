@@ -7,7 +7,7 @@ from librespot.common import Utils
 from librespot.metadata import SpotifyId
 
 
-class ShowId(SpotifyId.SpotifyId):
+class ShowId(SpotifyId):
     _PATTERN = re.compile("spotify:show:(.{22})")
     _BASE62 = Base62.create_instance_with_inverted_character_set()
     _hexId: str

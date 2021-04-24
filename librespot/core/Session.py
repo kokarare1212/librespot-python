@@ -987,7 +987,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                             self.session._scheduledReconnect)
 
                     def anonymous():
-                        self._LOGGER.warning(
+                        self.session._LOGGER.warning(
                             "Socket timed out. Reconnecting...")
                         self.session._reconnect()
 
