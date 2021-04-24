@@ -1,13 +1,29 @@
 from __future__ import annotations
+
+import base64
+import json
+import logging
+import os
+import sched
+import socket
+import struct
+import threading
+import time
+import typing
+
+import defusedxml.ElementTree
+import requests
 from Crypto.Hash import HMAC, SHA1
 from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5
+
 from librespot.audio import AudioKeyManager, PlayableContentFeeder
 from librespot.audio.cdn import CdnManager
 from librespot.audio.storage import ChannelManager
 from librespot.cache import CacheManager
 from librespot.common.Utils import Utils
-from librespot.core import ApResolver, EventService, SearchManager, TokenProvider
+from librespot.core import (ApResolver, EventService, SearchManager,
+                            TokenProvider)
 from librespot.crypto import CipherPair, DiffieHellman, Packet
 from librespot.dealer import ApiClient, DealerClient
 from librespot.mercury import MercuryClient, SubListener
@@ -15,18 +31,6 @@ from librespot.proto import Authentication, Connect, Keyexchange
 from librespot.proto.ExplicitContentPubsub import UserAttributesUpdate
 from librespot.standard import BytesInputStream, Closeable, Proxy
 from librespot.Version import Version
-import base64
-import defusedxml.ElementTree
-import json
-import logging
-import os
-import requests
-import sched
-import socket
-import struct
-import threading
-import time
-import typing
 
 
 class Session(Closeable, SubListener, DealerClient.MessageListener):
