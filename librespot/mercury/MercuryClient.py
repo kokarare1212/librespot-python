@@ -37,10 +37,12 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
                 sub = Pubsub.Subscription()
                 sub.ParseFromString(payload)
                 self._subscriptions.append(
-                    MercuryClient.InternalSubListener(sub.uri, listener, True))
+                    MercuryClient.InternalSubListener(sub.uri, listener, True)
+                )
         else:
             self._subscriptions.append(
-                MercuryClient.InternalSubListener(uri, listener, True))
+                MercuryClient.InternalSubListener(uri, listener, True)
+            )
 
         self._LOGGER.debug("Subscribed successfully to {}!".format(uri))
 
@@ -63,8 +65,10 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
             resp = callback.wait_response()
             if resp is None:
                 raise IOError(
-                    "Request timeout out, {} passed, yet no response. seq: {}".
-                    format(self._MERCURY_REQUEST_TIMEOUT, seq))
+                    "Request timeout out, {} passed, yet no response. seq: {}".format(
+                        self._MERCURY_REQUEST_TIMEOUT, seq
+                    )
+                )
             return resp
         except queue.Empty as e:
             raise IOError(e)
@@ -85,7 +89,9 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
 
         self._LOGGER.debug(
             "Send Mercury request, seq: {}, uri: {}, method: {}".format(
-                seq, request.header.uri, request.header.method))
+                seq, request.header.uri, request.header.method
+            )
+        )
 
         buffer.write_short(4)
         buffer.write_int(seq)
@@ -129,7 +135,9 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
 
         self._LOGGER.debug(
             "Handling packet, cmd: 0x{}, seq: {}, flags: {}, parts: {}".format(
-                Utils.bytes_to_hex(packet.cmd), seq, flags, parts))
+                Utils.bytes_to_hex(packet.cmd), seq, flags, parts
+            )
+        )
 
         for i in range(parts):
             size = payload.read_short()
@@ -157,30 +165,39 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
 
             if not dispatched:
                 self._LOGGER.debug(
-                    "Couldn't dispatch Mercury event seq: {}, uri: {}, code: {}, payload: {}"
-                    .format(seq, header.uri, header.status_code, resp.payload))
-        elif packet.is_cmd(Packet.Type.mercury_req) or \
-                packet.is_cmd(Packet.Type.mercury_sub) or \
-                packet.is_cmd(Packet.Type.mercury_sub):
+                    "Couldn't dispatch Mercury event seq: {}, uri: {}, code: {}, payload: {}".format(
+                        seq, header.uri, header.status_code, resp.payload
+                    )
+                )
+        elif (
+            packet.is_cmd(Packet.Type.mercury_req)
+            or packet.is_cmd(Packet.Type.mercury_sub)
+            or packet.is_cmd(Packet.Type.mercury_sub)
+        ):
             callback = self._callbacks.get(seq)
             self._callbacks.pop(seq)
             if callback is not None:
                 callback.response(resp)
             else:
                 self._LOGGER.warning(
-                    "Skipped Mercury response, seq: {}, uri: {}, code: {}".
-                    format(seq, resp.uri, resp.status_code))
+                    "Skipped Mercury response, seq: {}, uri: {}, code: {}".format(
+                        seq, resp.uri, resp.status_code
+                    )
+                )
 
             with self._removeCallbackLock:
                 self._removeCallbackLock.notify_all()
         else:
             self._LOGGER.warning(
                 "Couldn't handle packet, seq: {}, uri: {}, code: {}".format(
-                    seq, header.uri, header.status_code))
+                    seq, header.uri, header.status_code
+                )
+            )
 
     def interested_in(self, uri: str, listener: SubListener) -> None:
         self._subscriptions.append(
-            MercuryClient.InternalSubListener(uri, listener, False))
+            MercuryClient.InternalSubListener(uri, listener, False)
+        )
 
     def not_interested_in(self, listener: SubListener) -> None:
         try:
@@ -215,8 +232,7 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
             self._reference.task_done()
 
         def wait_response(self) -> typing.Any:
-            return self._reference.get(
-                timeout=MercuryClient._MERCURY_REQUEST_TIMEOUT)
+            return self._reference.get(timeout=MercuryClient._MERCURY_REQUEST_TIMEOUT)
 
     # class PubSubException(MercuryClient.MercuryException):
     #     pass
@@ -249,8 +265,7 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
         payload: typing.List[bytes]
         status_code: int
 
-        def __init__(self, header: Mercury.Header,
-                     payload: typing.List[bytes]):
+        def __init__(self, header: Mercury.Header, payload: typing.List[bytes]):
             self.uri = header.uri
             self.status_code = header.status_code
             self.payload = payload[1:]
