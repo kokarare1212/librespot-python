@@ -26,7 +26,8 @@ class VorbisOnlyAudioQuality(AudioQualityPicker):
         return None
 
     def get_file(self, files: typing.List[Metadata.AudioFile]):
-        matches: typing.List[Metadata.AudioFile] = self.preferred.get_matches(files)
+        matches: typing.List[Metadata.AudioFile] = self.preferred.get_matches(
+            files)
         vorbis: Metadata.AudioFile = VorbisOnlyAudioQuality.get_vorbis_file(
             matches)
         if vorbis is None:

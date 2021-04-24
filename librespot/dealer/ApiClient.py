@@ -16,9 +16,10 @@ class ApiClient(Closeable):
         self._session = session
         self._baseUrl = "https://{}".format(ApResolver.get_random_spclient())
 
-    def build_request(self, method: str, suffix: str,
-                      headers: typing.Union[None, typing.Dict[str, str]],
-                      body: typing.Union[None, bytes]) -> requests.PreparedRequest:
+    def build_request(
+            self, method: str, suffix: str,
+            headers: typing.Union[None, typing.Dict[str, str]],
+            body: typing.Union[None, bytes]) -> requests.PreparedRequest:
         request = requests.PreparedRequest()
         request.method = method
         request.data = body
@@ -30,8 +31,8 @@ class ApiClient(Closeable):
         request.url = self._baseUrl + suffix
         return request
 
-    def send(self, method: str, suffix: str, headers: typing.Union[None, typing.Dict[str,
-                                                                       str]],
+    def send(self, method: str, suffix: str,
+             headers: typing.Union[None, typing.Dict[str, str]],
              body: typing.Union[None, bytes]) -> requests.Response:
         resp = self._session.client().send(
             self.build_request(method, suffix, headers, body))
