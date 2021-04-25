@@ -852,7 +852,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
 
     class SpotifyAuthenticationException(Exception):
         def __init__(self, login_failed: Keyexchange.APLoginFailed):
-            super().__init__(Keyexchange.ErrorCode.Name(login_failed.error_code))
+            super().__init__(
+                Keyexchange.ErrorCode.Name(login_failed.error_code))
 
     class Accumulator:
         buffer: bytes = bytes()
