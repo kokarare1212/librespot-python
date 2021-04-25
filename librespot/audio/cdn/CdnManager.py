@@ -119,7 +119,11 @@ class CdnManager:
             if self._fileId is not None:
                 token_url = urllib.parse.urlparse(url)
                 token_query = urllib.parse.parse_qs(token_url.query)
-                token_str = str(token_query.get("__token__")[0])
+                token_list = token_query.get("__token__")
+                try:
+                    token_str = str(token_list[0])
+                except TypeError:
+                    token_str = ""
                 if token_str != "None" and len(token_str) != 0:
                     expire_at = None
                     split = token_str.split("~")
