@@ -37,7 +37,7 @@ class CdnFeedHelper:
         return PlayableContentFeeder.PlayableContentFeeder.LoadedStream(
             track, streamer, normalization_data,
             PlayableContentFeeder.PlayableContentFeeder.Metrics(
-                file.file_id, preload, audio_key_time))
+                file.file_id, preload, -1 if preload else audio_key_time))
 
     @staticmethod
     def load_episode_external(
