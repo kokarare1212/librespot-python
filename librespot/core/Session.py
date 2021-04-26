@@ -975,7 +975,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                         self.session._LOGGER.fatal(
                             "Failed reading packet! {}".format(ex))
                         # noinspection PyProtectedMember
-                        # self.session._reconnect()
+                        self.session._reconnect()
                     break
 
                 if not self.running:
