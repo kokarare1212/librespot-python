@@ -48,7 +48,8 @@ session = Session.Builder() \
 
 track_id = TrackId.from_uri("spotify:track:xxxxxxxxxxxxxxxxxxxxxx")
 stream = session.content_feeder().load(track_id, VorbisOnlyAudioQuality(AudioQuality.AudioQuality.VERY_HIGH), False, None)
-# stream.input_stream.stream().read() to get one byte of the music stream
+# stream.input_stream.stream().read() to get one byte of the music stream.
+# ex: 1 (If there is no more voice data, -1 is received as the result.)
 ```
 Please read [this document](https://librespot-python.rtfd.io) for detailed specifications.
 
