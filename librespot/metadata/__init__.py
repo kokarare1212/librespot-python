@@ -1,8 +1,9 @@
 from __future__ import annotations
-from librespot.common import Base62
-from librespot.common import Utils
-from librespot.proto.ContextTrack import ContextTrack
+
 import re
+
+from librespot.common import Base62, Utils
+from librespot.proto.ContextTrack import ContextTrack
 
 
 class SpotifyId:
