@@ -5,8 +5,7 @@ from librespot.audio.cdn import CdnFeedHelper
 from librespot.audio.format import AudioQualityPicker
 from librespot.common.Utils import Utils
 from librespot.core import Session
-from librespot.metadata.PlayableId import PlayableId
-from librespot.metadata.TrackId import TrackId
+from librespot.metadata import PlayableId, TrackId
 from librespot.proto import Metadata, StorageResolve
 import logging
 import typing

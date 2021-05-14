@@ -214,7 +214,7 @@ class CdnManager:
 
             self._session._LOGGER.debug(
                 "Chunk {}/{} completed, cached: {}, stream: {}".format(
-                    chunk_index, self._chunks, cached, self.describe()))
+                    chunk_index + 1, self._chunks, cached, self.describe()))
 
             self._buffer[chunk_index] = self._audioDecrypt.decrypt_chunk(
                 chunk_index, chunk)
