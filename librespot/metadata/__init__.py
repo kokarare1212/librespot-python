@@ -260,5 +260,3 @@ class TrackId(PlayableId, SpotifyId):
 
     def get_gid(self) -> bytes:
         return Utils.hex_to_bytes(self._hexId)
-
-
