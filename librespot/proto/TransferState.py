@@ -10,10 +10,10 @@ from google.protobuf import symbol_database as _symbol_database
 
 _sym_db = _symbol_database.Default()
 
-import context_player_options_pb2 as context__player__options__pb2
-import playback_pb2 as playback__pb2
-import session_pb2 as session__pb2
-import queue_pb2 as queue__pb2
+import ContextPlayerOptions as context__player__options__pb2
+import Playback as playback__pb2
+import Session as session__pb2
+import Queue as queue__pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
     name='transfer_state.proto',

@@ -10,9 +10,9 @@ from google.protobuf import symbol_database as _symbol_database
 
 _sym_db = _symbol_database.Default()
 
-import context_pb2 as context__pb2
-import context_player_options_pb2 as context__player__options__pb2
-import play_origin_pb2 as play__origin__pb2
+import Context as context__pb2
+import ContextPlayerOptions as context__player__options__pb2
+import PlayOrigin as play__origin__pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
     name='session.proto',

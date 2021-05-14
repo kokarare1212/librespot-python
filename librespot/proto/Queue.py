@@ -10,7 +10,7 @@ from google.protobuf import symbol_database as _symbol_database
 
 _sym_db = _symbol_database.Default()
 
-import context_track_pb2 as context__track__pb2
+import ContextTrack as context__track__pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
     name='queue.proto',

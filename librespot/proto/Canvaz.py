@@ -10,7 +10,7 @@ from google.protobuf import symbol_database as _symbol_database
 
 _sym_db = _symbol_database.Default()
 
-import canvaz_meta_pb2 as canvaz__meta__pb2
+import CanvazMeta as canvaz__meta__pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
     name='canvaz.proto',

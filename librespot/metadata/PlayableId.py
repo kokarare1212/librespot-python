@@ -1,7 +1,7 @@
 from __future__ import annotations
 from librespot.common.Base62 import Base62
 # from librespot.metadata import EpisodeId, TrackId, UnsupportedId
-from librespot.proto.context_track_pb2 import ContextTrack
+from librespot.proto.ContextTrack import ContextTrack
 
 
 class PlayableId:
