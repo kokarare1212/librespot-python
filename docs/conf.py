@@ -11,6 +11,7 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
+from recommonmark.transform import AutoStructify
 # -- Project information -----------------------------------------------------
 
 project = "librespot-python"
@@ -51,3 +52,10 @@ source_suffix = [".rst", ".md"]
 source_parsers = {
     ".md": "recommonmark.parser.CommonMarkParser",
 }
+
+
+def setup(app):
+    app.add_config_value("recommonmark_config", {
+        "auto_toc_tree_section": "Contents",
+    }, True)
+    app.add_transform(AutoStructify)
