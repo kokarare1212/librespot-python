@@ -14,7 +14,7 @@
 # -- Project information -----------------------------------------------------
 
 project = "librespot-python"
-copyright = "2021, kokarare1212"
+copyright = "Copyright © 2020-2021 kokarare1212 All rights reserved."
 author = "kokarare1212"
 
 # -- General configuration ---------------------------------------------------
