@@ -16,7 +16,8 @@ class ZeroconfServer(Closeable):
     __keys: DiffieHellman
     __inner: ZeroconfServer.Inner
 
-    def __init__(self, inner: ZeroconfServer.Inner, listen_port: int, listen_all: bool):
+    def __init__(self, inner: ZeroconfServer.Inner, listen_port: int,
+                 listen_all: bool):
         self.__inner = inner
         self.__keys = DiffieHellman()
 
@@ -39,7 +40,11 @@ class ZeroconfServer(Closeable):
             return self
 
         def create(self) -> ZeroconfServer:
-            return ZeroconfServer(ZeroconfServer.Inner(self.device_type, self.device_name, self.preferred_locale, self.conf, self.device_id), self.__listenPort, self.__listenAll)
+            return ZeroconfServer(
+                ZeroconfServer.Inner(self.device_type, self.device_name,
+                                     self.preferred_locale, self.conf,
+                                     self.device_id), self.__listenPort,
+                self.__listenAll)
 
     class Inner:
         device_type: Connect.DeviceType = None
@@ -63,7 +68,8 @@ class ZeroconfServer(Closeable):
 
     class HttpRunner(Runnable, Closeable):
         __sock: socket
-        __executorService: concurrent.futures.ThreadPoolExecutor = concurrent.futures.ThreadPoolExecutor()
+        __executorService: concurrent.futures.ThreadPoolExecutor = concurrent.futures.ThreadPoolExecutor(
+        )
         __shouldStop: bool = False
 
         def __init__(self, port: int):
@@ -86,4 +92,3 @@ class ZeroconfServer(Closeable):
 
         def close(self) -> None:
             super().close()
-
