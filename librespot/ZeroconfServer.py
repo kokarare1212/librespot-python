@@ -1,12 +1,14 @@
 from __future__ import annotations
-from librespot.common import Utils
-from librespot.core import Session
-from librespot.crypto import DiffieHellman
-from librespot.standard import Closeable, Runnable
-from librespot.proto import Connect
+
 import concurrent.futures
 import random
 import socket
+
+from librespot.common import Utils
+from librespot.core import Session
+from librespot.crypto import DiffieHellman
+from librespot.proto import Connect
+from librespot.standard import Closeable, Runnable
 
 
 class ZeroconfServer(Closeable):
