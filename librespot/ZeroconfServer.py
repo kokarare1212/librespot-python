@@ -1,12 +1,15 @@
 from __future__ import annotations
-from librespot.common import Utils
-from librespot.core import Session
-from librespot.crypto import DiffieHellman
-from librespot.standard import Closeable, Runnable
-from librespot.proto import Connect
+
 import concurrent.futures
 import random
 import socket
+
+from librespot.common import Utils
+from librespot.core import Session
+from librespot.crypto import DiffieHellman
+from librespot.proto import Connect
+from librespot.standard import Closeable
+from librespot.standard import Runnable
 
 
 class ZeroconfServer(Closeable):
@@ -41,10 +44,16 @@ class ZeroconfServer(Closeable):
 
         def create(self) -> ZeroconfServer:
             return ZeroconfServer(
-                ZeroconfServer.Inner(self.device_type, self.device_name,
-                                     self.preferred_locale, self.conf,
-                                     self.device_id), self.__listenPort,
-                self.__listenAll)
+                ZeroconfServer.Inner(
+                    self.device_type,
+                    self.device_name,
+                    self.preferred_locale,
+                    self.conf,
+                    self.device_id,
+                ),
+                self.__listenPort,
+                self.__listenAll,
+            )
 
     class Inner:
         device_type: Connect.DeviceType = None
@@ -53,23 +62,25 @@ class ZeroconfServer(Closeable):
         preferred_locale: str = None
         conf = None
 
-        def __init__(self,
-                     device_type: Connect.DeviceType,
-                     device_name: str,
-                     preferred_locale: str,
-                     conf: Session.Configuration,
-                     device_id: str = None):
+        def __init__(
+            self,
+            device_type: Connect.DeviceType,
+            device_name: str,
+            preferred_locale: str,
+            conf: Session.Configuration,
+            device_id: str = None,
+        ):
             self.preferred_locale = preferred_locale
             self.conf = conf
             self.device_type = device_type
             self.device_name = device_name
-            self.device_id = device_id if device_id is not None else Utils.random_hex_string(
-                40)
+            self.device_id = (device_id if device_id is not None else
+                              Utils.random_hex_string(40))
 
     class HttpRunner(Runnable, Closeable):
         __sock: socket
-        __executorService: concurrent.futures.ThreadPoolExecutor = concurrent.futures.ThreadPoolExecutor(
-        )
+        __executorService: concurrent.futures.ThreadPoolExecutor = (
+            concurrent.futures.ThreadPoolExecutor())
         __shouldStop: bool = False
 
         def __init__(self, port: int):
