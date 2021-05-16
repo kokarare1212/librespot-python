@@ -1,8 +1,10 @@
 from __future__ import annotations
+
+import re
+
 from librespot.common import Base62
 from librespot.common import Utils
 from librespot.proto.ContextTrack import ContextTrack
-import re
 
 
 class SpotifyId:
@@ -47,9 +49,9 @@ class PlayableId:
 
     @staticmethod
     def is_supported(uri: str):
-        return not uri.startswith("spotify:local:") and \
-            not uri == "spotify:delimiter" and \
-            not uri == "spotify:meta:delimiter"
+        return (not uri.startswith("spotify:local:")
+                and not uri == "spotify:delimiter"
+                and not uri == "spotify:meta:delimiter")
 
     @staticmethod
     def should_play(track: ContextTrack):
