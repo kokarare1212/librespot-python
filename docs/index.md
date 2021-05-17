@@ -7,6 +7,7 @@
 
 ## Contents
 
+* [Get Started](index.md)
 * [Supported Futures](supported.md)
 * [API Reference](api.md)
 
