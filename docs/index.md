@@ -2,27 +2,32 @@
 ![](https://img.shields.io/github/stars/kokarare1212/librespot-python.svg)
 ![](https://img.shields.io/github/forks/kokarare1212/librespot-python.svg)
 [![](https://deepsource.io/gh/kokarare1212/librespot-python.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/kokarare1212/librespot-python/?ref=repository-badge)
+
 # Get Started
+
 ## Contents
+
+* [Get Started](index.md)
 * [Supported Futures](supported.md)
 * [API Reference](api.md)
+
 ## What's librespot-python?
 
-librespot-python is a python port of Spotify's open source client library [librespot](https://github.com/librespot-org/librespot).  
+librespot-python is a python port of Spotify's open source client library [librespot](https://github.com/librespot-org/librespot).
 
 It was created to play Spotify on various platforms and devices.
 
 ## What do you need?
 
-In order to develop with this library, you need to use Python.  
+In order to develop with this library, you need to use Python.
 
 Python can be downloaded from [the official website here](https://python.org/).
 
 ## Disclaimer
 
-Please keep in mind that this library is not like Spotify approved.  
+Please keep in mind that this library is not like Spotify approved.
 
-Therefore, the worst that can happen is that you will be banned from Spotify.  
+Therefore, the worst that can happen is that you will be banned from Spotify.
 
 Also, please keep in mind that this library is in alpha and may behave in unintended ways.
 
