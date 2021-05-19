@@ -4,6 +4,8 @@ import concurrent.futures
 import random
 import socket
 
+from zeroconf import ServiceBrowser, ServiceInfo, Zeroconf
+
 from librespot.common import Utils
 from librespot.core import Session
 from librespot.crypto import DiffieHellman
@@ -13,6 +15,7 @@ from librespot.standard import Runnable
 
 
 class ZeroconfServer(Closeable):
+    SERVICE = "spotify-connect"
     __MAX_PORT = 65536
     __MIN_PORT = 1024
     __EOL = "\r\n"
