@@ -1,8 +1,10 @@
 from __future__ import annotations
-from librespot.standard import Closeable
+
 import base64
 import random
 import socket
+
+from librespot.standard import Closeable
 
 
 class Zeroconf(Closeable):
