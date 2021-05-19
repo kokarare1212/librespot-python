@@ -34,5 +34,3 @@ class Record:
                 start = i + 1
         out += bytes([0])
         return out, len(name) + 2
-
-
