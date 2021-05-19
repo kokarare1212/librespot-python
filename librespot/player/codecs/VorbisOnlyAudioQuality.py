@@ -5,7 +5,7 @@ import typing
 
 from librespot.audio.format.AudioQualityPicker import AudioQualityPicker
 from librespot.audio.format.SuperAudioFormat import SuperAudioFormat
-from librespot.player.codecs.AudioQuality import AudioQuality
+from librespot.audio.decoders.AudioQuality import AudioQuality
 from librespot.proto import Metadata
 
 

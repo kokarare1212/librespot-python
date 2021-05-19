@@ -1,5 +1,5 @@
 from __future__ import annotations
-from librespot.player.codecs import AudioQuality
+from librespot.audio.decoders import AudioQuality
 
 
 class PlayerConfiguration:
