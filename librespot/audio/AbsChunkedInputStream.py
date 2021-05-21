@@ -1,9 +1,10 @@
-from librespot.audio.HaltListener import HaltListener
-from librespot.standard.InputStream import InputStream
 import math
 import threading
 import time
 import typing
+
+from librespot.audio.HaltListener import HaltListener
+from librespot.standard.InputStream import InputStream
 
 
 class AbsChunkedInputStream(InputStream, HaltListener):

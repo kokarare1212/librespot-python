@@ -1,11 +1,5 @@
 from __future__ import annotations
-from librespot.audio.AbsChunkedInputStream import AbsChunkedInputStream
-from librespot.audio import GeneralAudioStream, GeneralWritableStream, StreamId
-from librespot.audio.decrypt import AesAudioDecrypt, NoopAudioDecrypt
-from librespot.audio.format import SuperAudioFormat
-from librespot.audio.storage import ChannelManager
-from librespot.common import Utils
-from librespot.proto import StorageResolve
+
 import concurrent.futures
 import logging
 import math
@@ -14,9 +8,17 @@ import time
 import typing
 import urllib.parse
 
+from librespot.audio import GeneralAudioStream, GeneralWritableStream, StreamId
+from librespot.audio.AbsChunkedInputStream import AbsChunkedInputStream
+from librespot.audio.decrypt import AesAudioDecrypt, NoopAudioDecrypt
+from librespot.audio.format import SuperAudioFormat
+from librespot.audio.storage import ChannelManager
+from librespot.common import Utils
+from librespot.proto import StorageResolve
+
 if typing.TYPE_CHECKING:
-    from librespot.audio.HaltListener import HaltListener
     from librespot.audio.decrypt.AudioDecrypt import AudioDecrypt
+    from librespot.audio.HaltListener import HaltListener
     from librespot.cache.CacheManager import CacheManager
     from librespot.core.Session import Session
     from librespot.proto import Metadata

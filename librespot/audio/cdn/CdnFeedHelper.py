@@ -1,12 +1,15 @@
 from __future__ import annotations
-from librespot.audio import NormalizationData, PlayableContentFeeder, HaltListener
-from librespot.common import Utils
-from librespot.core import Session
-from librespot.proto import Metadata, StorageResolve
+
 import logging
 import random
 import time
 import typing
+
+from librespot.audio import (HaltListener, NormalizationData,
+                             PlayableContentFeeder)
+from librespot.common import Utils
+from librespot.core import Session
+from librespot.proto import Metadata, StorageResolve
 
 
 class CdnFeedHelper:
