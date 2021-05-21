@@ -62,7 +62,7 @@ def client():
                 "q": cmd[2:],
                 "type": "track"
             },
-                                headers={"Authorization": "Bearer %s" % token})
+                headers={"Authorization": "Bearer %s" % token})
             i = 1
             tracks = resp.json()["tracks"]["items"]
             for track in tracks:
