@@ -1,13 +1,15 @@
+import os
+import platform
+import re
+import subprocess
+import time
+
+import requests
+
 from librespot.audio.decoders import AudioQuality
 from librespot.core import Session
 from librespot.metadata import TrackId
 from librespot.player.codecs import VorbisOnlyAudioQuality
-import os
-import platform
-import re
-import requests
-import subprocess
-import time
 
 quality: AudioQuality = AudioQuality.VERY_HIGH
 session: Session = None
