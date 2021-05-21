@@ -129,12 +129,12 @@ class CdnManager:
                     split = token_str.split("~")
                     for s in split:
                         try:
-                            i = s[0].index("=")
+                            i = s.index("=")
                         except ValueError:
                             continue
 
                         if s[0][:i] == "exp":
-                            expire_at = int(s[0][i:])
+                            expire_at = int(s[0][i + 1:])
                             break
 
                     if expire_at is None:
