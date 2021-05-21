@@ -49,7 +49,7 @@ def client():
                     quality = AudioQuality.VERY_HIGH
                 print("Set Quality to %s" % quality.name)
                 wait()
-        if (args[0] == "s" or args[0] == "search") and len(args) <= 2:
+        if (args[0] == "s" or args[0] == "search") and len(args) >= 2:
             token = session.tokens().get("user-read-email")
             resp = requests.get("https://api.spotify.com/v1/search", {"limit": "5", "offset": "0", "q": cmd[2:], "type": "track"}, headers={"Authorization": "Bearer %s" % token})
             i = 1
