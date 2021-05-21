@@ -245,7 +245,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             self._channelManager = ChannelManager(self)
             self._api = ApiClient.ApiClient(self)
             self._cdnManager = CdnManager(self)
-            self._contentFeeder = PlayableContentFeeder.PlayableContentFeeder(self)
+            self._contentFeeder = PlayableContentFeeder.PlayableContentFeeder(
+                self)
             self._cacheManager = CacheManager(self)
             self._dealer = DealerClient(self)
             self._search = SearchManager.SearchManager(self)
