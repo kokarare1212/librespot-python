@@ -1023,17 +1023,17 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                         Utils.bytes_to_hex(packet.payload)))
                     continue
                 if cmd == Packet.Type.mercury_sub or \
-                                        cmd == Packet.Type.mercury_unsub or \
-                                        cmd == Packet.Type.mercury_event or \
-                                        cmd == Packet.Type.mercury_req:
+                        cmd == Packet.Type.mercury_unsub or \
+                        cmd == Packet.Type.mercury_event or \
+                        cmd == Packet.Type.mercury_req:
                     self.session.mercury().dispatch(packet)
                     continue
                 if cmd == Packet.Type.aes_key or \
-                                        cmd == Packet.Type.aes_key_error:
+                        cmd == Packet.Type.aes_key_error:
                     self.session.audio_key().dispatch(packet)
                     continue
                 if cmd == Packet.Type.channel_error or \
-                                        cmd == Packet.Type.stream_chunk_res:
+                        cmd == Packet.Type.stream_chunk_res:
                     self.session.channel().dispatch(packet)
                     continue
                 if cmd == Packet.Type.product_info:
