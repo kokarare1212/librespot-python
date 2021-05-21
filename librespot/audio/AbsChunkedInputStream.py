@@ -1,9 +1,10 @@
-from librespot.audio.HaltListener import HaltListener
-from librespot.standard.InputStream import InputStream
 import math
 import threading
 import time
 import typing
+
+from librespot.audio.HaltListener import HaltListener
+from librespot.standard.InputStream import InputStream
 
 
 class AbsChunkedInputStream(InputStream, HaltListener):
@@ -110,8 +111,8 @@ class AbsChunkedInputStream(InputStream, HaltListener):
 
         for i in range(chunk + 1,
                        min(self.chunks() - 1, chunk + self.preload_ahead) + 1):
-            if self.requested_chunks(
-            )[i] and self.retries[i] < self.preload_chunk_retries:
+            if (self.requested_chunks()[i]
+                    and self.retries[i] < self.preload_chunk_retries):
                 self.request_chunk_from_stream(i)
                 self.requested_chunks()[chunk] = True
 

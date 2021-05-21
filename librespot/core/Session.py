@@ -1,26 +1,9 @@
 from __future__ import annotations
-from Crypto.Hash import HMAC, SHA1
-from Crypto.PublicKey import RSA
-from Crypto.Signature import PKCS1_v1_5
-from librespot.audio import AudioKeyManager, PlayableContentFeeder
-from librespot.audio.cdn import CdnManager
-from librespot.audio.storage import ChannelManager
-from librespot.cache import CacheManager
-from librespot.common.Utils import Utils
-from librespot.core import ApResolver, EventService, SearchManager, TokenProvider
-from librespot.crypto import CipherPair, DiffieHellman, Packet
-from librespot.dealer import ApiClient, DealerClient
-from librespot.mercury import MercuryClient, SubListener
-from librespot.proto import Authentication, Connect, Keyexchange
-from librespot.proto.ExplicitContentPubsub import UserAttributesUpdate
-from librespot.standard import BytesInputStream, Closeable, Proxy
-from librespot.Version import Version
+
 import base64
-import defusedxml.ElementTree
 import json
 import logging
 import os
-import requests
 import sched
 import socket
 import struct
@@ -28,32 +11,299 @@ import threading
 import time
 import typing
 
+import defusedxml.ElementTree
+import requests
+from Crypto.Hash import HMAC
+from Crypto.Hash import SHA1
+from Crypto.PublicKey import RSA
+from Crypto.Signature import PKCS1_v1_5
+
+from librespot.audio import AudioKeyManager
+from librespot.audio import PlayableContentFeeder
+from librespot.audio.cdn import CdnManager
+from librespot.audio.storage import ChannelManager
+from librespot.cache import CacheManager
+from librespot.common.Utils import Utils
+from librespot.core import ApResolver
+from librespot.core import EventService
+from librespot.core import SearchManager
+from librespot.core import TokenProvider
+from librespot.crypto import CipherPair
+from librespot.crypto import DiffieHellman
+from librespot.crypto import Packet
+from librespot.dealer import ApiClient
+from librespot.dealer import DealerClient
+from librespot.mercury import MercuryClient
+from librespot.mercury import SubListener
+from librespot.proto import Authentication
+from librespot.proto import Connect
+from librespot.proto import Keyexchange
+from librespot.proto.ExplicitContentPubsub import UserAttributesUpdate
+from librespot.standard import BytesInputStream
+from librespot.standard import Closeable
+from librespot.standard import Proxy
+from librespot.Version import Version
+
 
 class Session(Closeable, SubListener, DealerClient.MessageListener):
     _LOGGER: logging = logging.getLogger(__name__)
     _serverKey: bytes = bytes([
-        0xac, 0xe0, 0x46, 0x0b, 0xff, 0xc2, 0x30, 0xaf, 0xf4, 0x6b, 0xfe, 0xc3,
-        0xbf, 0xbf, 0x86, 0x3d, 0xa1, 0x91, 0xc6, 0xcc, 0x33, 0x6c, 0x93, 0xa1,
-        0x4f, 0xb3, 0xb0, 0x16, 0x12, 0xac, 0xac, 0x6a, 0xf1, 0x80, 0xe7, 0xf6,
-        0x14, 0xd9, 0x42, 0x9d, 0xbe, 0x2e, 0x34, 0x66, 0x43, 0xe3, 0x62, 0xd2,
-        0x32, 0x7a, 0x1a, 0x0d, 0x92, 0x3b, 0xae, 0xdd, 0x14, 0x02, 0xb1, 0x81,
-        0x55, 0x05, 0x61, 0x04, 0xd5, 0x2c, 0x96, 0xa4, 0x4c, 0x1e, 0xcc, 0x02,
-        0x4a, 0xd4, 0xb2, 0x0c, 0x00, 0x1f, 0x17, 0xed, 0xc2, 0x2f, 0xc4, 0x35,
-        0x21, 0xc8, 0xf0, 0xcb, 0xae, 0xd2, 0xad, 0xd7, 0x2b, 0x0f, 0x9d, 0xb3,
-        0xc5, 0x32, 0x1a, 0x2a, 0xfe, 0x59, 0xf3, 0x5a, 0x0d, 0xac, 0x68, 0xf1,
-        0xfa, 0x62, 0x1e, 0xfb, 0x2c, 0x8d, 0x0c, 0xb7, 0x39, 0x2d, 0x92, 0x47,
-        0xe3, 0xd7, 0x35, 0x1a, 0x6d, 0xbd, 0x24, 0xc2, 0xae, 0x25, 0x5b, 0x88,
-        0xff, 0xab, 0x73, 0x29, 0x8a, 0x0b, 0xcc, 0xcd, 0x0c, 0x58, 0x67, 0x31,
-        0x89, 0xe8, 0xbd, 0x34, 0x80, 0x78, 0x4a, 0x5f, 0xc9, 0x6b, 0x89, 0x9d,
-        0x95, 0x6b, 0xfc, 0x86, 0xd7, 0x4f, 0x33, 0xa6, 0x78, 0x17, 0x96, 0xc9,
-        0xc3, 0x2d, 0x0d, 0x32, 0xa5, 0xab, 0xcd, 0x05, 0x27, 0xe2, 0xf7, 0x10,
-        0xa3, 0x96, 0x13, 0xc4, 0x2f, 0x99, 0xc0, 0x27, 0xbf, 0xed, 0x04, 0x9c,
-        0x3c, 0x27, 0x58, 0x04, 0xb6, 0xb2, 0x19, 0xf9, 0xc1, 0x2f, 0x02, 0xe9,
-        0x48, 0x63, 0xec, 0xa1, 0xb6, 0x42, 0xa0, 0x9d, 0x48, 0x25, 0xf8, 0xb3,
-        0x9d, 0xd0, 0xe8, 0x6a, 0xf9, 0x48, 0x4d, 0xa1, 0xc2, 0xba, 0x86, 0x30,
-        0x42, 0xea, 0x9d, 0xb3, 0x08, 0x6c, 0x19, 0x0e, 0x48, 0xb3, 0x9d, 0x66,
-        0xeb, 0x00, 0x06, 0xa2, 0x5a, 0xee, 0xa1, 0x1b, 0x13, 0x87, 0x3c, 0xd7,
-        0x19, 0xe6, 0x55, 0xbd
+        0xAC,
+        0xE0,
+        0x46,
+        0x0B,
+        0xFF,
+        0xC2,
+        0x30,
+        0xAF,
+        0xF4,
+        0x6B,
+        0xFE,
+        0xC3,
+        0xBF,
+        0xBF,
+        0x86,
+        0x3D,
+        0xA1,
+        0x91,
+        0xC6,
+        0xCC,
+        0x33,
+        0x6C,
+        0x93,
+        0xA1,
+        0x4F,
+        0xB3,
+        0xB0,
+        0x16,
+        0x12,
+        0xAC,
+        0xAC,
+        0x6A,
+        0xF1,
+        0x80,
+        0xE7,
+        0xF6,
+        0x14,
+        0xD9,
+        0x42,
+        0x9D,
+        0xBE,
+        0x2E,
+        0x34,
+        0x66,
+        0x43,
+        0xE3,
+        0x62,
+        0xD2,
+        0x32,
+        0x7A,
+        0x1A,
+        0x0D,
+        0x92,
+        0x3B,
+        0xAE,
+        0xDD,
+        0x14,
+        0x02,
+        0xB1,
+        0x81,
+        0x55,
+        0x05,
+        0x61,
+        0x04,
+        0xD5,
+        0x2C,
+        0x96,
+        0xA4,
+        0x4C,
+        0x1E,
+        0xCC,
+        0x02,
+        0x4A,
+        0xD4,
+        0xB2,
+        0x0C,
+        0x00,
+        0x1F,
+        0x17,
+        0xED,
+        0xC2,
+        0x2F,
+        0xC4,
+        0x35,
+        0x21,
+        0xC8,
+        0xF0,
+        0xCB,
+        0xAE,
+        0xD2,
+        0xAD,
+        0xD7,
+        0x2B,
+        0x0F,
+        0x9D,
+        0xB3,
+        0xC5,
+        0x32,
+        0x1A,
+        0x2A,
+        0xFE,
+        0x59,
+        0xF3,
+        0x5A,
+        0x0D,
+        0xAC,
+        0x68,
+        0xF1,
+        0xFA,
+        0x62,
+        0x1E,
+        0xFB,
+        0x2C,
+        0x8D,
+        0x0C,
+        0xB7,
+        0x39,
+        0x2D,
+        0x92,
+        0x47,
+        0xE3,
+        0xD7,
+        0x35,
+        0x1A,
+        0x6D,
+        0xBD,
+        0x24,
+        0xC2,
+        0xAE,
+        0x25,
+        0x5B,
+        0x88,
+        0xFF,
+        0xAB,
+        0x73,
+        0x29,
+        0x8A,
+        0x0B,
+        0xCC,
+        0xCD,
+        0x0C,
+        0x58,
+        0x67,
+        0x31,
+        0x89,
+        0xE8,
+        0xBD,
+        0x34,
+        0x80,
+        0x78,
+        0x4A,
+        0x5F,
+        0xC9,
+        0x6B,
+        0x89,
+        0x9D,
+        0x95,
+        0x6B,
+        0xFC,
+        0x86,
+        0xD7,
+        0x4F,
+        0x33,
+        0xA6,
+        0x78,
+        0x17,
+        0x96,
+        0xC9,
+        0xC3,
+        0x2D,
+        0x0D,
+        0x32,
+        0xA5,
+        0xAB,
+        0xCD,
+        0x05,
+        0x27,
+        0xE2,
+        0xF7,
+        0x10,
+        0xA3,
+        0x96,
+        0x13,
+        0xC4,
+        0x2F,
+        0x99,
+        0xC0,
+        0x27,
+        0xBF,
+        0xED,
+        0x04,
+        0x9C,
+        0x3C,
+        0x27,
+        0x58,
+        0x04,
+        0xB6,
+        0xB2,
+        0x19,
+        0xF9,
+        0xC1,
+        0x2F,
+        0x02,
+        0xE9,
+        0x48,
+        0x63,
+        0xEC,
+        0xA1,
+        0xB6,
+        0x42,
+        0xA0,
+        0x9D,
+        0x48,
+        0x25,
+        0xF8,
+        0xB3,
+        0x9D,
+        0xD0,
+        0xE8,
+        0x6A,
+        0xF9,
+        0x48,
+        0x4D,
+        0xA1,
+        0xC2,
+        0xBA,
+        0x86,
+        0x30,
+        0x42,
+        0xEA,
+        0x9D,
+        0xB3,
+        0x08,
+        0x6C,
+        0x19,
+        0x0E,
+        0x48,
+        0xB3,
+        0x9D,
+        0x66,
+        0xEB,
+        0x00,
+        0x06,
+        0xA2,
+        0x5A,
+        0xEE,
+        0xA1,
+        0x1B,
+        0x13,
+        0x87,
+        0x3C,
+        0xD7,
+        0x19,
+        0xE6,
+        0x55,
+        0xBD,
     ])
     _keys: DiffieHellman = None
     _inner: Session.Inner = None
@@ -101,14 +351,16 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
         if conf.proxyAuth and conf.proxyType is not Proxy.Type.DIRECT:
             if conf.proxyAuth:
                 proxy_setting = [
-                    conf.proxyUsername, conf.proxyPassword, conf.proxyAddress,
-                    conf.proxyPort
+                    conf.proxyUsername,
+                    conf.proxyPassword,
+                    conf.proxyAddress,
+                    conf.proxyPort,
                 ]
             else:
                 proxy_setting = [conf.proxyAddress, conf.proxyPort]
             client.proxies = {
                 "http": "{}:{}@{}:{}".format(*proxy_setting),
-                "https": "{}:{}@{}:{}".format(*proxy_setting)
+                "https": "{}:{}@{}:{}".format(*proxy_setting),
             }
 
         return client
@@ -119,7 +371,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
         if (lo & 0x80) == 0:
             return lo
         hi = buffer[1]
-        return lo & 0x7f | hi << 7
+        return lo & 0x7F | hi << 7
 
     def client(self) -> requests.Session:
         return self._client
@@ -140,7 +392,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                 diffie_hellman=Keyexchange.LoginCryptoDiffieHellmanHello(
                     gc=self._keys.public_key_array(), server_keys_known=1), ),
             client_nonce=nonce,
-            padding=bytes([0x1e]))
+            padding=bytes([0x1E]),
+        )
 
         client_hello_bytes = client_hello.SerializeToString()
         length = 2 + 4 + len(client_hello_bytes)
@@ -178,8 +431,10 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                     diffie_hellman.gs)
         # noinspection PyTypeChecker
         if not pkcs1_v1_5.verify(
-                sha1, ap_response_message.challenge.login_crypto_challenge.
-                diffie_hellman.gs_signature):
+                sha1,
+                ap_response_message.challenge.login_crypto_challenge.
+                diffie_hellman.gs_signature,
+        ):
             raise RuntimeError("Failed signature check!")
 
         # Solve challenge
@@ -203,7 +458,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                 diffie_hellman=Keyexchange.LoginCryptoDiffieHellmanResponse(
                     hmac=challenge)),
             pow_response=Keyexchange.PoWResponseUnion(),
-            crypto_response=Keyexchange.CryptoResponseUnion())
+            crypto_response=Keyexchange.CryptoResponseUnion(),
+        )
 
         client_response_plaintext_bytes = client_response_plaintext.SerializeToString(
         )
@@ -216,8 +472,10 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             self._conn.set_timeout(1)
             scrap = self._conn.read(4)
             if 4 == len(scrap):
-                length = (scrap[0] << 24) | (scrap[1] << 16) | (
-                    scrap[2] << 8) | (scrap[3] & 0xff)
+                length = ((scrap[0] << 24)
+                          | (scrap[1] << 16)
+                          | (scrap[2] << 8)
+                          | (scrap[3] & 0xFF))
                 payload = self._conn.read(length - 4)
                 failed = Keyexchange.APResponseMessage()
                 failed.ParseFromString(payload)
@@ -277,8 +535,10 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                 os=Authentication.Os.OS_UNKNOWN,
                 cpu_family=Authentication.CpuFamily.CPU_UNKNOWN,
                 system_information_string=Version.system_info_string(),
-                device_id=self._inner.device_id),
-            version_string=Version.version_string())
+                device_id=self._inner.device_id,
+            ),
+            version_string=Version.version_string(),
+        )
 
         self._send_unchecked(Packet.Type.login,
                              client_response_encrypted.SerializeToString())
@@ -318,8 +578,10 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                         {
                             "username": self._apWelcome.canonical_username,
                             "credentials": base64.b64encode(reusable).decode(),
-                            "type": reusable_type
-                        }, f)
+                            "type": reusable_type,
+                        },
+                        f,
+                    )
 
         elif packet.is_cmd(Packet.Type.auth_failure):
             ap_login_failed = Keyexchange.APLoginFailed()
@@ -536,7 +798,10 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             Authentication.LoginCredentials(
                 typ=self._apWelcome.reusable_auth_credentials_type,
                 username=self._apWelcome.canonical_username,
-                auth_data=self._apWelcome.reusable_auth_credentials), True)
+                auth_data=self._apWelcome.reusable_auth_credentials,
+            ),
+            True,
+        )
 
         self._LOGGER.info("Re-authenticated as {}!".format(
             self._apWelcome.canonical_username))
@@ -576,8 +841,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             self._userAttributes))
 
     def get_user_attribute(self, key: str, fallback: str = None) -> str:
-        return self._userAttributes.get(key) if self._userAttributes.get(
-            key) is not None else fallback
+        return (self._userAttributes.get(key)
+                if self._userAttributes.get(key) is not None else fallback)
 
     def event(self, resp: MercuryClient.Response) -> None:
         if resp.uri == "spotify:user:attributes:update":
@@ -612,18 +877,20 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
         conf = None
         preferred_locale: str = None
 
-        def __init__(self,
-                     device_type: Connect.DeviceType,
-                     device_name: str,
-                     preferred_locale: str,
-                     conf: Session.Configuration,
-                     device_id: str = None):
+        def __init__(
+            self,
+            device_type: Connect.DeviceType,
+            device_name: str,
+            preferred_locale: str,
+            conf: Session.Configuration,
+            device_id: str = None,
+        ):
             self.preferred_locale = preferred_locale
             self.conf = conf
             self.device_type = device_type
             self.device_name = device_name
-            self.device_id = device_id if device_id is not None else Utils.random_hex_string(
-                40)
+            self.device_id = (device_id if device_id is not None else
+                              Utils.random_hex_string(40))
 
     class AbsBuilder:
         conf = None
@@ -683,7 +950,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                             typ=Authentication.AuthenticationType.Value(
                                 obj["type"]),
                             username=obj["username"],
-                            auth_data=base64.b64decode(obj["credentials"]))
+                            auth_data=base64.b64decode(obj["credentials"]),
+                        )
                     except KeyError:
                         pass
 
@@ -693,7 +961,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             self.login_credentials = Authentication.LoginCredentials(
                 username=username,
                 typ=Authentication.AuthenticationType.AUTHENTICATION_USER_PASS,
-                auth_data=password.encode())
+                auth_data=password.encode(),
+            )
             return self
 
         def create(self) -> Session:
@@ -701,10 +970,15 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                 raise RuntimeError("You must select an authentication method.")
 
             session = Session(
-                Session.Inner(self.device_type, self.device_name,
-                              self.preferred_locale, self.conf,
-                              self.device_id),
-                ApResolver.get_random_accesspoint())
+                Session.Inner(
+                    self.device_type,
+                    self.device_name,
+                    self.preferred_locale,
+                    self.conf,
+                    self.device_id,
+                ),
+                ApResolver.get_random_accesspoint(),
+            )
             session._connect()
             session._authenticate(self.login_credentials)
             return session
@@ -731,12 +1005,22 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
         # Fetching
         retry_on_chunk_error: bool
 
-        def __init__(self, proxy_enabled: bool, proxy_type: Proxy.Type,
-                     proxy_address: str, proxy_port: int, proxy_auth: bool,
-                     proxy_username: str, proxy_password: str,
-                     cache_enabled: bool, cache_dir: str,
-                     do_cache_clean_up: bool, store_credentials: bool,
-                     stored_credentials_file: str, retry_on_chunk_error: bool):
+        def __init__(
+            self,
+            proxy_enabled: bool,
+            proxy_type: Proxy.Type,
+            proxy_address: str,
+            proxy_port: int,
+            proxy_auth: bool,
+            proxy_username: str,
+            proxy_password: str,
+            cache_enabled: bool,
+            cache_dir: str,
+            do_cache_clean_up: bool,
+            store_credentials: bool,
+            stored_credentials_file: str,
+            retry_on_chunk_error: bool,
+        ):
             self.proxyEnabled = proxy_enabled
             self.proxyType = proxy_type
             self.proxyAddress = proxy_address
@@ -845,11 +1129,20 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
 
             def build(self) -> Session.Configuration:
                 return Session.Configuration(
-                    self.proxyEnabled, self.proxyType, self.proxyAddress,
-                    self.proxyPort, self.proxyAuth, self.proxyUsername,
-                    self.proxyPassword, self.cache_enabled, self.cache_dir,
-                    self.do_cache_clean_up, self.store_credentials,
-                    self.stored_credentials_file, self.retry_on_chunk_error)
+                    self.proxyEnabled,
+                    self.proxyType,
+                    self.proxyAddress,
+                    self.proxyPort,
+                    self.proxyAuth,
+                    self.proxyUsername,
+                    self.proxyPassword,
+                    self.cache_enabled,
+                    self.cache_dir,
+                    self.do_cache_clean_up,
+                    self.store_credentials,
+                    self.stored_credentials_file,
+                    self.retry_on_chunk_error,
+                )
 
     class SpotifyAuthenticationException(Exception):
         def __init__(self, login_failed: Keyexchange.APLoginFailed):
@@ -1022,18 +1315,17 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                     self.session._LOGGER.debug("Received 0x10: {}".format(
                         Utils.bytes_to_hex(packet.payload)))
                     continue
-                if cmd == Packet.Type.mercury_sub or \
-                                        cmd == Packet.Type.mercury_unsub or \
-                                        cmd == Packet.Type.mercury_event or \
-                                        cmd == Packet.Type.mercury_req:
+                if (cmd == Packet.Type.mercury_sub
+                        or cmd == Packet.Type.mercury_unsub
+                        or cmd == Packet.Type.mercury_event
+                        or cmd == Packet.Type.mercury_req):
                     self.session.mercury().dispatch(packet)
                     continue
-                if cmd == Packet.Type.aes_key or \
-                                        cmd == Packet.Type.aes_key_error:
+                if cmd == Packet.Type.aes_key or cmd == Packet.Type.aes_key_error:
                     self.session.audio_key().dispatch(packet)
                     continue
-                if cmd == Packet.Type.channel_error or \
-                                        cmd == Packet.Type.stream_chunk_res:
+                if (cmd == Packet.Type.channel_error
+                        or cmd == Packet.Type.stream_chunk_res):
                     self.session.channel().dispatch(packet)
                     continue
                 if cmd == Packet.Type.product_info:
