@@ -53,7 +53,7 @@ stream = session.content_feeder().load(track_id, VorbisOnlyAudioQuality(AudioQua
 # stream.input_stream.stream().read() to get one byte of the music stream.
 # ex: 1 (If there is no more voice data, -1 is received as the result.)
 ```
-Please read [this document](https://librespot-python.rtfd.io) for detailed specifications.
+Other uses are [examples](https://github.com/kokarare1212/librespot-python/tree/main/examples) or read [this document](https://librespot-python.rtfd.io) for detailed specifications.
 
 ## Debug
 To display the debug information, you need to inject the following code at the top of the code.
