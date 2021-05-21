@@ -30,7 +30,7 @@ class PlayerConfiguration:
         self.volume_steps = volume_steps
 
     class Builder:
-        preferred_quality: AudioQuality = AudioQuality.AudioQuality.NORMAL
+        preferred_quality: AudioQuality = AudioQuality.NORMAL
         enable_normalisation: bool = True
         normalisation_pregain: float = 3.0
         autoplay_enabled: bool = True

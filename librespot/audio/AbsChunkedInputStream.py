@@ -1,5 +1,4 @@
 from librespot.audio.HaltListener import HaltListener
-from librespot.audio.storage import ChannelManager
 from librespot.standard.InputStream import InputStream
 import math
 import threading
@@ -64,7 +63,7 @@ class AbsChunkedInputStream(InputStream, HaltListener):
             raise IOError("Stream is closed!")
         self._pos = where
 
-        self.check_availability(int(self._pos / ChannelManager.CHUNK_SIZE),
+        self.check_availability(int(self._pos / (128 * 1024)),
                                 False, False)
 
     def skip(self, n: int) -> int:
@@ -78,7 +77,7 @@ class AbsChunkedInputStream(InputStream, HaltListener):
             k = n
         self._pos += k
 
-        chunk = int(self._pos / ChannelManager.CHUNK_SIZE)
+        chunk = int(self._pos / (128 * 1024))
         self.check_availability(chunk, False, False)
 
         return k
@@ -170,8 +169,8 @@ class AbsChunkedInputStream(InputStream, HaltListener):
 
         i = 0
         while True:
-            chunk = int(self._pos / ChannelManager.CHUNK_SIZE)
-            chunk_off = int(self._pos % ChannelManager.CHUNK_SIZE)
+            chunk = int(self._pos / (128 * 1024))
+            chunk_off = int(self._pos % (128 * 1024))
 
             self.check_availability(chunk, True, False)
 
@@ -191,10 +190,10 @@ class AbsChunkedInputStream(InputStream, HaltListener):
         if self._pos >= self.size():
             return -1
 
-        chunk = int(self._pos / ChannelManager.CHUNK_SIZE)
+        chunk = int(self._pos / (128 * 1024))
         self.check_availability(chunk, True, False)
 
-        b = self.buffer()[chunk][self._pos % ChannelManager.CHUNK_SIZE]
+        b = self.buffer()[chunk][self._pos % (128 * 1024)]
         self._pos = self._pos + 1
         return b
 

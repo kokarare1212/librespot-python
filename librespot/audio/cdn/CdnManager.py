@@ -159,7 +159,7 @@ class CdnManager:
             else:
                 self._expiration = -1
 
-    class Streamer(GeneralAudioStream, GeneralWritableStream):
+    class Streamer(GeneralAudioStream.GeneralAudioStream, GeneralWritableStream.GeneralWritableStream):
         _session: Session = None
         _streamId: StreamId = None
         _executorService = concurrent.futures.ThreadPoolExecutor()
