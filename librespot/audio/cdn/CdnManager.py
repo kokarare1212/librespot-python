@@ -8,9 +8,12 @@ import time
 import typing
 import urllib.parse
 
-from librespot.audio import GeneralAudioStream, GeneralWritableStream, StreamId
+from librespot.audio import GeneralAudioStream
+from librespot.audio import GeneralWritableStream
+from librespot.audio import StreamId
 from librespot.audio.AbsChunkedInputStream import AbsChunkedInputStream
-from librespot.audio.decrypt import AesAudioDecrypt, NoopAudioDecrypt
+from librespot.audio.decrypt import AesAudioDecrypt
+from librespot.audio.decrypt import NoopAudioDecrypt
 from librespot.audio.format import SuperAudioFormat
 from librespot.audio.storage import ChannelManager
 from librespot.common import Utils

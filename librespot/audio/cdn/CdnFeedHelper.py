@@ -5,11 +5,13 @@ import random
 import time
 import typing
 
-from librespot.audio import (HaltListener, NormalizationData,
-                             PlayableContentFeeder)
+from librespot.audio import HaltListener
+from librespot.audio import NormalizationData
+from librespot.audio import PlayableContentFeeder
 from librespot.common import Utils
 from librespot.core import Session
-from librespot.proto import Metadata, StorageResolve
+from librespot.proto import Metadata
+from librespot.proto import StorageResolve
 
 
 class CdnFeedHelper:
