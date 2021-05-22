@@ -7,40 +7,43 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
-    name='playlist_annotate3.proto',
-    package='spotify_playlist_annotate3.proto',
-    syntax='proto2',
-    serialized_options=b'\n\036com.spotify.playlist_annotate3H\002',
+    name="playlist_annotate3.proto",
+    package="spotify_playlist_annotate3.proto",
+    syntax="proto2",
+    serialized_options=b"\n\036com.spotify.playlist_annotate3H\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x18playlist_annotate3.proto\x12 spotify_playlist_annotate3.proto\"a\n\x0fTakedownRequest\x12N\n\x12\x61\x62use_report_state\x18\x01 \x01(\x0e\x32\x32.spotify_playlist_annotate3.proto.AbuseReportState\"9\n\x0f\x41nnotateRequest\x12\x13\n\x0b\x64\x65scription\x18\x01 \x01(\t\x12\x11\n\timage_uri\x18\x02 \x01(\t\"5\n\x11TranscodedPicture\x12\x13\n\x0btarget_name\x18\x01 \x01(\t\x12\x0b\n\x03uri\x18\x02 \x01(\t\"\xf4\x02\n\x12PlaylistAnnotation\x12\x13\n\x0b\x64\x65scription\x18\x01 \x01(\t\x12\x0f\n\x07picture\x18\x02 \x01(\t\x12i\n\x1a\x64\x65precated_render_features\x18\x03 \x01(\x0e\x32\x30.spotify_playlist_annotate3.proto.RenderFeatures:\x0fNORMAL_FEATURESB\x02\x18\x01\x12O\n\x12transcoded_picture\x18\x04 \x03(\x0b\x32\x33.spotify_playlist_annotate3.proto.TranscodedPicture\x12(\n\x1ais_abuse_reporting_enabled\x18\x06 \x01(\x08:\x04true\x12R\n\x12\x61\x62use_report_state\x18\x07 \x01(\x0e\x32\x32.spotify_playlist_annotate3.proto.AbuseReportState:\x02OK*<\n\x0eRenderFeatures\x12\x13\n\x0fNORMAL_FEATURES\x10\x01\x12\x15\n\x11\x45XTENDED_FEATURES\x10\x02**\n\x10\x41\x62useReportState\x12\x06\n\x02OK\x10\x00\x12\x0e\n\nTAKEN_DOWN\x10\x01\x42\"\n\x1e\x63om.spotify.playlist_annotate3H\x02'
+    serialized_pb=b'\n\x18playlist_annotate3.proto\x12 spotify_playlist_annotate3.proto"a\n\x0fTakedownRequest\x12N\n\x12\x61\x62use_report_state\x18\x01 \x01(\x0e\x32\x32.spotify_playlist_annotate3.proto.AbuseReportState"9\n\x0f\x41nnotateRequest\x12\x13\n\x0b\x64\x65scription\x18\x01 \x01(\t\x12\x11\n\timage_uri\x18\x02 \x01(\t"5\n\x11TranscodedPicture\x12\x13\n\x0btarget_name\x18\x01 \x01(\t\x12\x0b\n\x03uri\x18\x02 \x01(\t"\xf4\x02\n\x12PlaylistAnnotation\x12\x13\n\x0b\x64\x65scription\x18\x01 \x01(\t\x12\x0f\n\x07picture\x18\x02 \x01(\t\x12i\n\x1a\x64\x65precated_render_features\x18\x03 \x01(\x0e\x32\x30.spotify_playlist_annotate3.proto.RenderFeatures:\x0fNORMAL_FEATURESB\x02\x18\x01\x12O\n\x12transcoded_picture\x18\x04 \x03(\x0b\x32\x33.spotify_playlist_annotate3.proto.TranscodedPicture\x12(\n\x1ais_abuse_reporting_enabled\x18\x06 \x01(\x08:\x04true\x12R\n\x12\x61\x62use_report_state\x18\x07 \x01(\x0e\x32\x32.spotify_playlist_annotate3.proto.AbuseReportState:\x02OK*<\n\x0eRenderFeatures\x12\x13\n\x0fNORMAL_FEATURES\x10\x01\x12\x15\n\x11\x45XTENDED_FEATURES\x10\x02**\n\x10\x41\x62useReportState\x12\x06\n\x02OK\x10\x00\x12\x0e\n\nTAKEN_DOWN\x10\x01\x42"\n\x1e\x63om.spotify.playlist_annotate3H\x02',
 )
 
 _RENDERFEATURES = _descriptor.EnumDescriptor(
-    name='RenderFeatures',
-    full_name='spotify_playlist_annotate3.proto.RenderFeatures',
+    name="RenderFeatures",
+    full_name="spotify_playlist_annotate3.proto.RenderFeatures",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='NORMAL_FEATURES',
+            name="NORMAL_FEATURES",
             index=0,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='EXTENDED_FEATURES',
+            name="EXTENDED_FEATURES",
             index=1,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -51,26 +54,28 @@ _sym_db.RegisterEnumDescriptor(_RENDERFEATURES)
 
 RenderFeatures = enum_type_wrapper.EnumTypeWrapper(_RENDERFEATURES)
 _ABUSEREPORTSTATE = _descriptor.EnumDescriptor(
-    name='AbuseReportState',
-    full_name='spotify_playlist_annotate3.proto.AbuseReportState',
+    name="AbuseReportState",
+    full_name="spotify_playlist_annotate3.proto.AbuseReportState",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='OK',
+            name="OK",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='TAKEN_DOWN',
+            name="TAKEN_DOWN",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -86,16 +91,16 @@ OK = 0
 TAKEN_DOWN = 1
 
 _TAKEDOWNREQUEST = _descriptor.Descriptor(
-    name='TakedownRequest',
-    full_name='spotify_playlist_annotate3.proto.TakedownRequest',
+    name="TakedownRequest",
+    full_name="spotify_playlist_annotate3.proto.TakedownRequest",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='abuse_report_state',
-            full_name='spotify_playlist_annotate3.proto.TakedownRequest.abuse_report_state',
+            name="abuse_report_state",
+            full_name="spotify_playlist_annotate3.proto.TakedownRequest.abuse_report_state",
             index=0,
             number=1,
             type=14,
@@ -110,14 +115,15 @@ _TAKEDOWNREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=62,
@@ -125,23 +131,23 @@ _TAKEDOWNREQUEST = _descriptor.Descriptor(
 )
 
 _ANNOTATEREQUEST = _descriptor.Descriptor(
-    name='AnnotateRequest',
-    full_name='spotify_playlist_annotate3.proto.AnnotateRequest',
+    name="AnnotateRequest",
+    full_name="spotify_playlist_annotate3.proto.AnnotateRequest",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='description',
-            full_name='spotify_playlist_annotate3.proto.AnnotateRequest.description',
+            name="description",
+            full_name="spotify_playlist_annotate3.proto.AnnotateRequest.description",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -149,17 +155,18 @@ _ANNOTATEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='image_uri',
-            full_name='spotify_playlist_annotate3.proto.AnnotateRequest.image_uri',
+            name="image_uri",
+            full_name="spotify_playlist_annotate3.proto.AnnotateRequest.image_uri",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -167,14 +174,15 @@ _ANNOTATEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=161,
@@ -182,23 +190,23 @@ _ANNOTATEREQUEST = _descriptor.Descriptor(
 )
 
 _TRANSCODEDPICTURE = _descriptor.Descriptor(
-    name='TranscodedPicture',
-    full_name='spotify_playlist_annotate3.proto.TranscodedPicture',
+    name="TranscodedPicture",
+    full_name="spotify_playlist_annotate3.proto.TranscodedPicture",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='target_name',
-            full_name='spotify_playlist_annotate3.proto.TranscodedPicture.target_name',
+            name="target_name",
+            full_name="spotify_playlist_annotate3.proto.TranscodedPicture.target_name",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -206,17 +214,18 @@ _TRANSCODEDPICTURE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='uri',
-            full_name='spotify_playlist_annotate3.proto.TranscodedPicture.uri',
+            name="uri",
+            full_name="spotify_playlist_annotate3.proto.TranscodedPicture.uri",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -224,14 +233,15 @@ _TRANSCODEDPICTURE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=220,
@@ -239,23 +249,23 @@ _TRANSCODEDPICTURE = _descriptor.Descriptor(
 )
 
 _PLAYLISTANNOTATION = _descriptor.Descriptor(
-    name='PlaylistAnnotation',
-    full_name='spotify_playlist_annotate3.proto.PlaylistAnnotation',
+    name="PlaylistAnnotation",
+    full_name="spotify_playlist_annotate3.proto.PlaylistAnnotation",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='description',
-            full_name='spotify_playlist_annotate3.proto.PlaylistAnnotation.description',
+            name="description",
+            full_name="spotify_playlist_annotate3.proto.PlaylistAnnotation.description",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -263,17 +273,18 @@ _PLAYLISTANNOTATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='picture',
-            full_name='spotify_playlist_annotate3.proto.PlaylistAnnotation.picture',
+            name="picture",
+            full_name="spotify_playlist_annotate3.proto.PlaylistAnnotation.picture",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -281,10 +292,11 @@ _PLAYLISTANNOTATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='deprecated_render_features',
-            full_name='spotify_playlist_annotate3.proto.PlaylistAnnotation.deprecated_render_features',
+            name="deprecated_render_features",
+            full_name="spotify_playlist_annotate3.proto.PlaylistAnnotation.deprecated_render_features",
             index=2,
             number=3,
             type=14,
@@ -297,12 +309,13 @@ _PLAYLISTANNOTATION = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=b'\030\001',
+            serialized_options=b"\030\001",
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='transcoded_picture',
-            full_name='spotify_playlist_annotate3.proto.PlaylistAnnotation.transcoded_picture',
+            name="transcoded_picture",
+            full_name="spotify_playlist_annotate3.proto.PlaylistAnnotation.transcoded_picture",
             index=3,
             number=4,
             type=11,
@@ -317,10 +330,11 @@ _PLAYLISTANNOTATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='is_abuse_reporting_enabled',
-            full_name='spotify_playlist_annotate3.proto.PlaylistAnnotation.is_abuse_reporting_enabled',
+            name="is_abuse_reporting_enabled",
+            full_name="spotify_playlist_annotate3.proto.PlaylistAnnotation.is_abuse_reporting_enabled",
             index=4,
             number=6,
             type=8,
@@ -335,10 +349,11 @@ _PLAYLISTANNOTATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='abuse_report_state',
-            full_name='spotify_playlist_annotate3.proto.PlaylistAnnotation.abuse_report_state',
+            name="abuse_report_state",
+            full_name="spotify_playlist_annotate3.proto.PlaylistAnnotation.abuse_report_state",
             index=5,
             number=7,
             type=14,
@@ -353,77 +368,81 @@ _PLAYLISTANNOTATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=276,
     serialized_end=648,
 )
 
-_TAKEDOWNREQUEST.fields_by_name[
-    'abuse_report_state'].enum_type = _ABUSEREPORTSTATE
+_TAKEDOWNREQUEST.fields_by_name["abuse_report_state"].enum_type = _ABUSEREPORTSTATE
 _PLAYLISTANNOTATION.fields_by_name[
-    'deprecated_render_features'].enum_type = _RENDERFEATURES
+    "deprecated_render_features"
+].enum_type = _RENDERFEATURES
 _PLAYLISTANNOTATION.fields_by_name[
-    'transcoded_picture'].message_type = _TRANSCODEDPICTURE
-_PLAYLISTANNOTATION.fields_by_name[
-    'abuse_report_state'].enum_type = _ABUSEREPORTSTATE
-DESCRIPTOR.message_types_by_name['TakedownRequest'] = _TAKEDOWNREQUEST
-DESCRIPTOR.message_types_by_name['AnnotateRequest'] = _ANNOTATEREQUEST
-DESCRIPTOR.message_types_by_name['TranscodedPicture'] = _TRANSCODEDPICTURE
-DESCRIPTOR.message_types_by_name['PlaylistAnnotation'] = _PLAYLISTANNOTATION
-DESCRIPTOR.enum_types_by_name['RenderFeatures'] = _RENDERFEATURES
-DESCRIPTOR.enum_types_by_name['AbuseReportState'] = _ABUSEREPORTSTATE
+    "transcoded_picture"
+].message_type = _TRANSCODEDPICTURE
+_PLAYLISTANNOTATION.fields_by_name["abuse_report_state"].enum_type = _ABUSEREPORTSTATE
+DESCRIPTOR.message_types_by_name["TakedownRequest"] = _TAKEDOWNREQUEST
+DESCRIPTOR.message_types_by_name["AnnotateRequest"] = _ANNOTATEREQUEST
+DESCRIPTOR.message_types_by_name["TranscodedPicture"] = _TRANSCODEDPICTURE
+DESCRIPTOR.message_types_by_name["PlaylistAnnotation"] = _PLAYLISTANNOTATION
+DESCRIPTOR.enum_types_by_name["RenderFeatures"] = _RENDERFEATURES
+DESCRIPTOR.enum_types_by_name["AbuseReportState"] = _ABUSEREPORTSTATE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 TakedownRequest = _reflection.GeneratedProtocolMessageType(
-    'TakedownRequest',
-    (_message.Message, ),
+    "TakedownRequest",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _TAKEDOWNREQUEST,
-        '__module__': 'playlist_annotate3_pb2'
+        "DESCRIPTOR": _TAKEDOWNREQUEST,
+        "__module__": "playlist_annotate3_pb2"
         # @@protoc_insertion_point(class_scope:spotify_playlist_annotate3.proto.TakedownRequest)
-    })
+    },
+)
 _sym_db.RegisterMessage(TakedownRequest)
 
 AnnotateRequest = _reflection.GeneratedProtocolMessageType(
-    'AnnotateRequest',
-    (_message.Message, ),
+    "AnnotateRequest",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _ANNOTATEREQUEST,
-        '__module__': 'playlist_annotate3_pb2'
+        "DESCRIPTOR": _ANNOTATEREQUEST,
+        "__module__": "playlist_annotate3_pb2"
         # @@protoc_insertion_point(class_scope:spotify_playlist_annotate3.proto.AnnotateRequest)
-    })
+    },
+)
 _sym_db.RegisterMessage(AnnotateRequest)
 
 TranscodedPicture = _reflection.GeneratedProtocolMessageType(
-    'TranscodedPicture',
-    (_message.Message, ),
+    "TranscodedPicture",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _TRANSCODEDPICTURE,
-        '__module__': 'playlist_annotate3_pb2'
+        "DESCRIPTOR": _TRANSCODEDPICTURE,
+        "__module__": "playlist_annotate3_pb2"
         # @@protoc_insertion_point(class_scope:spotify_playlist_annotate3.proto.TranscodedPicture)
-    })
+    },
+)
 _sym_db.RegisterMessage(TranscodedPicture)
 
 PlaylistAnnotation = _reflection.GeneratedProtocolMessageType(
-    'PlaylistAnnotation',
-    (_message.Message, ),
+    "PlaylistAnnotation",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _PLAYLISTANNOTATION,
-        '__module__': 'playlist_annotate3_pb2'
+        "DESCRIPTOR": _PLAYLISTANNOTATION,
+        "__module__": "playlist_annotate3_pb2"
         # @@protoc_insertion_point(class_scope:spotify_playlist_annotate3.proto.PlaylistAnnotation)
-    })
+    },
+)
 _sym_db.RegisterMessage(PlaylistAnnotation)
 
 DESCRIPTOR._options = None
-_PLAYLISTANNOTATION.fields_by_name[
-    'deprecated_render_features']._options = None
+_PLAYLISTANNOTATION.fields_by_name["deprecated_render_features"]._options = None
 # @@protoc_insertion_point(module_scope)

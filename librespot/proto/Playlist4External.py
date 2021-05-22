@@ -7,96 +7,107 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
-    name='playlist4_external.proto',
-    package='spotify.playlist4.proto',
-    syntax='proto2',
-    serialized_options=b'\n\025com.spotify.playlist4B\021Playlist4ApiProtoH\002',
+    name="playlist4_external.proto",
+    package="spotify.playlist4.proto",
+    syntax="proto2",
+    serialized_options=b"\n\025com.spotify.playlist4B\021Playlist4ApiProtoH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x18playlist4_external.proto\x12\x17spotify.playlist4.proto\"P\n\x04Item\x12\x0b\n\x03uri\x18\x01 \x02(\t\x12;\n\nattributes\x18\x02 \x01(\x0b\x32\'.spotify.playlist4.proto.ItemAttributes\"\x94\x01\n\x08MetaItem\x12\x10\n\x08revision\x18\x01 \x01(\x0c\x12;\n\nattributes\x18\x02 \x01(\x0b\x32\'.spotify.playlist4.proto.ListAttributes\x12\x0e\n\x06length\x18\x03 \x01(\x05\x12\x11\n\ttimestamp\x18\x04 \x01(\x03\x12\x16\n\x0eowner_username\x18\x05 \x01(\t\"\x90\x01\n\tListItems\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12\x11\n\ttruncated\x18\x02 \x02(\x08\x12,\n\x05items\x18\x03 \x03(\x0b\x32\x1d.spotify.playlist4.proto.Item\x12\x35\n\nmeta_items\x18\x04 \x03(\x0b\x32!.spotify.playlist4.proto.MetaItem\"1\n\x13\x46ormatListAttribute\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\xf6\x01\n\x0eListAttributes\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x0f\n\x07picture\x18\x03 \x01(\x0c\x12\x15\n\rcollaborative\x18\x04 \x01(\x08\x12\x13\n\x0bpl3_version\x18\x05 \x01(\t\x12\x18\n\x10\x64\x65leted_by_owner\x18\x06 \x01(\x08\x12\x11\n\tclient_id\x18\n \x01(\t\x12\x0e\n\x06\x66ormat\x18\x0b \x01(\t\x12G\n\x11\x66ormat_attributes\x18\x0c \x03(\x0b\x32,.spotify.playlist4.proto.FormatListAttribute\"\xb0\x01\n\x0eItemAttributes\x12\x10\n\x08\x61\x64\x64\x65\x64_by\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\x0f\n\x07seen_at\x18\t \x01(\x03\x12\x0e\n\x06public\x18\n \x01(\x08\x12G\n\x11\x66ormat_attributes\x18\x0b \x03(\x0b\x32,.spotify.playlist4.proto.FormatListAttribute\x12\x0f\n\x07item_id\x18\x0c \x01(\x0c\"l\n\x03\x41\x64\x64\x12\x12\n\nfrom_index\x18\x01 \x01(\x05\x12,\n\x05items\x18\x02 \x03(\x0b\x32\x1d.spotify.playlist4.proto.Item\x12\x10\n\x08\x61\x64\x64_last\x18\x04 \x01(\x08\x12\x11\n\tadd_first\x18\x05 \x01(\x08\"m\n\x03Rem\x12\x12\n\nfrom_index\x18\x01 \x01(\x05\x12\x0e\n\x06length\x18\x02 \x01(\x05\x12,\n\x05items\x18\x03 \x03(\x0b\x32\x1d.spotify.playlist4.proto.Item\x12\x14\n\x0citems_as_key\x18\x07 \x01(\x08\";\n\x03Mov\x12\x12\n\nfrom_index\x18\x01 \x02(\x05\x12\x0e\n\x06length\x18\x02 \x02(\x05\x12\x10\n\x08to_index\x18\x03 \x02(\x05\"\x93\x01\n\x1aItemAttributesPartialState\x12\x37\n\x06values\x18\x01 \x02(\x0b\x32\'.spotify.playlist4.proto.ItemAttributes\x12<\n\x08no_value\x18\x02 \x03(\x0e\x32*.spotify.playlist4.proto.ItemAttributeKind\"\x93\x01\n\x1aListAttributesPartialState\x12\x37\n\x06values\x18\x01 \x02(\x0b\x32\'.spotify.playlist4.proto.ListAttributes\x12<\n\x08no_value\x18\x02 \x03(\x0e\x32*.spotify.playlist4.proto.ListAttributeKind\"\xbf\x01\n\x14UpdateItemAttributes\x12\r\n\x05index\x18\x01 \x02(\x05\x12K\n\x0enew_attributes\x18\x02 \x02(\x0b\x32\x33.spotify.playlist4.proto.ItemAttributesPartialState\x12K\n\x0eold_attributes\x18\x03 \x01(\x0b\x32\x33.spotify.playlist4.proto.ItemAttributesPartialState\"\xb0\x01\n\x14UpdateListAttributes\x12K\n\x0enew_attributes\x18\x01 \x02(\x0b\x32\x33.spotify.playlist4.proto.ListAttributesPartialState\x12K\n\x0eold_attributes\x18\x02 \x01(\x0b\x32\x33.spotify.playlist4.proto.ListAttributesPartialState\"\xc0\x03\n\x02Op\x12.\n\x04kind\x18\x01 \x02(\x0e\x32 .spotify.playlist4.proto.Op.Kind\x12)\n\x03\x61\x64\x64\x18\x02 \x01(\x0b\x32\x1c.spotify.playlist4.proto.Add\x12)\n\x03rem\x18\x03 \x01(\x0b\x32\x1c.spotify.playlist4.proto.Rem\x12)\n\x03mov\x18\x04 \x01(\x0b\x32\x1c.spotify.playlist4.proto.Mov\x12M\n\x16update_item_attributes\x18\x05 \x01(\x0b\x32-.spotify.playlist4.proto.UpdateItemAttributes\x12M\n\x16update_list_attributes\x18\x06 \x01(\x0b\x32-.spotify.playlist4.proto.UpdateListAttributes\"k\n\x04Kind\x12\x10\n\x0cKIND_UNKNOWN\x10\x00\x12\x07\n\x03\x41\x44\x44\x10\x02\x12\x07\n\x03REM\x10\x03\x12\x07\n\x03MOV\x10\x04\x12\x1a\n\x16UPDATE_ITEM_ATTRIBUTES\x10\x05\x12\x1a\n\x16UPDATE_LIST_ATTRIBUTES\x10\x06\"2\n\x06OpList\x12(\n\x03ops\x18\x01 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op\"\xd5\x01\n\nChangeInfo\x12\x0c\n\x04user\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\r\n\x05\x61\x64min\x18\x03 \x01(\x08\x12\x0c\n\x04undo\x18\x04 \x01(\x08\x12\x0c\n\x04redo\x18\x05 \x01(\x08\x12\r\n\x05merge\x18\x06 \x01(\x08\x12\x12\n\ncompressed\x18\x07 \x01(\x08\x12\x11\n\tmigration\x18\x08 \x01(\x08\x12\x10\n\x08split_id\x18\t \x01(\x05\x12\x33\n\x06source\x18\n \x01(\x0b\x32#.spotify.playlist4.proto.SourceInfo\"\xe8\x01\n\nSourceInfo\x12:\n\x06\x63lient\x18\x01 \x01(\x0e\x32*.spotify.playlist4.proto.SourceInfo.Client\x12\x0b\n\x03\x61pp\x18\x03 \x01(\t\x12\x0e\n\x06source\x18\x04 \x01(\t\x12\x0f\n\x07version\x18\x05 \x01(\t\"p\n\x06\x43lient\x12\x12\n\x0e\x43LIENT_UNKNOWN\x10\x00\x12\x11\n\rNATIVE_HERMES\x10\x01\x12\n\n\x06\x43LIENT\x10\x02\x12\n\n\x06PYTHON\x10\x03\x12\x08\n\x04JAVA\x10\x04\x12\r\n\tWEBPLAYER\x10\x05\x12\x0e\n\nLIBSPOTIFY\x10\x06\"z\n\x05\x44\x65lta\x12\x14\n\x0c\x62\x61se_version\x18\x01 \x01(\x0c\x12(\n\x03ops\x18\x02 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op\x12\x31\n\x04info\x18\x04 \x01(\x0b\x32#.spotify.playlist4.proto.ChangeInfo\"\\\n\x04\x44iff\x12\x15\n\rfrom_revision\x18\x01 \x02(\x0c\x12(\n\x03ops\x18\x02 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op\x12\x13\n\x0bto_revision\x18\x03 \x02(\x0c\"\xa0\x01\n\x0bListChanges\x12\x15\n\rbase_revision\x18\x01 \x01(\x0c\x12.\n\x06\x64\x65ltas\x18\x02 \x03(\x0b\x32\x1e.spotify.playlist4.proto.Delta\x12 \n\x18want_resulting_revisions\x18\x03 \x01(\x08\x12\x18\n\x10want_sync_result\x18\x04 \x01(\x08\x12\x0e\n\x06nonces\x18\x06 \x03(\x03\"\x8f\x03\n\x13SelectedListContent\x12\x10\n\x08revision\x18\x01 \x01(\x0c\x12\x0e\n\x06length\x18\x02 \x01(\x05\x12;\n\nattributes\x18\x03 \x01(\x0b\x32\'.spotify.playlist4.proto.ListAttributes\x12\x34\n\x08\x63ontents\x18\x05 \x01(\x0b\x32\".spotify.playlist4.proto.ListItems\x12+\n\x04\x64iff\x18\x06 \x01(\x0b\x32\x1d.spotify.playlist4.proto.Diff\x12\x32\n\x0bsync_result\x18\x07 \x01(\x0b\x32\x1d.spotify.playlist4.proto.Diff\x12\x1b\n\x13resulting_revisions\x18\x08 \x03(\x0c\x12\x16\n\x0emultiple_heads\x18\t \x01(\x08\x12\x12\n\nup_to_date\x18\n \x01(\x08\x12\x0e\n\x06nonces\x18\x0e \x03(\x03\x12\x11\n\ttimestamp\x18\x0f \x01(\x03\x12\x16\n\x0eowner_username\x18\x10 \x01(\t\"0\n\x0f\x43reateListReply\x12\x0b\n\x03uri\x18\x01 \x02(\x0c\x12\x10\n\x08revision\x18\x02 \x01(\x0c\",\n\x0bModifyReply\x12\x0b\n\x03uri\x18\x01 \x02(\x0c\x12\x10\n\x08revision\x18\x02 \x01(\x0c\" \n\x10SubscribeRequest\x12\x0c\n\x04uris\x18\x01 \x03(\x0c\"\"\n\x12UnsubscribeRequest\x12\x0c\n\x04uris\x18\x01 \x03(\x0c\"\x80\x01\n\x18PlaylistModificationInfo\x12\x0b\n\x03uri\x18\x01 \x01(\x0c\x12\x14\n\x0cnew_revision\x18\x02 \x01(\x0c\x12\x17\n\x0fparent_revision\x18\x03 \x01(\x0c\x12(\n\x03ops\x18\x04 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op*\xe6\x01\n\x11ListAttributeKind\x12\x10\n\x0cLIST_UNKNOWN\x10\x00\x12\r\n\tLIST_NAME\x10\x01\x12\x14\n\x10LIST_DESCRIPTION\x10\x02\x12\x10\n\x0cLIST_PICTURE\x10\x03\x12\x16\n\x12LIST_COLLABORATIVE\x10\x04\x12\x14\n\x10LIST_PL3_VERSION\x10\x05\x12\x19\n\x15LIST_DELETED_BY_OWNER\x10\x06\x12\x12\n\x0eLIST_CLIENT_ID\x10\n\x12\x0f\n\x0bLIST_FORMAT\x10\x0b\x12\x1a\n\x16LIST_FORMAT_ATTRIBUTES\x10\x0c*\x98\x01\n\x11ItemAttributeKind\x12\x10\n\x0cITEM_UNKNOWN\x10\x00\x12\x11\n\rITEM_ADDED_BY\x10\x01\x12\x12\n\x0eITEM_TIMESTAMP\x10\x02\x12\x10\n\x0cITEM_SEEN_AT\x10\t\x12\x0f\n\x0bITEM_PUBLIC\x10\n\x12\x1a\n\x16ITEM_FORMAT_ATTRIBUTES\x10\x0b\x12\x0b\n\x07ITEM_ID\x10\x0c\x42,\n\x15\x63om.spotify.playlist4B\x11Playlist4ApiProtoH\x02'
+    serialized_pb=b'\n\x18playlist4_external.proto\x12\x17spotify.playlist4.proto"P\n\x04Item\x12\x0b\n\x03uri\x18\x01 \x02(\t\x12;\n\nattributes\x18\x02 \x01(\x0b\x32\'.spotify.playlist4.proto.ItemAttributes"\x94\x01\n\x08MetaItem\x12\x10\n\x08revision\x18\x01 \x01(\x0c\x12;\n\nattributes\x18\x02 \x01(\x0b\x32\'.spotify.playlist4.proto.ListAttributes\x12\x0e\n\x06length\x18\x03 \x01(\x05\x12\x11\n\ttimestamp\x18\x04 \x01(\x03\x12\x16\n\x0eowner_username\x18\x05 \x01(\t"\x90\x01\n\tListItems\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12\x11\n\ttruncated\x18\x02 \x02(\x08\x12,\n\x05items\x18\x03 \x03(\x0b\x32\x1d.spotify.playlist4.proto.Item\x12\x35\n\nmeta_items\x18\x04 \x03(\x0b\x32!.spotify.playlist4.proto.MetaItem"1\n\x13\x46ormatListAttribute\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t"\xf6\x01\n\x0eListAttributes\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x0f\n\x07picture\x18\x03 \x01(\x0c\x12\x15\n\rcollaborative\x18\x04 \x01(\x08\x12\x13\n\x0bpl3_version\x18\x05 \x01(\t\x12\x18\n\x10\x64\x65leted_by_owner\x18\x06 \x01(\x08\x12\x11\n\tclient_id\x18\n \x01(\t\x12\x0e\n\x06\x66ormat\x18\x0b \x01(\t\x12G\n\x11\x66ormat_attributes\x18\x0c \x03(\x0b\x32,.spotify.playlist4.proto.FormatListAttribute"\xb0\x01\n\x0eItemAttributes\x12\x10\n\x08\x61\x64\x64\x65\x64_by\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\x0f\n\x07seen_at\x18\t \x01(\x03\x12\x0e\n\x06public\x18\n \x01(\x08\x12G\n\x11\x66ormat_attributes\x18\x0b \x03(\x0b\x32,.spotify.playlist4.proto.FormatListAttribute\x12\x0f\n\x07item_id\x18\x0c \x01(\x0c"l\n\x03\x41\x64\x64\x12\x12\n\nfrom_index\x18\x01 \x01(\x05\x12,\n\x05items\x18\x02 \x03(\x0b\x32\x1d.spotify.playlist4.proto.Item\x12\x10\n\x08\x61\x64\x64_last\x18\x04 \x01(\x08\x12\x11\n\tadd_first\x18\x05 \x01(\x08"m\n\x03Rem\x12\x12\n\nfrom_index\x18\x01 \x01(\x05\x12\x0e\n\x06length\x18\x02 \x01(\x05\x12,\n\x05items\x18\x03 \x03(\x0b\x32\x1d.spotify.playlist4.proto.Item\x12\x14\n\x0citems_as_key\x18\x07 \x01(\x08";\n\x03Mov\x12\x12\n\nfrom_index\x18\x01 \x02(\x05\x12\x0e\n\x06length\x18\x02 \x02(\x05\x12\x10\n\x08to_index\x18\x03 \x02(\x05"\x93\x01\n\x1aItemAttributesPartialState\x12\x37\n\x06values\x18\x01 \x02(\x0b\x32\'.spotify.playlist4.proto.ItemAttributes\x12<\n\x08no_value\x18\x02 \x03(\x0e\x32*.spotify.playlist4.proto.ItemAttributeKind"\x93\x01\n\x1aListAttributesPartialState\x12\x37\n\x06values\x18\x01 \x02(\x0b\x32\'.spotify.playlist4.proto.ListAttributes\x12<\n\x08no_value\x18\x02 \x03(\x0e\x32*.spotify.playlist4.proto.ListAttributeKind"\xbf\x01\n\x14UpdateItemAttributes\x12\r\n\x05index\x18\x01 \x02(\x05\x12K\n\x0enew_attributes\x18\x02 \x02(\x0b\x32\x33.spotify.playlist4.proto.ItemAttributesPartialState\x12K\n\x0eold_attributes\x18\x03 \x01(\x0b\x32\x33.spotify.playlist4.proto.ItemAttributesPartialState"\xb0\x01\n\x14UpdateListAttributes\x12K\n\x0enew_attributes\x18\x01 \x02(\x0b\x32\x33.spotify.playlist4.proto.ListAttributesPartialState\x12K\n\x0eold_attributes\x18\x02 \x01(\x0b\x32\x33.spotify.playlist4.proto.ListAttributesPartialState"\xc0\x03\n\x02Op\x12.\n\x04kind\x18\x01 \x02(\x0e\x32 .spotify.playlist4.proto.Op.Kind\x12)\n\x03\x61\x64\x64\x18\x02 \x01(\x0b\x32\x1c.spotify.playlist4.proto.Add\x12)\n\x03rem\x18\x03 \x01(\x0b\x32\x1c.spotify.playlist4.proto.Rem\x12)\n\x03mov\x18\x04 \x01(\x0b\x32\x1c.spotify.playlist4.proto.Mov\x12M\n\x16update_item_attributes\x18\x05 \x01(\x0b\x32-.spotify.playlist4.proto.UpdateItemAttributes\x12M\n\x16update_list_attributes\x18\x06 \x01(\x0b\x32-.spotify.playlist4.proto.UpdateListAttributes"k\n\x04Kind\x12\x10\n\x0cKIND_UNKNOWN\x10\x00\x12\x07\n\x03\x41\x44\x44\x10\x02\x12\x07\n\x03REM\x10\x03\x12\x07\n\x03MOV\x10\x04\x12\x1a\n\x16UPDATE_ITEM_ATTRIBUTES\x10\x05\x12\x1a\n\x16UPDATE_LIST_ATTRIBUTES\x10\x06"2\n\x06OpList\x12(\n\x03ops\x18\x01 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op"\xd5\x01\n\nChangeInfo\x12\x0c\n\x04user\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\r\n\x05\x61\x64min\x18\x03 \x01(\x08\x12\x0c\n\x04undo\x18\x04 \x01(\x08\x12\x0c\n\x04redo\x18\x05 \x01(\x08\x12\r\n\x05merge\x18\x06 \x01(\x08\x12\x12\n\ncompressed\x18\x07 \x01(\x08\x12\x11\n\tmigration\x18\x08 \x01(\x08\x12\x10\n\x08split_id\x18\t \x01(\x05\x12\x33\n\x06source\x18\n \x01(\x0b\x32#.spotify.playlist4.proto.SourceInfo"\xe8\x01\n\nSourceInfo\x12:\n\x06\x63lient\x18\x01 \x01(\x0e\x32*.spotify.playlist4.proto.SourceInfo.Client\x12\x0b\n\x03\x61pp\x18\x03 \x01(\t\x12\x0e\n\x06source\x18\x04 \x01(\t\x12\x0f\n\x07version\x18\x05 \x01(\t"p\n\x06\x43lient\x12\x12\n\x0e\x43LIENT_UNKNOWN\x10\x00\x12\x11\n\rNATIVE_HERMES\x10\x01\x12\n\n\x06\x43LIENT\x10\x02\x12\n\n\x06PYTHON\x10\x03\x12\x08\n\x04JAVA\x10\x04\x12\r\n\tWEBPLAYER\x10\x05\x12\x0e\n\nLIBSPOTIFY\x10\x06"z\n\x05\x44\x65lta\x12\x14\n\x0c\x62\x61se_version\x18\x01 \x01(\x0c\x12(\n\x03ops\x18\x02 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op\x12\x31\n\x04info\x18\x04 \x01(\x0b\x32#.spotify.playlist4.proto.ChangeInfo"\\\n\x04\x44iff\x12\x15\n\rfrom_revision\x18\x01 \x02(\x0c\x12(\n\x03ops\x18\x02 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op\x12\x13\n\x0bto_revision\x18\x03 \x02(\x0c"\xa0\x01\n\x0bListChanges\x12\x15\n\rbase_revision\x18\x01 \x01(\x0c\x12.\n\x06\x64\x65ltas\x18\x02 \x03(\x0b\x32\x1e.spotify.playlist4.proto.Delta\x12 \n\x18want_resulting_revisions\x18\x03 \x01(\x08\x12\x18\n\x10want_sync_result\x18\x04 \x01(\x08\x12\x0e\n\x06nonces\x18\x06 \x03(\x03"\x8f\x03\n\x13SelectedListContent\x12\x10\n\x08revision\x18\x01 \x01(\x0c\x12\x0e\n\x06length\x18\x02 \x01(\x05\x12;\n\nattributes\x18\x03 \x01(\x0b\x32\'.spotify.playlist4.proto.ListAttributes\x12\x34\n\x08\x63ontents\x18\x05 \x01(\x0b\x32".spotify.playlist4.proto.ListItems\x12+\n\x04\x64iff\x18\x06 \x01(\x0b\x32\x1d.spotify.playlist4.proto.Diff\x12\x32\n\x0bsync_result\x18\x07 \x01(\x0b\x32\x1d.spotify.playlist4.proto.Diff\x12\x1b\n\x13resulting_revisions\x18\x08 \x03(\x0c\x12\x16\n\x0emultiple_heads\x18\t \x01(\x08\x12\x12\n\nup_to_date\x18\n \x01(\x08\x12\x0e\n\x06nonces\x18\x0e \x03(\x03\x12\x11\n\ttimestamp\x18\x0f \x01(\x03\x12\x16\n\x0eowner_username\x18\x10 \x01(\t"0\n\x0f\x43reateListReply\x12\x0b\n\x03uri\x18\x01 \x02(\x0c\x12\x10\n\x08revision\x18\x02 \x01(\x0c",\n\x0bModifyReply\x12\x0b\n\x03uri\x18\x01 \x02(\x0c\x12\x10\n\x08revision\x18\x02 \x01(\x0c" \n\x10SubscribeRequest\x12\x0c\n\x04uris\x18\x01 \x03(\x0c""\n\x12UnsubscribeRequest\x12\x0c\n\x04uris\x18\x01 \x03(\x0c"\x80\x01\n\x18PlaylistModificationInfo\x12\x0b\n\x03uri\x18\x01 \x01(\x0c\x12\x14\n\x0cnew_revision\x18\x02 \x01(\x0c\x12\x17\n\x0fparent_revision\x18\x03 \x01(\x0c\x12(\n\x03ops\x18\x04 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op*\xe6\x01\n\x11ListAttributeKind\x12\x10\n\x0cLIST_UNKNOWN\x10\x00\x12\r\n\tLIST_NAME\x10\x01\x12\x14\n\x10LIST_DESCRIPTION\x10\x02\x12\x10\n\x0cLIST_PICTURE\x10\x03\x12\x16\n\x12LIST_COLLABORATIVE\x10\x04\x12\x14\n\x10LIST_PL3_VERSION\x10\x05\x12\x19\n\x15LIST_DELETED_BY_OWNER\x10\x06\x12\x12\n\x0eLIST_CLIENT_ID\x10\n\x12\x0f\n\x0bLIST_FORMAT\x10\x0b\x12\x1a\n\x16LIST_FORMAT_ATTRIBUTES\x10\x0c*\x98\x01\n\x11ItemAttributeKind\x12\x10\n\x0cITEM_UNKNOWN\x10\x00\x12\x11\n\rITEM_ADDED_BY\x10\x01\x12\x12\n\x0eITEM_TIMESTAMP\x10\x02\x12\x10\n\x0cITEM_SEEN_AT\x10\t\x12\x0f\n\x0bITEM_PUBLIC\x10\n\x12\x1a\n\x16ITEM_FORMAT_ATTRIBUTES\x10\x0b\x12\x0b\n\x07ITEM_ID\x10\x0c\x42,\n\x15\x63om.spotify.playlist4B\x11Playlist4ApiProtoH\x02',
 )
 
 _LISTATTRIBUTEKIND = _descriptor.EnumDescriptor(
-    name='ListAttributeKind',
-    full_name='spotify.playlist4.proto.ListAttributeKind',
+    name="ListAttributeKind",
+    full_name="spotify.playlist4.proto.ListAttributeKind",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='LIST_UNKNOWN',
+            name="LIST_UNKNOWN",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='LIST_NAME',
+            name="LIST_NAME",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='LIST_DESCRIPTION',
+            name="LIST_DESCRIPTION",
             index=2,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='LIST_PICTURE',
+            name="LIST_PICTURE",
             index=3,
             number=3,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='LIST_COLLABORATIVE',
+            name="LIST_COLLABORATIVE",
             index=4,
             number=4,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='LIST_PL3_VERSION',
+            name="LIST_PL3_VERSION",
             index=5,
             number=5,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='LIST_DELETED_BY_OWNER',
+            name="LIST_DELETED_BY_OWNER",
             index=6,
             number=6,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='LIST_CLIENT_ID',
+            name="LIST_CLIENT_ID",
             index=7,
             number=10,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='LIST_FORMAT',
+            name="LIST_FORMAT",
             index=8,
             number=11,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='LIST_FORMAT_ATTRIBUTES',
+            name="LIST_FORMAT_ATTRIBUTES",
             index=9,
             number=12,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -107,61 +118,68 @@ _sym_db.RegisterEnumDescriptor(_LISTATTRIBUTEKIND)
 
 ListAttributeKind = enum_type_wrapper.EnumTypeWrapper(_LISTATTRIBUTEKIND)
 _ITEMATTRIBUTEKIND = _descriptor.EnumDescriptor(
-    name='ItemAttributeKind',
-    full_name='spotify.playlist4.proto.ItemAttributeKind',
+    name="ItemAttributeKind",
+    full_name="spotify.playlist4.proto.ItemAttributeKind",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='ITEM_UNKNOWN',
+            name="ITEM_UNKNOWN",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='ITEM_ADDED_BY',
+            name="ITEM_ADDED_BY",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='ITEM_TIMESTAMP',
+            name="ITEM_TIMESTAMP",
             index=2,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='ITEM_SEEN_AT',
+            name="ITEM_SEEN_AT",
             index=3,
             number=9,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='ITEM_PUBLIC',
+            name="ITEM_PUBLIC",
             index=4,
             number=10,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='ITEM_FORMAT_ATTRIBUTES',
+            name="ITEM_FORMAT_ATTRIBUTES",
             index=5,
             number=11,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='ITEM_ID',
+            name="ITEM_ID",
             index=6,
             number=12,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -190,54 +208,60 @@ ITEM_FORMAT_ATTRIBUTES = 11
 ITEM_ID = 12
 
 _OP_KIND = _descriptor.EnumDescriptor(
-    name='Kind',
-    full_name='spotify.playlist4.proto.Op.Kind',
+    name="Kind",
+    full_name="spotify.playlist4.proto.Op.Kind",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='KIND_UNKNOWN',
+            name="KIND_UNKNOWN",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='ADD',
+            name="ADD",
             index=1,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='REM',
+            name="REM",
             index=2,
             number=3,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='MOV',
+            name="MOV",
             index=3,
             number=4,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='UPDATE_ITEM_ATTRIBUTES',
+            name="UPDATE_ITEM_ATTRIBUTES",
             index=4,
             number=5,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='UPDATE_LIST_ATTRIBUTES',
+            name="UPDATE_LIST_ATTRIBUTES",
             index=5,
             number=6,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -247,61 +271,68 @@ _OP_KIND = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_OP_KIND)
 
 _SOURCEINFO_CLIENT = _descriptor.EnumDescriptor(
-    name='Client',
-    full_name='spotify.playlist4.proto.SourceInfo.Client',
+    name="Client",
+    full_name="spotify.playlist4.proto.SourceInfo.Client",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='CLIENT_UNKNOWN',
+            name="CLIENT_UNKNOWN",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='NATIVE_HERMES',
+            name="NATIVE_HERMES",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='CLIENT',
+            name="CLIENT",
             index=2,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='PYTHON',
+            name="PYTHON",
             index=3,
             number=3,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='JAVA',
+            name="JAVA",
             index=4,
             number=4,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='WEBPLAYER',
+            name="WEBPLAYER",
             index=5,
             number=5,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='LIBSPOTIFY',
+            name="LIBSPOTIFY",
             index=6,
             number=6,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -311,23 +342,23 @@ _SOURCEINFO_CLIENT = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_SOURCEINFO_CLIENT)
 
 _ITEM = _descriptor.Descriptor(
-    name='Item',
-    full_name='spotify.playlist4.proto.Item',
+    name="Item",
+    full_name="spotify.playlist4.proto.Item",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='uri',
-            full_name='spotify.playlist4.proto.Item.uri',
+            name="uri",
+            full_name="spotify.playlist4.proto.Item.uri",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=2,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -335,10 +366,11 @@ _ITEM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='attributes',
-            full_name='spotify.playlist4.proto.Item.attributes',
+            name="attributes",
+            full_name="spotify.playlist4.proto.Item.attributes",
             index=1,
             number=2,
             type=11,
@@ -353,14 +385,15 @@ _ITEM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=53,
@@ -368,16 +401,16 @@ _ITEM = _descriptor.Descriptor(
 )
 
 _METAITEM = _descriptor.Descriptor(
-    name='MetaItem',
-    full_name='spotify.playlist4.proto.MetaItem',
+    name="MetaItem",
+    full_name="spotify.playlist4.proto.MetaItem",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='revision',
-            full_name='spotify.playlist4.proto.MetaItem.revision',
+            name="revision",
+            full_name="spotify.playlist4.proto.MetaItem.revision",
             index=0,
             number=1,
             type=12,
@@ -392,10 +425,11 @@ _METAITEM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='attributes',
-            full_name='spotify.playlist4.proto.MetaItem.attributes',
+            name="attributes",
+            full_name="spotify.playlist4.proto.MetaItem.attributes",
             index=1,
             number=2,
             type=11,
@@ -410,10 +444,11 @@ _METAITEM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='length',
-            full_name='spotify.playlist4.proto.MetaItem.length',
+            name="length",
+            full_name="spotify.playlist4.proto.MetaItem.length",
             index=2,
             number=3,
             type=5,
@@ -428,10 +463,11 @@ _METAITEM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='timestamp',
-            full_name='spotify.playlist4.proto.MetaItem.timestamp',
+            name="timestamp",
+            full_name="spotify.playlist4.proto.MetaItem.timestamp",
             index=3,
             number=4,
             type=3,
@@ -446,17 +482,18 @@ _METAITEM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='owner_username',
-            full_name='spotify.playlist4.proto.MetaItem.owner_username',
+            name="owner_username",
+            full_name="spotify.playlist4.proto.MetaItem.owner_username",
             index=4,
             number=5,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -464,14 +501,15 @@ _METAITEM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=136,
@@ -479,16 +517,16 @@ _METAITEM = _descriptor.Descriptor(
 )
 
 _LISTITEMS = _descriptor.Descriptor(
-    name='ListItems',
-    full_name='spotify.playlist4.proto.ListItems',
+    name="ListItems",
+    full_name="spotify.playlist4.proto.ListItems",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='pos',
-            full_name='spotify.playlist4.proto.ListItems.pos',
+            name="pos",
+            full_name="spotify.playlist4.proto.ListItems.pos",
             index=0,
             number=1,
             type=5,
@@ -503,10 +541,11 @@ _LISTITEMS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='truncated',
-            full_name='spotify.playlist4.proto.ListItems.truncated',
+            name="truncated",
+            full_name="spotify.playlist4.proto.ListItems.truncated",
             index=1,
             number=2,
             type=8,
@@ -521,10 +560,11 @@ _LISTITEMS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='items',
-            full_name='spotify.playlist4.proto.ListItems.items',
+            name="items",
+            full_name="spotify.playlist4.proto.ListItems.items",
             index=2,
             number=3,
             type=11,
@@ -539,10 +579,11 @@ _LISTITEMS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='meta_items',
-            full_name='spotify.playlist4.proto.ListItems.meta_items',
+            name="meta_items",
+            full_name="spotify.playlist4.proto.ListItems.meta_items",
             index=3,
             number=4,
             type=11,
@@ -557,14 +598,15 @@ _LISTITEMS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=287,
@@ -572,23 +614,23 @@ _LISTITEMS = _descriptor.Descriptor(
 )
 
 _FORMATLISTATTRIBUTE = _descriptor.Descriptor(
-    name='FormatListAttribute',
-    full_name='spotify.playlist4.proto.FormatListAttribute',
+    name="FormatListAttribute",
+    full_name="spotify.playlist4.proto.FormatListAttribute",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='key',
-            full_name='spotify.playlist4.proto.FormatListAttribute.key',
+            name="key",
+            full_name="spotify.playlist4.proto.FormatListAttribute.key",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -596,17 +638,18 @@ _FORMATLISTATTRIBUTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='value',
-            full_name='spotify.playlist4.proto.FormatListAttribute.value',
+            name="value",
+            full_name="spotify.playlist4.proto.FormatListAttribute.value",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -614,14 +657,15 @@ _FORMATLISTATTRIBUTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=433,
@@ -629,23 +673,23 @@ _FORMATLISTATTRIBUTE = _descriptor.Descriptor(
 )
 
 _LISTATTRIBUTES = _descriptor.Descriptor(
-    name='ListAttributes',
-    full_name='spotify.playlist4.proto.ListAttributes',
+    name="ListAttributes",
+    full_name="spotify.playlist4.proto.ListAttributes",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='name',
-            full_name='spotify.playlist4.proto.ListAttributes.name',
+            name="name",
+            full_name="spotify.playlist4.proto.ListAttributes.name",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -653,17 +697,18 @@ _LISTATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='description',
-            full_name='spotify.playlist4.proto.ListAttributes.description',
+            name="description",
+            full_name="spotify.playlist4.proto.ListAttributes.description",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -671,10 +716,11 @@ _LISTATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='picture',
-            full_name='spotify.playlist4.proto.ListAttributes.picture',
+            name="picture",
+            full_name="spotify.playlist4.proto.ListAttributes.picture",
             index=2,
             number=3,
             type=12,
@@ -689,10 +735,11 @@ _LISTATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='collaborative',
-            full_name='spotify.playlist4.proto.ListAttributes.collaborative',
+            name="collaborative",
+            full_name="spotify.playlist4.proto.ListAttributes.collaborative",
             index=3,
             number=4,
             type=8,
@@ -707,17 +754,18 @@ _LISTATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='pl3_version',
-            full_name='spotify.playlist4.proto.ListAttributes.pl3_version',
+            name="pl3_version",
+            full_name="spotify.playlist4.proto.ListAttributes.pl3_version",
             index=4,
             number=5,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -725,10 +773,11 @@ _LISTATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='deleted_by_owner',
-            full_name='spotify.playlist4.proto.ListAttributes.deleted_by_owner',
+            name="deleted_by_owner",
+            full_name="spotify.playlist4.proto.ListAttributes.deleted_by_owner",
             index=5,
             number=6,
             type=8,
@@ -743,17 +792,18 @@ _LISTATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='client_id',
-            full_name='spotify.playlist4.proto.ListAttributes.client_id',
+            name="client_id",
+            full_name="spotify.playlist4.proto.ListAttributes.client_id",
             index=6,
             number=10,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -761,17 +811,18 @@ _LISTATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='format',
-            full_name='spotify.playlist4.proto.ListAttributes.format',
+            name="format",
+            full_name="spotify.playlist4.proto.ListAttributes.format",
             index=7,
             number=11,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -779,10 +830,11 @@ _LISTATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='format_attributes',
-            full_name='spotify.playlist4.proto.ListAttributes.format_attributes',
+            name="format_attributes",
+            full_name="spotify.playlist4.proto.ListAttributes.format_attributes",
             index=8,
             number=12,
             type=11,
@@ -797,14 +849,15 @@ _LISTATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=485,
@@ -812,23 +865,23 @@ _LISTATTRIBUTES = _descriptor.Descriptor(
 )
 
 _ITEMATTRIBUTES = _descriptor.Descriptor(
-    name='ItemAttributes',
-    full_name='spotify.playlist4.proto.ItemAttributes',
+    name="ItemAttributes",
+    full_name="spotify.playlist4.proto.ItemAttributes",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='added_by',
-            full_name='spotify.playlist4.proto.ItemAttributes.added_by',
+            name="added_by",
+            full_name="spotify.playlist4.proto.ItemAttributes.added_by",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -836,10 +889,11 @@ _ITEMATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='timestamp',
-            full_name='spotify.playlist4.proto.ItemAttributes.timestamp',
+            name="timestamp",
+            full_name="spotify.playlist4.proto.ItemAttributes.timestamp",
             index=1,
             number=2,
             type=3,
@@ -854,10 +908,11 @@ _ITEMATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='seen_at',
-            full_name='spotify.playlist4.proto.ItemAttributes.seen_at',
+            name="seen_at",
+            full_name="spotify.playlist4.proto.ItemAttributes.seen_at",
             index=2,
             number=9,
             type=3,
@@ -872,10 +927,11 @@ _ITEMATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='public',
-            full_name='spotify.playlist4.proto.ItemAttributes.public',
+            name="public",
+            full_name="spotify.playlist4.proto.ItemAttributes.public",
             index=3,
             number=10,
             type=8,
@@ -890,10 +946,11 @@ _ITEMATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='format_attributes',
-            full_name='spotify.playlist4.proto.ItemAttributes.format_attributes',
+            name="format_attributes",
+            full_name="spotify.playlist4.proto.ItemAttributes.format_attributes",
             index=4,
             number=11,
             type=11,
@@ -908,10 +965,11 @@ _ITEMATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='item_id',
-            full_name='spotify.playlist4.proto.ItemAttributes.item_id',
+            name="item_id",
+            full_name="spotify.playlist4.proto.ItemAttributes.item_id",
             index=5,
             number=12,
             type=12,
@@ -926,14 +984,15 @@ _ITEMATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=734,
@@ -941,16 +1000,16 @@ _ITEMATTRIBUTES = _descriptor.Descriptor(
 )
 
 _ADD = _descriptor.Descriptor(
-    name='Add',
-    full_name='spotify.playlist4.proto.Add',
+    name="Add",
+    full_name="spotify.playlist4.proto.Add",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='from_index',
-            full_name='spotify.playlist4.proto.Add.from_index',
+            name="from_index",
+            full_name="spotify.playlist4.proto.Add.from_index",
             index=0,
             number=1,
             type=5,
@@ -965,10 +1024,11 @@ _ADD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='items',
-            full_name='spotify.playlist4.proto.Add.items',
+            name="items",
+            full_name="spotify.playlist4.proto.Add.items",
             index=1,
             number=2,
             type=11,
@@ -983,10 +1043,11 @@ _ADD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='add_last',
-            full_name='spotify.playlist4.proto.Add.add_last',
+            name="add_last",
+            full_name="spotify.playlist4.proto.Add.add_last",
             index=2,
             number=4,
             type=8,
@@ -1001,10 +1062,11 @@ _ADD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='add_first',
-            full_name='spotify.playlist4.proto.Add.add_first',
+            name="add_first",
+            full_name="spotify.playlist4.proto.Add.add_first",
             index=3,
             number=5,
             type=8,
@@ -1019,14 +1081,15 @@ _ADD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=912,
@@ -1034,16 +1097,16 @@ _ADD = _descriptor.Descriptor(
 )
 
 _REM = _descriptor.Descriptor(
-    name='Rem',
-    full_name='spotify.playlist4.proto.Rem',
+    name="Rem",
+    full_name="spotify.playlist4.proto.Rem",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='from_index',
-            full_name='spotify.playlist4.proto.Rem.from_index',
+            name="from_index",
+            full_name="spotify.playlist4.proto.Rem.from_index",
             index=0,
             number=1,
             type=5,
@@ -1058,10 +1121,11 @@ _REM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='length',
-            full_name='spotify.playlist4.proto.Rem.length',
+            name="length",
+            full_name="spotify.playlist4.proto.Rem.length",
             index=1,
             number=2,
             type=5,
@@ -1076,10 +1140,11 @@ _REM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='items',
-            full_name='spotify.playlist4.proto.Rem.items',
+            name="items",
+            full_name="spotify.playlist4.proto.Rem.items",
             index=2,
             number=3,
             type=11,
@@ -1094,10 +1159,11 @@ _REM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='items_as_key',
-            full_name='spotify.playlist4.proto.Rem.items_as_key',
+            name="items_as_key",
+            full_name="spotify.playlist4.proto.Rem.items_as_key",
             index=3,
             number=7,
             type=8,
@@ -1112,14 +1178,15 @@ _REM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=1022,
@@ -1127,16 +1194,16 @@ _REM = _descriptor.Descriptor(
 )
 
 _MOV = _descriptor.Descriptor(
-    name='Mov',
-    full_name='spotify.playlist4.proto.Mov',
+    name="Mov",
+    full_name="spotify.playlist4.proto.Mov",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='from_index',
-            full_name='spotify.playlist4.proto.Mov.from_index',
+            name="from_index",
+            full_name="spotify.playlist4.proto.Mov.from_index",
             index=0,
             number=1,
             type=5,
@@ -1151,10 +1218,11 @@ _MOV = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='length',
-            full_name='spotify.playlist4.proto.Mov.length',
+            name="length",
+            full_name="spotify.playlist4.proto.Mov.length",
             index=1,
             number=2,
             type=5,
@@ -1169,10 +1237,11 @@ _MOV = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='to_index',
-            full_name='spotify.playlist4.proto.Mov.to_index',
+            name="to_index",
+            full_name="spotify.playlist4.proto.Mov.to_index",
             index=2,
             number=3,
             type=5,
@@ -1187,14 +1256,15 @@ _MOV = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=1133,
@@ -1202,16 +1272,16 @@ _MOV = _descriptor.Descriptor(
 )
 
 _ITEMATTRIBUTESPARTIALSTATE = _descriptor.Descriptor(
-    name='ItemAttributesPartialState',
-    full_name='spotify.playlist4.proto.ItemAttributesPartialState',
+    name="ItemAttributesPartialState",
+    full_name="spotify.playlist4.proto.ItemAttributesPartialState",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='values',
-            full_name='spotify.playlist4.proto.ItemAttributesPartialState.values',
+            name="values",
+            full_name="spotify.playlist4.proto.ItemAttributesPartialState.values",
             index=0,
             number=1,
             type=11,
@@ -1226,10 +1296,11 @@ _ITEMATTRIBUTESPARTIALSTATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='no_value',
-            full_name='spotify.playlist4.proto.ItemAttributesPartialState.no_value',
+            name="no_value",
+            full_name="spotify.playlist4.proto.ItemAttributesPartialState.no_value",
             index=1,
             number=2,
             type=14,
@@ -1244,14 +1315,15 @@ _ITEMATTRIBUTESPARTIALSTATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=1195,
@@ -1259,16 +1331,16 @@ _ITEMATTRIBUTESPARTIALSTATE = _descriptor.Descriptor(
 )
 
 _LISTATTRIBUTESPARTIALSTATE = _descriptor.Descriptor(
-    name='ListAttributesPartialState',
-    full_name='spotify.playlist4.proto.ListAttributesPartialState',
+    name="ListAttributesPartialState",
+    full_name="spotify.playlist4.proto.ListAttributesPartialState",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='values',
-            full_name='spotify.playlist4.proto.ListAttributesPartialState.values',
+            name="values",
+            full_name="spotify.playlist4.proto.ListAttributesPartialState.values",
             index=0,
             number=1,
             type=11,
@@ -1283,10 +1355,11 @@ _LISTATTRIBUTESPARTIALSTATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='no_value',
-            full_name='spotify.playlist4.proto.ListAttributesPartialState.no_value',
+            name="no_value",
+            full_name="spotify.playlist4.proto.ListAttributesPartialState.no_value",
             index=1,
             number=2,
             type=14,
@@ -1301,14 +1374,15 @@ _LISTATTRIBUTESPARTIALSTATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=1345,
@@ -1316,16 +1390,16 @@ _LISTATTRIBUTESPARTIALSTATE = _descriptor.Descriptor(
 )
 
 _UPDATEITEMATTRIBUTES = _descriptor.Descriptor(
-    name='UpdateItemAttributes',
-    full_name='spotify.playlist4.proto.UpdateItemAttributes',
+    name="UpdateItemAttributes",
+    full_name="spotify.playlist4.proto.UpdateItemAttributes",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='index',
-            full_name='spotify.playlist4.proto.UpdateItemAttributes.index',
+            name="index",
+            full_name="spotify.playlist4.proto.UpdateItemAttributes.index",
             index=0,
             number=1,
             type=5,
@@ -1340,10 +1414,11 @@ _UPDATEITEMATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='new_attributes',
-            full_name='spotify.playlist4.proto.UpdateItemAttributes.new_attributes',
+            name="new_attributes",
+            full_name="spotify.playlist4.proto.UpdateItemAttributes.new_attributes",
             index=1,
             number=2,
             type=11,
@@ -1358,10 +1433,11 @@ _UPDATEITEMATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='old_attributes',
-            full_name='spotify.playlist4.proto.UpdateItemAttributes.old_attributes',
+            name="old_attributes",
+            full_name="spotify.playlist4.proto.UpdateItemAttributes.old_attributes",
             index=2,
             number=3,
             type=11,
@@ -1376,14 +1452,15 @@ _UPDATEITEMATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=1495,
@@ -1391,16 +1468,16 @@ _UPDATEITEMATTRIBUTES = _descriptor.Descriptor(
 )
 
 _UPDATELISTATTRIBUTES = _descriptor.Descriptor(
-    name='UpdateListAttributes',
-    full_name='spotify.playlist4.proto.UpdateListAttributes',
+    name="UpdateListAttributes",
+    full_name="spotify.playlist4.proto.UpdateListAttributes",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='new_attributes',
-            full_name='spotify.playlist4.proto.UpdateListAttributes.new_attributes',
+            name="new_attributes",
+            full_name="spotify.playlist4.proto.UpdateListAttributes.new_attributes",
             index=0,
             number=1,
             type=11,
@@ -1415,10 +1492,11 @@ _UPDATELISTATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='old_attributes',
-            full_name='spotify.playlist4.proto.UpdateListAttributes.old_attributes',
+            name="old_attributes",
+            full_name="spotify.playlist4.proto.UpdateListAttributes.old_attributes",
             index=1,
             number=2,
             type=11,
@@ -1433,14 +1511,15 @@ _UPDATELISTATTRIBUTES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=1689,
@@ -1448,16 +1527,16 @@ _UPDATELISTATTRIBUTES = _descriptor.Descriptor(
 )
 
 _OP = _descriptor.Descriptor(
-    name='Op',
-    full_name='spotify.playlist4.proto.Op',
+    name="Op",
+    full_name="spotify.playlist4.proto.Op",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='kind',
-            full_name='spotify.playlist4.proto.Op.kind',
+            name="kind",
+            full_name="spotify.playlist4.proto.Op.kind",
             index=0,
             number=1,
             type=14,
@@ -1472,10 +1551,11 @@ _OP = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='add',
-            full_name='spotify.playlist4.proto.Op.add',
+            name="add",
+            full_name="spotify.playlist4.proto.Op.add",
             index=1,
             number=2,
             type=11,
@@ -1490,10 +1570,11 @@ _OP = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='rem',
-            full_name='spotify.playlist4.proto.Op.rem',
+            name="rem",
+            full_name="spotify.playlist4.proto.Op.rem",
             index=2,
             number=3,
             type=11,
@@ -1508,10 +1589,11 @@ _OP = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='mov',
-            full_name='spotify.playlist4.proto.Op.mov',
+            name="mov",
+            full_name="spotify.playlist4.proto.Op.mov",
             index=3,
             number=4,
             type=11,
@@ -1526,10 +1608,11 @@ _OP = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='update_item_attributes',
-            full_name='spotify.playlist4.proto.Op.update_item_attributes',
+            name="update_item_attributes",
+            full_name="spotify.playlist4.proto.Op.update_item_attributes",
             index=4,
             number=5,
             type=11,
@@ -1544,10 +1627,11 @@ _OP = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='update_list_attributes',
-            full_name='spotify.playlist4.proto.Op.update_list_attributes',
+            name="update_list_attributes",
+            full_name="spotify.playlist4.proto.Op.update_list_attributes",
             index=5,
             number=6,
             type=11,
@@ -1562,7 +1646,8 @@ _OP = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -1571,7 +1656,7 @@ _OP = _descriptor.Descriptor(
     ],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=1868,
@@ -1579,16 +1664,16 @@ _OP = _descriptor.Descriptor(
 )
 
 _OPLIST = _descriptor.Descriptor(
-    name='OpList',
-    full_name='spotify.playlist4.proto.OpList',
+    name="OpList",
+    full_name="spotify.playlist4.proto.OpList",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='ops',
-            full_name='spotify.playlist4.proto.OpList.ops',
+            name="ops",
+            full_name="spotify.playlist4.proto.OpList.ops",
             index=0,
             number=1,
             type=11,
@@ -1603,14 +1688,15 @@ _OPLIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=2318,
@@ -1618,23 +1704,23 @@ _OPLIST = _descriptor.Descriptor(
 )
 
 _CHANGEINFO = _descriptor.Descriptor(
-    name='ChangeInfo',
-    full_name='spotify.playlist4.proto.ChangeInfo',
+    name="ChangeInfo",
+    full_name="spotify.playlist4.proto.ChangeInfo",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='user',
-            full_name='spotify.playlist4.proto.ChangeInfo.user',
+            name="user",
+            full_name="spotify.playlist4.proto.ChangeInfo.user",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1642,10 +1728,11 @@ _CHANGEINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='timestamp',
-            full_name='spotify.playlist4.proto.ChangeInfo.timestamp',
+            name="timestamp",
+            full_name="spotify.playlist4.proto.ChangeInfo.timestamp",
             index=1,
             number=2,
             type=3,
@@ -1660,10 +1747,11 @@ _CHANGEINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='admin',
-            full_name='spotify.playlist4.proto.ChangeInfo.admin',
+            name="admin",
+            full_name="spotify.playlist4.proto.ChangeInfo.admin",
             index=2,
             number=3,
             type=8,
@@ -1678,10 +1766,11 @@ _CHANGEINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='undo',
-            full_name='spotify.playlist4.proto.ChangeInfo.undo',
+            name="undo",
+            full_name="spotify.playlist4.proto.ChangeInfo.undo",
             index=3,
             number=4,
             type=8,
@@ -1696,10 +1785,11 @@ _CHANGEINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='redo',
-            full_name='spotify.playlist4.proto.ChangeInfo.redo',
+            name="redo",
+            full_name="spotify.playlist4.proto.ChangeInfo.redo",
             index=4,
             number=5,
             type=8,
@@ -1714,10 +1804,11 @@ _CHANGEINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='merge',
-            full_name='spotify.playlist4.proto.ChangeInfo.merge',
+            name="merge",
+            full_name="spotify.playlist4.proto.ChangeInfo.merge",
             index=5,
             number=6,
             type=8,
@@ -1732,10 +1823,11 @@ _CHANGEINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='compressed',
-            full_name='spotify.playlist4.proto.ChangeInfo.compressed',
+            name="compressed",
+            full_name="spotify.playlist4.proto.ChangeInfo.compressed",
             index=6,
             number=7,
             type=8,
@@ -1750,10 +1842,11 @@ _CHANGEINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='migration',
-            full_name='spotify.playlist4.proto.ChangeInfo.migration',
+            name="migration",
+            full_name="spotify.playlist4.proto.ChangeInfo.migration",
             index=7,
             number=8,
             type=8,
@@ -1768,10 +1861,11 @@ _CHANGEINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='split_id',
-            full_name='spotify.playlist4.proto.ChangeInfo.split_id',
+            name="split_id",
+            full_name="spotify.playlist4.proto.ChangeInfo.split_id",
             index=8,
             number=9,
             type=5,
@@ -1786,10 +1880,11 @@ _CHANGEINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='source',
-            full_name='spotify.playlist4.proto.ChangeInfo.source',
+            name="source",
+            full_name="spotify.playlist4.proto.ChangeInfo.source",
             index=9,
             number=10,
             type=11,
@@ -1804,14 +1899,15 @@ _CHANGEINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=2371,
@@ -1819,16 +1915,16 @@ _CHANGEINFO = _descriptor.Descriptor(
 )
 
 _SOURCEINFO = _descriptor.Descriptor(
-    name='SourceInfo',
-    full_name='spotify.playlist4.proto.SourceInfo',
+    name="SourceInfo",
+    full_name="spotify.playlist4.proto.SourceInfo",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='client',
-            full_name='spotify.playlist4.proto.SourceInfo.client',
+            name="client",
+            full_name="spotify.playlist4.proto.SourceInfo.client",
             index=0,
             number=1,
             type=14,
@@ -1843,17 +1939,18 @@ _SOURCEINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='app',
-            full_name='spotify.playlist4.proto.SourceInfo.app',
+            name="app",
+            full_name="spotify.playlist4.proto.SourceInfo.app",
             index=1,
             number=3,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1861,17 +1958,18 @@ _SOURCEINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='source',
-            full_name='spotify.playlist4.proto.SourceInfo.source',
+            name="source",
+            full_name="spotify.playlist4.proto.SourceInfo.source",
             index=2,
             number=4,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1879,17 +1977,18 @@ _SOURCEINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='version',
-            full_name='spotify.playlist4.proto.SourceInfo.version',
+            name="version",
+            full_name="spotify.playlist4.proto.SourceInfo.version",
             index=3,
             number=5,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1897,7 +1996,8 @@ _SOURCEINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -1906,7 +2006,7 @@ _SOURCEINFO = _descriptor.Descriptor(
     ],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=2587,
@@ -1914,16 +2014,16 @@ _SOURCEINFO = _descriptor.Descriptor(
 )
 
 _DELTA = _descriptor.Descriptor(
-    name='Delta',
-    full_name='spotify.playlist4.proto.Delta',
+    name="Delta",
+    full_name="spotify.playlist4.proto.Delta",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='base_version',
-            full_name='spotify.playlist4.proto.Delta.base_version',
+            name="base_version",
+            full_name="spotify.playlist4.proto.Delta.base_version",
             index=0,
             number=1,
             type=12,
@@ -1938,10 +2038,11 @@ _DELTA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='ops',
-            full_name='spotify.playlist4.proto.Delta.ops',
+            name="ops",
+            full_name="spotify.playlist4.proto.Delta.ops",
             index=1,
             number=2,
             type=11,
@@ -1956,10 +2057,11 @@ _DELTA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='info',
-            full_name='spotify.playlist4.proto.Delta.info',
+            name="info",
+            full_name="spotify.playlist4.proto.Delta.info",
             index=2,
             number=4,
             type=11,
@@ -1974,14 +2076,15 @@ _DELTA = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=2821,
@@ -1989,16 +2092,16 @@ _DELTA = _descriptor.Descriptor(
 )
 
 _DIFF = _descriptor.Descriptor(
-    name='Diff',
-    full_name='spotify.playlist4.proto.Diff',
+    name="Diff",
+    full_name="spotify.playlist4.proto.Diff",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='from_revision',
-            full_name='spotify.playlist4.proto.Diff.from_revision',
+            name="from_revision",
+            full_name="spotify.playlist4.proto.Diff.from_revision",
             index=0,
             number=1,
             type=12,
@@ -2013,10 +2116,11 @@ _DIFF = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='ops',
-            full_name='spotify.playlist4.proto.Diff.ops',
+            name="ops",
+            full_name="spotify.playlist4.proto.Diff.ops",
             index=1,
             number=2,
             type=11,
@@ -2031,10 +2135,11 @@ _DIFF = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='to_revision',
-            full_name='spotify.playlist4.proto.Diff.to_revision',
+            name="to_revision",
+            full_name="spotify.playlist4.proto.Diff.to_revision",
             index=2,
             number=3,
             type=12,
@@ -2049,14 +2154,15 @@ _DIFF = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=2945,
@@ -2064,16 +2170,16 @@ _DIFF = _descriptor.Descriptor(
 )
 
 _LISTCHANGES = _descriptor.Descriptor(
-    name='ListChanges',
-    full_name='spotify.playlist4.proto.ListChanges',
+    name="ListChanges",
+    full_name="spotify.playlist4.proto.ListChanges",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='base_revision',
-            full_name='spotify.playlist4.proto.ListChanges.base_revision',
+            name="base_revision",
+            full_name="spotify.playlist4.proto.ListChanges.base_revision",
             index=0,
             number=1,
             type=12,
@@ -2088,10 +2194,11 @@ _LISTCHANGES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='deltas',
-            full_name='spotify.playlist4.proto.ListChanges.deltas',
+            name="deltas",
+            full_name="spotify.playlist4.proto.ListChanges.deltas",
             index=1,
             number=2,
             type=11,
@@ -2106,10 +2213,11 @@ _LISTCHANGES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='want_resulting_revisions',
-            full_name='spotify.playlist4.proto.ListChanges.want_resulting_revisions',
+            name="want_resulting_revisions",
+            full_name="spotify.playlist4.proto.ListChanges.want_resulting_revisions",
             index=2,
             number=3,
             type=8,
@@ -2124,10 +2232,11 @@ _LISTCHANGES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='want_sync_result',
-            full_name='spotify.playlist4.proto.ListChanges.want_sync_result',
+            name="want_sync_result",
+            full_name="spotify.playlist4.proto.ListChanges.want_sync_result",
             index=3,
             number=4,
             type=8,
@@ -2142,10 +2251,11 @@ _LISTCHANGES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='nonces',
-            full_name='spotify.playlist4.proto.ListChanges.nonces',
+            name="nonces",
+            full_name="spotify.playlist4.proto.ListChanges.nonces",
             index=4,
             number=6,
             type=3,
@@ -2160,14 +2270,15 @@ _LISTCHANGES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=3040,
@@ -2175,16 +2286,16 @@ _LISTCHANGES = _descriptor.Descriptor(
 )
 
 _SELECTEDLISTCONTENT = _descriptor.Descriptor(
-    name='SelectedListContent',
-    full_name='spotify.playlist4.proto.SelectedListContent',
+    name="SelectedListContent",
+    full_name="spotify.playlist4.proto.SelectedListContent",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='revision',
-            full_name='spotify.playlist4.proto.SelectedListContent.revision',
+            name="revision",
+            full_name="spotify.playlist4.proto.SelectedListContent.revision",
             index=0,
             number=1,
             type=12,
@@ -2199,10 +2310,11 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='length',
-            full_name='spotify.playlist4.proto.SelectedListContent.length',
+            name="length",
+            full_name="spotify.playlist4.proto.SelectedListContent.length",
             index=1,
             number=2,
             type=5,
@@ -2217,10 +2329,11 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='attributes',
-            full_name='spotify.playlist4.proto.SelectedListContent.attributes',
+            name="attributes",
+            full_name="spotify.playlist4.proto.SelectedListContent.attributes",
             index=2,
             number=3,
             type=11,
@@ -2235,10 +2348,11 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='contents',
-            full_name='spotify.playlist4.proto.SelectedListContent.contents',
+            name="contents",
+            full_name="spotify.playlist4.proto.SelectedListContent.contents",
             index=3,
             number=5,
             type=11,
@@ -2253,10 +2367,11 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='diff',
-            full_name='spotify.playlist4.proto.SelectedListContent.diff',
+            name="diff",
+            full_name="spotify.playlist4.proto.SelectedListContent.diff",
             index=4,
             number=6,
             type=11,
@@ -2271,10 +2386,11 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='sync_result',
-            full_name='spotify.playlist4.proto.SelectedListContent.sync_result',
+            name="sync_result",
+            full_name="spotify.playlist4.proto.SelectedListContent.sync_result",
             index=5,
             number=7,
             type=11,
@@ -2289,10 +2405,11 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='resulting_revisions',
-            full_name='spotify.playlist4.proto.SelectedListContent.resulting_revisions',
+            name="resulting_revisions",
+            full_name="spotify.playlist4.proto.SelectedListContent.resulting_revisions",
             index=6,
             number=8,
             type=12,
@@ -2307,10 +2424,11 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='multiple_heads',
-            full_name='spotify.playlist4.proto.SelectedListContent.multiple_heads',
+            name="multiple_heads",
+            full_name="spotify.playlist4.proto.SelectedListContent.multiple_heads",
             index=7,
             number=9,
             type=8,
@@ -2325,10 +2443,11 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='up_to_date',
-            full_name='spotify.playlist4.proto.SelectedListContent.up_to_date',
+            name="up_to_date",
+            full_name="spotify.playlist4.proto.SelectedListContent.up_to_date",
             index=8,
             number=10,
             type=8,
@@ -2343,10 +2462,11 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='nonces',
-            full_name='spotify.playlist4.proto.SelectedListContent.nonces',
+            name="nonces",
+            full_name="spotify.playlist4.proto.SelectedListContent.nonces",
             index=9,
             number=14,
             type=3,
@@ -2361,10 +2481,11 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='timestamp',
-            full_name='spotify.playlist4.proto.SelectedListContent.timestamp',
+            name="timestamp",
+            full_name="spotify.playlist4.proto.SelectedListContent.timestamp",
             index=10,
             number=15,
             type=3,
@@ -2379,17 +2500,18 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='owner_username',
-            full_name='spotify.playlist4.proto.SelectedListContent.owner_username',
+            name="owner_username",
+            full_name="spotify.playlist4.proto.SelectedListContent.owner_username",
             index=11,
             number=16,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -2397,14 +2519,15 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=3203,
@@ -2412,16 +2535,16 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
 )
 
 _CREATELISTREPLY = _descriptor.Descriptor(
-    name='CreateListReply',
-    full_name='spotify.playlist4.proto.CreateListReply',
+    name="CreateListReply",
+    full_name="spotify.playlist4.proto.CreateListReply",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='uri',
-            full_name='spotify.playlist4.proto.CreateListReply.uri',
+            name="uri",
+            full_name="spotify.playlist4.proto.CreateListReply.uri",
             index=0,
             number=1,
             type=12,
@@ -2436,10 +2559,11 @@ _CREATELISTREPLY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='revision',
-            full_name='spotify.playlist4.proto.CreateListReply.revision',
+            name="revision",
+            full_name="spotify.playlist4.proto.CreateListReply.revision",
             index=1,
             number=2,
             type=12,
@@ -2454,14 +2578,15 @@ _CREATELISTREPLY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=3604,
@@ -2469,16 +2594,16 @@ _CREATELISTREPLY = _descriptor.Descriptor(
 )
 
 _MODIFYREPLY = _descriptor.Descriptor(
-    name='ModifyReply',
-    full_name='spotify.playlist4.proto.ModifyReply',
+    name="ModifyReply",
+    full_name="spotify.playlist4.proto.ModifyReply",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='uri',
-            full_name='spotify.playlist4.proto.ModifyReply.uri',
+            name="uri",
+            full_name="spotify.playlist4.proto.ModifyReply.uri",
             index=0,
             number=1,
             type=12,
@@ -2493,10 +2618,11 @@ _MODIFYREPLY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='revision',
-            full_name='spotify.playlist4.proto.ModifyReply.revision',
+            name="revision",
+            full_name="spotify.playlist4.proto.ModifyReply.revision",
             index=1,
             number=2,
             type=12,
@@ -2511,14 +2637,15 @@ _MODIFYREPLY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=3654,
@@ -2526,16 +2653,16 @@ _MODIFYREPLY = _descriptor.Descriptor(
 )
 
 _SUBSCRIBEREQUEST = _descriptor.Descriptor(
-    name='SubscribeRequest',
-    full_name='spotify.playlist4.proto.SubscribeRequest',
+    name="SubscribeRequest",
+    full_name="spotify.playlist4.proto.SubscribeRequest",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='uris',
-            full_name='spotify.playlist4.proto.SubscribeRequest.uris',
+            name="uris",
+            full_name="spotify.playlist4.proto.SubscribeRequest.uris",
             index=0,
             number=1,
             type=12,
@@ -2550,14 +2677,15 @@ _SUBSCRIBEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=3700,
@@ -2565,16 +2693,16 @@ _SUBSCRIBEREQUEST = _descriptor.Descriptor(
 )
 
 _UNSUBSCRIBEREQUEST = _descriptor.Descriptor(
-    name='UnsubscribeRequest',
-    full_name='spotify.playlist4.proto.UnsubscribeRequest',
+    name="UnsubscribeRequest",
+    full_name="spotify.playlist4.proto.UnsubscribeRequest",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='uris',
-            full_name='spotify.playlist4.proto.UnsubscribeRequest.uris',
+            name="uris",
+            full_name="spotify.playlist4.proto.UnsubscribeRequest.uris",
             index=0,
             number=1,
             type=12,
@@ -2589,14 +2717,15 @@ _UNSUBSCRIBEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=3734,
@@ -2604,16 +2733,16 @@ _UNSUBSCRIBEREQUEST = _descriptor.Descriptor(
 )
 
 _PLAYLISTMODIFICATIONINFO = _descriptor.Descriptor(
-    name='PlaylistModificationInfo',
-    full_name='spotify.playlist4.proto.PlaylistModificationInfo',
+    name="PlaylistModificationInfo",
+    full_name="spotify.playlist4.proto.PlaylistModificationInfo",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='uri',
-            full_name='spotify.playlist4.proto.PlaylistModificationInfo.uri',
+            name="uri",
+            full_name="spotify.playlist4.proto.PlaylistModificationInfo.uri",
             index=0,
             number=1,
             type=12,
@@ -2628,10 +2757,11 @@ _PLAYLISTMODIFICATIONINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='new_revision',
-            full_name='spotify.playlist4.proto.PlaylistModificationInfo.new_revision',
+            name="new_revision",
+            full_name="spotify.playlist4.proto.PlaylistModificationInfo.new_revision",
             index=1,
             number=2,
             type=12,
@@ -2646,10 +2776,11 @@ _PLAYLISTMODIFICATIONINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='parent_revision',
-            full_name='spotify.playlist4.proto.PlaylistModificationInfo.parent_revision',
+            name="parent_revision",
+            full_name="spotify.playlist4.proto.PlaylistModificationInfo.parent_revision",
             index=2,
             number=3,
             type=12,
@@ -2664,10 +2795,11 @@ _PLAYLISTMODIFICATIONINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='ops',
-            full_name='spotify.playlist4.proto.PlaylistModificationInfo.ops',
+            name="ops",
+            full_name="spotify.playlist4.proto.PlaylistModificationInfo.ops",
             index=3,
             number=4,
             type=11,
@@ -2682,362 +2814,383 @@ _PLAYLISTMODIFICATIONINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=3771,
     serialized_end=3899,
 )
 
-_ITEM.fields_by_name['attributes'].message_type = _ITEMATTRIBUTES
-_METAITEM.fields_by_name['attributes'].message_type = _LISTATTRIBUTES
-_LISTITEMS.fields_by_name['items'].message_type = _ITEM
-_LISTITEMS.fields_by_name['meta_items'].message_type = _METAITEM
-_LISTATTRIBUTES.fields_by_name[
-    'format_attributes'].message_type = _FORMATLISTATTRIBUTE
-_ITEMATTRIBUTES.fields_by_name[
-    'format_attributes'].message_type = _FORMATLISTATTRIBUTE
-_ADD.fields_by_name['items'].message_type = _ITEM
-_REM.fields_by_name['items'].message_type = _ITEM
-_ITEMATTRIBUTESPARTIALSTATE.fields_by_name[
-    'values'].message_type = _ITEMATTRIBUTES
-_ITEMATTRIBUTESPARTIALSTATE.fields_by_name[
-    'no_value'].enum_type = _ITEMATTRIBUTEKIND
-_LISTATTRIBUTESPARTIALSTATE.fields_by_name[
-    'values'].message_type = _LISTATTRIBUTES
-_LISTATTRIBUTESPARTIALSTATE.fields_by_name[
-    'no_value'].enum_type = _LISTATTRIBUTEKIND
+_ITEM.fields_by_name["attributes"].message_type = _ITEMATTRIBUTES
+_METAITEM.fields_by_name["attributes"].message_type = _LISTATTRIBUTES
+_LISTITEMS.fields_by_name["items"].message_type = _ITEM
+_LISTITEMS.fields_by_name["meta_items"].message_type = _METAITEM
+_LISTATTRIBUTES.fields_by_name["format_attributes"].message_type = _FORMATLISTATTRIBUTE
+_ITEMATTRIBUTES.fields_by_name["format_attributes"].message_type = _FORMATLISTATTRIBUTE
+_ADD.fields_by_name["items"].message_type = _ITEM
+_REM.fields_by_name["items"].message_type = _ITEM
+_ITEMATTRIBUTESPARTIALSTATE.fields_by_name["values"].message_type = _ITEMATTRIBUTES
+_ITEMATTRIBUTESPARTIALSTATE.fields_by_name["no_value"].enum_type = _ITEMATTRIBUTEKIND
+_LISTATTRIBUTESPARTIALSTATE.fields_by_name["values"].message_type = _LISTATTRIBUTES
+_LISTATTRIBUTESPARTIALSTATE.fields_by_name["no_value"].enum_type = _LISTATTRIBUTEKIND
 _UPDATEITEMATTRIBUTES.fields_by_name[
-    'new_attributes'].message_type = _ITEMATTRIBUTESPARTIALSTATE
+    "new_attributes"
+].message_type = _ITEMATTRIBUTESPARTIALSTATE
 _UPDATEITEMATTRIBUTES.fields_by_name[
-    'old_attributes'].message_type = _ITEMATTRIBUTESPARTIALSTATE
+    "old_attributes"
+].message_type = _ITEMATTRIBUTESPARTIALSTATE
 _UPDATELISTATTRIBUTES.fields_by_name[
-    'new_attributes'].message_type = _LISTATTRIBUTESPARTIALSTATE
+    "new_attributes"
+].message_type = _LISTATTRIBUTESPARTIALSTATE
 _UPDATELISTATTRIBUTES.fields_by_name[
-    'old_attributes'].message_type = _LISTATTRIBUTESPARTIALSTATE
-_OP.fields_by_name['kind'].enum_type = _OP_KIND
-_OP.fields_by_name['add'].message_type = _ADD
-_OP.fields_by_name['rem'].message_type = _REM
-_OP.fields_by_name['mov'].message_type = _MOV
-_OP.fields_by_name[
-    'update_item_attributes'].message_type = _UPDATEITEMATTRIBUTES
-_OP.fields_by_name[
-    'update_list_attributes'].message_type = _UPDATELISTATTRIBUTES
+    "old_attributes"
+].message_type = _LISTATTRIBUTESPARTIALSTATE
+_OP.fields_by_name["kind"].enum_type = _OP_KIND
+_OP.fields_by_name["add"].message_type = _ADD
+_OP.fields_by_name["rem"].message_type = _REM
+_OP.fields_by_name["mov"].message_type = _MOV
+_OP.fields_by_name["update_item_attributes"].message_type = _UPDATEITEMATTRIBUTES
+_OP.fields_by_name["update_list_attributes"].message_type = _UPDATELISTATTRIBUTES
 _OP_KIND.containing_type = _OP
-_OPLIST.fields_by_name['ops'].message_type = _OP
-_CHANGEINFO.fields_by_name['source'].message_type = _SOURCEINFO
-_SOURCEINFO.fields_by_name['client'].enum_type = _SOURCEINFO_CLIENT
+_OPLIST.fields_by_name["ops"].message_type = _OP
+_CHANGEINFO.fields_by_name["source"].message_type = _SOURCEINFO
+_SOURCEINFO.fields_by_name["client"].enum_type = _SOURCEINFO_CLIENT
 _SOURCEINFO_CLIENT.containing_type = _SOURCEINFO
-_DELTA.fields_by_name['ops'].message_type = _OP
-_DELTA.fields_by_name['info'].message_type = _CHANGEINFO
-_DIFF.fields_by_name['ops'].message_type = _OP
-_LISTCHANGES.fields_by_name['deltas'].message_type = _DELTA
-_SELECTEDLISTCONTENT.fields_by_name[
-    'attributes'].message_type = _LISTATTRIBUTES
-_SELECTEDLISTCONTENT.fields_by_name['contents'].message_type = _LISTITEMS
-_SELECTEDLISTCONTENT.fields_by_name['diff'].message_type = _DIFF
-_SELECTEDLISTCONTENT.fields_by_name['sync_result'].message_type = _DIFF
-_PLAYLISTMODIFICATIONINFO.fields_by_name['ops'].message_type = _OP
-DESCRIPTOR.message_types_by_name['Item'] = _ITEM
-DESCRIPTOR.message_types_by_name['MetaItem'] = _METAITEM
-DESCRIPTOR.message_types_by_name['ListItems'] = _LISTITEMS
-DESCRIPTOR.message_types_by_name['FormatListAttribute'] = _FORMATLISTATTRIBUTE
-DESCRIPTOR.message_types_by_name['ListAttributes'] = _LISTATTRIBUTES
-DESCRIPTOR.message_types_by_name['ItemAttributes'] = _ITEMATTRIBUTES
-DESCRIPTOR.message_types_by_name['Add'] = _ADD
-DESCRIPTOR.message_types_by_name['Rem'] = _REM
-DESCRIPTOR.message_types_by_name['Mov'] = _MOV
+_DELTA.fields_by_name["ops"].message_type = _OP
+_DELTA.fields_by_name["info"].message_type = _CHANGEINFO
+_DIFF.fields_by_name["ops"].message_type = _OP
+_LISTCHANGES.fields_by_name["deltas"].message_type = _DELTA
+_SELECTEDLISTCONTENT.fields_by_name["attributes"].message_type = _LISTATTRIBUTES
+_SELECTEDLISTCONTENT.fields_by_name["contents"].message_type = _LISTITEMS
+_SELECTEDLISTCONTENT.fields_by_name["diff"].message_type = _DIFF
+_SELECTEDLISTCONTENT.fields_by_name["sync_result"].message_type = _DIFF
+_PLAYLISTMODIFICATIONINFO.fields_by_name["ops"].message_type = _OP
+DESCRIPTOR.message_types_by_name["Item"] = _ITEM
+DESCRIPTOR.message_types_by_name["MetaItem"] = _METAITEM
+DESCRIPTOR.message_types_by_name["ListItems"] = _LISTITEMS
+DESCRIPTOR.message_types_by_name["FormatListAttribute"] = _FORMATLISTATTRIBUTE
+DESCRIPTOR.message_types_by_name["ListAttributes"] = _LISTATTRIBUTES
+DESCRIPTOR.message_types_by_name["ItemAttributes"] = _ITEMATTRIBUTES
+DESCRIPTOR.message_types_by_name["Add"] = _ADD
+DESCRIPTOR.message_types_by_name["Rem"] = _REM
+DESCRIPTOR.message_types_by_name["Mov"] = _MOV
 DESCRIPTOR.message_types_by_name[
-    'ItemAttributesPartialState'] = _ITEMATTRIBUTESPARTIALSTATE
+    "ItemAttributesPartialState"
+] = _ITEMATTRIBUTESPARTIALSTATE
 DESCRIPTOR.message_types_by_name[
-    'ListAttributesPartialState'] = _LISTATTRIBUTESPARTIALSTATE
-DESCRIPTOR.message_types_by_name[
-    'UpdateItemAttributes'] = _UPDATEITEMATTRIBUTES
-DESCRIPTOR.message_types_by_name[
-    'UpdateListAttributes'] = _UPDATELISTATTRIBUTES
-DESCRIPTOR.message_types_by_name['Op'] = _OP
-DESCRIPTOR.message_types_by_name['OpList'] = _OPLIST
-DESCRIPTOR.message_types_by_name['ChangeInfo'] = _CHANGEINFO
-DESCRIPTOR.message_types_by_name['SourceInfo'] = _SOURCEINFO
-DESCRIPTOR.message_types_by_name['Delta'] = _DELTA
-DESCRIPTOR.message_types_by_name['Diff'] = _DIFF
-DESCRIPTOR.message_types_by_name['ListChanges'] = _LISTCHANGES
-DESCRIPTOR.message_types_by_name['SelectedListContent'] = _SELECTEDLISTCONTENT
-DESCRIPTOR.message_types_by_name['CreateListReply'] = _CREATELISTREPLY
-DESCRIPTOR.message_types_by_name['ModifyReply'] = _MODIFYREPLY
-DESCRIPTOR.message_types_by_name['SubscribeRequest'] = _SUBSCRIBEREQUEST
-DESCRIPTOR.message_types_by_name['UnsubscribeRequest'] = _UNSUBSCRIBEREQUEST
-DESCRIPTOR.message_types_by_name[
-    'PlaylistModificationInfo'] = _PLAYLISTMODIFICATIONINFO
-DESCRIPTOR.enum_types_by_name['ListAttributeKind'] = _LISTATTRIBUTEKIND
-DESCRIPTOR.enum_types_by_name['ItemAttributeKind'] = _ITEMATTRIBUTEKIND
+    "ListAttributesPartialState"
+] = _LISTATTRIBUTESPARTIALSTATE
+DESCRIPTOR.message_types_by_name["UpdateItemAttributes"] = _UPDATEITEMATTRIBUTES
+DESCRIPTOR.message_types_by_name["UpdateListAttributes"] = _UPDATELISTATTRIBUTES
+DESCRIPTOR.message_types_by_name["Op"] = _OP
+DESCRIPTOR.message_types_by_name["OpList"] = _OPLIST
+DESCRIPTOR.message_types_by_name["ChangeInfo"] = _CHANGEINFO
+DESCRIPTOR.message_types_by_name["SourceInfo"] = _SOURCEINFO
+DESCRIPTOR.message_types_by_name["Delta"] = _DELTA
+DESCRIPTOR.message_types_by_name["Diff"] = _DIFF
+DESCRIPTOR.message_types_by_name["ListChanges"] = _LISTCHANGES
+DESCRIPTOR.message_types_by_name["SelectedListContent"] = _SELECTEDLISTCONTENT
+DESCRIPTOR.message_types_by_name["CreateListReply"] = _CREATELISTREPLY
+DESCRIPTOR.message_types_by_name["ModifyReply"] = _MODIFYREPLY
+DESCRIPTOR.message_types_by_name["SubscribeRequest"] = _SUBSCRIBEREQUEST
+DESCRIPTOR.message_types_by_name["UnsubscribeRequest"] = _UNSUBSCRIBEREQUEST
+DESCRIPTOR.message_types_by_name["PlaylistModificationInfo"] = _PLAYLISTMODIFICATIONINFO
+DESCRIPTOR.enum_types_by_name["ListAttributeKind"] = _LISTATTRIBUTEKIND
+DESCRIPTOR.enum_types_by_name["ItemAttributeKind"] = _ITEMATTRIBUTEKIND
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Item = _reflection.GeneratedProtocolMessageType(
-    'Item',
-    (_message.Message, ),
+    "Item",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _ITEM,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _ITEM,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.Item)
-    })
+    },
+)
 _sym_db.RegisterMessage(Item)
 
 MetaItem = _reflection.GeneratedProtocolMessageType(
-    'MetaItem',
-    (_message.Message, ),
+    "MetaItem",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _METAITEM,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _METAITEM,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.MetaItem)
-    })
+    },
+)
 _sym_db.RegisterMessage(MetaItem)
 
 ListItems = _reflection.GeneratedProtocolMessageType(
-    'ListItems',
-    (_message.Message, ),
+    "ListItems",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _LISTITEMS,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _LISTITEMS,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.ListItems)
-    })
+    },
+)
 _sym_db.RegisterMessage(ListItems)
 
 FormatListAttribute = _reflection.GeneratedProtocolMessageType(
-    'FormatListAttribute',
-    (_message.Message, ),
+    "FormatListAttribute",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _FORMATLISTATTRIBUTE,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _FORMATLISTATTRIBUTE,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.FormatListAttribute)
-    })
+    },
+)
 _sym_db.RegisterMessage(FormatListAttribute)
 
 ListAttributes = _reflection.GeneratedProtocolMessageType(
-    'ListAttributes',
-    (_message.Message, ),
+    "ListAttributes",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _LISTATTRIBUTES,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _LISTATTRIBUTES,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.ListAttributes)
-    })
+    },
+)
 _sym_db.RegisterMessage(ListAttributes)
 
 ItemAttributes = _reflection.GeneratedProtocolMessageType(
-    'ItemAttributes',
-    (_message.Message, ),
+    "ItemAttributes",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _ITEMATTRIBUTES,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _ITEMATTRIBUTES,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.ItemAttributes)
-    })
+    },
+)
 _sym_db.RegisterMessage(ItemAttributes)
 
 Add = _reflection.GeneratedProtocolMessageType(
-    'Add',
-    (_message.Message, ),
+    "Add",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _ADD,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _ADD,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.Add)
-    })
+    },
+)
 _sym_db.RegisterMessage(Add)
 
 Rem = _reflection.GeneratedProtocolMessageType(
-    'Rem',
-    (_message.Message, ),
+    "Rem",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _REM,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _REM,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.Rem)
-    })
+    },
+)
 _sym_db.RegisterMessage(Rem)
 
 Mov = _reflection.GeneratedProtocolMessageType(
-    'Mov',
-    (_message.Message, ),
+    "Mov",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _MOV,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _MOV,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.Mov)
-    })
+    },
+)
 _sym_db.RegisterMessage(Mov)
 
 ItemAttributesPartialState = _reflection.GeneratedProtocolMessageType(
-    'ItemAttributesPartialState',
-    (_message.Message, ),
+    "ItemAttributesPartialState",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _ITEMATTRIBUTESPARTIALSTATE,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _ITEMATTRIBUTESPARTIALSTATE,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.ItemAttributesPartialState)
-    })
+    },
+)
 _sym_db.RegisterMessage(ItemAttributesPartialState)
 
 ListAttributesPartialState = _reflection.GeneratedProtocolMessageType(
-    'ListAttributesPartialState',
-    (_message.Message, ),
+    "ListAttributesPartialState",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _LISTATTRIBUTESPARTIALSTATE,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _LISTATTRIBUTESPARTIALSTATE,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.ListAttributesPartialState)
-    })
+    },
+)
 _sym_db.RegisterMessage(ListAttributesPartialState)
 
 UpdateItemAttributes = _reflection.GeneratedProtocolMessageType(
-    'UpdateItemAttributes',
-    (_message.Message, ),
+    "UpdateItemAttributes",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _UPDATEITEMATTRIBUTES,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _UPDATEITEMATTRIBUTES,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.UpdateItemAttributes)
-    })
+    },
+)
 _sym_db.RegisterMessage(UpdateItemAttributes)
 
 UpdateListAttributes = _reflection.GeneratedProtocolMessageType(
-    'UpdateListAttributes',
-    (_message.Message, ),
+    "UpdateListAttributes",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _UPDATELISTATTRIBUTES,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _UPDATELISTATTRIBUTES,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.UpdateListAttributes)
-    })
+    },
+)
 _sym_db.RegisterMessage(UpdateListAttributes)
 
 Op = _reflection.GeneratedProtocolMessageType(
-    'Op',
-    (_message.Message, ),
+    "Op",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _OP,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _OP,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.Op)
-    })
+    },
+)
 _sym_db.RegisterMessage(Op)
 
 OpList = _reflection.GeneratedProtocolMessageType(
-    'OpList',
-    (_message.Message, ),
+    "OpList",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _OPLIST,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _OPLIST,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.OpList)
-    })
+    },
+)
 _sym_db.RegisterMessage(OpList)
 
 ChangeInfo = _reflection.GeneratedProtocolMessageType(
-    'ChangeInfo',
-    (_message.Message, ),
+    "ChangeInfo",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _CHANGEINFO,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _CHANGEINFO,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.ChangeInfo)
-    })
+    },
+)
 _sym_db.RegisterMessage(ChangeInfo)
 
 SourceInfo = _reflection.GeneratedProtocolMessageType(
-    'SourceInfo',
-    (_message.Message, ),
+    "SourceInfo",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _SOURCEINFO,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _SOURCEINFO,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.SourceInfo)
-    })
+    },
+)
 _sym_db.RegisterMessage(SourceInfo)
 
 Delta = _reflection.GeneratedProtocolMessageType(
-    'Delta',
-    (_message.Message, ),
+    "Delta",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _DELTA,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _DELTA,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.Delta)
-    })
+    },
+)
 _sym_db.RegisterMessage(Delta)
 
 Diff = _reflection.GeneratedProtocolMessageType(
-    'Diff',
-    (_message.Message, ),
+    "Diff",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _DIFF,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _DIFF,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.Diff)
-    })
+    },
+)
 _sym_db.RegisterMessage(Diff)
 
 ListChanges = _reflection.GeneratedProtocolMessageType(
-    'ListChanges',
-    (_message.Message, ),
+    "ListChanges",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _LISTCHANGES,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _LISTCHANGES,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.ListChanges)
-    })
+    },
+)
 _sym_db.RegisterMessage(ListChanges)
 
 SelectedListContent = _reflection.GeneratedProtocolMessageType(
-    'SelectedListContent',
-    (_message.Message, ),
+    "SelectedListContent",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _SELECTEDLISTCONTENT,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _SELECTEDLISTCONTENT,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.SelectedListContent)
-    })
+    },
+)
 _sym_db.RegisterMessage(SelectedListContent)
 
 CreateListReply = _reflection.GeneratedProtocolMessageType(
-    'CreateListReply',
-    (_message.Message, ),
+    "CreateListReply",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _CREATELISTREPLY,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _CREATELISTREPLY,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.CreateListReply)
-    })
+    },
+)
 _sym_db.RegisterMessage(CreateListReply)
 
 ModifyReply = _reflection.GeneratedProtocolMessageType(
-    'ModifyReply',
-    (_message.Message, ),
+    "ModifyReply",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _MODIFYREPLY,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _MODIFYREPLY,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.ModifyReply)
-    })
+    },
+)
 _sym_db.RegisterMessage(ModifyReply)
 
 SubscribeRequest = _reflection.GeneratedProtocolMessageType(
-    'SubscribeRequest',
-    (_message.Message, ),
+    "SubscribeRequest",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _SUBSCRIBEREQUEST,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _SUBSCRIBEREQUEST,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.SubscribeRequest)
-    })
+    },
+)
 _sym_db.RegisterMessage(SubscribeRequest)
 
 UnsubscribeRequest = _reflection.GeneratedProtocolMessageType(
-    'UnsubscribeRequest',
-    (_message.Message, ),
+    "UnsubscribeRequest",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _UNSUBSCRIBEREQUEST,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _UNSUBSCRIBEREQUEST,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.UnsubscribeRequest)
-    })
+    },
+)
 _sym_db.RegisterMessage(UnsubscribeRequest)
 
 PlaylistModificationInfo = _reflection.GeneratedProtocolMessageType(
-    'PlaylistModificationInfo',
-    (_message.Message, ),
+    "PlaylistModificationInfo",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _PLAYLISTMODIFICATIONINFO,
-        '__module__': 'playlist4_external_pb2'
+        "DESCRIPTOR": _PLAYLISTMODIFICATIONINFO,
+        "__module__": "playlist4_external_pb2"
         # @@protoc_insertion_point(class_scope:spotify.playlist4.proto.PlaylistModificationInfo)
-    })
+    },
+)
 _sym_db.RegisterMessage(PlaylistModificationInfo)
 
 DESCRIPTOR._options = None

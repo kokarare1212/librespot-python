@@ -6,30 +6,31 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
-    name='context_player_options.proto',
-    package='spotify.player.proto',
-    syntax='proto2',
-    serialized_options=b'\n\023com.spotify.contextH\002',
+    name="context_player_options.proto",
+    package="spotify.player.proto",
+    syntax="proto2",
+    serialized_options=b"\n\023com.spotify.contextH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x1c\x63ontext_player_options.proto\x12\x14spotify.player.proto\"e\n\x14\x43ontextPlayerOptions\x12\x19\n\x11shuffling_context\x18\x01 \x01(\x08\x12\x19\n\x11repeating_context\x18\x02 \x01(\x08\x12\x17\n\x0frepeating_track\x18\x03 \x01(\x08\"m\n\x1c\x43ontextPlayerOptionOverrides\x12\x19\n\x11shuffling_context\x18\x01 \x01(\x08\x12\x19\n\x11repeating_context\x18\x02 \x01(\x08\x12\x17\n\x0frepeating_track\x18\x03 \x01(\x08\x42\x17\n\x13\x63om.spotify.contextH\x02'
+    serialized_pb=b'\n\x1c\x63ontext_player_options.proto\x12\x14spotify.player.proto"e\n\x14\x43ontextPlayerOptions\x12\x19\n\x11shuffling_context\x18\x01 \x01(\x08\x12\x19\n\x11repeating_context\x18\x02 \x01(\x08\x12\x17\n\x0frepeating_track\x18\x03 \x01(\x08"m\n\x1c\x43ontextPlayerOptionOverrides\x12\x19\n\x11shuffling_context\x18\x01 \x01(\x08\x12\x19\n\x11repeating_context\x18\x02 \x01(\x08\x12\x17\n\x0frepeating_track\x18\x03 \x01(\x08\x42\x17\n\x13\x63om.spotify.contextH\x02',
 )
 
 _CONTEXTPLAYEROPTIONS = _descriptor.Descriptor(
-    name='ContextPlayerOptions',
-    full_name='spotify.player.proto.ContextPlayerOptions',
+    name="ContextPlayerOptions",
+    full_name="spotify.player.proto.ContextPlayerOptions",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='shuffling_context',
-            full_name='spotify.player.proto.ContextPlayerOptions.shuffling_context',
+            name="shuffling_context",
+            full_name="spotify.player.proto.ContextPlayerOptions.shuffling_context",
             index=0,
             number=1,
             type=8,
@@ -44,10 +45,11 @@ _CONTEXTPLAYEROPTIONS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='repeating_context',
-            full_name='spotify.player.proto.ContextPlayerOptions.repeating_context',
+            name="repeating_context",
+            full_name="spotify.player.proto.ContextPlayerOptions.repeating_context",
             index=1,
             number=2,
             type=8,
@@ -62,10 +64,11 @@ _CONTEXTPLAYEROPTIONS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='repeating_track',
-            full_name='spotify.player.proto.ContextPlayerOptions.repeating_track',
+            name="repeating_track",
+            full_name="spotify.player.proto.ContextPlayerOptions.repeating_track",
             index=2,
             number=3,
             type=8,
@@ -80,14 +83,15 @@ _CONTEXTPLAYEROPTIONS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=54,
@@ -95,16 +99,16 @@ _CONTEXTPLAYEROPTIONS = _descriptor.Descriptor(
 )
 
 _CONTEXTPLAYEROPTIONOVERRIDES = _descriptor.Descriptor(
-    name='ContextPlayerOptionOverrides',
-    full_name='spotify.player.proto.ContextPlayerOptionOverrides',
+    name="ContextPlayerOptionOverrides",
+    full_name="spotify.player.proto.ContextPlayerOptionOverrides",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='shuffling_context',
-            full_name='spotify.player.proto.ContextPlayerOptionOverrides.shuffling_context',
+            name="shuffling_context",
+            full_name="spotify.player.proto.ContextPlayerOptionOverrides.shuffling_context",
             index=0,
             number=1,
             type=8,
@@ -119,10 +123,11 @@ _CONTEXTPLAYEROPTIONOVERRIDES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='repeating_context',
-            full_name='spotify.player.proto.ContextPlayerOptionOverrides.repeating_context',
+            name="repeating_context",
+            full_name="spotify.player.proto.ContextPlayerOptionOverrides.repeating_context",
             index=1,
             number=2,
             type=8,
@@ -137,10 +142,11 @@ _CONTEXTPLAYEROPTIONOVERRIDES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='repeating_track',
-            full_name='spotify.player.proto.ContextPlayerOptionOverrides.repeating_track',
+            name="repeating_track",
+            full_name="spotify.player.proto.ContextPlayerOptionOverrides.repeating_track",
             index=2,
             number=3,
             type=8,
@@ -155,44 +161,47 @@ _CONTEXTPLAYEROPTIONOVERRIDES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=157,
     serialized_end=266,
 )
 
+DESCRIPTOR.message_types_by_name["ContextPlayerOptions"] = _CONTEXTPLAYEROPTIONS
 DESCRIPTOR.message_types_by_name[
-    'ContextPlayerOptions'] = _CONTEXTPLAYEROPTIONS
-DESCRIPTOR.message_types_by_name[
-    'ContextPlayerOptionOverrides'] = _CONTEXTPLAYEROPTIONOVERRIDES
+    "ContextPlayerOptionOverrides"
+] = _CONTEXTPLAYEROPTIONOVERRIDES
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ContextPlayerOptions = _reflection.GeneratedProtocolMessageType(
-    'ContextPlayerOptions',
-    (_message.Message, ),
+    "ContextPlayerOptions",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _CONTEXTPLAYEROPTIONS,
-        '__module__': 'context_player_options_pb2'
+        "DESCRIPTOR": _CONTEXTPLAYEROPTIONS,
+        "__module__": "context_player_options_pb2"
         # @@protoc_insertion_point(class_scope:spotify.player.proto.ContextPlayerOptions)
-    })
+    },
+)
 _sym_db.RegisterMessage(ContextPlayerOptions)
 
 ContextPlayerOptionOverrides = _reflection.GeneratedProtocolMessageType(
-    'ContextPlayerOptionOverrides',
-    (_message.Message, ),
+    "ContextPlayerOptionOverrides",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _CONTEXTPLAYEROPTIONOVERRIDES,
-        '__module__': 'context_player_options_pb2'
+        "DESCRIPTOR": _CONTEXTPLAYEROPTIONOVERRIDES,
+        "__module__": "context_player_options_pb2"
         # @@protoc_insertion_point(class_scope:spotify.player.proto.ContextPlayerOptionOverrides)
-    })
+    },
+)
 _sym_db.RegisterMessage(ContextPlayerOptionOverrides)
 
 DESCRIPTOR._options = None

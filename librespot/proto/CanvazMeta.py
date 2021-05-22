@@ -7,61 +7,67 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
-    name='canvaz-meta.proto',
-    package='com.spotify.canvaz',
-    syntax='proto3',
-    serialized_options=b'\n\022com.spotify.canvazH\002',
+    name="canvaz-meta.proto",
+    package="com.spotify.canvaz",
+    syntax="proto3",
+    serialized_options=b"\n\022com.spotify.canvazH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x11\x63\x61nvaz-meta.proto\x12\x12\x63om.spotify.canvaz*R\n\x04Type\x12\t\n\x05IMAGE\x10\x00\x12\t\n\x05VIDEO\x10\x01\x12\x11\n\rVIDEO_LOOPING\x10\x02\x12\x18\n\x14VIDEO_LOOPING_RANDOM\x10\x03\x12\x07\n\x03GIF\x10\x04\x42\x16\n\x12\x63om.spotify.canvazH\x02\x62\x06proto3'
+    serialized_pb=b"\n\x11\x63\x61nvaz-meta.proto\x12\x12\x63om.spotify.canvaz*R\n\x04Type\x12\t\n\x05IMAGE\x10\x00\x12\t\n\x05VIDEO\x10\x01\x12\x11\n\rVIDEO_LOOPING\x10\x02\x12\x18\n\x14VIDEO_LOOPING_RANDOM\x10\x03\x12\x07\n\x03GIF\x10\x04\x42\x16\n\x12\x63om.spotify.canvazH\x02\x62\x06proto3",
 )
 
 _TYPE = _descriptor.EnumDescriptor(
-    name='Type',
-    full_name='com.spotify.canvaz.Type',
+    name="Type",
+    full_name="com.spotify.canvaz.Type",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='IMAGE',
+            name="IMAGE",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='VIDEO',
+            name="VIDEO",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='VIDEO_LOOPING',
+            name="VIDEO_LOOPING",
             index=2,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='VIDEO_LOOPING_RANDOM',
+            name="VIDEO_LOOPING_RANDOM",
             index=3,
             number=3,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='GIF',
+            name="GIF",
             index=4,
             number=4,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -77,7 +83,7 @@ VIDEO_LOOPING = 2
 VIDEO_LOOPING_RANDOM = 3
 GIF = 4
 
-DESCRIPTOR.enum_types_by_name['Type'] = _TYPE
+DESCRIPTOR.enum_types_by_name["Type"] = _TYPE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 DESCRIPTOR._options = None

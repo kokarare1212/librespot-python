@@ -9,35 +9,37 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
-    name='session.proto',
-    package='spotify.player.proto.transfer',
-    syntax='proto2',
-    serialized_options=b'\n\024com.spotify.transferH\002',
+    name="session.proto",
+    package="spotify.player.proto.transfer",
+    syntax="proto2",
+    serialized_options=b"\n\024com.spotify.transferH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\rsession.proto\x12\x1dspotify.player.proto.transfer\x1a\rcontext.proto\x1a\x1c\x63ontext_player_options.proto\x1a\x11play_origin.proto\"\xd3\x01\n\x07Session\x12\x35\n\x0bplay_origin\x18\x01 \x01(\x0b\x32 .spotify.player.proto.PlayOrigin\x12.\n\x07\x63ontext\x18\x02 \x01(\x0b\x32\x1d.spotify.player.proto.Context\x12\x13\n\x0b\x63urrent_uid\x18\x03 \x01(\t\x12L\n\x10option_overrides\x18\x04 \x01(\x0b\x32\x32.spotify.player.proto.ContextPlayerOptionOverridesB\x18\n\x14\x63om.spotify.transferH\x02',
+    serialized_pb=b'\n\rsession.proto\x12\x1dspotify.player.proto.transfer\x1a\rcontext.proto\x1a\x1c\x63ontext_player_options.proto\x1a\x11play_origin.proto"\xd3\x01\n\x07Session\x12\x35\n\x0bplay_origin\x18\x01 \x01(\x0b\x32 .spotify.player.proto.PlayOrigin\x12.\n\x07\x63ontext\x18\x02 \x01(\x0b\x32\x1d.spotify.player.proto.Context\x12\x13\n\x0b\x63urrent_uid\x18\x03 \x01(\t\x12L\n\x10option_overrides\x18\x04 \x01(\x0b\x32\x32.spotify.player.proto.ContextPlayerOptionOverridesB\x18\n\x14\x63om.spotify.transferH\x02',
     dependencies=[
         context__pb2.DESCRIPTOR,
         context__player__options__pb2.DESCRIPTOR,
         play__origin__pb2.DESCRIPTOR,
-    ])
+    ],
+)
 
 _SESSION = _descriptor.Descriptor(
-    name='Session',
-    full_name='spotify.player.proto.transfer.Session',
+    name="Session",
+    full_name="spotify.player.proto.transfer.Session",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='play_origin',
-            full_name='spotify.player.proto.transfer.Session.play_origin',
+            name="play_origin",
+            full_name="spotify.player.proto.transfer.Session.play_origin",
             index=0,
             number=1,
             type=11,
@@ -52,10 +54,11 @@ _SESSION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='context',
-            full_name='spotify.player.proto.transfer.Session.context',
+            name="context",
+            full_name="spotify.player.proto.transfer.Session.context",
             index=1,
             number=2,
             type=11,
@@ -70,17 +73,18 @@ _SESSION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='current_uid',
-            full_name='spotify.player.proto.transfer.Session.current_uid',
+            name="current_uid",
+            full_name="spotify.player.proto.transfer.Session.current_uid",
             index=2,
             number=3,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -88,10 +92,11 @@ _SESSION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='option_overrides',
-            full_name='spotify.player.proto.transfer.Session.option_overrides',
+            name="option_overrides",
+            full_name="spotify.player.proto.transfer.Session.option_overrides",
             index=3,
             number=4,
             type=11,
@@ -106,36 +111,38 @@ _SESSION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=113,
     serialized_end=324,
 )
 
+_SESSION.fields_by_name["play_origin"].message_type = play__origin__pb2._PLAYORIGIN
+_SESSION.fields_by_name["context"].message_type = context__pb2._CONTEXT
 _SESSION.fields_by_name[
-    'play_origin'].message_type = play__origin__pb2._PLAYORIGIN
-_SESSION.fields_by_name['context'].message_type = context__pb2._CONTEXT
-_SESSION.fields_by_name[
-    'option_overrides'].message_type = context__player__options__pb2._CONTEXTPLAYEROPTIONOVERRIDES
-DESCRIPTOR.message_types_by_name['Session'] = _SESSION
+    "option_overrides"
+].message_type = context__player__options__pb2._CONTEXTPLAYEROPTIONOVERRIDES
+DESCRIPTOR.message_types_by_name["Session"] = _SESSION
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Session = _reflection.GeneratedProtocolMessageType(
-    'Session',
-    (_message.Message, ),
+    "Session",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _SESSION,
-        '__module__': 'session_pb2'
+        "DESCRIPTOR": _SESSION,
+        "__module__": "session_pb2"
         # @@protoc_insertion_point(class_scope:spotify.player.proto.transfer.Session)
-    })
+    },
+)
 _sym_db.RegisterMessage(Session)
 
 DESCRIPTOR._options = None

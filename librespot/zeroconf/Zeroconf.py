@@ -16,11 +16,9 @@ class Zeroconf(Closeable):
 
     def __init__(self):
         try:
-            self.__BROADCAST4 = socket.socket(socket.AF_INET,
-                                              socket.SOCK_DGRAM)
+            self.__BROADCAST4 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             self.__BROADCAST4.connect(("224.0.0.251", 5353))
-            self.__BROADCAST6 = socket.socket(socket.AF_INET6,
-                                              socket.SOCK_DGRAM)
+            self.__BROADCAST6 = socket.socket(socket.AF_INET6, socket.SOCK_DGRAM)
             self.__BROADCAST6.connect(("FF02::FB", 5353))
         except Exception as e:
             pass
@@ -31,9 +29,12 @@ class Zeroconf(Closeable):
     def get_or_create_local_host_name() -> str:
         host = socket.gethostname()
         if host == "localhost":
-            host = base64.b64encode(
-                random.randint(-9223372036854775808,
-                               9223372036854775807)).decode() + ".local"
+            host = (
+                base64.b64encode(
+                    random.randint(-9223372036854775808, 9223372036854775807)
+                ).decode()
+                + ".local"
+            )
         return host
 
     def set_use_ipv4(self, ipv4: bool) -> Zeroconf:

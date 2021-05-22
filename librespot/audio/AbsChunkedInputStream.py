@@ -22,9 +22,7 @@ class AbsChunkedInputStream(InputStream, HaltListener):
     _decoded_length: int = 0
 
     def __init__(self, retry_on_chunk_error: bool):
-        self.retries: typing.Final[typing.List[int]] = [
-            0 for _ in range(self.chunks())
-        ]
+        self.retries: typing.Final[typing.List[int]] = [0 for _ in range(self.chunks())]
         self.retry_on_chunk_error = retry_on_chunk_error
 
     def is_closed(self) -> bool:
@@ -109,10 +107,13 @@ class AbsChunkedInputStream(InputStream, HaltListener):
             self.request_chunk_from_stream(chunk)
             self.requested_chunks()[chunk] = True
 
-        for i in range(chunk + 1,
-                       min(self.chunks() - 1, chunk + self.preload_ahead) + 1):
-            if (self.requested_chunks()[i]
-                    and self.retries[i] < self.preload_chunk_retries):
+        for i in range(
+            chunk + 1, min(self.chunks() - 1, chunk + self.preload_ahead) + 1
+        ):
+            if (
+                self.requested_chunks()[i]
+                and self.retries[i] < self.preload_chunk_retries
+            ):
                 self.request_chunk_from_stream(i)
                 self.requested_chunks()[chunk] = True
 
@@ -146,10 +147,7 @@ class AbsChunkedInputStream(InputStream, HaltListener):
 
                 self.check_availability(chunk, True, True)
 
-    def read(self,
-             b: bytearray = None,
-             offset: int = None,
-             length: int = None) -> int:
+    def read(self, b: bytearray = None, offset: int = None, length: int = None) -> int:
         if b is None and offset is None and length is None:
             return self.internal_read()
         if not (b is not None and offset is not None and length is not None):
@@ -159,8 +157,9 @@ class AbsChunkedInputStream(InputStream, HaltListener):
             raise IOError("Stream is closed!")
 
         if offset < 0 or length < 0 or length > len(b) - offset:
-            raise IndexError("offset: {}, length: {}, buffer: {}".format(
-                offset, length, len(b)))
+            raise IndexError(
+                "offset: {}, length: {}, buffer: {}".format(offset, length, len(b))
+            )
         elif length == 0:
             return 0
 
@@ -175,8 +174,7 @@ class AbsChunkedInputStream(InputStream, HaltListener):
             self.check_availability(chunk, True, False)
 
             copy = min(len(self.buffer()[chunk]) - chunk_off, length - i)
-            b[offset + 0:copy] = self.buffer()[chunk][chunk_off:chunk_off +
-                                                      copy]
+            b[offset + 0 : copy] = self.buffer()[chunk][chunk_off : chunk_off + copy]
             i += copy
             self._pos += copy
 
@@ -224,4 +222,5 @@ class AbsChunkedInputStream(InputStream, HaltListener):
         @staticmethod
         def from_stream_error(stream_error: int):
             return AbsChunkedInputStream.ChunkException(
-                "Failed due to stream error, code: {}".format(stream_error))
+                "Failed due to stream error, code: {}".format(stream_error)
+            )

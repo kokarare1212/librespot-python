@@ -6,40 +6,43 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
-    name='spotify/login5/v3/challenges/code.proto',
-    package='spotify.login5.v3.challenges',
-    syntax='proto3',
-    serialized_options=b'\n\024com.spotify.login5v3',
+    name="spotify/login5/v3/challenges/code.proto",
+    package="spotify.login5.v3.challenges",
+    syntax="proto3",
+    serialized_options=b"\n\024com.spotify.login5v3",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\'spotify/login5/v3/challenges/code.proto\x12\x1cspotify.login5.v3.challenges\"\xbc\x01\n\rCodeChallenge\x12\x42\n\x06method\x18\x01 \x01(\x0e\x32\x32.spotify.login5.v3.challenges.CodeChallenge.Method\x12\x13\n\x0b\x63ode_length\x18\x02 \x01(\x05\x12\x12\n\nexpires_in\x18\x03 \x01(\x05\x12\x1e\n\x16\x63\x61nonical_phone_number\x18\x04 \x01(\t\"\x1e\n\x06Method\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x07\n\x03SMS\x10\x01\"\x1c\n\x0c\x43odeSolution\x12\x0c\n\x04\x63ode\x18\x01 \x01(\tB\x16\n\x14\x63om.spotify.login5v3b\x06proto3'
+    serialized_pb=b'\n\'spotify/login5/v3/challenges/code.proto\x12\x1cspotify.login5.v3.challenges"\xbc\x01\n\rCodeChallenge\x12\x42\n\x06method\x18\x01 \x01(\x0e\x32\x32.spotify.login5.v3.challenges.CodeChallenge.Method\x12\x13\n\x0b\x63ode_length\x18\x02 \x01(\x05\x12\x12\n\nexpires_in\x18\x03 \x01(\x05\x12\x1e\n\x16\x63\x61nonical_phone_number\x18\x04 \x01(\t"\x1e\n\x06Method\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x07\n\x03SMS\x10\x01"\x1c\n\x0c\x43odeSolution\x12\x0c\n\x04\x63ode\x18\x01 \x01(\tB\x16\n\x14\x63om.spotify.login5v3b\x06proto3',
 )
 
 _CODECHALLENGE_METHOD = _descriptor.EnumDescriptor(
-    name='Method',
-    full_name='spotify.login5.v3.challenges.CodeChallenge.Method',
+    name="Method",
+    full_name="spotify.login5.v3.challenges.CodeChallenge.Method",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='UNKNOWN',
+            name="UNKNOWN",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='SMS',
+            name="SMS",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -49,16 +52,16 @@ _CODECHALLENGE_METHOD = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_CODECHALLENGE_METHOD)
 
 _CODECHALLENGE = _descriptor.Descriptor(
-    name='CodeChallenge',
-    full_name='spotify.login5.v3.challenges.CodeChallenge',
+    name="CodeChallenge",
+    full_name="spotify.login5.v3.challenges.CodeChallenge",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='method',
-            full_name='spotify.login5.v3.challenges.CodeChallenge.method',
+            name="method",
+            full_name="spotify.login5.v3.challenges.CodeChallenge.method",
             index=0,
             number=1,
             type=14,
@@ -73,10 +76,11 @@ _CODECHALLENGE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='code_length',
-            full_name='spotify.login5.v3.challenges.CodeChallenge.code_length',
+            name="code_length",
+            full_name="spotify.login5.v3.challenges.CodeChallenge.code_length",
             index=1,
             number=2,
             type=5,
@@ -91,10 +95,11 @@ _CODECHALLENGE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='expires_in',
-            full_name='spotify.login5.v3.challenges.CodeChallenge.expires_in',
+            name="expires_in",
+            full_name="spotify.login5.v3.challenges.CodeChallenge.expires_in",
             index=2,
             number=3,
             type=5,
@@ -109,17 +114,18 @@ _CODECHALLENGE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='canonical_phone_number',
-            full_name='spotify.login5.v3.challenges.CodeChallenge.canonical_phone_number',
+            name="canonical_phone_number",
+            full_name="spotify.login5.v3.challenges.CodeChallenge.canonical_phone_number",
             index=3,
             number=4,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -127,7 +133,8 @@ _CODECHALLENGE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -136,7 +143,7 @@ _CODECHALLENGE = _descriptor.Descriptor(
     ],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto3',
+    syntax="proto3",
     extension_ranges=[],
     oneofs=[],
     serialized_start=74,
@@ -144,23 +151,23 @@ _CODECHALLENGE = _descriptor.Descriptor(
 )
 
 _CODESOLUTION = _descriptor.Descriptor(
-    name='CodeSolution',
-    full_name='spotify.login5.v3.challenges.CodeSolution',
+    name="CodeSolution",
+    full_name="spotify.login5.v3.challenges.CodeSolution",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='code',
-            full_name='spotify.login5.v3.challenges.CodeSolution.code',
+            name="code",
+            full_name="spotify.login5.v3.challenges.CodeSolution.code",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -168,44 +175,47 @@ _CODESOLUTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto3',
+    syntax="proto3",
     extension_ranges=[],
     oneofs=[],
     serialized_start=264,
     serialized_end=292,
 )
 
-_CODECHALLENGE.fields_by_name['method'].enum_type = _CODECHALLENGE_METHOD
+_CODECHALLENGE.fields_by_name["method"].enum_type = _CODECHALLENGE_METHOD
 _CODECHALLENGE_METHOD.containing_type = _CODECHALLENGE
-DESCRIPTOR.message_types_by_name['CodeChallenge'] = _CODECHALLENGE
-DESCRIPTOR.message_types_by_name['CodeSolution'] = _CODESOLUTION
+DESCRIPTOR.message_types_by_name["CodeChallenge"] = _CODECHALLENGE
+DESCRIPTOR.message_types_by_name["CodeSolution"] = _CODESOLUTION
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 CodeChallenge = _reflection.GeneratedProtocolMessageType(
-    'CodeChallenge',
-    (_message.Message, ),
+    "CodeChallenge",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _CODECHALLENGE,
-        '__module__': 'spotify.login5.v3.challenges.code_pb2'
+        "DESCRIPTOR": _CODECHALLENGE,
+        "__module__": "spotify.login5.v3.challenges.code_pb2"
         # @@protoc_insertion_point(class_scope:spotify.login5.v3.challenges.CodeChallenge)
-    })
+    },
+)
 _sym_db.RegisterMessage(CodeChallenge)
 
 CodeSolution = _reflection.GeneratedProtocolMessageType(
-    'CodeSolution',
-    (_message.Message, ),
+    "CodeSolution",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _CODESOLUTION,
-        '__module__': 'spotify.login5.v3.challenges.code_pb2'
+        "DESCRIPTOR": _CODESOLUTION,
+        "__module__": "spotify.login5.v3.challenges.code_pb2"
         # @@protoc_insertion_point(class_scope:spotify.login5.v3.challenges.CodeSolution)
-    })
+    },
+)
 _sym_db.RegisterMessage(CodeSolution)
 
 DESCRIPTOR._options = None

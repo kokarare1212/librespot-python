@@ -3,13 +3,13 @@ from librespot.zeroconf import Packet
 
 class Record:
     TYPE_A: int = 0x01
-    TYPE_PTR: int = 0x0c
+    TYPE_PTR: int = 0x0C
     TYPE_CNAME: int = 0x05
     TYPE_TXT: int = 0x10
-    TYPE_AAAA: int = 0x1c
+    TYPE_AAAA: int = 0x1C
     TYPE_SRV: int = 0x21
-    TYPE_NSEC: int = 0x2f
-    TYPE_ANY: int = 0xff
+    TYPE_NSEC: int = 0x2F
+    TYPE_ANY: int = 0xFF
     __type: int
     _ttl: int
     __name: str

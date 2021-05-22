@@ -10,36 +10,38 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
-    name='transfer_state.proto',
-    package='spotify.player.proto.transfer',
-    syntax='proto2',
-    serialized_options=b'\n\024com.spotify.transferH\002',
+    name="transfer_state.proto",
+    package="spotify.player.proto.transfer",
+    syntax="proto2",
+    serialized_options=b"\n\024com.spotify.transferH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x14transfer_state.proto\x12\x1dspotify.player.proto.transfer\x1a\x1c\x63ontext_player_options.proto\x1a\x0eplayback.proto\x1a\rsession.proto\x1a\x0bqueue.proto\"\x99\x02\n\rTransferState\x12;\n\x07options\x18\x01 \x01(\x0b\x32*.spotify.player.proto.ContextPlayerOptions\x12\x39\n\x08playback\x18\x02 \x01(\x0b\x32\'.spotify.player.proto.transfer.Playback\x12?\n\x0f\x63urrent_session\x18\x03 \x01(\x0b\x32&.spotify.player.proto.transfer.Session\x12\x33\n\x05queue\x18\x04 \x01(\x0b\x32$.spotify.player.proto.transfer.Queue\x12\x1a\n\x12\x63reation_timestamp\x18\x05 \x01(\x03\x42\x18\n\x14\x63om.spotify.transferH\x02',
+    serialized_pb=b"\n\x14transfer_state.proto\x12\x1dspotify.player.proto.transfer\x1a\x1c\x63ontext_player_options.proto\x1a\x0eplayback.proto\x1a\rsession.proto\x1a\x0bqueue.proto\"\x99\x02\n\rTransferState\x12;\n\x07options\x18\x01 \x01(\x0b\x32*.spotify.player.proto.ContextPlayerOptions\x12\x39\n\x08playback\x18\x02 \x01(\x0b\x32'.spotify.player.proto.transfer.Playback\x12?\n\x0f\x63urrent_session\x18\x03 \x01(\x0b\x32&.spotify.player.proto.transfer.Session\x12\x33\n\x05queue\x18\x04 \x01(\x0b\x32$.spotify.player.proto.transfer.Queue\x12\x1a\n\x12\x63reation_timestamp\x18\x05 \x01(\x03\x42\x18\n\x14\x63om.spotify.transferH\x02",
     dependencies=[
         context__player__options__pb2.DESCRIPTOR,
         playback__pb2.DESCRIPTOR,
         session__pb2.DESCRIPTOR,
         queue__pb2.DESCRIPTOR,
-    ])
+    ],
+)
 
 _TRANSFERSTATE = _descriptor.Descriptor(
-    name='TransferState',
-    full_name='spotify.player.proto.transfer.TransferState',
+    name="TransferState",
+    full_name="spotify.player.proto.transfer.TransferState",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='options',
-            full_name='spotify.player.proto.transfer.TransferState.options',
+            name="options",
+            full_name="spotify.player.proto.transfer.TransferState.options",
             index=0,
             number=1,
             type=11,
@@ -54,10 +56,11 @@ _TRANSFERSTATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='playback',
-            full_name='spotify.player.proto.transfer.TransferState.playback',
+            name="playback",
+            full_name="spotify.player.proto.transfer.TransferState.playback",
             index=1,
             number=2,
             type=11,
@@ -72,10 +75,11 @@ _TRANSFERSTATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='current_session',
-            full_name='spotify.player.proto.transfer.TransferState.current_session',
+            name="current_session",
+            full_name="spotify.player.proto.transfer.TransferState.current_session",
             index=2,
             number=3,
             type=11,
@@ -90,10 +94,11 @@ _TRANSFERSTATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='queue',
-            full_name='spotify.player.proto.transfer.TransferState.queue',
+            name="queue",
+            full_name="spotify.player.proto.transfer.TransferState.queue",
             index=3,
             number=4,
             type=11,
@@ -108,10 +113,11 @@ _TRANSFERSTATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='creation_timestamp',
-            full_name='spotify.player.proto.transfer.TransferState.creation_timestamp',
+            name="creation_timestamp",
+            full_name="spotify.player.proto.transfer.TransferState.creation_timestamp",
             index=4,
             number=5,
             type=3,
@@ -126,14 +132,15 @@ _TRANSFERSTATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=130,
@@ -141,23 +148,23 @@ _TRANSFERSTATE = _descriptor.Descriptor(
 )
 
 _TRANSFERSTATE.fields_by_name[
-    'options'].message_type = context__player__options__pb2._CONTEXTPLAYEROPTIONS
-_TRANSFERSTATE.fields_by_name[
-    'playback'].message_type = playback__pb2._PLAYBACK
-_TRANSFERSTATE.fields_by_name[
-    'current_session'].message_type = session__pb2._SESSION
-_TRANSFERSTATE.fields_by_name['queue'].message_type = queue__pb2._QUEUE
-DESCRIPTOR.message_types_by_name['TransferState'] = _TRANSFERSTATE
+    "options"
+].message_type = context__player__options__pb2._CONTEXTPLAYEROPTIONS
+_TRANSFERSTATE.fields_by_name["playback"].message_type = playback__pb2._PLAYBACK
+_TRANSFERSTATE.fields_by_name["current_session"].message_type = session__pb2._SESSION
+_TRANSFERSTATE.fields_by_name["queue"].message_type = queue__pb2._QUEUE
+DESCRIPTOR.message_types_by_name["TransferState"] = _TRANSFERSTATE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 TransferState = _reflection.GeneratedProtocolMessageType(
-    'TransferState',
-    (_message.Message, ),
+    "TransferState",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _TRANSFERSTATE,
-        '__module__': 'transfer_state_pb2'
+        "DESCRIPTOR": _TRANSFERSTATE,
+        "__module__": "transfer_state_pb2"
         # @@protoc_insertion_point(class_scope:spotify.player.proto.transfer.TransferState)
-    })
+    },
+)
 _sym_db.RegisterMessage(TransferState)
 
 DESCRIPTOR._options = None

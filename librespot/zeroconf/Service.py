@@ -15,7 +15,7 @@ class Service:
         self.__alias = alias
         for s in alias:
             c = ord(s)
-            if c < 0x20 or c == 0x7f:
+            if c < 0x20 or c == 0x7F:
                 raise TypeError()
 
             self.__service = service
@@ -27,7 +27,7 @@ class Service:
         ns = ""
         for s in text:
             c = ord(s)
-            if c == 0x2e or c == 0x5c:
+            if c == 0x2E or c == 0x5C:
                 ns += "\\"
             ns += s
         return ns
