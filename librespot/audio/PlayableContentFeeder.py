@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import logging
+import typing
+
 from librespot.audio import GeneralAudioStream, HaltListener, NormalizationData
 from librespot.audio.cdn import CdnFeedHelper
 from librespot.audio.format import AudioQualityPicker
@@ -7,8 +10,6 @@ from librespot.common.Utils import Utils
 from librespot.core import Session
 from librespot.metadata import PlayableId, TrackId
 from librespot.proto import Metadata, StorageResolve
-import logging
-import typing
 
 
 class PlayableContentFeeder:

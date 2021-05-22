@@ -3,9 +3,9 @@ from __future__ import annotations
 import logging
 import typing
 
+from librespot.audio.decoders.AudioQuality import AudioQuality
 from librespot.audio.format.AudioQualityPicker import AudioQualityPicker
 from librespot.audio.format.SuperAudioFormat import SuperAudioFormat
-from librespot.audio.decoders.AudioQuality import AudioQuality
 from librespot.proto import Metadata
 
 

@@ -1,8 +1,10 @@
+import time
+
 from Crypto.Cipher import AES
 from Crypto.Util import Counter
-from librespot.audio.storage import ChannelManager
+
 from librespot.audio.decrypt.AudioDecrypt import AudioDecrypt
-import time
+from librespot.audio.storage import ChannelManager
 
 
 class AesAudioDecrypt(AudioDecrypt):

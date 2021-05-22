@@ -10,8 +10,7 @@ from librespot.common import Utils
 from librespot.core import Session
 from librespot.crypto import DiffieHellman
 from librespot.proto import Connect
-from librespot.standard import Closeable
-from librespot.standard import Runnable
+from librespot.standard import Closeable, Runnable
 
 
 class ZeroconfServer(Closeable):

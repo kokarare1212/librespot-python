@@ -1,10 +1,12 @@
+import logging
+import typing
+
+import requests
+
 from librespot.core.ApResolver import ApResolver
-from librespot.metadata import AlbumId, ArtistId, EpisodeId, TrackId, ShowId
+from librespot.metadata import AlbumId, ArtistId, EpisodeId, ShowId, TrackId
 from librespot.proto import Connect, Metadata
 from librespot.standard import Closeable
-import logging
-import requests
-import typing
 
 
 class ApiClient(Closeable):

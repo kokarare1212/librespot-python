@@ -13,35 +13,23 @@ import typing
 
 import defusedxml.ElementTree
 import requests
-from Crypto.Hash import HMAC
-from Crypto.Hash import SHA1
+from Crypto.Hash import HMAC, SHA1
 from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5
 
-from librespot.audio import AudioKeyManager
-from librespot.audio import PlayableContentFeeder
+from librespot.audio import AudioKeyManager, PlayableContentFeeder
 from librespot.audio.cdn import CdnManager
 from librespot.audio.storage import ChannelManager
 from librespot.cache import CacheManager
 from librespot.common.Utils import Utils
-from librespot.core import ApResolver
-from librespot.core import EventService
-from librespot.core import SearchManager
-from librespot.core import TokenProvider
-from librespot.crypto import CipherPair
-from librespot.crypto import DiffieHellman
-from librespot.crypto import Packet
-from librespot.dealer import ApiClient
-from librespot.dealer import DealerClient
-from librespot.mercury import MercuryClient
-from librespot.mercury import SubListener
-from librespot.proto import Authentication
-from librespot.proto import Connect
-from librespot.proto import Keyexchange
+from librespot.core import (ApResolver, EventService, SearchManager,
+                            TokenProvider)
+from librespot.crypto import CipherPair, DiffieHellman, Packet
+from librespot.dealer import ApiClient, DealerClient
+from librespot.mercury import MercuryClient, SubListener
+from librespot.proto import Authentication, Connect, Keyexchange
 from librespot.proto.ExplicitContentPubsub import UserAttributesUpdate
-from librespot.standard import BytesInputStream
-from librespot.standard import Closeable
-from librespot.standard import Proxy
+from librespot.standard import BytesInputStream, Closeable, Proxy
 from librespot.Version import Version
 
 
