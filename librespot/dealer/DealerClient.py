@@ -12,9 +12,11 @@ class DealerClient(Closeable):
     def connect(self):
         pass
 
-    def add_message_listener(self, listener: DealerClient.MessageListener, *uris: str):
+    def add_message_listener(self, listener: DealerClient.MessageListener,
+                             *uris: str):
         pass
 
     class MessageListener:
-        def on_message(self, uri: str, headers: typing.Dict[str, str], payload: bytes):
+        def on_message(self, uri: str, headers: typing.Dict[str, str],
+                       payload: bytes):
             pass

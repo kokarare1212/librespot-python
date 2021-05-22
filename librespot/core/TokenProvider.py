@@ -18,8 +18,7 @@ class TokenProvider:
         self._session = session
 
     def find_token_with_all_scopes(
-        self, scopes: typing.List[str]
-    ) -> TokenProvider.StoredToken:
+            self, scopes: typing.List[str]) -> TokenProvider.StoredToken:
         for token in self._tokens:
             if token.has_scopes(scopes):
                 return token
@@ -40,20 +39,16 @@ class TokenProvider:
                 return token
 
         self._LOGGER.debug(
-            "Token expired or not suitable, requesting again. scopes: {}, old_token: {}".format(
-                scopes, token
-            )
-        )
+            "Token expired or not suitable, requesting again. scopes: {}, old_token: {}"
+            .format(scopes, token))
         resp = self._session.mercury().send_sync_json(
-            MercuryRequests.request_token(self._session.device_id(), ",".join(scopes))
-        )
+            MercuryRequests.request_token(self._session.device_id(),
+                                          ",".join(scopes)))
         token = TokenProvider.StoredToken(resp)
 
         self._LOGGER.debug(
             "Updated token successfully! scopes: {}, new_token: {}".format(
-                scopes, token
-            )
-        )
+                scopes, token))
         self._tokens.append(token)
 
         return token
@@ -74,11 +69,9 @@ class TokenProvider:
             self.scopes = obj["scope"]
 
         def expired(self) -> bool:
-            return (
-                self.timestamp
-                + (self.expires_in - TokenProvider._TOKEN_EXPIRE_THRESHOLD) * 1000
-                < TimeProvider.TimeProvider().current_time_millis()
-            )
+            return (self.timestamp +
+                    (self.expires_in - TokenProvider._TOKEN_EXPIRE_THRESHOLD) *
+                    1000 < TimeProvider.TimeProvider().current_time_millis())
 
         def has_scope(self, scope: str) -> bool:
             for s in self.scopes:

@@ -49,11 +49,9 @@ class PlayableId:
 
     @staticmethod
     def is_supported(uri: str):
-        return (
-            not uri.startswith("spotify:local:")
-            and not uri == "spotify:delimiter"
-            and not uri == "spotify:meta:delimiter"
-        )
+        return (not uri.startswith("spotify:local:")
+                and not uri == "spotify:delimiter"
+                and not uri == "spotify:meta:delimiter")
 
     @staticmethod
     def should_play(track: ContextTrack):
@@ -98,7 +96,8 @@ class AlbumId(SpotifyId):
         matcher = AlbumId._PATTERN.search(uri)
         if matcher is not None:
             album_id = matcher.group(1)
-            return AlbumId(Utils.bytes_to_hex(AlbumId._BASE62.decode(album_id, 16)))
+            return AlbumId(
+                Utils.bytes_to_hex(AlbumId._BASE62.decode(album_id, 16)))
         raise TypeError("Not a Spotify album ID: {}.f".format(uri))
 
     @staticmethod
@@ -111,8 +110,7 @@ class AlbumId(SpotifyId):
 
     def to_mercury_uri(self) -> str:
         return "spotify:album:{}".format(
-            AlbumId._BASE62.encode(Utils.hex_to_bytes(self._hexId))
-        )
+            AlbumId._BASE62.encode(Utils.hex_to_bytes(self._hexId)))
 
     def hex_id(self) -> str:
         return self._hexId
@@ -131,12 +129,14 @@ class ArtistId(SpotifyId):
         matcher = ArtistId._PATTERN.search(uri)
         if matcher is not None:
             artist_id = matcher.group(1)
-            return ArtistId(Utils.bytes_to_hex(ArtistId._BASE62.decode(artist_id, 16)))
+            return ArtistId(
+                Utils.bytes_to_hex(ArtistId._BASE62.decode(artist_id, 16)))
         raise TypeError("Not a Spotify artist ID: {}".format(uri))
 
     @staticmethod
     def from_base62(base62: str) -> ArtistId:
-        return ArtistId(Utils.bytes_to_hex(ArtistId._BASE62.decode(base62, 16)))
+        return ArtistId(Utils.bytes_to_hex(ArtistId._BASE62.decode(base62,
+                                                                   16)))
 
     @staticmethod
     def from_hex(hex_str: str) -> ArtistId:
@@ -147,8 +147,7 @@ class ArtistId(SpotifyId):
 
     def to_spotify_uri(self) -> str:
         return "spotify:artist:{}".format(
-            ArtistId._BASE62.encode(Utils.hex_to_bytes(self._hexId))
-        )
+            ArtistId._BASE62.encode(Utils.hex_to_bytes(self._hexId)))
 
     def hex_id(self) -> str:
         return self._hexId
@@ -167,13 +166,14 @@ class EpisodeId(SpotifyId, PlayableId):
         if matcher is not None:
             episode_id = matcher.group(1)
             return EpisodeId(
-                Utils.Utils.bytes_to_hex(PlayableId.BASE62.decode(episode_id, 16))
-            )
+                Utils.Utils.bytes_to_hex(
+                    PlayableId.BASE62.decode(episode_id, 16)))
         TypeError("Not a Spotify episode ID: {}".format(uri))
 
     @staticmethod
     def from_base62(base62: str) -> EpisodeId:
-        return EpisodeId(Utils.Utils.bytes_to_hex(PlayableId.BASE62.decode(base62, 16)))
+        return EpisodeId(
+            Utils.Utils.bytes_to_hex(PlayableId.BASE62.decode(base62, 16)))
 
     @staticmethod
     def from_hex(hex_str: str) -> EpisodeId:
@@ -184,8 +184,7 @@ class EpisodeId(SpotifyId, PlayableId):
 
     def to_spotify_uri(self) -> str:
         return "Spotify:episode:{}".format(
-            PlayableId.BASE62.encode(Utils.Utils.hex_to_bytes(self._hexId))
-        )
+            PlayableId.BASE62.encode(Utils.Utils.hex_to_bytes(self._hexId)))
 
     def hex_id(self) -> str:
         return self._hexId
@@ -207,7 +206,8 @@ class ShowId(SpotifyId):
         matcher = ShowId._PATTERN.search(uri)
         if matcher is not None:
             show_id = matcher.group(1)
-            return ShowId(Utils.bytes_to_hex(ShowId._BASE62.decode(show_id, 16)))
+            return ShowId(
+                Utils.bytes_to_hex(ShowId._BASE62.decode(show_id, 16)))
         raise TypeError("Not a Spotify show ID: {}".format(uri))
 
     @staticmethod
@@ -223,8 +223,7 @@ class ShowId(SpotifyId):
 
     def to_spotify_uri(self) -> str:
         return "spotify:show:{}".format(
-            ShowId._BASE62.encode(Utils.hex_to_bytes(self._hexId))
-        )
+            ShowId._BASE62.encode(Utils.hex_to_bytes(self._hexId)))
 
     def hex_id(self) -> str:
         return self._hexId
@@ -242,12 +241,14 @@ class TrackId(PlayableId, SpotifyId):
         search = TrackId.PATTERN.search(uri)
         if search is not None:
             track_id = search.group(1)
-            return TrackId(Utils.bytes_to_hex(PlayableId.BASE62.decode(track_id, 16)))
+            return TrackId(
+                Utils.bytes_to_hex(PlayableId.BASE62.decode(track_id, 16)))
         raise RuntimeError("Not a Spotify track ID: {}".format(uri))
 
     @staticmethod
     def from_base62(base62: str) -> TrackId:
-        return TrackId(Utils.bytes_to_hex(PlayableId.BASE62.decode(base62, 16)))
+        return TrackId(Utils.bytes_to_hex(PlayableId.BASE62.decode(base62,
+                                                                   16)))
 
     @staticmethod
     def from_hex(hex_str: str) -> TrackId:

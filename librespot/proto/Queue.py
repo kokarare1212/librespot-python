@@ -12,14 +12,14 @@ from google.protobuf import symbol_database as _symbol_database
 
 _sym_db = _symbol_database.Default()
 
-
 DESCRIPTOR = _descriptor.FileDescriptor(
     name="queue.proto",
     package="spotify.player.proto.transfer",
     syntax="proto2",
     serialized_options=b"\n\024com.spotify.transferH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x0bqueue.proto\x12\x1dspotify.player.proto.transfer\x1a\x13\x63ontext_track.proto"U\n\x05Queue\x12\x32\n\x06tracks\x18\x01 \x03(\x0b\x32".spotify.player.proto.ContextTrack\x12\x18\n\x10is_playing_queue\x18\x02 \x01(\x08\x42\x18\n\x14\x63om.spotify.transferH\x02',
+    serialized_pb=
+    b'\n\x0bqueue.proto\x12\x1dspotify.player.proto.transfer\x1a\x13\x63ontext_track.proto"U\n\x05Queue\x12\x32\n\x06tracks\x18\x01 \x03(\x0b\x32".spotify.player.proto.ContextTrack\x12\x18\n\x10is_playing_queue\x18\x02 \x01(\x08\x42\x18\n\x14\x63om.spotify.transferH\x02',
     dependencies=[
         context__track__pb2.DESCRIPTOR,
     ],
@@ -84,13 +84,14 @@ _QUEUE = _descriptor.Descriptor(
     serialized_end=152,
 )
 
-_QUEUE.fields_by_name["tracks"].message_type = context__track__pb2._CONTEXTTRACK
+_QUEUE.fields_by_name[
+    "tracks"].message_type = context__track__pb2._CONTEXTTRACK
 DESCRIPTOR.message_types_by_name["Queue"] = _QUEUE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Queue = _reflection.GeneratedProtocolMessageType(
     "Queue",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _QUEUE,
         "__module__": "queue_pb2"

@@ -3,16 +3,20 @@ from librespot.standard.FilterInputStream import FilterInputStream
 
 
 class DataInputStream(FilterInputStream, DataInput):
-    def read(self, b: bytearray = None, offset: int = None, length: int = None) -> int:
+    def read(self,
+             b: bytearray = None,
+             offset: int = None,
+             length: int = None) -> int:
         if b is not None and offset is None and length is None:
             return self.input_stream.read(b, 0, len(b))
         if b is not None and offset is not None and length is not None:
             return self.input_stream.read(b, offset, length)
         raise TypeError()
 
-    def read_fully(
-        self, b: bytearray = None, offset: int = None, length: int = None
-    ) -> None:
+    def read_fully(self,
+                   b: bytearray = None,
+                   offset: int = None,
+                   length: int = None) -> None:
         if b is not None and offset is None and length is None:
             offset = 0
             length = len(b)
@@ -90,16 +94,14 @@ class DataInputStream(FilterInputStream, DataInput):
 
     def read_long(self) -> int:
         self.read_fully(self.read_buffer, 0, 8)
-        return (
-            (self.read_buffer[0] << 56)
-            + ((self.read_buffer[1] & 255) << 48)
-            + ((self.read_buffer[2] & 255) << 40)
-            + ((self.read_buffer[3] & 255) << 32)
-            + ((self.read_buffer[4] & 255) << 24)
-            + ((self.read_buffer[5] & 255) << 16)
-            + ((self.read_buffer[6] & 255) << 8)
-            + ((self.read_buffer[7] & 255) << 0)
-        )
+        return ((self.read_buffer[0] << 56) +
+                ((self.read_buffer[1] & 255) << 48) +
+                ((self.read_buffer[2] & 255) << 40) +
+                ((self.read_buffer[3] & 255) << 32) +
+                ((self.read_buffer[4] & 255) << 24) +
+                ((self.read_buffer[5] & 255) << 16) +
+                ((self.read_buffer[6] & 255) << 8) +
+                ((self.read_buffer[7] & 255) << 0))
 
     def read_float(self) -> float:
         pass

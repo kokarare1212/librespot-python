@@ -51,15 +51,18 @@ class PlayerConfiguration:
         def __init__(self):
             pass
 
-        def set_preferred_quality(self, preferred_quality: AudioQuality) -> __class__:
+        def set_preferred_quality(
+                self, preferred_quality: AudioQuality) -> __class__:
             self.preferred_quality = preferred_quality
             return self
 
-        def set_enable_normalisation(self, enable_normalisation: bool) -> __class__:
+        def set_enable_normalisation(self,
+                                     enable_normalisation: bool) -> __class__:
             self.enable_normalisation = enable_normalisation
             return self
 
-        def set_normalisation_pregain(self, normalisation_pregain: float) -> __class__:
+        def set_normalisation_pregain(
+                self, normalisation_pregain: float) -> __class__:
             self.normalisation_pregain = normalisation_pregain
             return self
 

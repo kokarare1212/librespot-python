@@ -17,7 +17,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto3",
     serialized_options=b"\n\024com.spotify.login5v3",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n/spotify/login5/v3/identifiers/identifiers.proto\x12\x1dspotify.login5.v3.identifiers"U\n\x0bPhoneNumber\x12\x0e\n\x06number\x18\x01 \x01(\t\x12\x18\n\x10iso_country_code\x18\x02 \x01(\t\x12\x1c\n\x14\x63ountry_calling_code\x18\x03 \x01(\tB\x16\n\x14\x63om.spotify.login5v3b\x06proto3',
+    serialized_pb=
+    b'\n/spotify/login5/v3/identifiers/identifiers.proto\x12\x1dspotify.login5.v3.identifiers"U\n\x0bPhoneNumber\x12\x0e\n\x06number\x18\x01 \x01(\t\x12\x18\n\x10iso_country_code\x18\x02 \x01(\t\x12\x1c\n\x14\x63ountry_calling_code\x18\x03 \x01(\tB\x16\n\x14\x63om.spotify.login5v3b\x06proto3',
 )
 
 _PHONENUMBER = _descriptor.Descriptor(
@@ -49,7 +50,8 @@ _PHONENUMBER = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="iso_country_code",
-            full_name="spotify.login5.v3.identifiers.PhoneNumber.iso_country_code",
+            full_name=
+            "spotify.login5.v3.identifiers.PhoneNumber.iso_country_code",
             index=1,
             number=2,
             type=9,
@@ -68,7 +70,8 @@ _PHONENUMBER = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="country_calling_code",
-            full_name="spotify.login5.v3.identifiers.PhoneNumber.country_calling_code",
+            full_name=
+            "spotify.login5.v3.identifiers.PhoneNumber.country_calling_code",
             index=2,
             number=3,
             type=9,
@@ -103,7 +106,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 PhoneNumber = _reflection.GeneratedProtocolMessageType(
     "PhoneNumber",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _PHONENUMBER,
         "__module__": "spotify.login5.v3.identifiers.identifiers_pb2"

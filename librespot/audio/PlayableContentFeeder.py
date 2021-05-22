@@ -20,8 +20,7 @@ class PlayableContentFeeder:
     _LOGGER: logging = logging.getLogger(__name__)
     STORAGE_RESOLVE_INTERACTIVE: str = "/storage-resolve/files/audio/interactive/{}"
     STORAGE_RESOLVE_INTERACTIVE_PREFETCH: str = (
-        "/storage-resolve/files/audio/interactive_prefetch/{}"
-    )
+        "/storage-resolve/files/audio/interactive_prefetch/{}")
     session: Session
 
     def __init__(self, session: Session):
@@ -45,20 +44,17 @@ class PlayableContentFeeder:
         halt_listener: HaltListener,
     ):
         if type(playable_id) is TrackId:
-            return self.load_track(
-                playable_id, audio_quality_picker, preload, halt_listener
-            )
+            return self.load_track(playable_id, audio_quality_picker, preload,
+                                   halt_listener)
 
     def resolve_storage_interactive(
-        self, file_id: bytes, preload: bool
-    ) -> StorageResolve.StorageResolveResponse:
+            self, file_id: bytes,
+            preload: bool) -> StorageResolve.StorageResolveResponse:
         resp = self.session.api().send(
             "GET",
-            (
-                self.STORAGE_RESOLVE_INTERACTIVE_PREFETCH
-                if preload
-                else self.STORAGE_RESOLVE_INTERACTIVE
-            ).format(Utils.bytes_to_hex(file_id)),
+            (self.STORAGE_RESOLVE_INTERACTIVE_PREFETCH
+             if preload else self.STORAGE_RESOLVE_INTERACTIVE).format(
+                 Utils.bytes_to_hex(file_id)),
             None,
             None,
         )
@@ -81,7 +77,8 @@ class PlayableContentFeeder:
         halt_listener: HaltListener,
     ):
         if type(track_id_or_track) is TrackId:
-            original = self.session.api().get_metadata_4_track(track_id_or_track)
+            original = self.session.api().get_metadata_4_track(
+                track_id_or_track)
             track = self.pick_alternative_if_necessary(original)
             if track is None:
                 raise
@@ -89,7 +86,8 @@ class PlayableContentFeeder:
             track = track_id_or_track
         file = audio_quality_picker.get_file(track.file)
         if file is None:
-            self._LOGGER.fatal("Couldn't find any suitable audio file, available")
+            self._LOGGER.fatal(
+                "Couldn't find any suitable audio file, available")
             raise
 
         return self.load_stream(file, track, None, preload, halt_listener)
@@ -108,12 +106,10 @@ class PlayableContentFeeder:
         resp = self.resolve_storage_interactive(file.file_id, preload)
         if resp.result == StorageResolve.StorageResolveResponse.Result.CDN:
             if track is not None:
-                return CdnFeedHelper.load_track(
-                    self.session, track, file, resp, preload, halt_lister
-                )
-            return CdnFeedHelper.load_episode(
-                self.session, episode, file, resp, preload, halt_lister
-            )
+                return CdnFeedHelper.load_track(self.session, track, file,
+                                                resp, preload, halt_lister)
+            return CdnFeedHelper.load_episode(self.session, episode, file,
+                                              resp, preload, halt_lister)
         elif resp.result == StorageResolve.StorageResolveResponse.Result.STORAGE:
             if track is None:
                 # return StorageFeedHelper
@@ -156,10 +152,10 @@ class PlayableContentFeeder:
         preloaded_audio_key: bool
         audio_key_time: int
 
-        def __init__(
-            self, file_id: bytes, preloaded_audio_key: bool, audio_key_time: int
-        ):
-            self.file_id = None if file_id is None else Utils.bytes_to_hex(file_id)
+        def __init__(self, file_id: bytes, preloaded_audio_key: bool,
+                     audio_key_time: int):
+            self.file_id = None if file_id is None else Utils.bytes_to_hex(
+                file_id)
             self.preloaded_audio_key = preloaded_audio_key
             self.audio_key_time = audio_key_time
 
