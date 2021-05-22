@@ -3,7 +3,8 @@ from __future__ import annotations
 import logging
 import typing
 
-from librespot.core import Session, TimeProvider
+from librespot.core import Session
+from librespot.core import TimeProvider
 from librespot.mercury import MercuryRequests
 
 

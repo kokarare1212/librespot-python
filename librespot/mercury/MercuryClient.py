@@ -7,12 +7,17 @@ import threading
 import typing
 
 from librespot.common import Utils
-from librespot.core import PacketsReceiver, Session
+from librespot.core import PacketsReceiver
+from librespot.core import Session
 from librespot.crypto import Packet
-from librespot.mercury import (JsonMercuryRequest, RawMercuryRequest,
-                               SubListener)
-from librespot.proto import Mercury, Pubsub
-from librespot.standard import BytesInputStream, BytesOutputStream, Closeable
+from librespot.mercury import JsonMercuryRequest
+from librespot.mercury import RawMercuryRequest
+from librespot.mercury import SubListener
+from librespot.proto import Mercury
+from librespot.proto import Pubsub
+from librespot.standard import BytesInputStream
+from librespot.standard import BytesOutputStream
+from librespot.standard import Closeable
 
 
 class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
