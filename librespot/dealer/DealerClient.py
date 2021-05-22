@@ -1,6 +1,8 @@
 from __future__ import annotations
-from librespot.standard.Closeable import Closeable
+
 import typing
+
+from librespot.standard.Closeable import Closeable
 
 
 class DealerClient(Closeable):

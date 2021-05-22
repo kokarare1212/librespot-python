@@ -45,7 +45,7 @@ class Packet:
 
     def __set_flag(self, flag: int, on: bool):
         if on:
-            self.__flags |= (1 << flag)
+            self.__flags |= 1 << flag
         else:
             self.__flags &= ~(1 << flag)
 

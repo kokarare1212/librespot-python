@@ -7,13 +7,14 @@
 
 ## Contents
 
-* [Get Started](index.md)
-* [Supported Futures](supported.md)
-* [API Reference](api.md)
+- [Get Started](index.md)
+- [Supported Futures](supported.md)
+- [API Reference](api.md)
 
 ## What's librespot-python?
 
-librespot-python is a python port of Spotify's open source client library [librespot](https://github.com/librespot-org/librespot).
+librespot-python is a python port of Spotify's open source client library
+[librespot](https://github.com/librespot-org/librespot).
 
 It was created to play Spotify on various platforms and devices.
 
@@ -29,19 +30,20 @@ Please keep in mind that this library is not like Spotify approved.
 
 Therefore, the worst that can happen is that you will be banned from Spotify.
 
-Also, please keep in mind that this library is in alpha and may behave in unintended ways.
+Also, please keep in mind that this library is in alpha and may behave in
+unintended ways.
 
 ## Installation
 
-You can download this library in the following way.  
+You can download this library in the following way.
 
-Stable Version ***still not working.**
+Stable Version **\*still not working.**
 
 ```commandline
 pip install librespot
 ```
 
-Snapshot Version ***Recommended**
+Snapshot Version **\*Recommended**
 
 ```commandline
 pip install git+https://github.com/kokarare1212/librespot-python
@@ -64,7 +66,7 @@ aceess_token = session.tokens().get("playlist-read")
 
 ### Get Music Stream
 
-*Currently, music streaming is supported, but it may cause unintended behavior.
+\*Currently, music streaming is supported, but it may cause unintended behavior.
 
 ```python
 from librespot.core import Session
@@ -85,7 +87,8 @@ stream = session.content_feeder().load(track_id, VorbisOnlyAudioQuality(AudioQua
 
 ## Debug
 
-To display the debug information, you need to inject the following code at the top of the code.
+To display the debug information, you need to inject the following code at the
+top of the code.
 
 ```python
 import logging

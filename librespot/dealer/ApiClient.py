@@ -1,10 +1,17 @@
-from librespot.core.ApResolver import ApResolver
-from librespot.metadata import AlbumId, ArtistId, EpisodeId, TrackId, ShowId
-from librespot.proto import Connect, Metadata
-from librespot.standard import Closeable
 import logging
-import requests
 import typing
+
+import requests
+
+from librespot.core.ApResolver import ApResolver
+from librespot.metadata import AlbumId
+from librespot.metadata import ArtistId
+from librespot.metadata import EpisodeId
+from librespot.metadata import ShowId
+from librespot.metadata import TrackId
+from librespot.proto import Connect
+from librespot.proto import Metadata
+from librespot.standard import Closeable
 
 
 class ApiClient(Closeable):
@@ -17,9 +24,12 @@ class ApiClient(Closeable):
         self._baseUrl = "https://{}".format(ApResolver.get_random_spclient())
 
     def build_request(
-            self, method: str, suffix: str,
-            headers: typing.Union[None, typing.Dict[str, str]],
-            body: typing.Union[None, bytes]) -> requests.PreparedRequest:
+        self,
+        method: str,
+        suffix: str,
+        headers: typing.Union[None, typing.Dict[str, str]],
+        body: typing.Union[None, bytes],
+    ) -> requests.PreparedRequest:
         request = requests.PreparedRequest()
         request.method = method
         request.data = body
@@ -31,9 +41,13 @@ class ApiClient(Closeable):
         request.url = self._baseUrl + suffix
         return request
 
-    def send(self, method: str, suffix: str,
-             headers: typing.Union[None, typing.Dict[str, str]],
-             body: typing.Union[None, bytes]) -> requests.Response:
+    def send(
+        self,
+        method: str,
+        suffix: str,
+        headers: typing.Union[None, typing.Dict[str, str]],
+        body: typing.Union[None, bytes],
+    ) -> requests.Response:
         resp = self._session.client().send(
             self.build_request(method, suffix, headers, body))
         return resp
@@ -42,10 +56,13 @@ class ApiClient(Closeable):
                           proto: Connect.PutStateRequest) -> None:
         resp = self.send(
             "PUT",
-            "/connect-state/v1/devices/{}".format(self._session.device_id()), {
+            "/connect-state/v1/devices/{}".format(self._session.device_id()),
+            {
                 "Content-Type": "application/protobuf",
-                "X-Spotify-Connection-Id": connection_id
-            }, proto.SerializeToString())
+                "X-Spotify-Connection-Id": connection_id,
+            },
+            proto.SerializeToString(),
+        )
 
         if resp.status_code == 413:
             self._LOGGER.warning(

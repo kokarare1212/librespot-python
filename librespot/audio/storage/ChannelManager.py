@@ -1,16 +1,20 @@
 from __future__ import annotations
 
+import concurrent.futures
+import logging
 import queue
+import threading
+import typing
 
 from librespot.audio.storage import AudioFile
 from librespot.common import Utils
-from librespot.core import PacketsReceiver, Session
+from librespot.core import PacketsReceiver
+from librespot.core import Session
 from librespot.crypto import Packet
-from librespot.standard import BytesInputStream, BytesOutputStream, Closeable, Runnable
-import concurrent.futures
-import logging
-import threading
-import typing
+from librespot.standard import BytesInputStream
+from librespot.standard import BytesOutputStream
+from librespot.standard import Closeable
+from librespot.standard import Runnable
 
 
 class ChannelManager(Closeable, PacketsReceiver.PacketsReceiver):
@@ -19,8 +23,8 @@ class ChannelManager(Closeable, PacketsReceiver.PacketsReceiver):
     _channels: typing.Dict[int, Channel] = {}
     _seqHolder: int = 0
     _seqHolderLock: threading.Condition = threading.Condition()
-    _executorService: concurrent.futures.ThreadPoolExecutor = concurrent.futures.ThreadPoolExecutor(
-    )
+    _executorService: concurrent.futures.ThreadPoolExecutor = (
+        concurrent.futures.ThreadPoolExecutor())
     _session: Session = None
 
     def __init__(self, session: Session):
@@ -37,8 +41,8 @@ class ChannelManager(Closeable, PacketsReceiver.PacketsReceiver):
         out.write_short(channel.chunkId)
         out.write_int(0x00000000)
         out.write_int(0x00000000)
-        out.write_int(0x00004e20)
-        out.write_int(0x00030d40)
+        out.write_int(0x00004E20)
+        out.write_int(0x00030D40)
         out.write(file_id)
         out.write_int(start)
         out.write_int(end)

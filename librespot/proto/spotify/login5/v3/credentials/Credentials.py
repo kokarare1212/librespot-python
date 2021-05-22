@@ -6,38 +6,39 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
-    name='spotify/login5/v3/credentials/credentials.proto',
-    package='spotify.login5.v3.credentials',
-    syntax='proto3',
-    serialized_options=b'\n\024com.spotify.login5v3',
+    name="spotify/login5/v3/credentials/credentials.proto",
+    package="spotify.login5.v3.credentials",
+    syntax="proto3",
+    serialized_options=b"\n\024com.spotify.login5v3",
     create_key=_descriptor._internal_create_key,
     serialized_pb=
-    b'\n/spotify/login5/v3/credentials/credentials.proto\x12\x1dspotify.login5.v3.credentials\"2\n\x10StoredCredential\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c\"9\n\x08Password\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x0f\n\x07padding\x18\x03 \x01(\x0c\";\n\x13\x46\x61\x63\x65\x62ookAccessToken\x12\x0e\n\x06\x66\x62_uid\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x02 \x01(\t\"\x1d\n\x0cOneTimeToken\x12\r\n\x05token\x18\x01 \x01(\t\"|\n\x15ParentChildCredential\x12\x10\n\x08\x63hild_id\x18\x01 \x01(\t\x12Q\n\x18parent_stored_credential\x18\x02 \x01(\x0b\x32/.spotify.login5.v3.credentials.StoredCredential\"S\n\x15\x41ppleSignInCredential\x12\x11\n\tauth_code\x18\x01 \x01(\t\x12\x14\n\x0credirect_uri\x18\x02 \x01(\t\x12\x11\n\tbundle_id\x18\x03 \x01(\tB\x16\n\x14\x63om.spotify.login5v3b\x06proto3'
+    b'\n/spotify/login5/v3/credentials/credentials.proto\x12\x1dspotify.login5.v3.credentials"2\n\x10StoredCredential\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c"9\n\x08Password\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x0f\n\x07padding\x18\x03 \x01(\x0c";\n\x13\x46\x61\x63\x65\x62ookAccessToken\x12\x0e\n\x06\x66\x62_uid\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x02 \x01(\t"\x1d\n\x0cOneTimeToken\x12\r\n\x05token\x18\x01 \x01(\t"|\n\x15ParentChildCredential\x12\x10\n\x08\x63hild_id\x18\x01 \x01(\t\x12Q\n\x18parent_stored_credential\x18\x02 \x01(\x0b\x32/.spotify.login5.v3.credentials.StoredCredential"S\n\x15\x41ppleSignInCredential\x12\x11\n\tauth_code\x18\x01 \x01(\t\x12\x14\n\x0credirect_uri\x18\x02 \x01(\t\x12\x11\n\tbundle_id\x18\x03 \x01(\tB\x16\n\x14\x63om.spotify.login5v3b\x06proto3',
 )
 
 _STOREDCREDENTIAL = _descriptor.Descriptor(
-    name='StoredCredential',
-    full_name='spotify.login5.v3.credentials.StoredCredential',
+    name="StoredCredential",
+    full_name="spotify.login5.v3.credentials.StoredCredential",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='username',
-            full_name='spotify.login5.v3.credentials.StoredCredential.username',
+            name="username",
+            full_name="spotify.login5.v3.credentials.StoredCredential.username",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -45,10 +46,11 @@ _STOREDCREDENTIAL = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='data',
-            full_name='spotify.login5.v3.credentials.StoredCredential.data',
+            name="data",
+            full_name="spotify.login5.v3.credentials.StoredCredential.data",
             index=1,
             number=2,
             type=12,
@@ -63,14 +65,15 @@ _STOREDCREDENTIAL = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto3',
+    syntax="proto3",
     extension_ranges=[],
     oneofs=[],
     serialized_start=82,
@@ -78,23 +81,23 @@ _STOREDCREDENTIAL = _descriptor.Descriptor(
 )
 
 _PASSWORD = _descriptor.Descriptor(
-    name='Password',
-    full_name='spotify.login5.v3.credentials.Password',
+    name="Password",
+    full_name="spotify.login5.v3.credentials.Password",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='id',
-            full_name='spotify.login5.v3.credentials.Password.id',
+            name="id",
+            full_name="spotify.login5.v3.credentials.Password.id",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -102,17 +105,18 @@ _PASSWORD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='password',
-            full_name='spotify.login5.v3.credentials.Password.password',
+            name="password",
+            full_name="spotify.login5.v3.credentials.Password.password",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -120,10 +124,11 @@ _PASSWORD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='padding',
-            full_name='spotify.login5.v3.credentials.Password.padding',
+            name="padding",
+            full_name="spotify.login5.v3.credentials.Password.padding",
             index=2,
             number=3,
             type=12,
@@ -138,14 +143,15 @@ _PASSWORD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto3',
+    syntax="proto3",
     extension_ranges=[],
     oneofs=[],
     serialized_start=134,
@@ -153,24 +159,24 @@ _PASSWORD = _descriptor.Descriptor(
 )
 
 _FACEBOOKACCESSTOKEN = _descriptor.Descriptor(
-    name='FacebookAccessToken',
-    full_name='spotify.login5.v3.credentials.FacebookAccessToken',
+    name="FacebookAccessToken",
+    full_name="spotify.login5.v3.credentials.FacebookAccessToken",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='fb_uid',
+            name="fb_uid",
             full_name=
-            'spotify.login5.v3.credentials.FacebookAccessToken.fb_uid',
+            "spotify.login5.v3.credentials.FacebookAccessToken.fb_uid",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -178,18 +184,19 @@ _FACEBOOKACCESSTOKEN = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='access_token',
+            name="access_token",
             full_name=
-            'spotify.login5.v3.credentials.FacebookAccessToken.access_token',
+            "spotify.login5.v3.credentials.FacebookAccessToken.access_token",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -197,14 +204,15 @@ _FACEBOOKACCESSTOKEN = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto3',
+    syntax="proto3",
     extension_ranges=[],
     oneofs=[],
     serialized_start=193,
@@ -212,23 +220,23 @@ _FACEBOOKACCESSTOKEN = _descriptor.Descriptor(
 )
 
 _ONETIMETOKEN = _descriptor.Descriptor(
-    name='OneTimeToken',
-    full_name='spotify.login5.v3.credentials.OneTimeToken',
+    name="OneTimeToken",
+    full_name="spotify.login5.v3.credentials.OneTimeToken",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='token',
-            full_name='spotify.login5.v3.credentials.OneTimeToken.token',
+            name="token",
+            full_name="spotify.login5.v3.credentials.OneTimeToken.token",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -236,14 +244,15 @@ _ONETIMETOKEN = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto3',
+    syntax="proto3",
     extension_ranges=[],
     oneofs=[],
     serialized_start=254,
@@ -251,24 +260,24 @@ _ONETIMETOKEN = _descriptor.Descriptor(
 )
 
 _PARENTCHILDCREDENTIAL = _descriptor.Descriptor(
-    name='ParentChildCredential',
-    full_name='spotify.login5.v3.credentials.ParentChildCredential',
+    name="ParentChildCredential",
+    full_name="spotify.login5.v3.credentials.ParentChildCredential",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='child_id',
+            name="child_id",
             full_name=
-            'spotify.login5.v3.credentials.ParentChildCredential.child_id',
+            "spotify.login5.v3.credentials.ParentChildCredential.child_id",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -276,11 +285,12 @@ _PARENTCHILDCREDENTIAL = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='parent_stored_credential',
+            name="parent_stored_credential",
             full_name=
-            'spotify.login5.v3.credentials.ParentChildCredential.parent_stored_credential',
+            "spotify.login5.v3.credentials.ParentChildCredential.parent_stored_credential",
             index=1,
             number=2,
             type=11,
@@ -295,14 +305,15 @@ _PARENTCHILDCREDENTIAL = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto3',
+    syntax="proto3",
     extension_ranges=[],
     oneofs=[],
     serialized_start=285,
@@ -310,24 +321,24 @@ _PARENTCHILDCREDENTIAL = _descriptor.Descriptor(
 )
 
 _APPLESIGNINCREDENTIAL = _descriptor.Descriptor(
-    name='AppleSignInCredential',
-    full_name='spotify.login5.v3.credentials.AppleSignInCredential',
+    name="AppleSignInCredential",
+    full_name="spotify.login5.v3.credentials.AppleSignInCredential",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='auth_code',
+            name="auth_code",
             full_name=
-            'spotify.login5.v3.credentials.AppleSignInCredential.auth_code',
+            "spotify.login5.v3.credentials.AppleSignInCredential.auth_code",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -335,18 +346,19 @@ _APPLESIGNINCREDENTIAL = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='redirect_uri',
+            name="redirect_uri",
             full_name=
-            'spotify.login5.v3.credentials.AppleSignInCredential.redirect_uri',
+            "spotify.login5.v3.credentials.AppleSignInCredential.redirect_uri",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -354,18 +366,19 @@ _APPLESIGNINCREDENTIAL = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='bundle_id',
+            name="bundle_id",
             full_name=
-            'spotify.login5.v3.credentials.AppleSignInCredential.bundle_id',
+            "spotify.login5.v3.credentials.AppleSignInCredential.bundle_id",
             index=2,
             number=3,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -373,14 +386,15 @@ _APPLESIGNINCREDENTIAL = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto3',
+    syntax="proto3",
     extension_ranges=[],
     oneofs=[],
     serialized_start=411,
@@ -388,75 +402,81 @@ _APPLESIGNINCREDENTIAL = _descriptor.Descriptor(
 )
 
 _PARENTCHILDCREDENTIAL.fields_by_name[
-    'parent_stored_credential'].message_type = _STOREDCREDENTIAL
-DESCRIPTOR.message_types_by_name['StoredCredential'] = _STOREDCREDENTIAL
-DESCRIPTOR.message_types_by_name['Password'] = _PASSWORD
-DESCRIPTOR.message_types_by_name['FacebookAccessToken'] = _FACEBOOKACCESSTOKEN
-DESCRIPTOR.message_types_by_name['OneTimeToken'] = _ONETIMETOKEN
+    "parent_stored_credential"].message_type = _STOREDCREDENTIAL
+DESCRIPTOR.message_types_by_name["StoredCredential"] = _STOREDCREDENTIAL
+DESCRIPTOR.message_types_by_name["Password"] = _PASSWORD
+DESCRIPTOR.message_types_by_name["FacebookAccessToken"] = _FACEBOOKACCESSTOKEN
+DESCRIPTOR.message_types_by_name["OneTimeToken"] = _ONETIMETOKEN
 DESCRIPTOR.message_types_by_name[
-    'ParentChildCredential'] = _PARENTCHILDCREDENTIAL
+    "ParentChildCredential"] = _PARENTCHILDCREDENTIAL
 DESCRIPTOR.message_types_by_name[
-    'AppleSignInCredential'] = _APPLESIGNINCREDENTIAL
+    "AppleSignInCredential"] = _APPLESIGNINCREDENTIAL
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 StoredCredential = _reflection.GeneratedProtocolMessageType(
-    'StoredCredential',
+    "StoredCredential",
     (_message.Message, ),
     {
-        'DESCRIPTOR': _STOREDCREDENTIAL,
-        '__module__': 'spotify.login5.v3.credentials.credentials_pb2'
+        "DESCRIPTOR": _STOREDCREDENTIAL,
+        "__module__": "spotify.login5.v3.credentials.credentials_pb2"
         # @@protoc_insertion_point(class_scope:spotify.login5.v3.credentials.StoredCredential)
-    })
+    },
+)
 _sym_db.RegisterMessage(StoredCredential)
 
 Password = _reflection.GeneratedProtocolMessageType(
-    'Password',
+    "Password",
     (_message.Message, ),
     {
-        'DESCRIPTOR': _PASSWORD,
-        '__module__': 'spotify.login5.v3.credentials.credentials_pb2'
+        "DESCRIPTOR": _PASSWORD,
+        "__module__": "spotify.login5.v3.credentials.credentials_pb2"
         # @@protoc_insertion_point(class_scope:spotify.login5.v3.credentials.Password)
-    })
+    },
+)
 _sym_db.RegisterMessage(Password)
 
 FacebookAccessToken = _reflection.GeneratedProtocolMessageType(
-    'FacebookAccessToken',
+    "FacebookAccessToken",
     (_message.Message, ),
     {
-        'DESCRIPTOR': _FACEBOOKACCESSTOKEN,
-        '__module__': 'spotify.login5.v3.credentials.credentials_pb2'
+        "DESCRIPTOR": _FACEBOOKACCESSTOKEN,
+        "__module__": "spotify.login5.v3.credentials.credentials_pb2"
         # @@protoc_insertion_point(class_scope:spotify.login5.v3.credentials.FacebookAccessToken)
-    })
+    },
+)
 _sym_db.RegisterMessage(FacebookAccessToken)
 
 OneTimeToken = _reflection.GeneratedProtocolMessageType(
-    'OneTimeToken',
+    "OneTimeToken",
     (_message.Message, ),
     {
-        'DESCRIPTOR': _ONETIMETOKEN,
-        '__module__': 'spotify.login5.v3.credentials.credentials_pb2'
+        "DESCRIPTOR": _ONETIMETOKEN,
+        "__module__": "spotify.login5.v3.credentials.credentials_pb2"
         # @@protoc_insertion_point(class_scope:spotify.login5.v3.credentials.OneTimeToken)
-    })
+    },
+)
 _sym_db.RegisterMessage(OneTimeToken)
 
 ParentChildCredential = _reflection.GeneratedProtocolMessageType(
-    'ParentChildCredential',
+    "ParentChildCredential",
     (_message.Message, ),
     {
-        'DESCRIPTOR': _PARENTCHILDCREDENTIAL,
-        '__module__': 'spotify.login5.v3.credentials.credentials_pb2'
+        "DESCRIPTOR": _PARENTCHILDCREDENTIAL,
+        "__module__": "spotify.login5.v3.credentials.credentials_pb2"
         # @@protoc_insertion_point(class_scope:spotify.login5.v3.credentials.ParentChildCredential)
-    })
+    },
+)
 _sym_db.RegisterMessage(ParentChildCredential)
 
 AppleSignInCredential = _reflection.GeneratedProtocolMessageType(
-    'AppleSignInCredential',
+    "AppleSignInCredential",
     (_message.Message, ),
     {
-        'DESCRIPTOR': _APPLESIGNINCREDENTIAL,
-        '__module__': 'spotify.login5.v3.credentials.credentials_pb2'
+        "DESCRIPTOR": _APPLESIGNINCREDENTIAL,
+        "__module__": "spotify.login5.v3.credentials.credentials_pb2"
         # @@protoc_insertion_point(class_scope:spotify.login5.v3.credentials.AppleSignInCredential)
-    })
+    },
+)
 _sym_db.RegisterMessage(AppleSignInCredential)
 
 DESCRIPTOR._options = None

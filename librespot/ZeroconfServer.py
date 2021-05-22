@@ -4,7 +4,9 @@ import concurrent.futures
 import random
 import socket
 
-from zeroconf import ServiceBrowser, ServiceInfo, Zeroconf
+from zeroconf import ServiceBrowser
+from zeroconf import ServiceInfo
+from zeroconf import Zeroconf
 
 from librespot.common import Utils
 from librespot.core import Session
