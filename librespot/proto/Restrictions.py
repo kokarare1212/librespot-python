@@ -16,8 +16,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax='proto2',
     serialized_options=b'\n\023com.spotify.contextH\002',
     create_key=_descriptor._internal_create_key,
-    serialized_pb=
-    b'\n\x12restrictions.proto\x12\x14spotify.player.proto\"\xbb\x07\n\x0cRestrictions\x12 \n\x18\x64isallow_pausing_reasons\x18\x01 \x03(\t\x12!\n\x19\x64isallow_resuming_reasons\x18\x02 \x03(\t\x12 \n\x18\x64isallow_seeking_reasons\x18\x03 \x03(\t\x12%\n\x1d\x64isallow_peeking_prev_reasons\x18\x04 \x03(\t\x12%\n\x1d\x64isallow_peeking_next_reasons\x18\x05 \x03(\t\x12&\n\x1e\x64isallow_skipping_prev_reasons\x18\x06 \x03(\t\x12&\n\x1e\x64isallow_skipping_next_reasons\x18\x07 \x03(\t\x12\x30\n(disallow_toggling_repeat_context_reasons\x18\x08 \x03(\t\x12.\n&disallow_toggling_repeat_track_reasons\x18\t \x03(\t\x12)\n!disallow_toggling_shuffle_reasons\x18\n \x03(\t\x12\"\n\x1a\x64isallow_set_queue_reasons\x18\x0b \x03(\t\x12.\n&disallow_interrupting_playback_reasons\x18\x0c \x03(\t\x12.\n&disallow_transferring_playback_reasons\x18\r \x03(\t\x12\'\n\x1f\x64isallow_remote_control_reasons\x18\x0e \x03(\t\x12\x33\n+disallow_inserting_into_next_tracks_reasons\x18\x0f \x03(\t\x12\x36\n.disallow_inserting_into_context_tracks_reasons\x18\x10 \x03(\t\x12\x32\n*disallow_reordering_in_next_tracks_reasons\x18\x11 \x03(\t\x12\x35\n-disallow_reordering_in_context_tracks_reasons\x18\x12 \x03(\t\x12\x32\n*disallow_removing_from_next_tracks_reasons\x18\x13 \x03(\t\x12\x35\n-disallow_removing_from_context_tracks_reasons\x18\x14 \x03(\t\x12)\n!disallow_updating_context_reasons\x18\x15 \x03(\tB\x17\n\x13\x63om.spotify.contextH\x02'
+    serialized_pb=b'\n\x12restrictions.proto\x12\x14spotify.player.proto\"\xbb\x07\n\x0cRestrictions\x12 \n\x18\x64isallow_pausing_reasons\x18\x01 \x03(\t\x12!\n\x19\x64isallow_resuming_reasons\x18\x02 \x03(\t\x12 \n\x18\x64isallow_seeking_reasons\x18\x03 \x03(\t\x12%\n\x1d\x64isallow_peeking_prev_reasons\x18\x04 \x03(\t\x12%\n\x1d\x64isallow_peeking_next_reasons\x18\x05 \x03(\t\x12&\n\x1e\x64isallow_skipping_prev_reasons\x18\x06 \x03(\t\x12&\n\x1e\x64isallow_skipping_next_reasons\x18\x07 \x03(\t\x12\x30\n(disallow_toggling_repeat_context_reasons\x18\x08 \x03(\t\x12.\n&disallow_toggling_repeat_track_reasons\x18\t \x03(\t\x12)\n!disallow_toggling_shuffle_reasons\x18\n \x03(\t\x12\"\n\x1a\x64isallow_set_queue_reasons\x18\x0b \x03(\t\x12.\n&disallow_interrupting_playback_reasons\x18\x0c \x03(\t\x12.\n&disallow_transferring_playback_reasons\x18\r \x03(\t\x12\'\n\x1f\x64isallow_remote_control_reasons\x18\x0e \x03(\t\x12\x33\n+disallow_inserting_into_next_tracks_reasons\x18\x0f \x03(\t\x12\x36\n.disallow_inserting_into_context_tracks_reasons\x18\x10 \x03(\t\x12\x32\n*disallow_reordering_in_next_tracks_reasons\x18\x11 \x03(\t\x12\x35\n-disallow_reordering_in_context_tracks_reasons\x18\x12 \x03(\t\x12\x32\n*disallow_removing_from_next_tracks_reasons\x18\x13 \x03(\t\x12\x35\n-disallow_removing_from_context_tracks_reasons\x18\x14 \x03(\t\x12)\n!disallow_updating_context_reasons\x18\x15 \x03(\tB\x17\n\x13\x63om.spotify.contextH\x02'
 )
 
 _RESTRICTIONS = _descriptor.Descriptor(
@@ -30,8 +29,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
     fields=[
         _descriptor.FieldDescriptor(
             name='disallow_pausing_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_pausing_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_pausing_reasons',
             index=0,
             number=1,
             type=9,
@@ -49,8 +47,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_resuming_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_resuming_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_resuming_reasons',
             index=1,
             number=2,
             type=9,
@@ -68,8 +65,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_seeking_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_seeking_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_seeking_reasons',
             index=2,
             number=3,
             type=9,
@@ -87,8 +83,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_peeking_prev_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_peeking_prev_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_peeking_prev_reasons',
             index=3,
             number=4,
             type=9,
@@ -106,8 +101,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_peeking_next_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_peeking_next_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_peeking_next_reasons',
             index=4,
             number=5,
             type=9,
@@ -125,8 +119,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_skipping_prev_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_skipping_prev_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_skipping_prev_reasons',
             index=5,
             number=6,
             type=9,
@@ -144,8 +137,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_skipping_next_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_skipping_next_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_skipping_next_reasons',
             index=6,
             number=7,
             type=9,
@@ -163,8 +155,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_toggling_repeat_context_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_toggling_repeat_context_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_toggling_repeat_context_reasons',
             index=7,
             number=8,
             type=9,
@@ -182,8 +173,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_toggling_repeat_track_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_toggling_repeat_track_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_toggling_repeat_track_reasons',
             index=8,
             number=9,
             type=9,
@@ -201,8 +191,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_toggling_shuffle_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_toggling_shuffle_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_toggling_shuffle_reasons',
             index=9,
             number=10,
             type=9,
@@ -220,8 +209,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_set_queue_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_set_queue_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_set_queue_reasons',
             index=10,
             number=11,
             type=9,
@@ -239,8 +227,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_interrupting_playback_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_interrupting_playback_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_interrupting_playback_reasons',
             index=11,
             number=12,
             type=9,
@@ -258,8 +245,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_transferring_playback_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_transferring_playback_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_transferring_playback_reasons',
             index=12,
             number=13,
             type=9,
@@ -277,8 +263,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_remote_control_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_remote_control_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_remote_control_reasons',
             index=13,
             number=14,
             type=9,
@@ -296,8 +281,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_inserting_into_next_tracks_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_inserting_into_next_tracks_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_inserting_into_next_tracks_reasons',
             index=14,
             number=15,
             type=9,
@@ -315,8 +299,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_inserting_into_context_tracks_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_inserting_into_context_tracks_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_inserting_into_context_tracks_reasons',
             index=15,
             number=16,
             type=9,
@@ -334,8 +317,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_reordering_in_next_tracks_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_reordering_in_next_tracks_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_reordering_in_next_tracks_reasons',
             index=16,
             number=17,
             type=9,
@@ -353,8 +335,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_reordering_in_context_tracks_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_reordering_in_context_tracks_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_reordering_in_context_tracks_reasons',
             index=17,
             number=18,
             type=9,
@@ -372,8 +353,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_removing_from_next_tracks_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_removing_from_next_tracks_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_removing_from_next_tracks_reasons',
             index=18,
             number=19,
             type=9,
@@ -391,8 +371,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_removing_from_context_tracks_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_removing_from_context_tracks_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_removing_from_context_tracks_reasons',
             index=19,
             number=20,
             type=9,
@@ -410,8 +389,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_updating_context_reasons',
-            full_name=
-            'spotify.player.proto.Restrictions.disallow_updating_context_reasons',
+            full_name='spotify.player.proto.Restrictions.disallow_updating_context_reasons',
             index=20,
             number=21,
             type=9,

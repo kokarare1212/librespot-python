@@ -16,8 +16,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax='proto3',
     serialized_options=b'\n\024com.spotify.login5v3',
     create_key=_descriptor._internal_create_key,
-    serialized_pb=
-    b'\n#spotify/login5/v3/client_info.proto\x12\x11spotify.login5.v3\"2\n\nClientInfo\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x11\n\tdevice_id\x18\x02 \x01(\tB\x16\n\x14\x63om.spotify.login5v3b\x06proto3'
+    serialized_pb=b'\n#spotify/login5/v3/client_info.proto\x12\x11spotify.login5.v3\"2\n\nClientInfo\x12\x11\n\tclient_id\x18\x01 \x01(\t\x12\x11\n\tdevice_id\x18\x02 \x01(\tB\x16\n\x14\x63om.spotify.login5v3b\x06proto3'
 )
 
 _CLIENTINFO = _descriptor.Descriptor(
