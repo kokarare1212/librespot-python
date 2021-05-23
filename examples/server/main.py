@@ -65,12 +65,13 @@ def main():
 
 def response(client: socket.socket, uri: str) -> tuple[str, list, bytes, bool]:
     if re.search(r"^/audio/track/([0-9a-zA-Z]{22})$", uri) is not None:
-        track_id_search = re.search(r"^/audio/track/(?P<TrackID>[0-9a-zA-Z]{22})$", uri)
+        track_id_search = re.search(
+            r"^/audio/track/(?P<TrackID>[0-9a-zA-Z]{22})$", uri)
         track_id_str = track_id_search.group("TrackID")
         track_id = TrackId.from_base62(track_id_str)
         stream = session.content_feeder().load(
-            track_id, VorbisOnlyAudioQuality(AudioQuality.VERY_HIGH), False, None
-        )
+            track_id, VorbisOnlyAudioQuality(AudioQuality.VERY_HIGH), False,
+            None)
         client.send(b"HTTP/1.0 200 OK\r\n")
         client.send(b"Access-Control-Allow-Origin: *\r\n")
         client.send(b"Content-Type: audio/ogg\r\n")
