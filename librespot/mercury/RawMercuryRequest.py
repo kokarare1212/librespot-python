@@ -1,5 +1,6 @@
-from librespot.proto import Mercury
 import typing
+
+from librespot.proto import Mercury
 
 
 class RawMercuryRequest:
@@ -27,13 +28,13 @@ class RawMercuryRequest:
 
     @staticmethod
     def send(uri: str, part: bytes):
-        return RawMercuryRequest.new_builder().set_uri(uri).add_payload_part(
-            part).set_method("SEND").build()
+        return (RawMercuryRequest.new_builder().set_uri(uri).add_payload_part(
+            part).set_method("SEND").build())
 
     @staticmethod
     def post(uri: str, part: bytes):
-        return RawMercuryRequest.new_builder().set_uri(uri).set_method(
-            "POST").add_payload_part(part).build()
+        return (RawMercuryRequest.new_builder().set_uri(uri).set_method(
+            "POST").add_payload_part(part).build())
 
     @staticmethod
     def new_builder():

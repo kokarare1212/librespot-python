@@ -1,11 +1,5 @@
 from __future__ import annotations
-from librespot.audio.AbsChunkedInputStream import AbsChunkedInputStream
-from librespot.audio import GeneralAudioStream, GeneralWritableStream, StreamId
-from librespot.audio.decrypt import AesAudioDecrypt, NoopAudioDecrypt
-from librespot.audio.format import SuperAudioFormat
-from librespot.audio.storage import ChannelManager
-from librespot.common import Utils
-from librespot.proto import StorageResolve
+
 import concurrent.futures
 import logging
 import math
@@ -14,9 +8,20 @@ import time
 import typing
 import urllib.parse
 
+from librespot.audio import GeneralAudioStream
+from librespot.audio import GeneralWritableStream
+from librespot.audio import StreamId
+from librespot.audio.AbsChunkedInputStream import AbsChunkedInputStream
+from librespot.audio.decrypt import AesAudioDecrypt
+from librespot.audio.decrypt import NoopAudioDecrypt
+from librespot.audio.format import SuperAudioFormat
+from librespot.audio.storage import ChannelManager
+from librespot.common import Utils
+from librespot.proto import StorageResolve
+
 if typing.TYPE_CHECKING:
-    from librespot.audio.HaltListener import HaltListener
     from librespot.audio.decrypt.AudioDecrypt import AudioDecrypt
+    from librespot.audio.HaltListener import HaltListener
     from librespot.cache.CacheManager import CacheManager
     from librespot.core.Session import Session
     from librespot.proto import Metadata
@@ -30,9 +35,11 @@ class CdnManager:
         self._session = session
 
     def get_head(self, file_id: bytes):
-        resp = self._session.client() \
-            .get(self._session.get_user_attribute("head-files-url", "https://heads-fa.spotify.com/head/{file_id}")
-                 .replace("{file_id}", Utils.bytes_to_hex(file_id)))
+        resp = self._session.client().get(
+            self._session.get_user_attribute(
+                "head-files-url",
+                "https://heads-fa.spotify.com/head/{file_id}").replace(
+                    "{file_id}", Utils.bytes_to_hex(file_id)))
 
         if resp.status_code != 200:
             raise IOError("{}".format(resp.status_code))
@@ -46,24 +53,41 @@ class CdnManager:
     def stream_external_episode(self, episode: Metadata.Episode,
                                 external_url: str,
                                 halt_listener: HaltListener):
-        return CdnManager.Streamer(self._session, StreamId(episode),
-                                   SuperAudioFormat.MP3,
-                                   CdnManager.CdnUrl(self, None, external_url),
-                                   self._session.cache(), NoopAudioDecrypt(),
-                                   halt_listener)
+        return CdnManager.Streamer(
+            self._session,
+            StreamId(episode),
+            SuperAudioFormat.MP3,
+            CdnManager.CdnUrl(self, None, external_url),
+            self._session.cache(),
+            NoopAudioDecrypt(),
+            halt_listener,
+        )
 
-    def stream_file(self, file: Metadata.AudioFile, key: bytes, url: str,
-                    halt_listener: HaltListener):
-        return CdnManager.Streamer(self._session, StreamId.StreamId(file),
-                                   SuperAudioFormat.get(file.format),
-                                   CdnManager.CdnUrl(self, file.file_id, url),
-                                   self._session.cache(), AesAudioDecrypt(key),
-                                   halt_listener)
+    def stream_file(
+        self,
+        file: Metadata.AudioFile,
+        key: bytes,
+        url: str,
+        halt_listener: HaltListener,
+    ):
+        return CdnManager.Streamer(
+            self._session,
+            StreamId.StreamId(file),
+            SuperAudioFormat.get(file.format),
+            CdnManager.CdnUrl(self, file.file_id, url),
+            self._session.cache(),
+            AesAudioDecrypt(key),
+            halt_listener,
+        )
 
     def get_audio_url(self, file_id: bytes):
         resp = self._session.api().send(
-            "GET", "/storage-resolve/files/audio/interactive/{}".format(
-                Utils.bytes_to_hex(file_id)), None, None)
+            "GET",
+            "/storage-resolve/files/audio/interactive/{}".format(
+                Utils.bytes_to_hex(file_id)),
+            None,
+            None,
+        )
 
         if resp.status_code != 200:
             raise IOError(resp.status_code)
@@ -159,7 +183,10 @@ class CdnManager:
             else:
                 self._expiration = -1
 
-    class Streamer(GeneralAudioStream.GeneralAudioStream, GeneralWritableStream.GeneralWritableStream):
+    class Streamer(
+            GeneralAudioStream.GeneralAudioStream,
+            GeneralWritableStream.GeneralWritableStream,
+    ):
         _session: Session = None
         _streamId: StreamId = None
         _executorService = concurrent.futures.ThreadPoolExecutor()
@@ -174,10 +201,16 @@ class CdnManager:
         _internalStream: CdnManager.Streamer.InternalStream = None
         _haltListener: HaltListener = None
 
-        def __init__(self, session: Session, stream_id: StreamId,
-                     audio_format: SuperAudioFormat, cdn_url,
-                     cache: CacheManager, audio_decrypt: AudioDecrypt,
-                     halt_listener: HaltListener):
+        def __init__(
+            self,
+            session: Session,
+            stream_id: StreamId,
+            audio_format: SuperAudioFormat,
+            cdn_url,
+            cache: CacheManager,
+            audio_decrypt: AudioDecrypt,
+            halt_listener: HaltListener,
+        ):
             self._session = session
             self._streamId = stream_id
             self._audioFormat = audio_format
@@ -250,12 +283,12 @@ class CdnManager:
                 range_start = ChannelManager.CHUNK_SIZE * chunk
                 range_end = (chunk + 1) * ChannelManager.CHUNK_SIZE - 1
 
-            resp = self._session.client().get(self._cdnUrl._url,
-                                              headers={
-                                                  "Range":
-                                                  "bytes={}-{}".format(
-                                                      range_start, range_end)
-                                              })
+            resp = self._session.client().get(
+                self._cdnUrl._url,
+                headers={
+                    "Range": "bytes={}-{}".format(range_start, range_end)
+                },
+            )
 
             if resp.status_code != 206:
                 raise IOError(resp.status_code)

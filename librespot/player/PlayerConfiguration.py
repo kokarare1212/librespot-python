@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from librespot.audio.decoders import AudioQuality
 
 
@@ -15,11 +16,17 @@ class PlayerConfiguration:
     initial_volume: int
     volume_steps: int
 
-    def __init__(self, preferred_quality: AudioQuality,
-                 enable_normalisation: bool, normalisation_pregain: float,
-                 autoplay_enabled: bool, crossfade_duration: int,
-                 preload_enabled: bool, initial_volume: int,
-                 volume_steps: int):
+    def __init__(
+        self,
+        preferred_quality: AudioQuality,
+        enable_normalisation: bool,
+        normalisation_pregain: float,
+        autoplay_enabled: bool,
+        crossfade_duration: int,
+        preload_enabled: bool,
+        initial_volume: int,
+        volume_steps: int,
+    ):
         self.preferred_quality = preferred_quality
         self.enable_normalisation = enable_normalisation
         self.normalisation_pregain = normalisation_pregain
@@ -73,7 +80,12 @@ class PlayerConfiguration:
 
         def build(self) -> PlayerConfiguration:
             return PlayerConfiguration(
-                self.preferred_quality, self.enable_normalisation,
-                self.normalisation_pregain, self.autoplay_enabled,
-                self.crossfade_duration, self.preload_enabled,
-                self.initial_volume, self.volume_steps)
+                self.preferred_quality,
+                self.enable_normalisation,
+                self.normalisation_pregain,
+                self.autoplay_enabled,
+                self.crossfade_duration,
+                self.preload_enabled,
+                self.initial_volume,
+                self.volume_steps,
+            )

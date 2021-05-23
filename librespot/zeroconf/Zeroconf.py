@@ -1,8 +1,10 @@
 from __future__ import annotations
-from librespot.standard import Closeable
+
 import base64
 import random
 import socket
+
+from librespot.standard import Closeable
 
 
 class Zeroconf(Closeable):
@@ -31,9 +33,9 @@ class Zeroconf(Closeable):
     def get_or_create_local_host_name() -> str:
         host = socket.gethostname()
         if host == "localhost":
-            host = base64.b64encode(
+            host = (base64.b64encode(
                 random.randint(-9223372036854775808,
-                               9223372036854775807)).decode() + ".local"
+                               9223372036854775807)).decode() + ".local")
         return host
 
     def set_use_ipv4(self, ipv4: bool) -> Zeroconf:

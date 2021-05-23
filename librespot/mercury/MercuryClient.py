@@ -1,15 +1,23 @@
 from __future__ import annotations
-from librespot.common import Utils
-from librespot.core import Session, PacketsReceiver
-from librespot.crypto import Packet
-from librespot.mercury import JsonMercuryRequest, RawMercuryRequest, SubListener
-from librespot.standard import BytesInputStream, BytesOutputStream, Closeable
-from librespot.proto import Mercury, Pubsub
+
 import json
 import logging
 import queue
 import threading
 import typing
+
+from librespot.common import Utils
+from librespot.core import PacketsReceiver
+from librespot.core import Session
+from librespot.crypto import Packet
+from librespot.mercury import JsonMercuryRequest
+from librespot.mercury import RawMercuryRequest
+from librespot.mercury import SubListener
+from librespot.proto import Mercury
+from librespot.proto import Pubsub
+from librespot.standard import BytesInputStream
+from librespot.standard import BytesOutputStream
+from librespot.standard import Closeable
 
 
 class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
@@ -159,9 +167,9 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
                 self._LOGGER.debug(
                     "Couldn't dispatch Mercury event seq: {}, uri: {}, code: {}, payload: {}"
                     .format(seq, header.uri, header.status_code, resp.payload))
-        elif packet.is_cmd(Packet.Type.mercury_req) or \
-                packet.is_cmd(Packet.Type.mercury_sub) or \
-                packet.is_cmd(Packet.Type.mercury_sub):
+        elif (packet.is_cmd(Packet.Type.mercury_req)
+              or packet.is_cmd(Packet.Type.mercury_sub)
+              or packet.is_cmd(Packet.Type.mercury_sub)):
             callback = self._callbacks.get(seq)
             self._callbacks.pop(seq)
             if callback is not None:

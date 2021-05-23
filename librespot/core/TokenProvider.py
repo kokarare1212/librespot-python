@@ -1,8 +1,11 @@
 from __future__ import annotations
-from librespot.core import Session, TimeProvider
-from librespot.mercury import MercuryRequests
+
 import logging
 import typing
+
+from librespot.core import Session
+from librespot.core import TimeProvider
+from librespot.mercury import MercuryRequests
 
 
 class TokenProvider:
@@ -66,9 +69,9 @@ class TokenProvider:
             self.scopes = obj["scope"]
 
         def expired(self) -> bool:
-            return self.timestamp + (
-                self.expires_in - TokenProvider._TOKEN_EXPIRE_THRESHOLD
-            ) * 1000 < TimeProvider.TimeProvider().current_time_millis()
+            return (self.timestamp +
+                    (self.expires_in - TokenProvider._TOKEN_EXPIRE_THRESHOLD) *
+                    1000 < TimeProvider.TimeProvider().current_time_millis())
 
         def has_scope(self, scope: str) -> bool:
             for s in self.scopes:
