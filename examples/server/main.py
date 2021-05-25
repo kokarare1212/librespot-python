@@ -92,7 +92,7 @@ def response(client: socket.socket, uri: str, header: dict,
                 start = int(range_search.group("start"))
                 end = int(range_search.group("end")) if int(
                     range_search.group("end")) <= stream.input_stream.stream(
-                    ).size() else stream.input_stream.stream().size()
+                ).size() else stream.input_stream.stream().size()
                 stream.input_stream.stream().skip(start)
         client.send(b"HTTP/1.0 200 OK\r\n")
         client.send(b"Access-Control-Allow-Origin: *\r\n")
