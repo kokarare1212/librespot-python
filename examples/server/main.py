@@ -1,11 +1,12 @@
-from librespot.audio.decoders import AudioQuality
-from librespot.core import Session
-from librespot.metadata import TrackId
-from librespot.player.codecs import VorbisOnlyAudioQuality
 import os
 import re
 import socket
 import threading
+
+from librespot.audio.decoders import AudioQuality
+from librespot.core import Session
+from librespot.metadata import TrackId
+from librespot.player.codecs import VorbisOnlyAudioQuality
 
 session: Session
 sock: socket
