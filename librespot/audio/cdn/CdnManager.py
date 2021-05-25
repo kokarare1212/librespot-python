@@ -157,8 +157,8 @@ class CdnManager:
                         except ValueError:
                             continue
 
-                        if s[0][:i] == "exp":
-                            expire_at = int(s[0][i + 1:])
+                        if s[:i] == "exp":
+                            expire_at = int(s[i + 1:])
                             break
 
                     if expire_at is None:
