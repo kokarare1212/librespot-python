@@ -4,7 +4,7 @@ import re
 
 from librespot.common import Base62
 from librespot.common import Utils
-from librespot.proto.ContextTrack import ContextTrack
+from librespot.proto.ContextTrack_pb2 import ContextTrack
 
 
 class SpotifyId:

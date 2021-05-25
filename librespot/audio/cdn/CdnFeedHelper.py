@@ -10,23 +10,23 @@ from librespot.audio import NormalizationData
 from librespot.audio import PlayableContentFeeder
 from librespot.common import Utils
 from librespot.core import Session
-from librespot.proto import Metadata
-from librespot.proto import StorageResolve
+from librespot.proto import Metadata_pb2
+from librespot.proto import StorageResolve_pb2
 
 
 class CdnFeedHelper:
     _LOGGER: logging = logging.getLogger(__name__)
 
     @staticmethod
-    def get_url(resp: StorageResolve.StorageResolveResponse) -> str:
+    def get_url(resp: StorageResolve_pb2.StorageResolveResponse) -> str:
         return random.choice(resp.cdnurl)
 
     @staticmethod
     def load_track(
         session: Session,
-        track: Metadata.Track,
-        file: Metadata.AudioFile,
-        resp_or_url: typing.Union[StorageResolve.StorageResolveResponse, str],
+        track: Metadata_pb2.Track,
+        file: Metadata_pb2.AudioFile,
+        resp_or_url: typing.Union[StorageResolve_pb2.StorageResolveResponse, str],
         preload: bool,
         halt_listener: HaltListener,
     ) -> PlayableContentFeeder.PlayableContentFeeder.LoadedStream:
@@ -54,7 +54,7 @@ class CdnFeedHelper:
 
     @staticmethod
     def load_episode_external(
-        session: Session, episode: Metadata.Episode,
+        session: Session, episode: Metadata_pb2.Episode,
         halt_listener: HaltListener
     ) -> PlayableContentFeeder.PlayableContentFeeder.LoadedStream:
         resp = session.client().head(episode.external_url)
@@ -79,9 +79,9 @@ class CdnFeedHelper:
     @staticmethod
     def load_episode(
         session: Session,
-        episode: Metadata.Episode,
-        file: Metadata.AudioFile,
-        resp_or_url: typing.Union[StorageResolve.StorageResolveResponse, str],
+        episode: Metadata_pb2.Episode,
+        file: Metadata_pb2.AudioFile,
+        resp_or_url: typing.Union[StorageResolve_pb2.StorageResolveResponse, str],
         halt_listener: HaltListener,
     ) -> PlayableContentFeeder.PlayableContentFeeder.LoadedStream:
         if type(resp_or_url) is str:

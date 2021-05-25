@@ -13,8 +13,8 @@ from librespot.crypto import Packet
 from librespot.mercury import JsonMercuryRequest
 from librespot.mercury import RawMercuryRequest
 from librespot.mercury import SubListener
-from librespot.proto import Mercury
-from librespot.proto import Pubsub
+from librespot.proto import Mercury_pb2
+from librespot.proto import Pubsub_pb2
 from librespot.standard import BytesInputStream
 from librespot.standard import BytesOutputStream
 from librespot.standard import Closeable
@@ -42,7 +42,7 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
 
         if len(response.payload) > 0:
             for payload in response.payload:
-                sub = Pubsub.Subscription()
+                sub = Pubsub_pb2.Subscription()
                 sub.ParseFromString(payload)
                 self._subscriptions.append(
                     MercuryClient.InternalSubListener(sub.uri, listener, True))
@@ -150,7 +150,7 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
 
         self._partials.pop(seq)
 
-        header = Mercury.Header()
+        header = Mercury_pb2.Header()
         header.ParseFromString(partial[0])
 
         resp = MercuryClient.Response(header, partial)
@@ -257,7 +257,7 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
         payload: typing.List[bytes]
         status_code: int
 
-        def __init__(self, header: Mercury.Header,
+        def __init__(self, header: Mercury_pb2.Header,
                      payload: typing.List[bytes]):
             self.uri = header.uri
             self.status_code = header.status_code

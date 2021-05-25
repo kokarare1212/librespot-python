@@ -7,11 +7,11 @@ from librespot.dealer import DealerClient
 from librespot.player import Player
 from librespot.player import PlayerConfiguration
 from librespot.player.state import DeviceStateHandler
-from librespot.proto import Connect
-from librespot.proto.Player import ContextPlayerOptions
-from librespot.proto.Player import PlayerState
-from librespot.proto.Player import Restrictions
-from librespot.proto.Player import Suppressions
+from librespot.proto import Connect_pb2
+from librespot.proto.Player_pb2 import ContextPlayerOptions
+from librespot.proto.Player_pb2 import PlayerState
+from librespot.proto.Player_pb2 import Restrictions
+from librespot.proto.Player_pb2 import Suppressions
 
 
 class StateWrapper(DeviceStateHandler.Listener, DealerClient.MessageListener):
@@ -52,7 +52,7 @@ class StateWrapper(DeviceStateHandler.Listener, DealerClient.MessageListener):
         self._device.add_listener(listener)
 
     def ready(self) -> None:
-        self._device.update_state(Connect.PutStateReason.NEW_DEVICE, 0,
+        self._device.update_state(Connect_pb2.PutStateReason.NEW_DEVICE, 0,
                                   self._state)
 
     def on_message(self, uri: str, headers: typing.Dict[str, str],

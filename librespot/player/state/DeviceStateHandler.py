@@ -11,16 +11,16 @@ import urllib.parse
 from librespot.common import Utils
 from librespot.core import Session
 from librespot.player import PlayerConfiguration
-from librespot.proto import Connect
-from librespot.proto import Player
+from librespot.proto import Connect_pb2
+from librespot.proto import Player_pb2
 
 
 class DeviceStateHandler:
     _LOGGER: logging = logging.getLogger(__name__)
     _session: Session = None
-    _deviceInfo: Connect.DeviceInfo = None
+    _deviceInfo: Connect_pb2.DeviceInfo = None
     _listeners: typing.List[DeviceStateHandler.Listener] = []
-    _putState: Connect.PutStateRequest = None
+    _putState: Connect_pb2.PutStateRequest = None
     _putStateWorker: concurrent.futures.ThreadPoolExecutor = (
         concurrent.futures.ThreadPoolExecutor())
     _connectionId: str = None
@@ -28,7 +28,7 @@ class DeviceStateHandler:
     def __init__(self, session: Session, player, conf: PlayerConfiguration):
         self._session = session
         self._deviceInfo = None
-        self._putState = Connect.PutStateRequest()
+        self._putState = Connect_pb2.PutStateRequest()
 
     def _update_connection_id(self, newer: str) -> None:
         newer = urllib.parse.unquote(newer, "UTF-8")
@@ -48,9 +48,9 @@ class DeviceStateHandler:
 
     def update_state(
         self,
-        reason: Connect.PutStateReason,
+        reason: Connect_pb2.PutStateReason,
         player_time: int,
-        state: Player.PlayerState,
+        state: Player_pb2.PlayerState,
     ):
         if self._connectionId is None:
             raise TypeError()
@@ -67,7 +67,7 @@ class DeviceStateHandler:
 
         self._putStateWorker.submit(self._put_connect_state, self._putState)
 
-    def _put_connect_state(self, req: Connect.PutStateRequest):
+    def _put_connect_state(self, req: Connect_pb2.PutStateRequest):
         self._session.api().put_connect_state(self._connectionId, req)
         self._LOGGER.info("Put state. ts: {}, connId: {}, reason: {}".format(
             req.client_side_timestamp,

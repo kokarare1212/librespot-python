@@ -3,7 +3,7 @@ from __future__ import annotations
 import enum
 import typing
 
-from librespot.proto.Metadata import AudioFile
+from librespot.proto.Metadata_pb2 import AudioFile
 
 
 class AudioQuality(enum.Enum):

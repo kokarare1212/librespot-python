@@ -12,8 +12,8 @@ from librespot.common.Utils import Utils
 from librespot.core import Session
 from librespot.metadata import PlayableId
 from librespot.metadata import TrackId
-from librespot.proto import Metadata
-from librespot.proto import StorageResolve
+from librespot.proto import Metadata_pb2
+from librespot.proto import StorageResolve_pb2
 
 
 class PlayableContentFeeder:
@@ -26,7 +26,7 @@ class PlayableContentFeeder:
     def __init__(self, session: Session):
         self.session = session
 
-    def pick_alternative_if_necessary(self, track: Metadata.Track):
+    def pick_alternative_if_necessary(self, track: Metadata_pb2.Track):
         if len(track.file) > 0:
             return track
 
@@ -49,7 +49,7 @@ class PlayableContentFeeder:
 
     def resolve_storage_interactive(
             self, file_id: bytes,
-            preload: bool) -> StorageResolve.StorageResolveResponse:
+            preload: bool) -> StorageResolve_pb2.StorageResolveResponse:
         resp = self.session.api().send(
             "GET",
             (self.STORAGE_RESOLVE_INTERACTIVE_PREFETCH
@@ -65,13 +65,13 @@ class PlayableContentFeeder:
         if body is None:
             RuntimeError("Response body is empty!")
 
-        storage_resolve_response = StorageResolve.StorageResolveResponse()
+        storage_resolve_response = StorageResolve_pb2.StorageResolveResponse()
         storage_resolve_response.ParseFromString(body)
         return storage_resolve_response
 
     def load_track(
         self,
-        track_id_or_track: typing.Union[TrackId, Metadata.Track],
+        track_id_or_track: typing.Union[TrackId, Metadata_pb2.Track],
         audio_quality_picker: AudioQualityPicker,
         preload: bool,
         halt_listener: HaltListener,
@@ -94,9 +94,9 @@ class PlayableContentFeeder:
 
     def load_stream(
         self,
-        file: Metadata.AudioFile,
-        track: Metadata.Track,
-        episode: Metadata.Episode,
+        file: Metadata_pb2.AudioFile,
+        track: Metadata_pb2.Track,
+        episode: Metadata_pb2.Episode,
         preload: bool,
         halt_lister: HaltListener,
     ):
@@ -104,41 +104,41 @@ class PlayableContentFeeder:
             raise RuntimeError()
 
         resp = self.resolve_storage_interactive(file.file_id, preload)
-        if resp.result == StorageResolve.StorageResolveResponse.Result.CDN:
+        if resp.result == StorageResolve_pb2.StorageResolveResponse.Result.CDN:
             if track is not None:
                 return CdnFeedHelper.load_track(self.session, track, file,
                                                 resp, preload, halt_lister)
             return CdnFeedHelper.load_episode(self.session, episode, file,
                                               resp, preload, halt_lister)
-        elif resp.result == StorageResolve.StorageResolveResponse.Result.STORAGE:
+        elif resp.result == StorageResolve_pb2.StorageResolveResponse.Result.STORAGE:
             if track is None:
                 # return StorageFeedHelper
                 pass
-        elif resp.result == StorageResolve.StorageResolveResponse.Result.RESTRICTED:
+        elif resp.result == StorageResolve_pb2.StorageResolveResponse.Result.RESTRICTED:
             raise RuntimeError("Content is restricted!")
-        elif resp.result == StorageResolve.StorageResolveResponse.Response.UNRECOGNIZED:
+        elif resp.result == StorageResolve_pb2.StorageResolveResponse.Response.UNRECOGNIZED:
             raise RuntimeError("Content is unrecognized!")
         else:
             raise RuntimeError("Unknown result: {}".format(resp.result))
 
     class LoadedStream:
-        episode: Metadata.Episode
-        track: Metadata.Track
+        episode: Metadata_pb2.Episode
+        track: Metadata_pb2.Track
         input_stream: GeneralAudioStream
         normalization_data: NormalizationData
         metrics: PlayableContentFeeder.Metrics
 
         def __init__(
             self,
-            track_or_episode: typing.Union[Metadata.Track, Metadata.Episode],
+            track_or_episode: typing.Union[Metadata_pb2.Track, Metadata_pb2.Episode],
             input_stream: GeneralAudioStream,
             normalization_data: NormalizationData,
             metrics: PlayableContentFeeder.Metrics,
         ):
-            if type(track_or_episode) is Metadata.Track:
+            if type(track_or_episode) is Metadata_pb2.Track:
                 self.track = track_or_episode
                 self.episode = None
-            elif type(track_or_episode) is Metadata.Episode:
+            elif type(track_or_episode) is Metadata_pb2.Episode:
                 self.track = None
                 self.episode = track_or_episode
             else:
