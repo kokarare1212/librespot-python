@@ -64,7 +64,7 @@ class CdnFeedHelper:
 
         url = resp.url
         CdnFeedHelper._LOGGER.debug("Fetched external url for {}: {}".format(
-            Utils.Utils.bytes_to_hex(episode.gid), url))
+            Utils.bytes_to_hex(episode.gid), url))
 
         streamer = session.cdn().stream_external_episode(
             episode, url, halt_listener)
