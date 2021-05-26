@@ -19,7 +19,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto3",
     serialized_options=b"\n\024com.spotify.login5v3",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n+spotify/login5/v3/challenges/hashcash.proto\x12\x1cspotify.login5.v3.challenges\x1a\x1egoogle/protobuf/duration.proto"3\n\x11HashcashChallenge\x12\x0e\n\x06prefix\x18\x01 \x01(\x0c\x12\x0e\n\x06length\x18\x02 \x01(\x05"O\n\x10HashcashSolution\x12\x0e\n\x06suffix\x18\x01 \x01(\x0c\x12+\n\x08\x64uration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.DurationB\x16\n\x14\x63om.spotify.login5v3b\x06proto3',
+    serialized_pb=
+    b'\n+spotify/login5/v3/challenges/hashcash.proto\x12\x1cspotify.login5.v3.challenges\x1a\x1egoogle/protobuf/duration.proto"3\n\x11HashcashChallenge\x12\x0e\n\x06prefix\x18\x01 \x01(\x0c\x12\x0e\n\x06length\x18\x02 \x01(\x05"O\n\x10HashcashSolution\x12\x0e\n\x06suffix\x18\x01 \x01(\x0c\x12+\n\x08\x64uration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.DurationB\x16\n\x14\x63om.spotify.login5v3b\x06proto3',
     dependencies=[
         google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,
     ],
@@ -144,15 +145,14 @@ _HASHCASHSOLUTION = _descriptor.Descriptor(
 )
 
 _HASHCASHSOLUTION.fields_by_name[
-    "duration"
-].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
+    "duration"].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 DESCRIPTOR.message_types_by_name["HashcashChallenge"] = _HASHCASHCHALLENGE
 DESCRIPTOR.message_types_by_name["HashcashSolution"] = _HASHCASHSOLUTION
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 HashcashChallenge = _reflection.GeneratedProtocolMessageType(
     "HashcashChallenge",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _HASHCASHCHALLENGE,
         "__module__": "spotify.login5.v3.challenges.hashcash_pb2"
@@ -163,7 +163,7 @@ _sym_db.RegisterMessage(HashcashChallenge)
 
 HashcashSolution = _reflection.GeneratedProtocolMessageType(
     "HashcashSolution",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _HASHCASHSOLUTION,
         "__module__": "spotify.login5.v3.challenges.hashcash_pb2"

@@ -17,7 +17,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto2",
     serialized_options=b"\n\024com.spotify.metadataB\010MetadataH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x0emetadata.proto\x12\x16spotify.metadata.proto"\x8a\x07\n\x06\x41rtist\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x12\n\npopularity\x18\x03 \x01(\x11\x12\x34\n\ttop_track\x18\x04 \x03(\x0b\x32!.spotify.metadata.proto.TopTracks\x12\x37\n\x0b\x61lbum_group\x18\x05 \x03(\x0b\x32".spotify.metadata.proto.AlbumGroup\x12\x38\n\x0csingle_group\x18\x06 \x03(\x0b\x32".spotify.metadata.proto.AlbumGroup\x12=\n\x11\x63ompilation_group\x18\x07 \x03(\x0b\x32".spotify.metadata.proto.AlbumGroup\x12<\n\x10\x61ppears_on_group\x18\x08 \x03(\x0b\x32".spotify.metadata.proto.AlbumGroup\x12\r\n\x05genre\x18\t \x03(\t\x12\x37\n\x0b\x65xternal_id\x18\n \x03(\x0b\x32".spotify.metadata.proto.ExternalId\x12/\n\x08portrait\x18\x0b \x03(\x0b\x32\x1d.spotify.metadata.proto.Image\x12\x34\n\tbiography\x18\x0c \x03(\x0b\x32!.spotify.metadata.proto.Biography\x12?\n\x0f\x61\x63tivity_period\x18\r \x03(\x0b\x32&.spotify.metadata.proto.ActivityPeriod\x12\x38\n\x0brestriction\x18\x0e \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12/\n\x07related\x18\x0f \x03(\x0b\x32\x1e.spotify.metadata.proto.Artist\x12\x1f\n\x17is_portrait_album_cover\x18\x10 \x01(\x08\x12:\n\x0eportrait_group\x18\x11 \x01(\x0b\x32".spotify.metadata.proto.ImageGroup\x12\x37\n\x0bsale_period\x18\x12 \x03(\x0b\x32".spotify.metadata.proto.SalePeriod\x12:\n\x0c\x61vailability\x18\x14 \x03(\x0b\x32$.spotify.metadata.proto.Availability"\xe8\x06\n\x05\x41lbum\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12.\n\x06\x61rtist\x18\x03 \x03(\x0b\x32\x1e.spotify.metadata.proto.Artist\x12\x30\n\x04type\x18\x04 \x01(\x0e\x32".spotify.metadata.proto.Album.Type\x12\r\n\x05label\x18\x05 \x01(\t\x12*\n\x04\x64\x61te\x18\x06 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date\x12\x12\n\npopularity\x18\x07 \x01(\x11\x12\r\n\x05genre\x18\x08 \x03(\t\x12,\n\x05\x63over\x18\t \x03(\x0b\x32\x1d.spotify.metadata.proto.Image\x12\x37\n\x0b\x65xternal_id\x18\n \x03(\x0b\x32".spotify.metadata.proto.ExternalId\x12*\n\x04\x64isc\x18\x0b \x03(\x0b\x32\x1c.spotify.metadata.proto.Disc\x12\x0e\n\x06review\x18\x0c \x03(\t\x12\x34\n\tcopyright\x18\r \x03(\x0b\x32!.spotify.metadata.proto.Copyright\x12\x38\n\x0brestriction\x18\x0e \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12.\n\x07related\x18\x0f \x03(\x0b\x32\x1d.spotify.metadata.proto.Album\x12\x37\n\x0bsale_period\x18\x10 \x03(\x0b\x32".spotify.metadata.proto.SalePeriod\x12\x37\n\x0b\x63over_group\x18\x11 \x01(\x0b\x32".spotify.metadata.proto.ImageGroup\x12\x16\n\x0eoriginal_title\x18\x12 \x01(\t\x12\x15\n\rversion_title\x18\x13 \x01(\t\x12\x10\n\x08type_str\x18\x14 \x01(\t\x12:\n\x0c\x61vailability\x18\x17 \x03(\x0b\x32$.spotify.metadata.proto.Availability"R\n\x04Type\x12\t\n\x05\x41LBUM\x10\x01\x12\n\n\x06SINGLE\x10\x02\x12\x0f\n\x0b\x43OMPILATION\x10\x03\x12\x06\n\x02\x45P\x10\x04\x12\r\n\tAUDIOBOOK\x10\x05\x12\x0b\n\x07PODCAST\x10\x06"\xd5\x05\n\x05Track\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12,\n\x05\x61lbum\x18\x03 \x01(\x0b\x32\x1d.spotify.metadata.proto.Album\x12.\n\x06\x61rtist\x18\x04 \x03(\x0b\x32\x1e.spotify.metadata.proto.Artist\x12\x0e\n\x06number\x18\x05 \x01(\x11\x12\x13\n\x0b\x64isc_number\x18\x06 \x01(\x11\x12\x10\n\x08\x64uration\x18\x07 \x01(\x11\x12\x12\n\npopularity\x18\x08 \x01(\x11\x12\x10\n\x08\x65xplicit\x18\t \x01(\x08\x12\x37\n\x0b\x65xternal_id\x18\n \x03(\x0b\x32".spotify.metadata.proto.ExternalId\x12\x38\n\x0brestriction\x18\x0b \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12/\n\x04\x66ile\x18\x0c \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x32\n\x0b\x61lternative\x18\r \x03(\x0b\x32\x1d.spotify.metadata.proto.Track\x12\x37\n\x0bsale_period\x18\x0e \x03(\x0b\x32".spotify.metadata.proto.SalePeriod\x12\x32\n\x07preview\x18\x0f \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x0c\n\x04tags\x18\x10 \x03(\t\x12\x1f\n\x17\x65\x61rliest_live_timestamp\x18\x11 \x01(\x03\x12\x12\n\nhas_lyrics\x18\x12 \x01(\x08\x12:\n\x0c\x61vailability\x18\x13 \x03(\x0b\x32$.spotify.metadata.proto.Availability\x12\x32\n\x08licensor\x18\x15 \x01(\x0b\x32 .spotify.metadata.proto.Licensor"\xbf\x05\n\x04Show\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18@ \x01(\t\x12!\n\x15\x64\x65precated_popularity\x18\x41 \x01(\x11\x42\x02\x18\x01\x12\x11\n\tpublisher\x18\x42 \x01(\t\x12\x10\n\x08language\x18\x43 \x01(\t\x12\x10\n\x08\x65xplicit\x18\x44 \x01(\x08\x12\x37\n\x0b\x63over_image\x18\x45 \x01(\x0b\x32".spotify.metadata.proto.ImageGroup\x12\x30\n\x07\x65pisode\x18\x46 \x03(\x0b\x32\x1f.spotify.metadata.proto.Episode\x12\x34\n\tcopyright\x18G \x03(\x0b\x32!.spotify.metadata.proto.Copyright\x12\x38\n\x0brestriction\x18H \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12\x0f\n\x07keyword\x18I \x03(\t\x12:\n\nmedia_type\x18J \x01(\x0e\x32&.spotify.metadata.proto.Show.MediaType\x12H\n\x11\x63onsumption_order\x18K \x01(\x0e\x32-.spotify.metadata.proto.Show.ConsumptionOrder\x12:\n\x0c\x61vailability\x18N \x03(\x0b\x32$.spotify.metadata.proto.Availability\x12\x13\n\x0btrailer_uri\x18S \x01(\t",\n\tMediaType\x12\t\n\x05MIXED\x10\x00\x12\t\n\x05\x41UDIO\x10\x01\x12\t\n\x05VIDEO\x10\x02"<\n\x10\x43onsumptionOrder\x12\x0e\n\nSEQUENTIAL\x10\x01\x12\x0c\n\x08\x45PISODIC\x10\x02\x12\n\n\x06RECENT\x10\x03"\xf9\x06\n\x07\x45pisode\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08\x64uration\x18\x07 \x01(\x11\x12\x30\n\x05\x61udio\x18\x0c \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x13\n\x0b\x64\x65scription\x18@ \x01(\t\x12\x0e\n\x06number\x18\x41 \x01(\x11\x12\x32\n\x0cpublish_time\x18\x42 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date\x12!\n\x15\x64\x65precated_popularity\x18\x43 \x01(\x11\x42\x02\x18\x01\x12\x37\n\x0b\x63over_image\x18\x44 \x01(\x0b\x32".spotify.metadata.proto.ImageGroup\x12\x10\n\x08language\x18\x45 \x01(\t\x12\x10\n\x08\x65xplicit\x18\x46 \x01(\x08\x12*\n\x04show\x18G \x01(\x0b\x32\x1c.spotify.metadata.proto.Show\x12\x30\n\x05video\x18H \x03(\x0b\x32!.spotify.metadata.proto.VideoFile\x12\x38\n\rvideo_preview\x18I \x03(\x0b\x32!.spotify.metadata.proto.VideoFile\x12\x38\n\raudio_preview\x18J \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x38\n\x0brestriction\x18K \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12\x38\n\x0c\x66reeze_frame\x18L \x01(\x0b\x32".spotify.metadata.proto.ImageGroup\x12\x0f\n\x07keyword\x18M \x03(\t\x12!\n\x19\x61llow_background_playback\x18Q \x01(\x08\x12:\n\x0c\x61vailability\x18R \x03(\x0b\x32$.spotify.metadata.proto.Availability\x12\x14\n\x0c\x65xternal_url\x18S \x01(\t\x12\x39\n\x04type\x18W \x01(\x0e\x32+.spotify.metadata.proto.Episode.EpisodeType"/\n\x0b\x45pisodeType\x12\x08\n\x04\x46ULL\x10\x00\x12\x0b\n\x07TRAILER\x10\x01\x12\t\n\x05\x42ONUS\x10\x02"\x18\n\x08Licensor\x12\x0c\n\x04uuid\x18\x01 \x01(\x0c"J\n\tTopTracks\x12\x0f\n\x07\x63ountry\x18\x01 \x01(\t\x12,\n\x05track\x18\x02 \x03(\x0b\x32\x1d.spotify.metadata.proto.Track"F\n\x0e\x41\x63tivityPeriod\x12\x12\n\nstart_year\x18\x01 \x01(\x11\x12\x10\n\x08\x65nd_year\x18\x02 \x01(\x11\x12\x0e\n\x06\x64\x65\x63\x61\x64\x65\x18\x03 \x01(\x11":\n\nAlbumGroup\x12,\n\x05\x61lbum\x18\x01 \x03(\x0b\x32\x1d.spotify.metadata.proto.Album"N\n\x04\x44\x61te\x12\x0c\n\x04year\x18\x01 \x01(\x11\x12\r\n\x05month\x18\x02 \x01(\x11\x12\x0b\n\x03\x64\x61y\x18\x03 \x01(\x11\x12\x0c\n\x04hour\x18\x04 \x01(\x11\x12\x0e\n\x06minute\x18\x05 \x01(\x11"\xa0\x01\n\x05Image\x12\x0f\n\x07\x66ile_id\x18\x01 \x01(\x0c\x12\x30\n\x04size\x18\x02 \x01(\x0e\x32".spotify.metadata.proto.Image.Size\x12\r\n\x05width\x18\x03 \x01(\x11\x12\x0e\n\x06height\x18\x04 \x01(\x11"5\n\x04Size\x12\x0b\n\x07\x44\x45\x46\x41ULT\x10\x00\x12\t\n\x05SMALL\x10\x01\x12\t\n\x05LARGE\x10\x02\x12\n\n\x06XLARGE\x10\x03":\n\nImageGroup\x12,\n\x05image\x18\x01 \x03(\x0b\x32\x1d.spotify.metadata.proto.Image"\x86\x01\n\tBiography\x12\x0c\n\x04text\x18\x01 \x01(\t\x12/\n\x08portrait\x18\x02 \x03(\x0b\x32\x1d.spotify.metadata.proto.Image\x12:\n\x0eportrait_group\x18\x03 \x03(\x0b\x32".spotify.metadata.proto.ImageGroup"R\n\x04\x44isc\x12\x0e\n\x06number\x18\x01 \x01(\x11\x12\x0c\n\x04name\x18\x02 \x01(\t\x12,\n\x05track\x18\x03 \x03(\x0b\x32\x1d.spotify.metadata.proto.Track"e\n\tCopyright\x12\x34\n\x04type\x18\x01 \x01(\x0e\x32&.spotify.metadata.proto.Copyright.Type\x12\x0c\n\x04text\x18\x02 \x01(\t"\x14\n\x04Type\x12\x05\n\x01P\x10\x00\x12\x05\n\x01\x43\x10\x01"\xdf\x02\n\x0bRestriction\x12@\n\tcatalogue\x18\x01 \x03(\x0e\x32-.spotify.metadata.proto.Restriction.Catalogue\x12\x36\n\x04type\x18\x04 \x01(\x0e\x32(.spotify.metadata.proto.Restriction.Type\x12\x15\n\rcatalogue_str\x18\x05 \x03(\t\x12\x1b\n\x11\x63ountries_allowed\x18\x02 \x01(\tH\x00\x12\x1d\n\x13\x63ountries_forbidden\x18\x03 \x01(\tH\x00"U\n\tCatalogue\x12\x06\n\x02\x41\x44\x10\x00\x12\x10\n\x0cSUBSCRIPTION\x10\x01\x12\x11\n\rCATALOGUE_ALL\x10\x02\x12\x0b\n\x07SHUFFLE\x10\x03\x12\x0e\n\nCOMMERCIAL\x10\x04"\x15\n\x04Type\x12\r\n\tSTREAMING\x10\x00\x42\x15\n\x13\x63ountry_restriction"R\n\x0c\x41vailability\x12\x15\n\rcatalogue_str\x18\x01 \x03(\t\x12+\n\x05start\x18\x02 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date"\x9e\x01\n\nSalePeriod\x12\x38\n\x0brestriction\x18\x01 \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12+\n\x05start\x18\x02 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date\x12)\n\x03\x65nd\x18\x03 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date"&\n\nExternalId\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t"\x89\x02\n\tAudioFile\x12\x0f\n\x07\x66ile_id\x18\x01 \x01(\x0c\x12\x38\n\x06\x66ormat\x18\x02 \x01(\x0e\x32(.spotify.metadata.proto.AudioFile.Format"\xb0\x01\n\x06\x46ormat\x12\x11\n\rOGG_VORBIS_96\x10\x00\x12\x12\n\x0eOGG_VORBIS_160\x10\x01\x12\x12\n\x0eOGG_VORBIS_320\x10\x02\x12\x0b\n\x07MP3_256\x10\x03\x12\x0b\n\x07MP3_320\x10\x04\x12\x0b\n\x07MP3_160\x10\x05\x12\n\n\x06MP3_96\x10\x06\x12\x0f\n\x0bMP3_160_ENC\x10\x07\x12\n\n\x06\x41\x41\x43_24\x10\x08\x12\n\n\x06\x41\x41\x43_48\x10\t\x12\x0f\n\x0b\x41\x41\x43_24_NORM\x10\x10"\x1c\n\tVideoFile\x12\x0f\n\x07\x66ile_id\x18\x01 \x01(\x0c\x42"\n\x14\x63om.spotify.metadataB\x08MetadataH\x02',
+    serialized_pb=
+    b'\n\x0emetadata.proto\x12\x16spotify.metadata.proto"\x8a\x07\n\x06\x41rtist\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x12\n\npopularity\x18\x03 \x01(\x11\x12\x34\n\ttop_track\x18\x04 \x03(\x0b\x32!.spotify.metadata.proto.TopTracks\x12\x37\n\x0b\x61lbum_group\x18\x05 \x03(\x0b\x32".spotify.metadata.proto.AlbumGroup\x12\x38\n\x0csingle_group\x18\x06 \x03(\x0b\x32".spotify.metadata.proto.AlbumGroup\x12=\n\x11\x63ompilation_group\x18\x07 \x03(\x0b\x32".spotify.metadata.proto.AlbumGroup\x12<\n\x10\x61ppears_on_group\x18\x08 \x03(\x0b\x32".spotify.metadata.proto.AlbumGroup\x12\r\n\x05genre\x18\t \x03(\t\x12\x37\n\x0b\x65xternal_id\x18\n \x03(\x0b\x32".spotify.metadata.proto.ExternalId\x12/\n\x08portrait\x18\x0b \x03(\x0b\x32\x1d.spotify.metadata.proto.Image\x12\x34\n\tbiography\x18\x0c \x03(\x0b\x32!.spotify.metadata.proto.Biography\x12?\n\x0f\x61\x63tivity_period\x18\r \x03(\x0b\x32&.spotify.metadata.proto.ActivityPeriod\x12\x38\n\x0brestriction\x18\x0e \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12/\n\x07related\x18\x0f \x03(\x0b\x32\x1e.spotify.metadata.proto.Artist\x12\x1f\n\x17is_portrait_album_cover\x18\x10 \x01(\x08\x12:\n\x0eportrait_group\x18\x11 \x01(\x0b\x32".spotify.metadata.proto.ImageGroup\x12\x37\n\x0bsale_period\x18\x12 \x03(\x0b\x32".spotify.metadata.proto.SalePeriod\x12:\n\x0c\x61vailability\x18\x14 \x03(\x0b\x32$.spotify.metadata.proto.Availability"\xe8\x06\n\x05\x41lbum\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12.\n\x06\x61rtist\x18\x03 \x03(\x0b\x32\x1e.spotify.metadata.proto.Artist\x12\x30\n\x04type\x18\x04 \x01(\x0e\x32".spotify.metadata.proto.Album.Type\x12\r\n\x05label\x18\x05 \x01(\t\x12*\n\x04\x64\x61te\x18\x06 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date\x12\x12\n\npopularity\x18\x07 \x01(\x11\x12\r\n\x05genre\x18\x08 \x03(\t\x12,\n\x05\x63over\x18\t \x03(\x0b\x32\x1d.spotify.metadata.proto.Image\x12\x37\n\x0b\x65xternal_id\x18\n \x03(\x0b\x32".spotify.metadata.proto.ExternalId\x12*\n\x04\x64isc\x18\x0b \x03(\x0b\x32\x1c.spotify.metadata.proto.Disc\x12\x0e\n\x06review\x18\x0c \x03(\t\x12\x34\n\tcopyright\x18\r \x03(\x0b\x32!.spotify.metadata.proto.Copyright\x12\x38\n\x0brestriction\x18\x0e \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12.\n\x07related\x18\x0f \x03(\x0b\x32\x1d.spotify.metadata.proto.Album\x12\x37\n\x0bsale_period\x18\x10 \x03(\x0b\x32".spotify.metadata.proto.SalePeriod\x12\x37\n\x0b\x63over_group\x18\x11 \x01(\x0b\x32".spotify.metadata.proto.ImageGroup\x12\x16\n\x0eoriginal_title\x18\x12 \x01(\t\x12\x15\n\rversion_title\x18\x13 \x01(\t\x12\x10\n\x08type_str\x18\x14 \x01(\t\x12:\n\x0c\x61vailability\x18\x17 \x03(\x0b\x32$.spotify.metadata.proto.Availability"R\n\x04Type\x12\t\n\x05\x41LBUM\x10\x01\x12\n\n\x06SINGLE\x10\x02\x12\x0f\n\x0b\x43OMPILATION\x10\x03\x12\x06\n\x02\x45P\x10\x04\x12\r\n\tAUDIOBOOK\x10\x05\x12\x0b\n\x07PODCAST\x10\x06"\xd5\x05\n\x05Track\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12,\n\x05\x61lbum\x18\x03 \x01(\x0b\x32\x1d.spotify.metadata.proto.Album\x12.\n\x06\x61rtist\x18\x04 \x03(\x0b\x32\x1e.spotify.metadata.proto.Artist\x12\x0e\n\x06number\x18\x05 \x01(\x11\x12\x13\n\x0b\x64isc_number\x18\x06 \x01(\x11\x12\x10\n\x08\x64uration\x18\x07 \x01(\x11\x12\x12\n\npopularity\x18\x08 \x01(\x11\x12\x10\n\x08\x65xplicit\x18\t \x01(\x08\x12\x37\n\x0b\x65xternal_id\x18\n \x03(\x0b\x32".spotify.metadata.proto.ExternalId\x12\x38\n\x0brestriction\x18\x0b \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12/\n\x04\x66ile\x18\x0c \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x32\n\x0b\x61lternative\x18\r \x03(\x0b\x32\x1d.spotify.metadata.proto.Track\x12\x37\n\x0bsale_period\x18\x0e \x03(\x0b\x32".spotify.metadata.proto.SalePeriod\x12\x32\n\x07preview\x18\x0f \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x0c\n\x04tags\x18\x10 \x03(\t\x12\x1f\n\x17\x65\x61rliest_live_timestamp\x18\x11 \x01(\x03\x12\x12\n\nhas_lyrics\x18\x12 \x01(\x08\x12:\n\x0c\x61vailability\x18\x13 \x03(\x0b\x32$.spotify.metadata.proto.Availability\x12\x32\n\x08licensor\x18\x15 \x01(\x0b\x32 .spotify.metadata.proto.Licensor"\xbf\x05\n\x04Show\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18@ \x01(\t\x12!\n\x15\x64\x65precated_popularity\x18\x41 \x01(\x11\x42\x02\x18\x01\x12\x11\n\tpublisher\x18\x42 \x01(\t\x12\x10\n\x08language\x18\x43 \x01(\t\x12\x10\n\x08\x65xplicit\x18\x44 \x01(\x08\x12\x37\n\x0b\x63over_image\x18\x45 \x01(\x0b\x32".spotify.metadata.proto.ImageGroup\x12\x30\n\x07\x65pisode\x18\x46 \x03(\x0b\x32\x1f.spotify.metadata.proto.Episode\x12\x34\n\tcopyright\x18G \x03(\x0b\x32!.spotify.metadata.proto.Copyright\x12\x38\n\x0brestriction\x18H \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12\x0f\n\x07keyword\x18I \x03(\t\x12:\n\nmedia_type\x18J \x01(\x0e\x32&.spotify.metadata.proto.Show.MediaType\x12H\n\x11\x63onsumption_order\x18K \x01(\x0e\x32-.spotify.metadata.proto.Show.ConsumptionOrder\x12:\n\x0c\x61vailability\x18N \x03(\x0b\x32$.spotify.metadata.proto.Availability\x12\x13\n\x0btrailer_uri\x18S \x01(\t",\n\tMediaType\x12\t\n\x05MIXED\x10\x00\x12\t\n\x05\x41UDIO\x10\x01\x12\t\n\x05VIDEO\x10\x02"<\n\x10\x43onsumptionOrder\x12\x0e\n\nSEQUENTIAL\x10\x01\x12\x0c\n\x08\x45PISODIC\x10\x02\x12\n\n\x06RECENT\x10\x03"\xf9\x06\n\x07\x45pisode\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08\x64uration\x18\x07 \x01(\x11\x12\x30\n\x05\x61udio\x18\x0c \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x13\n\x0b\x64\x65scription\x18@ \x01(\t\x12\x0e\n\x06number\x18\x41 \x01(\x11\x12\x32\n\x0cpublish_time\x18\x42 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date\x12!\n\x15\x64\x65precated_popularity\x18\x43 \x01(\x11\x42\x02\x18\x01\x12\x37\n\x0b\x63over_image\x18\x44 \x01(\x0b\x32".spotify.metadata.proto.ImageGroup\x12\x10\n\x08language\x18\x45 \x01(\t\x12\x10\n\x08\x65xplicit\x18\x46 \x01(\x08\x12*\n\x04show\x18G \x01(\x0b\x32\x1c.spotify.metadata.proto.Show\x12\x30\n\x05video\x18H \x03(\x0b\x32!.spotify.metadata.proto.VideoFile\x12\x38\n\rvideo_preview\x18I \x03(\x0b\x32!.spotify.metadata.proto.VideoFile\x12\x38\n\raudio_preview\x18J \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x38\n\x0brestriction\x18K \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12\x38\n\x0c\x66reeze_frame\x18L \x01(\x0b\x32".spotify.metadata.proto.ImageGroup\x12\x0f\n\x07keyword\x18M \x03(\t\x12!\n\x19\x61llow_background_playback\x18Q \x01(\x08\x12:\n\x0c\x61vailability\x18R \x03(\x0b\x32$.spotify.metadata.proto.Availability\x12\x14\n\x0c\x65xternal_url\x18S \x01(\t\x12\x39\n\x04type\x18W \x01(\x0e\x32+.spotify.metadata.proto.Episode.EpisodeType"/\n\x0b\x45pisodeType\x12\x08\n\x04\x46ULL\x10\x00\x12\x0b\n\x07TRAILER\x10\x01\x12\t\n\x05\x42ONUS\x10\x02"\x18\n\x08Licensor\x12\x0c\n\x04uuid\x18\x01 \x01(\x0c"J\n\tTopTracks\x12\x0f\n\x07\x63ountry\x18\x01 \x01(\t\x12,\n\x05track\x18\x02 \x03(\x0b\x32\x1d.spotify.metadata.proto.Track"F\n\x0e\x41\x63tivityPeriod\x12\x12\n\nstart_year\x18\x01 \x01(\x11\x12\x10\n\x08\x65nd_year\x18\x02 \x01(\x11\x12\x0e\n\x06\x64\x65\x63\x61\x64\x65\x18\x03 \x01(\x11":\n\nAlbumGroup\x12,\n\x05\x61lbum\x18\x01 \x03(\x0b\x32\x1d.spotify.metadata.proto.Album"N\n\x04\x44\x61te\x12\x0c\n\x04year\x18\x01 \x01(\x11\x12\r\n\x05month\x18\x02 \x01(\x11\x12\x0b\n\x03\x64\x61y\x18\x03 \x01(\x11\x12\x0c\n\x04hour\x18\x04 \x01(\x11\x12\x0e\n\x06minute\x18\x05 \x01(\x11"\xa0\x01\n\x05Image\x12\x0f\n\x07\x66ile_id\x18\x01 \x01(\x0c\x12\x30\n\x04size\x18\x02 \x01(\x0e\x32".spotify.metadata.proto.Image.Size\x12\r\n\x05width\x18\x03 \x01(\x11\x12\x0e\n\x06height\x18\x04 \x01(\x11"5\n\x04Size\x12\x0b\n\x07\x44\x45\x46\x41ULT\x10\x00\x12\t\n\x05SMALL\x10\x01\x12\t\n\x05LARGE\x10\x02\x12\n\n\x06XLARGE\x10\x03":\n\nImageGroup\x12,\n\x05image\x18\x01 \x03(\x0b\x32\x1d.spotify.metadata.proto.Image"\x86\x01\n\tBiography\x12\x0c\n\x04text\x18\x01 \x01(\t\x12/\n\x08portrait\x18\x02 \x03(\x0b\x32\x1d.spotify.metadata.proto.Image\x12:\n\x0eportrait_group\x18\x03 \x03(\x0b\x32".spotify.metadata.proto.ImageGroup"R\n\x04\x44isc\x12\x0e\n\x06number\x18\x01 \x01(\x11\x12\x0c\n\x04name\x18\x02 \x01(\t\x12,\n\x05track\x18\x03 \x03(\x0b\x32\x1d.spotify.metadata.proto.Track"e\n\tCopyright\x12\x34\n\x04type\x18\x01 \x01(\x0e\x32&.spotify.metadata.proto.Copyright.Type\x12\x0c\n\x04text\x18\x02 \x01(\t"\x14\n\x04Type\x12\x05\n\x01P\x10\x00\x12\x05\n\x01\x43\x10\x01"\xdf\x02\n\x0bRestriction\x12@\n\tcatalogue\x18\x01 \x03(\x0e\x32-.spotify.metadata.proto.Restriction.Catalogue\x12\x36\n\x04type\x18\x04 \x01(\x0e\x32(.spotify.metadata.proto.Restriction.Type\x12\x15\n\rcatalogue_str\x18\x05 \x03(\t\x12\x1b\n\x11\x63ountries_allowed\x18\x02 \x01(\tH\x00\x12\x1d\n\x13\x63ountries_forbidden\x18\x03 \x01(\tH\x00"U\n\tCatalogue\x12\x06\n\x02\x41\x44\x10\x00\x12\x10\n\x0cSUBSCRIPTION\x10\x01\x12\x11\n\rCATALOGUE_ALL\x10\x02\x12\x0b\n\x07SHUFFLE\x10\x03\x12\x0e\n\nCOMMERCIAL\x10\x04"\x15\n\x04Type\x12\r\n\tSTREAMING\x10\x00\x42\x15\n\x13\x63ountry_restriction"R\n\x0c\x41vailability\x12\x15\n\rcatalogue_str\x18\x01 \x03(\t\x12+\n\x05start\x18\x02 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date"\x9e\x01\n\nSalePeriod\x12\x38\n\x0brestriction\x18\x01 \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12+\n\x05start\x18\x02 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date\x12)\n\x03\x65nd\x18\x03 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date"&\n\nExternalId\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t"\x89\x02\n\tAudioFile\x12\x0f\n\x07\x66ile_id\x18\x01 \x01(\x0c\x12\x38\n\x06\x66ormat\x18\x02 \x01(\x0e\x32(.spotify.metadata.proto.AudioFile.Format"\xb0\x01\n\x06\x46ormat\x12\x11\n\rOGG_VORBIS_96\x10\x00\x12\x12\n\x0eOGG_VORBIS_160\x10\x01\x12\x12\n\x0eOGG_VORBIS_320\x10\x02\x12\x0b\n\x07MP3_256\x10\x03\x12\x0b\n\x07MP3_320\x10\x04\x12\x0b\n\x07MP3_160\x10\x05\x12\n\n\x06MP3_96\x10\x06\x12\x0f\n\x0bMP3_160_ENC\x10\x07\x12\n\n\x06\x41\x41\x43_24\x10\x08\x12\n\n\x06\x41\x41\x43_48\x10\t\x12\x0f\n\x0b\x41\x41\x43_24_NORM\x10\x10"\x1c\n\tVideoFile\x12\x0f\n\x07\x66ile_id\x18\x01 \x01(\x0c\x42"\n\x14\x63om.spotify.metadataB\x08MetadataH\x02',
 )
 
 _ALBUM_TYPE = _descriptor.EnumDescriptor(
@@ -2344,7 +2345,8 @@ _EPISODE = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="allow_background_playback",
-            full_name="spotify.metadata.proto.Episode.allow_background_playback",
+            full_name=
+            "spotify.metadata.proto.Episode.allow_background_playback",
             index=18,
             number=81,
             type=8,
@@ -3620,17 +3622,15 @@ _RESTRICTION.fields_by_name["type"].enum_type = _RESTRICTION_TYPE
 _RESTRICTION_CATALOGUE.containing_type = _RESTRICTION
 _RESTRICTION_TYPE.containing_type = _RESTRICTION
 _RESTRICTION.oneofs_by_name["country_restriction"].fields.append(
-    _RESTRICTION.fields_by_name["countries_allowed"]
-)
+    _RESTRICTION.fields_by_name["countries_allowed"])
 _RESTRICTION.fields_by_name[
-    "countries_allowed"
-].containing_oneof = _RESTRICTION.oneofs_by_name["country_restriction"]
+    "countries_allowed"].containing_oneof = _RESTRICTION.oneofs_by_name[
+        "country_restriction"]
 _RESTRICTION.oneofs_by_name["country_restriction"].fields.append(
-    _RESTRICTION.fields_by_name["countries_forbidden"]
-)
+    _RESTRICTION.fields_by_name["countries_forbidden"])
 _RESTRICTION.fields_by_name[
-    "countries_forbidden"
-].containing_oneof = _RESTRICTION.oneofs_by_name["country_restriction"]
+    "countries_forbidden"].containing_oneof = _RESTRICTION.oneofs_by_name[
+        "country_restriction"]
 _AVAILABILITY.fields_by_name["start"].message_type = _DATE
 _SALEPERIOD.fields_by_name["restriction"].message_type = _RESTRICTION
 _SALEPERIOD.fields_by_name["start"].message_type = _DATE
@@ -3662,7 +3662,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Artist = _reflection.GeneratedProtocolMessageType(
     "Artist",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _ARTIST,
         "__module__": "metadata_pb2"
@@ -3673,7 +3673,7 @@ _sym_db.RegisterMessage(Artist)
 
 Album = _reflection.GeneratedProtocolMessageType(
     "Album",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _ALBUM,
         "__module__": "metadata_pb2"
@@ -3684,7 +3684,7 @@ _sym_db.RegisterMessage(Album)
 
 Track = _reflection.GeneratedProtocolMessageType(
     "Track",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _TRACK,
         "__module__": "metadata_pb2"
@@ -3695,7 +3695,7 @@ _sym_db.RegisterMessage(Track)
 
 Show = _reflection.GeneratedProtocolMessageType(
     "Show",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _SHOW,
         "__module__": "metadata_pb2"
@@ -3706,7 +3706,7 @@ _sym_db.RegisterMessage(Show)
 
 Episode = _reflection.GeneratedProtocolMessageType(
     "Episode",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _EPISODE,
         "__module__": "metadata_pb2"
@@ -3717,7 +3717,7 @@ _sym_db.RegisterMessage(Episode)
 
 Licensor = _reflection.GeneratedProtocolMessageType(
     "Licensor",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LICENSOR,
         "__module__": "metadata_pb2"
@@ -3728,7 +3728,7 @@ _sym_db.RegisterMessage(Licensor)
 
 TopTracks = _reflection.GeneratedProtocolMessageType(
     "TopTracks",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _TOPTRACKS,
         "__module__": "metadata_pb2"
@@ -3739,7 +3739,7 @@ _sym_db.RegisterMessage(TopTracks)
 
 ActivityPeriod = _reflection.GeneratedProtocolMessageType(
     "ActivityPeriod",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _ACTIVITYPERIOD,
         "__module__": "metadata_pb2"
@@ -3750,7 +3750,7 @@ _sym_db.RegisterMessage(ActivityPeriod)
 
 AlbumGroup = _reflection.GeneratedProtocolMessageType(
     "AlbumGroup",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _ALBUMGROUP,
         "__module__": "metadata_pb2"
@@ -3761,7 +3761,7 @@ _sym_db.RegisterMessage(AlbumGroup)
 
 Date = _reflection.GeneratedProtocolMessageType(
     "Date",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _DATE,
         "__module__": "metadata_pb2"
@@ -3772,7 +3772,7 @@ _sym_db.RegisterMessage(Date)
 
 Image = _reflection.GeneratedProtocolMessageType(
     "Image",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _IMAGE,
         "__module__": "metadata_pb2"
@@ -3783,7 +3783,7 @@ _sym_db.RegisterMessage(Image)
 
 ImageGroup = _reflection.GeneratedProtocolMessageType(
     "ImageGroup",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _IMAGEGROUP,
         "__module__": "metadata_pb2"
@@ -3794,7 +3794,7 @@ _sym_db.RegisterMessage(ImageGroup)
 
 Biography = _reflection.GeneratedProtocolMessageType(
     "Biography",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _BIOGRAPHY,
         "__module__": "metadata_pb2"
@@ -3805,7 +3805,7 @@ _sym_db.RegisterMessage(Biography)
 
 Disc = _reflection.GeneratedProtocolMessageType(
     "Disc",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _DISC,
         "__module__": "metadata_pb2"
@@ -3816,7 +3816,7 @@ _sym_db.RegisterMessage(Disc)
 
 Copyright = _reflection.GeneratedProtocolMessageType(
     "Copyright",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _COPYRIGHT,
         "__module__": "metadata_pb2"
@@ -3827,7 +3827,7 @@ _sym_db.RegisterMessage(Copyright)
 
 Restriction = _reflection.GeneratedProtocolMessageType(
     "Restriction",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _RESTRICTION,
         "__module__": "metadata_pb2"
@@ -3838,7 +3838,7 @@ _sym_db.RegisterMessage(Restriction)
 
 Availability = _reflection.GeneratedProtocolMessageType(
     "Availability",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _AVAILABILITY,
         "__module__": "metadata_pb2"
@@ -3849,7 +3849,7 @@ _sym_db.RegisterMessage(Availability)
 
 SalePeriod = _reflection.GeneratedProtocolMessageType(
     "SalePeriod",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _SALEPERIOD,
         "__module__": "metadata_pb2"
@@ -3860,7 +3860,7 @@ _sym_db.RegisterMessage(SalePeriod)
 
 ExternalId = _reflection.GeneratedProtocolMessageType(
     "ExternalId",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _EXTERNALID,
         "__module__": "metadata_pb2"
@@ -3871,7 +3871,7 @@ _sym_db.RegisterMessage(ExternalId)
 
 AudioFile = _reflection.GeneratedProtocolMessageType(
     "AudioFile",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _AUDIOFILE,
         "__module__": "metadata_pb2"
@@ -3882,7 +3882,7 @@ _sym_db.RegisterMessage(AudioFile)
 
 VideoFile = _reflection.GeneratedProtocolMessageType(
     "VideoFile",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _VIDEOFILE,
         "__module__": "metadata_pb2"

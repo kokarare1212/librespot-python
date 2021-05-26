@@ -32,14 +32,17 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto3",
     serialized_options=b"\n\024com.spotify.login5v3",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x1espotify/login5/v3/login5.proto\x12\x11spotify.login5.v3\x1a#spotify/login5/v3/client_info.proto\x1a!spotify/login5/v3/user_info.proto\x1a\'spotify/login5/v3/challenges/code.proto\x1a+spotify/login5/v3/challenges/hashcash.proto\x1a/spotify/login5/v3/credentials/credentials.proto\x1a/spotify/login5/v3/identifiers/identifiers.proto">\n\nChallenges\x12\x30\n\nchallenges\x18\x01 \x03(\x0b\x32\x1c.spotify.login5.v3.Challenge"\x89\x01\n\tChallenge\x12\x41\n\x08hashcash\x18\x01 \x01(\x0b\x32/.spotify.login5.v3.challenges.HashcashChallenge\x12\x39\n\x04\x63ode\x18\x02 \x01(\x0b\x32+.spotify.login5.v3.challenges.CodeChallenge"M\n\x12\x43hallengeSolutions\x12\x37\n\tsolutions\x18\x01 \x03(\x0b\x32$.spotify.login5.v3.ChallengeSolution"\x8f\x01\n\x11\x43hallengeSolution\x12@\n\x08hashcash\x18\x01 \x01(\x0b\x32..spotify.login5.v3.challenges.HashcashSolution\x12\x38\n\x04\x63ode\x18\x02 \x01(\x0b\x32*.spotify.login5.v3.challenges.CodeSolution"\xad\x05\n\x0cLoginRequest\x12\x32\n\x0b\x63lient_info\x18\x01 \x01(\x0b\x32\x1d.spotify.login5.v3.ClientInfo\x12\x15\n\rlogin_context\x18\x02 \x01(\x0c\x12\x42\n\x13\x63hallenge_solutions\x18\x03 \x01(\x0b\x32%.spotify.login5.v3.ChallengeSolutions\x12J\n\x11stored_credential\x18\x64 \x01(\x0b\x32/.spotify.login5.v3.credentials.StoredCredential\x12\x39\n\x08password\x18\x65 \x01(\x0b\x32\'.spotify.login5.v3.credentials.Password\x12Q\n\x15\x66\x61\x63\x65\x62ook_access_token\x18\x66 \x01(\x0b\x32\x32.spotify.login5.v3.credentials.FacebookAccessToken\x12@\n\x0cphone_number\x18g \x01(\x0b\x32*.spotify.login5.v3.identifiers.PhoneNumber\x12\x43\n\x0eone_time_token\x18h \x01(\x0b\x32+.spotify.login5.v3.credentials.OneTimeToken\x12U\n\x17parent_child_credential\x18i \x01(\x0b\x32\x34.spotify.login5.v3.credentials.ParentChildCredential\x12V\n\x18\x61pple_sign_in_credential\x18j \x01(\x0b\x32\x34.spotify.login5.v3.credentials.AppleSignInCredential"m\n\x07LoginOk\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x02 \x01(\t\x12\x19\n\x11stored_credential\x18\x03 \x01(\x0c\x12\x1f\n\x17\x61\x63\x63\x65ss_token_expires_in\x18\x04 \x01(\x05"\xf8\x02\n\rLoginResponse\x12&\n\x02ok\x18\x01 \x01(\x0b\x32\x1a.spotify.login5.v3.LoginOk\x12,\n\x05\x65rror\x18\x02 \x01(\x0e\x32\x1d.spotify.login5.v3.LoginError\x12\x31\n\nchallenges\x18\x03 \x01(\x0b\x32\x1d.spotify.login5.v3.Challenges\x12;\n\x08warnings\x18\x04 \x03(\x0e\x32).spotify.login5.v3.LoginResponse.Warnings\x12\x15\n\rlogin_context\x18\x05 \x01(\x0c\x12\x18\n\x10identifier_token\x18\x06 \x01(\t\x12.\n\tuser_info\x18\x07 \x01(\x0b\x32\x1b.spotify.login5.v3.UserInfo"@\n\x08Warnings\x12\x13\n\x0fUNKNOWN_WARNING\x10\x00\x12\x1f\n\x1b\x44\x45PRECATED_PROTOCOL_VERSION\x10\x01*\xd3\x01\n\nLoginError\x12\x11\n\rUNKNOWN_ERROR\x10\x00\x12\x17\n\x13INVALID_CREDENTIALS\x10\x01\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x02\x12\x1e\n\x1aUNSUPPORTED_LOGIN_PROTOCOL\x10\x03\x12\x0b\n\x07TIMEOUT\x10\x04\x12\x16\n\x12UNKNOWN_IDENTIFIER\x10\x05\x12\x15\n\x11TOO_MANY_ATTEMPTS\x10\x06\x12\x17\n\x13INVALID_PHONENUMBER\x10\x07\x12\x13\n\x0fTRY_AGAIN_LATER\x10\x08\x42\x16\n\x14\x63om.spotify.login5v3b\x06proto3',
+    serialized_pb=
+    b'\n\x1espotify/login5/v3/login5.proto\x12\x11spotify.login5.v3\x1a#spotify/login5/v3/client_info.proto\x1a!spotify/login5/v3/user_info.proto\x1a\'spotify/login5/v3/challenges/code.proto\x1a+spotify/login5/v3/challenges/hashcash.proto\x1a/spotify/login5/v3/credentials/credentials.proto\x1a/spotify/login5/v3/identifiers/identifiers.proto">\n\nChallenges\x12\x30\n\nchallenges\x18\x01 \x03(\x0b\x32\x1c.spotify.login5.v3.Challenge"\x89\x01\n\tChallenge\x12\x41\n\x08hashcash\x18\x01 \x01(\x0b\x32/.spotify.login5.v3.challenges.HashcashChallenge\x12\x39\n\x04\x63ode\x18\x02 \x01(\x0b\x32+.spotify.login5.v3.challenges.CodeChallenge"M\n\x12\x43hallengeSolutions\x12\x37\n\tsolutions\x18\x01 \x03(\x0b\x32$.spotify.login5.v3.ChallengeSolution"\x8f\x01\n\x11\x43hallengeSolution\x12@\n\x08hashcash\x18\x01 \x01(\x0b\x32..spotify.login5.v3.challenges.HashcashSolution\x12\x38\n\x04\x63ode\x18\x02 \x01(\x0b\x32*.spotify.login5.v3.challenges.CodeSolution"\xad\x05\n\x0cLoginRequest\x12\x32\n\x0b\x63lient_info\x18\x01 \x01(\x0b\x32\x1d.spotify.login5.v3.ClientInfo\x12\x15\n\rlogin_context\x18\x02 \x01(\x0c\x12\x42\n\x13\x63hallenge_solutions\x18\x03 \x01(\x0b\x32%.spotify.login5.v3.ChallengeSolutions\x12J\n\x11stored_credential\x18\x64 \x01(\x0b\x32/.spotify.login5.v3.credentials.StoredCredential\x12\x39\n\x08password\x18\x65 \x01(\x0b\x32\'.spotify.login5.v3.credentials.Password\x12Q\n\x15\x66\x61\x63\x65\x62ook_access_token\x18\x66 \x01(\x0b\x32\x32.spotify.login5.v3.credentials.FacebookAccessToken\x12@\n\x0cphone_number\x18g \x01(\x0b\x32*.spotify.login5.v3.identifiers.PhoneNumber\x12\x43\n\x0eone_time_token\x18h \x01(\x0b\x32+.spotify.login5.v3.credentials.OneTimeToken\x12U\n\x17parent_child_credential\x18i \x01(\x0b\x32\x34.spotify.login5.v3.credentials.ParentChildCredential\x12V\n\x18\x61pple_sign_in_credential\x18j \x01(\x0b\x32\x34.spotify.login5.v3.credentials.AppleSignInCredential"m\n\x07LoginOk\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x02 \x01(\t\x12\x19\n\x11stored_credential\x18\x03 \x01(\x0c\x12\x1f\n\x17\x61\x63\x63\x65ss_token_expires_in\x18\x04 \x01(\x05"\xf8\x02\n\rLoginResponse\x12&\n\x02ok\x18\x01 \x01(\x0b\x32\x1a.spotify.login5.v3.LoginOk\x12,\n\x05\x65rror\x18\x02 \x01(\x0e\x32\x1d.spotify.login5.v3.LoginError\x12\x31\n\nchallenges\x18\x03 \x01(\x0b\x32\x1d.spotify.login5.v3.Challenges\x12;\n\x08warnings\x18\x04 \x03(\x0e\x32).spotify.login5.v3.LoginResponse.Warnings\x12\x15\n\rlogin_context\x18\x05 \x01(\x0c\x12\x18\n\x10identifier_token\x18\x06 \x01(\t\x12.\n\tuser_info\x18\x07 \x01(\x0b\x32\x1b.spotify.login5.v3.UserInfo"@\n\x08Warnings\x12\x13\n\x0fUNKNOWN_WARNING\x10\x00\x12\x1f\n\x1b\x44\x45PRECATED_PROTOCOL_VERSION\x10\x01*\xd3\x01\n\nLoginError\x12\x11\n\rUNKNOWN_ERROR\x10\x00\x12\x17\n\x13INVALID_CREDENTIALS\x10\x01\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x02\x12\x1e\n\x1aUNSUPPORTED_LOGIN_PROTOCOL\x10\x03\x12\x0b\n\x07TIMEOUT\x10\x04\x12\x16\n\x12UNKNOWN_IDENTIFIER\x10\x05\x12\x15\n\x11TOO_MANY_ATTEMPTS\x10\x06\x12\x17\n\x13INVALID_PHONENUMBER\x10\x07\x12\x13\n\x0fTRY_AGAIN_LATER\x10\x08\x42\x16\n\x14\x63om.spotify.login5v3b\x06proto3',
     dependencies=[
         spotify_dot_login5_dot_v3_dot_client__info__pb2.DESCRIPTOR,
         spotify_dot_login5_dot_v3_dot_user__info__pb2.DESCRIPTOR,
         spotify_dot_login5_dot_v3_dot_challenges_dot_code__pb2.DESCRIPTOR,
         spotify_dot_login5_dot_v3_dot_challenges_dot_hashcash__pb2.DESCRIPTOR,
-        spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2.DESCRIPTOR,
-        spotify_dot_login5_dot_v3_dot_identifiers_dot_identifiers__pb2.DESCRIPTOR,
+        spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2.
+        DESCRIPTOR,
+        spotify_dot_login5_dot_v3_dot_identifiers_dot_identifiers__pb2.
+        DESCRIPTOR,
     ],
 )
 
@@ -835,69 +838,48 @@ _LOGINRESPONSE = _descriptor.Descriptor(
 )
 
 _CHALLENGES.fields_by_name["challenges"].message_type = _CHALLENGE
+_CHALLENGE.fields_by_name["hashcash"].message_type = (
+    spotify_dot_login5_dot_v3_dot_challenges_dot_hashcash__pb2.
+    _HASHCASHCHALLENGE)
 _CHALLENGE.fields_by_name[
-    "hashcash"
-].message_type = (
-    spotify_dot_login5_dot_v3_dot_challenges_dot_hashcash__pb2._HASHCASHCHALLENGE
-)
-_CHALLENGE.fields_by_name[
-    "code"
-].message_type = spotify_dot_login5_dot_v3_dot_challenges_dot_code__pb2._CODECHALLENGE
-_CHALLENGESOLUTIONS.fields_by_name["solutions"].message_type = _CHALLENGESOLUTION
+    "code"].message_type = spotify_dot_login5_dot_v3_dot_challenges_dot_code__pb2._CODECHALLENGE
+_CHALLENGESOLUTIONS.fields_by_name[
+    "solutions"].message_type = _CHALLENGESOLUTION
+_CHALLENGESOLUTION.fields_by_name["hashcash"].message_type = (
+    spotify_dot_login5_dot_v3_dot_challenges_dot_hashcash__pb2.
+    _HASHCASHSOLUTION)
 _CHALLENGESOLUTION.fields_by_name[
-    "hashcash"
-].message_type = (
-    spotify_dot_login5_dot_v3_dot_challenges_dot_hashcash__pb2._HASHCASHSOLUTION
-)
-_CHALLENGESOLUTION.fields_by_name[
-    "code"
-].message_type = spotify_dot_login5_dot_v3_dot_challenges_dot_code__pb2._CODESOLUTION
+    "code"].message_type = spotify_dot_login5_dot_v3_dot_challenges_dot_code__pb2._CODESOLUTION
 _LOGINREQUEST.fields_by_name[
-    "client_info"
-].message_type = spotify_dot_login5_dot_v3_dot_client__info__pb2._CLIENTINFO
-_LOGINREQUEST.fields_by_name["challenge_solutions"].message_type = _CHALLENGESOLUTIONS
+    "client_info"].message_type = spotify_dot_login5_dot_v3_dot_client__info__pb2._CLIENTINFO
 _LOGINREQUEST.fields_by_name[
-    "stored_credential"
-].message_type = (
-    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2._STOREDCREDENTIAL
-)
-_LOGINREQUEST.fields_by_name[
-    "password"
-].message_type = (
-    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2._PASSWORD
-)
-_LOGINREQUEST.fields_by_name[
-    "facebook_access_token"
-].message_type = (
-    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2._FACEBOOKACCESSTOKEN
-)
-_LOGINREQUEST.fields_by_name[
-    "phone_number"
-].message_type = (
+    "challenge_solutions"].message_type = _CHALLENGESOLUTIONS
+_LOGINREQUEST.fields_by_name["stored_credential"].message_type = (
+    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2.
+    _STOREDCREDENTIAL)
+_LOGINREQUEST.fields_by_name["password"].message_type = (
+    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2._PASSWORD)
+_LOGINREQUEST.fields_by_name["facebook_access_token"].message_type = (
+    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2.
+    _FACEBOOKACCESSTOKEN)
+_LOGINREQUEST.fields_by_name["phone_number"].message_type = (
     spotify_dot_login5_dot_v3_dot_identifiers_dot_identifiers__pb2._PHONENUMBER
 )
-_LOGINREQUEST.fields_by_name[
-    "one_time_token"
-].message_type = (
-    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2._ONETIMETOKEN
-)
-_LOGINREQUEST.fields_by_name[
-    "parent_child_credential"
-].message_type = (
-    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2._PARENTCHILDCREDENTIAL
-)
-_LOGINREQUEST.fields_by_name[
-    "apple_sign_in_credential"
-].message_type = (
-    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2._APPLESIGNINCREDENTIAL
-)
+_LOGINREQUEST.fields_by_name["one_time_token"].message_type = (
+    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2.
+    _ONETIMETOKEN)
+_LOGINREQUEST.fields_by_name["parent_child_credential"].message_type = (
+    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2.
+    _PARENTCHILDCREDENTIAL)
+_LOGINREQUEST.fields_by_name["apple_sign_in_credential"].message_type = (
+    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2.
+    _APPLESIGNINCREDENTIAL)
 _LOGINRESPONSE.fields_by_name["ok"].message_type = _LOGINOK
 _LOGINRESPONSE.fields_by_name["error"].enum_type = _LOGINERROR
 _LOGINRESPONSE.fields_by_name["challenges"].message_type = _CHALLENGES
 _LOGINRESPONSE.fields_by_name["warnings"].enum_type = _LOGINRESPONSE_WARNINGS
 _LOGINRESPONSE.fields_by_name[
-    "user_info"
-].message_type = spotify_dot_login5_dot_v3_dot_user__info__pb2._USERINFO
+    "user_info"].message_type = spotify_dot_login5_dot_v3_dot_user__info__pb2._USERINFO
 _LOGINRESPONSE_WARNINGS.containing_type = _LOGINRESPONSE
 DESCRIPTOR.message_types_by_name["Challenges"] = _CHALLENGES
 DESCRIPTOR.message_types_by_name["Challenge"] = _CHALLENGE
@@ -911,7 +893,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Challenges = _reflection.GeneratedProtocolMessageType(
     "Challenges",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CHALLENGES,
         "__module__": "spotify.login5.v3.login5_pb2"
@@ -922,7 +904,7 @@ _sym_db.RegisterMessage(Challenges)
 
 Challenge = _reflection.GeneratedProtocolMessageType(
     "Challenge",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CHALLENGE,
         "__module__": "spotify.login5.v3.login5_pb2"
@@ -933,7 +915,7 @@ _sym_db.RegisterMessage(Challenge)
 
 ChallengeSolutions = _reflection.GeneratedProtocolMessageType(
     "ChallengeSolutions",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CHALLENGESOLUTIONS,
         "__module__": "spotify.login5.v3.login5_pb2"
@@ -944,7 +926,7 @@ _sym_db.RegisterMessage(ChallengeSolutions)
 
 ChallengeSolution = _reflection.GeneratedProtocolMessageType(
     "ChallengeSolution",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CHALLENGESOLUTION,
         "__module__": "spotify.login5.v3.login5_pb2"
@@ -955,7 +937,7 @@ _sym_db.RegisterMessage(ChallengeSolution)
 
 LoginRequest = _reflection.GeneratedProtocolMessageType(
     "LoginRequest",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LOGINREQUEST,
         "__module__": "spotify.login5.v3.login5_pb2"
@@ -966,7 +948,7 @@ _sym_db.RegisterMessage(LoginRequest)
 
 LoginOk = _reflection.GeneratedProtocolMessageType(
     "LoginOk",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LOGINOK,
         "__module__": "spotify.login5.v3.login5_pb2"
@@ -977,7 +959,7 @@ _sym_db.RegisterMessage(LoginOk)
 
 LoginResponse = _reflection.GeneratedProtocolMessageType(
     "LoginResponse",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LOGINRESPONSE,
         "__module__": "spotify.login5.v3.login5_pb2"

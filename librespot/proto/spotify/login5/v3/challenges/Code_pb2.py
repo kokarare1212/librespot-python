@@ -17,7 +17,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto3",
     serialized_options=b"\n\024com.spotify.login5v3",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\'spotify/login5/v3/challenges/code.proto\x12\x1cspotify.login5.v3.challenges"\xbc\x01\n\rCodeChallenge\x12\x42\n\x06method\x18\x01 \x01(\x0e\x32\x32.spotify.login5.v3.challenges.CodeChallenge.Method\x12\x13\n\x0b\x63ode_length\x18\x02 \x01(\x05\x12\x12\n\nexpires_in\x18\x03 \x01(\x05\x12\x1e\n\x16\x63\x61nonical_phone_number\x18\x04 \x01(\t"\x1e\n\x06Method\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x07\n\x03SMS\x10\x01"\x1c\n\x0c\x43odeSolution\x12\x0c\n\x04\x63ode\x18\x01 \x01(\tB\x16\n\x14\x63om.spotify.login5v3b\x06proto3',
+    serialized_pb=
+    b'\n\'spotify/login5/v3/challenges/code.proto\x12\x1cspotify.login5.v3.challenges"\xbc\x01\n\rCodeChallenge\x12\x42\n\x06method\x18\x01 \x01(\x0e\x32\x32.spotify.login5.v3.challenges.CodeChallenge.Method\x12\x13\n\x0b\x63ode_length\x18\x02 \x01(\x05\x12\x12\n\nexpires_in\x18\x03 \x01(\x05\x12\x1e\n\x16\x63\x61nonical_phone_number\x18\x04 \x01(\t"\x1e\n\x06Method\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x07\n\x03SMS\x10\x01"\x1c\n\x0c\x43odeSolution\x12\x0c\n\x04\x63ode\x18\x01 \x01(\tB\x16\n\x14\x63om.spotify.login5v3b\x06proto3',
 )
 
 _CODECHALLENGE_METHOD = _descriptor.EnumDescriptor(
@@ -118,7 +119,8 @@ _CODECHALLENGE = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="canonical_phone_number",
-            full_name="spotify.login5.v3.challenges.CodeChallenge.canonical_phone_number",
+            full_name=
+            "spotify.login5.v3.challenges.CodeChallenge.canonical_phone_number",
             index=3,
             number=4,
             type=9,
@@ -198,7 +200,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 CodeChallenge = _reflection.GeneratedProtocolMessageType(
     "CodeChallenge",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CODECHALLENGE,
         "__module__": "spotify.login5.v3.challenges.code_pb2"
@@ -209,7 +211,7 @@ _sym_db.RegisterMessage(CodeChallenge)
 
 CodeSolution = _reflection.GeneratedProtocolMessageType(
     "CodeSolution",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CODESOLUTION,
         "__module__": "spotify.login5.v3.challenges.code_pb2"

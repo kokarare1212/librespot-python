@@ -18,7 +18,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto3",
     serialized_options=b"\n\022com.spotify.canvazH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b"\n\x11\x63\x61nvaz-meta.proto\x12\x12\x63om.spotify.canvaz*R\n\x04Type\x12\t\n\x05IMAGE\x10\x00\x12\t\n\x05VIDEO\x10\x01\x12\x11\n\rVIDEO_LOOPING\x10\x02\x12\x18\n\x14VIDEO_LOOPING_RANDOM\x10\x03\x12\x07\n\x03GIF\x10\x04\x42\x16\n\x12\x63om.spotify.canvazH\x02\x62\x06proto3",
+    serialized_pb=
+    b"\n\x11\x63\x61nvaz-meta.proto\x12\x12\x63om.spotify.canvaz*R\n\x04Type\x12\t\n\x05IMAGE\x10\x00\x12\t\n\x05VIDEO\x10\x01\x12\x11\n\rVIDEO_LOOPING\x10\x02\x12\x18\n\x14VIDEO_LOOPING_RANDOM\x10\x03\x12\x07\n\x03GIF\x10\x04\x42\x16\n\x12\x63om.spotify.canvazH\x02\x62\x06proto3",
 )
 
 _TYPE = _descriptor.EnumDescriptor(

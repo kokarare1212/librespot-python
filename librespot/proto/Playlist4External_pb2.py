@@ -16,9 +16,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     name="playlist4_external.proto",
     package="spotify.playlist4.proto",
     syntax="proto2",
-    serialized_options=b"\n\025com.spotify.playlist4B\021Playlist4ApiProtoH\002",
+    serialized_options=
+    b"\n\025com.spotify.playlist4B\021Playlist4ApiProtoH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x18playlist4_external.proto\x12\x17spotify.playlist4.proto"P\n\x04Item\x12\x0b\n\x03uri\x18\x01 \x02(\t\x12;\n\nattributes\x18\x02 \x01(\x0b\x32\'.spotify.playlist4.proto.ItemAttributes"\x94\x01\n\x08MetaItem\x12\x10\n\x08revision\x18\x01 \x01(\x0c\x12;\n\nattributes\x18\x02 \x01(\x0b\x32\'.spotify.playlist4.proto.ListAttributes\x12\x0e\n\x06length\x18\x03 \x01(\x05\x12\x11\n\ttimestamp\x18\x04 \x01(\x03\x12\x16\n\x0eowner_username\x18\x05 \x01(\t"\x90\x01\n\tListItems\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12\x11\n\ttruncated\x18\x02 \x02(\x08\x12,\n\x05items\x18\x03 \x03(\x0b\x32\x1d.spotify.playlist4.proto.Item\x12\x35\n\nmeta_items\x18\x04 \x03(\x0b\x32!.spotify.playlist4.proto.MetaItem"1\n\x13\x46ormatListAttribute\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t"\xf6\x01\n\x0eListAttributes\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x0f\n\x07picture\x18\x03 \x01(\x0c\x12\x15\n\rcollaborative\x18\x04 \x01(\x08\x12\x13\n\x0bpl3_version\x18\x05 \x01(\t\x12\x18\n\x10\x64\x65leted_by_owner\x18\x06 \x01(\x08\x12\x11\n\tclient_id\x18\n \x01(\t\x12\x0e\n\x06\x66ormat\x18\x0b \x01(\t\x12G\n\x11\x66ormat_attributes\x18\x0c \x03(\x0b\x32,.spotify.playlist4.proto.FormatListAttribute"\xb0\x01\n\x0eItemAttributes\x12\x10\n\x08\x61\x64\x64\x65\x64_by\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\x0f\n\x07seen_at\x18\t \x01(\x03\x12\x0e\n\x06public\x18\n \x01(\x08\x12G\n\x11\x66ormat_attributes\x18\x0b \x03(\x0b\x32,.spotify.playlist4.proto.FormatListAttribute\x12\x0f\n\x07item_id\x18\x0c \x01(\x0c"l\n\x03\x41\x64\x64\x12\x12\n\nfrom_index\x18\x01 \x01(\x05\x12,\n\x05items\x18\x02 \x03(\x0b\x32\x1d.spotify.playlist4.proto.Item\x12\x10\n\x08\x61\x64\x64_last\x18\x04 \x01(\x08\x12\x11\n\tadd_first\x18\x05 \x01(\x08"m\n\x03Rem\x12\x12\n\nfrom_index\x18\x01 \x01(\x05\x12\x0e\n\x06length\x18\x02 \x01(\x05\x12,\n\x05items\x18\x03 \x03(\x0b\x32\x1d.spotify.playlist4.proto.Item\x12\x14\n\x0citems_as_key\x18\x07 \x01(\x08";\n\x03Mov\x12\x12\n\nfrom_index\x18\x01 \x02(\x05\x12\x0e\n\x06length\x18\x02 \x02(\x05\x12\x10\n\x08to_index\x18\x03 \x02(\x05"\x93\x01\n\x1aItemAttributesPartialState\x12\x37\n\x06values\x18\x01 \x02(\x0b\x32\'.spotify.playlist4.proto.ItemAttributes\x12<\n\x08no_value\x18\x02 \x03(\x0e\x32*.spotify.playlist4.proto.ItemAttributeKind"\x93\x01\n\x1aListAttributesPartialState\x12\x37\n\x06values\x18\x01 \x02(\x0b\x32\'.spotify.playlist4.proto.ListAttributes\x12<\n\x08no_value\x18\x02 \x03(\x0e\x32*.spotify.playlist4.proto.ListAttributeKind"\xbf\x01\n\x14UpdateItemAttributes\x12\r\n\x05index\x18\x01 \x02(\x05\x12K\n\x0enew_attributes\x18\x02 \x02(\x0b\x32\x33.spotify.playlist4.proto.ItemAttributesPartialState\x12K\n\x0eold_attributes\x18\x03 \x01(\x0b\x32\x33.spotify.playlist4.proto.ItemAttributesPartialState"\xb0\x01\n\x14UpdateListAttributes\x12K\n\x0enew_attributes\x18\x01 \x02(\x0b\x32\x33.spotify.playlist4.proto.ListAttributesPartialState\x12K\n\x0eold_attributes\x18\x02 \x01(\x0b\x32\x33.spotify.playlist4.proto.ListAttributesPartialState"\xc0\x03\n\x02Op\x12.\n\x04kind\x18\x01 \x02(\x0e\x32 .spotify.playlist4.proto.Op.Kind\x12)\n\x03\x61\x64\x64\x18\x02 \x01(\x0b\x32\x1c.spotify.playlist4.proto.Add\x12)\n\x03rem\x18\x03 \x01(\x0b\x32\x1c.spotify.playlist4.proto.Rem\x12)\n\x03mov\x18\x04 \x01(\x0b\x32\x1c.spotify.playlist4.proto.Mov\x12M\n\x16update_item_attributes\x18\x05 \x01(\x0b\x32-.spotify.playlist4.proto.UpdateItemAttributes\x12M\n\x16update_list_attributes\x18\x06 \x01(\x0b\x32-.spotify.playlist4.proto.UpdateListAttributes"k\n\x04Kind\x12\x10\n\x0cKIND_UNKNOWN\x10\x00\x12\x07\n\x03\x41\x44\x44\x10\x02\x12\x07\n\x03REM\x10\x03\x12\x07\n\x03MOV\x10\x04\x12\x1a\n\x16UPDATE_ITEM_ATTRIBUTES\x10\x05\x12\x1a\n\x16UPDATE_LIST_ATTRIBUTES\x10\x06"2\n\x06OpList\x12(\n\x03ops\x18\x01 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op"\xd5\x01\n\nChangeInfo\x12\x0c\n\x04user\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\r\n\x05\x61\x64min\x18\x03 \x01(\x08\x12\x0c\n\x04undo\x18\x04 \x01(\x08\x12\x0c\n\x04redo\x18\x05 \x01(\x08\x12\r\n\x05merge\x18\x06 \x01(\x08\x12\x12\n\ncompressed\x18\x07 \x01(\x08\x12\x11\n\tmigration\x18\x08 \x01(\x08\x12\x10\n\x08split_id\x18\t \x01(\x05\x12\x33\n\x06source\x18\n \x01(\x0b\x32#.spotify.playlist4.proto.SourceInfo"\xe8\x01\n\nSourceInfo\x12:\n\x06\x63lient\x18\x01 \x01(\x0e\x32*.spotify.playlist4.proto.SourceInfo.Client\x12\x0b\n\x03\x61pp\x18\x03 \x01(\t\x12\x0e\n\x06source\x18\x04 \x01(\t\x12\x0f\n\x07version\x18\x05 \x01(\t"p\n\x06\x43lient\x12\x12\n\x0e\x43LIENT_UNKNOWN\x10\x00\x12\x11\n\rNATIVE_HERMES\x10\x01\x12\n\n\x06\x43LIENT\x10\x02\x12\n\n\x06PYTHON\x10\x03\x12\x08\n\x04JAVA\x10\x04\x12\r\n\tWEBPLAYER\x10\x05\x12\x0e\n\nLIBSPOTIFY\x10\x06"z\n\x05\x44\x65lta\x12\x14\n\x0c\x62\x61se_version\x18\x01 \x01(\x0c\x12(\n\x03ops\x18\x02 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op\x12\x31\n\x04info\x18\x04 \x01(\x0b\x32#.spotify.playlist4.proto.ChangeInfo"\\\n\x04\x44iff\x12\x15\n\rfrom_revision\x18\x01 \x02(\x0c\x12(\n\x03ops\x18\x02 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op\x12\x13\n\x0bto_revision\x18\x03 \x02(\x0c"\xa0\x01\n\x0bListChanges\x12\x15\n\rbase_revision\x18\x01 \x01(\x0c\x12.\n\x06\x64\x65ltas\x18\x02 \x03(\x0b\x32\x1e.spotify.playlist4.proto.Delta\x12 \n\x18want_resulting_revisions\x18\x03 \x01(\x08\x12\x18\n\x10want_sync_result\x18\x04 \x01(\x08\x12\x0e\n\x06nonces\x18\x06 \x03(\x03"\x8f\x03\n\x13SelectedListContent\x12\x10\n\x08revision\x18\x01 \x01(\x0c\x12\x0e\n\x06length\x18\x02 \x01(\x05\x12;\n\nattributes\x18\x03 \x01(\x0b\x32\'.spotify.playlist4.proto.ListAttributes\x12\x34\n\x08\x63ontents\x18\x05 \x01(\x0b\x32".spotify.playlist4.proto.ListItems\x12+\n\x04\x64iff\x18\x06 \x01(\x0b\x32\x1d.spotify.playlist4.proto.Diff\x12\x32\n\x0bsync_result\x18\x07 \x01(\x0b\x32\x1d.spotify.playlist4.proto.Diff\x12\x1b\n\x13resulting_revisions\x18\x08 \x03(\x0c\x12\x16\n\x0emultiple_heads\x18\t \x01(\x08\x12\x12\n\nup_to_date\x18\n \x01(\x08\x12\x0e\n\x06nonces\x18\x0e \x03(\x03\x12\x11\n\ttimestamp\x18\x0f \x01(\x03\x12\x16\n\x0eowner_username\x18\x10 \x01(\t"0\n\x0f\x43reateListReply\x12\x0b\n\x03uri\x18\x01 \x02(\x0c\x12\x10\n\x08revision\x18\x02 \x01(\x0c",\n\x0bModifyReply\x12\x0b\n\x03uri\x18\x01 \x02(\x0c\x12\x10\n\x08revision\x18\x02 \x01(\x0c" \n\x10SubscribeRequest\x12\x0c\n\x04uris\x18\x01 \x03(\x0c""\n\x12UnsubscribeRequest\x12\x0c\n\x04uris\x18\x01 \x03(\x0c"\x80\x01\n\x18PlaylistModificationInfo\x12\x0b\n\x03uri\x18\x01 \x01(\x0c\x12\x14\n\x0cnew_revision\x18\x02 \x01(\x0c\x12\x17\n\x0fparent_revision\x18\x03 \x01(\x0c\x12(\n\x03ops\x18\x04 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op*\xe6\x01\n\x11ListAttributeKind\x12\x10\n\x0cLIST_UNKNOWN\x10\x00\x12\r\n\tLIST_NAME\x10\x01\x12\x14\n\x10LIST_DESCRIPTION\x10\x02\x12\x10\n\x0cLIST_PICTURE\x10\x03\x12\x16\n\x12LIST_COLLABORATIVE\x10\x04\x12\x14\n\x10LIST_PL3_VERSION\x10\x05\x12\x19\n\x15LIST_DELETED_BY_OWNER\x10\x06\x12\x12\n\x0eLIST_CLIENT_ID\x10\n\x12\x0f\n\x0bLIST_FORMAT\x10\x0b\x12\x1a\n\x16LIST_FORMAT_ATTRIBUTES\x10\x0c*\x98\x01\n\x11ItemAttributeKind\x12\x10\n\x0cITEM_UNKNOWN\x10\x00\x12\x11\n\rITEM_ADDED_BY\x10\x01\x12\x12\n\x0eITEM_TIMESTAMP\x10\x02\x12\x10\n\x0cITEM_SEEN_AT\x10\t\x12\x0f\n\x0bITEM_PUBLIC\x10\n\x12\x1a\n\x16ITEM_FORMAT_ATTRIBUTES\x10\x0b\x12\x0b\n\x07ITEM_ID\x10\x0c\x42,\n\x15\x63om.spotify.playlist4B\x11Playlist4ApiProtoH\x02',
+    serialized_pb=
+    b'\n\x18playlist4_external.proto\x12\x17spotify.playlist4.proto"P\n\x04Item\x12\x0b\n\x03uri\x18\x01 \x02(\t\x12;\n\nattributes\x18\x02 \x01(\x0b\x32\'.spotify.playlist4.proto.ItemAttributes"\x94\x01\n\x08MetaItem\x12\x10\n\x08revision\x18\x01 \x01(\x0c\x12;\n\nattributes\x18\x02 \x01(\x0b\x32\'.spotify.playlist4.proto.ListAttributes\x12\x0e\n\x06length\x18\x03 \x01(\x05\x12\x11\n\ttimestamp\x18\x04 \x01(\x03\x12\x16\n\x0eowner_username\x18\x05 \x01(\t"\x90\x01\n\tListItems\x12\x0b\n\x03pos\x18\x01 \x02(\x05\x12\x11\n\ttruncated\x18\x02 \x02(\x08\x12,\n\x05items\x18\x03 \x03(\x0b\x32\x1d.spotify.playlist4.proto.Item\x12\x35\n\nmeta_items\x18\x04 \x03(\x0b\x32!.spotify.playlist4.proto.MetaItem"1\n\x13\x46ormatListAttribute\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t"\xf6\x01\n\x0eListAttributes\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x0f\n\x07picture\x18\x03 \x01(\x0c\x12\x15\n\rcollaborative\x18\x04 \x01(\x08\x12\x13\n\x0bpl3_version\x18\x05 \x01(\t\x12\x18\n\x10\x64\x65leted_by_owner\x18\x06 \x01(\x08\x12\x11\n\tclient_id\x18\n \x01(\t\x12\x0e\n\x06\x66ormat\x18\x0b \x01(\t\x12G\n\x11\x66ormat_attributes\x18\x0c \x03(\x0b\x32,.spotify.playlist4.proto.FormatListAttribute"\xb0\x01\n\x0eItemAttributes\x12\x10\n\x08\x61\x64\x64\x65\x64_by\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\x0f\n\x07seen_at\x18\t \x01(\x03\x12\x0e\n\x06public\x18\n \x01(\x08\x12G\n\x11\x66ormat_attributes\x18\x0b \x03(\x0b\x32,.spotify.playlist4.proto.FormatListAttribute\x12\x0f\n\x07item_id\x18\x0c \x01(\x0c"l\n\x03\x41\x64\x64\x12\x12\n\nfrom_index\x18\x01 \x01(\x05\x12,\n\x05items\x18\x02 \x03(\x0b\x32\x1d.spotify.playlist4.proto.Item\x12\x10\n\x08\x61\x64\x64_last\x18\x04 \x01(\x08\x12\x11\n\tadd_first\x18\x05 \x01(\x08"m\n\x03Rem\x12\x12\n\nfrom_index\x18\x01 \x01(\x05\x12\x0e\n\x06length\x18\x02 \x01(\x05\x12,\n\x05items\x18\x03 \x03(\x0b\x32\x1d.spotify.playlist4.proto.Item\x12\x14\n\x0citems_as_key\x18\x07 \x01(\x08";\n\x03Mov\x12\x12\n\nfrom_index\x18\x01 \x02(\x05\x12\x0e\n\x06length\x18\x02 \x02(\x05\x12\x10\n\x08to_index\x18\x03 \x02(\x05"\x93\x01\n\x1aItemAttributesPartialState\x12\x37\n\x06values\x18\x01 \x02(\x0b\x32\'.spotify.playlist4.proto.ItemAttributes\x12<\n\x08no_value\x18\x02 \x03(\x0e\x32*.spotify.playlist4.proto.ItemAttributeKind"\x93\x01\n\x1aListAttributesPartialState\x12\x37\n\x06values\x18\x01 \x02(\x0b\x32\'.spotify.playlist4.proto.ListAttributes\x12<\n\x08no_value\x18\x02 \x03(\x0e\x32*.spotify.playlist4.proto.ListAttributeKind"\xbf\x01\n\x14UpdateItemAttributes\x12\r\n\x05index\x18\x01 \x02(\x05\x12K\n\x0enew_attributes\x18\x02 \x02(\x0b\x32\x33.spotify.playlist4.proto.ItemAttributesPartialState\x12K\n\x0eold_attributes\x18\x03 \x01(\x0b\x32\x33.spotify.playlist4.proto.ItemAttributesPartialState"\xb0\x01\n\x14UpdateListAttributes\x12K\n\x0enew_attributes\x18\x01 \x02(\x0b\x32\x33.spotify.playlist4.proto.ListAttributesPartialState\x12K\n\x0eold_attributes\x18\x02 \x01(\x0b\x32\x33.spotify.playlist4.proto.ListAttributesPartialState"\xc0\x03\n\x02Op\x12.\n\x04kind\x18\x01 \x02(\x0e\x32 .spotify.playlist4.proto.Op.Kind\x12)\n\x03\x61\x64\x64\x18\x02 \x01(\x0b\x32\x1c.spotify.playlist4.proto.Add\x12)\n\x03rem\x18\x03 \x01(\x0b\x32\x1c.spotify.playlist4.proto.Rem\x12)\n\x03mov\x18\x04 \x01(\x0b\x32\x1c.spotify.playlist4.proto.Mov\x12M\n\x16update_item_attributes\x18\x05 \x01(\x0b\x32-.spotify.playlist4.proto.UpdateItemAttributes\x12M\n\x16update_list_attributes\x18\x06 \x01(\x0b\x32-.spotify.playlist4.proto.UpdateListAttributes"k\n\x04Kind\x12\x10\n\x0cKIND_UNKNOWN\x10\x00\x12\x07\n\x03\x41\x44\x44\x10\x02\x12\x07\n\x03REM\x10\x03\x12\x07\n\x03MOV\x10\x04\x12\x1a\n\x16UPDATE_ITEM_ATTRIBUTES\x10\x05\x12\x1a\n\x16UPDATE_LIST_ATTRIBUTES\x10\x06"2\n\x06OpList\x12(\n\x03ops\x18\x01 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op"\xd5\x01\n\nChangeInfo\x12\x0c\n\x04user\x18\x01 \x01(\t\x12\x11\n\ttimestamp\x18\x02 \x01(\x03\x12\r\n\x05\x61\x64min\x18\x03 \x01(\x08\x12\x0c\n\x04undo\x18\x04 \x01(\x08\x12\x0c\n\x04redo\x18\x05 \x01(\x08\x12\r\n\x05merge\x18\x06 \x01(\x08\x12\x12\n\ncompressed\x18\x07 \x01(\x08\x12\x11\n\tmigration\x18\x08 \x01(\x08\x12\x10\n\x08split_id\x18\t \x01(\x05\x12\x33\n\x06source\x18\n \x01(\x0b\x32#.spotify.playlist4.proto.SourceInfo"\xe8\x01\n\nSourceInfo\x12:\n\x06\x63lient\x18\x01 \x01(\x0e\x32*.spotify.playlist4.proto.SourceInfo.Client\x12\x0b\n\x03\x61pp\x18\x03 \x01(\t\x12\x0e\n\x06source\x18\x04 \x01(\t\x12\x0f\n\x07version\x18\x05 \x01(\t"p\n\x06\x43lient\x12\x12\n\x0e\x43LIENT_UNKNOWN\x10\x00\x12\x11\n\rNATIVE_HERMES\x10\x01\x12\n\n\x06\x43LIENT\x10\x02\x12\n\n\x06PYTHON\x10\x03\x12\x08\n\x04JAVA\x10\x04\x12\r\n\tWEBPLAYER\x10\x05\x12\x0e\n\nLIBSPOTIFY\x10\x06"z\n\x05\x44\x65lta\x12\x14\n\x0c\x62\x61se_version\x18\x01 \x01(\x0c\x12(\n\x03ops\x18\x02 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op\x12\x31\n\x04info\x18\x04 \x01(\x0b\x32#.spotify.playlist4.proto.ChangeInfo"\\\n\x04\x44iff\x12\x15\n\rfrom_revision\x18\x01 \x02(\x0c\x12(\n\x03ops\x18\x02 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op\x12\x13\n\x0bto_revision\x18\x03 \x02(\x0c"\xa0\x01\n\x0bListChanges\x12\x15\n\rbase_revision\x18\x01 \x01(\x0c\x12.\n\x06\x64\x65ltas\x18\x02 \x03(\x0b\x32\x1e.spotify.playlist4.proto.Delta\x12 \n\x18want_resulting_revisions\x18\x03 \x01(\x08\x12\x18\n\x10want_sync_result\x18\x04 \x01(\x08\x12\x0e\n\x06nonces\x18\x06 \x03(\x03"\x8f\x03\n\x13SelectedListContent\x12\x10\n\x08revision\x18\x01 \x01(\x0c\x12\x0e\n\x06length\x18\x02 \x01(\x05\x12;\n\nattributes\x18\x03 \x01(\x0b\x32\'.spotify.playlist4.proto.ListAttributes\x12\x34\n\x08\x63ontents\x18\x05 \x01(\x0b\x32".spotify.playlist4.proto.ListItems\x12+\n\x04\x64iff\x18\x06 \x01(\x0b\x32\x1d.spotify.playlist4.proto.Diff\x12\x32\n\x0bsync_result\x18\x07 \x01(\x0b\x32\x1d.spotify.playlist4.proto.Diff\x12\x1b\n\x13resulting_revisions\x18\x08 \x03(\x0c\x12\x16\n\x0emultiple_heads\x18\t \x01(\x08\x12\x12\n\nup_to_date\x18\n \x01(\x08\x12\x0e\n\x06nonces\x18\x0e \x03(\x03\x12\x11\n\ttimestamp\x18\x0f \x01(\x03\x12\x16\n\x0eowner_username\x18\x10 \x01(\t"0\n\x0f\x43reateListReply\x12\x0b\n\x03uri\x18\x01 \x02(\x0c\x12\x10\n\x08revision\x18\x02 \x01(\x0c",\n\x0bModifyReply\x12\x0b\n\x03uri\x18\x01 \x02(\x0c\x12\x10\n\x08revision\x18\x02 \x01(\x0c" \n\x10SubscribeRequest\x12\x0c\n\x04uris\x18\x01 \x03(\x0c""\n\x12UnsubscribeRequest\x12\x0c\n\x04uris\x18\x01 \x03(\x0c"\x80\x01\n\x18PlaylistModificationInfo\x12\x0b\n\x03uri\x18\x01 \x01(\x0c\x12\x14\n\x0cnew_revision\x18\x02 \x01(\x0c\x12\x17\n\x0fparent_revision\x18\x03 \x01(\x0c\x12(\n\x03ops\x18\x04 \x03(\x0b\x32\x1b.spotify.playlist4.proto.Op*\xe6\x01\n\x11ListAttributeKind\x12\x10\n\x0cLIST_UNKNOWN\x10\x00\x12\r\n\tLIST_NAME\x10\x01\x12\x14\n\x10LIST_DESCRIPTION\x10\x02\x12\x10\n\x0cLIST_PICTURE\x10\x03\x12\x16\n\x12LIST_COLLABORATIVE\x10\x04\x12\x14\n\x10LIST_PL3_VERSION\x10\x05\x12\x19\n\x15LIST_DELETED_BY_OWNER\x10\x06\x12\x12\n\x0eLIST_CLIENT_ID\x10\n\x12\x0f\n\x0bLIST_FORMAT\x10\x0b\x12\x1a\n\x16LIST_FORMAT_ATTRIBUTES\x10\x0c*\x98\x01\n\x11ItemAttributeKind\x12\x10\n\x0cITEM_UNKNOWN\x10\x00\x12\x11\n\rITEM_ADDED_BY\x10\x01\x12\x12\n\x0eITEM_TIMESTAMP\x10\x02\x12\x10\n\x0cITEM_SEEN_AT\x10\t\x12\x0f\n\x0bITEM_PUBLIC\x10\n\x12\x1a\n\x16ITEM_FORMAT_ATTRIBUTES\x10\x0b\x12\x0b\n\x07ITEM_ID\x10\x0c\x42,\n\x15\x63om.spotify.playlist4B\x11Playlist4ApiProtoH\x02',
 )
 
 _LISTATTRIBUTEKIND = _descriptor.EnumDescriptor(
@@ -834,7 +836,8 @@ _LISTATTRIBUTES = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="format_attributes",
-            full_name="spotify.playlist4.proto.ListAttributes.format_attributes",
+            full_name=
+            "spotify.playlist4.proto.ListAttributes.format_attributes",
             index=8,
             number=12,
             type=11,
@@ -950,7 +953,8 @@ _ITEMATTRIBUTES = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="format_attributes",
-            full_name="spotify.playlist4.proto.ItemAttributes.format_attributes",
+            full_name=
+            "spotify.playlist4.proto.ItemAttributes.format_attributes",
             index=4,
             number=11,
             type=11,
@@ -1281,7 +1285,8 @@ _ITEMATTRIBUTESPARTIALSTATE = _descriptor.Descriptor(
     fields=[
         _descriptor.FieldDescriptor(
             name="values",
-            full_name="spotify.playlist4.proto.ItemAttributesPartialState.values",
+            full_name=
+            "spotify.playlist4.proto.ItemAttributesPartialState.values",
             index=0,
             number=1,
             type=11,
@@ -1300,7 +1305,8 @@ _ITEMATTRIBUTESPARTIALSTATE = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="no_value",
-            full_name="spotify.playlist4.proto.ItemAttributesPartialState.no_value",
+            full_name=
+            "spotify.playlist4.proto.ItemAttributesPartialState.no_value",
             index=1,
             number=2,
             type=14,
@@ -1340,7 +1346,8 @@ _LISTATTRIBUTESPARTIALSTATE = _descriptor.Descriptor(
     fields=[
         _descriptor.FieldDescriptor(
             name="values",
-            full_name="spotify.playlist4.proto.ListAttributesPartialState.values",
+            full_name=
+            "spotify.playlist4.proto.ListAttributesPartialState.values",
             index=0,
             number=1,
             type=11,
@@ -1359,7 +1366,8 @@ _LISTATTRIBUTESPARTIALSTATE = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="no_value",
-            full_name="spotify.playlist4.proto.ListAttributesPartialState.no_value",
+            full_name=
+            "spotify.playlist4.proto.ListAttributesPartialState.no_value",
             index=1,
             number=2,
             type=14,
@@ -1418,7 +1426,8 @@ _UPDATEITEMATTRIBUTES = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="new_attributes",
-            full_name="spotify.playlist4.proto.UpdateItemAttributes.new_attributes",
+            full_name=
+            "spotify.playlist4.proto.UpdateItemAttributes.new_attributes",
             index=1,
             number=2,
             type=11,
@@ -1437,7 +1446,8 @@ _UPDATEITEMATTRIBUTES = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="old_attributes",
-            full_name="spotify.playlist4.proto.UpdateItemAttributes.old_attributes",
+            full_name=
+            "spotify.playlist4.proto.UpdateItemAttributes.old_attributes",
             index=2,
             number=3,
             type=11,
@@ -1477,7 +1487,8 @@ _UPDATELISTATTRIBUTES = _descriptor.Descriptor(
     fields=[
         _descriptor.FieldDescriptor(
             name="new_attributes",
-            full_name="spotify.playlist4.proto.UpdateListAttributes.new_attributes",
+            full_name=
+            "spotify.playlist4.proto.UpdateListAttributes.new_attributes",
             index=0,
             number=1,
             type=11,
@@ -1496,7 +1507,8 @@ _UPDATELISTATTRIBUTES = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="old_attributes",
-            full_name="spotify.playlist4.proto.UpdateListAttributes.old_attributes",
+            full_name=
+            "spotify.playlist4.proto.UpdateListAttributes.old_attributes",
             index=1,
             number=2,
             type=11,
@@ -2217,7 +2229,8 @@ _LISTCHANGES = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="want_resulting_revisions",
-            full_name="spotify.playlist4.proto.ListChanges.want_resulting_revisions",
+            full_name=
+            "spotify.playlist4.proto.ListChanges.want_resulting_revisions",
             index=2,
             number=3,
             type=8,
@@ -2409,7 +2422,8 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="resulting_revisions",
-            full_name="spotify.playlist4.proto.SelectedListContent.resulting_revisions",
+            full_name=
+            "spotify.playlist4.proto.SelectedListContent.resulting_revisions",
             index=6,
             number=8,
             type=12,
@@ -2428,7 +2442,8 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="multiple_heads",
-            full_name="spotify.playlist4.proto.SelectedListContent.multiple_heads",
+            full_name=
+            "spotify.playlist4.proto.SelectedListContent.multiple_heads",
             index=7,
             number=9,
             type=8,
@@ -2504,7 +2519,8 @@ _SELECTEDLISTCONTENT = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="owner_username",
-            full_name="spotify.playlist4.proto.SelectedListContent.owner_username",
+            full_name=
+            "spotify.playlist4.proto.SelectedListContent.owner_username",
             index=11,
             number=16,
             type=9,
@@ -2761,7 +2777,8 @@ _PLAYLISTMODIFICATIONINFO = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="new_revision",
-            full_name="spotify.playlist4.proto.PlaylistModificationInfo.new_revision",
+            full_name=
+            "spotify.playlist4.proto.PlaylistModificationInfo.new_revision",
             index=1,
             number=2,
             type=12,
@@ -2780,7 +2797,8 @@ _PLAYLISTMODIFICATIONINFO = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="parent_revision",
-            full_name="spotify.playlist4.proto.PlaylistModificationInfo.parent_revision",
+            full_name=
+            "spotify.playlist4.proto.PlaylistModificationInfo.parent_revision",
             index=2,
             number=3,
             type=12,
@@ -2833,32 +2851,36 @@ _ITEM.fields_by_name["attributes"].message_type = _ITEMATTRIBUTES
 _METAITEM.fields_by_name["attributes"].message_type = _LISTATTRIBUTES
 _LISTITEMS.fields_by_name["items"].message_type = _ITEM
 _LISTITEMS.fields_by_name["meta_items"].message_type = _METAITEM
-_LISTATTRIBUTES.fields_by_name["format_attributes"].message_type = _FORMATLISTATTRIBUTE
-_ITEMATTRIBUTES.fields_by_name["format_attributes"].message_type = _FORMATLISTATTRIBUTE
+_LISTATTRIBUTES.fields_by_name[
+    "format_attributes"].message_type = _FORMATLISTATTRIBUTE
+_ITEMATTRIBUTES.fields_by_name[
+    "format_attributes"].message_type = _FORMATLISTATTRIBUTE
 _ADD.fields_by_name["items"].message_type = _ITEM
 _REM.fields_by_name["items"].message_type = _ITEM
-_ITEMATTRIBUTESPARTIALSTATE.fields_by_name["values"].message_type = _ITEMATTRIBUTES
-_ITEMATTRIBUTESPARTIALSTATE.fields_by_name["no_value"].enum_type = _ITEMATTRIBUTEKIND
-_LISTATTRIBUTESPARTIALSTATE.fields_by_name["values"].message_type = _LISTATTRIBUTES
-_LISTATTRIBUTESPARTIALSTATE.fields_by_name["no_value"].enum_type = _LISTATTRIBUTEKIND
+_ITEMATTRIBUTESPARTIALSTATE.fields_by_name[
+    "values"].message_type = _ITEMATTRIBUTES
+_ITEMATTRIBUTESPARTIALSTATE.fields_by_name[
+    "no_value"].enum_type = _ITEMATTRIBUTEKIND
+_LISTATTRIBUTESPARTIALSTATE.fields_by_name[
+    "values"].message_type = _LISTATTRIBUTES
+_LISTATTRIBUTESPARTIALSTATE.fields_by_name[
+    "no_value"].enum_type = _LISTATTRIBUTEKIND
 _UPDATEITEMATTRIBUTES.fields_by_name[
-    "new_attributes"
-].message_type = _ITEMATTRIBUTESPARTIALSTATE
+    "new_attributes"].message_type = _ITEMATTRIBUTESPARTIALSTATE
 _UPDATEITEMATTRIBUTES.fields_by_name[
-    "old_attributes"
-].message_type = _ITEMATTRIBUTESPARTIALSTATE
+    "old_attributes"].message_type = _ITEMATTRIBUTESPARTIALSTATE
 _UPDATELISTATTRIBUTES.fields_by_name[
-    "new_attributes"
-].message_type = _LISTATTRIBUTESPARTIALSTATE
+    "new_attributes"].message_type = _LISTATTRIBUTESPARTIALSTATE
 _UPDATELISTATTRIBUTES.fields_by_name[
-    "old_attributes"
-].message_type = _LISTATTRIBUTESPARTIALSTATE
+    "old_attributes"].message_type = _LISTATTRIBUTESPARTIALSTATE
 _OP.fields_by_name["kind"].enum_type = _OP_KIND
 _OP.fields_by_name["add"].message_type = _ADD
 _OP.fields_by_name["rem"].message_type = _REM
 _OP.fields_by_name["mov"].message_type = _MOV
-_OP.fields_by_name["update_item_attributes"].message_type = _UPDATEITEMATTRIBUTES
-_OP.fields_by_name["update_list_attributes"].message_type = _UPDATELISTATTRIBUTES
+_OP.fields_by_name[
+    "update_item_attributes"].message_type = _UPDATEITEMATTRIBUTES
+_OP.fields_by_name[
+    "update_list_attributes"].message_type = _UPDATELISTATTRIBUTES
 _OP_KIND.containing_type = _OP
 _OPLIST.fields_by_name["ops"].message_type = _OP
 _CHANGEINFO.fields_by_name["source"].message_type = _SOURCEINFO
@@ -2868,7 +2890,8 @@ _DELTA.fields_by_name["ops"].message_type = _OP
 _DELTA.fields_by_name["info"].message_type = _CHANGEINFO
 _DIFF.fields_by_name["ops"].message_type = _OP
 _LISTCHANGES.fields_by_name["deltas"].message_type = _DELTA
-_SELECTEDLISTCONTENT.fields_by_name["attributes"].message_type = _LISTATTRIBUTES
+_SELECTEDLISTCONTENT.fields_by_name[
+    "attributes"].message_type = _LISTATTRIBUTES
 _SELECTEDLISTCONTENT.fields_by_name["contents"].message_type = _LISTITEMS
 _SELECTEDLISTCONTENT.fields_by_name["diff"].message_type = _DIFF
 _SELECTEDLISTCONTENT.fields_by_name["sync_result"].message_type = _DIFF
@@ -2883,13 +2906,13 @@ DESCRIPTOR.message_types_by_name["Add"] = _ADD
 DESCRIPTOR.message_types_by_name["Rem"] = _REM
 DESCRIPTOR.message_types_by_name["Mov"] = _MOV
 DESCRIPTOR.message_types_by_name[
-    "ItemAttributesPartialState"
-] = _ITEMATTRIBUTESPARTIALSTATE
+    "ItemAttributesPartialState"] = _ITEMATTRIBUTESPARTIALSTATE
 DESCRIPTOR.message_types_by_name[
-    "ListAttributesPartialState"
-] = _LISTATTRIBUTESPARTIALSTATE
-DESCRIPTOR.message_types_by_name["UpdateItemAttributes"] = _UPDATEITEMATTRIBUTES
-DESCRIPTOR.message_types_by_name["UpdateListAttributes"] = _UPDATELISTATTRIBUTES
+    "ListAttributesPartialState"] = _LISTATTRIBUTESPARTIALSTATE
+DESCRIPTOR.message_types_by_name[
+    "UpdateItemAttributes"] = _UPDATEITEMATTRIBUTES
+DESCRIPTOR.message_types_by_name[
+    "UpdateListAttributes"] = _UPDATELISTATTRIBUTES
 DESCRIPTOR.message_types_by_name["Op"] = _OP
 DESCRIPTOR.message_types_by_name["OpList"] = _OPLIST
 DESCRIPTOR.message_types_by_name["ChangeInfo"] = _CHANGEINFO
@@ -2902,14 +2925,15 @@ DESCRIPTOR.message_types_by_name["CreateListReply"] = _CREATELISTREPLY
 DESCRIPTOR.message_types_by_name["ModifyReply"] = _MODIFYREPLY
 DESCRIPTOR.message_types_by_name["SubscribeRequest"] = _SUBSCRIBEREQUEST
 DESCRIPTOR.message_types_by_name["UnsubscribeRequest"] = _UNSUBSCRIBEREQUEST
-DESCRIPTOR.message_types_by_name["PlaylistModificationInfo"] = _PLAYLISTMODIFICATIONINFO
+DESCRIPTOR.message_types_by_name[
+    "PlaylistModificationInfo"] = _PLAYLISTMODIFICATIONINFO
 DESCRIPTOR.enum_types_by_name["ListAttributeKind"] = _LISTATTRIBUTEKIND
 DESCRIPTOR.enum_types_by_name["ItemAttributeKind"] = _ITEMATTRIBUTEKIND
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Item = _reflection.GeneratedProtocolMessageType(
     "Item",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _ITEM,
         "__module__": "playlist4_external_pb2"
@@ -2920,7 +2944,7 @@ _sym_db.RegisterMessage(Item)
 
 MetaItem = _reflection.GeneratedProtocolMessageType(
     "MetaItem",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _METAITEM,
         "__module__": "playlist4_external_pb2"
@@ -2931,7 +2955,7 @@ _sym_db.RegisterMessage(MetaItem)
 
 ListItems = _reflection.GeneratedProtocolMessageType(
     "ListItems",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LISTITEMS,
         "__module__": "playlist4_external_pb2"
@@ -2942,7 +2966,7 @@ _sym_db.RegisterMessage(ListItems)
 
 FormatListAttribute = _reflection.GeneratedProtocolMessageType(
     "FormatListAttribute",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _FORMATLISTATTRIBUTE,
         "__module__": "playlist4_external_pb2"
@@ -2953,7 +2977,7 @@ _sym_db.RegisterMessage(FormatListAttribute)
 
 ListAttributes = _reflection.GeneratedProtocolMessageType(
     "ListAttributes",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LISTATTRIBUTES,
         "__module__": "playlist4_external_pb2"
@@ -2964,7 +2988,7 @@ _sym_db.RegisterMessage(ListAttributes)
 
 ItemAttributes = _reflection.GeneratedProtocolMessageType(
     "ItemAttributes",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _ITEMATTRIBUTES,
         "__module__": "playlist4_external_pb2"
@@ -2975,7 +2999,7 @@ _sym_db.RegisterMessage(ItemAttributes)
 
 Add = _reflection.GeneratedProtocolMessageType(
     "Add",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _ADD,
         "__module__": "playlist4_external_pb2"
@@ -2986,7 +3010,7 @@ _sym_db.RegisterMessage(Add)
 
 Rem = _reflection.GeneratedProtocolMessageType(
     "Rem",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _REM,
         "__module__": "playlist4_external_pb2"
@@ -2997,7 +3021,7 @@ _sym_db.RegisterMessage(Rem)
 
 Mov = _reflection.GeneratedProtocolMessageType(
     "Mov",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _MOV,
         "__module__": "playlist4_external_pb2"
@@ -3008,7 +3032,7 @@ _sym_db.RegisterMessage(Mov)
 
 ItemAttributesPartialState = _reflection.GeneratedProtocolMessageType(
     "ItemAttributesPartialState",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _ITEMATTRIBUTESPARTIALSTATE,
         "__module__": "playlist4_external_pb2"
@@ -3019,7 +3043,7 @@ _sym_db.RegisterMessage(ItemAttributesPartialState)
 
 ListAttributesPartialState = _reflection.GeneratedProtocolMessageType(
     "ListAttributesPartialState",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LISTATTRIBUTESPARTIALSTATE,
         "__module__": "playlist4_external_pb2"
@@ -3030,7 +3054,7 @@ _sym_db.RegisterMessage(ListAttributesPartialState)
 
 UpdateItemAttributes = _reflection.GeneratedProtocolMessageType(
     "UpdateItemAttributes",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _UPDATEITEMATTRIBUTES,
         "__module__": "playlist4_external_pb2"
@@ -3041,7 +3065,7 @@ _sym_db.RegisterMessage(UpdateItemAttributes)
 
 UpdateListAttributes = _reflection.GeneratedProtocolMessageType(
     "UpdateListAttributes",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _UPDATELISTATTRIBUTES,
         "__module__": "playlist4_external_pb2"
@@ -3052,7 +3076,7 @@ _sym_db.RegisterMessage(UpdateListAttributes)
 
 Op = _reflection.GeneratedProtocolMessageType(
     "Op",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _OP,
         "__module__": "playlist4_external_pb2"
@@ -3063,7 +3087,7 @@ _sym_db.RegisterMessage(Op)
 
 OpList = _reflection.GeneratedProtocolMessageType(
     "OpList",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _OPLIST,
         "__module__": "playlist4_external_pb2"
@@ -3074,7 +3098,7 @@ _sym_db.RegisterMessage(OpList)
 
 ChangeInfo = _reflection.GeneratedProtocolMessageType(
     "ChangeInfo",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CHANGEINFO,
         "__module__": "playlist4_external_pb2"
@@ -3085,7 +3109,7 @@ _sym_db.RegisterMessage(ChangeInfo)
 
 SourceInfo = _reflection.GeneratedProtocolMessageType(
     "SourceInfo",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _SOURCEINFO,
         "__module__": "playlist4_external_pb2"
@@ -3096,7 +3120,7 @@ _sym_db.RegisterMessage(SourceInfo)
 
 Delta = _reflection.GeneratedProtocolMessageType(
     "Delta",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _DELTA,
         "__module__": "playlist4_external_pb2"
@@ -3107,7 +3131,7 @@ _sym_db.RegisterMessage(Delta)
 
 Diff = _reflection.GeneratedProtocolMessageType(
     "Diff",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _DIFF,
         "__module__": "playlist4_external_pb2"
@@ -3118,7 +3142,7 @@ _sym_db.RegisterMessage(Diff)
 
 ListChanges = _reflection.GeneratedProtocolMessageType(
     "ListChanges",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LISTCHANGES,
         "__module__": "playlist4_external_pb2"
@@ -3129,7 +3153,7 @@ _sym_db.RegisterMessage(ListChanges)
 
 SelectedListContent = _reflection.GeneratedProtocolMessageType(
     "SelectedListContent",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _SELECTEDLISTCONTENT,
         "__module__": "playlist4_external_pb2"
@@ -3140,7 +3164,7 @@ _sym_db.RegisterMessage(SelectedListContent)
 
 CreateListReply = _reflection.GeneratedProtocolMessageType(
     "CreateListReply",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CREATELISTREPLY,
         "__module__": "playlist4_external_pb2"
@@ -3151,7 +3175,7 @@ _sym_db.RegisterMessage(CreateListReply)
 
 ModifyReply = _reflection.GeneratedProtocolMessageType(
     "ModifyReply",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _MODIFYREPLY,
         "__module__": "playlist4_external_pb2"
@@ -3162,7 +3186,7 @@ _sym_db.RegisterMessage(ModifyReply)
 
 SubscribeRequest = _reflection.GeneratedProtocolMessageType(
     "SubscribeRequest",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _SUBSCRIBEREQUEST,
         "__module__": "playlist4_external_pb2"
@@ -3173,7 +3197,7 @@ _sym_db.RegisterMessage(SubscribeRequest)
 
 UnsubscribeRequest = _reflection.GeneratedProtocolMessageType(
     "UnsubscribeRequest",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _UNSUBSCRIBEREQUEST,
         "__module__": "playlist4_external_pb2"
@@ -3184,7 +3208,7 @@ _sym_db.RegisterMessage(UnsubscribeRequest)
 
 PlaylistModificationInfo = _reflection.GeneratedProtocolMessageType(
     "PlaylistModificationInfo",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _PLAYLISTMODIFICATIONINFO,
         "__module__": "playlist4_external_pb2"

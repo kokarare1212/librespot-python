@@ -17,7 +17,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto2",
     serialized_options=b"\n\013com.spotify",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x0cpubsub.proto\x12\x07spotify"@\n\x0cSubscription\x12\x0b\n\x03uri\x18\x01 \x01(\t\x12\x0e\n\x06\x65xpiry\x18\x02 \x01(\x05\x12\x13\n\x0bstatus_code\x18\x03 \x01(\x05\x42\r\n\x0b\x63om.spotify',
+    serialized_pb=
+    b'\n\x0cpubsub.proto\x12\x07spotify"@\n\x0cSubscription\x12\x0b\n\x03uri\x18\x01 \x01(\t\x12\x0e\n\x06\x65xpiry\x18\x02 \x01(\x05\x12\x13\n\x0bstatus_code\x18\x03 \x01(\x05\x42\r\n\x0b\x63om.spotify',
 )
 
 _SUBSCRIPTION = _descriptor.Descriptor(
@@ -103,7 +104,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Subscription = _reflection.GeneratedProtocolMessageType(
     "Subscription",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _SUBSCRIPTION,
         "__module__": "pubsub_pb2"

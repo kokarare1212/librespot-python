@@ -21,13 +21,8 @@ class Version:
 
     @staticmethod
     def system_info_string():
-        return (
-            Version.version_string()
-            + "; Python "
-            + platform.python_version()
-            + "; "
-            + platform.system()
-        )
+        return (Version.version_string() + "; Python " +
+                platform.python_version() + "; " + platform.system())
 
     @staticmethod
     def standard_build_info() -> BuildInfo:

@@ -17,7 +17,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto2",
     serialized_options=b"\n\024com.spotify.explicitH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x1d\x65xplicit_content_pubsub.proto\x12\x1espotify.explicit_content.proto"*\n\x0cKeyValuePair\x12\x0b\n\x03key\x18\x01 \x02(\t\x12\r\n\x05value\x18\x02 \x02(\t"S\n\x14UserAttributesUpdate\x12;\n\x05pairs\x18\x01 \x03(\x0b\x32,.spotify.explicit_content.proto.KeyValuePairB\x18\n\x14\x63om.spotify.explicitH\x02',
+    serialized_pb=
+    b'\n\x1d\x65xplicit_content_pubsub.proto\x12\x1espotify.explicit_content.proto"*\n\x0cKeyValuePair\x12\x0b\n\x03key\x18\x01 \x02(\t\x12\r\n\x05value\x18\x02 \x02(\t"S\n\x14UserAttributesUpdate\x12;\n\x05pairs\x18\x01 \x03(\x0b\x32,.spotify.explicit_content.proto.KeyValuePairB\x18\n\x14\x63om.spotify.explicitH\x02',
 )
 
 _KEYVALUEPAIR = _descriptor.Descriptor(
@@ -89,7 +90,8 @@ _USERATTRIBUTESUPDATE = _descriptor.Descriptor(
     fields=[
         _descriptor.FieldDescriptor(
             name="pairs",
-            full_name="spotify.explicit_content.proto.UserAttributesUpdate.pairs",
+            full_name=
+            "spotify.explicit_content.proto.UserAttributesUpdate.pairs",
             index=0,
             number=1,
             type=11,
@@ -121,12 +123,13 @@ _USERATTRIBUTESUPDATE = _descriptor.Descriptor(
 
 _USERATTRIBUTESUPDATE.fields_by_name["pairs"].message_type = _KEYVALUEPAIR
 DESCRIPTOR.message_types_by_name["KeyValuePair"] = _KEYVALUEPAIR
-DESCRIPTOR.message_types_by_name["UserAttributesUpdate"] = _USERATTRIBUTESUPDATE
+DESCRIPTOR.message_types_by_name[
+    "UserAttributesUpdate"] = _USERATTRIBUTESUPDATE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 KeyValuePair = _reflection.GeneratedProtocolMessageType(
     "KeyValuePair",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _KEYVALUEPAIR,
         "__module__": "explicit_content_pubsub_pb2"
@@ -137,7 +140,7 @@ _sym_db.RegisterMessage(KeyValuePair)
 
 UserAttributesUpdate = _reflection.GeneratedProtocolMessageType(
     "UserAttributesUpdate",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _USERATTRIBUTESUPDATE,
         "__module__": "explicit_content_pubsub_pb2"

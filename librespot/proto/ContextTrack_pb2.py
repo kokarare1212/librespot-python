@@ -17,7 +17,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto2",
     serialized_options=b"\n\023com.spotify.contextH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x13\x63ontext_track.proto\x12\x14spotify.player.proto"\xaa\x01\n\x0c\x43ontextTrack\x12\x0b\n\x03uri\x18\x01 \x01(\t\x12\x0b\n\x03uid\x18\x02 \x01(\t\x12\x0b\n\x03gid\x18\x03 \x01(\x0c\x12\x42\n\x08metadata\x18\x04 \x03(\x0b\x32\x30.spotify.player.proto.ContextTrack.MetadataEntry\x1a/\n\rMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x17\n\x13\x63om.spotify.contextH\x02',
+    serialized_pb=
+    b'\n\x13\x63ontext_track.proto\x12\x14spotify.player.proto"\xaa\x01\n\x0c\x43ontextTrack\x12\x0b\n\x03uri\x18\x01 \x01(\t\x12\x0b\n\x03uid\x18\x02 \x01(\t\x12\x0b\n\x03gid\x18\x03 \x01(\x0c\x12\x42\n\x08metadata\x18\x04 \x03(\x0b\x32\x30.spotify.player.proto.ContextTrack.MetadataEntry\x1a/\n\rMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x17\n\x13\x63om.spotify.contextH\x02',
 )
 
 _CONTEXTTRACK_METADATAENTRY = _descriptor.Descriptor(
@@ -179,25 +180,29 @@ _CONTEXTTRACK = _descriptor.Descriptor(
 )
 
 _CONTEXTTRACK_METADATAENTRY.containing_type = _CONTEXTTRACK
-_CONTEXTTRACK.fields_by_name["metadata"].message_type = _CONTEXTTRACK_METADATAENTRY
+_CONTEXTTRACK.fields_by_name[
+    "metadata"].message_type = _CONTEXTTRACK_METADATAENTRY
 DESCRIPTOR.message_types_by_name["ContextTrack"] = _CONTEXTTRACK
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ContextTrack = _reflection.GeneratedProtocolMessageType(
     "ContextTrack",
-    (_message.Message,),
+    (_message.Message, ),
     {
-        "MetadataEntry": _reflection.GeneratedProtocolMessageType(
+        "MetadataEntry":
+        _reflection.GeneratedProtocolMessageType(
             "MetadataEntry",
-            (_message.Message,),
+            (_message.Message, ),
             {
                 "DESCRIPTOR": _CONTEXTTRACK_METADATAENTRY,
                 "__module__": "context_track_pb2"
                 # @@protoc_insertion_point(class_scope:spotify.player.proto.ContextTrack.MetadataEntry)
             },
         ),
-        "DESCRIPTOR": _CONTEXTTRACK,
-        "__module__": "context_track_pb2"
+        "DESCRIPTOR":
+        _CONTEXTTRACK,
+        "__module__":
+        "context_track_pb2"
         # @@protoc_insertion_point(class_scope:spotify.player.proto.ContextTrack)
     },
 )

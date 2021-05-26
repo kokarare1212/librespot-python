@@ -17,7 +17,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto3",
     serialized_options=b"\n\024com.spotify.login5v3",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n!spotify/login5/v3/user_info.proto\x12\x11spotify.login5.v3"\x97\x02\n\x08UserInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x16\n\x0e\x65mail_verified\x18\x03 \x01(\x08\x12\x11\n\tbirthdate\x18\x04 \x01(\t\x12\x32\n\x06gender\x18\x05 \x01(\x0e\x32".spotify.login5.v3.UserInfo.Gender\x12\x14\n\x0cphone_number\x18\x06 \x01(\t\x12\x1d\n\x15phone_number_verified\x18\x07 \x01(\x08\x12 \n\x18\x65mail_already_registered\x18\x08 \x01(\x08"8\n\x06Gender\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x08\n\x04MALE\x10\x01\x12\n\n\x06\x46\x45MALE\x10\x02\x12\x0b\n\x07NEUTRAL\x10\x03\x42\x16\n\x14\x63om.spotify.login5v3b\x06proto3',
+    serialized_pb=
+    b'\n!spotify/login5/v3/user_info.proto\x12\x11spotify.login5.v3"\x97\x02\n\x08UserInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x16\n\x0e\x65mail_verified\x18\x03 \x01(\x08\x12\x11\n\tbirthdate\x18\x04 \x01(\t\x12\x32\n\x06gender\x18\x05 \x01(\x0e\x32".spotify.login5.v3.UserInfo.Gender\x12\x14\n\x0cphone_number\x18\x06 \x01(\t\x12\x1d\n\x15phone_number_verified\x18\x07 \x01(\x08\x12 \n\x18\x65mail_already_registered\x18\x08 \x01(\x08"8\n\x06Gender\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x08\n\x04MALE\x10\x01\x12\n\n\x06\x46\x45MALE\x10\x02\x12\x0b\n\x07NEUTRAL\x10\x03\x42\x16\n\x14\x63om.spotify.login5v3b\x06proto3',
 )
 
 _USERINFO_GENDER = _descriptor.EnumDescriptor(
@@ -249,7 +250,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 UserInfo = _reflection.GeneratedProtocolMessageType(
     "UserInfo",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _USERINFO,
         "__module__": "spotify.login5.v3.user_info_pb2"

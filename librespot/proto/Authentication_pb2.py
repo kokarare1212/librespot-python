@@ -18,7 +18,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto2",
     serialized_options=b"\n\013com.spotify",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x14\x61uthentication.proto\x12\x07spotify"\xa2\x03\n\x17\x43lientResponseEncrypted\x12\x34\n\x11login_credentials\x18\n \x02(\x0b\x32\x19.spotify.LoginCredentials\x12\x32\n\x10\x61\x63\x63ount_creation\x18\x14 \x01(\x0e\x32\x18.spotify.AccountCreation\x12?\n\x14\x66ingerprint_response\x18\x1e \x01(\x0b\x32!.spotify.FingerprintResponseUnion\x12-\n\x0bpeer_ticket\x18( \x01(\x0b\x32\x18.spotify.PeerTicketUnion\x12(\n\x0bsystem_info\x18\x32 \x02(\x0b\x32\x13.spotify.SystemInfo\x12\x16\n\x0eplatform_model\x18< \x01(\t\x12\x16\n\x0eversion_string\x18\x46 \x01(\t\x12)\n\x06\x61ppkey\x18P \x01(\x0b\x32\x19.spotify.LibspotifyAppKey\x12(\n\x0b\x63lient_info\x18Z \x01(\x0b\x32\x13.spotify.ClientInfo"a\n\x10LoginCredentials\x12\x10\n\x08username\x18\n \x01(\t\x12(\n\x03typ\x18\x14 \x02(\x0e\x32\x1b.spotify.AuthenticationType\x12\x11\n\tauth_data\x18\x1e \x01(\x0c"\x89\x01\n\x18\x46ingerprintResponseUnion\x12\x30\n\x05grain\x18\n \x01(\x0b\x32!.spotify.FingerprintGrainResponse\x12;\n\x0bhmac_ripemd\x18\x14 \x01(\x0b\x32&.spotify.FingerprintHmacRipemdResponse"1\n\x18\x46ingerprintGrainResponse\x12\x15\n\rencrypted_key\x18\n \x02(\x0c"-\n\x1d\x46ingerprintHmacRipemdResponse\x12\x0c\n\x04hmac\x18\n \x02(\x0c"o\n\x0fPeerTicketUnion\x12\x30\n\npublic_key\x18\n \x01(\x0b\x32\x1c.spotify.PeerTicketPublicKey\x12*\n\nold_ticket\x18\x14 \x01(\x0b\x32\x16.spotify.PeerTicketOld")\n\x13PeerTicketPublicKey\x12\x12\n\npublic_key\x18\n \x02(\x0c"C\n\rPeerTicketOld\x12\x13\n\x0bpeer_ticket\x18\n \x02(\x0c\x12\x1d\n\x15peer_ticket_signature\x18\x14 \x02(\x0c"\x81\x02\n\nSystemInfo\x12&\n\ncpu_family\x18\n \x02(\x0e\x32\x12.spotify.CpuFamily\x12\x13\n\x0b\x63pu_subtype\x18\x14 \x01(\r\x12\x0f\n\x07\x63pu_ext\x18\x1e \x01(\r\x12\x1d\n\x05\x62rand\x18( \x01(\x0e\x32\x0e.spotify.Brand\x12\x13\n\x0b\x62rand_flags\x18\x32 \x01(\r\x12\x17\n\x02os\x18< \x02(\x0e\x32\x0b.spotify.Os\x12\x12\n\nos_version\x18\x46 \x01(\r\x12\x0e\n\x06os_ext\x18P \x01(\r\x12!\n\x19system_information_string\x18Z \x01(\t\x12\x11\n\tdevice_id\x18\x64 \x01(\t"p\n\x10LibspotifyAppKey\x12\x0f\n\x07version\x18\x01 \x02(\r\x12\x0e\n\x06\x64\x65vkey\x18\x02 \x02(\x0c\x12\x11\n\tsignature\x18\x03 \x02(\x0c\x12\x11\n\tuseragent\x18\x04 \x02(\t\x12\x15\n\rcallback_hash\x18\x05 \x02(\x0c"X\n\nClientInfo\x12\x0f\n\x07limited\x18\x01 \x01(\x08\x12\'\n\x02\x66\x62\x18\x02 \x01(\x0b\x32\x1b.spotify.ClientInfoFacebook\x12\x10\n\x08language\x18\x03 \x01(\t"(\n\x12\x43lientInfoFacebook\x12\x12\n\nmachine_id\x18\x01 \x01(\t"\xe9\x02\n\tAPWelcome\x12\x1a\n\x12\x63\x61nonical_username\x18\n \x02(\t\x12\x34\n\x16\x61\x63\x63ount_type_logged_in\x18\x14 \x02(\x0e\x32\x14.spotify.AccountType\x12\x38\n\x1a\x63redentials_type_logged_in\x18\x19 \x02(\x0e\x32\x14.spotify.AccountType\x12\x43\n\x1ereusable_auth_credentials_type\x18\x1e \x02(\x0e\x32\x1b.spotify.AuthenticationType\x12!\n\x19reusable_auth_credentials\x18( \x02(\x0c\x12\x12\n\nlfs_secret\x18\x32 \x01(\x0c\x12*\n\x0c\x61\x63\x63ount_info\x18< \x01(\x0b\x32\x14.spotify.AccountInfo\x12(\n\x02\x66\x62\x18\x46 \x01(\x0b\x32\x1c.spotify.AccountInfoFacebook"k\n\x0b\x41\x63\x63ountInfo\x12,\n\x07spotify\x18\x01 \x01(\x0b\x32\x1b.spotify.AccountInfoSpotify\x12.\n\x08\x66\x61\x63\x65\x62ook\x18\x02 \x01(\x0b\x32\x1c.spotify.AccountInfoFacebook"\x14\n\x12\x41\x63\x63ountInfoSpotify"?\n\x13\x41\x63\x63ountInfoFacebook\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x12\n\nmachine_id\x18\x02 \x01(\t*\xd6\x01\n\x12\x41uthenticationType\x12\x1c\n\x18\x41UTHENTICATION_USER_PASS\x10\x00\x12-\n)AUTHENTICATION_STORED_SPOTIFY_CREDENTIALS\x10\x01\x12.\n*AUTHENTICATION_STORED_FACEBOOK_CREDENTIALS\x10\x02\x12 \n\x1c\x41UTHENTICATION_SPOTIFY_TOKEN\x10\x03\x12!\n\x1d\x41UTHENTICATION_FACEBOOK_TOKEN\x10\x04*Y\n\x0f\x41\x63\x63ountCreation\x12"\n\x1e\x41\x43\x43OUNT_CREATION_ALWAYS_PROMPT\x10\x01\x12"\n\x1e\x41\x43\x43OUNT_CREATION_ALWAYS_CREATE\x10\x03*\x9d\x01\n\tCpuFamily\x12\x0f\n\x0b\x43PU_UNKNOWN\x10\x00\x12\x0b\n\x07\x43PU_X86\x10\x01\x12\x0e\n\nCPU_X86_64\x10\x02\x12\x0b\n\x07\x43PU_PPC\x10\x03\x12\x0e\n\nCPU_PPC_64\x10\x04\x12\x0b\n\x07\x43PU_ARM\x10\x05\x12\x0c\n\x08\x43PU_IA64\x10\x06\x12\n\n\x06\x43PU_SH\x10\x07\x12\x0c\n\x08\x43PU_MIPS\x10\x08\x12\x10\n\x0c\x43PU_BLACKFIN\x10\t*K\n\x05\x42rand\x12\x13\n\x0f\x42RAND_UNBRANDED\x10\x00\x12\r\n\tBRAND_INQ\x10\x01\x12\r\n\tBRAND_HTC\x10\x02\x12\x0f\n\x0b\x42RAND_NOKIA\x10\x03*\xd1\x02\n\x02Os\x12\x0e\n\nOS_UNKNOWN\x10\x00\x12\x0e\n\nOS_WINDOWS\x10\x01\x12\n\n\x06OS_OSX\x10\x02\x12\r\n\tOS_IPHONE\x10\x03\x12\n\n\x06OS_S60\x10\x04\x12\x0c\n\x08OS_LINUX\x10\x05\x12\x11\n\rOS_WINDOWS_CE\x10\x06\x12\x0e\n\nOS_ANDROID\x10\x07\x12\x0b\n\x07OS_PALM\x10\x08\x12\x0e\n\nOS_FREEBSD\x10\t\x12\x11\n\rOS_BLACKBERRY\x10\n\x12\x0c\n\x08OS_SONOS\x10\x0b\x12\x0f\n\x0bOS_LOGITECH\x10\x0c\x12\n\n\x06OS_WP7\x10\r\x12\x0c\n\x08OS_ONKYO\x10\x0e\x12\x0e\n\nOS_PHILIPS\x10\x0f\x12\t\n\x05OS_WD\x10\x10\x12\x0c\n\x08OS_VOLVO\x10\x11\x12\x0b\n\x07OS_TIVO\x10\x12\x12\x0b\n\x07OS_AWOX\x10\x13\x12\x0c\n\x08OS_MEEGO\x10\x14\x12\r\n\tOS_QNXNTO\x10\x15\x12\n\n\x06OS_BCO\x10\x16*(\n\x0b\x41\x63\x63ountType\x12\x0b\n\x07Spotify\x10\x00\x12\x0c\n\x08\x46\x61\x63\x65\x62ook\x10\x01\x42\r\n\x0b\x63om.spotify',
+    serialized_pb=
+    b'\n\x14\x61uthentication.proto\x12\x07spotify"\xa2\x03\n\x17\x43lientResponseEncrypted\x12\x34\n\x11login_credentials\x18\n \x02(\x0b\x32\x19.spotify.LoginCredentials\x12\x32\n\x10\x61\x63\x63ount_creation\x18\x14 \x01(\x0e\x32\x18.spotify.AccountCreation\x12?\n\x14\x66ingerprint_response\x18\x1e \x01(\x0b\x32!.spotify.FingerprintResponseUnion\x12-\n\x0bpeer_ticket\x18( \x01(\x0b\x32\x18.spotify.PeerTicketUnion\x12(\n\x0bsystem_info\x18\x32 \x02(\x0b\x32\x13.spotify.SystemInfo\x12\x16\n\x0eplatform_model\x18< \x01(\t\x12\x16\n\x0eversion_string\x18\x46 \x01(\t\x12)\n\x06\x61ppkey\x18P \x01(\x0b\x32\x19.spotify.LibspotifyAppKey\x12(\n\x0b\x63lient_info\x18Z \x01(\x0b\x32\x13.spotify.ClientInfo"a\n\x10LoginCredentials\x12\x10\n\x08username\x18\n \x01(\t\x12(\n\x03typ\x18\x14 \x02(\x0e\x32\x1b.spotify.AuthenticationType\x12\x11\n\tauth_data\x18\x1e \x01(\x0c"\x89\x01\n\x18\x46ingerprintResponseUnion\x12\x30\n\x05grain\x18\n \x01(\x0b\x32!.spotify.FingerprintGrainResponse\x12;\n\x0bhmac_ripemd\x18\x14 \x01(\x0b\x32&.spotify.FingerprintHmacRipemdResponse"1\n\x18\x46ingerprintGrainResponse\x12\x15\n\rencrypted_key\x18\n \x02(\x0c"-\n\x1d\x46ingerprintHmacRipemdResponse\x12\x0c\n\x04hmac\x18\n \x02(\x0c"o\n\x0fPeerTicketUnion\x12\x30\n\npublic_key\x18\n \x01(\x0b\x32\x1c.spotify.PeerTicketPublicKey\x12*\n\nold_ticket\x18\x14 \x01(\x0b\x32\x16.spotify.PeerTicketOld")\n\x13PeerTicketPublicKey\x12\x12\n\npublic_key\x18\n \x02(\x0c"C\n\rPeerTicketOld\x12\x13\n\x0bpeer_ticket\x18\n \x02(\x0c\x12\x1d\n\x15peer_ticket_signature\x18\x14 \x02(\x0c"\x81\x02\n\nSystemInfo\x12&\n\ncpu_family\x18\n \x02(\x0e\x32\x12.spotify.CpuFamily\x12\x13\n\x0b\x63pu_subtype\x18\x14 \x01(\r\x12\x0f\n\x07\x63pu_ext\x18\x1e \x01(\r\x12\x1d\n\x05\x62rand\x18( \x01(\x0e\x32\x0e.spotify.Brand\x12\x13\n\x0b\x62rand_flags\x18\x32 \x01(\r\x12\x17\n\x02os\x18< \x02(\x0e\x32\x0b.spotify.Os\x12\x12\n\nos_version\x18\x46 \x01(\r\x12\x0e\n\x06os_ext\x18P \x01(\r\x12!\n\x19system_information_string\x18Z \x01(\t\x12\x11\n\tdevice_id\x18\x64 \x01(\t"p\n\x10LibspotifyAppKey\x12\x0f\n\x07version\x18\x01 \x02(\r\x12\x0e\n\x06\x64\x65vkey\x18\x02 \x02(\x0c\x12\x11\n\tsignature\x18\x03 \x02(\x0c\x12\x11\n\tuseragent\x18\x04 \x02(\t\x12\x15\n\rcallback_hash\x18\x05 \x02(\x0c"X\n\nClientInfo\x12\x0f\n\x07limited\x18\x01 \x01(\x08\x12\'\n\x02\x66\x62\x18\x02 \x01(\x0b\x32\x1b.spotify.ClientInfoFacebook\x12\x10\n\x08language\x18\x03 \x01(\t"(\n\x12\x43lientInfoFacebook\x12\x12\n\nmachine_id\x18\x01 \x01(\t"\xe9\x02\n\tAPWelcome\x12\x1a\n\x12\x63\x61nonical_username\x18\n \x02(\t\x12\x34\n\x16\x61\x63\x63ount_type_logged_in\x18\x14 \x02(\x0e\x32\x14.spotify.AccountType\x12\x38\n\x1a\x63redentials_type_logged_in\x18\x19 \x02(\x0e\x32\x14.spotify.AccountType\x12\x43\n\x1ereusable_auth_credentials_type\x18\x1e \x02(\x0e\x32\x1b.spotify.AuthenticationType\x12!\n\x19reusable_auth_credentials\x18( \x02(\x0c\x12\x12\n\nlfs_secret\x18\x32 \x01(\x0c\x12*\n\x0c\x61\x63\x63ount_info\x18< \x01(\x0b\x32\x14.spotify.AccountInfo\x12(\n\x02\x66\x62\x18\x46 \x01(\x0b\x32\x1c.spotify.AccountInfoFacebook"k\n\x0b\x41\x63\x63ountInfo\x12,\n\x07spotify\x18\x01 \x01(\x0b\x32\x1b.spotify.AccountInfoSpotify\x12.\n\x08\x66\x61\x63\x65\x62ook\x18\x02 \x01(\x0b\x32\x1c.spotify.AccountInfoFacebook"\x14\n\x12\x41\x63\x63ountInfoSpotify"?\n\x13\x41\x63\x63ountInfoFacebook\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x12\n\nmachine_id\x18\x02 \x01(\t*\xd6\x01\n\x12\x41uthenticationType\x12\x1c\n\x18\x41UTHENTICATION_USER_PASS\x10\x00\x12-\n)AUTHENTICATION_STORED_SPOTIFY_CREDENTIALS\x10\x01\x12.\n*AUTHENTICATION_STORED_FACEBOOK_CREDENTIALS\x10\x02\x12 \n\x1c\x41UTHENTICATION_SPOTIFY_TOKEN\x10\x03\x12!\n\x1d\x41UTHENTICATION_FACEBOOK_TOKEN\x10\x04*Y\n\x0f\x41\x63\x63ountCreation\x12"\n\x1e\x41\x43\x43OUNT_CREATION_ALWAYS_PROMPT\x10\x01\x12"\n\x1e\x41\x43\x43OUNT_CREATION_ALWAYS_CREATE\x10\x03*\x9d\x01\n\tCpuFamily\x12\x0f\n\x0b\x43PU_UNKNOWN\x10\x00\x12\x0b\n\x07\x43PU_X86\x10\x01\x12\x0e\n\nCPU_X86_64\x10\x02\x12\x0b\n\x07\x43PU_PPC\x10\x03\x12\x0e\n\nCPU_PPC_64\x10\x04\x12\x0b\n\x07\x43PU_ARM\x10\x05\x12\x0c\n\x08\x43PU_IA64\x10\x06\x12\n\n\x06\x43PU_SH\x10\x07\x12\x0c\n\x08\x43PU_MIPS\x10\x08\x12\x10\n\x0c\x43PU_BLACKFIN\x10\t*K\n\x05\x42rand\x12\x13\n\x0f\x42RAND_UNBRANDED\x10\x00\x12\r\n\tBRAND_INQ\x10\x01\x12\r\n\tBRAND_HTC\x10\x02\x12\x0f\n\x0b\x42RAND_NOKIA\x10\x03*\xd1\x02\n\x02Os\x12\x0e\n\nOS_UNKNOWN\x10\x00\x12\x0e\n\nOS_WINDOWS\x10\x01\x12\n\n\x06OS_OSX\x10\x02\x12\r\n\tOS_IPHONE\x10\x03\x12\n\n\x06OS_S60\x10\x04\x12\x0c\n\x08OS_LINUX\x10\x05\x12\x11\n\rOS_WINDOWS_CE\x10\x06\x12\x0e\n\nOS_ANDROID\x10\x07\x12\x0b\n\x07OS_PALM\x10\x08\x12\x0e\n\nOS_FREEBSD\x10\t\x12\x11\n\rOS_BLACKBERRY\x10\n\x12\x0c\n\x08OS_SONOS\x10\x0b\x12\x0f\n\x0bOS_LOGITECH\x10\x0c\x12\n\n\x06OS_WP7\x10\r\x12\x0c\n\x08OS_ONKYO\x10\x0e\x12\x0e\n\nOS_PHILIPS\x10\x0f\x12\t\n\x05OS_WD\x10\x10\x12\x0c\n\x08OS_VOLVO\x10\x11\x12\x0b\n\x07OS_TIVO\x10\x12\x12\x0b\n\x07OS_AWOX\x10\x13\x12\x0c\n\x08OS_MEEGO\x10\x14\x12\r\n\tOS_QNXNTO\x10\x15\x12\n\n\x06OS_BCO\x10\x16*(\n\x0b\x41\x63\x63ountType\x12\x0b\n\x07Spotify\x10\x00\x12\x0c\n\x08\x46\x61\x63\x65\x62ook\x10\x01\x42\r\n\x0b\x63om.spotify',
 )
 
 _AUTHENTICATIONTYPE = _descriptor.EnumDescriptor(
@@ -1856,45 +1857,49 @@ _ACCOUNTINFOFACEBOOK = _descriptor.Descriptor(
 )
 
 _CLIENTRESPONSEENCRYPTED.fields_by_name[
-    "login_credentials"
-].message_type = _LOGINCREDENTIALS
-_CLIENTRESPONSEENCRYPTED.fields_by_name["account_creation"].enum_type = _ACCOUNTCREATION
+    "login_credentials"].message_type = _LOGINCREDENTIALS
 _CLIENTRESPONSEENCRYPTED.fields_by_name[
-    "fingerprint_response"
-].message_type = _FINGERPRINTRESPONSEUNION
-_CLIENTRESPONSEENCRYPTED.fields_by_name["peer_ticket"].message_type = _PEERTICKETUNION
-_CLIENTRESPONSEENCRYPTED.fields_by_name["system_info"].message_type = _SYSTEMINFO
-_CLIENTRESPONSEENCRYPTED.fields_by_name["appkey"].message_type = _LIBSPOTIFYAPPKEY
-_CLIENTRESPONSEENCRYPTED.fields_by_name["client_info"].message_type = _CLIENTINFO
+    "account_creation"].enum_type = _ACCOUNTCREATION
+_CLIENTRESPONSEENCRYPTED.fields_by_name[
+    "fingerprint_response"].message_type = _FINGERPRINTRESPONSEUNION
+_CLIENTRESPONSEENCRYPTED.fields_by_name[
+    "peer_ticket"].message_type = _PEERTICKETUNION
+_CLIENTRESPONSEENCRYPTED.fields_by_name[
+    "system_info"].message_type = _SYSTEMINFO
+_CLIENTRESPONSEENCRYPTED.fields_by_name[
+    "appkey"].message_type = _LIBSPOTIFYAPPKEY
+_CLIENTRESPONSEENCRYPTED.fields_by_name[
+    "client_info"].message_type = _CLIENTINFO
 _LOGINCREDENTIALS.fields_by_name["typ"].enum_type = _AUTHENTICATIONTYPE
 _FINGERPRINTRESPONSEUNION.fields_by_name[
-    "grain"
-].message_type = _FINGERPRINTGRAINRESPONSE
+    "grain"].message_type = _FINGERPRINTGRAINRESPONSE
 _FINGERPRINTRESPONSEUNION.fields_by_name[
-    "hmac_ripemd"
-].message_type = _FINGERPRINTHMACRIPEMDRESPONSE
-_PEERTICKETUNION.fields_by_name["public_key"].message_type = _PEERTICKETPUBLICKEY
+    "hmac_ripemd"].message_type = _FINGERPRINTHMACRIPEMDRESPONSE
+_PEERTICKETUNION.fields_by_name[
+    "public_key"].message_type = _PEERTICKETPUBLICKEY
 _PEERTICKETUNION.fields_by_name["old_ticket"].message_type = _PEERTICKETOLD
 _SYSTEMINFO.fields_by_name["cpu_family"].enum_type = _CPUFAMILY
 _SYSTEMINFO.fields_by_name["brand"].enum_type = _BRAND
 _SYSTEMINFO.fields_by_name["os"].enum_type = _OS
 _CLIENTINFO.fields_by_name["fb"].message_type = _CLIENTINFOFACEBOOK
 _APWELCOME.fields_by_name["account_type_logged_in"].enum_type = _ACCOUNTTYPE
-_APWELCOME.fields_by_name["credentials_type_logged_in"].enum_type = _ACCOUNTTYPE
 _APWELCOME.fields_by_name[
-    "reusable_auth_credentials_type"
-].enum_type = _AUTHENTICATIONTYPE
+    "credentials_type_logged_in"].enum_type = _ACCOUNTTYPE
+_APWELCOME.fields_by_name[
+    "reusable_auth_credentials_type"].enum_type = _AUTHENTICATIONTYPE
 _APWELCOME.fields_by_name["account_info"].message_type = _ACCOUNTINFO
 _APWELCOME.fields_by_name["fb"].message_type = _ACCOUNTINFOFACEBOOK
 _ACCOUNTINFO.fields_by_name["spotify"].message_type = _ACCOUNTINFOSPOTIFY
 _ACCOUNTINFO.fields_by_name["facebook"].message_type = _ACCOUNTINFOFACEBOOK
-DESCRIPTOR.message_types_by_name["ClientResponseEncrypted"] = _CLIENTRESPONSEENCRYPTED
-DESCRIPTOR.message_types_by_name["LoginCredentials"] = _LOGINCREDENTIALS
-DESCRIPTOR.message_types_by_name["FingerprintResponseUnion"] = _FINGERPRINTRESPONSEUNION
-DESCRIPTOR.message_types_by_name["FingerprintGrainResponse"] = _FINGERPRINTGRAINRESPONSE
 DESCRIPTOR.message_types_by_name[
-    "FingerprintHmacRipemdResponse"
-] = _FINGERPRINTHMACRIPEMDRESPONSE
+    "ClientResponseEncrypted"] = _CLIENTRESPONSEENCRYPTED
+DESCRIPTOR.message_types_by_name["LoginCredentials"] = _LOGINCREDENTIALS
+DESCRIPTOR.message_types_by_name[
+    "FingerprintResponseUnion"] = _FINGERPRINTRESPONSEUNION
+DESCRIPTOR.message_types_by_name[
+    "FingerprintGrainResponse"] = _FINGERPRINTGRAINRESPONSE
+DESCRIPTOR.message_types_by_name[
+    "FingerprintHmacRipemdResponse"] = _FINGERPRINTHMACRIPEMDRESPONSE
 DESCRIPTOR.message_types_by_name["PeerTicketUnion"] = _PEERTICKETUNION
 DESCRIPTOR.message_types_by_name["PeerTicketPublicKey"] = _PEERTICKETPUBLICKEY
 DESCRIPTOR.message_types_by_name["PeerTicketOld"] = _PEERTICKETOLD
@@ -1916,7 +1921,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ClientResponseEncrypted = _reflection.GeneratedProtocolMessageType(
     "ClientResponseEncrypted",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CLIENTRESPONSEENCRYPTED,
         "__module__": "authentication_pb2"
@@ -1927,7 +1932,7 @@ _sym_db.RegisterMessage(ClientResponseEncrypted)
 
 LoginCredentials = _reflection.GeneratedProtocolMessageType(
     "LoginCredentials",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LOGINCREDENTIALS,
         "__module__": "authentication_pb2"
@@ -1938,7 +1943,7 @@ _sym_db.RegisterMessage(LoginCredentials)
 
 FingerprintResponseUnion = _reflection.GeneratedProtocolMessageType(
     "FingerprintResponseUnion",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _FINGERPRINTRESPONSEUNION,
         "__module__": "authentication_pb2"
@@ -1949,7 +1954,7 @@ _sym_db.RegisterMessage(FingerprintResponseUnion)
 
 FingerprintGrainResponse = _reflection.GeneratedProtocolMessageType(
     "FingerprintGrainResponse",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _FINGERPRINTGRAINRESPONSE,
         "__module__": "authentication_pb2"
@@ -1960,7 +1965,7 @@ _sym_db.RegisterMessage(FingerprintGrainResponse)
 
 FingerprintHmacRipemdResponse = _reflection.GeneratedProtocolMessageType(
     "FingerprintHmacRipemdResponse",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _FINGERPRINTHMACRIPEMDRESPONSE,
         "__module__": "authentication_pb2"
@@ -1971,7 +1976,7 @@ _sym_db.RegisterMessage(FingerprintHmacRipemdResponse)
 
 PeerTicketUnion = _reflection.GeneratedProtocolMessageType(
     "PeerTicketUnion",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _PEERTICKETUNION,
         "__module__": "authentication_pb2"
@@ -1982,7 +1987,7 @@ _sym_db.RegisterMessage(PeerTicketUnion)
 
 PeerTicketPublicKey = _reflection.GeneratedProtocolMessageType(
     "PeerTicketPublicKey",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _PEERTICKETPUBLICKEY,
         "__module__": "authentication_pb2"
@@ -1993,7 +1998,7 @@ _sym_db.RegisterMessage(PeerTicketPublicKey)
 
 PeerTicketOld = _reflection.GeneratedProtocolMessageType(
     "PeerTicketOld",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _PEERTICKETOLD,
         "__module__": "authentication_pb2"
@@ -2004,7 +2009,7 @@ _sym_db.RegisterMessage(PeerTicketOld)
 
 SystemInfo = _reflection.GeneratedProtocolMessageType(
     "SystemInfo",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _SYSTEMINFO,
         "__module__": "authentication_pb2"
@@ -2015,7 +2020,7 @@ _sym_db.RegisterMessage(SystemInfo)
 
 LibspotifyAppKey = _reflection.GeneratedProtocolMessageType(
     "LibspotifyAppKey",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LIBSPOTIFYAPPKEY,
         "__module__": "authentication_pb2"
@@ -2026,7 +2031,7 @@ _sym_db.RegisterMessage(LibspotifyAppKey)
 
 ClientInfo = _reflection.GeneratedProtocolMessageType(
     "ClientInfo",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CLIENTINFO,
         "__module__": "authentication_pb2"
@@ -2037,7 +2042,7 @@ _sym_db.RegisterMessage(ClientInfo)
 
 ClientInfoFacebook = _reflection.GeneratedProtocolMessageType(
     "ClientInfoFacebook",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CLIENTINFOFACEBOOK,
         "__module__": "authentication_pb2"
@@ -2048,7 +2053,7 @@ _sym_db.RegisterMessage(ClientInfoFacebook)
 
 APWelcome = _reflection.GeneratedProtocolMessageType(
     "APWelcome",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _APWELCOME,
         "__module__": "authentication_pb2"
@@ -2059,7 +2064,7 @@ _sym_db.RegisterMessage(APWelcome)
 
 AccountInfo = _reflection.GeneratedProtocolMessageType(
     "AccountInfo",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _ACCOUNTINFO,
         "__module__": "authentication_pb2"
@@ -2070,7 +2075,7 @@ _sym_db.RegisterMessage(AccountInfo)
 
 AccountInfoSpotify = _reflection.GeneratedProtocolMessageType(
     "AccountInfoSpotify",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _ACCOUNTINFOSPOTIFY,
         "__module__": "authentication_pb2"
@@ -2081,7 +2086,7 @@ _sym_db.RegisterMessage(AccountInfoSpotify)
 
 AccountInfoFacebook = _reflection.GeneratedProtocolMessageType(
     "AccountInfoFacebook",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _ACCOUNTINFOFACEBOOK,
         "__module__": "authentication_pb2"

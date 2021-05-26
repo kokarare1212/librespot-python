@@ -18,7 +18,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto2",
     serialized_options=b"\n\013com.spotify",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x11keyexchange.proto\x12\x07spotify"\xe0\x02\n\x0b\x43lientHello\x12&\n\nbuild_info\x18\n \x02(\x0b\x32\x12.spotify.BuildInfo\x12\x34\n\x16\x66ingerprints_supported\x18\x14 \x03(\x0e\x32\x14.spotify.Fingerprint\x12\x34\n\x16\x63ryptosuites_supported\x18\x1e \x03(\x0e\x32\x14.spotify.Cryptosuite\x12\x30\n\x14powschemes_supported\x18( \x03(\x0e\x32\x12.spotify.Powscheme\x12:\n\x12login_crypto_hello\x18\x32 \x02(\x0b\x32\x1e.spotify.LoginCryptoHelloUnion\x12\x14\n\x0c\x63lient_nonce\x18< \x02(\x0c\x12\x0f\n\x07padding\x18\x46 \x01(\x0c\x12(\n\x0b\x66\x65\x61ture_set\x18P \x01(\x0b\x32\x13.spotify.FeatureSet"\x92\x01\n\tBuildInfo\x12!\n\x07product\x18\n \x02(\x0e\x32\x10.spotify.Product\x12,\n\rproduct_flags\x18\x14 \x03(\x0e\x32\x15.spotify.ProductFlags\x12#\n\x08platform\x18\x1e \x02(\x0e\x32\x11.spotify.Platform\x12\x0f\n\x07version\x18( \x02(\x04"W\n\x15LoginCryptoHelloUnion\x12>\n\x0e\x64iffie_hellman\x18\n \x01(\x0b\x32&.spotify.LoginCryptoDiffieHellmanHello"F\n\x1dLoginCryptoDiffieHellmanHello\x12\n\n\x02gc\x18\n \x02(\x0c\x12\x19\n\x11server_keys_known\x18\x14 \x02(\r";\n\nFeatureSet\x12\x13\n\x0b\x61utoupdate2\x18\x01 \x01(\x08\x12\x18\n\x10\x63urrent_location\x18\x02 \x01(\x08"\x9c\x01\n\x11\x41PResponseMessage\x12\'\n\tchallenge\x18\n \x01(\x0b\x32\x14.spotify.APChallenge\x12\x30\n\x07upgrade\x18\x14 \x01(\x0b\x32\x1f.spotify.UpgradeRequiredMessage\x12,\n\x0clogin_failed\x18\x1e \x01(\x0b\x32\x16.spotify.APLoginFailed"\xa7\x02\n\x0b\x41PChallenge\x12\x42\n\x16login_crypto_challenge\x18\n \x02(\x0b\x32".spotify.LoginCryptoChallengeUnion\x12\x41\n\x15\x66ingerprint_challenge\x18\x14 \x02(\x0b\x32".spotify.FingerprintChallengeUnion\x12\x31\n\rpow_challenge\x18\x1e \x02(\x0b\x32\x1a.spotify.PoWChallengeUnion\x12\x37\n\x10\x63rypto_challenge\x18( \x02(\x0b\x32\x1d.spotify.CryptoChallengeUnion\x12\x14\n\x0cserver_nonce\x18\x32 \x02(\x0c\x12\x0f\n\x07padding\x18< \x01(\x0c"_\n\x19LoginCryptoChallengeUnion\x12\x42\n\x0e\x64iffie_hellman\x18\n \x01(\x0b\x32*.spotify.LoginCryptoDiffieHellmanChallenge"c\n!LoginCryptoDiffieHellmanChallenge\x12\n\n\x02gs\x18\n \x02(\x0c\x12\x1c\n\x14server_signature_key\x18\x14 \x02(\x05\x12\x14\n\x0cgs_signature\x18\x1e \x02(\x0c"\x8c\x01\n\x19\x46ingerprintChallengeUnion\x12\x31\n\x05grain\x18\n \x01(\x0b\x32".spotify.FingerprintGrainChallenge\x12<\n\x0bhmac_ripemd\x18\x14 \x01(\x0b\x32\'.spotify.FingerprintHmacRipemdChallenge"(\n\x19\x46ingerprintGrainChallenge\x12\x0b\n\x03kek\x18\n \x02(\x0c"3\n\x1e\x46ingerprintHmacRipemdChallenge\x12\x11\n\tchallenge\x18\n \x02(\x0c"E\n\x11PoWChallengeUnion\x12\x30\n\thash_cash\x18\n \x01(\x0b\x32\x1d.spotify.PoWHashCashChallenge"F\n\x14PoWHashCashChallenge\x12\x0e\n\x06prefix\x18\n \x01(\x0c\x12\x0e\n\x06length\x18\x14 \x01(\x05\x12\x0e\n\x06target\x18\x1e \x01(\x05"\x84\x01\n\x14\x43ryptoChallengeUnion\x12\x30\n\x07shannon\x18\n \x01(\x0b\x32\x1f.spotify.CryptoShannonChallenge\x12:\n\rrc4_sha1_hmac\x18\x14 \x01(\x0b\x32#.spotify.CryptoRc4Sha1HmacChallenge"\x18\n\x16\x43ryptoShannonChallenge"\x1c\n\x1a\x43ryptoRc4Sha1HmacChallenge"]\n\x16UpgradeRequiredMessage\x12\x1b\n\x13upgrade_signed_part\x18\n \x02(\x0c\x12\x11\n\tsignature\x18\x14 \x02(\x0c\x12\x13\n\x0bhttp_suffix\x18\x1e \x01(\t"w\n\rAPLoginFailed\x12&\n\nerror_code\x18\n \x02(\x0e\x32\x12.spotify.ErrorCode\x12\x13\n\x0bretry_delay\x18\x14 \x01(\x05\x12\x0e\n\x06\x65xpiry\x18\x1e \x01(\x05\x12\x19\n\x11\x65rror_description\x18( \x01(\t"\xc3\x01\n\x17\x43lientResponsePlaintext\x12@\n\x15login_crypto_response\x18\n \x02(\x0b\x32!.spotify.LoginCryptoResponseUnion\x12/\n\x0cpow_response\x18\x14 \x02(\x0b\x32\x19.spotify.PoWResponseUnion\x12\x35\n\x0f\x63rypto_response\x18\x1e \x02(\x0b\x32\x1c.spotify.CryptoResponseUnion"]\n\x18LoginCryptoResponseUnion\x12\x41\n\x0e\x64iffie_hellman\x18\n \x01(\x0b\x32).spotify.LoginCryptoDiffieHellmanResponse"0\n LoginCryptoDiffieHellmanResponse\x12\x0c\n\x04hmac\x18\n \x02(\x0c"C\n\x10PoWResponseUnion\x12/\n\thash_cash\x18\n \x01(\x0b\x32\x1c.spotify.PoWHashCashResponse"*\n\x13PoWHashCashResponse\x12\x13\n\x0bhash_suffix\x18\n \x02(\x0c"\x81\x01\n\x13\x43ryptoResponseUnion\x12/\n\x07shannon\x18\n \x01(\x0b\x32\x1e.spotify.CryptoShannonResponse\x12\x39\n\rrc4_sha1_hmac\x18\x14 \x01(\x0b\x32".spotify.CryptoRc4Sha1HmacResponse"&\n\x15\x43ryptoShannonResponse\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05"*\n\x19\x43ryptoRc4Sha1HmacResponse\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05*\x7f\n\x07Product\x12\x12\n\x0ePRODUCT_CLIENT\x10\x00\x12\x16\n\x12PRODUCT_LIBSPOTIFY\x10\x01\x12\x12\n\x0ePRODUCT_MOBILE\x10\x02\x12\x13\n\x0fPRODUCT_PARTNER\x10\x03\x12\x1f\n\x1bPRODUCT_LIBSPOTIFY_EMBEDDED\x10\x05*A\n\x0cProductFlags\x12\x15\n\x11PRODUCT_FLAG_NONE\x10\x00\x12\x1a\n\x16PRODUCT_FLAG_DEV_BUILD\x10\x01*\xdc\x04\n\x08Platform\x12\x16\n\x12PLATFORM_WIN32_X86\x10\x00\x12\x14\n\x10PLATFORM_OSX_X86\x10\x01\x12\x16\n\x12PLATFORM_LINUX_X86\x10\x02\x12\x17\n\x13PLATFORM_IPHONE_ARM\x10\x03\x12\x14\n\x10PLATFORM_S60_ARM\x10\x04\x12\x14\n\x10PLATFORM_OSX_PPC\x10\x05\x12\x18\n\x14PLATFORM_ANDROID_ARM\x10\x06\x12\x1b\n\x17PLATFORM_WINDOWS_CE_ARM\x10\x07\x12\x19\n\x15PLATFORM_LINUX_X86_64\x10\x08\x12\x17\n\x13PLATFORM_OSX_X86_64\x10\t\x12\x15\n\x11PLATFORM_PALM_ARM\x10\n\x12\x15\n\x11PLATFORM_LINUX_SH\x10\x0b\x12\x18\n\x14PLATFORM_FREEBSD_X86\x10\x0c\x12\x1b\n\x17PLATFORM_FREEBSD_X86_64\x10\r\x12\x1b\n\x17PLATFORM_BLACKBERRY_ARM\x10\x0e\x12\x12\n\x0ePLATFORM_SONOS\x10\x0f\x12\x17\n\x13PLATFORM_LINUX_MIPS\x10\x10\x12\x16\n\x12PLATFORM_LINUX_ARM\x10\x11\x12\x19\n\x15PLATFORM_LOGITECH_ARM\x10\x12\x12\x1b\n\x17PLATFORM_LINUX_BLACKFIN\x10\x13\x12\x14\n\x10PLATFORM_WP7_ARM\x10\x14\x12\x16\n\x12PLATFORM_ONKYO_ARM\x10\x15\x12\x17\n\x13PLATFORM_QNXNTO_ARM\x10\x16\x12\x14\n\x10PLATFORM_BCO_ARM\x10\x17*A\n\x0b\x46ingerprint\x12\x15\n\x11\x46INGERPRINT_GRAIN\x10\x00\x12\x1b\n\x17\x46INGERPRINT_HMAC_RIPEMD\x10\x01*G\n\x0b\x43ryptosuite\x12\x18\n\x14\x43RYPTO_SUITE_SHANNON\x10\x00\x12\x1e\n\x1a\x43RYPTO_SUITE_RC4_SHA1_HMAC\x10\x01*\x1e\n\tPowscheme\x12\x11\n\rPOW_HASH_CASH\x10\x00*\x89\x02\n\tErrorCode\x12\x11\n\rProtocolError\x10\x00\x12\x10\n\x0cTryAnotherAP\x10\x02\x12\x13\n\x0f\x42\x61\x64\x43onnectionId\x10\x05\x12\x15\n\x11TravelRestriction\x10\t\x12\x1a\n\x16PremiumAccountRequired\x10\x0b\x12\x12\n\x0e\x42\x61\x64\x43redentials\x10\x0c\x12\x1f\n\x1b\x43ouldNotValidateCredentials\x10\r\x12\x11\n\rAccountExists\x10\x0e\x12\x1d\n\x19\x45xtraVerificationRequired\x10\x0f\x12\x11\n\rInvalidAppKey\x10\x10\x12\x15\n\x11\x41pplicationBanned\x10\x11\x42\r\n\x0b\x63om.spotify',
+    serialized_pb=
+    b'\n\x11keyexchange.proto\x12\x07spotify"\xe0\x02\n\x0b\x43lientHello\x12&\n\nbuild_info\x18\n \x02(\x0b\x32\x12.spotify.BuildInfo\x12\x34\n\x16\x66ingerprints_supported\x18\x14 \x03(\x0e\x32\x14.spotify.Fingerprint\x12\x34\n\x16\x63ryptosuites_supported\x18\x1e \x03(\x0e\x32\x14.spotify.Cryptosuite\x12\x30\n\x14powschemes_supported\x18( \x03(\x0e\x32\x12.spotify.Powscheme\x12:\n\x12login_crypto_hello\x18\x32 \x02(\x0b\x32\x1e.spotify.LoginCryptoHelloUnion\x12\x14\n\x0c\x63lient_nonce\x18< \x02(\x0c\x12\x0f\n\x07padding\x18\x46 \x01(\x0c\x12(\n\x0b\x66\x65\x61ture_set\x18P \x01(\x0b\x32\x13.spotify.FeatureSet"\x92\x01\n\tBuildInfo\x12!\n\x07product\x18\n \x02(\x0e\x32\x10.spotify.Product\x12,\n\rproduct_flags\x18\x14 \x03(\x0e\x32\x15.spotify.ProductFlags\x12#\n\x08platform\x18\x1e \x02(\x0e\x32\x11.spotify.Platform\x12\x0f\n\x07version\x18( \x02(\x04"W\n\x15LoginCryptoHelloUnion\x12>\n\x0e\x64iffie_hellman\x18\n \x01(\x0b\x32&.spotify.LoginCryptoDiffieHellmanHello"F\n\x1dLoginCryptoDiffieHellmanHello\x12\n\n\x02gc\x18\n \x02(\x0c\x12\x19\n\x11server_keys_known\x18\x14 \x02(\r";\n\nFeatureSet\x12\x13\n\x0b\x61utoupdate2\x18\x01 \x01(\x08\x12\x18\n\x10\x63urrent_location\x18\x02 \x01(\x08"\x9c\x01\n\x11\x41PResponseMessage\x12\'\n\tchallenge\x18\n \x01(\x0b\x32\x14.spotify.APChallenge\x12\x30\n\x07upgrade\x18\x14 \x01(\x0b\x32\x1f.spotify.UpgradeRequiredMessage\x12,\n\x0clogin_failed\x18\x1e \x01(\x0b\x32\x16.spotify.APLoginFailed"\xa7\x02\n\x0b\x41PChallenge\x12\x42\n\x16login_crypto_challenge\x18\n \x02(\x0b\x32".spotify.LoginCryptoChallengeUnion\x12\x41\n\x15\x66ingerprint_challenge\x18\x14 \x02(\x0b\x32".spotify.FingerprintChallengeUnion\x12\x31\n\rpow_challenge\x18\x1e \x02(\x0b\x32\x1a.spotify.PoWChallengeUnion\x12\x37\n\x10\x63rypto_challenge\x18( \x02(\x0b\x32\x1d.spotify.CryptoChallengeUnion\x12\x14\n\x0cserver_nonce\x18\x32 \x02(\x0c\x12\x0f\n\x07padding\x18< \x01(\x0c"_\n\x19LoginCryptoChallengeUnion\x12\x42\n\x0e\x64iffie_hellman\x18\n \x01(\x0b\x32*.spotify.LoginCryptoDiffieHellmanChallenge"c\n!LoginCryptoDiffieHellmanChallenge\x12\n\n\x02gs\x18\n \x02(\x0c\x12\x1c\n\x14server_signature_key\x18\x14 \x02(\x05\x12\x14\n\x0cgs_signature\x18\x1e \x02(\x0c"\x8c\x01\n\x19\x46ingerprintChallengeUnion\x12\x31\n\x05grain\x18\n \x01(\x0b\x32".spotify.FingerprintGrainChallenge\x12<\n\x0bhmac_ripemd\x18\x14 \x01(\x0b\x32\'.spotify.FingerprintHmacRipemdChallenge"(\n\x19\x46ingerprintGrainChallenge\x12\x0b\n\x03kek\x18\n \x02(\x0c"3\n\x1e\x46ingerprintHmacRipemdChallenge\x12\x11\n\tchallenge\x18\n \x02(\x0c"E\n\x11PoWChallengeUnion\x12\x30\n\thash_cash\x18\n \x01(\x0b\x32\x1d.spotify.PoWHashCashChallenge"F\n\x14PoWHashCashChallenge\x12\x0e\n\x06prefix\x18\n \x01(\x0c\x12\x0e\n\x06length\x18\x14 \x01(\x05\x12\x0e\n\x06target\x18\x1e \x01(\x05"\x84\x01\n\x14\x43ryptoChallengeUnion\x12\x30\n\x07shannon\x18\n \x01(\x0b\x32\x1f.spotify.CryptoShannonChallenge\x12:\n\rrc4_sha1_hmac\x18\x14 \x01(\x0b\x32#.spotify.CryptoRc4Sha1HmacChallenge"\x18\n\x16\x43ryptoShannonChallenge"\x1c\n\x1a\x43ryptoRc4Sha1HmacChallenge"]\n\x16UpgradeRequiredMessage\x12\x1b\n\x13upgrade_signed_part\x18\n \x02(\x0c\x12\x11\n\tsignature\x18\x14 \x02(\x0c\x12\x13\n\x0bhttp_suffix\x18\x1e \x01(\t"w\n\rAPLoginFailed\x12&\n\nerror_code\x18\n \x02(\x0e\x32\x12.spotify.ErrorCode\x12\x13\n\x0bretry_delay\x18\x14 \x01(\x05\x12\x0e\n\x06\x65xpiry\x18\x1e \x01(\x05\x12\x19\n\x11\x65rror_description\x18( \x01(\t"\xc3\x01\n\x17\x43lientResponsePlaintext\x12@\n\x15login_crypto_response\x18\n \x02(\x0b\x32!.spotify.LoginCryptoResponseUnion\x12/\n\x0cpow_response\x18\x14 \x02(\x0b\x32\x19.spotify.PoWResponseUnion\x12\x35\n\x0f\x63rypto_response\x18\x1e \x02(\x0b\x32\x1c.spotify.CryptoResponseUnion"]\n\x18LoginCryptoResponseUnion\x12\x41\n\x0e\x64iffie_hellman\x18\n \x01(\x0b\x32).spotify.LoginCryptoDiffieHellmanResponse"0\n LoginCryptoDiffieHellmanResponse\x12\x0c\n\x04hmac\x18\n \x02(\x0c"C\n\x10PoWResponseUnion\x12/\n\thash_cash\x18\n \x01(\x0b\x32\x1c.spotify.PoWHashCashResponse"*\n\x13PoWHashCashResponse\x12\x13\n\x0bhash_suffix\x18\n \x02(\x0c"\x81\x01\n\x13\x43ryptoResponseUnion\x12/\n\x07shannon\x18\n \x01(\x0b\x32\x1e.spotify.CryptoShannonResponse\x12\x39\n\rrc4_sha1_hmac\x18\x14 \x01(\x0b\x32".spotify.CryptoRc4Sha1HmacResponse"&\n\x15\x43ryptoShannonResponse\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05"*\n\x19\x43ryptoRc4Sha1HmacResponse\x12\r\n\x05\x64ummy\x18\x01 \x01(\x05*\x7f\n\x07Product\x12\x12\n\x0ePRODUCT_CLIENT\x10\x00\x12\x16\n\x12PRODUCT_LIBSPOTIFY\x10\x01\x12\x12\n\x0ePRODUCT_MOBILE\x10\x02\x12\x13\n\x0fPRODUCT_PARTNER\x10\x03\x12\x1f\n\x1bPRODUCT_LIBSPOTIFY_EMBEDDED\x10\x05*A\n\x0cProductFlags\x12\x15\n\x11PRODUCT_FLAG_NONE\x10\x00\x12\x1a\n\x16PRODUCT_FLAG_DEV_BUILD\x10\x01*\xdc\x04\n\x08Platform\x12\x16\n\x12PLATFORM_WIN32_X86\x10\x00\x12\x14\n\x10PLATFORM_OSX_X86\x10\x01\x12\x16\n\x12PLATFORM_LINUX_X86\x10\x02\x12\x17\n\x13PLATFORM_IPHONE_ARM\x10\x03\x12\x14\n\x10PLATFORM_S60_ARM\x10\x04\x12\x14\n\x10PLATFORM_OSX_PPC\x10\x05\x12\x18\n\x14PLATFORM_ANDROID_ARM\x10\x06\x12\x1b\n\x17PLATFORM_WINDOWS_CE_ARM\x10\x07\x12\x19\n\x15PLATFORM_LINUX_X86_64\x10\x08\x12\x17\n\x13PLATFORM_OSX_X86_64\x10\t\x12\x15\n\x11PLATFORM_PALM_ARM\x10\n\x12\x15\n\x11PLATFORM_LINUX_SH\x10\x0b\x12\x18\n\x14PLATFORM_FREEBSD_X86\x10\x0c\x12\x1b\n\x17PLATFORM_FREEBSD_X86_64\x10\r\x12\x1b\n\x17PLATFORM_BLACKBERRY_ARM\x10\x0e\x12\x12\n\x0ePLATFORM_SONOS\x10\x0f\x12\x17\n\x13PLATFORM_LINUX_MIPS\x10\x10\x12\x16\n\x12PLATFORM_LINUX_ARM\x10\x11\x12\x19\n\x15PLATFORM_LOGITECH_ARM\x10\x12\x12\x1b\n\x17PLATFORM_LINUX_BLACKFIN\x10\x13\x12\x14\n\x10PLATFORM_WP7_ARM\x10\x14\x12\x16\n\x12PLATFORM_ONKYO_ARM\x10\x15\x12\x17\n\x13PLATFORM_QNXNTO_ARM\x10\x16\x12\x14\n\x10PLATFORM_BCO_ARM\x10\x17*A\n\x0b\x46ingerprint\x12\x15\n\x11\x46INGERPRINT_GRAIN\x10\x00\x12\x1b\n\x17\x46INGERPRINT_HMAC_RIPEMD\x10\x01*G\n\x0b\x43ryptosuite\x12\x18\n\x14\x43RYPTO_SUITE_SHANNON\x10\x00\x12\x1e\n\x1a\x43RYPTO_SUITE_RC4_SHA1_HMAC\x10\x01*\x1e\n\tPowscheme\x12\x11\n\rPOW_HASH_CASH\x10\x00*\x89\x02\n\tErrorCode\x12\x11\n\rProtocolError\x10\x00\x12\x10\n\x0cTryAnotherAP\x10\x02\x12\x13\n\x0f\x42\x61\x64\x43onnectionId\x10\x05\x12\x15\n\x11TravelRestriction\x10\t\x12\x1a\n\x16PremiumAccountRequired\x10\x0b\x12\x12\n\x0e\x42\x61\x64\x43redentials\x10\x0c\x12\x1f\n\x1b\x43ouldNotValidateCredentials\x10\r\x12\x11\n\rAccountExists\x10\x0e\x12\x1d\n\x19\x45xtraVerificationRequired\x10\x0f\x12\x11\n\rInvalidAppKey\x10\x10\x12\x15\n\x11\x41pplicationBanned\x10\x11\x42\r\n\x0b\x63om.spotify',
 )
 
 _PRODUCT = _descriptor.EnumDescriptor(
@@ -1267,7 +1268,8 @@ _LOGINCRYPTODIFFIEHELLMANCHALLENGE = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="server_signature_key",
-            full_name="spotify.LoginCryptoDiffieHellmanChallenge.server_signature_key",
+            full_name=
+            "spotify.LoginCryptoDiffieHellmanChallenge.server_signature_key",
             index=1,
             number=20,
             type=5,
@@ -2228,100 +2230,96 @@ _CLIENTHELLO.fields_by_name["build_info"].message_type = _BUILDINFO
 _CLIENTHELLO.fields_by_name["fingerprints_supported"].enum_type = _FINGERPRINT
 _CLIENTHELLO.fields_by_name["cryptosuites_supported"].enum_type = _CRYPTOSUITE
 _CLIENTHELLO.fields_by_name["powschemes_supported"].enum_type = _POWSCHEME
-_CLIENTHELLO.fields_by_name["login_crypto_hello"].message_type = _LOGINCRYPTOHELLOUNION
+_CLIENTHELLO.fields_by_name[
+    "login_crypto_hello"].message_type = _LOGINCRYPTOHELLOUNION
 _CLIENTHELLO.fields_by_name["feature_set"].message_type = _FEATURESET
 _BUILDINFO.fields_by_name["product"].enum_type = _PRODUCT
 _BUILDINFO.fields_by_name["product_flags"].enum_type = _PRODUCTFLAGS
 _BUILDINFO.fields_by_name["platform"].enum_type = _PLATFORM
 _LOGINCRYPTOHELLOUNION.fields_by_name[
-    "diffie_hellman"
-].message_type = _LOGINCRYPTODIFFIEHELLMANHELLO
+    "diffie_hellman"].message_type = _LOGINCRYPTODIFFIEHELLMANHELLO
 _APRESPONSEMESSAGE.fields_by_name["challenge"].message_type = _APCHALLENGE
-_APRESPONSEMESSAGE.fields_by_name["upgrade"].message_type = _UPGRADEREQUIREDMESSAGE
+_APRESPONSEMESSAGE.fields_by_name[
+    "upgrade"].message_type = _UPGRADEREQUIREDMESSAGE
 _APRESPONSEMESSAGE.fields_by_name["login_failed"].message_type = _APLOGINFAILED
 _APCHALLENGE.fields_by_name[
-    "login_crypto_challenge"
-].message_type = _LOGINCRYPTOCHALLENGEUNION
+    "login_crypto_challenge"].message_type = _LOGINCRYPTOCHALLENGEUNION
 _APCHALLENGE.fields_by_name[
-    "fingerprint_challenge"
-].message_type = _FINGERPRINTCHALLENGEUNION
+    "fingerprint_challenge"].message_type = _FINGERPRINTCHALLENGEUNION
 _APCHALLENGE.fields_by_name["pow_challenge"].message_type = _POWCHALLENGEUNION
-_APCHALLENGE.fields_by_name["crypto_challenge"].message_type = _CRYPTOCHALLENGEUNION
+_APCHALLENGE.fields_by_name[
+    "crypto_challenge"].message_type = _CRYPTOCHALLENGEUNION
 _LOGINCRYPTOCHALLENGEUNION.fields_by_name[
-    "diffie_hellman"
-].message_type = _LOGINCRYPTODIFFIEHELLMANCHALLENGE
+    "diffie_hellman"].message_type = _LOGINCRYPTODIFFIEHELLMANCHALLENGE
 _FINGERPRINTCHALLENGEUNION.fields_by_name[
-    "grain"
-].message_type = _FINGERPRINTGRAINCHALLENGE
+    "grain"].message_type = _FINGERPRINTGRAINCHALLENGE
 _FINGERPRINTCHALLENGEUNION.fields_by_name[
-    "hmac_ripemd"
-].message_type = _FINGERPRINTHMACRIPEMDCHALLENGE
-_POWCHALLENGEUNION.fields_by_name["hash_cash"].message_type = _POWHASHCASHCHALLENGE
-_CRYPTOCHALLENGEUNION.fields_by_name["shannon"].message_type = _CRYPTOSHANNONCHALLENGE
+    "hmac_ripemd"].message_type = _FINGERPRINTHMACRIPEMDCHALLENGE
+_POWCHALLENGEUNION.fields_by_name[
+    "hash_cash"].message_type = _POWHASHCASHCHALLENGE
 _CRYPTOCHALLENGEUNION.fields_by_name[
-    "rc4_sha1_hmac"
-].message_type = _CRYPTORC4SHA1HMACCHALLENGE
+    "shannon"].message_type = _CRYPTOSHANNONCHALLENGE
+_CRYPTOCHALLENGEUNION.fields_by_name[
+    "rc4_sha1_hmac"].message_type = _CRYPTORC4SHA1HMACCHALLENGE
 _APLOGINFAILED.fields_by_name["error_code"].enum_type = _ERRORCODE
 _CLIENTRESPONSEPLAINTEXT.fields_by_name[
-    "login_crypto_response"
-].message_type = _LOGINCRYPTORESPONSEUNION
-_CLIENTRESPONSEPLAINTEXT.fields_by_name["pow_response"].message_type = _POWRESPONSEUNION
+    "login_crypto_response"].message_type = _LOGINCRYPTORESPONSEUNION
 _CLIENTRESPONSEPLAINTEXT.fields_by_name[
-    "crypto_response"
-].message_type = _CRYPTORESPONSEUNION
+    "pow_response"].message_type = _POWRESPONSEUNION
+_CLIENTRESPONSEPLAINTEXT.fields_by_name[
+    "crypto_response"].message_type = _CRYPTORESPONSEUNION
 _LOGINCRYPTORESPONSEUNION.fields_by_name[
-    "diffie_hellman"
-].message_type = _LOGINCRYPTODIFFIEHELLMANRESPONSE
-_POWRESPONSEUNION.fields_by_name["hash_cash"].message_type = _POWHASHCASHRESPONSE
-_CRYPTORESPONSEUNION.fields_by_name["shannon"].message_type = _CRYPTOSHANNONRESPONSE
+    "diffie_hellman"].message_type = _LOGINCRYPTODIFFIEHELLMANRESPONSE
+_POWRESPONSEUNION.fields_by_name[
+    "hash_cash"].message_type = _POWHASHCASHRESPONSE
 _CRYPTORESPONSEUNION.fields_by_name[
-    "rc4_sha1_hmac"
-].message_type = _CRYPTORC4SHA1HMACRESPONSE
+    "shannon"].message_type = _CRYPTOSHANNONRESPONSE
+_CRYPTORESPONSEUNION.fields_by_name[
+    "rc4_sha1_hmac"].message_type = _CRYPTORC4SHA1HMACRESPONSE
 DESCRIPTOR.message_types_by_name["ClientHello"] = _CLIENTHELLO
 DESCRIPTOR.message_types_by_name["BuildInfo"] = _BUILDINFO
-DESCRIPTOR.message_types_by_name["LoginCryptoHelloUnion"] = _LOGINCRYPTOHELLOUNION
 DESCRIPTOR.message_types_by_name[
-    "LoginCryptoDiffieHellmanHello"
-] = _LOGINCRYPTODIFFIEHELLMANHELLO
+    "LoginCryptoHelloUnion"] = _LOGINCRYPTOHELLOUNION
+DESCRIPTOR.message_types_by_name[
+    "LoginCryptoDiffieHellmanHello"] = _LOGINCRYPTODIFFIEHELLMANHELLO
 DESCRIPTOR.message_types_by_name["FeatureSet"] = _FEATURESET
 DESCRIPTOR.message_types_by_name["APResponseMessage"] = _APRESPONSEMESSAGE
 DESCRIPTOR.message_types_by_name["APChallenge"] = _APCHALLENGE
 DESCRIPTOR.message_types_by_name[
-    "LoginCryptoChallengeUnion"
-] = _LOGINCRYPTOCHALLENGEUNION
+    "LoginCryptoChallengeUnion"] = _LOGINCRYPTOCHALLENGEUNION
 DESCRIPTOR.message_types_by_name[
-    "LoginCryptoDiffieHellmanChallenge"
-] = _LOGINCRYPTODIFFIEHELLMANCHALLENGE
+    "LoginCryptoDiffieHellmanChallenge"] = _LOGINCRYPTODIFFIEHELLMANCHALLENGE
 DESCRIPTOR.message_types_by_name[
-    "FingerprintChallengeUnion"
-] = _FINGERPRINTCHALLENGEUNION
+    "FingerprintChallengeUnion"] = _FINGERPRINTCHALLENGEUNION
 DESCRIPTOR.message_types_by_name[
-    "FingerprintGrainChallenge"
-] = _FINGERPRINTGRAINCHALLENGE
+    "FingerprintGrainChallenge"] = _FINGERPRINTGRAINCHALLENGE
 DESCRIPTOR.message_types_by_name[
-    "FingerprintHmacRipemdChallenge"
-] = _FINGERPRINTHMACRIPEMDCHALLENGE
+    "FingerprintHmacRipemdChallenge"] = _FINGERPRINTHMACRIPEMDCHALLENGE
 DESCRIPTOR.message_types_by_name["PoWChallengeUnion"] = _POWCHALLENGEUNION
-DESCRIPTOR.message_types_by_name["PoWHashCashChallenge"] = _POWHASHCASHCHALLENGE
-DESCRIPTOR.message_types_by_name["CryptoChallengeUnion"] = _CRYPTOCHALLENGEUNION
-DESCRIPTOR.message_types_by_name["CryptoShannonChallenge"] = _CRYPTOSHANNONCHALLENGE
 DESCRIPTOR.message_types_by_name[
-    "CryptoRc4Sha1HmacChallenge"
-] = _CRYPTORC4SHA1HMACCHALLENGE
-DESCRIPTOR.message_types_by_name["UpgradeRequiredMessage"] = _UPGRADEREQUIREDMESSAGE
+    "PoWHashCashChallenge"] = _POWHASHCASHCHALLENGE
+DESCRIPTOR.message_types_by_name[
+    "CryptoChallengeUnion"] = _CRYPTOCHALLENGEUNION
+DESCRIPTOR.message_types_by_name[
+    "CryptoShannonChallenge"] = _CRYPTOSHANNONCHALLENGE
+DESCRIPTOR.message_types_by_name[
+    "CryptoRc4Sha1HmacChallenge"] = _CRYPTORC4SHA1HMACCHALLENGE
+DESCRIPTOR.message_types_by_name[
+    "UpgradeRequiredMessage"] = _UPGRADEREQUIREDMESSAGE
 DESCRIPTOR.message_types_by_name["APLoginFailed"] = _APLOGINFAILED
-DESCRIPTOR.message_types_by_name["ClientResponsePlaintext"] = _CLIENTRESPONSEPLAINTEXT
-DESCRIPTOR.message_types_by_name["LoginCryptoResponseUnion"] = _LOGINCRYPTORESPONSEUNION
 DESCRIPTOR.message_types_by_name[
-    "LoginCryptoDiffieHellmanResponse"
-] = _LOGINCRYPTODIFFIEHELLMANRESPONSE
+    "ClientResponsePlaintext"] = _CLIENTRESPONSEPLAINTEXT
+DESCRIPTOR.message_types_by_name[
+    "LoginCryptoResponseUnion"] = _LOGINCRYPTORESPONSEUNION
+DESCRIPTOR.message_types_by_name[
+    "LoginCryptoDiffieHellmanResponse"] = _LOGINCRYPTODIFFIEHELLMANRESPONSE
 DESCRIPTOR.message_types_by_name["PoWResponseUnion"] = _POWRESPONSEUNION
 DESCRIPTOR.message_types_by_name["PoWHashCashResponse"] = _POWHASHCASHRESPONSE
 DESCRIPTOR.message_types_by_name["CryptoResponseUnion"] = _CRYPTORESPONSEUNION
-DESCRIPTOR.message_types_by_name["CryptoShannonResponse"] = _CRYPTOSHANNONRESPONSE
 DESCRIPTOR.message_types_by_name[
-    "CryptoRc4Sha1HmacResponse"
-] = _CRYPTORC4SHA1HMACRESPONSE
+    "CryptoShannonResponse"] = _CRYPTOSHANNONRESPONSE
+DESCRIPTOR.message_types_by_name[
+    "CryptoRc4Sha1HmacResponse"] = _CRYPTORC4SHA1HMACRESPONSE
 DESCRIPTOR.enum_types_by_name["Product"] = _PRODUCT
 DESCRIPTOR.enum_types_by_name["ProductFlags"] = _PRODUCTFLAGS
 DESCRIPTOR.enum_types_by_name["Platform"] = _PLATFORM
@@ -2333,7 +2331,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ClientHello = _reflection.GeneratedProtocolMessageType(
     "ClientHello",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CLIENTHELLO,
         "__module__": "keyexchange_pb2"
@@ -2344,7 +2342,7 @@ _sym_db.RegisterMessage(ClientHello)
 
 BuildInfo = _reflection.GeneratedProtocolMessageType(
     "BuildInfo",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _BUILDINFO,
         "__module__": "keyexchange_pb2"
@@ -2355,7 +2353,7 @@ _sym_db.RegisterMessage(BuildInfo)
 
 LoginCryptoHelloUnion = _reflection.GeneratedProtocolMessageType(
     "LoginCryptoHelloUnion",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LOGINCRYPTOHELLOUNION,
         "__module__": "keyexchange_pb2"
@@ -2366,7 +2364,7 @@ _sym_db.RegisterMessage(LoginCryptoHelloUnion)
 
 LoginCryptoDiffieHellmanHello = _reflection.GeneratedProtocolMessageType(
     "LoginCryptoDiffieHellmanHello",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LOGINCRYPTODIFFIEHELLMANHELLO,
         "__module__": "keyexchange_pb2"
@@ -2377,7 +2375,7 @@ _sym_db.RegisterMessage(LoginCryptoDiffieHellmanHello)
 
 FeatureSet = _reflection.GeneratedProtocolMessageType(
     "FeatureSet",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _FEATURESET,
         "__module__": "keyexchange_pb2"
@@ -2388,7 +2386,7 @@ _sym_db.RegisterMessage(FeatureSet)
 
 APResponseMessage = _reflection.GeneratedProtocolMessageType(
     "APResponseMessage",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _APRESPONSEMESSAGE,
         "__module__": "keyexchange_pb2"
@@ -2399,7 +2397,7 @@ _sym_db.RegisterMessage(APResponseMessage)
 
 APChallenge = _reflection.GeneratedProtocolMessageType(
     "APChallenge",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _APCHALLENGE,
         "__module__": "keyexchange_pb2"
@@ -2410,7 +2408,7 @@ _sym_db.RegisterMessage(APChallenge)
 
 LoginCryptoChallengeUnion = _reflection.GeneratedProtocolMessageType(
     "LoginCryptoChallengeUnion",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LOGINCRYPTOCHALLENGEUNION,
         "__module__": "keyexchange_pb2"
@@ -2421,7 +2419,7 @@ _sym_db.RegisterMessage(LoginCryptoChallengeUnion)
 
 LoginCryptoDiffieHellmanChallenge = _reflection.GeneratedProtocolMessageType(
     "LoginCryptoDiffieHellmanChallenge",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LOGINCRYPTODIFFIEHELLMANCHALLENGE,
         "__module__": "keyexchange_pb2"
@@ -2432,7 +2430,7 @@ _sym_db.RegisterMessage(LoginCryptoDiffieHellmanChallenge)
 
 FingerprintChallengeUnion = _reflection.GeneratedProtocolMessageType(
     "FingerprintChallengeUnion",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _FINGERPRINTCHALLENGEUNION,
         "__module__": "keyexchange_pb2"
@@ -2443,7 +2441,7 @@ _sym_db.RegisterMessage(FingerprintChallengeUnion)
 
 FingerprintGrainChallenge = _reflection.GeneratedProtocolMessageType(
     "FingerprintGrainChallenge",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _FINGERPRINTGRAINCHALLENGE,
         "__module__": "keyexchange_pb2"
@@ -2454,7 +2452,7 @@ _sym_db.RegisterMessage(FingerprintGrainChallenge)
 
 FingerprintHmacRipemdChallenge = _reflection.GeneratedProtocolMessageType(
     "FingerprintHmacRipemdChallenge",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _FINGERPRINTHMACRIPEMDCHALLENGE,
         "__module__": "keyexchange_pb2"
@@ -2465,7 +2463,7 @@ _sym_db.RegisterMessage(FingerprintHmacRipemdChallenge)
 
 PoWChallengeUnion = _reflection.GeneratedProtocolMessageType(
     "PoWChallengeUnion",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _POWCHALLENGEUNION,
         "__module__": "keyexchange_pb2"
@@ -2476,7 +2474,7 @@ _sym_db.RegisterMessage(PoWChallengeUnion)
 
 PoWHashCashChallenge = _reflection.GeneratedProtocolMessageType(
     "PoWHashCashChallenge",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _POWHASHCASHCHALLENGE,
         "__module__": "keyexchange_pb2"
@@ -2487,7 +2485,7 @@ _sym_db.RegisterMessage(PoWHashCashChallenge)
 
 CryptoChallengeUnion = _reflection.GeneratedProtocolMessageType(
     "CryptoChallengeUnion",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CRYPTOCHALLENGEUNION,
         "__module__": "keyexchange_pb2"
@@ -2498,7 +2496,7 @@ _sym_db.RegisterMessage(CryptoChallengeUnion)
 
 CryptoShannonChallenge = _reflection.GeneratedProtocolMessageType(
     "CryptoShannonChallenge",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CRYPTOSHANNONCHALLENGE,
         "__module__": "keyexchange_pb2"
@@ -2509,7 +2507,7 @@ _sym_db.RegisterMessage(CryptoShannonChallenge)
 
 CryptoRc4Sha1HmacChallenge = _reflection.GeneratedProtocolMessageType(
     "CryptoRc4Sha1HmacChallenge",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CRYPTORC4SHA1HMACCHALLENGE,
         "__module__": "keyexchange_pb2"
@@ -2520,7 +2518,7 @@ _sym_db.RegisterMessage(CryptoRc4Sha1HmacChallenge)
 
 UpgradeRequiredMessage = _reflection.GeneratedProtocolMessageType(
     "UpgradeRequiredMessage",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _UPGRADEREQUIREDMESSAGE,
         "__module__": "keyexchange_pb2"
@@ -2531,7 +2529,7 @@ _sym_db.RegisterMessage(UpgradeRequiredMessage)
 
 APLoginFailed = _reflection.GeneratedProtocolMessageType(
     "APLoginFailed",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _APLOGINFAILED,
         "__module__": "keyexchange_pb2"
@@ -2542,7 +2540,7 @@ _sym_db.RegisterMessage(APLoginFailed)
 
 ClientResponsePlaintext = _reflection.GeneratedProtocolMessageType(
     "ClientResponsePlaintext",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CLIENTRESPONSEPLAINTEXT,
         "__module__": "keyexchange_pb2"
@@ -2553,7 +2551,7 @@ _sym_db.RegisterMessage(ClientResponsePlaintext)
 
 LoginCryptoResponseUnion = _reflection.GeneratedProtocolMessageType(
     "LoginCryptoResponseUnion",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LOGINCRYPTORESPONSEUNION,
         "__module__": "keyexchange_pb2"
@@ -2564,7 +2562,7 @@ _sym_db.RegisterMessage(LoginCryptoResponseUnion)
 
 LoginCryptoDiffieHellmanResponse = _reflection.GeneratedProtocolMessageType(
     "LoginCryptoDiffieHellmanResponse",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LOGINCRYPTODIFFIEHELLMANRESPONSE,
         "__module__": "keyexchange_pb2"
@@ -2575,7 +2573,7 @@ _sym_db.RegisterMessage(LoginCryptoDiffieHellmanResponse)
 
 PoWResponseUnion = _reflection.GeneratedProtocolMessageType(
     "PoWResponseUnion",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _POWRESPONSEUNION,
         "__module__": "keyexchange_pb2"
@@ -2586,7 +2584,7 @@ _sym_db.RegisterMessage(PoWResponseUnion)
 
 PoWHashCashResponse = _reflection.GeneratedProtocolMessageType(
     "PoWHashCashResponse",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _POWHASHCASHRESPONSE,
         "__module__": "keyexchange_pb2"
@@ -2597,7 +2595,7 @@ _sym_db.RegisterMessage(PoWHashCashResponse)
 
 CryptoResponseUnion = _reflection.GeneratedProtocolMessageType(
     "CryptoResponseUnion",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CRYPTORESPONSEUNION,
         "__module__": "keyexchange_pb2"
@@ -2608,7 +2606,7 @@ _sym_db.RegisterMessage(CryptoResponseUnion)
 
 CryptoShannonResponse = _reflection.GeneratedProtocolMessageType(
     "CryptoShannonResponse",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CRYPTOSHANNONRESPONSE,
         "__module__": "keyexchange_pb2"
@@ -2619,7 +2617,7 @@ _sym_db.RegisterMessage(CryptoShannonResponse)
 
 CryptoRc4Sha1HmacResponse = _reflection.GeneratedProtocolMessageType(
     "CryptoRc4Sha1HmacResponse",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CRYPTORC4SHA1HMACRESPONSE,
         "__module__": "keyexchange_pb2"

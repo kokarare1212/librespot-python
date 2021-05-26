@@ -14,14 +14,14 @@ import librespot.proto.Player_pb2 as player__pb2
 
 _sym_db = _symbol_database.Default()
 
-
 DESCRIPTOR = _descriptor.FileDescriptor(
     name="connect.proto",
     package="connectstate",
     syntax="proto3",
     serialized_options=b"\n\030com.spotify.connectstateH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\rconnect.proto\x12\x0c\x63onnectstate\x1a\x0cplayer.proto"\x9f\x01\n\rClusterUpdate\x12&\n\x07\x63luster\x18\x01 \x01(\x0b\x32\x15.connectstate.Cluster\x12\x38\n\rupdate_reason\x18\x02 \x01(\x0e\x32!.connectstate.ClusterUpdateReason\x12\x0e\n\x06\x61\x63k_id\x18\x03 \x01(\t\x12\x1c\n\x14\x64\x65vices_that_changed\x18\x04 \x03(\t"\xa6\x01\n\x06\x44\x65vice\x12-\n\x0b\x64\x65vice_info\x18\x01 \x01(\x0b\x32\x18.connectstate.DeviceInfo\x12/\n\x0cplayer_state\x18\x02 \x01(\x0b\x32\x19.connectstate.PlayerState\x12<\n\x13private_device_info\x18\x03 \x01(\x0b\x32\x1f.connectstate.PrivateDeviceInfo"\xfa\x01\n\x07\x43luster\x12\x11\n\ttimestamp\x18\x01 \x01(\x03\x12\x18\n\x10\x61\x63tive_device_id\x18\x02 \x01(\t\x12/\n\x0cplayer_state\x18\x03 \x01(\x0b\x32\x19.connectstate.PlayerState\x12\x31\n\x06\x64\x65vice\x18\x04 \x03(\x0b\x32!.connectstate.Cluster.DeviceEntry\x12\x15\n\rtransfer_data\x18\x05 \x01(\x0c\x1aG\n\x0b\x44\x65viceEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\'\n\x05value\x18\x02 \x01(\x0b\x32\x18.connectstate.DeviceInfo:\x02\x38\x01"\xa1\x03\n\x0fPutStateRequest\x12\x14\n\x0c\x63\x61llback_url\x18\x01 \x01(\t\x12$\n\x06\x64\x65vice\x18\x02 \x01(\x0b\x32\x14.connectstate.Device\x12-\n\x0bmember_type\x18\x03 \x01(\x0e\x32\x18.connectstate.MemberType\x12\x11\n\tis_active\x18\x04 \x01(\x08\x12\x36\n\x10put_state_reason\x18\x05 \x01(\x0e\x32\x1c.connectstate.PutStateReason\x12\x12\n\nmessage_id\x18\x06 \x01(\r\x12&\n\x1elast_command_sent_by_device_id\x18\x07 \x01(\t\x12\x1f\n\x17last_command_message_id\x18\x08 \x01(\r\x12\x1a\n\x12started_playing_at\x18\t \x01(\x04\x12\x1f\n\x17has_been_playing_for_ms\x18\x0b \x01(\x04\x12\x1d\n\x15\x63lient_side_timestamp\x18\x0c \x01(\x04\x12\x1f\n\x17only_write_player_state\x18\r \x01(\x08"%\n\x11PrivateDeviceInfo\x12\x10\n\x08platform\x18\x01 \x01(\t"(\n\x10SubscribeRequest\x12\x14\n\x0c\x63\x61llback_url\x18\x01 \x01(\t"\xc5\x03\n\nDeviceInfo\x12\x10\n\x08\x63\x61n_play\x18\x01 \x01(\x08\x12\x0e\n\x06volume\x18\x02 \x01(\r\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x30\n\x0c\x63\x61pabilities\x18\x04 \x01(\x0b\x32\x1a.connectstate.Capabilities\x12\x1f\n\x17\x64\x65vice_software_version\x18\x06 \x01(\t\x12-\n\x0b\x64\x65vice_type\x18\x07 \x01(\x0e\x32\x18.connectstate.DeviceType\x12\x15\n\rspirc_version\x18\t \x01(\t\x12\x11\n\tdevice_id\x18\n \x01(\t\x12\x1a\n\x12is_private_session\x18\x0b \x01(\x08\x12\x19\n\x11is_social_connect\x18\x0c \x01(\x08\x12\x11\n\tclient_id\x18\r \x01(\t\x12\r\n\x05\x62rand\x18\x0e \x01(\t\x12\r\n\x05model\x18\x0f \x01(\t\x12?\n\x0cmetadata_map\x18\x10 \x03(\x0b\x32).connectstate.DeviceInfo.MetadataMapEntry\x1a\x32\n\x10MetadataMapEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01"\xcc\x04\n\x0c\x43\x61pabilities\x12\x15\n\rcan_be_player\x18\x02 \x01(\x08\x12\x19\n\x11restrict_to_local\x18\x03 \x01(\x08\x12\x1a\n\x12gaia_eq_connect_id\x18\x05 \x01(\x08\x12\x17\n\x0fsupports_logout\x18\x06 \x01(\x08\x12\x15\n\ris_observable\x18\x07 \x01(\x08\x12\x14\n\x0cvolume_steps\x18\x08 \x01(\x05\x12\x17\n\x0fsupported_types\x18\t \x03(\t\x12\x14\n\x0c\x63ommand_acks\x18\n \x01(\x08\x12\x17\n\x0fsupports_rename\x18\x0b \x01(\x08\x12\x0e\n\x06hidden\x18\x0c \x01(\x08\x12\x16\n\x0e\x64isable_volume\x18\r \x01(\x08\x12\x18\n\x10\x63onnect_disabled\x18\x0e \x01(\x08\x12\x1c\n\x14supports_playlist_v2\x18\x0f \x01(\x08\x12\x17\n\x0fis_controllable\x18\x10 \x01(\x08\x12"\n\x1asupports_external_episodes\x18\x11 \x01(\x08\x12%\n\x1dsupports_set_backend_metadata\x18\x12 \x01(\x08\x12!\n\x19supports_transfer_command\x18\x13 \x01(\x08\x12 \n\x18supports_command_request\x18\x14 \x01(\x08\x12\x18\n\x10is_voice_enabled\x18\x15 \x01(\x08\x12\x1f\n\x17needs_full_player_state\x18\x16 \x01(\x08\x12\x1c\n\x14supports_gzip_pushes\x18\x17 \x01(\x08"+\n\x15\x43onnectCommandOptions\x12\x12\n\nmessage_id\x18\x01 \x01(\x05"M\n\rLogoutCommand\x12<\n\x0f\x63ommand_options\x18\x01 \x01(\x0b\x32#.connectstate.ConnectCommandOptions"`\n\x10SetVolumeCommand\x12\x0e\n\x06volume\x18\x01 \x01(\x05\x12<\n\x0f\x63ommand_options\x18\x02 \x01(\x0b\x32#.connectstate.ConnectCommandOptions"`\n\rRenameCommand\x12\x11\n\trename_to\x18\x01 \x01(\t\x12<\n\x0f\x63ommand_options\x18\x02 \x01(\x0b\x32#.connectstate.ConnectCommandOptions"\x95\x01\n\x19SetBackendMetadataCommand\x12G\n\x08metadata\x18\x01 \x03(\x0b\x32\x35.connectstate.SetBackendMetadataCommand.MetadataEntry\x1a/\n\rMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01*\xd4\x01\n\x11SendCommandResult\x12\x1f\n\x1bUNKNOWN_SEND_COMMAND_RESULT\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x14\n\x10\x44\x45VICE_NOT_FOUND\x10\x02\x12\x18\n\x14\x43ONTEXT_PLAYER_ERROR\x10\x03\x12\x16\n\x12\x44\x45VICE_DISAPPEARED\x10\x04\x12\x12\n\x0eUPSTREAM_ERROR\x10\x05\x12#\n\x1f\x44\x45VICE_DOES_NOT_SUPPORT_COMMAND\x10\x06\x12\x10\n\x0cRATE_LIMITED\x10\x07*\xb7\x01\n\x0ePutStateReason\x12\x1c\n\x18UNKNOWN_PUT_STATE_REASON\x10\x00\x12\x0f\n\x0bSPIRC_HELLO\x10\x01\x12\x10\n\x0cSPIRC_NOTIFY\x10\x02\x12\x0e\n\nNEW_DEVICE\x10\x03\x12\x18\n\x14PLAYER_STATE_CHANGED\x10\x04\x12\x12\n\x0eVOLUME_CHANGED\x10\x05\x12\x11\n\rPICKER_OPENED\x10\x06\x12\x13\n\x0f\x42\x45\x43\x41ME_INACTIVE\x10\x07*;\n\nMemberType\x12\x0c\n\x08SPIRC_V2\x10\x00\x12\x0c\n\x08SPIRC_V3\x10\x01\x12\x11\n\rCONNECT_STATE\x10\x02*\x84\x01\n\x13\x43lusterUpdateReason\x12!\n\x1dUNKNOWN_CLUSTER_UPDATE_REASON\x10\x00\x12\x17\n\x13\x44\x45VICES_DISAPPEARED\x10\x01\x12\x18\n\x14\x44\x45VICE_STATE_CHANGED\x10\x02\x12\x17\n\x13NEW_DEVICE_APPEARED\x10\x03*\xa0\x02\n\nDeviceType\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x0c\n\x08\x43OMPUTER\x10\x01\x12\n\n\x06TABLET\x10\x02\x12\x0e\n\nSMARTPHONE\x10\x03\x12\x0b\n\x07SPEAKER\x10\x04\x12\x06\n\x02TV\x10\x05\x12\x07\n\x03\x41VR\x10\x06\x12\x07\n\x03STB\x10\x07\x12\x10\n\x0c\x41UDIO_DONGLE\x10\x08\x12\x10\n\x0cGAME_CONSOLE\x10\t\x12\x0e\n\nCAST_VIDEO\x10\n\x12\x0e\n\nCAST_AUDIO\x10\x0b\x12\x0e\n\nAUTOMOBILE\x10\x0c\x12\x0e\n\nSMARTWATCH\x10\r\x12\x0e\n\nCHROMEBOOK\x10\x0e\x12\x13\n\x0fUNKNOWN_SPOTIFY\x10\x64\x12\r\n\tCAR_THING\x10\x65\x12\x0c\n\x08OBSERVER\x10\x66\x12\x0e\n\nHOME_THING\x10gB\x1c\n\x18\x63om.spotify.connectstateH\x02\x62\x06proto3',
+    serialized_pb=
+    b'\n\rconnect.proto\x12\x0c\x63onnectstate\x1a\x0cplayer.proto"\x9f\x01\n\rClusterUpdate\x12&\n\x07\x63luster\x18\x01 \x01(\x0b\x32\x15.connectstate.Cluster\x12\x38\n\rupdate_reason\x18\x02 \x01(\x0e\x32!.connectstate.ClusterUpdateReason\x12\x0e\n\x06\x61\x63k_id\x18\x03 \x01(\t\x12\x1c\n\x14\x64\x65vices_that_changed\x18\x04 \x03(\t"\xa6\x01\n\x06\x44\x65vice\x12-\n\x0b\x64\x65vice_info\x18\x01 \x01(\x0b\x32\x18.connectstate.DeviceInfo\x12/\n\x0cplayer_state\x18\x02 \x01(\x0b\x32\x19.connectstate.PlayerState\x12<\n\x13private_device_info\x18\x03 \x01(\x0b\x32\x1f.connectstate.PrivateDeviceInfo"\xfa\x01\n\x07\x43luster\x12\x11\n\ttimestamp\x18\x01 \x01(\x03\x12\x18\n\x10\x61\x63tive_device_id\x18\x02 \x01(\t\x12/\n\x0cplayer_state\x18\x03 \x01(\x0b\x32\x19.connectstate.PlayerState\x12\x31\n\x06\x64\x65vice\x18\x04 \x03(\x0b\x32!.connectstate.Cluster.DeviceEntry\x12\x15\n\rtransfer_data\x18\x05 \x01(\x0c\x1aG\n\x0b\x44\x65viceEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\'\n\x05value\x18\x02 \x01(\x0b\x32\x18.connectstate.DeviceInfo:\x02\x38\x01"\xa1\x03\n\x0fPutStateRequest\x12\x14\n\x0c\x63\x61llback_url\x18\x01 \x01(\t\x12$\n\x06\x64\x65vice\x18\x02 \x01(\x0b\x32\x14.connectstate.Device\x12-\n\x0bmember_type\x18\x03 \x01(\x0e\x32\x18.connectstate.MemberType\x12\x11\n\tis_active\x18\x04 \x01(\x08\x12\x36\n\x10put_state_reason\x18\x05 \x01(\x0e\x32\x1c.connectstate.PutStateReason\x12\x12\n\nmessage_id\x18\x06 \x01(\r\x12&\n\x1elast_command_sent_by_device_id\x18\x07 \x01(\t\x12\x1f\n\x17last_command_message_id\x18\x08 \x01(\r\x12\x1a\n\x12started_playing_at\x18\t \x01(\x04\x12\x1f\n\x17has_been_playing_for_ms\x18\x0b \x01(\x04\x12\x1d\n\x15\x63lient_side_timestamp\x18\x0c \x01(\x04\x12\x1f\n\x17only_write_player_state\x18\r \x01(\x08"%\n\x11PrivateDeviceInfo\x12\x10\n\x08platform\x18\x01 \x01(\t"(\n\x10SubscribeRequest\x12\x14\n\x0c\x63\x61llback_url\x18\x01 \x01(\t"\xc5\x03\n\nDeviceInfo\x12\x10\n\x08\x63\x61n_play\x18\x01 \x01(\x08\x12\x0e\n\x06volume\x18\x02 \x01(\r\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x30\n\x0c\x63\x61pabilities\x18\x04 \x01(\x0b\x32\x1a.connectstate.Capabilities\x12\x1f\n\x17\x64\x65vice_software_version\x18\x06 \x01(\t\x12-\n\x0b\x64\x65vice_type\x18\x07 \x01(\x0e\x32\x18.connectstate.DeviceType\x12\x15\n\rspirc_version\x18\t \x01(\t\x12\x11\n\tdevice_id\x18\n \x01(\t\x12\x1a\n\x12is_private_session\x18\x0b \x01(\x08\x12\x19\n\x11is_social_connect\x18\x0c \x01(\x08\x12\x11\n\tclient_id\x18\r \x01(\t\x12\r\n\x05\x62rand\x18\x0e \x01(\t\x12\r\n\x05model\x18\x0f \x01(\t\x12?\n\x0cmetadata_map\x18\x10 \x03(\x0b\x32).connectstate.DeviceInfo.MetadataMapEntry\x1a\x32\n\x10MetadataMapEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01"\xcc\x04\n\x0c\x43\x61pabilities\x12\x15\n\rcan_be_player\x18\x02 \x01(\x08\x12\x19\n\x11restrict_to_local\x18\x03 \x01(\x08\x12\x1a\n\x12gaia_eq_connect_id\x18\x05 \x01(\x08\x12\x17\n\x0fsupports_logout\x18\x06 \x01(\x08\x12\x15\n\ris_observable\x18\x07 \x01(\x08\x12\x14\n\x0cvolume_steps\x18\x08 \x01(\x05\x12\x17\n\x0fsupported_types\x18\t \x03(\t\x12\x14\n\x0c\x63ommand_acks\x18\n \x01(\x08\x12\x17\n\x0fsupports_rename\x18\x0b \x01(\x08\x12\x0e\n\x06hidden\x18\x0c \x01(\x08\x12\x16\n\x0e\x64isable_volume\x18\r \x01(\x08\x12\x18\n\x10\x63onnect_disabled\x18\x0e \x01(\x08\x12\x1c\n\x14supports_playlist_v2\x18\x0f \x01(\x08\x12\x17\n\x0fis_controllable\x18\x10 \x01(\x08\x12"\n\x1asupports_external_episodes\x18\x11 \x01(\x08\x12%\n\x1dsupports_set_backend_metadata\x18\x12 \x01(\x08\x12!\n\x19supports_transfer_command\x18\x13 \x01(\x08\x12 \n\x18supports_command_request\x18\x14 \x01(\x08\x12\x18\n\x10is_voice_enabled\x18\x15 \x01(\x08\x12\x1f\n\x17needs_full_player_state\x18\x16 \x01(\x08\x12\x1c\n\x14supports_gzip_pushes\x18\x17 \x01(\x08"+\n\x15\x43onnectCommandOptions\x12\x12\n\nmessage_id\x18\x01 \x01(\x05"M\n\rLogoutCommand\x12<\n\x0f\x63ommand_options\x18\x01 \x01(\x0b\x32#.connectstate.ConnectCommandOptions"`\n\x10SetVolumeCommand\x12\x0e\n\x06volume\x18\x01 \x01(\x05\x12<\n\x0f\x63ommand_options\x18\x02 \x01(\x0b\x32#.connectstate.ConnectCommandOptions"`\n\rRenameCommand\x12\x11\n\trename_to\x18\x01 \x01(\t\x12<\n\x0f\x63ommand_options\x18\x02 \x01(\x0b\x32#.connectstate.ConnectCommandOptions"\x95\x01\n\x19SetBackendMetadataCommand\x12G\n\x08metadata\x18\x01 \x03(\x0b\x32\x35.connectstate.SetBackendMetadataCommand.MetadataEntry\x1a/\n\rMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01*\xd4\x01\n\x11SendCommandResult\x12\x1f\n\x1bUNKNOWN_SEND_COMMAND_RESULT\x10\x00\x12\x0b\n\x07SUCCESS\x10\x01\x12\x14\n\x10\x44\x45VICE_NOT_FOUND\x10\x02\x12\x18\n\x14\x43ONTEXT_PLAYER_ERROR\x10\x03\x12\x16\n\x12\x44\x45VICE_DISAPPEARED\x10\x04\x12\x12\n\x0eUPSTREAM_ERROR\x10\x05\x12#\n\x1f\x44\x45VICE_DOES_NOT_SUPPORT_COMMAND\x10\x06\x12\x10\n\x0cRATE_LIMITED\x10\x07*\xb7\x01\n\x0ePutStateReason\x12\x1c\n\x18UNKNOWN_PUT_STATE_REASON\x10\x00\x12\x0f\n\x0bSPIRC_HELLO\x10\x01\x12\x10\n\x0cSPIRC_NOTIFY\x10\x02\x12\x0e\n\nNEW_DEVICE\x10\x03\x12\x18\n\x14PLAYER_STATE_CHANGED\x10\x04\x12\x12\n\x0eVOLUME_CHANGED\x10\x05\x12\x11\n\rPICKER_OPENED\x10\x06\x12\x13\n\x0f\x42\x45\x43\x41ME_INACTIVE\x10\x07*;\n\nMemberType\x12\x0c\n\x08SPIRC_V2\x10\x00\x12\x0c\n\x08SPIRC_V3\x10\x01\x12\x11\n\rCONNECT_STATE\x10\x02*\x84\x01\n\x13\x43lusterUpdateReason\x12!\n\x1dUNKNOWN_CLUSTER_UPDATE_REASON\x10\x00\x12\x17\n\x13\x44\x45VICES_DISAPPEARED\x10\x01\x12\x18\n\x14\x44\x45VICE_STATE_CHANGED\x10\x02\x12\x17\n\x13NEW_DEVICE_APPEARED\x10\x03*\xa0\x02\n\nDeviceType\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x0c\n\x08\x43OMPUTER\x10\x01\x12\n\n\x06TABLET\x10\x02\x12\x0e\n\nSMARTPHONE\x10\x03\x12\x0b\n\x07SPEAKER\x10\x04\x12\x06\n\x02TV\x10\x05\x12\x07\n\x03\x41VR\x10\x06\x12\x07\n\x03STB\x10\x07\x12\x10\n\x0c\x41UDIO_DONGLE\x10\x08\x12\x10\n\x0cGAME_CONSOLE\x10\t\x12\x0e\n\nCAST_VIDEO\x10\n\x12\x0e\n\nCAST_AUDIO\x10\x0b\x12\x0e\n\nAUTOMOBILE\x10\x0c\x12\x0e\n\nSMARTWATCH\x10\r\x12\x0e\n\nCHROMEBOOK\x10\x0e\x12\x13\n\x0fUNKNOWN_SPOTIFY\x10\x64\x12\r\n\tCAR_THING\x10\x65\x12\x0c\n\x08OBSERVER\x10\x66\x12\x0e\n\nHOME_THING\x10gB\x1c\n\x18\x63om.spotify.connectstateH\x02\x62\x06proto3',
     dependencies=[
         player__pb2.DESCRIPTOR,
     ],
@@ -962,7 +962,8 @@ _PUTSTATEREQUEST = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="last_command_sent_by_device_id",
-            full_name="connectstate.PutStateRequest.last_command_sent_by_device_id",
+            full_name=
+            "connectstate.PutStateRequest.last_command_sent_by_device_id",
             index=6,
             number=7,
             type=9,
@@ -2143,7 +2144,8 @@ _SETBACKENDMETADATACOMMAND_METADATAENTRY = _descriptor.Descriptor(
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
-            full_name="connectstate.SetBackendMetadataCommand.MetadataEntry.key",
+            full_name=
+            "connectstate.SetBackendMetadataCommand.MetadataEntry.key",
             index=0,
             number=1,
             type=9,
@@ -2162,7 +2164,8 @@ _SETBACKENDMETADATACOMMAND_METADATAENTRY = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="value",
-            full_name="connectstate.SetBackendMetadataCommand.MetadataEntry.value",
+            full_name=
+            "connectstate.SetBackendMetadataCommand.MetadataEntry.value",
             index=1,
             number=2,
             type=9,
@@ -2249,16 +2252,17 @@ _PUTSTATEREQUEST.fields_by_name["put_state_reason"].enum_type = _PUTSTATEREASON
 _DEVICEINFO_METADATAMAPENTRY.containing_type = _DEVICEINFO
 _DEVICEINFO.fields_by_name["capabilities"].message_type = _CAPABILITIES
 _DEVICEINFO.fields_by_name["device_type"].enum_type = _DEVICETYPE
-_DEVICEINFO.fields_by_name["metadata_map"].message_type = _DEVICEINFO_METADATAMAPENTRY
-_LOGOUTCOMMAND.fields_by_name["command_options"].message_type = _CONNECTCOMMANDOPTIONS
+_DEVICEINFO.fields_by_name[
+    "metadata_map"].message_type = _DEVICEINFO_METADATAMAPENTRY
+_LOGOUTCOMMAND.fields_by_name[
+    "command_options"].message_type = _CONNECTCOMMANDOPTIONS
 _SETVOLUMECOMMAND.fields_by_name[
-    "command_options"
-].message_type = _CONNECTCOMMANDOPTIONS
-_RENAMECOMMAND.fields_by_name["command_options"].message_type = _CONNECTCOMMANDOPTIONS
+    "command_options"].message_type = _CONNECTCOMMANDOPTIONS
+_RENAMECOMMAND.fields_by_name[
+    "command_options"].message_type = _CONNECTCOMMANDOPTIONS
 _SETBACKENDMETADATACOMMAND_METADATAENTRY.containing_type = _SETBACKENDMETADATACOMMAND
 _SETBACKENDMETADATACOMMAND.fields_by_name[
-    "metadata"
-].message_type = _SETBACKENDMETADATACOMMAND_METADATAENTRY
+    "metadata"].message_type = _SETBACKENDMETADATACOMMAND_METADATAENTRY
 DESCRIPTOR.message_types_by_name["ClusterUpdate"] = _CLUSTERUPDATE
 DESCRIPTOR.message_types_by_name["Device"] = _DEVICE
 DESCRIPTOR.message_types_by_name["Cluster"] = _CLUSTER
@@ -2267,13 +2271,13 @@ DESCRIPTOR.message_types_by_name["PrivateDeviceInfo"] = _PRIVATEDEVICEINFO
 DESCRIPTOR.message_types_by_name["SubscribeRequest"] = _SUBSCRIBEREQUEST
 DESCRIPTOR.message_types_by_name["DeviceInfo"] = _DEVICEINFO
 DESCRIPTOR.message_types_by_name["Capabilities"] = _CAPABILITIES
-DESCRIPTOR.message_types_by_name["ConnectCommandOptions"] = _CONNECTCOMMANDOPTIONS
+DESCRIPTOR.message_types_by_name[
+    "ConnectCommandOptions"] = _CONNECTCOMMANDOPTIONS
 DESCRIPTOR.message_types_by_name["LogoutCommand"] = _LOGOUTCOMMAND
 DESCRIPTOR.message_types_by_name["SetVolumeCommand"] = _SETVOLUMECOMMAND
 DESCRIPTOR.message_types_by_name["RenameCommand"] = _RENAMECOMMAND
 DESCRIPTOR.message_types_by_name[
-    "SetBackendMetadataCommand"
-] = _SETBACKENDMETADATACOMMAND
+    "SetBackendMetadataCommand"] = _SETBACKENDMETADATACOMMAND
 DESCRIPTOR.enum_types_by_name["SendCommandResult"] = _SENDCOMMANDRESULT
 DESCRIPTOR.enum_types_by_name["PutStateReason"] = _PUTSTATEREASON
 DESCRIPTOR.enum_types_by_name["MemberType"] = _MEMBERTYPE
@@ -2283,7 +2287,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ClusterUpdate = _reflection.GeneratedProtocolMessageType(
     "ClusterUpdate",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CLUSTERUPDATE,
         "__module__": "connect_pb2"
@@ -2294,7 +2298,7 @@ _sym_db.RegisterMessage(ClusterUpdate)
 
 Device = _reflection.GeneratedProtocolMessageType(
     "Device",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _DEVICE,
         "__module__": "connect_pb2"
@@ -2305,19 +2309,22 @@ _sym_db.RegisterMessage(Device)
 
 Cluster = _reflection.GeneratedProtocolMessageType(
     "Cluster",
-    (_message.Message,),
+    (_message.Message, ),
     {
-        "DeviceEntry": _reflection.GeneratedProtocolMessageType(
+        "DeviceEntry":
+        _reflection.GeneratedProtocolMessageType(
             "DeviceEntry",
-            (_message.Message,),
+            (_message.Message, ),
             {
                 "DESCRIPTOR": _CLUSTER_DEVICEENTRY,
                 "__module__": "connect_pb2"
                 # @@protoc_insertion_point(class_scope:connectstate.Cluster.DeviceEntry)
             },
         ),
-        "DESCRIPTOR": _CLUSTER,
-        "__module__": "connect_pb2"
+        "DESCRIPTOR":
+        _CLUSTER,
+        "__module__":
+        "connect_pb2"
         # @@protoc_insertion_point(class_scope:connectstate.Cluster)
     },
 )
@@ -2326,7 +2333,7 @@ _sym_db.RegisterMessage(Cluster.DeviceEntry)
 
 PutStateRequest = _reflection.GeneratedProtocolMessageType(
     "PutStateRequest",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _PUTSTATEREQUEST,
         "__module__": "connect_pb2"
@@ -2337,7 +2344,7 @@ _sym_db.RegisterMessage(PutStateRequest)
 
 PrivateDeviceInfo = _reflection.GeneratedProtocolMessageType(
     "PrivateDeviceInfo",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _PRIVATEDEVICEINFO,
         "__module__": "connect_pb2"
@@ -2348,7 +2355,7 @@ _sym_db.RegisterMessage(PrivateDeviceInfo)
 
 SubscribeRequest = _reflection.GeneratedProtocolMessageType(
     "SubscribeRequest",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _SUBSCRIBEREQUEST,
         "__module__": "connect_pb2"
@@ -2359,19 +2366,22 @@ _sym_db.RegisterMessage(SubscribeRequest)
 
 DeviceInfo = _reflection.GeneratedProtocolMessageType(
     "DeviceInfo",
-    (_message.Message,),
+    (_message.Message, ),
     {
-        "MetadataMapEntry": _reflection.GeneratedProtocolMessageType(
+        "MetadataMapEntry":
+        _reflection.GeneratedProtocolMessageType(
             "MetadataMapEntry",
-            (_message.Message,),
+            (_message.Message, ),
             {
                 "DESCRIPTOR": _DEVICEINFO_METADATAMAPENTRY,
                 "__module__": "connect_pb2"
                 # @@protoc_insertion_point(class_scope:connectstate.DeviceInfo.MetadataMapEntry)
             },
         ),
-        "DESCRIPTOR": _DEVICEINFO,
-        "__module__": "connect_pb2"
+        "DESCRIPTOR":
+        _DEVICEINFO,
+        "__module__":
+        "connect_pb2"
         # @@protoc_insertion_point(class_scope:connectstate.DeviceInfo)
     },
 )
@@ -2380,7 +2390,7 @@ _sym_db.RegisterMessage(DeviceInfo.MetadataMapEntry)
 
 Capabilities = _reflection.GeneratedProtocolMessageType(
     "Capabilities",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CAPABILITIES,
         "__module__": "connect_pb2"
@@ -2391,7 +2401,7 @@ _sym_db.RegisterMessage(Capabilities)
 
 ConnectCommandOptions = _reflection.GeneratedProtocolMessageType(
     "ConnectCommandOptions",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _CONNECTCOMMANDOPTIONS,
         "__module__": "connect_pb2"
@@ -2402,7 +2412,7 @@ _sym_db.RegisterMessage(ConnectCommandOptions)
 
 LogoutCommand = _reflection.GeneratedProtocolMessageType(
     "LogoutCommand",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _LOGOUTCOMMAND,
         "__module__": "connect_pb2"
@@ -2413,7 +2423,7 @@ _sym_db.RegisterMessage(LogoutCommand)
 
 SetVolumeCommand = _reflection.GeneratedProtocolMessageType(
     "SetVolumeCommand",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _SETVOLUMECOMMAND,
         "__module__": "connect_pb2"
@@ -2424,7 +2434,7 @@ _sym_db.RegisterMessage(SetVolumeCommand)
 
 RenameCommand = _reflection.GeneratedProtocolMessageType(
     "RenameCommand",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _RENAMECOMMAND,
         "__module__": "connect_pb2"
@@ -2435,19 +2445,22 @@ _sym_db.RegisterMessage(RenameCommand)
 
 SetBackendMetadataCommand = _reflection.GeneratedProtocolMessageType(
     "SetBackendMetadataCommand",
-    (_message.Message,),
+    (_message.Message, ),
     {
-        "MetadataEntry": _reflection.GeneratedProtocolMessageType(
+        "MetadataEntry":
+        _reflection.GeneratedProtocolMessageType(
             "MetadataEntry",
-            (_message.Message,),
+            (_message.Message, ),
             {
                 "DESCRIPTOR": _SETBACKENDMETADATACOMMAND_METADATAENTRY,
                 "__module__": "connect_pb2"
                 # @@protoc_insertion_point(class_scope:connectstate.SetBackendMetadataCommand.MetadataEntry)
             },
         ),
-        "DESCRIPTOR": _SETBACKENDMETADATACOMMAND,
-        "__module__": "connect_pb2"
+        "DESCRIPTOR":
+        _SETBACKENDMETADATACOMMAND,
+        "__module__":
+        "connect_pb2"
         # @@protoc_insertion_point(class_scope:connectstate.SetBackendMetadataCommand)
     },
 )

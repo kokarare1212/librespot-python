@@ -17,7 +17,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto2",
     serialized_options=b"\n\013com.spotify",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\rmercury.proto\x12\x07spotify"B\n\x16MercuryMultiGetRequest\x12(\n\x07request\x18\x01 \x03(\x0b\x32\x17.spotify.MercuryRequest"<\n\x14MercuryMultiGetReply\x12$\n\x05reply\x18\x01 \x03(\x0b\x32\x15.spotify.MercuryReply"O\n\x0eMercuryRequest\x12\x0b\n\x03uri\x18\x01 \x01(\t\x12\x14\n\x0c\x63ontent_type\x18\x02 \x01(\t\x12\x0c\n\x04\x62ody\x18\x03 \x01(\x0c\x12\x0c\n\x04\x65tag\x18\x04 \x01(\x0c"\xf5\x01\n\x0cMercuryReply\x12\x13\n\x0bstatus_code\x18\x01 \x01(\x11\x12\x16\n\x0estatus_message\x18\x02 \x01(\t\x12\x37\n\x0c\x63\x61\x63he_policy\x18\x03 \x01(\x0e\x32!.spotify.MercuryReply.CachePolicy\x12\x0b\n\x03ttl\x18\x04 \x01(\x11\x12\x0c\n\x04\x65tag\x18\x05 \x01(\x0c\x12\x14\n\x0c\x63ontent_type\x18\x06 \x01(\t\x12\x0c\n\x04\x62ody\x18\x07 \x01(\x0c"@\n\x0b\x43\x61\x63hePolicy\x12\x0c\n\x08\x43\x41\x43HE_NO\x10\x01\x12\x11\n\rCACHE_PRIVATE\x10\x02\x12\x10\n\x0c\x43\x41\x43HE_PUBLIC\x10\x03"y\n\x06Header\x12\x0b\n\x03uri\x18\x01 \x01(\t\x12\x14\n\x0c\x63ontent_type\x18\x02 \x01(\t\x12\x0e\n\x06method\x18\x03 \x01(\t\x12\x13\n\x0bstatus_code\x18\x04 \x01(\x11\x12\'\n\x0buser_fields\x18\x06 \x03(\x0b\x32\x12.spotify.UserField"\'\n\tUserField\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x0c\x42\r\n\x0b\x63om.spotify',
+    serialized_pb=
+    b'\n\rmercury.proto\x12\x07spotify"B\n\x16MercuryMultiGetRequest\x12(\n\x07request\x18\x01 \x03(\x0b\x32\x17.spotify.MercuryRequest"<\n\x14MercuryMultiGetReply\x12$\n\x05reply\x18\x01 \x03(\x0b\x32\x15.spotify.MercuryReply"O\n\x0eMercuryRequest\x12\x0b\n\x03uri\x18\x01 \x01(\t\x12\x14\n\x0c\x63ontent_type\x18\x02 \x01(\t\x12\x0c\n\x04\x62ody\x18\x03 \x01(\x0c\x12\x0c\n\x04\x65tag\x18\x04 \x01(\x0c"\xf5\x01\n\x0cMercuryReply\x12\x13\n\x0bstatus_code\x18\x01 \x01(\x11\x12\x16\n\x0estatus_message\x18\x02 \x01(\t\x12\x37\n\x0c\x63\x61\x63he_policy\x18\x03 \x01(\x0e\x32!.spotify.MercuryReply.CachePolicy\x12\x0b\n\x03ttl\x18\x04 \x01(\x11\x12\x0c\n\x04\x65tag\x18\x05 \x01(\x0c\x12\x14\n\x0c\x63ontent_type\x18\x06 \x01(\t\x12\x0c\n\x04\x62ody\x18\x07 \x01(\x0c"@\n\x0b\x43\x61\x63hePolicy\x12\x0c\n\x08\x43\x41\x43HE_NO\x10\x01\x12\x11\n\rCACHE_PRIVATE\x10\x02\x12\x10\n\x0c\x43\x41\x43HE_PUBLIC\x10\x03"y\n\x06Header\x12\x0b\n\x03uri\x18\x01 \x01(\t\x12\x14\n\x0c\x63ontent_type\x18\x02 \x01(\t\x12\x0e\n\x06method\x18\x03 \x01(\t\x12\x13\n\x0bstatus_code\x18\x04 \x01(\x11\x12\'\n\x0buser_fields\x18\x06 \x03(\x0b\x32\x12.spotify.UserField"\'\n\tUserField\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x0c\x42\r\n\x0b\x63om.spotify',
 )
 
 _MERCURYREPLY_CACHEPOLICY = _descriptor.EnumDescriptor(
@@ -567,13 +568,17 @@ _USERFIELD = _descriptor.Descriptor(
     serialized_end=647,
 )
 
-_MERCURYMULTIGETREQUEST.fields_by_name["request"].message_type = _MERCURYREQUEST
+_MERCURYMULTIGETREQUEST.fields_by_name[
+    "request"].message_type = _MERCURYREQUEST
 _MERCURYMULTIGETREPLY.fields_by_name["reply"].message_type = _MERCURYREPLY
-_MERCURYREPLY.fields_by_name["cache_policy"].enum_type = _MERCURYREPLY_CACHEPOLICY
+_MERCURYREPLY.fields_by_name[
+    "cache_policy"].enum_type = _MERCURYREPLY_CACHEPOLICY
 _MERCURYREPLY_CACHEPOLICY.containing_type = _MERCURYREPLY
 _HEADER.fields_by_name["user_fields"].message_type = _USERFIELD
-DESCRIPTOR.message_types_by_name["MercuryMultiGetRequest"] = _MERCURYMULTIGETREQUEST
-DESCRIPTOR.message_types_by_name["MercuryMultiGetReply"] = _MERCURYMULTIGETREPLY
+DESCRIPTOR.message_types_by_name[
+    "MercuryMultiGetRequest"] = _MERCURYMULTIGETREQUEST
+DESCRIPTOR.message_types_by_name[
+    "MercuryMultiGetReply"] = _MERCURYMULTIGETREPLY
 DESCRIPTOR.message_types_by_name["MercuryRequest"] = _MERCURYREQUEST
 DESCRIPTOR.message_types_by_name["MercuryReply"] = _MERCURYREPLY
 DESCRIPTOR.message_types_by_name["Header"] = _HEADER
@@ -582,7 +587,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 MercuryMultiGetRequest = _reflection.GeneratedProtocolMessageType(
     "MercuryMultiGetRequest",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _MERCURYMULTIGETREQUEST,
         "__module__": "mercury_pb2"
@@ -593,7 +598,7 @@ _sym_db.RegisterMessage(MercuryMultiGetRequest)
 
 MercuryMultiGetReply = _reflection.GeneratedProtocolMessageType(
     "MercuryMultiGetReply",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _MERCURYMULTIGETREPLY,
         "__module__": "mercury_pb2"
@@ -604,7 +609,7 @@ _sym_db.RegisterMessage(MercuryMultiGetReply)
 
 MercuryRequest = _reflection.GeneratedProtocolMessageType(
     "MercuryRequest",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _MERCURYREQUEST,
         "__module__": "mercury_pb2"
@@ -615,7 +620,7 @@ _sym_db.RegisterMessage(MercuryRequest)
 
 MercuryReply = _reflection.GeneratedProtocolMessageType(
     "MercuryReply",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _MERCURYREPLY,
         "__module__": "mercury_pb2"
@@ -626,7 +631,7 @@ _sym_db.RegisterMessage(MercuryReply)
 
 Header = _reflection.GeneratedProtocolMessageType(
     "Header",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _HEADER,
         "__module__": "mercury_pb2"
@@ -637,7 +642,7 @@ _sym_db.RegisterMessage(Header)
 
 UserField = _reflection.GeneratedProtocolMessageType(
     "UserField",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _USERFIELD,
         "__module__": "mercury_pb2"

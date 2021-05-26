@@ -17,7 +17,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto3",
     serialized_options=b"\n\023com.spotify.storageH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x15storage-resolve.proto\x12\x16spotify.download.proto"\xaf\x01\n\x16StorageResolveResponse\x12\x45\n\x06result\x18\x01 \x01(\x0e\x32\x35.spotify.download.proto.StorageResolveResponse.Result\x12\x0e\n\x06\x63\x64nurl\x18\x02 \x03(\t\x12\x0e\n\x06\x66ileid\x18\x04 \x01(\x0c".\n\x06Result\x12\x07\n\x03\x43\x44N\x10\x00\x12\x0b\n\x07STORAGE\x10\x01\x12\x0e\n\nRESTRICTED\x10\x03\x42\x17\n\x13\x63om.spotify.storageH\x02\x62\x06proto3',
+    serialized_pb=
+    b'\n\x15storage-resolve.proto\x12\x16spotify.download.proto"\xaf\x01\n\x16StorageResolveResponse\x12\x45\n\x06result\x18\x01 \x01(\x0e\x32\x35.spotify.download.proto.StorageResolveResponse.Result\x12\x0e\n\x06\x63\x64nurl\x18\x02 \x03(\t\x12\x0e\n\x06\x66ileid\x18\x04 \x01(\x0c".\n\x06Result\x12\x07\n\x03\x43\x44N\x10\x00\x12\x0b\n\x07STORAGE\x10\x01\x12\x0e\n\nRESTRICTED\x10\x03\x42\x17\n\x13\x63om.spotify.storageH\x02\x62\x06proto3',
 )
 
 _STORAGERESOLVERESPONSE_RESULT = _descriptor.EnumDescriptor(
@@ -140,15 +141,15 @@ _STORAGERESOLVERESPONSE = _descriptor.Descriptor(
 )
 
 _STORAGERESOLVERESPONSE.fields_by_name[
-    "result"
-].enum_type = _STORAGERESOLVERESPONSE_RESULT
+    "result"].enum_type = _STORAGERESOLVERESPONSE_RESULT
 _STORAGERESOLVERESPONSE_RESULT.containing_type = _STORAGERESOLVERESPONSE
-DESCRIPTOR.message_types_by_name["StorageResolveResponse"] = _STORAGERESOLVERESPONSE
+DESCRIPTOR.message_types_by_name[
+    "StorageResolveResponse"] = _STORAGERESOLVERESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 StorageResolveResponse = _reflection.GeneratedProtocolMessageType(
     "StorageResolveResponse",
-    (_message.Message,),
+    (_message.Message, ),
     {
         "DESCRIPTOR": _STORAGERESOLVERESPONSE,
         "__module__": "storage_resolve_pb2"
