@@ -348,16 +348,13 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
     @staticmethod
     def _create_client(conf: Session.Configuration) -> requests.Session:
         client = requests.Session()
-        if conf.proxyAuth and conf.proxyType is not Proxy.Type.DIRECT:
-            if conf.proxyAuth:
-                proxy_setting = [
-                    conf.proxyUsername,
-                    conf.proxyPassword,
-                    conf.proxyAddress,
-                    conf.proxyPort,
-                ]
-            else:
-                proxy_setting = [conf.proxyAddress, conf.proxyPort]
+        if conf.proxyAddress and conf.proxyPort and conf.proxyType is not Proxy.Type.DIRECT:
+            proxy_setting = [
+                conf.proxyUsername,
+                conf.proxyPassword,
+                conf.proxyAddress,
+                conf.proxyPort,
+            ]
             client.proxies = {
                 "http": "{}:{}@{}:{}".format(*proxy_setting),
                 "https": "{}:{}@{}:{}".format(*proxy_setting),
