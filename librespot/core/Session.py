@@ -321,7 +321,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
     _receiver: Session.Receiver = None
     _apWelcome: Authentication.APWelcome = None
     _mercuryClient: MercuryClient = None
-    _audioKeyManager: AudioKeyManager = None
+    _audioKeyManager: AudioKeyManager.AudioKeyManager = None
     _channelManager: ChannelManager = None
     _tokenProvider: TokenProvider = None
     _cdnManager: CdnManager = None
@@ -329,7 +329,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
     _dealer: DealerClient = None
     _api: ApiClient = None
     _search: SearchManager = None
-    _contentFeeder: PlayableContentFeeder = None
+    _contentFeeder: PlayableContentFeeder.PlayableContentFeeder = None
     _eventService: EventService = None
     _countryCode: str = None
     _closed: bool = False
@@ -683,7 +683,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             raise RuntimeError("Session isn't authenticated!")
         return self._mercuryClient
 
-    def audio_key(self) -> AudioKeyManager:
+    def audio_key(self) -> AudioKeyManager.AudioKeyManager:
         self._wait_auth_lock()
         if self._audioKeyManager is None:
             raise RuntimeError("Session isn't authenticated!")
@@ -725,7 +725,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             raise RuntimeError("Session isn't authenticated!")
         return self._api
 
-    def content_feeder(self) -> PlayableContentFeeder:
+    def content_feeder(self) -> PlayableContentFeeder.PlayableContentFeeder:
         if self._contentFeeder is None:
             raise RuntimeError("Session isn't authenticated!")
         return self._contentFeeder

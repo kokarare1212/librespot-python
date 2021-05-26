@@ -41,7 +41,7 @@ class PlayableContentFeeder:
         playable_id: PlayableId,
         audio_quality_picker: AudioQualityPicker,
         preload: bool,
-        halt_listener: HaltListener,
+        halt_listener: HaltListener.HaltListener,
     ):
         if type(playable_id) is TrackId:
             return self.load_track(playable_id, audio_quality_picker, preload,
@@ -74,7 +74,7 @@ class PlayableContentFeeder:
         track_id_or_track: typing.Union[TrackId, Metadata.Track],
         audio_quality_picker: AudioQualityPicker,
         preload: bool,
-        halt_listener: HaltListener,
+        halt_listener: HaltListener.HaltListener,
     ):
         if type(track_id_or_track) is TrackId:
             original = self.session.api().get_metadata_4_track(
@@ -98,7 +98,7 @@ class PlayableContentFeeder:
         track: Metadata.Track,
         episode: Metadata.Episode,
         preload: bool,
-        halt_lister: HaltListener,
+        halt_lister: HaltListener.HaltListener,
     ):
         if track is None and episode is None:
             raise RuntimeError()
@@ -124,15 +124,15 @@ class PlayableContentFeeder:
     class LoadedStream:
         episode: Metadata.Episode
         track: Metadata.Track
-        input_stream: GeneralAudioStream
-        normalization_data: NormalizationData
+        input_stream: GeneralAudioStream.GeneralAudioStream
+        normalization_data: NormalizationData.NormalizationData
         metrics: PlayableContentFeeder.Metrics
 
         def __init__(
             self,
             track_or_episode: typing.Union[Metadata.Track, Metadata.Episode],
-            input_stream: GeneralAudioStream,
-            normalization_data: NormalizationData,
+            input_stream: GeneralAudioStream.GeneralAudioStream,
+            normalization_data: NormalizationData.NormalizationData,
             metrics: PlayableContentFeeder.Metrics,
         ):
             if type(track_or_episode) is Metadata.Track:

@@ -55,7 +55,7 @@ class CdnManager:
                                 halt_listener: HaltListener):
         return CdnManager.Streamer(
             self._session,
-            StreamId(episode),
+            StreamId.StreamId(episode),
             SuperAudioFormat.MP3,
             CdnManager.CdnUrl(self, None, external_url),
             self._session.cache(),
@@ -188,7 +188,7 @@ class CdnManager:
             GeneralWritableStream.GeneralWritableStream,
     ):
         _session: Session = None
-        _streamId: StreamId = None
+        _streamId: StreamId.StreamId = None
         _executorService = concurrent.futures.ThreadPoolExecutor()
         _audioFormat: SuperAudioFormat = None
         _audioDecrypt: AudioDecrypt = None
@@ -204,7 +204,7 @@ class CdnManager:
         def __init__(
             self,
             session: Session,
-            stream_id: StreamId,
+            stream_id: StreamId.StreamId,
             audio_format: SuperAudioFormat,
             cdn_url,
             cache: CacheManager,

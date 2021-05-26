@@ -2,7 +2,7 @@ from __future__ import annotations
 import typing
 
 if typing.TYPE_CHECKING:
-    from librespot.audio import AbsChunkedInputStream
+    from librespot.audio.AbsChunkedInputStream import AbsChunkedInputStream
     from librespot.audio.format import SuperAudioFormat
 
 
