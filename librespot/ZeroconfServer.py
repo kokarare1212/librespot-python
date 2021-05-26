@@ -11,7 +11,7 @@ from zeroconf import Zeroconf
 from librespot.common import Utils
 from librespot.core import Session
 from librespot.crypto import DiffieHellman
-from librespot.proto import Connect_pb2
+from librespot.proto import Connect_pb2 as Connect
 from librespot.standard import Closeable
 from librespot.standard import Runnable
 
@@ -61,7 +61,7 @@ class ZeroconfServer(Closeable):
             )
 
     class Inner:
-        device_type: Connect_pb2.DeviceType = None
+        device_type: Connect.DeviceType = None
         device_name: str = None
         device_id: str = None
         preferred_locale: str = None
@@ -69,7 +69,7 @@ class ZeroconfServer(Closeable):
 
         def __init__(
             self,
-            device_type: Connect_pb2.DeviceType,
+            device_type: Connect.DeviceType,
             device_name: str,
             preferred_locale: str,
             conf: Session.Configuration,

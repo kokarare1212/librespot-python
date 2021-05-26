@@ -9,8 +9,8 @@ from librespot.metadata import ArtistId
 from librespot.metadata import EpisodeId
 from librespot.metadata import ShowId
 from librespot.metadata import TrackId
-from librespot.proto import Connect_pb2
-from librespot.proto import Metadata_pb2
+from librespot.proto import Connect_pb2 as Connect
+from librespot.proto import Metadata_pb2 as Metadata
 from librespot.standard import Closeable
 
 
@@ -53,7 +53,7 @@ class ApiClient(Closeable):
         return resp
 
     def put_connect_state(self, connection_id: str,
-                          proto: Connect_pb2.PutStateRequest) -> None:
+                          proto: Connect.PutStateRequest) -> None:
         resp = self.send(
             "PUT",
             "/connect-state/v1/devices/{}".format(self._session.device_id()),
@@ -72,7 +72,7 @@ class ApiClient(Closeable):
             self._LOGGER.warning("PUT state returned {}. headers: {}".format(
                 resp.status_code, resp.headers))
 
-    def get_metadata_4_track(self, track: TrackId) -> Metadata_pb2.Track:
+    def get_metadata_4_track(self, track: TrackId) -> Metadata.Track:
         resp = self.send("GET", "/metadata/4/track/{}".format(track.hex_id()),
                          None, None)
         ApiClient.StatusCodeException.check_status(resp)
@@ -80,11 +80,11 @@ class ApiClient(Closeable):
         body = resp.content
         if body is None:
             raise RuntimeError()
-        proto = Metadata_pb2.Track()
+        proto = Metadata.Track()
         proto.ParseFromString(body)
         return proto
 
-    def get_metadata_4_episode(self, episode: EpisodeId) -> Metadata_pb2.Episode:
+    def get_metadata_4_episode(self, episode: EpisodeId) -> Metadata.Episode:
         resp = self.send("GET",
                          "/metadata/4/episode/{}".format(episode.hex_id()),
                          None, None)
@@ -93,11 +93,11 @@ class ApiClient(Closeable):
         body = resp.content
         if body is None:
             raise IOError()
-        proto = Metadata_pb2.Episode()
+        proto = Metadata.Episode()
         proto.ParseFromString(body)
         return proto
 
-    def get_metadata_4_album(self, album: AlbumId) -> Metadata_pb2.Album:
+    def get_metadata_4_album(self, album: AlbumId) -> Metadata.Album:
         resp = self.send("GET", "/metadata/4/album/{}".format(album.hex_id()),
                          None, None)
         ApiClient.StatusCodeException.check_status(resp)
@@ -105,11 +105,11 @@ class ApiClient(Closeable):
         body = resp.content
         if body is None:
             raise IOError()
-        proto = Metadata_pb2.Album()
+        proto = Metadata.Album()
         proto.ParseFromString(body)
         return proto
 
-    def get_metadata_4_artist(self, artist: ArtistId) -> Metadata_pb2.Artist:
+    def get_metadata_4_artist(self, artist: ArtistId) -> Metadata.Artist:
         resp = self.send("GET",
                          "/metadata/4/artist/{}".format(artist.hex_id()), None,
                          None)
@@ -118,11 +118,11 @@ class ApiClient(Closeable):
         body = resp.content
         if body is None:
             raise IOError()
-        proto = Metadata_pb2.Artist()
+        proto = Metadata.Artist()
         proto.ParseFromString(body)
         return proto
 
-    def get_metadata_4_show(self, show: ShowId) -> Metadata_pb2.Show:
+    def get_metadata_4_show(self, show: ShowId) -> Metadata.Show:
         resp = self.send("GET", "/metadata/4/show/{}".format(show.hex_id()),
                          None, None)
         ApiClient.StatusCodeException.check_status(resp)
@@ -130,7 +130,7 @@ class ApiClient(Closeable):
         body = resp.content
         if body is None:
             raise IOError()
-        proto = Metadata_pb2.Show()
+        proto = Metadata.Show()
         proto.ParseFromString(body)
         return proto
 

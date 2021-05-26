@@ -1,13 +1,13 @@
 import typing
 
-from librespot.proto import Mercury_pb2
+from librespot.proto import Mercury_pb2 as Mercury
 
 
 class RawMercuryRequest:
-    header: Mercury_pb2.Header
+    header: Mercury.Header
     payload: typing.List[bytes]
 
-    def __init__(self, header: Mercury_pb2.Header, payload: typing.List[bytes]):
+    def __init__(self, header: Mercury.Header, payload: typing.List[bytes]):
         self.header = header
         self.payload = payload
 
@@ -61,7 +61,7 @@ class RawMercuryRequest:
             return self
 
         def add_user_field(self,
-                           field: Mercury_pb2.UserField = None,
+                           field: Mercury.UserField = None,
                            key: str = None,
                            value: str = None):
             if field is None and (key is None or value is None):
@@ -74,7 +74,7 @@ class RawMercuryRequest:
                 self.header_dict["user_fields"].append(field)
             if key is not None and value is not None:
                 self.header_dict["user_fields"].append(
-                    Mercury_pb2.UserField(key=key, value=value.encode()))
+                    Mercury.UserField(key=key, value=value.encode()))
             return self
 
         def add_payload_part(self, part: bytes):
@@ -85,5 +85,5 @@ class RawMercuryRequest:
             return self.add_payload_part(msg)
 
         def build(self):
-            return RawMercuryRequest(Mercury_pb2.Header(**self.header_dict),
+            return RawMercuryRequest(Mercury.Header(**self.header_dict),
                                      self.payload)

@@ -17,14 +17,14 @@ from librespot.audio.decrypt import NoopAudioDecrypt
 from librespot.audio.format import SuperAudioFormat
 from librespot.audio.storage import ChannelManager
 from librespot.common import Utils
-from librespot.proto import StorageResolve_pb2
+from librespot.proto import StorageResolve_pb2 as StorageResolve
 
 if typing.TYPE_CHECKING:
     from librespot.audio.decrypt.AudioDecrypt import AudioDecrypt
     from librespot.audio.HaltListener import HaltListener
     from librespot.cache.CacheManager import CacheManager
     from librespot.core.Session import Session
-    from librespot.proto import Metadata_pb2
+    from librespot.proto import Metadata_pb2 as Metadata
 
 
 class CdnManager:
@@ -50,7 +50,7 @@ class CdnManager:
 
         return body
 
-    def stream_external_episode(self, episode: Metadata_pb2.Episode,
+    def stream_external_episode(self, episode: Metadata.Episode,
                                 external_url: str,
                                 halt_listener: HaltListener):
         return CdnManager.Streamer(
@@ -65,7 +65,7 @@ class CdnManager:
 
     def stream_file(
         self,
-        file: Metadata_pb2.AudioFile,
+        file: Metadata.AudioFile,
         key: bytes,
         url: str,
         halt_listener: HaltListener,
@@ -96,9 +96,9 @@ class CdnManager:
         if body is None:
             raise IOError("Response body is empty!")
 
-        proto = StorageResolve_pb2.StorageResolveResponse()
+        proto = StorageResolve.StorageResolveResponse()
         proto.ParseFromString(body)
-        if proto.result == StorageResolve_pb2.StorageResolveResponse.Result.CDN:
+        if proto.result == StorageResolve.StorageResolveResponse.Result.CDN:
             url = random.choice(proto.cdnurl)
             self._LOGGER.debug("Fetched CDN url for {}: {}".format(
                 Utils.bytes_to_hex(file_id), url))

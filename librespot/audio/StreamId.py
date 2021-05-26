@@ -1,5 +1,5 @@
 from librespot.common.Utils import Utils
-from librespot.proto import Metadata_pb2
+from librespot.proto import Metadata_pb2 as Metadata
 
 
 class StreamId:
@@ -7,8 +7,8 @@ class StreamId:
     episode_gid: bytes = None
 
     def __init__(self,
-                 file: Metadata_pb2.AudioFile = None,
-                 episode: Metadata_pb2.Episode = None):
+                 file: Metadata.AudioFile = None,
+                 episode: Metadata.Episode = None):
         if file is None and episode is None:
             return
         if file is not None:
