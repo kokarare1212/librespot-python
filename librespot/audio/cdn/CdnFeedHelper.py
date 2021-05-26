@@ -94,7 +94,8 @@ class CdnFeedHelper:
 
         streamer = session.cdn().stream_file(file, key, url, halt_listener)
         input_stream = streamer.stream()
-        normalization_data = NormalizationData.NormalizationData.read(input_stream)
+        normalization_data = NormalizationData.NormalizationData.read(
+            input_stream)
         if input_stream.skip(0xA7) != 0xA7:
             raise IOError("Couldn't skip 0xa7 bytes!")
         return PlayableContentFeeder.PlayableContentFeeder.LoadedStream(
