@@ -1,5 +1,6 @@
-from librespot.proto import Metadata_pb2 as Metadata
 import enum
+
+from librespot.proto import Metadata_pb2 as Metadata
 
 
 class SuperAudioFormat(enum.Enum):

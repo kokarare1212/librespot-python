@@ -8,13 +8,10 @@ import typing
 
 from librespot.audio.storage import AudioFile
 from librespot.common import Utils
-from librespot.core import PacketsReceiver
-from librespot.core import Session
+from librespot.core import PacketsReceiver, Session
 from librespot.crypto import Packet
-from librespot.standard import BytesInputStream
-from librespot.standard import BytesOutputStream
-from librespot.standard import Closeable
-from librespot.standard import Runnable
+from librespot.standard import (BytesInputStream, BytesOutputStream, Closeable,
+                                Runnable)
 
 
 class ChannelManager(Closeable, PacketsReceiver.PacketsReceiver):

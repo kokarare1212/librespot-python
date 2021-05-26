@@ -1,5 +1,6 @@
-from librespot.proto.Keyexchange_pb2 import *
 import platform
+
+from librespot.proto.Keyexchange_pb2 import *
 
 
 class Version:

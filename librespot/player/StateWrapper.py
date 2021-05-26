@@ -4,14 +4,11 @@ import typing
 
 from librespot.core import Session
 from librespot.dealer import DealerClient
-from librespot.player import Player
-from librespot.player import PlayerConfiguration
+from librespot.player import Player, PlayerConfiguration
 from librespot.player.state import DeviceStateHandler
 from librespot.proto import Connect_pb2 as Connect
-from librespot.proto.Player_pb2 import ContextPlayerOptions
-from librespot.proto.Player_pb2 import PlayerState
-from librespot.proto.Player_pb2 import Restrictions
-from librespot.proto.Player_pb2 import Suppressions
+from librespot.proto.Player_pb2 import (ContextPlayerOptions, PlayerState,
+                                        Restrictions, Suppressions)
 
 
 class StateWrapper(DeviceStateHandler.Listener, DealerClient.MessageListener):
