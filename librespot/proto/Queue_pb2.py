@@ -83,14 +83,13 @@ _QUEUE = _descriptor.Descriptor(
     serialized_end=152,
 )
 
-_QUEUE.fields_by_name[
-    "tracks"].message_type = context__track__pb2._CONTEXTTRACK
+_QUEUE.fields_by_name["tracks"].message_type = context__track__pb2._CONTEXTTRACK
 DESCRIPTOR.message_types_by_name["Queue"] = _QUEUE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Queue = _reflection.GeneratedProtocolMessageType(
     "Queue",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _QUEUE,
         "__module__": "queue_pb2"

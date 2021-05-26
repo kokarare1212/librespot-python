@@ -22,7 +22,8 @@ class DeviceStateHandler:
     _listeners: typing.List[DeviceStateHandler.Listener] = []
     _putState: Connect.PutStateRequest = None
     _putStateWorker: concurrent.futures.ThreadPoolExecutor = (
-        concurrent.futures.ThreadPoolExecutor())
+        concurrent.futures.ThreadPoolExecutor()
+    )
     _connectionId: str = None
 
     def __init__(self, session: Session, player, conf: PlayerConfiguration):
@@ -35,8 +36,9 @@ class DeviceStateHandler:
 
         if self._connectionId is None or self._connectionId != newer:
             self._connectionId = newer
-            self._LOGGER.debug("Updated Spotify-Connection-Id: {}".format(
-                self._connectionId))
+            self._LOGGER.debug(
+                "Updated Spotify-Connection-Id: {}".format(self._connectionId)
+            )
             self._notify_ready()
 
     def add_listener(self, listener: DeviceStateHandler.Listener):
@@ -69,11 +71,13 @@ class DeviceStateHandler:
 
     def _put_connect_state(self, req: Connect.PutStateRequest):
         self._session.api().put_connect_state(self._connectionId, req)
-        self._LOGGER.info("Put state. ts: {}, connId: {}, reason: {}".format(
-            req.client_side_timestamp,
-            Utils.truncate_middle(self._connectionId, 10),
-            req.put_state_reason,
-        ))
+        self._LOGGER.info(
+            "Put state. ts: {}, connId: {}, reason: {}".format(
+                req.client_side_timestamp,
+                Utils.truncate_middle(self._connectionId, 10),
+                req.put_state_reason,
+            )
+        )
 
     class Endpoint(enum.Enum):
         Play: str = "play"

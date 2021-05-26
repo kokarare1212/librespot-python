@@ -179,7 +179,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 PlayOrigin = _reflection.GeneratedProtocolMessageType(
     "PlayOrigin",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _PLAYORIGIN,
         "__module__": "play_origin_pb2"

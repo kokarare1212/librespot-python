@@ -125,17 +125,17 @@ _SESSION = _descriptor.Descriptor(
     serialized_end=324,
 )
 
-_SESSION.fields_by_name[
-    "play_origin"].message_type = play__origin__pb2._PLAYORIGIN
+_SESSION.fields_by_name["play_origin"].message_type = play__origin__pb2._PLAYORIGIN
 _SESSION.fields_by_name["context"].message_type = context__pb2._CONTEXT
 _SESSION.fields_by_name[
-    "option_overrides"].message_type = context__player__options__pb2._CONTEXTPLAYEROPTIONOVERRIDES
+    "option_overrides"
+].message_type = context__player__options__pb2._CONTEXTPLAYEROPTIONOVERRIDES
 DESCRIPTOR.message_types_by_name["Session"] = _SESSION
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Session = _reflection.GeneratedProtocolMessageType(
     "Session",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _SESSION,
         "__module__": "session_pb2"

@@ -84,7 +84,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ClientInfo = _reflection.GeneratedProtocolMessageType(
     "ClientInfo",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _CLIENTINFO,
         "__module__": "spotify.login5.v3.client_info_pb2"

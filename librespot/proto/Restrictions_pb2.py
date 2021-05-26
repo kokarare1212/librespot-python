@@ -445,7 +445,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Restrictions = _reflection.GeneratedProtocolMessageType(
     "Restrictions",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _RESTRICTIONS,
         "__module__": "restrictions_pb2"

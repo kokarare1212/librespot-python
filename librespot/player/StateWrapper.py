@@ -20,8 +20,7 @@ class StateWrapper(DeviceStateHandler.Listener, DealerClient.MessageListener):
     _player: Player = None
     _device: DeviceStateHandler = None
 
-    def __init__(self, session: Session, player: Player,
-                 conf: PlayerConfiguration):
+    def __init__(self, session: Session, player: Player, conf: PlayerConfiguration):
         self._session = session
         self._player = player
         self._device = DeviceStateHandler(session, self, conf)
@@ -40,9 +39,9 @@ class StateWrapper(DeviceStateHandler.Listener, DealerClient.MessageListener):
             playback_speed=1.0,
             suppressions=Suppressions(),
             context_restrictions=Restrictions(),
-            options=ContextPlayerOptions(repeating_context=False,
-                                         shuffling_context=False,
-                                         repeating_track=False),
+            options=ContextPlayerOptions(
+                repeating_context=False, shuffling_context=False, repeating_track=False
+            ),
             position_as_of_timestamp=0,
             position=0,
             is_playing=False,
@@ -52,9 +51,7 @@ class StateWrapper(DeviceStateHandler.Listener, DealerClient.MessageListener):
         self._device.add_listener(listener)
 
     def ready(self) -> None:
-        self._device.update_state(Connect.PutStateReason.NEW_DEVICE, 0,
-                                  self._state)
+        self._device.update_state(Connect.PutStateReason.NEW_DEVICE, 0, self._state)
 
-    def on_message(self, uri: str, headers: typing.Dict[str, str],
-                   payload: bytes):
+    def on_message(self, uri: str, headers: typing.Dict[str, str], payload: bytes):
         pass

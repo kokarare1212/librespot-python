@@ -6,68 +6,75 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
-    name='metadata.proto',
-    package='spotify.metadata.proto',
-    syntax='proto2',
-    serialized_options=b'\n\024com.spotify.metadataB\010MetadataH\002',
+    name="metadata.proto",
+    package="spotify.metadata.proto",
+    syntax="proto2",
+    serialized_options=b"\n\024com.spotify.metadataB\010MetadataH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x0emetadata.proto\x12\x16spotify.metadata.proto\"\x8a\x07\n\x06\x41rtist\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x12\n\npopularity\x18\x03 \x01(\x11\x12\x34\n\ttop_track\x18\x04 \x03(\x0b\x32!.spotify.metadata.proto.TopTracks\x12\x37\n\x0b\x61lbum_group\x18\x05 \x03(\x0b\x32\".spotify.metadata.proto.AlbumGroup\x12\x38\n\x0csingle_group\x18\x06 \x03(\x0b\x32\".spotify.metadata.proto.AlbumGroup\x12=\n\x11\x63ompilation_group\x18\x07 \x03(\x0b\x32\".spotify.metadata.proto.AlbumGroup\x12<\n\x10\x61ppears_on_group\x18\x08 \x03(\x0b\x32\".spotify.metadata.proto.AlbumGroup\x12\r\n\x05genre\x18\t \x03(\t\x12\x37\n\x0b\x65xternal_id\x18\n \x03(\x0b\x32\".spotify.metadata.proto.ExternalId\x12/\n\x08portrait\x18\x0b \x03(\x0b\x32\x1d.spotify.metadata.proto.Image\x12\x34\n\tbiography\x18\x0c \x03(\x0b\x32!.spotify.metadata.proto.Biography\x12?\n\x0f\x61\x63tivity_period\x18\r \x03(\x0b\x32&.spotify.metadata.proto.ActivityPeriod\x12\x38\n\x0brestriction\x18\x0e \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12/\n\x07related\x18\x0f \x03(\x0b\x32\x1e.spotify.metadata.proto.Artist\x12\x1f\n\x17is_portrait_album_cover\x18\x10 \x01(\x08\x12:\n\x0eportrait_group\x18\x11 \x01(\x0b\x32\".spotify.metadata.proto.ImageGroup\x12\x37\n\x0bsale_period\x18\x12 \x03(\x0b\x32\".spotify.metadata.proto.SalePeriod\x12:\n\x0c\x61vailability\x18\x14 \x03(\x0b\x32$.spotify.metadata.proto.Availability\"\xe8\x06\n\x05\x41lbum\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12.\n\x06\x61rtist\x18\x03 \x03(\x0b\x32\x1e.spotify.metadata.proto.Artist\x12\x30\n\x04type\x18\x04 \x01(\x0e\x32\".spotify.metadata.proto.Album.Type\x12\r\n\x05label\x18\x05 \x01(\t\x12*\n\x04\x64\x61te\x18\x06 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date\x12\x12\n\npopularity\x18\x07 \x01(\x11\x12\r\n\x05genre\x18\x08 \x03(\t\x12,\n\x05\x63over\x18\t \x03(\x0b\x32\x1d.spotify.metadata.proto.Image\x12\x37\n\x0b\x65xternal_id\x18\n \x03(\x0b\x32\".spotify.metadata.proto.ExternalId\x12*\n\x04\x64isc\x18\x0b \x03(\x0b\x32\x1c.spotify.metadata.proto.Disc\x12\x0e\n\x06review\x18\x0c \x03(\t\x12\x34\n\tcopyright\x18\r \x03(\x0b\x32!.spotify.metadata.proto.Copyright\x12\x38\n\x0brestriction\x18\x0e \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12.\n\x07related\x18\x0f \x03(\x0b\x32\x1d.spotify.metadata.proto.Album\x12\x37\n\x0bsale_period\x18\x10 \x03(\x0b\x32\".spotify.metadata.proto.SalePeriod\x12\x37\n\x0b\x63over_group\x18\x11 \x01(\x0b\x32\".spotify.metadata.proto.ImageGroup\x12\x16\n\x0eoriginal_title\x18\x12 \x01(\t\x12\x15\n\rversion_title\x18\x13 \x01(\t\x12\x10\n\x08type_str\x18\x14 \x01(\t\x12:\n\x0c\x61vailability\x18\x17 \x03(\x0b\x32$.spotify.metadata.proto.Availability\"R\n\x04Type\x12\t\n\x05\x41LBUM\x10\x01\x12\n\n\x06SINGLE\x10\x02\x12\x0f\n\x0b\x43OMPILATION\x10\x03\x12\x06\n\x02\x45P\x10\x04\x12\r\n\tAUDIOBOOK\x10\x05\x12\x0b\n\x07PODCAST\x10\x06\"\xd5\x05\n\x05Track\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12,\n\x05\x61lbum\x18\x03 \x01(\x0b\x32\x1d.spotify.metadata.proto.Album\x12.\n\x06\x61rtist\x18\x04 \x03(\x0b\x32\x1e.spotify.metadata.proto.Artist\x12\x0e\n\x06number\x18\x05 \x01(\x11\x12\x13\n\x0b\x64isc_number\x18\x06 \x01(\x11\x12\x10\n\x08\x64uration\x18\x07 \x01(\x11\x12\x12\n\npopularity\x18\x08 \x01(\x11\x12\x10\n\x08\x65xplicit\x18\t \x01(\x08\x12\x37\n\x0b\x65xternal_id\x18\n \x03(\x0b\x32\".spotify.metadata.proto.ExternalId\x12\x38\n\x0brestriction\x18\x0b \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12/\n\x04\x66ile\x18\x0c \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x32\n\x0b\x61lternative\x18\r \x03(\x0b\x32\x1d.spotify.metadata.proto.Track\x12\x37\n\x0bsale_period\x18\x0e \x03(\x0b\x32\".spotify.metadata.proto.SalePeriod\x12\x32\n\x07preview\x18\x0f \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x0c\n\x04tags\x18\x10 \x03(\t\x12\x1f\n\x17\x65\x61rliest_live_timestamp\x18\x11 \x01(\x03\x12\x12\n\nhas_lyrics\x18\x12 \x01(\x08\x12:\n\x0c\x61vailability\x18\x13 \x03(\x0b\x32$.spotify.metadata.proto.Availability\x12\x32\n\x08licensor\x18\x15 \x01(\x0b\x32 .spotify.metadata.proto.Licensor\"\xbf\x05\n\x04Show\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18@ \x01(\t\x12!\n\x15\x64\x65precated_popularity\x18\x41 \x01(\x11\x42\x02\x18\x01\x12\x11\n\tpublisher\x18\x42 \x01(\t\x12\x10\n\x08language\x18\x43 \x01(\t\x12\x10\n\x08\x65xplicit\x18\x44 \x01(\x08\x12\x37\n\x0b\x63over_image\x18\x45 \x01(\x0b\x32\".spotify.metadata.proto.ImageGroup\x12\x30\n\x07\x65pisode\x18\x46 \x03(\x0b\x32\x1f.spotify.metadata.proto.Episode\x12\x34\n\tcopyright\x18G \x03(\x0b\x32!.spotify.metadata.proto.Copyright\x12\x38\n\x0brestriction\x18H \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12\x0f\n\x07keyword\x18I \x03(\t\x12:\n\nmedia_type\x18J \x01(\x0e\x32&.spotify.metadata.proto.Show.MediaType\x12H\n\x11\x63onsumption_order\x18K \x01(\x0e\x32-.spotify.metadata.proto.Show.ConsumptionOrder\x12:\n\x0c\x61vailability\x18N \x03(\x0b\x32$.spotify.metadata.proto.Availability\x12\x13\n\x0btrailer_uri\x18S \x01(\t\",\n\tMediaType\x12\t\n\x05MIXED\x10\x00\x12\t\n\x05\x41UDIO\x10\x01\x12\t\n\x05VIDEO\x10\x02\"<\n\x10\x43onsumptionOrder\x12\x0e\n\nSEQUENTIAL\x10\x01\x12\x0c\n\x08\x45PISODIC\x10\x02\x12\n\n\x06RECENT\x10\x03\"\xf9\x06\n\x07\x45pisode\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08\x64uration\x18\x07 \x01(\x11\x12\x30\n\x05\x61udio\x18\x0c \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x13\n\x0b\x64\x65scription\x18@ \x01(\t\x12\x0e\n\x06number\x18\x41 \x01(\x11\x12\x32\n\x0cpublish_time\x18\x42 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date\x12!\n\x15\x64\x65precated_popularity\x18\x43 \x01(\x11\x42\x02\x18\x01\x12\x37\n\x0b\x63over_image\x18\x44 \x01(\x0b\x32\".spotify.metadata.proto.ImageGroup\x12\x10\n\x08language\x18\x45 \x01(\t\x12\x10\n\x08\x65xplicit\x18\x46 \x01(\x08\x12*\n\x04show\x18G \x01(\x0b\x32\x1c.spotify.metadata.proto.Show\x12\x30\n\x05video\x18H \x03(\x0b\x32!.spotify.metadata.proto.VideoFile\x12\x38\n\rvideo_preview\x18I \x03(\x0b\x32!.spotify.metadata.proto.VideoFile\x12\x38\n\raudio_preview\x18J \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x38\n\x0brestriction\x18K \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12\x38\n\x0c\x66reeze_frame\x18L \x01(\x0b\x32\".spotify.metadata.proto.ImageGroup\x12\x0f\n\x07keyword\x18M \x03(\t\x12!\n\x19\x61llow_background_playback\x18Q \x01(\x08\x12:\n\x0c\x61vailability\x18R \x03(\x0b\x32$.spotify.metadata.proto.Availability\x12\x14\n\x0c\x65xternal_url\x18S \x01(\t\x12\x39\n\x04type\x18W \x01(\x0e\x32+.spotify.metadata.proto.Episode.EpisodeType\"/\n\x0b\x45pisodeType\x12\x08\n\x04\x46ULL\x10\x00\x12\x0b\n\x07TRAILER\x10\x01\x12\t\n\x05\x42ONUS\x10\x02\"\x18\n\x08Licensor\x12\x0c\n\x04uuid\x18\x01 \x01(\x0c\"J\n\tTopTracks\x12\x0f\n\x07\x63ountry\x18\x01 \x01(\t\x12,\n\x05track\x18\x02 \x03(\x0b\x32\x1d.spotify.metadata.proto.Track\"F\n\x0e\x41\x63tivityPeriod\x12\x12\n\nstart_year\x18\x01 \x01(\x11\x12\x10\n\x08\x65nd_year\x18\x02 \x01(\x11\x12\x0e\n\x06\x64\x65\x63\x61\x64\x65\x18\x03 \x01(\x11\":\n\nAlbumGroup\x12,\n\x05\x61lbum\x18\x01 \x03(\x0b\x32\x1d.spotify.metadata.proto.Album\"N\n\x04\x44\x61te\x12\x0c\n\x04year\x18\x01 \x01(\x11\x12\r\n\x05month\x18\x02 \x01(\x11\x12\x0b\n\x03\x64\x61y\x18\x03 \x01(\x11\x12\x0c\n\x04hour\x18\x04 \x01(\x11\x12\x0e\n\x06minute\x18\x05 \x01(\x11\"\xa0\x01\n\x05Image\x12\x0f\n\x07\x66ile_id\x18\x01 \x01(\x0c\x12\x30\n\x04size\x18\x02 \x01(\x0e\x32\".spotify.metadata.proto.Image.Size\x12\r\n\x05width\x18\x03 \x01(\x11\x12\x0e\n\x06height\x18\x04 \x01(\x11\"5\n\x04Size\x12\x0b\n\x07\x44\x45\x46\x41ULT\x10\x00\x12\t\n\x05SMALL\x10\x01\x12\t\n\x05LARGE\x10\x02\x12\n\n\x06XLARGE\x10\x03\":\n\nImageGroup\x12,\n\x05image\x18\x01 \x03(\x0b\x32\x1d.spotify.metadata.proto.Image\"\x86\x01\n\tBiography\x12\x0c\n\x04text\x18\x01 \x01(\t\x12/\n\x08portrait\x18\x02 \x03(\x0b\x32\x1d.spotify.metadata.proto.Image\x12:\n\x0eportrait_group\x18\x03 \x03(\x0b\x32\".spotify.metadata.proto.ImageGroup\"R\n\x04\x44isc\x12\x0e\n\x06number\x18\x01 \x01(\x11\x12\x0c\n\x04name\x18\x02 \x01(\t\x12,\n\x05track\x18\x03 \x03(\x0b\x32\x1d.spotify.metadata.proto.Track\"e\n\tCopyright\x12\x34\n\x04type\x18\x01 \x01(\x0e\x32&.spotify.metadata.proto.Copyright.Type\x12\x0c\n\x04text\x18\x02 \x01(\t\"\x14\n\x04Type\x12\x05\n\x01P\x10\x00\x12\x05\n\x01\x43\x10\x01\"\xdf\x02\n\x0bRestriction\x12@\n\tcatalogue\x18\x01 \x03(\x0e\x32-.spotify.metadata.proto.Restriction.Catalogue\x12\x36\n\x04type\x18\x04 \x01(\x0e\x32(.spotify.metadata.proto.Restriction.Type\x12\x15\n\rcatalogue_str\x18\x05 \x03(\t\x12\x1b\n\x11\x63ountries_allowed\x18\x02 \x01(\tH\x00\x12\x1d\n\x13\x63ountries_forbidden\x18\x03 \x01(\tH\x00\"U\n\tCatalogue\x12\x06\n\x02\x41\x44\x10\x00\x12\x10\n\x0cSUBSCRIPTION\x10\x01\x12\x11\n\rCATALOGUE_ALL\x10\x02\x12\x0b\n\x07SHUFFLE\x10\x03\x12\x0e\n\nCOMMERCIAL\x10\x04\"\x15\n\x04Type\x12\r\n\tSTREAMING\x10\x00\x42\x15\n\x13\x63ountry_restriction\"R\n\x0c\x41vailability\x12\x15\n\rcatalogue_str\x18\x01 \x03(\t\x12+\n\x05start\x18\x02 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date\"\x9e\x01\n\nSalePeriod\x12\x38\n\x0brestriction\x18\x01 \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12+\n\x05start\x18\x02 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date\x12)\n\x03\x65nd\x18\x03 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date\"&\n\nExternalId\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\"\x89\x02\n\tAudioFile\x12\x0f\n\x07\x66ile_id\x18\x01 \x01(\x0c\x12\x38\n\x06\x66ormat\x18\x02 \x01(\x0e\x32(.spotify.metadata.proto.AudioFile.Format\"\xb0\x01\n\x06\x46ormat\x12\x11\n\rOGG_VORBIS_96\x10\x00\x12\x12\n\x0eOGG_VORBIS_160\x10\x01\x12\x12\n\x0eOGG_VORBIS_320\x10\x02\x12\x0b\n\x07MP3_256\x10\x03\x12\x0b\n\x07MP3_320\x10\x04\x12\x0b\n\x07MP3_160\x10\x05\x12\n\n\x06MP3_96\x10\x06\x12\x0f\n\x0bMP3_160_ENC\x10\x07\x12\n\n\x06\x41\x41\x43_24\x10\x08\x12\n\n\x06\x41\x41\x43_48\x10\t\x12\x0f\n\x0b\x41\x41\x43_24_NORM\x10\x10\"\x1c\n\tVideoFile\x12\x0f\n\x07\x66ile_id\x18\x01 \x01(\x0c\x42\"\n\x14\x63om.spotify.metadataB\x08MetadataH\x02'
+    serialized_pb=b'\n\x0emetadata.proto\x12\x16spotify.metadata.proto"\x8a\x07\n\x06\x41rtist\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x12\n\npopularity\x18\x03 \x01(\x11\x12\x34\n\ttop_track\x18\x04 \x03(\x0b\x32!.spotify.metadata.proto.TopTracks\x12\x37\n\x0b\x61lbum_group\x18\x05 \x03(\x0b\x32".spotify.metadata.proto.AlbumGroup\x12\x38\n\x0csingle_group\x18\x06 \x03(\x0b\x32".spotify.metadata.proto.AlbumGroup\x12=\n\x11\x63ompilation_group\x18\x07 \x03(\x0b\x32".spotify.metadata.proto.AlbumGroup\x12<\n\x10\x61ppears_on_group\x18\x08 \x03(\x0b\x32".spotify.metadata.proto.AlbumGroup\x12\r\n\x05genre\x18\t \x03(\t\x12\x37\n\x0b\x65xternal_id\x18\n \x03(\x0b\x32".spotify.metadata.proto.ExternalId\x12/\n\x08portrait\x18\x0b \x03(\x0b\x32\x1d.spotify.metadata.proto.Image\x12\x34\n\tbiography\x18\x0c \x03(\x0b\x32!.spotify.metadata.proto.Biography\x12?\n\x0f\x61\x63tivity_period\x18\r \x03(\x0b\x32&.spotify.metadata.proto.ActivityPeriod\x12\x38\n\x0brestriction\x18\x0e \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12/\n\x07related\x18\x0f \x03(\x0b\x32\x1e.spotify.metadata.proto.Artist\x12\x1f\n\x17is_portrait_album_cover\x18\x10 \x01(\x08\x12:\n\x0eportrait_group\x18\x11 \x01(\x0b\x32".spotify.metadata.proto.ImageGroup\x12\x37\n\x0bsale_period\x18\x12 \x03(\x0b\x32".spotify.metadata.proto.SalePeriod\x12:\n\x0c\x61vailability\x18\x14 \x03(\x0b\x32$.spotify.metadata.proto.Availability"\xe8\x06\n\x05\x41lbum\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12.\n\x06\x61rtist\x18\x03 \x03(\x0b\x32\x1e.spotify.metadata.proto.Artist\x12\x30\n\x04type\x18\x04 \x01(\x0e\x32".spotify.metadata.proto.Album.Type\x12\r\n\x05label\x18\x05 \x01(\t\x12*\n\x04\x64\x61te\x18\x06 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date\x12\x12\n\npopularity\x18\x07 \x01(\x11\x12\r\n\x05genre\x18\x08 \x03(\t\x12,\n\x05\x63over\x18\t \x03(\x0b\x32\x1d.spotify.metadata.proto.Image\x12\x37\n\x0b\x65xternal_id\x18\n \x03(\x0b\x32".spotify.metadata.proto.ExternalId\x12*\n\x04\x64isc\x18\x0b \x03(\x0b\x32\x1c.spotify.metadata.proto.Disc\x12\x0e\n\x06review\x18\x0c \x03(\t\x12\x34\n\tcopyright\x18\r \x03(\x0b\x32!.spotify.metadata.proto.Copyright\x12\x38\n\x0brestriction\x18\x0e \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12.\n\x07related\x18\x0f \x03(\x0b\x32\x1d.spotify.metadata.proto.Album\x12\x37\n\x0bsale_period\x18\x10 \x03(\x0b\x32".spotify.metadata.proto.SalePeriod\x12\x37\n\x0b\x63over_group\x18\x11 \x01(\x0b\x32".spotify.metadata.proto.ImageGroup\x12\x16\n\x0eoriginal_title\x18\x12 \x01(\t\x12\x15\n\rversion_title\x18\x13 \x01(\t\x12\x10\n\x08type_str\x18\x14 \x01(\t\x12:\n\x0c\x61vailability\x18\x17 \x03(\x0b\x32$.spotify.metadata.proto.Availability"R\n\x04Type\x12\t\n\x05\x41LBUM\x10\x01\x12\n\n\x06SINGLE\x10\x02\x12\x0f\n\x0b\x43OMPILATION\x10\x03\x12\x06\n\x02\x45P\x10\x04\x12\r\n\tAUDIOBOOK\x10\x05\x12\x0b\n\x07PODCAST\x10\x06"\xd5\x05\n\x05Track\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12,\n\x05\x61lbum\x18\x03 \x01(\x0b\x32\x1d.spotify.metadata.proto.Album\x12.\n\x06\x61rtist\x18\x04 \x03(\x0b\x32\x1e.spotify.metadata.proto.Artist\x12\x0e\n\x06number\x18\x05 \x01(\x11\x12\x13\n\x0b\x64isc_number\x18\x06 \x01(\x11\x12\x10\n\x08\x64uration\x18\x07 \x01(\x11\x12\x12\n\npopularity\x18\x08 \x01(\x11\x12\x10\n\x08\x65xplicit\x18\t \x01(\x08\x12\x37\n\x0b\x65xternal_id\x18\n \x03(\x0b\x32".spotify.metadata.proto.ExternalId\x12\x38\n\x0brestriction\x18\x0b \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12/\n\x04\x66ile\x18\x0c \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x32\n\x0b\x61lternative\x18\r \x03(\x0b\x32\x1d.spotify.metadata.proto.Track\x12\x37\n\x0bsale_period\x18\x0e \x03(\x0b\x32".spotify.metadata.proto.SalePeriod\x12\x32\n\x07preview\x18\x0f \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x0c\n\x04tags\x18\x10 \x03(\t\x12\x1f\n\x17\x65\x61rliest_live_timestamp\x18\x11 \x01(\x03\x12\x12\n\nhas_lyrics\x18\x12 \x01(\x08\x12:\n\x0c\x61vailability\x18\x13 \x03(\x0b\x32$.spotify.metadata.proto.Availability\x12\x32\n\x08licensor\x18\x15 \x01(\x0b\x32 .spotify.metadata.proto.Licensor"\xbf\x05\n\x04Show\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18@ \x01(\t\x12!\n\x15\x64\x65precated_popularity\x18\x41 \x01(\x11\x42\x02\x18\x01\x12\x11\n\tpublisher\x18\x42 \x01(\t\x12\x10\n\x08language\x18\x43 \x01(\t\x12\x10\n\x08\x65xplicit\x18\x44 \x01(\x08\x12\x37\n\x0b\x63over_image\x18\x45 \x01(\x0b\x32".spotify.metadata.proto.ImageGroup\x12\x30\n\x07\x65pisode\x18\x46 \x03(\x0b\x32\x1f.spotify.metadata.proto.Episode\x12\x34\n\tcopyright\x18G \x03(\x0b\x32!.spotify.metadata.proto.Copyright\x12\x38\n\x0brestriction\x18H \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12\x0f\n\x07keyword\x18I \x03(\t\x12:\n\nmedia_type\x18J \x01(\x0e\x32&.spotify.metadata.proto.Show.MediaType\x12H\n\x11\x63onsumption_order\x18K \x01(\x0e\x32-.spotify.metadata.proto.Show.ConsumptionOrder\x12:\n\x0c\x61vailability\x18N \x03(\x0b\x32$.spotify.metadata.proto.Availability\x12\x13\n\x0btrailer_uri\x18S \x01(\t",\n\tMediaType\x12\t\n\x05MIXED\x10\x00\x12\t\n\x05\x41UDIO\x10\x01\x12\t\n\x05VIDEO\x10\x02"<\n\x10\x43onsumptionOrder\x12\x0e\n\nSEQUENTIAL\x10\x01\x12\x0c\n\x08\x45PISODIC\x10\x02\x12\n\n\x06RECENT\x10\x03"\xf9\x06\n\x07\x45pisode\x12\x0b\n\x03gid\x18\x01 \x01(\x0c\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08\x64uration\x18\x07 \x01(\x11\x12\x30\n\x05\x61udio\x18\x0c \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x13\n\x0b\x64\x65scription\x18@ \x01(\t\x12\x0e\n\x06number\x18\x41 \x01(\x11\x12\x32\n\x0cpublish_time\x18\x42 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date\x12!\n\x15\x64\x65precated_popularity\x18\x43 \x01(\x11\x42\x02\x18\x01\x12\x37\n\x0b\x63over_image\x18\x44 \x01(\x0b\x32".spotify.metadata.proto.ImageGroup\x12\x10\n\x08language\x18\x45 \x01(\t\x12\x10\n\x08\x65xplicit\x18\x46 \x01(\x08\x12*\n\x04show\x18G \x01(\x0b\x32\x1c.spotify.metadata.proto.Show\x12\x30\n\x05video\x18H \x03(\x0b\x32!.spotify.metadata.proto.VideoFile\x12\x38\n\rvideo_preview\x18I \x03(\x0b\x32!.spotify.metadata.proto.VideoFile\x12\x38\n\raudio_preview\x18J \x03(\x0b\x32!.spotify.metadata.proto.AudioFile\x12\x38\n\x0brestriction\x18K \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12\x38\n\x0c\x66reeze_frame\x18L \x01(\x0b\x32".spotify.metadata.proto.ImageGroup\x12\x0f\n\x07keyword\x18M \x03(\t\x12!\n\x19\x61llow_background_playback\x18Q \x01(\x08\x12:\n\x0c\x61vailability\x18R \x03(\x0b\x32$.spotify.metadata.proto.Availability\x12\x14\n\x0c\x65xternal_url\x18S \x01(\t\x12\x39\n\x04type\x18W \x01(\x0e\x32+.spotify.metadata.proto.Episode.EpisodeType"/\n\x0b\x45pisodeType\x12\x08\n\x04\x46ULL\x10\x00\x12\x0b\n\x07TRAILER\x10\x01\x12\t\n\x05\x42ONUS\x10\x02"\x18\n\x08Licensor\x12\x0c\n\x04uuid\x18\x01 \x01(\x0c"J\n\tTopTracks\x12\x0f\n\x07\x63ountry\x18\x01 \x01(\t\x12,\n\x05track\x18\x02 \x03(\x0b\x32\x1d.spotify.metadata.proto.Track"F\n\x0e\x41\x63tivityPeriod\x12\x12\n\nstart_year\x18\x01 \x01(\x11\x12\x10\n\x08\x65nd_year\x18\x02 \x01(\x11\x12\x0e\n\x06\x64\x65\x63\x61\x64\x65\x18\x03 \x01(\x11":\n\nAlbumGroup\x12,\n\x05\x61lbum\x18\x01 \x03(\x0b\x32\x1d.spotify.metadata.proto.Album"N\n\x04\x44\x61te\x12\x0c\n\x04year\x18\x01 \x01(\x11\x12\r\n\x05month\x18\x02 \x01(\x11\x12\x0b\n\x03\x64\x61y\x18\x03 \x01(\x11\x12\x0c\n\x04hour\x18\x04 \x01(\x11\x12\x0e\n\x06minute\x18\x05 \x01(\x11"\xa0\x01\n\x05Image\x12\x0f\n\x07\x66ile_id\x18\x01 \x01(\x0c\x12\x30\n\x04size\x18\x02 \x01(\x0e\x32".spotify.metadata.proto.Image.Size\x12\r\n\x05width\x18\x03 \x01(\x11\x12\x0e\n\x06height\x18\x04 \x01(\x11"5\n\x04Size\x12\x0b\n\x07\x44\x45\x46\x41ULT\x10\x00\x12\t\n\x05SMALL\x10\x01\x12\t\n\x05LARGE\x10\x02\x12\n\n\x06XLARGE\x10\x03":\n\nImageGroup\x12,\n\x05image\x18\x01 \x03(\x0b\x32\x1d.spotify.metadata.proto.Image"\x86\x01\n\tBiography\x12\x0c\n\x04text\x18\x01 \x01(\t\x12/\n\x08portrait\x18\x02 \x03(\x0b\x32\x1d.spotify.metadata.proto.Image\x12:\n\x0eportrait_group\x18\x03 \x03(\x0b\x32".spotify.metadata.proto.ImageGroup"R\n\x04\x44isc\x12\x0e\n\x06number\x18\x01 \x01(\x11\x12\x0c\n\x04name\x18\x02 \x01(\t\x12,\n\x05track\x18\x03 \x03(\x0b\x32\x1d.spotify.metadata.proto.Track"e\n\tCopyright\x12\x34\n\x04type\x18\x01 \x01(\x0e\x32&.spotify.metadata.proto.Copyright.Type\x12\x0c\n\x04text\x18\x02 \x01(\t"\x14\n\x04Type\x12\x05\n\x01P\x10\x00\x12\x05\n\x01\x43\x10\x01"\xdf\x02\n\x0bRestriction\x12@\n\tcatalogue\x18\x01 \x03(\x0e\x32-.spotify.metadata.proto.Restriction.Catalogue\x12\x36\n\x04type\x18\x04 \x01(\x0e\x32(.spotify.metadata.proto.Restriction.Type\x12\x15\n\rcatalogue_str\x18\x05 \x03(\t\x12\x1b\n\x11\x63ountries_allowed\x18\x02 \x01(\tH\x00\x12\x1d\n\x13\x63ountries_forbidden\x18\x03 \x01(\tH\x00"U\n\tCatalogue\x12\x06\n\x02\x41\x44\x10\x00\x12\x10\n\x0cSUBSCRIPTION\x10\x01\x12\x11\n\rCATALOGUE_ALL\x10\x02\x12\x0b\n\x07SHUFFLE\x10\x03\x12\x0e\n\nCOMMERCIAL\x10\x04"\x15\n\x04Type\x12\r\n\tSTREAMING\x10\x00\x42\x15\n\x13\x63ountry_restriction"R\n\x0c\x41vailability\x12\x15\n\rcatalogue_str\x18\x01 \x03(\t\x12+\n\x05start\x18\x02 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date"\x9e\x01\n\nSalePeriod\x12\x38\n\x0brestriction\x18\x01 \x03(\x0b\x32#.spotify.metadata.proto.Restriction\x12+\n\x05start\x18\x02 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date\x12)\n\x03\x65nd\x18\x03 \x01(\x0b\x32\x1c.spotify.metadata.proto.Date"&\n\nExternalId\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t"\x89\x02\n\tAudioFile\x12\x0f\n\x07\x66ile_id\x18\x01 \x01(\x0c\x12\x38\n\x06\x66ormat\x18\x02 \x01(\x0e\x32(.spotify.metadata.proto.AudioFile.Format"\xb0\x01\n\x06\x46ormat\x12\x11\n\rOGG_VORBIS_96\x10\x00\x12\x12\n\x0eOGG_VORBIS_160\x10\x01\x12\x12\n\x0eOGG_VORBIS_320\x10\x02\x12\x0b\n\x07MP3_256\x10\x03\x12\x0b\n\x07MP3_320\x10\x04\x12\x0b\n\x07MP3_160\x10\x05\x12\n\n\x06MP3_96\x10\x06\x12\x0f\n\x0bMP3_160_ENC\x10\x07\x12\n\n\x06\x41\x41\x43_24\x10\x08\x12\n\n\x06\x41\x41\x43_48\x10\t\x12\x0f\n\x0b\x41\x41\x43_24_NORM\x10\x10"\x1c\n\tVideoFile\x12\x0f\n\x07\x66ile_id\x18\x01 \x01(\x0c\x42"\n\x14\x63om.spotify.metadataB\x08MetadataH\x02',
 )
 
 _ALBUM_TYPE = _descriptor.EnumDescriptor(
-    name='Type',
-    full_name='spotify.metadata.proto.Album.Type',
+    name="Type",
+    full_name="spotify.metadata.proto.Album.Type",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='ALBUM',
+            name="ALBUM",
             index=0,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='SINGLE',
+            name="SINGLE",
             index=1,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='COMPILATION',
+            name="COMPILATION",
             index=2,
             number=3,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='EP',
+            name="EP",
             index=3,
             number=4,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='AUDIOBOOK',
+            name="AUDIOBOOK",
             index=4,
             number=5,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='PODCAST',
+            name="PODCAST",
             index=5,
             number=6,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -77,33 +84,36 @@ _ALBUM_TYPE = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_ALBUM_TYPE)
 
 _SHOW_MEDIATYPE = _descriptor.EnumDescriptor(
-    name='MediaType',
-    full_name='spotify.metadata.proto.Show.MediaType',
+    name="MediaType",
+    full_name="spotify.metadata.proto.Show.MediaType",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='MIXED',
+            name="MIXED",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='AUDIO',
+            name="AUDIO",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='VIDEO',
+            name="VIDEO",
             index=2,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -113,33 +123,36 @@ _SHOW_MEDIATYPE = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_SHOW_MEDIATYPE)
 
 _SHOW_CONSUMPTIONORDER = _descriptor.EnumDescriptor(
-    name='ConsumptionOrder',
-    full_name='spotify.metadata.proto.Show.ConsumptionOrder',
+    name="ConsumptionOrder",
+    full_name="spotify.metadata.proto.Show.ConsumptionOrder",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='SEQUENTIAL',
+            name="SEQUENTIAL",
             index=0,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='EPISODIC',
+            name="EPISODIC",
             index=1,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='RECENT',
+            name="RECENT",
             index=2,
             number=3,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -149,33 +162,36 @@ _SHOW_CONSUMPTIONORDER = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_SHOW_CONSUMPTIONORDER)
 
 _EPISODE_EPISODETYPE = _descriptor.EnumDescriptor(
-    name='EpisodeType',
-    full_name='spotify.metadata.proto.Episode.EpisodeType',
+    name="EpisodeType",
+    full_name="spotify.metadata.proto.Episode.EpisodeType",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='FULL',
+            name="FULL",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='TRAILER',
+            name="TRAILER",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='BONUS',
+            name="BONUS",
             index=2,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -185,40 +201,44 @@ _EPISODE_EPISODETYPE = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_EPISODE_EPISODETYPE)
 
 _IMAGE_SIZE = _descriptor.EnumDescriptor(
-    name='Size',
-    full_name='spotify.metadata.proto.Image.Size',
+    name="Size",
+    full_name="spotify.metadata.proto.Image.Size",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='DEFAULT',
+            name="DEFAULT",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='SMALL',
+            name="SMALL",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='LARGE',
+            name="LARGE",
             index=2,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='XLARGE',
+            name="XLARGE",
             index=3,
             number=3,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -228,26 +248,28 @@ _IMAGE_SIZE = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_IMAGE_SIZE)
 
 _COPYRIGHT_TYPE = _descriptor.EnumDescriptor(
-    name='Type',
-    full_name='spotify.metadata.proto.Copyright.Type',
+    name="Type",
+    full_name="spotify.metadata.proto.Copyright.Type",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='P',
+            name="P",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='C',
+            name="C",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -257,47 +279,52 @@ _COPYRIGHT_TYPE = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_COPYRIGHT_TYPE)
 
 _RESTRICTION_CATALOGUE = _descriptor.EnumDescriptor(
-    name='Catalogue',
-    full_name='spotify.metadata.proto.Restriction.Catalogue',
+    name="Catalogue",
+    full_name="spotify.metadata.proto.Restriction.Catalogue",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='AD',
+            name="AD",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='SUBSCRIPTION',
+            name="SUBSCRIPTION",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='CATALOGUE_ALL',
+            name="CATALOGUE_ALL",
             index=2,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='SHUFFLE',
+            name="SHUFFLE",
             index=3,
             number=3,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='COMMERCIAL',
+            name="COMMERCIAL",
             index=4,
             number=4,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -307,19 +334,20 @@ _RESTRICTION_CATALOGUE = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_RESTRICTION_CATALOGUE)
 
 _RESTRICTION_TYPE = _descriptor.EnumDescriptor(
-    name='Type',
-    full_name='spotify.metadata.proto.Restriction.Type',
+    name="Type",
+    full_name="spotify.metadata.proto.Restriction.Type",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='STREAMING',
+            name="STREAMING",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -329,89 +357,100 @@ _RESTRICTION_TYPE = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_RESTRICTION_TYPE)
 
 _AUDIOFILE_FORMAT = _descriptor.EnumDescriptor(
-    name='Format',
-    full_name='spotify.metadata.proto.AudioFile.Format',
+    name="Format",
+    full_name="spotify.metadata.proto.AudioFile.Format",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='OGG_VORBIS_96',
+            name="OGG_VORBIS_96",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OGG_VORBIS_160',
+            name="OGG_VORBIS_160",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OGG_VORBIS_320',
+            name="OGG_VORBIS_320",
             index=2,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='MP3_256',
+            name="MP3_256",
             index=3,
             number=3,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='MP3_320',
+            name="MP3_320",
             index=4,
             number=4,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='MP3_160',
+            name="MP3_160",
             index=5,
             number=5,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='MP3_96',
+            name="MP3_96",
             index=6,
             number=6,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='MP3_160_ENC',
+            name="MP3_160_ENC",
             index=7,
             number=7,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='AAC_24',
+            name="AAC_24",
             index=8,
             number=8,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='AAC_48',
+            name="AAC_48",
             index=9,
             number=9,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='AAC_24_NORM',
+            name="AAC_24_NORM",
             index=10,
             number=16,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -421,16 +460,16 @@ _AUDIOFILE_FORMAT = _descriptor.EnumDescriptor(
 _sym_db.RegisterEnumDescriptor(_AUDIOFILE_FORMAT)
 
 _ARTIST = _descriptor.Descriptor(
-    name='Artist',
-    full_name='spotify.metadata.proto.Artist',
+    name="Artist",
+    full_name="spotify.metadata.proto.Artist",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='gid',
-            full_name='spotify.metadata.proto.Artist.gid',
+            name="gid",
+            full_name="spotify.metadata.proto.Artist.gid",
             index=0,
             number=1,
             type=12,
@@ -445,17 +484,18 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='name',
-            full_name='spotify.metadata.proto.Artist.name',
+            name="name",
+            full_name="spotify.metadata.proto.Artist.name",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -463,10 +503,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='popularity',
-            full_name='spotify.metadata.proto.Artist.popularity',
+            name="popularity",
+            full_name="spotify.metadata.proto.Artist.popularity",
             index=2,
             number=3,
             type=17,
@@ -481,10 +522,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='top_track',
-            full_name='spotify.metadata.proto.Artist.top_track',
+            name="top_track",
+            full_name="spotify.metadata.proto.Artist.top_track",
             index=3,
             number=4,
             type=11,
@@ -499,10 +541,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='album_group',
-            full_name='spotify.metadata.proto.Artist.album_group',
+            name="album_group",
+            full_name="spotify.metadata.proto.Artist.album_group",
             index=4,
             number=5,
             type=11,
@@ -517,10 +560,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='single_group',
-            full_name='spotify.metadata.proto.Artist.single_group',
+            name="single_group",
+            full_name="spotify.metadata.proto.Artist.single_group",
             index=5,
             number=6,
             type=11,
@@ -535,10 +579,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='compilation_group',
-            full_name='spotify.metadata.proto.Artist.compilation_group',
+            name="compilation_group",
+            full_name="spotify.metadata.proto.Artist.compilation_group",
             index=6,
             number=7,
             type=11,
@@ -553,10 +598,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='appears_on_group',
-            full_name='spotify.metadata.proto.Artist.appears_on_group',
+            name="appears_on_group",
+            full_name="spotify.metadata.proto.Artist.appears_on_group",
             index=7,
             number=8,
             type=11,
@@ -571,10 +617,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='genre',
-            full_name='spotify.metadata.proto.Artist.genre',
+            name="genre",
+            full_name="spotify.metadata.proto.Artist.genre",
             index=8,
             number=9,
             type=9,
@@ -589,10 +636,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='external_id',
-            full_name='spotify.metadata.proto.Artist.external_id',
+            name="external_id",
+            full_name="spotify.metadata.proto.Artist.external_id",
             index=9,
             number=10,
             type=11,
@@ -607,10 +655,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='portrait',
-            full_name='spotify.metadata.proto.Artist.portrait',
+            name="portrait",
+            full_name="spotify.metadata.proto.Artist.portrait",
             index=10,
             number=11,
             type=11,
@@ -625,10 +674,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='biography',
-            full_name='spotify.metadata.proto.Artist.biography',
+            name="biography",
+            full_name="spotify.metadata.proto.Artist.biography",
             index=11,
             number=12,
             type=11,
@@ -643,10 +693,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='activity_period',
-            full_name='spotify.metadata.proto.Artist.activity_period',
+            name="activity_period",
+            full_name="spotify.metadata.proto.Artist.activity_period",
             index=12,
             number=13,
             type=11,
@@ -661,10 +712,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='restriction',
-            full_name='spotify.metadata.proto.Artist.restriction',
+            name="restriction",
+            full_name="spotify.metadata.proto.Artist.restriction",
             index=13,
             number=14,
             type=11,
@@ -679,10 +731,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='related',
-            full_name='spotify.metadata.proto.Artist.related',
+            name="related",
+            full_name="spotify.metadata.proto.Artist.related",
             index=14,
             number=15,
             type=11,
@@ -697,10 +750,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='is_portrait_album_cover',
-            full_name='spotify.metadata.proto.Artist.is_portrait_album_cover',
+            name="is_portrait_album_cover",
+            full_name="spotify.metadata.proto.Artist.is_portrait_album_cover",
             index=15,
             number=16,
             type=8,
@@ -715,10 +769,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='portrait_group',
-            full_name='spotify.metadata.proto.Artist.portrait_group',
+            name="portrait_group",
+            full_name="spotify.metadata.proto.Artist.portrait_group",
             index=16,
             number=17,
             type=11,
@@ -733,10 +788,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='sale_period',
-            full_name='spotify.metadata.proto.Artist.sale_period',
+            name="sale_period",
+            full_name="spotify.metadata.proto.Artist.sale_period",
             index=17,
             number=18,
             type=11,
@@ -751,10 +807,11 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='availability',
-            full_name='spotify.metadata.proto.Artist.availability',
+            name="availability",
+            full_name="spotify.metadata.proto.Artist.availability",
             index=18,
             number=20,
             type=11,
@@ -769,14 +826,15 @@ _ARTIST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=43,
@@ -784,16 +842,16 @@ _ARTIST = _descriptor.Descriptor(
 )
 
 _ALBUM = _descriptor.Descriptor(
-    name='Album',
-    full_name='spotify.metadata.proto.Album',
+    name="Album",
+    full_name="spotify.metadata.proto.Album",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='gid',
-            full_name='spotify.metadata.proto.Album.gid',
+            name="gid",
+            full_name="spotify.metadata.proto.Album.gid",
             index=0,
             number=1,
             type=12,
@@ -808,17 +866,18 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='name',
-            full_name='spotify.metadata.proto.Album.name',
+            name="name",
+            full_name="spotify.metadata.proto.Album.name",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -826,10 +885,11 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='artist',
-            full_name='spotify.metadata.proto.Album.artist',
+            name="artist",
+            full_name="spotify.metadata.proto.Album.artist",
             index=2,
             number=3,
             type=11,
@@ -844,10 +904,11 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='type',
-            full_name='spotify.metadata.proto.Album.type',
+            name="type",
+            full_name="spotify.metadata.proto.Album.type",
             index=3,
             number=4,
             type=14,
@@ -862,17 +923,18 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='label',
-            full_name='spotify.metadata.proto.Album.label',
+            name="label",
+            full_name="spotify.metadata.proto.Album.label",
             index=4,
             number=5,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -880,10 +942,11 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='date',
-            full_name='spotify.metadata.proto.Album.date',
+            name="date",
+            full_name="spotify.metadata.proto.Album.date",
             index=5,
             number=6,
             type=11,
@@ -898,10 +961,11 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='popularity',
-            full_name='spotify.metadata.proto.Album.popularity',
+            name="popularity",
+            full_name="spotify.metadata.proto.Album.popularity",
             index=6,
             number=7,
             type=17,
@@ -916,10 +980,11 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='genre',
-            full_name='spotify.metadata.proto.Album.genre',
+            name="genre",
+            full_name="spotify.metadata.proto.Album.genre",
             index=7,
             number=8,
             type=9,
@@ -934,10 +999,11 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='cover',
-            full_name='spotify.metadata.proto.Album.cover',
+            name="cover",
+            full_name="spotify.metadata.proto.Album.cover",
             index=8,
             number=9,
             type=11,
@@ -952,10 +1018,11 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='external_id',
-            full_name='spotify.metadata.proto.Album.external_id',
+            name="external_id",
+            full_name="spotify.metadata.proto.Album.external_id",
             index=9,
             number=10,
             type=11,
@@ -970,10 +1037,11 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='disc',
-            full_name='spotify.metadata.proto.Album.disc',
+            name="disc",
+            full_name="spotify.metadata.proto.Album.disc",
             index=10,
             number=11,
             type=11,
@@ -988,10 +1056,11 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='review',
-            full_name='spotify.metadata.proto.Album.review',
+            name="review",
+            full_name="spotify.metadata.proto.Album.review",
             index=11,
             number=12,
             type=9,
@@ -1006,10 +1075,11 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='copyright',
-            full_name='spotify.metadata.proto.Album.copyright',
+            name="copyright",
+            full_name="spotify.metadata.proto.Album.copyright",
             index=12,
             number=13,
             type=11,
@@ -1024,10 +1094,11 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='restriction',
-            full_name='spotify.metadata.proto.Album.restriction',
+            name="restriction",
+            full_name="spotify.metadata.proto.Album.restriction",
             index=13,
             number=14,
             type=11,
@@ -1042,10 +1113,11 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='related',
-            full_name='spotify.metadata.proto.Album.related',
+            name="related",
+            full_name="spotify.metadata.proto.Album.related",
             index=14,
             number=15,
             type=11,
@@ -1060,10 +1132,11 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='sale_period',
-            full_name='spotify.metadata.proto.Album.sale_period',
+            name="sale_period",
+            full_name="spotify.metadata.proto.Album.sale_period",
             index=15,
             number=16,
             type=11,
@@ -1078,10 +1151,11 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='cover_group',
-            full_name='spotify.metadata.proto.Album.cover_group',
+            name="cover_group",
+            full_name="spotify.metadata.proto.Album.cover_group",
             index=16,
             number=17,
             type=11,
@@ -1096,17 +1170,18 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='original_title',
-            full_name='spotify.metadata.proto.Album.original_title',
+            name="original_title",
+            full_name="spotify.metadata.proto.Album.original_title",
             index=17,
             number=18,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1114,17 +1189,18 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='version_title',
-            full_name='spotify.metadata.proto.Album.version_title',
+            name="version_title",
+            full_name="spotify.metadata.proto.Album.version_title",
             index=18,
             number=19,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1132,17 +1208,18 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='type_str',
-            full_name='spotify.metadata.proto.Album.type_str',
+            name="type_str",
+            full_name="spotify.metadata.proto.Album.type_str",
             index=19,
             number=20,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1150,10 +1227,11 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='availability',
-            full_name='spotify.metadata.proto.Album.availability',
+            name="availability",
+            full_name="spotify.metadata.proto.Album.availability",
             index=20,
             number=23,
             type=11,
@@ -1168,7 +1246,8 @@ _ALBUM = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -1177,7 +1256,7 @@ _ALBUM = _descriptor.Descriptor(
     ],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=952,
@@ -1185,16 +1264,16 @@ _ALBUM = _descriptor.Descriptor(
 )
 
 _TRACK = _descriptor.Descriptor(
-    name='Track',
-    full_name='spotify.metadata.proto.Track',
+    name="Track",
+    full_name="spotify.metadata.proto.Track",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='gid',
-            full_name='spotify.metadata.proto.Track.gid',
+            name="gid",
+            full_name="spotify.metadata.proto.Track.gid",
             index=0,
             number=1,
             type=12,
@@ -1209,17 +1288,18 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='name',
-            full_name='spotify.metadata.proto.Track.name',
+            name="name",
+            full_name="spotify.metadata.proto.Track.name",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1227,10 +1307,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='album',
-            full_name='spotify.metadata.proto.Track.album',
+            name="album",
+            full_name="spotify.metadata.proto.Track.album",
             index=2,
             number=3,
             type=11,
@@ -1245,10 +1326,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='artist',
-            full_name='spotify.metadata.proto.Track.artist',
+            name="artist",
+            full_name="spotify.metadata.proto.Track.artist",
             index=3,
             number=4,
             type=11,
@@ -1263,10 +1345,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='number',
-            full_name='spotify.metadata.proto.Track.number',
+            name="number",
+            full_name="spotify.metadata.proto.Track.number",
             index=4,
             number=5,
             type=17,
@@ -1281,10 +1364,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='disc_number',
-            full_name='spotify.metadata.proto.Track.disc_number',
+            name="disc_number",
+            full_name="spotify.metadata.proto.Track.disc_number",
             index=5,
             number=6,
             type=17,
@@ -1299,10 +1383,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='duration',
-            full_name='spotify.metadata.proto.Track.duration',
+            name="duration",
+            full_name="spotify.metadata.proto.Track.duration",
             index=6,
             number=7,
             type=17,
@@ -1317,10 +1402,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='popularity',
-            full_name='spotify.metadata.proto.Track.popularity',
+            name="popularity",
+            full_name="spotify.metadata.proto.Track.popularity",
             index=7,
             number=8,
             type=17,
@@ -1335,10 +1421,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='explicit',
-            full_name='spotify.metadata.proto.Track.explicit',
+            name="explicit",
+            full_name="spotify.metadata.proto.Track.explicit",
             index=8,
             number=9,
             type=8,
@@ -1353,10 +1440,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='external_id',
-            full_name='spotify.metadata.proto.Track.external_id',
+            name="external_id",
+            full_name="spotify.metadata.proto.Track.external_id",
             index=9,
             number=10,
             type=11,
@@ -1371,10 +1459,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='restriction',
-            full_name='spotify.metadata.proto.Track.restriction',
+            name="restriction",
+            full_name="spotify.metadata.proto.Track.restriction",
             index=10,
             number=11,
             type=11,
@@ -1389,10 +1478,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='file',
-            full_name='spotify.metadata.proto.Track.file',
+            name="file",
+            full_name="spotify.metadata.proto.Track.file",
             index=11,
             number=12,
             type=11,
@@ -1407,10 +1497,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='alternative',
-            full_name='spotify.metadata.proto.Track.alternative',
+            name="alternative",
+            full_name="spotify.metadata.proto.Track.alternative",
             index=12,
             number=13,
             type=11,
@@ -1425,10 +1516,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='sale_period',
-            full_name='spotify.metadata.proto.Track.sale_period',
+            name="sale_period",
+            full_name="spotify.metadata.proto.Track.sale_period",
             index=13,
             number=14,
             type=11,
@@ -1443,10 +1535,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='preview',
-            full_name='spotify.metadata.proto.Track.preview',
+            name="preview",
+            full_name="spotify.metadata.proto.Track.preview",
             index=14,
             number=15,
             type=11,
@@ -1461,10 +1554,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='tags',
-            full_name='spotify.metadata.proto.Track.tags',
+            name="tags",
+            full_name="spotify.metadata.proto.Track.tags",
             index=15,
             number=16,
             type=9,
@@ -1479,10 +1573,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='earliest_live_timestamp',
-            full_name='spotify.metadata.proto.Track.earliest_live_timestamp',
+            name="earliest_live_timestamp",
+            full_name="spotify.metadata.proto.Track.earliest_live_timestamp",
             index=16,
             number=17,
             type=3,
@@ -1497,10 +1592,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='has_lyrics',
-            full_name='spotify.metadata.proto.Track.has_lyrics',
+            name="has_lyrics",
+            full_name="spotify.metadata.proto.Track.has_lyrics",
             index=17,
             number=18,
             type=8,
@@ -1515,10 +1611,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='availability',
-            full_name='spotify.metadata.proto.Track.availability',
+            name="availability",
+            full_name="spotify.metadata.proto.Track.availability",
             index=18,
             number=19,
             type=11,
@@ -1533,10 +1630,11 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='licensor',
-            full_name='spotify.metadata.proto.Track.licensor',
+            name="licensor",
+            full_name="spotify.metadata.proto.Track.licensor",
             index=19,
             number=21,
             type=11,
@@ -1551,14 +1649,15 @@ _TRACK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=1827,
@@ -1566,16 +1665,16 @@ _TRACK = _descriptor.Descriptor(
 )
 
 _SHOW = _descriptor.Descriptor(
-    name='Show',
-    full_name='spotify.metadata.proto.Show',
+    name="Show",
+    full_name="spotify.metadata.proto.Show",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='gid',
-            full_name='spotify.metadata.proto.Show.gid',
+            name="gid",
+            full_name="spotify.metadata.proto.Show.gid",
             index=0,
             number=1,
             type=12,
@@ -1590,17 +1689,18 @@ _SHOW = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='name',
-            full_name='spotify.metadata.proto.Show.name',
+            name="name",
+            full_name="spotify.metadata.proto.Show.name",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1608,17 +1708,18 @@ _SHOW = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='description',
-            full_name='spotify.metadata.proto.Show.description',
+            name="description",
+            full_name="spotify.metadata.proto.Show.description",
             index=2,
             number=64,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1626,10 +1727,11 @@ _SHOW = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='deprecated_popularity',
-            full_name='spotify.metadata.proto.Show.deprecated_popularity',
+            name="deprecated_popularity",
+            full_name="spotify.metadata.proto.Show.deprecated_popularity",
             index=3,
             number=65,
             type=17,
@@ -1642,19 +1744,20 @@ _SHOW = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=b'\030\001',
+            serialized_options=b"\030\001",
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='publisher',
-            full_name='spotify.metadata.proto.Show.publisher',
+            name="publisher",
+            full_name="spotify.metadata.proto.Show.publisher",
             index=4,
             number=66,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1662,17 +1765,18 @@ _SHOW = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='language',
-            full_name='spotify.metadata.proto.Show.language',
+            name="language",
+            full_name="spotify.metadata.proto.Show.language",
             index=5,
             number=67,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1680,10 +1784,11 @@ _SHOW = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='explicit',
-            full_name='spotify.metadata.proto.Show.explicit',
+            name="explicit",
+            full_name="spotify.metadata.proto.Show.explicit",
             index=6,
             number=68,
             type=8,
@@ -1698,10 +1803,11 @@ _SHOW = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='cover_image',
-            full_name='spotify.metadata.proto.Show.cover_image',
+            name="cover_image",
+            full_name="spotify.metadata.proto.Show.cover_image",
             index=7,
             number=69,
             type=11,
@@ -1716,10 +1822,11 @@ _SHOW = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='episode',
-            full_name='spotify.metadata.proto.Show.episode',
+            name="episode",
+            full_name="spotify.metadata.proto.Show.episode",
             index=8,
             number=70,
             type=11,
@@ -1734,10 +1841,11 @@ _SHOW = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='copyright',
-            full_name='spotify.metadata.proto.Show.copyright',
+            name="copyright",
+            full_name="spotify.metadata.proto.Show.copyright",
             index=9,
             number=71,
             type=11,
@@ -1752,10 +1860,11 @@ _SHOW = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='restriction',
-            full_name='spotify.metadata.proto.Show.restriction',
+            name="restriction",
+            full_name="spotify.metadata.proto.Show.restriction",
             index=10,
             number=72,
             type=11,
@@ -1770,10 +1879,11 @@ _SHOW = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='keyword',
-            full_name='spotify.metadata.proto.Show.keyword',
+            name="keyword",
+            full_name="spotify.metadata.proto.Show.keyword",
             index=11,
             number=73,
             type=9,
@@ -1788,10 +1898,11 @@ _SHOW = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='media_type',
-            full_name='spotify.metadata.proto.Show.media_type',
+            name="media_type",
+            full_name="spotify.metadata.proto.Show.media_type",
             index=12,
             number=74,
             type=14,
@@ -1806,10 +1917,11 @@ _SHOW = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='consumption_order',
-            full_name='spotify.metadata.proto.Show.consumption_order',
+            name="consumption_order",
+            full_name="spotify.metadata.proto.Show.consumption_order",
             index=13,
             number=75,
             type=14,
@@ -1824,10 +1936,11 @@ _SHOW = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='availability',
-            full_name='spotify.metadata.proto.Show.availability',
+            name="availability",
+            full_name="spotify.metadata.proto.Show.availability",
             index=14,
             number=78,
             type=11,
@@ -1842,17 +1955,18 @@ _SHOW = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='trailer_uri',
-            full_name='spotify.metadata.proto.Show.trailer_uri',
+            name="trailer_uri",
+            full_name="spotify.metadata.proto.Show.trailer_uri",
             index=15,
             number=83,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1860,7 +1974,8 @@ _SHOW = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -1870,7 +1985,7 @@ _SHOW = _descriptor.Descriptor(
     ],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=2555,
@@ -1878,16 +1993,16 @@ _SHOW = _descriptor.Descriptor(
 )
 
 _EPISODE = _descriptor.Descriptor(
-    name='Episode',
-    full_name='spotify.metadata.proto.Episode',
+    name="Episode",
+    full_name="spotify.metadata.proto.Episode",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='gid',
-            full_name='spotify.metadata.proto.Episode.gid',
+            name="gid",
+            full_name="spotify.metadata.proto.Episode.gid",
             index=0,
             number=1,
             type=12,
@@ -1902,17 +2017,18 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='name',
-            full_name='spotify.metadata.proto.Episode.name',
+            name="name",
+            full_name="spotify.metadata.proto.Episode.name",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1920,10 +2036,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='duration',
-            full_name='spotify.metadata.proto.Episode.duration',
+            name="duration",
+            full_name="spotify.metadata.proto.Episode.duration",
             index=2,
             number=7,
             type=17,
@@ -1938,10 +2055,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='audio',
-            full_name='spotify.metadata.proto.Episode.audio',
+            name="audio",
+            full_name="spotify.metadata.proto.Episode.audio",
             index=3,
             number=12,
             type=11,
@@ -1956,17 +2074,18 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='description',
-            full_name='spotify.metadata.proto.Episode.description',
+            name="description",
+            full_name="spotify.metadata.proto.Episode.description",
             index=4,
             number=64,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1974,10 +2093,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='number',
-            full_name='spotify.metadata.proto.Episode.number',
+            name="number",
+            full_name="spotify.metadata.proto.Episode.number",
             index=5,
             number=65,
             type=17,
@@ -1992,10 +2112,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='publish_time',
-            full_name='spotify.metadata.proto.Episode.publish_time',
+            name="publish_time",
+            full_name="spotify.metadata.proto.Episode.publish_time",
             index=6,
             number=66,
             type=11,
@@ -2010,10 +2131,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='deprecated_popularity',
-            full_name='spotify.metadata.proto.Episode.deprecated_popularity',
+            name="deprecated_popularity",
+            full_name="spotify.metadata.proto.Episode.deprecated_popularity",
             index=7,
             number=67,
             type=17,
@@ -2026,12 +2148,13 @@ _EPISODE = _descriptor.Descriptor(
             containing_type=None,
             is_extension=False,
             extension_scope=None,
-            serialized_options=b'\030\001',
+            serialized_options=b"\030\001",
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='cover_image',
-            full_name='spotify.metadata.proto.Episode.cover_image',
+            name="cover_image",
+            full_name="spotify.metadata.proto.Episode.cover_image",
             index=8,
             number=68,
             type=11,
@@ -2046,17 +2169,18 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='language',
-            full_name='spotify.metadata.proto.Episode.language',
+            name="language",
+            full_name="spotify.metadata.proto.Episode.language",
             index=9,
             number=69,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -2064,10 +2188,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='explicit',
-            full_name='spotify.metadata.proto.Episode.explicit',
+            name="explicit",
+            full_name="spotify.metadata.proto.Episode.explicit",
             index=10,
             number=70,
             type=8,
@@ -2082,10 +2207,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='show',
-            full_name='spotify.metadata.proto.Episode.show',
+            name="show",
+            full_name="spotify.metadata.proto.Episode.show",
             index=11,
             number=71,
             type=11,
@@ -2100,10 +2226,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='video',
-            full_name='spotify.metadata.proto.Episode.video',
+            name="video",
+            full_name="spotify.metadata.proto.Episode.video",
             index=12,
             number=72,
             type=11,
@@ -2118,10 +2245,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='video_preview',
-            full_name='spotify.metadata.proto.Episode.video_preview',
+            name="video_preview",
+            full_name="spotify.metadata.proto.Episode.video_preview",
             index=13,
             number=73,
             type=11,
@@ -2136,10 +2264,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='audio_preview',
-            full_name='spotify.metadata.proto.Episode.audio_preview',
+            name="audio_preview",
+            full_name="spotify.metadata.proto.Episode.audio_preview",
             index=14,
             number=74,
             type=11,
@@ -2154,10 +2283,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='restriction',
-            full_name='spotify.metadata.proto.Episode.restriction',
+            name="restriction",
+            full_name="spotify.metadata.proto.Episode.restriction",
             index=15,
             number=75,
             type=11,
@@ -2172,10 +2302,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='freeze_frame',
-            full_name='spotify.metadata.proto.Episode.freeze_frame',
+            name="freeze_frame",
+            full_name="spotify.metadata.proto.Episode.freeze_frame",
             index=16,
             number=76,
             type=11,
@@ -2190,10 +2321,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='keyword',
-            full_name='spotify.metadata.proto.Episode.keyword',
+            name="keyword",
+            full_name="spotify.metadata.proto.Episode.keyword",
             index=17,
             number=77,
             type=9,
@@ -2208,10 +2340,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='allow_background_playback',
-            full_name='spotify.metadata.proto.Episode.allow_background_playback',
+            name="allow_background_playback",
+            full_name="spotify.metadata.proto.Episode.allow_background_playback",
             index=18,
             number=81,
             type=8,
@@ -2226,10 +2359,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='availability',
-            full_name='spotify.metadata.proto.Episode.availability',
+            name="availability",
+            full_name="spotify.metadata.proto.Episode.availability",
             index=19,
             number=82,
             type=11,
@@ -2244,17 +2378,18 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='external_url',
-            full_name='spotify.metadata.proto.Episode.external_url',
+            name="external_url",
+            full_name="spotify.metadata.proto.Episode.external_url",
             index=20,
             number=83,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -2262,10 +2397,11 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='type',
-            full_name='spotify.metadata.proto.Episode.type',
+            name="type",
+            full_name="spotify.metadata.proto.Episode.type",
             index=21,
             number=87,
             type=14,
@@ -2280,7 +2416,8 @@ _EPISODE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -2289,7 +2426,7 @@ _EPISODE = _descriptor.Descriptor(
     ],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=3261,
@@ -2297,16 +2434,16 @@ _EPISODE = _descriptor.Descriptor(
 )
 
 _LICENSOR = _descriptor.Descriptor(
-    name='Licensor',
-    full_name='spotify.metadata.proto.Licensor',
+    name="Licensor",
+    full_name="spotify.metadata.proto.Licensor",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='uuid',
-            full_name='spotify.metadata.proto.Licensor.uuid',
+            name="uuid",
+            full_name="spotify.metadata.proto.Licensor.uuid",
             index=0,
             number=1,
             type=12,
@@ -2321,14 +2458,15 @@ _LICENSOR = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=4152,
@@ -2336,23 +2474,23 @@ _LICENSOR = _descriptor.Descriptor(
 )
 
 _TOPTRACKS = _descriptor.Descriptor(
-    name='TopTracks',
-    full_name='spotify.metadata.proto.TopTracks',
+    name="TopTracks",
+    full_name="spotify.metadata.proto.TopTracks",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='country',
-            full_name='spotify.metadata.proto.TopTracks.country',
+            name="country",
+            full_name="spotify.metadata.proto.TopTracks.country",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -2360,10 +2498,11 @@ _TOPTRACKS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='track',
-            full_name='spotify.metadata.proto.TopTracks.track',
+            name="track",
+            full_name="spotify.metadata.proto.TopTracks.track",
             index=1,
             number=2,
             type=11,
@@ -2378,14 +2517,15 @@ _TOPTRACKS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=4178,
@@ -2393,16 +2533,16 @@ _TOPTRACKS = _descriptor.Descriptor(
 )
 
 _ACTIVITYPERIOD = _descriptor.Descriptor(
-    name='ActivityPeriod',
-    full_name='spotify.metadata.proto.ActivityPeriod',
+    name="ActivityPeriod",
+    full_name="spotify.metadata.proto.ActivityPeriod",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='start_year',
-            full_name='spotify.metadata.proto.ActivityPeriod.start_year',
+            name="start_year",
+            full_name="spotify.metadata.proto.ActivityPeriod.start_year",
             index=0,
             number=1,
             type=17,
@@ -2417,10 +2557,11 @@ _ACTIVITYPERIOD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='end_year',
-            full_name='spotify.metadata.proto.ActivityPeriod.end_year',
+            name="end_year",
+            full_name="spotify.metadata.proto.ActivityPeriod.end_year",
             index=1,
             number=2,
             type=17,
@@ -2435,10 +2576,11 @@ _ACTIVITYPERIOD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='decade',
-            full_name='spotify.metadata.proto.ActivityPeriod.decade',
+            name="decade",
+            full_name="spotify.metadata.proto.ActivityPeriod.decade",
             index=2,
             number=3,
             type=17,
@@ -2453,14 +2595,15 @@ _ACTIVITYPERIOD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=4254,
@@ -2468,16 +2611,16 @@ _ACTIVITYPERIOD = _descriptor.Descriptor(
 )
 
 _ALBUMGROUP = _descriptor.Descriptor(
-    name='AlbumGroup',
-    full_name='spotify.metadata.proto.AlbumGroup',
+    name="AlbumGroup",
+    full_name="spotify.metadata.proto.AlbumGroup",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='album',
-            full_name='spotify.metadata.proto.AlbumGroup.album',
+            name="album",
+            full_name="spotify.metadata.proto.AlbumGroup.album",
             index=0,
             number=1,
             type=11,
@@ -2492,14 +2635,15 @@ _ALBUMGROUP = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=4326,
@@ -2507,16 +2651,16 @@ _ALBUMGROUP = _descriptor.Descriptor(
 )
 
 _DATE = _descriptor.Descriptor(
-    name='Date',
-    full_name='spotify.metadata.proto.Date',
+    name="Date",
+    full_name="spotify.metadata.proto.Date",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='year',
-            full_name='spotify.metadata.proto.Date.year',
+            name="year",
+            full_name="spotify.metadata.proto.Date.year",
             index=0,
             number=1,
             type=17,
@@ -2531,10 +2675,11 @@ _DATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='month',
-            full_name='spotify.metadata.proto.Date.month',
+            name="month",
+            full_name="spotify.metadata.proto.Date.month",
             index=1,
             number=2,
             type=17,
@@ -2549,10 +2694,11 @@ _DATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='day',
-            full_name='spotify.metadata.proto.Date.day',
+            name="day",
+            full_name="spotify.metadata.proto.Date.day",
             index=2,
             number=3,
             type=17,
@@ -2567,10 +2713,11 @@ _DATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='hour',
-            full_name='spotify.metadata.proto.Date.hour',
+            name="hour",
+            full_name="spotify.metadata.proto.Date.hour",
             index=3,
             number=4,
             type=17,
@@ -2585,10 +2732,11 @@ _DATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='minute',
-            full_name='spotify.metadata.proto.Date.minute',
+            name="minute",
+            full_name="spotify.metadata.proto.Date.minute",
             index=4,
             number=5,
             type=17,
@@ -2603,14 +2751,15 @@ _DATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=4386,
@@ -2618,16 +2767,16 @@ _DATE = _descriptor.Descriptor(
 )
 
 _IMAGE = _descriptor.Descriptor(
-    name='Image',
-    full_name='spotify.metadata.proto.Image',
+    name="Image",
+    full_name="spotify.metadata.proto.Image",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='file_id',
-            full_name='spotify.metadata.proto.Image.file_id',
+            name="file_id",
+            full_name="spotify.metadata.proto.Image.file_id",
             index=0,
             number=1,
             type=12,
@@ -2642,10 +2791,11 @@ _IMAGE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='size',
-            full_name='spotify.metadata.proto.Image.size',
+            name="size",
+            full_name="spotify.metadata.proto.Image.size",
             index=1,
             number=2,
             type=14,
@@ -2660,10 +2810,11 @@ _IMAGE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='width',
-            full_name='spotify.metadata.proto.Image.width',
+            name="width",
+            full_name="spotify.metadata.proto.Image.width",
             index=2,
             number=3,
             type=17,
@@ -2678,10 +2829,11 @@ _IMAGE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='height',
-            full_name='spotify.metadata.proto.Image.height',
+            name="height",
+            full_name="spotify.metadata.proto.Image.height",
             index=3,
             number=4,
             type=17,
@@ -2696,7 +2848,8 @@ _IMAGE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -2705,7 +2858,7 @@ _IMAGE = _descriptor.Descriptor(
     ],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=4467,
@@ -2713,16 +2866,16 @@ _IMAGE = _descriptor.Descriptor(
 )
 
 _IMAGEGROUP = _descriptor.Descriptor(
-    name='ImageGroup',
-    full_name='spotify.metadata.proto.ImageGroup',
+    name="ImageGroup",
+    full_name="spotify.metadata.proto.ImageGroup",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='image',
-            full_name='spotify.metadata.proto.ImageGroup.image',
+            name="image",
+            full_name="spotify.metadata.proto.ImageGroup.image",
             index=0,
             number=1,
             type=11,
@@ -2737,14 +2890,15 @@ _IMAGEGROUP = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=4629,
@@ -2752,23 +2906,23 @@ _IMAGEGROUP = _descriptor.Descriptor(
 )
 
 _BIOGRAPHY = _descriptor.Descriptor(
-    name='Biography',
-    full_name='spotify.metadata.proto.Biography',
+    name="Biography",
+    full_name="spotify.metadata.proto.Biography",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='text',
-            full_name='spotify.metadata.proto.Biography.text',
+            name="text",
+            full_name="spotify.metadata.proto.Biography.text",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -2776,10 +2930,11 @@ _BIOGRAPHY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='portrait',
-            full_name='spotify.metadata.proto.Biography.portrait',
+            name="portrait",
+            full_name="spotify.metadata.proto.Biography.portrait",
             index=1,
             number=2,
             type=11,
@@ -2794,10 +2949,11 @@ _BIOGRAPHY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='portrait_group',
-            full_name='spotify.metadata.proto.Biography.portrait_group',
+            name="portrait_group",
+            full_name="spotify.metadata.proto.Biography.portrait_group",
             index=2,
             number=3,
             type=11,
@@ -2812,14 +2968,15 @@ _BIOGRAPHY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=4690,
@@ -2827,16 +2984,16 @@ _BIOGRAPHY = _descriptor.Descriptor(
 )
 
 _DISC = _descriptor.Descriptor(
-    name='Disc',
-    full_name='spotify.metadata.proto.Disc',
+    name="Disc",
+    full_name="spotify.metadata.proto.Disc",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='number',
-            full_name='spotify.metadata.proto.Disc.number',
+            name="number",
+            full_name="spotify.metadata.proto.Disc.number",
             index=0,
             number=1,
             type=17,
@@ -2851,17 +3008,18 @@ _DISC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='name',
-            full_name='spotify.metadata.proto.Disc.name',
+            name="name",
+            full_name="spotify.metadata.proto.Disc.name",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -2869,10 +3027,11 @@ _DISC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='track',
-            full_name='spotify.metadata.proto.Disc.track',
+            name="track",
+            full_name="spotify.metadata.proto.Disc.track",
             index=2,
             number=3,
             type=11,
@@ -2887,14 +3046,15 @@ _DISC = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=4826,
@@ -2902,16 +3062,16 @@ _DISC = _descriptor.Descriptor(
 )
 
 _COPYRIGHT = _descriptor.Descriptor(
-    name='Copyright',
-    full_name='spotify.metadata.proto.Copyright',
+    name="Copyright",
+    full_name="spotify.metadata.proto.Copyright",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='type',
-            full_name='spotify.metadata.proto.Copyright.type',
+            name="type",
+            full_name="spotify.metadata.proto.Copyright.type",
             index=0,
             number=1,
             type=14,
@@ -2926,17 +3086,18 @@ _COPYRIGHT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='text',
-            full_name='spotify.metadata.proto.Copyright.text',
+            name="text",
+            full_name="spotify.metadata.proto.Copyright.text",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -2944,7 +3105,8 @@ _COPYRIGHT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -2953,7 +3115,7 @@ _COPYRIGHT = _descriptor.Descriptor(
     ],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=4910,
@@ -2961,16 +3123,16 @@ _COPYRIGHT = _descriptor.Descriptor(
 )
 
 _RESTRICTION = _descriptor.Descriptor(
-    name='Restriction',
-    full_name='spotify.metadata.proto.Restriction',
+    name="Restriction",
+    full_name="spotify.metadata.proto.Restriction",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='catalogue',
-            full_name='spotify.metadata.proto.Restriction.catalogue',
+            name="catalogue",
+            full_name="spotify.metadata.proto.Restriction.catalogue",
             index=0,
             number=1,
             type=14,
@@ -2985,10 +3147,11 @@ _RESTRICTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='type',
-            full_name='spotify.metadata.proto.Restriction.type',
+            name="type",
+            full_name="spotify.metadata.proto.Restriction.type",
             index=1,
             number=4,
             type=14,
@@ -3003,10 +3166,11 @@ _RESTRICTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='catalogue_str',
-            full_name='spotify.metadata.proto.Restriction.catalogue_str',
+            name="catalogue_str",
+            full_name="spotify.metadata.proto.Restriction.catalogue_str",
             index=2,
             number=5,
             type=9,
@@ -3021,17 +3185,18 @@ _RESTRICTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='countries_allowed',
-            full_name='spotify.metadata.proto.Restriction.countries_allowed',
+            name="countries_allowed",
+            full_name="spotify.metadata.proto.Restriction.countries_allowed",
             index=3,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -3039,17 +3204,18 @@ _RESTRICTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='countries_forbidden',
-            full_name='spotify.metadata.proto.Restriction.countries_forbidden',
+            name="countries_forbidden",
+            full_name="spotify.metadata.proto.Restriction.countries_forbidden",
             index=4,
             number=3,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -3057,7 +3223,8 @@ _RESTRICTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -3067,32 +3234,33 @@ _RESTRICTION = _descriptor.Descriptor(
     ],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[
         _descriptor.OneofDescriptor(
-            name='country_restriction',
-            full_name='spotify.metadata.proto.Restriction.country_restriction',
+            name="country_restriction",
+            full_name="spotify.metadata.proto.Restriction.country_restriction",
             index=0,
             containing_type=None,
             create_key=_descriptor._internal_create_key,
-            fields=[]),
+            fields=[],
+        ),
     ],
     serialized_start=5014,
     serialized_end=5365,
 )
 
 _AVAILABILITY = _descriptor.Descriptor(
-    name='Availability',
-    full_name='spotify.metadata.proto.Availability',
+    name="Availability",
+    full_name="spotify.metadata.proto.Availability",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='catalogue_str',
-            full_name='spotify.metadata.proto.Availability.catalogue_str',
+            name="catalogue_str",
+            full_name="spotify.metadata.proto.Availability.catalogue_str",
             index=0,
             number=1,
             type=9,
@@ -3107,10 +3275,11 @@ _AVAILABILITY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='start',
-            full_name='spotify.metadata.proto.Availability.start',
+            name="start",
+            full_name="spotify.metadata.proto.Availability.start",
             index=1,
             number=2,
             type=11,
@@ -3125,14 +3294,15 @@ _AVAILABILITY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=5367,
@@ -3140,16 +3310,16 @@ _AVAILABILITY = _descriptor.Descriptor(
 )
 
 _SALEPERIOD = _descriptor.Descriptor(
-    name='SalePeriod',
-    full_name='spotify.metadata.proto.SalePeriod',
+    name="SalePeriod",
+    full_name="spotify.metadata.proto.SalePeriod",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='restriction',
-            full_name='spotify.metadata.proto.SalePeriod.restriction',
+            name="restriction",
+            full_name="spotify.metadata.proto.SalePeriod.restriction",
             index=0,
             number=1,
             type=11,
@@ -3164,10 +3334,11 @@ _SALEPERIOD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='start',
-            full_name='spotify.metadata.proto.SalePeriod.start',
+            name="start",
+            full_name="spotify.metadata.proto.SalePeriod.start",
             index=1,
             number=2,
             type=11,
@@ -3182,10 +3353,11 @@ _SALEPERIOD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='end',
-            full_name='spotify.metadata.proto.SalePeriod.end',
+            name="end",
+            full_name="spotify.metadata.proto.SalePeriod.end",
             index=2,
             number=3,
             type=11,
@@ -3200,14 +3372,15 @@ _SALEPERIOD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=5452,
@@ -3215,23 +3388,23 @@ _SALEPERIOD = _descriptor.Descriptor(
 )
 
 _EXTERNALID = _descriptor.Descriptor(
-    name='ExternalId',
-    full_name='spotify.metadata.proto.ExternalId',
+    name="ExternalId",
+    full_name="spotify.metadata.proto.ExternalId",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='type',
-            full_name='spotify.metadata.proto.ExternalId.type',
+            name="type",
+            full_name="spotify.metadata.proto.ExternalId.type",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -3239,17 +3412,18 @@ _EXTERNALID = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='id',
-            full_name='spotify.metadata.proto.ExternalId.id',
+            name="id",
+            full_name="spotify.metadata.proto.ExternalId.id",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -3257,14 +3431,15 @@ _EXTERNALID = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=5612,
@@ -3272,16 +3447,16 @@ _EXTERNALID = _descriptor.Descriptor(
 )
 
 _AUDIOFILE = _descriptor.Descriptor(
-    name='AudioFile',
-    full_name='spotify.metadata.proto.AudioFile',
+    name="AudioFile",
+    full_name="spotify.metadata.proto.AudioFile",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='file_id',
-            full_name='spotify.metadata.proto.AudioFile.file_id',
+            name="file_id",
+            full_name="spotify.metadata.proto.AudioFile.file_id",
             index=0,
             number=1,
             type=12,
@@ -3296,10 +3471,11 @@ _AUDIOFILE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='format',
-            full_name='spotify.metadata.proto.AudioFile.format',
+            name="format",
+            full_name="spotify.metadata.proto.AudioFile.format",
             index=1,
             number=2,
             type=14,
@@ -3314,7 +3490,8 @@ _AUDIOFILE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -3323,7 +3500,7 @@ _AUDIOFILE = _descriptor.Descriptor(
     ],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=5653,
@@ -3331,16 +3508,16 @@ _AUDIOFILE = _descriptor.Descriptor(
 )
 
 _VIDEOFILE = _descriptor.Descriptor(
-    name='VideoFile',
-    full_name='spotify.metadata.proto.VideoFile',
+    name="VideoFile",
+    full_name="spotify.metadata.proto.VideoFile",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='file_id',
-            full_name='spotify.metadata.proto.VideoFile.file_id',
+            name="file_id",
+            full_name="spotify.metadata.proto.VideoFile.file_id",
             index=0,
             number=1,
             type=12,
@@ -3355,342 +3532,366 @@ _VIDEOFILE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=5920,
     serialized_end=5948,
 )
 
-_ARTIST.fields_by_name['top_track'].message_type = _TOPTRACKS
-_ARTIST.fields_by_name['album_group'].message_type = _ALBUMGROUP
-_ARTIST.fields_by_name['single_group'].message_type = _ALBUMGROUP
-_ARTIST.fields_by_name['compilation_group'].message_type = _ALBUMGROUP
-_ARTIST.fields_by_name['appears_on_group'].message_type = _ALBUMGROUP
-_ARTIST.fields_by_name['external_id'].message_type = _EXTERNALID
-_ARTIST.fields_by_name['portrait'].message_type = _IMAGE
-_ARTIST.fields_by_name['biography'].message_type = _BIOGRAPHY
-_ARTIST.fields_by_name['activity_period'].message_type = _ACTIVITYPERIOD
-_ARTIST.fields_by_name['restriction'].message_type = _RESTRICTION
-_ARTIST.fields_by_name['related'].message_type = _ARTIST
-_ARTIST.fields_by_name['portrait_group'].message_type = _IMAGEGROUP
-_ARTIST.fields_by_name['sale_period'].message_type = _SALEPERIOD
-_ARTIST.fields_by_name['availability'].message_type = _AVAILABILITY
-_ALBUM.fields_by_name['artist'].message_type = _ARTIST
-_ALBUM.fields_by_name['type'].enum_type = _ALBUM_TYPE
-_ALBUM.fields_by_name['date'].message_type = _DATE
-_ALBUM.fields_by_name['cover'].message_type = _IMAGE
-_ALBUM.fields_by_name['external_id'].message_type = _EXTERNALID
-_ALBUM.fields_by_name['disc'].message_type = _DISC
-_ALBUM.fields_by_name['copyright'].message_type = _COPYRIGHT
-_ALBUM.fields_by_name['restriction'].message_type = _RESTRICTION
-_ALBUM.fields_by_name['related'].message_type = _ALBUM
-_ALBUM.fields_by_name['sale_period'].message_type = _SALEPERIOD
-_ALBUM.fields_by_name['cover_group'].message_type = _IMAGEGROUP
-_ALBUM.fields_by_name['availability'].message_type = _AVAILABILITY
+_ARTIST.fields_by_name["top_track"].message_type = _TOPTRACKS
+_ARTIST.fields_by_name["album_group"].message_type = _ALBUMGROUP
+_ARTIST.fields_by_name["single_group"].message_type = _ALBUMGROUP
+_ARTIST.fields_by_name["compilation_group"].message_type = _ALBUMGROUP
+_ARTIST.fields_by_name["appears_on_group"].message_type = _ALBUMGROUP
+_ARTIST.fields_by_name["external_id"].message_type = _EXTERNALID
+_ARTIST.fields_by_name["portrait"].message_type = _IMAGE
+_ARTIST.fields_by_name["biography"].message_type = _BIOGRAPHY
+_ARTIST.fields_by_name["activity_period"].message_type = _ACTIVITYPERIOD
+_ARTIST.fields_by_name["restriction"].message_type = _RESTRICTION
+_ARTIST.fields_by_name["related"].message_type = _ARTIST
+_ARTIST.fields_by_name["portrait_group"].message_type = _IMAGEGROUP
+_ARTIST.fields_by_name["sale_period"].message_type = _SALEPERIOD
+_ARTIST.fields_by_name["availability"].message_type = _AVAILABILITY
+_ALBUM.fields_by_name["artist"].message_type = _ARTIST
+_ALBUM.fields_by_name["type"].enum_type = _ALBUM_TYPE
+_ALBUM.fields_by_name["date"].message_type = _DATE
+_ALBUM.fields_by_name["cover"].message_type = _IMAGE
+_ALBUM.fields_by_name["external_id"].message_type = _EXTERNALID
+_ALBUM.fields_by_name["disc"].message_type = _DISC
+_ALBUM.fields_by_name["copyright"].message_type = _COPYRIGHT
+_ALBUM.fields_by_name["restriction"].message_type = _RESTRICTION
+_ALBUM.fields_by_name["related"].message_type = _ALBUM
+_ALBUM.fields_by_name["sale_period"].message_type = _SALEPERIOD
+_ALBUM.fields_by_name["cover_group"].message_type = _IMAGEGROUP
+_ALBUM.fields_by_name["availability"].message_type = _AVAILABILITY
 _ALBUM_TYPE.containing_type = _ALBUM
-_TRACK.fields_by_name['album'].message_type = _ALBUM
-_TRACK.fields_by_name['artist'].message_type = _ARTIST
-_TRACK.fields_by_name['external_id'].message_type = _EXTERNALID
-_TRACK.fields_by_name['restriction'].message_type = _RESTRICTION
-_TRACK.fields_by_name['file'].message_type = _AUDIOFILE
-_TRACK.fields_by_name['alternative'].message_type = _TRACK
-_TRACK.fields_by_name['sale_period'].message_type = _SALEPERIOD
-_TRACK.fields_by_name['preview'].message_type = _AUDIOFILE
-_TRACK.fields_by_name['availability'].message_type = _AVAILABILITY
-_TRACK.fields_by_name['licensor'].message_type = _LICENSOR
-_SHOW.fields_by_name['cover_image'].message_type = _IMAGEGROUP
-_SHOW.fields_by_name['episode'].message_type = _EPISODE
-_SHOW.fields_by_name['copyright'].message_type = _COPYRIGHT
-_SHOW.fields_by_name['restriction'].message_type = _RESTRICTION
-_SHOW.fields_by_name['media_type'].enum_type = _SHOW_MEDIATYPE
-_SHOW.fields_by_name['consumption_order'].enum_type = _SHOW_CONSUMPTIONORDER
-_SHOW.fields_by_name['availability'].message_type = _AVAILABILITY
+_TRACK.fields_by_name["album"].message_type = _ALBUM
+_TRACK.fields_by_name["artist"].message_type = _ARTIST
+_TRACK.fields_by_name["external_id"].message_type = _EXTERNALID
+_TRACK.fields_by_name["restriction"].message_type = _RESTRICTION
+_TRACK.fields_by_name["file"].message_type = _AUDIOFILE
+_TRACK.fields_by_name["alternative"].message_type = _TRACK
+_TRACK.fields_by_name["sale_period"].message_type = _SALEPERIOD
+_TRACK.fields_by_name["preview"].message_type = _AUDIOFILE
+_TRACK.fields_by_name["availability"].message_type = _AVAILABILITY
+_TRACK.fields_by_name["licensor"].message_type = _LICENSOR
+_SHOW.fields_by_name["cover_image"].message_type = _IMAGEGROUP
+_SHOW.fields_by_name["episode"].message_type = _EPISODE
+_SHOW.fields_by_name["copyright"].message_type = _COPYRIGHT
+_SHOW.fields_by_name["restriction"].message_type = _RESTRICTION
+_SHOW.fields_by_name["media_type"].enum_type = _SHOW_MEDIATYPE
+_SHOW.fields_by_name["consumption_order"].enum_type = _SHOW_CONSUMPTIONORDER
+_SHOW.fields_by_name["availability"].message_type = _AVAILABILITY
 _SHOW_MEDIATYPE.containing_type = _SHOW
 _SHOW_CONSUMPTIONORDER.containing_type = _SHOW
-_EPISODE.fields_by_name['audio'].message_type = _AUDIOFILE
-_EPISODE.fields_by_name['publish_time'].message_type = _DATE
-_EPISODE.fields_by_name['cover_image'].message_type = _IMAGEGROUP
-_EPISODE.fields_by_name['show'].message_type = _SHOW
-_EPISODE.fields_by_name['video'].message_type = _VIDEOFILE
-_EPISODE.fields_by_name['video_preview'].message_type = _VIDEOFILE
-_EPISODE.fields_by_name['audio_preview'].message_type = _AUDIOFILE
-_EPISODE.fields_by_name['restriction'].message_type = _RESTRICTION
-_EPISODE.fields_by_name['freeze_frame'].message_type = _IMAGEGROUP
-_EPISODE.fields_by_name['availability'].message_type = _AVAILABILITY
-_EPISODE.fields_by_name['type'].enum_type = _EPISODE_EPISODETYPE
+_EPISODE.fields_by_name["audio"].message_type = _AUDIOFILE
+_EPISODE.fields_by_name["publish_time"].message_type = _DATE
+_EPISODE.fields_by_name["cover_image"].message_type = _IMAGEGROUP
+_EPISODE.fields_by_name["show"].message_type = _SHOW
+_EPISODE.fields_by_name["video"].message_type = _VIDEOFILE
+_EPISODE.fields_by_name["video_preview"].message_type = _VIDEOFILE
+_EPISODE.fields_by_name["audio_preview"].message_type = _AUDIOFILE
+_EPISODE.fields_by_name["restriction"].message_type = _RESTRICTION
+_EPISODE.fields_by_name["freeze_frame"].message_type = _IMAGEGROUP
+_EPISODE.fields_by_name["availability"].message_type = _AVAILABILITY
+_EPISODE.fields_by_name["type"].enum_type = _EPISODE_EPISODETYPE
 _EPISODE_EPISODETYPE.containing_type = _EPISODE
-_TOPTRACKS.fields_by_name['track'].message_type = _TRACK
-_ALBUMGROUP.fields_by_name['album'].message_type = _ALBUM
-_IMAGE.fields_by_name['size'].enum_type = _IMAGE_SIZE
+_TOPTRACKS.fields_by_name["track"].message_type = _TRACK
+_ALBUMGROUP.fields_by_name["album"].message_type = _ALBUM
+_IMAGE.fields_by_name["size"].enum_type = _IMAGE_SIZE
 _IMAGE_SIZE.containing_type = _IMAGE
-_IMAGEGROUP.fields_by_name['image'].message_type = _IMAGE
-_BIOGRAPHY.fields_by_name['portrait'].message_type = _IMAGE
-_BIOGRAPHY.fields_by_name['portrait_group'].message_type = _IMAGEGROUP
-_DISC.fields_by_name['track'].message_type = _TRACK
-_COPYRIGHT.fields_by_name['type'].enum_type = _COPYRIGHT_TYPE
+_IMAGEGROUP.fields_by_name["image"].message_type = _IMAGE
+_BIOGRAPHY.fields_by_name["portrait"].message_type = _IMAGE
+_BIOGRAPHY.fields_by_name["portrait_group"].message_type = _IMAGEGROUP
+_DISC.fields_by_name["track"].message_type = _TRACK
+_COPYRIGHT.fields_by_name["type"].enum_type = _COPYRIGHT_TYPE
 _COPYRIGHT_TYPE.containing_type = _COPYRIGHT
-_RESTRICTION.fields_by_name['catalogue'].enum_type = _RESTRICTION_CATALOGUE
-_RESTRICTION.fields_by_name['type'].enum_type = _RESTRICTION_TYPE
+_RESTRICTION.fields_by_name["catalogue"].enum_type = _RESTRICTION_CATALOGUE
+_RESTRICTION.fields_by_name["type"].enum_type = _RESTRICTION_TYPE
 _RESTRICTION_CATALOGUE.containing_type = _RESTRICTION
 _RESTRICTION_TYPE.containing_type = _RESTRICTION
-_RESTRICTION.oneofs_by_name['country_restriction'].fields.append(
-    _RESTRICTION.fields_by_name['countries_allowed'])
+_RESTRICTION.oneofs_by_name["country_restriction"].fields.append(
+    _RESTRICTION.fields_by_name["countries_allowed"]
+)
 _RESTRICTION.fields_by_name[
-    'countries_allowed'].containing_oneof = _RESTRICTION.oneofs_by_name[
-        'country_restriction']
-_RESTRICTION.oneofs_by_name['country_restriction'].fields.append(
-    _RESTRICTION.fields_by_name['countries_forbidden'])
+    "countries_allowed"
+].containing_oneof = _RESTRICTION.oneofs_by_name["country_restriction"]
+_RESTRICTION.oneofs_by_name["country_restriction"].fields.append(
+    _RESTRICTION.fields_by_name["countries_forbidden"]
+)
 _RESTRICTION.fields_by_name[
-    'countries_forbidden'].containing_oneof = _RESTRICTION.oneofs_by_name[
-        'country_restriction']
-_AVAILABILITY.fields_by_name['start'].message_type = _DATE
-_SALEPERIOD.fields_by_name['restriction'].message_type = _RESTRICTION
-_SALEPERIOD.fields_by_name['start'].message_type = _DATE
-_SALEPERIOD.fields_by_name['end'].message_type = _DATE
-_AUDIOFILE.fields_by_name['format'].enum_type = _AUDIOFILE_FORMAT
+    "countries_forbidden"
+].containing_oneof = _RESTRICTION.oneofs_by_name["country_restriction"]
+_AVAILABILITY.fields_by_name["start"].message_type = _DATE
+_SALEPERIOD.fields_by_name["restriction"].message_type = _RESTRICTION
+_SALEPERIOD.fields_by_name["start"].message_type = _DATE
+_SALEPERIOD.fields_by_name["end"].message_type = _DATE
+_AUDIOFILE.fields_by_name["format"].enum_type = _AUDIOFILE_FORMAT
 _AUDIOFILE_FORMAT.containing_type = _AUDIOFILE
-DESCRIPTOR.message_types_by_name['Artist'] = _ARTIST
-DESCRIPTOR.message_types_by_name['Album'] = _ALBUM
-DESCRIPTOR.message_types_by_name['Track'] = _TRACK
-DESCRIPTOR.message_types_by_name['Show'] = _SHOW
-DESCRIPTOR.message_types_by_name['Episode'] = _EPISODE
-DESCRIPTOR.message_types_by_name['Licensor'] = _LICENSOR
-DESCRIPTOR.message_types_by_name['TopTracks'] = _TOPTRACKS
-DESCRIPTOR.message_types_by_name['ActivityPeriod'] = _ACTIVITYPERIOD
-DESCRIPTOR.message_types_by_name['AlbumGroup'] = _ALBUMGROUP
-DESCRIPTOR.message_types_by_name['Date'] = _DATE
-DESCRIPTOR.message_types_by_name['Image'] = _IMAGE
-DESCRIPTOR.message_types_by_name['ImageGroup'] = _IMAGEGROUP
-DESCRIPTOR.message_types_by_name['Biography'] = _BIOGRAPHY
-DESCRIPTOR.message_types_by_name['Disc'] = _DISC
-DESCRIPTOR.message_types_by_name['Copyright'] = _COPYRIGHT
-DESCRIPTOR.message_types_by_name['Restriction'] = _RESTRICTION
-DESCRIPTOR.message_types_by_name['Availability'] = _AVAILABILITY
-DESCRIPTOR.message_types_by_name['SalePeriod'] = _SALEPERIOD
-DESCRIPTOR.message_types_by_name['ExternalId'] = _EXTERNALID
-DESCRIPTOR.message_types_by_name['AudioFile'] = _AUDIOFILE
-DESCRIPTOR.message_types_by_name['VideoFile'] = _VIDEOFILE
+DESCRIPTOR.message_types_by_name["Artist"] = _ARTIST
+DESCRIPTOR.message_types_by_name["Album"] = _ALBUM
+DESCRIPTOR.message_types_by_name["Track"] = _TRACK
+DESCRIPTOR.message_types_by_name["Show"] = _SHOW
+DESCRIPTOR.message_types_by_name["Episode"] = _EPISODE
+DESCRIPTOR.message_types_by_name["Licensor"] = _LICENSOR
+DESCRIPTOR.message_types_by_name["TopTracks"] = _TOPTRACKS
+DESCRIPTOR.message_types_by_name["ActivityPeriod"] = _ACTIVITYPERIOD
+DESCRIPTOR.message_types_by_name["AlbumGroup"] = _ALBUMGROUP
+DESCRIPTOR.message_types_by_name["Date"] = _DATE
+DESCRIPTOR.message_types_by_name["Image"] = _IMAGE
+DESCRIPTOR.message_types_by_name["ImageGroup"] = _IMAGEGROUP
+DESCRIPTOR.message_types_by_name["Biography"] = _BIOGRAPHY
+DESCRIPTOR.message_types_by_name["Disc"] = _DISC
+DESCRIPTOR.message_types_by_name["Copyright"] = _COPYRIGHT
+DESCRIPTOR.message_types_by_name["Restriction"] = _RESTRICTION
+DESCRIPTOR.message_types_by_name["Availability"] = _AVAILABILITY
+DESCRIPTOR.message_types_by_name["SalePeriod"] = _SALEPERIOD
+DESCRIPTOR.message_types_by_name["ExternalId"] = _EXTERNALID
+DESCRIPTOR.message_types_by_name["AudioFile"] = _AUDIOFILE
+DESCRIPTOR.message_types_by_name["VideoFile"] = _VIDEOFILE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Artist = _reflection.GeneratedProtocolMessageType(
-    'Artist',
-    (_message.Message, ),
+    "Artist",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _ARTIST,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _ARTIST,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.Artist)
-    })
+    },
+)
 _sym_db.RegisterMessage(Artist)
 
 Album = _reflection.GeneratedProtocolMessageType(
-    'Album',
-    (_message.Message, ),
+    "Album",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _ALBUM,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _ALBUM,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.Album)
-    })
+    },
+)
 _sym_db.RegisterMessage(Album)
 
 Track = _reflection.GeneratedProtocolMessageType(
-    'Track',
-    (_message.Message, ),
+    "Track",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _TRACK,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _TRACK,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.Track)
-    })
+    },
+)
 _sym_db.RegisterMessage(Track)
 
 Show = _reflection.GeneratedProtocolMessageType(
-    'Show',
-    (_message.Message, ),
+    "Show",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _SHOW,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _SHOW,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.Show)
-    })
+    },
+)
 _sym_db.RegisterMessage(Show)
 
 Episode = _reflection.GeneratedProtocolMessageType(
-    'Episode',
-    (_message.Message, ),
+    "Episode",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _EPISODE,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _EPISODE,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.Episode)
-    })
+    },
+)
 _sym_db.RegisterMessage(Episode)
 
 Licensor = _reflection.GeneratedProtocolMessageType(
-    'Licensor',
-    (_message.Message, ),
+    "Licensor",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _LICENSOR,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _LICENSOR,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.Licensor)
-    })
+    },
+)
 _sym_db.RegisterMessage(Licensor)
 
 TopTracks = _reflection.GeneratedProtocolMessageType(
-    'TopTracks',
-    (_message.Message, ),
+    "TopTracks",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _TOPTRACKS,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _TOPTRACKS,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.TopTracks)
-    })
+    },
+)
 _sym_db.RegisterMessage(TopTracks)
 
 ActivityPeriod = _reflection.GeneratedProtocolMessageType(
-    'ActivityPeriod',
-    (_message.Message, ),
+    "ActivityPeriod",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _ACTIVITYPERIOD,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _ACTIVITYPERIOD,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.ActivityPeriod)
-    })
+    },
+)
 _sym_db.RegisterMessage(ActivityPeriod)
 
 AlbumGroup = _reflection.GeneratedProtocolMessageType(
-    'AlbumGroup',
-    (_message.Message, ),
+    "AlbumGroup",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _ALBUMGROUP,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _ALBUMGROUP,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.AlbumGroup)
-    })
+    },
+)
 _sym_db.RegisterMessage(AlbumGroup)
 
 Date = _reflection.GeneratedProtocolMessageType(
-    'Date',
-    (_message.Message, ),
+    "Date",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _DATE,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _DATE,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.Date)
-    })
+    },
+)
 _sym_db.RegisterMessage(Date)
 
 Image = _reflection.GeneratedProtocolMessageType(
-    'Image',
-    (_message.Message, ),
+    "Image",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _IMAGE,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _IMAGE,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.Image)
-    })
+    },
+)
 _sym_db.RegisterMessage(Image)
 
 ImageGroup = _reflection.GeneratedProtocolMessageType(
-    'ImageGroup',
-    (_message.Message, ),
+    "ImageGroup",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _IMAGEGROUP,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _IMAGEGROUP,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.ImageGroup)
-    })
+    },
+)
 _sym_db.RegisterMessage(ImageGroup)
 
 Biography = _reflection.GeneratedProtocolMessageType(
-    'Biography',
-    (_message.Message, ),
+    "Biography",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _BIOGRAPHY,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _BIOGRAPHY,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.Biography)
-    })
+    },
+)
 _sym_db.RegisterMessage(Biography)
 
 Disc = _reflection.GeneratedProtocolMessageType(
-    'Disc',
-    (_message.Message, ),
+    "Disc",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _DISC,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _DISC,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.Disc)
-    })
+    },
+)
 _sym_db.RegisterMessage(Disc)
 
 Copyright = _reflection.GeneratedProtocolMessageType(
-    'Copyright',
-    (_message.Message, ),
+    "Copyright",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _COPYRIGHT,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _COPYRIGHT,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.Copyright)
-    })
+    },
+)
 _sym_db.RegisterMessage(Copyright)
 
 Restriction = _reflection.GeneratedProtocolMessageType(
-    'Restriction',
-    (_message.Message, ),
+    "Restriction",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _RESTRICTION,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _RESTRICTION,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.Restriction)
-    })
+    },
+)
 _sym_db.RegisterMessage(Restriction)
 
 Availability = _reflection.GeneratedProtocolMessageType(
-    'Availability',
-    (_message.Message, ),
+    "Availability",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _AVAILABILITY,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _AVAILABILITY,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.Availability)
-    })
+    },
+)
 _sym_db.RegisterMessage(Availability)
 
 SalePeriod = _reflection.GeneratedProtocolMessageType(
-    'SalePeriod',
-    (_message.Message, ),
+    "SalePeriod",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _SALEPERIOD,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _SALEPERIOD,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.SalePeriod)
-    })
+    },
+)
 _sym_db.RegisterMessage(SalePeriod)
 
 ExternalId = _reflection.GeneratedProtocolMessageType(
-    'ExternalId',
-    (_message.Message, ),
+    "ExternalId",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _EXTERNALID,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _EXTERNALID,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.ExternalId)
-    })
+    },
+)
 _sym_db.RegisterMessage(ExternalId)
 
 AudioFile = _reflection.GeneratedProtocolMessageType(
-    'AudioFile',
-    (_message.Message, ),
+    "AudioFile",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _AUDIOFILE,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _AUDIOFILE,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.AudioFile)
-    })
+    },
+)
 _sym_db.RegisterMessage(AudioFile)
 
 VideoFile = _reflection.GeneratedProtocolMessageType(
-    'VideoFile',
-    (_message.Message, ),
+    "VideoFile",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _VIDEOFILE,
-        '__module__': 'metadata_pb2'
+        "DESCRIPTOR": _VIDEOFILE,
+        "__module__": "metadata_pb2"
         # @@protoc_insertion_point(class_scope:spotify.metadata.proto.VideoFile)
-    })
+    },
+)
 _sym_db.RegisterMessage(VideoFile)
 
 DESCRIPTOR._options = None
-_SHOW.fields_by_name['deprecated_popularity']._options = None
-_EPISODE.fields_by_name['deprecated_popularity']._options = None
+_SHOW.fields_by_name["deprecated_popularity"]._options = None
+_EPISODE.fields_by_name["deprecated_popularity"]._options = None
 # @@protoc_insertion_point(module_scope)

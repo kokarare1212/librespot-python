@@ -475,24 +475,24 @@ _ENTITYCANVAZREQUEST = _descriptor.Descriptor(
     serialized_end=606,
 )
 
-_ENTITYCANVAZRESPONSE_CANVAZ.fields_by_name[
-    "type"].enum_type = canvaz__meta__pb2._TYPE
+_ENTITYCANVAZRESPONSE_CANVAZ.fields_by_name["type"].enum_type = canvaz__meta__pb2._TYPE
 _ENTITYCANVAZRESPONSE_CANVAZ.fields_by_name["artist"].message_type = _ARTIST
 _ENTITYCANVAZRESPONSE_CANVAZ.containing_type = _ENTITYCANVAZRESPONSE
 _ENTITYCANVAZRESPONSE.fields_by_name[
-    "canvases"].message_type = _ENTITYCANVAZRESPONSE_CANVAZ
+    "canvases"
+].message_type = _ENTITYCANVAZRESPONSE_CANVAZ
 _ENTITYCANVAZREQUEST_ENTITY.containing_type = _ENTITYCANVAZREQUEST
 _ENTITYCANVAZREQUEST.fields_by_name[
-    "entities"].message_type = _ENTITYCANVAZREQUEST_ENTITY
+    "entities"
+].message_type = _ENTITYCANVAZREQUEST_ENTITY
 DESCRIPTOR.message_types_by_name["Artist"] = _ARTIST
-DESCRIPTOR.message_types_by_name[
-    "EntityCanvazResponse"] = _ENTITYCANVAZRESPONSE
+DESCRIPTOR.message_types_by_name["EntityCanvazResponse"] = _ENTITYCANVAZRESPONSE
 DESCRIPTOR.message_types_by_name["EntityCanvazRequest"] = _ENTITYCANVAZREQUEST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Artist = _reflection.GeneratedProtocolMessageType(
     "Artist",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _ARTIST,
         "__module__": "canvaz_pb2"
@@ -503,22 +503,19 @@ _sym_db.RegisterMessage(Artist)
 
 EntityCanvazResponse = _reflection.GeneratedProtocolMessageType(
     "EntityCanvazResponse",
-    (_message.Message, ),
+    (_message.Message,),
     {
-        "Canvaz":
-        _reflection.GeneratedProtocolMessageType(
+        "Canvaz": _reflection.GeneratedProtocolMessageType(
             "Canvaz",
-            (_message.Message, ),
+            (_message.Message,),
             {
                 "DESCRIPTOR": _ENTITYCANVAZRESPONSE_CANVAZ,
                 "__module__": "canvaz_pb2"
                 # @@protoc_insertion_point(class_scope:com.spotify.canvazcache.EntityCanvazResponse.Canvaz)
             },
         ),
-        "DESCRIPTOR":
-        _ENTITYCANVAZRESPONSE,
-        "__module__":
-        "canvaz_pb2"
+        "DESCRIPTOR": _ENTITYCANVAZRESPONSE,
+        "__module__": "canvaz_pb2"
         # @@protoc_insertion_point(class_scope:com.spotify.canvazcache.EntityCanvazResponse)
     },
 )
@@ -527,22 +524,19 @@ _sym_db.RegisterMessage(EntityCanvazResponse.Canvaz)
 
 EntityCanvazRequest = _reflection.GeneratedProtocolMessageType(
     "EntityCanvazRequest",
-    (_message.Message, ),
+    (_message.Message,),
     {
-        "Entity":
-        _reflection.GeneratedProtocolMessageType(
+        "Entity": _reflection.GeneratedProtocolMessageType(
             "Entity",
-            (_message.Message, ),
+            (_message.Message,),
             {
                 "DESCRIPTOR": _ENTITYCANVAZREQUEST_ENTITY,
                 "__module__": "canvaz_pb2"
                 # @@protoc_insertion_point(class_scope:com.spotify.canvazcache.EntityCanvazRequest.Entity)
             },
         ),
-        "DESCRIPTOR":
-        _ENTITYCANVAZREQUEST,
-        "__module__":
-        "canvaz_pb2"
+        "DESCRIPTOR": _ENTITYCANVAZREQUEST,
+        "__module__": "canvaz_pb2"
         # @@protoc_insertion_point(class_scope:com.spotify.canvazcache.EntityCanvazRequest)
     },
 )

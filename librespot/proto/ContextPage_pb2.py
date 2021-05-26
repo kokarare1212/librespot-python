@@ -202,31 +202,26 @@ _CONTEXTPAGE = _descriptor.Descriptor(
 )
 
 _CONTEXTPAGE_METADATAENTRY.containing_type = _CONTEXTPAGE
-_CONTEXTPAGE.fields_by_name[
-    "metadata"].message_type = _CONTEXTPAGE_METADATAENTRY
-_CONTEXTPAGE.fields_by_name[
-    "tracks"].message_type = context__track__pb2._CONTEXTTRACK
+_CONTEXTPAGE.fields_by_name["metadata"].message_type = _CONTEXTPAGE_METADATAENTRY
+_CONTEXTPAGE.fields_by_name["tracks"].message_type = context__track__pb2._CONTEXTTRACK
 DESCRIPTOR.message_types_by_name["ContextPage"] = _CONTEXTPAGE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ContextPage = _reflection.GeneratedProtocolMessageType(
     "ContextPage",
-    (_message.Message, ),
+    (_message.Message,),
     {
-        "MetadataEntry":
-        _reflection.GeneratedProtocolMessageType(
+        "MetadataEntry": _reflection.GeneratedProtocolMessageType(
             "MetadataEntry",
-            (_message.Message, ),
+            (_message.Message,),
             {
                 "DESCRIPTOR": _CONTEXTPAGE_METADATAENTRY,
                 "__module__": "context_page_pb2"
                 # @@protoc_insertion_point(class_scope:spotify.player.proto.ContextPage.MetadataEntry)
             },
         ),
-        "DESCRIPTOR":
-        _CONTEXTPAGE,
-        "__module__":
-        "context_page_pb2"
+        "DESCRIPTOR": _CONTEXTPAGE,
+        "__module__": "context_page_pb2"
         # @@protoc_insertion_point(class_scope:spotify.player.proto.ContextPage)
     },
 )

@@ -40,8 +40,7 @@ class CdnFeedHelper:
 
         streamer = session.cdn().stream_file(file, key, url, halt_listener)
         input_stream = streamer.stream()
-        normalization_data = NormalizationData.NormalizationData.read(
-            input_stream)
+        normalization_data = NormalizationData.NormalizationData.read(input_stream)
         if input_stream.skip(0xA7) != 0xA7:
             raise IOError("Couldn't skip 0xa7 bytes!")
         return PlayableContentFeeder.PlayableContentFeeder.LoadedStream(
@@ -49,13 +48,15 @@ class CdnFeedHelper:
             streamer,
             normalization_data,
             PlayableContentFeeder.PlayableContentFeeder.Metrics(
-                file.file_id, preload, -1 if preload else audio_key_time),
+                file.file_id, preload, -1 if preload else audio_key_time
+            ),
         )
 
     @staticmethod
     def load_episode_external(
-        session: Session, episode: Metadata.Episode,
-        halt_listener: HaltListener.HaltListener
+        session: Session,
+        episode: Metadata.Episode,
+        halt_listener: HaltListener.HaltListener,
     ) -> PlayableContentFeeder.PlayableContentFeeder.LoadedStream:
         resp = session.client().head(episode.external_url)
 
@@ -63,17 +64,18 @@ class CdnFeedHelper:
             CdnFeedHelper._LOGGER.warning("Couldn't resolve redirect!")
 
         url = resp.url
-        CdnFeedHelper._LOGGER.debug("Fetched external url for {}: {}".format(
-            Utils.bytes_to_hex(episode.gid), url))
+        CdnFeedHelper._LOGGER.debug(
+            "Fetched external url for {}: {}".format(
+                Utils.bytes_to_hex(episode.gid), url
+            )
+        )
 
-        streamer = session.cdn().stream_external_episode(
-            episode, url, halt_listener)
+        streamer = session.cdn().stream_external_episode(episode, url, halt_listener)
         return PlayableContentFeeder.PlayableContentFeeder.LoadedStream(
             episode,
             streamer,
             None,
-            PlayableContentFeeder.PlayableContentFeeder.Metrics(
-                None, False, -1),
+            PlayableContentFeeder.PlayableContentFeeder.Metrics(None, False, -1),
         )
 
     @staticmethod
@@ -94,8 +96,7 @@ class CdnFeedHelper:
 
         streamer = session.cdn().stream_file(file, key, url, halt_listener)
         input_stream = streamer.stream()
-        normalization_data = NormalizationData.NormalizationData.read(
-            input_stream)
+        normalization_data = NormalizationData.NormalizationData.read(input_stream)
         if input_stream.skip(0xA7) != 0xA7:
             raise IOError("Couldn't skip 0xa7 bytes!")
         return PlayableContentFeeder.PlayableContentFeeder.LoadedStream(
@@ -103,5 +104,6 @@ class CdnFeedHelper:
             streamer,
             normalization_data,
             PlayableContentFeeder.PlayableContentFeeder.Metrics(
-                file.file_id, False, audio_key_time),
+                file.file_id, False, audio_key_time
+            ),
         )

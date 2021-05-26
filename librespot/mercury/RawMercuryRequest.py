@@ -13,28 +13,35 @@ class RawMercuryRequest:
 
     @staticmethod
     def sub(uri: str):
-        return RawMercuryRequest.new_builder().set_uri(uri).set_method(
-            "SUB").build()
+        return RawMercuryRequest.new_builder().set_uri(uri).set_method("SUB").build()
 
     @staticmethod
     def unsub(uri: str):
-        return RawMercuryRequest.new_builder().set_uri(uri).set_method(
-            "UNSUB").build()
+        return RawMercuryRequest.new_builder().set_uri(uri).set_method("UNSUB").build()
 
     @staticmethod
     def get(uri: str):
-        return RawMercuryRequest.new_builder().set_uri(uri).set_method(
-            "GET").build()
+        return RawMercuryRequest.new_builder().set_uri(uri).set_method("GET").build()
 
     @staticmethod
     def send(uri: str, part: bytes):
-        return (RawMercuryRequest.new_builder().set_uri(uri).add_payload_part(
-            part).set_method("SEND").build())
+        return (
+            RawMercuryRequest.new_builder()
+            .set_uri(uri)
+            .add_payload_part(part)
+            .set_method("SEND")
+            .build()
+        )
 
     @staticmethod
     def post(uri: str, part: bytes):
-        return (RawMercuryRequest.new_builder().set_uri(uri).set_method(
-            "POST").add_payload_part(part).build())
+        return (
+            RawMercuryRequest.new_builder()
+            .set_uri(uri)
+            .set_method("POST")
+            .add_payload_part(part)
+            .build()
+        )
 
     @staticmethod
     def new_builder():
@@ -60,10 +67,9 @@ class RawMercuryRequest:
             self.header_dict["method"] = method
             return self
 
-        def add_user_field(self,
-                           field: Mercury.UserField = None,
-                           key: str = None,
-                           value: str = None):
+        def add_user_field(
+            self, field: Mercury.UserField = None, key: str = None, value: str = None
+        ):
             if field is None and (key is None or value is None):
                 return self
             try:
@@ -74,7 +80,8 @@ class RawMercuryRequest:
                 self.header_dict["user_fields"].append(field)
             if key is not None and value is not None:
                 self.header_dict["user_fields"].append(
-                    Mercury.UserField(key=key, value=value.encode()))
+                    Mercury.UserField(key=key, value=value.encode())
+                )
             return self
 
         def add_payload_part(self, part: bytes):
@@ -85,5 +92,4 @@ class RawMercuryRequest:
             return self.add_payload_part(msg)
 
         def build(self):
-            return RawMercuryRequest(Mercury.Header(**self.header_dict),
-                                     self.payload)
+            return RawMercuryRequest(Mercury.Header(**self.header_dict), self.payload)

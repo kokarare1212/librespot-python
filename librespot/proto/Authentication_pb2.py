@@ -7,61 +7,67 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
-    name='authentication.proto',
-    package='spotify',
-    syntax='proto2',
-    serialized_options=b'\n\013com.spotify',
+    name="authentication.proto",
+    package="spotify",
+    syntax="proto2",
+    serialized_options=b"\n\013com.spotify",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x14\x61uthentication.proto\x12\x07spotify\"\xa2\x03\n\x17\x43lientResponseEncrypted\x12\x34\n\x11login_credentials\x18\n \x02(\x0b\x32\x19.spotify.LoginCredentials\x12\x32\n\x10\x61\x63\x63ount_creation\x18\x14 \x01(\x0e\x32\x18.spotify.AccountCreation\x12?\n\x14\x66ingerprint_response\x18\x1e \x01(\x0b\x32!.spotify.FingerprintResponseUnion\x12-\n\x0bpeer_ticket\x18( \x01(\x0b\x32\x18.spotify.PeerTicketUnion\x12(\n\x0bsystem_info\x18\x32 \x02(\x0b\x32\x13.spotify.SystemInfo\x12\x16\n\x0eplatform_model\x18< \x01(\t\x12\x16\n\x0eversion_string\x18\x46 \x01(\t\x12)\n\x06\x61ppkey\x18P \x01(\x0b\x32\x19.spotify.LibspotifyAppKey\x12(\n\x0b\x63lient_info\x18Z \x01(\x0b\x32\x13.spotify.ClientInfo\"a\n\x10LoginCredentials\x12\x10\n\x08username\x18\n \x01(\t\x12(\n\x03typ\x18\x14 \x02(\x0e\x32\x1b.spotify.AuthenticationType\x12\x11\n\tauth_data\x18\x1e \x01(\x0c\"\x89\x01\n\x18\x46ingerprintResponseUnion\x12\x30\n\x05grain\x18\n \x01(\x0b\x32!.spotify.FingerprintGrainResponse\x12;\n\x0bhmac_ripemd\x18\x14 \x01(\x0b\x32&.spotify.FingerprintHmacRipemdResponse\"1\n\x18\x46ingerprintGrainResponse\x12\x15\n\rencrypted_key\x18\n \x02(\x0c\"-\n\x1d\x46ingerprintHmacRipemdResponse\x12\x0c\n\x04hmac\x18\n \x02(\x0c\"o\n\x0fPeerTicketUnion\x12\x30\n\npublic_key\x18\n \x01(\x0b\x32\x1c.spotify.PeerTicketPublicKey\x12*\n\nold_ticket\x18\x14 \x01(\x0b\x32\x16.spotify.PeerTicketOld\")\n\x13PeerTicketPublicKey\x12\x12\n\npublic_key\x18\n \x02(\x0c\"C\n\rPeerTicketOld\x12\x13\n\x0bpeer_ticket\x18\n \x02(\x0c\x12\x1d\n\x15peer_ticket_signature\x18\x14 \x02(\x0c\"\x81\x02\n\nSystemInfo\x12&\n\ncpu_family\x18\n \x02(\x0e\x32\x12.spotify.CpuFamily\x12\x13\n\x0b\x63pu_subtype\x18\x14 \x01(\r\x12\x0f\n\x07\x63pu_ext\x18\x1e \x01(\r\x12\x1d\n\x05\x62rand\x18( \x01(\x0e\x32\x0e.spotify.Brand\x12\x13\n\x0b\x62rand_flags\x18\x32 \x01(\r\x12\x17\n\x02os\x18< \x02(\x0e\x32\x0b.spotify.Os\x12\x12\n\nos_version\x18\x46 \x01(\r\x12\x0e\n\x06os_ext\x18P \x01(\r\x12!\n\x19system_information_string\x18Z \x01(\t\x12\x11\n\tdevice_id\x18\x64 \x01(\t\"p\n\x10LibspotifyAppKey\x12\x0f\n\x07version\x18\x01 \x02(\r\x12\x0e\n\x06\x64\x65vkey\x18\x02 \x02(\x0c\x12\x11\n\tsignature\x18\x03 \x02(\x0c\x12\x11\n\tuseragent\x18\x04 \x02(\t\x12\x15\n\rcallback_hash\x18\x05 \x02(\x0c\"X\n\nClientInfo\x12\x0f\n\x07limited\x18\x01 \x01(\x08\x12\'\n\x02\x66\x62\x18\x02 \x01(\x0b\x32\x1b.spotify.ClientInfoFacebook\x12\x10\n\x08language\x18\x03 \x01(\t\"(\n\x12\x43lientInfoFacebook\x12\x12\n\nmachine_id\x18\x01 \x01(\t\"\xe9\x02\n\tAPWelcome\x12\x1a\n\x12\x63\x61nonical_username\x18\n \x02(\t\x12\x34\n\x16\x61\x63\x63ount_type_logged_in\x18\x14 \x02(\x0e\x32\x14.spotify.AccountType\x12\x38\n\x1a\x63redentials_type_logged_in\x18\x19 \x02(\x0e\x32\x14.spotify.AccountType\x12\x43\n\x1ereusable_auth_credentials_type\x18\x1e \x02(\x0e\x32\x1b.spotify.AuthenticationType\x12!\n\x19reusable_auth_credentials\x18( \x02(\x0c\x12\x12\n\nlfs_secret\x18\x32 \x01(\x0c\x12*\n\x0c\x61\x63\x63ount_info\x18< \x01(\x0b\x32\x14.spotify.AccountInfo\x12(\n\x02\x66\x62\x18\x46 \x01(\x0b\x32\x1c.spotify.AccountInfoFacebook\"k\n\x0b\x41\x63\x63ountInfo\x12,\n\x07spotify\x18\x01 \x01(\x0b\x32\x1b.spotify.AccountInfoSpotify\x12.\n\x08\x66\x61\x63\x65\x62ook\x18\x02 \x01(\x0b\x32\x1c.spotify.AccountInfoFacebook\"\x14\n\x12\x41\x63\x63ountInfoSpotify\"?\n\x13\x41\x63\x63ountInfoFacebook\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x12\n\nmachine_id\x18\x02 \x01(\t*\xd6\x01\n\x12\x41uthenticationType\x12\x1c\n\x18\x41UTHENTICATION_USER_PASS\x10\x00\x12-\n)AUTHENTICATION_STORED_SPOTIFY_CREDENTIALS\x10\x01\x12.\n*AUTHENTICATION_STORED_FACEBOOK_CREDENTIALS\x10\x02\x12 \n\x1c\x41UTHENTICATION_SPOTIFY_TOKEN\x10\x03\x12!\n\x1d\x41UTHENTICATION_FACEBOOK_TOKEN\x10\x04*Y\n\x0f\x41\x63\x63ountCreation\x12\"\n\x1e\x41\x43\x43OUNT_CREATION_ALWAYS_PROMPT\x10\x01\x12\"\n\x1e\x41\x43\x43OUNT_CREATION_ALWAYS_CREATE\x10\x03*\x9d\x01\n\tCpuFamily\x12\x0f\n\x0b\x43PU_UNKNOWN\x10\x00\x12\x0b\n\x07\x43PU_X86\x10\x01\x12\x0e\n\nCPU_X86_64\x10\x02\x12\x0b\n\x07\x43PU_PPC\x10\x03\x12\x0e\n\nCPU_PPC_64\x10\x04\x12\x0b\n\x07\x43PU_ARM\x10\x05\x12\x0c\n\x08\x43PU_IA64\x10\x06\x12\n\n\x06\x43PU_SH\x10\x07\x12\x0c\n\x08\x43PU_MIPS\x10\x08\x12\x10\n\x0c\x43PU_BLACKFIN\x10\t*K\n\x05\x42rand\x12\x13\n\x0f\x42RAND_UNBRANDED\x10\x00\x12\r\n\tBRAND_INQ\x10\x01\x12\r\n\tBRAND_HTC\x10\x02\x12\x0f\n\x0b\x42RAND_NOKIA\x10\x03*\xd1\x02\n\x02Os\x12\x0e\n\nOS_UNKNOWN\x10\x00\x12\x0e\n\nOS_WINDOWS\x10\x01\x12\n\n\x06OS_OSX\x10\x02\x12\r\n\tOS_IPHONE\x10\x03\x12\n\n\x06OS_S60\x10\x04\x12\x0c\n\x08OS_LINUX\x10\x05\x12\x11\n\rOS_WINDOWS_CE\x10\x06\x12\x0e\n\nOS_ANDROID\x10\x07\x12\x0b\n\x07OS_PALM\x10\x08\x12\x0e\n\nOS_FREEBSD\x10\t\x12\x11\n\rOS_BLACKBERRY\x10\n\x12\x0c\n\x08OS_SONOS\x10\x0b\x12\x0f\n\x0bOS_LOGITECH\x10\x0c\x12\n\n\x06OS_WP7\x10\r\x12\x0c\n\x08OS_ONKYO\x10\x0e\x12\x0e\n\nOS_PHILIPS\x10\x0f\x12\t\n\x05OS_WD\x10\x10\x12\x0c\n\x08OS_VOLVO\x10\x11\x12\x0b\n\x07OS_TIVO\x10\x12\x12\x0b\n\x07OS_AWOX\x10\x13\x12\x0c\n\x08OS_MEEGO\x10\x14\x12\r\n\tOS_QNXNTO\x10\x15\x12\n\n\x06OS_BCO\x10\x16*(\n\x0b\x41\x63\x63ountType\x12\x0b\n\x07Spotify\x10\x00\x12\x0c\n\x08\x46\x61\x63\x65\x62ook\x10\x01\x42\r\n\x0b\x63om.spotify'
+    serialized_pb=b'\n\x14\x61uthentication.proto\x12\x07spotify"\xa2\x03\n\x17\x43lientResponseEncrypted\x12\x34\n\x11login_credentials\x18\n \x02(\x0b\x32\x19.spotify.LoginCredentials\x12\x32\n\x10\x61\x63\x63ount_creation\x18\x14 \x01(\x0e\x32\x18.spotify.AccountCreation\x12?\n\x14\x66ingerprint_response\x18\x1e \x01(\x0b\x32!.spotify.FingerprintResponseUnion\x12-\n\x0bpeer_ticket\x18( \x01(\x0b\x32\x18.spotify.PeerTicketUnion\x12(\n\x0bsystem_info\x18\x32 \x02(\x0b\x32\x13.spotify.SystemInfo\x12\x16\n\x0eplatform_model\x18< \x01(\t\x12\x16\n\x0eversion_string\x18\x46 \x01(\t\x12)\n\x06\x61ppkey\x18P \x01(\x0b\x32\x19.spotify.LibspotifyAppKey\x12(\n\x0b\x63lient_info\x18Z \x01(\x0b\x32\x13.spotify.ClientInfo"a\n\x10LoginCredentials\x12\x10\n\x08username\x18\n \x01(\t\x12(\n\x03typ\x18\x14 \x02(\x0e\x32\x1b.spotify.AuthenticationType\x12\x11\n\tauth_data\x18\x1e \x01(\x0c"\x89\x01\n\x18\x46ingerprintResponseUnion\x12\x30\n\x05grain\x18\n \x01(\x0b\x32!.spotify.FingerprintGrainResponse\x12;\n\x0bhmac_ripemd\x18\x14 \x01(\x0b\x32&.spotify.FingerprintHmacRipemdResponse"1\n\x18\x46ingerprintGrainResponse\x12\x15\n\rencrypted_key\x18\n \x02(\x0c"-\n\x1d\x46ingerprintHmacRipemdResponse\x12\x0c\n\x04hmac\x18\n \x02(\x0c"o\n\x0fPeerTicketUnion\x12\x30\n\npublic_key\x18\n \x01(\x0b\x32\x1c.spotify.PeerTicketPublicKey\x12*\n\nold_ticket\x18\x14 \x01(\x0b\x32\x16.spotify.PeerTicketOld")\n\x13PeerTicketPublicKey\x12\x12\n\npublic_key\x18\n \x02(\x0c"C\n\rPeerTicketOld\x12\x13\n\x0bpeer_ticket\x18\n \x02(\x0c\x12\x1d\n\x15peer_ticket_signature\x18\x14 \x02(\x0c"\x81\x02\n\nSystemInfo\x12&\n\ncpu_family\x18\n \x02(\x0e\x32\x12.spotify.CpuFamily\x12\x13\n\x0b\x63pu_subtype\x18\x14 \x01(\r\x12\x0f\n\x07\x63pu_ext\x18\x1e \x01(\r\x12\x1d\n\x05\x62rand\x18( \x01(\x0e\x32\x0e.spotify.Brand\x12\x13\n\x0b\x62rand_flags\x18\x32 \x01(\r\x12\x17\n\x02os\x18< \x02(\x0e\x32\x0b.spotify.Os\x12\x12\n\nos_version\x18\x46 \x01(\r\x12\x0e\n\x06os_ext\x18P \x01(\r\x12!\n\x19system_information_string\x18Z \x01(\t\x12\x11\n\tdevice_id\x18\x64 \x01(\t"p\n\x10LibspotifyAppKey\x12\x0f\n\x07version\x18\x01 \x02(\r\x12\x0e\n\x06\x64\x65vkey\x18\x02 \x02(\x0c\x12\x11\n\tsignature\x18\x03 \x02(\x0c\x12\x11\n\tuseragent\x18\x04 \x02(\t\x12\x15\n\rcallback_hash\x18\x05 \x02(\x0c"X\n\nClientInfo\x12\x0f\n\x07limited\x18\x01 \x01(\x08\x12\'\n\x02\x66\x62\x18\x02 \x01(\x0b\x32\x1b.spotify.ClientInfoFacebook\x12\x10\n\x08language\x18\x03 \x01(\t"(\n\x12\x43lientInfoFacebook\x12\x12\n\nmachine_id\x18\x01 \x01(\t"\xe9\x02\n\tAPWelcome\x12\x1a\n\x12\x63\x61nonical_username\x18\n \x02(\t\x12\x34\n\x16\x61\x63\x63ount_type_logged_in\x18\x14 \x02(\x0e\x32\x14.spotify.AccountType\x12\x38\n\x1a\x63redentials_type_logged_in\x18\x19 \x02(\x0e\x32\x14.spotify.AccountType\x12\x43\n\x1ereusable_auth_credentials_type\x18\x1e \x02(\x0e\x32\x1b.spotify.AuthenticationType\x12!\n\x19reusable_auth_credentials\x18( \x02(\x0c\x12\x12\n\nlfs_secret\x18\x32 \x01(\x0c\x12*\n\x0c\x61\x63\x63ount_info\x18< \x01(\x0b\x32\x14.spotify.AccountInfo\x12(\n\x02\x66\x62\x18\x46 \x01(\x0b\x32\x1c.spotify.AccountInfoFacebook"k\n\x0b\x41\x63\x63ountInfo\x12,\n\x07spotify\x18\x01 \x01(\x0b\x32\x1b.spotify.AccountInfoSpotify\x12.\n\x08\x66\x61\x63\x65\x62ook\x18\x02 \x01(\x0b\x32\x1c.spotify.AccountInfoFacebook"\x14\n\x12\x41\x63\x63ountInfoSpotify"?\n\x13\x41\x63\x63ountInfoFacebook\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\x12\x12\n\nmachine_id\x18\x02 \x01(\t*\xd6\x01\n\x12\x41uthenticationType\x12\x1c\n\x18\x41UTHENTICATION_USER_PASS\x10\x00\x12-\n)AUTHENTICATION_STORED_SPOTIFY_CREDENTIALS\x10\x01\x12.\n*AUTHENTICATION_STORED_FACEBOOK_CREDENTIALS\x10\x02\x12 \n\x1c\x41UTHENTICATION_SPOTIFY_TOKEN\x10\x03\x12!\n\x1d\x41UTHENTICATION_FACEBOOK_TOKEN\x10\x04*Y\n\x0f\x41\x63\x63ountCreation\x12"\n\x1e\x41\x43\x43OUNT_CREATION_ALWAYS_PROMPT\x10\x01\x12"\n\x1e\x41\x43\x43OUNT_CREATION_ALWAYS_CREATE\x10\x03*\x9d\x01\n\tCpuFamily\x12\x0f\n\x0b\x43PU_UNKNOWN\x10\x00\x12\x0b\n\x07\x43PU_X86\x10\x01\x12\x0e\n\nCPU_X86_64\x10\x02\x12\x0b\n\x07\x43PU_PPC\x10\x03\x12\x0e\n\nCPU_PPC_64\x10\x04\x12\x0b\n\x07\x43PU_ARM\x10\x05\x12\x0c\n\x08\x43PU_IA64\x10\x06\x12\n\n\x06\x43PU_SH\x10\x07\x12\x0c\n\x08\x43PU_MIPS\x10\x08\x12\x10\n\x0c\x43PU_BLACKFIN\x10\t*K\n\x05\x42rand\x12\x13\n\x0f\x42RAND_UNBRANDED\x10\x00\x12\r\n\tBRAND_INQ\x10\x01\x12\r\n\tBRAND_HTC\x10\x02\x12\x0f\n\x0b\x42RAND_NOKIA\x10\x03*\xd1\x02\n\x02Os\x12\x0e\n\nOS_UNKNOWN\x10\x00\x12\x0e\n\nOS_WINDOWS\x10\x01\x12\n\n\x06OS_OSX\x10\x02\x12\r\n\tOS_IPHONE\x10\x03\x12\n\n\x06OS_S60\x10\x04\x12\x0c\n\x08OS_LINUX\x10\x05\x12\x11\n\rOS_WINDOWS_CE\x10\x06\x12\x0e\n\nOS_ANDROID\x10\x07\x12\x0b\n\x07OS_PALM\x10\x08\x12\x0e\n\nOS_FREEBSD\x10\t\x12\x11\n\rOS_BLACKBERRY\x10\n\x12\x0c\n\x08OS_SONOS\x10\x0b\x12\x0f\n\x0bOS_LOGITECH\x10\x0c\x12\n\n\x06OS_WP7\x10\r\x12\x0c\n\x08OS_ONKYO\x10\x0e\x12\x0e\n\nOS_PHILIPS\x10\x0f\x12\t\n\x05OS_WD\x10\x10\x12\x0c\n\x08OS_VOLVO\x10\x11\x12\x0b\n\x07OS_TIVO\x10\x12\x12\x0b\n\x07OS_AWOX\x10\x13\x12\x0c\n\x08OS_MEEGO\x10\x14\x12\r\n\tOS_QNXNTO\x10\x15\x12\n\n\x06OS_BCO\x10\x16*(\n\x0b\x41\x63\x63ountType\x12\x0b\n\x07Spotify\x10\x00\x12\x0c\n\x08\x46\x61\x63\x65\x62ook\x10\x01\x42\r\n\x0b\x63om.spotify',
 )
 
 _AUTHENTICATIONTYPE = _descriptor.EnumDescriptor(
-    name='AuthenticationType',
-    full_name='spotify.AuthenticationType',
+    name="AuthenticationType",
+    full_name="spotify.AuthenticationType",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='AUTHENTICATION_USER_PASS',
+            name="AUTHENTICATION_USER_PASS",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='AUTHENTICATION_STORED_SPOTIFY_CREDENTIALS',
+            name="AUTHENTICATION_STORED_SPOTIFY_CREDENTIALS",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='AUTHENTICATION_STORED_FACEBOOK_CREDENTIALS',
+            name="AUTHENTICATION_STORED_FACEBOOK_CREDENTIALS",
             index=2,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='AUTHENTICATION_SPOTIFY_TOKEN',
+            name="AUTHENTICATION_SPOTIFY_TOKEN",
             index=3,
             number=3,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='AUTHENTICATION_FACEBOOK_TOKEN',
+            name="AUTHENTICATION_FACEBOOK_TOKEN",
             index=4,
             number=4,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -72,26 +78,28 @@ _sym_db.RegisterEnumDescriptor(_AUTHENTICATIONTYPE)
 
 AuthenticationType = enum_type_wrapper.EnumTypeWrapper(_AUTHENTICATIONTYPE)
 _ACCOUNTCREATION = _descriptor.EnumDescriptor(
-    name='AccountCreation',
-    full_name='spotify.AccountCreation',
+    name="AccountCreation",
+    full_name="spotify.AccountCreation",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='ACCOUNT_CREATION_ALWAYS_PROMPT',
+            name="ACCOUNT_CREATION_ALWAYS_PROMPT",
             index=0,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='ACCOUNT_CREATION_ALWAYS_CREATE',
+            name="ACCOUNT_CREATION_ALWAYS_CREATE",
             index=1,
             number=3,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -102,82 +110,92 @@ _sym_db.RegisterEnumDescriptor(_ACCOUNTCREATION)
 
 AccountCreation = enum_type_wrapper.EnumTypeWrapper(_ACCOUNTCREATION)
 _CPUFAMILY = _descriptor.EnumDescriptor(
-    name='CpuFamily',
-    full_name='spotify.CpuFamily',
+    name="CpuFamily",
+    full_name="spotify.CpuFamily",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='CPU_UNKNOWN',
+            name="CPU_UNKNOWN",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='CPU_X86',
+            name="CPU_X86",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='CPU_X86_64',
+            name="CPU_X86_64",
             index=2,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='CPU_PPC',
+            name="CPU_PPC",
             index=3,
             number=3,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='CPU_PPC_64',
+            name="CPU_PPC_64",
             index=4,
             number=4,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='CPU_ARM',
+            name="CPU_ARM",
             index=5,
             number=5,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='CPU_IA64',
+            name="CPU_IA64",
             index=6,
             number=6,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='CPU_SH',
+            name="CPU_SH",
             index=7,
             number=7,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='CPU_MIPS',
+            name="CPU_MIPS",
             index=8,
             number=8,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='CPU_BLACKFIN',
+            name="CPU_BLACKFIN",
             index=9,
             number=9,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -188,40 +206,44 @@ _sym_db.RegisterEnumDescriptor(_CPUFAMILY)
 
 CpuFamily = enum_type_wrapper.EnumTypeWrapper(_CPUFAMILY)
 _BRAND = _descriptor.EnumDescriptor(
-    name='Brand',
-    full_name='spotify.Brand',
+    name="Brand",
+    full_name="spotify.Brand",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='BRAND_UNBRANDED',
+            name="BRAND_UNBRANDED",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='BRAND_INQ',
+            name="BRAND_INQ",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='BRAND_HTC',
+            name="BRAND_HTC",
             index=2,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='BRAND_NOKIA',
+            name="BRAND_NOKIA",
             index=3,
             number=3,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -232,173 +254,196 @@ _sym_db.RegisterEnumDescriptor(_BRAND)
 
 Brand = enum_type_wrapper.EnumTypeWrapper(_BRAND)
 _OS = _descriptor.EnumDescriptor(
-    name='Os',
-    full_name='spotify.Os',
+    name="Os",
+    full_name="spotify.Os",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='OS_UNKNOWN',
+            name="OS_UNKNOWN",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_WINDOWS',
+            name="OS_WINDOWS",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_OSX',
+            name="OS_OSX",
             index=2,
             number=2,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_IPHONE',
+            name="OS_IPHONE",
             index=3,
             number=3,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_S60',
+            name="OS_S60",
             index=4,
             number=4,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_LINUX',
+            name="OS_LINUX",
             index=5,
             number=5,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_WINDOWS_CE',
+            name="OS_WINDOWS_CE",
             index=6,
             number=6,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_ANDROID',
+            name="OS_ANDROID",
             index=7,
             number=7,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_PALM',
+            name="OS_PALM",
             index=8,
             number=8,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_FREEBSD',
+            name="OS_FREEBSD",
             index=9,
             number=9,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_BLACKBERRY',
+            name="OS_BLACKBERRY",
             index=10,
             number=10,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_SONOS',
+            name="OS_SONOS",
             index=11,
             number=11,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_LOGITECH',
+            name="OS_LOGITECH",
             index=12,
             number=12,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_WP7',
+            name="OS_WP7",
             index=13,
             number=13,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_ONKYO',
+            name="OS_ONKYO",
             index=14,
             number=14,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_PHILIPS',
+            name="OS_PHILIPS",
             index=15,
             number=15,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_WD',
+            name="OS_WD",
             index=16,
             number=16,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_VOLVO',
+            name="OS_VOLVO",
             index=17,
             number=17,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_TIVO',
+            name="OS_TIVO",
             index=18,
             number=18,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_AWOX',
+            name="OS_AWOX",
             index=19,
             number=19,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_MEEGO',
+            name="OS_MEEGO",
             index=20,
             number=20,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_QNXNTO',
+            name="OS_QNXNTO",
             index=21,
             number=21,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='OS_BCO',
+            name="OS_BCO",
             index=22,
             number=22,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -409,26 +454,28 @@ _sym_db.RegisterEnumDescriptor(_OS)
 
 Os = enum_type_wrapper.EnumTypeWrapper(_OS)
 _ACCOUNTTYPE = _descriptor.EnumDescriptor(
-    name='AccountType',
-    full_name='spotify.AccountType',
+    name="AccountType",
+    full_name="spotify.AccountType",
     filename=None,
     file=DESCRIPTOR,
     create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name='Spotify',
+            name="Spotify",
             index=0,
             number=0,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.EnumValueDescriptor(
-            name='Facebook',
+            name="Facebook",
             index=1,
             number=1,
             serialized_options=None,
             type=None,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     containing_type=None,
     serialized_options=None,
@@ -486,16 +533,16 @@ Spotify = 0
 Facebook = 1
 
 _CLIENTRESPONSEENCRYPTED = _descriptor.Descriptor(
-    name='ClientResponseEncrypted',
-    full_name='spotify.ClientResponseEncrypted',
+    name="ClientResponseEncrypted",
+    full_name="spotify.ClientResponseEncrypted",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='login_credentials',
-            full_name='spotify.ClientResponseEncrypted.login_credentials',
+            name="login_credentials",
+            full_name="spotify.ClientResponseEncrypted.login_credentials",
             index=0,
             number=10,
             type=11,
@@ -510,10 +557,11 @@ _CLIENTRESPONSEENCRYPTED = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='account_creation',
-            full_name='spotify.ClientResponseEncrypted.account_creation',
+            name="account_creation",
+            full_name="spotify.ClientResponseEncrypted.account_creation",
             index=1,
             number=20,
             type=14,
@@ -528,10 +576,11 @@ _CLIENTRESPONSEENCRYPTED = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='fingerprint_response',
-            full_name='spotify.ClientResponseEncrypted.fingerprint_response',
+            name="fingerprint_response",
+            full_name="spotify.ClientResponseEncrypted.fingerprint_response",
             index=2,
             number=30,
             type=11,
@@ -546,10 +595,11 @@ _CLIENTRESPONSEENCRYPTED = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='peer_ticket',
-            full_name='spotify.ClientResponseEncrypted.peer_ticket',
+            name="peer_ticket",
+            full_name="spotify.ClientResponseEncrypted.peer_ticket",
             index=3,
             number=40,
             type=11,
@@ -564,10 +614,11 @@ _CLIENTRESPONSEENCRYPTED = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='system_info',
-            full_name='spotify.ClientResponseEncrypted.system_info',
+            name="system_info",
+            full_name="spotify.ClientResponseEncrypted.system_info",
             index=4,
             number=50,
             type=11,
@@ -582,17 +633,18 @@ _CLIENTRESPONSEENCRYPTED = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='platform_model',
-            full_name='spotify.ClientResponseEncrypted.platform_model',
+            name="platform_model",
+            full_name="spotify.ClientResponseEncrypted.platform_model",
             index=5,
             number=60,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -600,17 +652,18 @@ _CLIENTRESPONSEENCRYPTED = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='version_string',
-            full_name='spotify.ClientResponseEncrypted.version_string',
+            name="version_string",
+            full_name="spotify.ClientResponseEncrypted.version_string",
             index=6,
             number=70,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -618,10 +671,11 @@ _CLIENTRESPONSEENCRYPTED = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='appkey',
-            full_name='spotify.ClientResponseEncrypted.appkey',
+            name="appkey",
+            full_name="spotify.ClientResponseEncrypted.appkey",
             index=7,
             number=80,
             type=11,
@@ -636,10 +690,11 @@ _CLIENTRESPONSEENCRYPTED = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='client_info',
-            full_name='spotify.ClientResponseEncrypted.client_info',
+            name="client_info",
+            full_name="spotify.ClientResponseEncrypted.client_info",
             index=8,
             number=90,
             type=11,
@@ -654,14 +709,15 @@ _CLIENTRESPONSEENCRYPTED = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=34,
@@ -669,23 +725,23 @@ _CLIENTRESPONSEENCRYPTED = _descriptor.Descriptor(
 )
 
 _LOGINCREDENTIALS = _descriptor.Descriptor(
-    name='LoginCredentials',
-    full_name='spotify.LoginCredentials',
+    name="LoginCredentials",
+    full_name="spotify.LoginCredentials",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='username',
-            full_name='spotify.LoginCredentials.username',
+            name="username",
+            full_name="spotify.LoginCredentials.username",
             index=0,
             number=10,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -693,10 +749,11 @@ _LOGINCREDENTIALS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='typ',
-            full_name='spotify.LoginCredentials.typ',
+            name="typ",
+            full_name="spotify.LoginCredentials.typ",
             index=1,
             number=20,
             type=14,
@@ -711,10 +768,11 @@ _LOGINCREDENTIALS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='auth_data',
-            full_name='spotify.LoginCredentials.auth_data',
+            name="auth_data",
+            full_name="spotify.LoginCredentials.auth_data",
             index=2,
             number=30,
             type=12,
@@ -729,14 +787,15 @@ _LOGINCREDENTIALS = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=454,
@@ -744,16 +803,16 @@ _LOGINCREDENTIALS = _descriptor.Descriptor(
 )
 
 _FINGERPRINTRESPONSEUNION = _descriptor.Descriptor(
-    name='FingerprintResponseUnion',
-    full_name='spotify.FingerprintResponseUnion',
+    name="FingerprintResponseUnion",
+    full_name="spotify.FingerprintResponseUnion",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='grain',
-            full_name='spotify.FingerprintResponseUnion.grain',
+            name="grain",
+            full_name="spotify.FingerprintResponseUnion.grain",
             index=0,
             number=10,
             type=11,
@@ -768,10 +827,11 @@ _FINGERPRINTRESPONSEUNION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='hmac_ripemd',
-            full_name='spotify.FingerprintResponseUnion.hmac_ripemd',
+            name="hmac_ripemd",
+            full_name="spotify.FingerprintResponseUnion.hmac_ripemd",
             index=1,
             number=20,
             type=11,
@@ -786,14 +846,15 @@ _FINGERPRINTRESPONSEUNION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=554,
@@ -801,16 +862,16 @@ _FINGERPRINTRESPONSEUNION = _descriptor.Descriptor(
 )
 
 _FINGERPRINTGRAINRESPONSE = _descriptor.Descriptor(
-    name='FingerprintGrainResponse',
-    full_name='spotify.FingerprintGrainResponse',
+    name="FingerprintGrainResponse",
+    full_name="spotify.FingerprintGrainResponse",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='encrypted_key',
-            full_name='spotify.FingerprintGrainResponse.encrypted_key',
+            name="encrypted_key",
+            full_name="spotify.FingerprintGrainResponse.encrypted_key",
             index=0,
             number=10,
             type=12,
@@ -825,14 +886,15 @@ _FINGERPRINTGRAINRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=693,
@@ -840,16 +902,16 @@ _FINGERPRINTGRAINRESPONSE = _descriptor.Descriptor(
 )
 
 _FINGERPRINTHMACRIPEMDRESPONSE = _descriptor.Descriptor(
-    name='FingerprintHmacRipemdResponse',
-    full_name='spotify.FingerprintHmacRipemdResponse',
+    name="FingerprintHmacRipemdResponse",
+    full_name="spotify.FingerprintHmacRipemdResponse",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='hmac',
-            full_name='spotify.FingerprintHmacRipemdResponse.hmac',
+            name="hmac",
+            full_name="spotify.FingerprintHmacRipemdResponse.hmac",
             index=0,
             number=10,
             type=12,
@@ -864,14 +926,15 @@ _FINGERPRINTHMACRIPEMDRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=744,
@@ -879,16 +942,16 @@ _FINGERPRINTHMACRIPEMDRESPONSE = _descriptor.Descriptor(
 )
 
 _PEERTICKETUNION = _descriptor.Descriptor(
-    name='PeerTicketUnion',
-    full_name='spotify.PeerTicketUnion',
+    name="PeerTicketUnion",
+    full_name="spotify.PeerTicketUnion",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='public_key',
-            full_name='spotify.PeerTicketUnion.public_key',
+            name="public_key",
+            full_name="spotify.PeerTicketUnion.public_key",
             index=0,
             number=10,
             type=11,
@@ -903,10 +966,11 @@ _PEERTICKETUNION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='old_ticket',
-            full_name='spotify.PeerTicketUnion.old_ticket',
+            name="old_ticket",
+            full_name="spotify.PeerTicketUnion.old_ticket",
             index=1,
             number=20,
             type=11,
@@ -921,14 +985,15 @@ _PEERTICKETUNION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=791,
@@ -936,16 +1001,16 @@ _PEERTICKETUNION = _descriptor.Descriptor(
 )
 
 _PEERTICKETPUBLICKEY = _descriptor.Descriptor(
-    name='PeerTicketPublicKey',
-    full_name='spotify.PeerTicketPublicKey',
+    name="PeerTicketPublicKey",
+    full_name="spotify.PeerTicketPublicKey",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='public_key',
-            full_name='spotify.PeerTicketPublicKey.public_key',
+            name="public_key",
+            full_name="spotify.PeerTicketPublicKey.public_key",
             index=0,
             number=10,
             type=12,
@@ -960,14 +1025,15 @@ _PEERTICKETPUBLICKEY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=904,
@@ -975,16 +1041,16 @@ _PEERTICKETPUBLICKEY = _descriptor.Descriptor(
 )
 
 _PEERTICKETOLD = _descriptor.Descriptor(
-    name='PeerTicketOld',
-    full_name='spotify.PeerTicketOld',
+    name="PeerTicketOld",
+    full_name="spotify.PeerTicketOld",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='peer_ticket',
-            full_name='spotify.PeerTicketOld.peer_ticket',
+            name="peer_ticket",
+            full_name="spotify.PeerTicketOld.peer_ticket",
             index=0,
             number=10,
             type=12,
@@ -999,10 +1065,11 @@ _PEERTICKETOLD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='peer_ticket_signature',
-            full_name='spotify.PeerTicketOld.peer_ticket_signature',
+            name="peer_ticket_signature",
+            full_name="spotify.PeerTicketOld.peer_ticket_signature",
             index=1,
             number=20,
             type=12,
@@ -1017,14 +1084,15 @@ _PEERTICKETOLD = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=947,
@@ -1032,16 +1100,16 @@ _PEERTICKETOLD = _descriptor.Descriptor(
 )
 
 _SYSTEMINFO = _descriptor.Descriptor(
-    name='SystemInfo',
-    full_name='spotify.SystemInfo',
+    name="SystemInfo",
+    full_name="spotify.SystemInfo",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='cpu_family',
-            full_name='spotify.SystemInfo.cpu_family',
+            name="cpu_family",
+            full_name="spotify.SystemInfo.cpu_family",
             index=0,
             number=10,
             type=14,
@@ -1056,10 +1124,11 @@ _SYSTEMINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='cpu_subtype',
-            full_name='spotify.SystemInfo.cpu_subtype',
+            name="cpu_subtype",
+            full_name="spotify.SystemInfo.cpu_subtype",
             index=1,
             number=20,
             type=13,
@@ -1074,10 +1143,11 @@ _SYSTEMINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='cpu_ext',
-            full_name='spotify.SystemInfo.cpu_ext',
+            name="cpu_ext",
+            full_name="spotify.SystemInfo.cpu_ext",
             index=2,
             number=30,
             type=13,
@@ -1092,10 +1162,11 @@ _SYSTEMINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='brand',
-            full_name='spotify.SystemInfo.brand',
+            name="brand",
+            full_name="spotify.SystemInfo.brand",
             index=3,
             number=40,
             type=14,
@@ -1110,10 +1181,11 @@ _SYSTEMINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='brand_flags',
-            full_name='spotify.SystemInfo.brand_flags',
+            name="brand_flags",
+            full_name="spotify.SystemInfo.brand_flags",
             index=4,
             number=50,
             type=13,
@@ -1128,10 +1200,11 @@ _SYSTEMINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='os',
-            full_name='spotify.SystemInfo.os',
+            name="os",
+            full_name="spotify.SystemInfo.os",
             index=5,
             number=60,
             type=14,
@@ -1146,10 +1219,11 @@ _SYSTEMINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='os_version',
-            full_name='spotify.SystemInfo.os_version',
+            name="os_version",
+            full_name="spotify.SystemInfo.os_version",
             index=6,
             number=70,
             type=13,
@@ -1164,10 +1238,11 @@ _SYSTEMINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='os_ext',
-            full_name='spotify.SystemInfo.os_ext',
+            name="os_ext",
+            full_name="spotify.SystemInfo.os_ext",
             index=7,
             number=80,
             type=13,
@@ -1182,17 +1257,18 @@ _SYSTEMINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='system_information_string',
-            full_name='spotify.SystemInfo.system_information_string',
+            name="system_information_string",
+            full_name="spotify.SystemInfo.system_information_string",
             index=8,
             number=90,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1200,17 +1276,18 @@ _SYSTEMINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='device_id',
-            full_name='spotify.SystemInfo.device_id',
+            name="device_id",
+            full_name="spotify.SystemInfo.device_id",
             index=9,
             number=100,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1218,14 +1295,15 @@ _SYSTEMINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=1017,
@@ -1233,16 +1311,16 @@ _SYSTEMINFO = _descriptor.Descriptor(
 )
 
 _LIBSPOTIFYAPPKEY = _descriptor.Descriptor(
-    name='LibspotifyAppKey',
-    full_name='spotify.LibspotifyAppKey',
+    name="LibspotifyAppKey",
+    full_name="spotify.LibspotifyAppKey",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='version',
-            full_name='spotify.LibspotifyAppKey.version',
+            name="version",
+            full_name="spotify.LibspotifyAppKey.version",
             index=0,
             number=1,
             type=13,
@@ -1257,10 +1335,11 @@ _LIBSPOTIFYAPPKEY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='devkey',
-            full_name='spotify.LibspotifyAppKey.devkey',
+            name="devkey",
+            full_name="spotify.LibspotifyAppKey.devkey",
             index=1,
             number=2,
             type=12,
@@ -1275,10 +1354,11 @@ _LIBSPOTIFYAPPKEY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='signature',
-            full_name='spotify.LibspotifyAppKey.signature',
+            name="signature",
+            full_name="spotify.LibspotifyAppKey.signature",
             index=2,
             number=3,
             type=12,
@@ -1293,17 +1373,18 @@ _LIBSPOTIFYAPPKEY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='useragent',
-            full_name='spotify.LibspotifyAppKey.useragent',
+            name="useragent",
+            full_name="spotify.LibspotifyAppKey.useragent",
             index=3,
             number=4,
             type=9,
             cpp_type=9,
             label=2,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1311,10 +1392,11 @@ _LIBSPOTIFYAPPKEY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='callback_hash',
-            full_name='spotify.LibspotifyAppKey.callback_hash',
+            name="callback_hash",
+            full_name="spotify.LibspotifyAppKey.callback_hash",
             index=4,
             number=5,
             type=12,
@@ -1329,14 +1411,15 @@ _LIBSPOTIFYAPPKEY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=1276,
@@ -1344,16 +1427,16 @@ _LIBSPOTIFYAPPKEY = _descriptor.Descriptor(
 )
 
 _CLIENTINFO = _descriptor.Descriptor(
-    name='ClientInfo',
-    full_name='spotify.ClientInfo',
+    name="ClientInfo",
+    full_name="spotify.ClientInfo",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='limited',
-            full_name='spotify.ClientInfo.limited',
+            name="limited",
+            full_name="spotify.ClientInfo.limited",
             index=0,
             number=1,
             type=8,
@@ -1368,10 +1451,11 @@ _CLIENTINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='fb',
-            full_name='spotify.ClientInfo.fb',
+            name="fb",
+            full_name="spotify.ClientInfo.fb",
             index=1,
             number=2,
             type=11,
@@ -1386,17 +1470,18 @@ _CLIENTINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='language',
-            full_name='spotify.ClientInfo.language',
+            name="language",
+            full_name="spotify.ClientInfo.language",
             index=2,
             number=3,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1404,14 +1489,15 @@ _CLIENTINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=1390,
@@ -1419,23 +1505,23 @@ _CLIENTINFO = _descriptor.Descriptor(
 )
 
 _CLIENTINFOFACEBOOK = _descriptor.Descriptor(
-    name='ClientInfoFacebook',
-    full_name='spotify.ClientInfoFacebook',
+    name="ClientInfoFacebook",
+    full_name="spotify.ClientInfoFacebook",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='machine_id',
-            full_name='spotify.ClientInfoFacebook.machine_id',
+            name="machine_id",
+            full_name="spotify.ClientInfoFacebook.machine_id",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1443,14 +1529,15 @@ _CLIENTINFOFACEBOOK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=1480,
@@ -1458,23 +1545,23 @@ _CLIENTINFOFACEBOOK = _descriptor.Descriptor(
 )
 
 _APWELCOME = _descriptor.Descriptor(
-    name='APWelcome',
-    full_name='spotify.APWelcome',
+    name="APWelcome",
+    full_name="spotify.APWelcome",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='canonical_username',
-            full_name='spotify.APWelcome.canonical_username',
+            name="canonical_username",
+            full_name="spotify.APWelcome.canonical_username",
             index=0,
             number=10,
             type=9,
             cpp_type=9,
             label=2,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1482,10 +1569,11 @@ _APWELCOME = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='account_type_logged_in',
-            full_name='spotify.APWelcome.account_type_logged_in',
+            name="account_type_logged_in",
+            full_name="spotify.APWelcome.account_type_logged_in",
             index=1,
             number=20,
             type=14,
@@ -1500,10 +1588,11 @@ _APWELCOME = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='credentials_type_logged_in',
-            full_name='spotify.APWelcome.credentials_type_logged_in',
+            name="credentials_type_logged_in",
+            full_name="spotify.APWelcome.credentials_type_logged_in",
             index=2,
             number=25,
             type=14,
@@ -1518,10 +1607,11 @@ _APWELCOME = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='reusable_auth_credentials_type',
-            full_name='spotify.APWelcome.reusable_auth_credentials_type',
+            name="reusable_auth_credentials_type",
+            full_name="spotify.APWelcome.reusable_auth_credentials_type",
             index=3,
             number=30,
             type=14,
@@ -1536,10 +1626,11 @@ _APWELCOME = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='reusable_auth_credentials',
-            full_name='spotify.APWelcome.reusable_auth_credentials',
+            name="reusable_auth_credentials",
+            full_name="spotify.APWelcome.reusable_auth_credentials",
             index=4,
             number=40,
             type=12,
@@ -1554,10 +1645,11 @@ _APWELCOME = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='lfs_secret',
-            full_name='spotify.APWelcome.lfs_secret',
+            name="lfs_secret",
+            full_name="spotify.APWelcome.lfs_secret",
             index=5,
             number=50,
             type=12,
@@ -1572,10 +1664,11 @@ _APWELCOME = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='account_info',
-            full_name='spotify.APWelcome.account_info',
+            name="account_info",
+            full_name="spotify.APWelcome.account_info",
             index=6,
             number=60,
             type=11,
@@ -1590,10 +1683,11 @@ _APWELCOME = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='fb',
-            full_name='spotify.APWelcome.fb',
+            name="fb",
+            full_name="spotify.APWelcome.fb",
             index=7,
             number=70,
             type=11,
@@ -1608,14 +1702,15 @@ _APWELCOME = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=1523,
@@ -1623,16 +1718,16 @@ _APWELCOME = _descriptor.Descriptor(
 )
 
 _ACCOUNTINFO = _descriptor.Descriptor(
-    name='AccountInfo',
-    full_name='spotify.AccountInfo',
+    name="AccountInfo",
+    full_name="spotify.AccountInfo",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='spotify',
-            full_name='spotify.AccountInfo.spotify',
+            name="spotify",
+            full_name="spotify.AccountInfo.spotify",
             index=0,
             number=1,
             type=11,
@@ -1647,10 +1742,11 @@ _ACCOUNTINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='facebook',
-            full_name='spotify.AccountInfo.facebook',
+            name="facebook",
+            full_name="spotify.AccountInfo.facebook",
             index=1,
             number=2,
             type=11,
@@ -1665,14 +1761,15 @@ _ACCOUNTINFO = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=1886,
@@ -1680,8 +1777,8 @@ _ACCOUNTINFO = _descriptor.Descriptor(
 )
 
 _ACCOUNTINFOSPOTIFY = _descriptor.Descriptor(
-    name='AccountInfoSpotify',
-    full_name='spotify.AccountInfoSpotify',
+    name="AccountInfoSpotify",
+    full_name="spotify.AccountInfoSpotify",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
@@ -1692,7 +1789,7 @@ _ACCOUNTINFOSPOTIFY = _descriptor.Descriptor(
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=1995,
@@ -1700,23 +1797,23 @@ _ACCOUNTINFOSPOTIFY = _descriptor.Descriptor(
 )
 
 _ACCOUNTINFOFACEBOOK = _descriptor.Descriptor(
-    name='AccountInfoFacebook',
-    full_name='spotify.AccountInfoFacebook',
+    name="AccountInfoFacebook",
+    full_name="spotify.AccountInfoFacebook",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='access_token',
-            full_name='spotify.AccountInfoFacebook.access_token',
+            name="access_token",
+            full_name="spotify.AccountInfoFacebook.access_token",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1724,17 +1821,18 @@ _ACCOUNTINFOFACEBOOK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='machine_id',
-            full_name='spotify.AccountInfoFacebook.machine_id',
+            name="machine_id",
+            full_name="spotify.AccountInfoFacebook.machine_id",
             index=1,
             number=2,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -1742,14 +1840,15 @@ _ACCOUNTINFOFACEBOOK = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=2017,
@@ -1757,226 +1856,238 @@ _ACCOUNTINFOFACEBOOK = _descriptor.Descriptor(
 )
 
 _CLIENTRESPONSEENCRYPTED.fields_by_name[
-    'login_credentials'].message_type = _LOGINCREDENTIALS
+    "login_credentials"
+].message_type = _LOGINCREDENTIALS
+_CLIENTRESPONSEENCRYPTED.fields_by_name["account_creation"].enum_type = _ACCOUNTCREATION
 _CLIENTRESPONSEENCRYPTED.fields_by_name[
-    'account_creation'].enum_type = _ACCOUNTCREATION
-_CLIENTRESPONSEENCRYPTED.fields_by_name[
-    'fingerprint_response'].message_type = _FINGERPRINTRESPONSEUNION
-_CLIENTRESPONSEENCRYPTED.fields_by_name[
-    'peer_ticket'].message_type = _PEERTICKETUNION
-_CLIENTRESPONSEENCRYPTED.fields_by_name[
-    'system_info'].message_type = _SYSTEMINFO
-_CLIENTRESPONSEENCRYPTED.fields_by_name[
-    'appkey'].message_type = _LIBSPOTIFYAPPKEY
-_CLIENTRESPONSEENCRYPTED.fields_by_name[
-    'client_info'].message_type = _CLIENTINFO
-_LOGINCREDENTIALS.fields_by_name['typ'].enum_type = _AUTHENTICATIONTYPE
+    "fingerprint_response"
+].message_type = _FINGERPRINTRESPONSEUNION
+_CLIENTRESPONSEENCRYPTED.fields_by_name["peer_ticket"].message_type = _PEERTICKETUNION
+_CLIENTRESPONSEENCRYPTED.fields_by_name["system_info"].message_type = _SYSTEMINFO
+_CLIENTRESPONSEENCRYPTED.fields_by_name["appkey"].message_type = _LIBSPOTIFYAPPKEY
+_CLIENTRESPONSEENCRYPTED.fields_by_name["client_info"].message_type = _CLIENTINFO
+_LOGINCREDENTIALS.fields_by_name["typ"].enum_type = _AUTHENTICATIONTYPE
 _FINGERPRINTRESPONSEUNION.fields_by_name[
-    'grain'].message_type = _FINGERPRINTGRAINRESPONSE
+    "grain"
+].message_type = _FINGERPRINTGRAINRESPONSE
 _FINGERPRINTRESPONSEUNION.fields_by_name[
-    'hmac_ripemd'].message_type = _FINGERPRINTHMACRIPEMDRESPONSE
-_PEERTICKETUNION.fields_by_name[
-    'public_key'].message_type = _PEERTICKETPUBLICKEY
-_PEERTICKETUNION.fields_by_name['old_ticket'].message_type = _PEERTICKETOLD
-_SYSTEMINFO.fields_by_name['cpu_family'].enum_type = _CPUFAMILY
-_SYSTEMINFO.fields_by_name['brand'].enum_type = _BRAND
-_SYSTEMINFO.fields_by_name['os'].enum_type = _OS
-_CLIENTINFO.fields_by_name['fb'].message_type = _CLIENTINFOFACEBOOK
-_APWELCOME.fields_by_name['account_type_logged_in'].enum_type = _ACCOUNTTYPE
+    "hmac_ripemd"
+].message_type = _FINGERPRINTHMACRIPEMDRESPONSE
+_PEERTICKETUNION.fields_by_name["public_key"].message_type = _PEERTICKETPUBLICKEY
+_PEERTICKETUNION.fields_by_name["old_ticket"].message_type = _PEERTICKETOLD
+_SYSTEMINFO.fields_by_name["cpu_family"].enum_type = _CPUFAMILY
+_SYSTEMINFO.fields_by_name["brand"].enum_type = _BRAND
+_SYSTEMINFO.fields_by_name["os"].enum_type = _OS
+_CLIENTINFO.fields_by_name["fb"].message_type = _CLIENTINFOFACEBOOK
+_APWELCOME.fields_by_name["account_type_logged_in"].enum_type = _ACCOUNTTYPE
+_APWELCOME.fields_by_name["credentials_type_logged_in"].enum_type = _ACCOUNTTYPE
 _APWELCOME.fields_by_name[
-    'credentials_type_logged_in'].enum_type = _ACCOUNTTYPE
-_APWELCOME.fields_by_name[
-    'reusable_auth_credentials_type'].enum_type = _AUTHENTICATIONTYPE
-_APWELCOME.fields_by_name['account_info'].message_type = _ACCOUNTINFO
-_APWELCOME.fields_by_name['fb'].message_type = _ACCOUNTINFOFACEBOOK
-_ACCOUNTINFO.fields_by_name['spotify'].message_type = _ACCOUNTINFOSPOTIFY
-_ACCOUNTINFO.fields_by_name['facebook'].message_type = _ACCOUNTINFOFACEBOOK
+    "reusable_auth_credentials_type"
+].enum_type = _AUTHENTICATIONTYPE
+_APWELCOME.fields_by_name["account_info"].message_type = _ACCOUNTINFO
+_APWELCOME.fields_by_name["fb"].message_type = _ACCOUNTINFOFACEBOOK
+_ACCOUNTINFO.fields_by_name["spotify"].message_type = _ACCOUNTINFOSPOTIFY
+_ACCOUNTINFO.fields_by_name["facebook"].message_type = _ACCOUNTINFOFACEBOOK
+DESCRIPTOR.message_types_by_name["ClientResponseEncrypted"] = _CLIENTRESPONSEENCRYPTED
+DESCRIPTOR.message_types_by_name["LoginCredentials"] = _LOGINCREDENTIALS
+DESCRIPTOR.message_types_by_name["FingerprintResponseUnion"] = _FINGERPRINTRESPONSEUNION
+DESCRIPTOR.message_types_by_name["FingerprintGrainResponse"] = _FINGERPRINTGRAINRESPONSE
 DESCRIPTOR.message_types_by_name[
-    'ClientResponseEncrypted'] = _CLIENTRESPONSEENCRYPTED
-DESCRIPTOR.message_types_by_name['LoginCredentials'] = _LOGINCREDENTIALS
-DESCRIPTOR.message_types_by_name[
-    'FingerprintResponseUnion'] = _FINGERPRINTRESPONSEUNION
-DESCRIPTOR.message_types_by_name[
-    'FingerprintGrainResponse'] = _FINGERPRINTGRAINRESPONSE
-DESCRIPTOR.message_types_by_name[
-    'FingerprintHmacRipemdResponse'] = _FINGERPRINTHMACRIPEMDRESPONSE
-DESCRIPTOR.message_types_by_name['PeerTicketUnion'] = _PEERTICKETUNION
-DESCRIPTOR.message_types_by_name['PeerTicketPublicKey'] = _PEERTICKETPUBLICKEY
-DESCRIPTOR.message_types_by_name['PeerTicketOld'] = _PEERTICKETOLD
-DESCRIPTOR.message_types_by_name['SystemInfo'] = _SYSTEMINFO
-DESCRIPTOR.message_types_by_name['LibspotifyAppKey'] = _LIBSPOTIFYAPPKEY
-DESCRIPTOR.message_types_by_name['ClientInfo'] = _CLIENTINFO
-DESCRIPTOR.message_types_by_name['ClientInfoFacebook'] = _CLIENTINFOFACEBOOK
-DESCRIPTOR.message_types_by_name['APWelcome'] = _APWELCOME
-DESCRIPTOR.message_types_by_name['AccountInfo'] = _ACCOUNTINFO
-DESCRIPTOR.message_types_by_name['AccountInfoSpotify'] = _ACCOUNTINFOSPOTIFY
-DESCRIPTOR.message_types_by_name['AccountInfoFacebook'] = _ACCOUNTINFOFACEBOOK
-DESCRIPTOR.enum_types_by_name['AuthenticationType'] = _AUTHENTICATIONTYPE
-DESCRIPTOR.enum_types_by_name['AccountCreation'] = _ACCOUNTCREATION
-DESCRIPTOR.enum_types_by_name['CpuFamily'] = _CPUFAMILY
-DESCRIPTOR.enum_types_by_name['Brand'] = _BRAND
-DESCRIPTOR.enum_types_by_name['Os'] = _OS
-DESCRIPTOR.enum_types_by_name['AccountType'] = _ACCOUNTTYPE
+    "FingerprintHmacRipemdResponse"
+] = _FINGERPRINTHMACRIPEMDRESPONSE
+DESCRIPTOR.message_types_by_name["PeerTicketUnion"] = _PEERTICKETUNION
+DESCRIPTOR.message_types_by_name["PeerTicketPublicKey"] = _PEERTICKETPUBLICKEY
+DESCRIPTOR.message_types_by_name["PeerTicketOld"] = _PEERTICKETOLD
+DESCRIPTOR.message_types_by_name["SystemInfo"] = _SYSTEMINFO
+DESCRIPTOR.message_types_by_name["LibspotifyAppKey"] = _LIBSPOTIFYAPPKEY
+DESCRIPTOR.message_types_by_name["ClientInfo"] = _CLIENTINFO
+DESCRIPTOR.message_types_by_name["ClientInfoFacebook"] = _CLIENTINFOFACEBOOK
+DESCRIPTOR.message_types_by_name["APWelcome"] = _APWELCOME
+DESCRIPTOR.message_types_by_name["AccountInfo"] = _ACCOUNTINFO
+DESCRIPTOR.message_types_by_name["AccountInfoSpotify"] = _ACCOUNTINFOSPOTIFY
+DESCRIPTOR.message_types_by_name["AccountInfoFacebook"] = _ACCOUNTINFOFACEBOOK
+DESCRIPTOR.enum_types_by_name["AuthenticationType"] = _AUTHENTICATIONTYPE
+DESCRIPTOR.enum_types_by_name["AccountCreation"] = _ACCOUNTCREATION
+DESCRIPTOR.enum_types_by_name["CpuFamily"] = _CPUFAMILY
+DESCRIPTOR.enum_types_by_name["Brand"] = _BRAND
+DESCRIPTOR.enum_types_by_name["Os"] = _OS
+DESCRIPTOR.enum_types_by_name["AccountType"] = _ACCOUNTTYPE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ClientResponseEncrypted = _reflection.GeneratedProtocolMessageType(
-    'ClientResponseEncrypted',
-    (_message.Message, ),
+    "ClientResponseEncrypted",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _CLIENTRESPONSEENCRYPTED,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _CLIENTRESPONSEENCRYPTED,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.ClientResponseEncrypted)
-    })
+    },
+)
 _sym_db.RegisterMessage(ClientResponseEncrypted)
 
 LoginCredentials = _reflection.GeneratedProtocolMessageType(
-    'LoginCredentials',
-    (_message.Message, ),
+    "LoginCredentials",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _LOGINCREDENTIALS,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _LOGINCREDENTIALS,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.LoginCredentials)
-    })
+    },
+)
 _sym_db.RegisterMessage(LoginCredentials)
 
 FingerprintResponseUnion = _reflection.GeneratedProtocolMessageType(
-    'FingerprintResponseUnion',
-    (_message.Message, ),
+    "FingerprintResponseUnion",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _FINGERPRINTRESPONSEUNION,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _FINGERPRINTRESPONSEUNION,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.FingerprintResponseUnion)
-    })
+    },
+)
 _sym_db.RegisterMessage(FingerprintResponseUnion)
 
 FingerprintGrainResponse = _reflection.GeneratedProtocolMessageType(
-    'FingerprintGrainResponse',
-    (_message.Message, ),
+    "FingerprintGrainResponse",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _FINGERPRINTGRAINRESPONSE,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _FINGERPRINTGRAINRESPONSE,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.FingerprintGrainResponse)
-    })
+    },
+)
 _sym_db.RegisterMessage(FingerprintGrainResponse)
 
 FingerprintHmacRipemdResponse = _reflection.GeneratedProtocolMessageType(
-    'FingerprintHmacRipemdResponse',
-    (_message.Message, ),
+    "FingerprintHmacRipemdResponse",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _FINGERPRINTHMACRIPEMDRESPONSE,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _FINGERPRINTHMACRIPEMDRESPONSE,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.FingerprintHmacRipemdResponse)
-    })
+    },
+)
 _sym_db.RegisterMessage(FingerprintHmacRipemdResponse)
 
 PeerTicketUnion = _reflection.GeneratedProtocolMessageType(
-    'PeerTicketUnion',
-    (_message.Message, ),
+    "PeerTicketUnion",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _PEERTICKETUNION,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _PEERTICKETUNION,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.PeerTicketUnion)
-    })
+    },
+)
 _sym_db.RegisterMessage(PeerTicketUnion)
 
 PeerTicketPublicKey = _reflection.GeneratedProtocolMessageType(
-    'PeerTicketPublicKey',
-    (_message.Message, ),
+    "PeerTicketPublicKey",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _PEERTICKETPUBLICKEY,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _PEERTICKETPUBLICKEY,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.PeerTicketPublicKey)
-    })
+    },
+)
 _sym_db.RegisterMessage(PeerTicketPublicKey)
 
 PeerTicketOld = _reflection.GeneratedProtocolMessageType(
-    'PeerTicketOld',
-    (_message.Message, ),
+    "PeerTicketOld",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _PEERTICKETOLD,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _PEERTICKETOLD,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.PeerTicketOld)
-    })
+    },
+)
 _sym_db.RegisterMessage(PeerTicketOld)
 
 SystemInfo = _reflection.GeneratedProtocolMessageType(
-    'SystemInfo',
-    (_message.Message, ),
+    "SystemInfo",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _SYSTEMINFO,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _SYSTEMINFO,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.SystemInfo)
-    })
+    },
+)
 _sym_db.RegisterMessage(SystemInfo)
 
 LibspotifyAppKey = _reflection.GeneratedProtocolMessageType(
-    'LibspotifyAppKey',
-    (_message.Message, ),
+    "LibspotifyAppKey",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _LIBSPOTIFYAPPKEY,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _LIBSPOTIFYAPPKEY,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.LibspotifyAppKey)
-    })
+    },
+)
 _sym_db.RegisterMessage(LibspotifyAppKey)
 
 ClientInfo = _reflection.GeneratedProtocolMessageType(
-    'ClientInfo',
-    (_message.Message, ),
+    "ClientInfo",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _CLIENTINFO,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _CLIENTINFO,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.ClientInfo)
-    })
+    },
+)
 _sym_db.RegisterMessage(ClientInfo)
 
 ClientInfoFacebook = _reflection.GeneratedProtocolMessageType(
-    'ClientInfoFacebook',
-    (_message.Message, ),
+    "ClientInfoFacebook",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _CLIENTINFOFACEBOOK,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _CLIENTINFOFACEBOOK,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.ClientInfoFacebook)
-    })
+    },
+)
 _sym_db.RegisterMessage(ClientInfoFacebook)
 
 APWelcome = _reflection.GeneratedProtocolMessageType(
-    'APWelcome',
-    (_message.Message, ),
+    "APWelcome",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _APWELCOME,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _APWELCOME,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.APWelcome)
-    })
+    },
+)
 _sym_db.RegisterMessage(APWelcome)
 
 AccountInfo = _reflection.GeneratedProtocolMessageType(
-    'AccountInfo',
-    (_message.Message, ),
+    "AccountInfo",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _ACCOUNTINFO,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _ACCOUNTINFO,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.AccountInfo)
-    })
+    },
+)
 _sym_db.RegisterMessage(AccountInfo)
 
 AccountInfoSpotify = _reflection.GeneratedProtocolMessageType(
-    'AccountInfoSpotify',
-    (_message.Message, ),
+    "AccountInfoSpotify",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _ACCOUNTINFOSPOTIFY,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _ACCOUNTINFOSPOTIFY,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.AccountInfoSpotify)
-    })
+    },
+)
 _sym_db.RegisterMessage(AccountInfoSpotify)
 
 AccountInfoFacebook = _reflection.GeneratedProtocolMessageType(
-    'AccountInfoFacebook',
-    (_message.Message, ),
+    "AccountInfoFacebook",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _ACCOUNTINFOFACEBOOK,
-        '__module__': 'authentication_pb2'
+        "DESCRIPTOR": _ACCOUNTINFOFACEBOOK,
+        "__module__": "authentication_pb2"
         # @@protoc_insertion_point(class_scope:spotify.AccountInfoFacebook)
-    })
+    },
+)
 _sym_db.RegisterMessage(AccountInfoFacebook)
 
 DESCRIPTOR._options = None

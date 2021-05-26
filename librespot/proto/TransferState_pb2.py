@@ -147,18 +147,17 @@ _TRANSFERSTATE = _descriptor.Descriptor(
 )
 
 _TRANSFERSTATE.fields_by_name[
-    "options"].message_type = context__player__options__pb2._CONTEXTPLAYEROPTIONS
-_TRANSFERSTATE.fields_by_name[
-    "playback"].message_type = playback__pb2._PLAYBACK
-_TRANSFERSTATE.fields_by_name[
-    "current_session"].message_type = session__pb2._SESSION
+    "options"
+].message_type = context__player__options__pb2._CONTEXTPLAYEROPTIONS
+_TRANSFERSTATE.fields_by_name["playback"].message_type = playback__pb2._PLAYBACK
+_TRANSFERSTATE.fields_by_name["current_session"].message_type = session__pb2._SESSION
 _TRANSFERSTATE.fields_by_name["queue"].message_type = queue__pb2._QUEUE
 DESCRIPTOR.message_types_by_name["TransferState"] = _TRANSFERSTATE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 TransferState = _reflection.GeneratedProtocolMessageType(
     "TransferState",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _TRANSFERSTATE,
         "__module__": "transfer_state_pb2"

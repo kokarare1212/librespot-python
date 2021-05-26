@@ -2833,36 +2833,32 @@ _ITEM.fields_by_name["attributes"].message_type = _ITEMATTRIBUTES
 _METAITEM.fields_by_name["attributes"].message_type = _LISTATTRIBUTES
 _LISTITEMS.fields_by_name["items"].message_type = _ITEM
 _LISTITEMS.fields_by_name["meta_items"].message_type = _METAITEM
-_LISTATTRIBUTES.fields_by_name[
-    "format_attributes"].message_type = _FORMATLISTATTRIBUTE
-_ITEMATTRIBUTES.fields_by_name[
-    "format_attributes"].message_type = _FORMATLISTATTRIBUTE
+_LISTATTRIBUTES.fields_by_name["format_attributes"].message_type = _FORMATLISTATTRIBUTE
+_ITEMATTRIBUTES.fields_by_name["format_attributes"].message_type = _FORMATLISTATTRIBUTE
 _ADD.fields_by_name["items"].message_type = _ITEM
 _REM.fields_by_name["items"].message_type = _ITEM
-_ITEMATTRIBUTESPARTIALSTATE.fields_by_name[
-    "values"].message_type = _ITEMATTRIBUTES
-_ITEMATTRIBUTESPARTIALSTATE.fields_by_name[
-    "no_value"].enum_type = _ITEMATTRIBUTEKIND
-_LISTATTRIBUTESPARTIALSTATE.fields_by_name[
-    "values"].message_type = _LISTATTRIBUTES
-_LISTATTRIBUTESPARTIALSTATE.fields_by_name[
-    "no_value"].enum_type = _LISTATTRIBUTEKIND
+_ITEMATTRIBUTESPARTIALSTATE.fields_by_name["values"].message_type = _ITEMATTRIBUTES
+_ITEMATTRIBUTESPARTIALSTATE.fields_by_name["no_value"].enum_type = _ITEMATTRIBUTEKIND
+_LISTATTRIBUTESPARTIALSTATE.fields_by_name["values"].message_type = _LISTATTRIBUTES
+_LISTATTRIBUTESPARTIALSTATE.fields_by_name["no_value"].enum_type = _LISTATTRIBUTEKIND
 _UPDATEITEMATTRIBUTES.fields_by_name[
-    "new_attributes"].message_type = _ITEMATTRIBUTESPARTIALSTATE
+    "new_attributes"
+].message_type = _ITEMATTRIBUTESPARTIALSTATE
 _UPDATEITEMATTRIBUTES.fields_by_name[
-    "old_attributes"].message_type = _ITEMATTRIBUTESPARTIALSTATE
+    "old_attributes"
+].message_type = _ITEMATTRIBUTESPARTIALSTATE
 _UPDATELISTATTRIBUTES.fields_by_name[
-    "new_attributes"].message_type = _LISTATTRIBUTESPARTIALSTATE
+    "new_attributes"
+].message_type = _LISTATTRIBUTESPARTIALSTATE
 _UPDATELISTATTRIBUTES.fields_by_name[
-    "old_attributes"].message_type = _LISTATTRIBUTESPARTIALSTATE
+    "old_attributes"
+].message_type = _LISTATTRIBUTESPARTIALSTATE
 _OP.fields_by_name["kind"].enum_type = _OP_KIND
 _OP.fields_by_name["add"].message_type = _ADD
 _OP.fields_by_name["rem"].message_type = _REM
 _OP.fields_by_name["mov"].message_type = _MOV
-_OP.fields_by_name[
-    "update_item_attributes"].message_type = _UPDATEITEMATTRIBUTES
-_OP.fields_by_name[
-    "update_list_attributes"].message_type = _UPDATELISTATTRIBUTES
+_OP.fields_by_name["update_item_attributes"].message_type = _UPDATEITEMATTRIBUTES
+_OP.fields_by_name["update_list_attributes"].message_type = _UPDATELISTATTRIBUTES
 _OP_KIND.containing_type = _OP
 _OPLIST.fields_by_name["ops"].message_type = _OP
 _CHANGEINFO.fields_by_name["source"].message_type = _SOURCEINFO
@@ -2872,8 +2868,7 @@ _DELTA.fields_by_name["ops"].message_type = _OP
 _DELTA.fields_by_name["info"].message_type = _CHANGEINFO
 _DIFF.fields_by_name["ops"].message_type = _OP
 _LISTCHANGES.fields_by_name["deltas"].message_type = _DELTA
-_SELECTEDLISTCONTENT.fields_by_name[
-    "attributes"].message_type = _LISTATTRIBUTES
+_SELECTEDLISTCONTENT.fields_by_name["attributes"].message_type = _LISTATTRIBUTES
 _SELECTEDLISTCONTENT.fields_by_name["contents"].message_type = _LISTITEMS
 _SELECTEDLISTCONTENT.fields_by_name["diff"].message_type = _DIFF
 _SELECTEDLISTCONTENT.fields_by_name["sync_result"].message_type = _DIFF
@@ -2888,13 +2883,13 @@ DESCRIPTOR.message_types_by_name["Add"] = _ADD
 DESCRIPTOR.message_types_by_name["Rem"] = _REM
 DESCRIPTOR.message_types_by_name["Mov"] = _MOV
 DESCRIPTOR.message_types_by_name[
-    "ItemAttributesPartialState"] = _ITEMATTRIBUTESPARTIALSTATE
+    "ItemAttributesPartialState"
+] = _ITEMATTRIBUTESPARTIALSTATE
 DESCRIPTOR.message_types_by_name[
-    "ListAttributesPartialState"] = _LISTATTRIBUTESPARTIALSTATE
-DESCRIPTOR.message_types_by_name[
-    "UpdateItemAttributes"] = _UPDATEITEMATTRIBUTES
-DESCRIPTOR.message_types_by_name[
-    "UpdateListAttributes"] = _UPDATELISTATTRIBUTES
+    "ListAttributesPartialState"
+] = _LISTATTRIBUTESPARTIALSTATE
+DESCRIPTOR.message_types_by_name["UpdateItemAttributes"] = _UPDATEITEMATTRIBUTES
+DESCRIPTOR.message_types_by_name["UpdateListAttributes"] = _UPDATELISTATTRIBUTES
 DESCRIPTOR.message_types_by_name["Op"] = _OP
 DESCRIPTOR.message_types_by_name["OpList"] = _OPLIST
 DESCRIPTOR.message_types_by_name["ChangeInfo"] = _CHANGEINFO
@@ -2907,15 +2902,14 @@ DESCRIPTOR.message_types_by_name["CreateListReply"] = _CREATELISTREPLY
 DESCRIPTOR.message_types_by_name["ModifyReply"] = _MODIFYREPLY
 DESCRIPTOR.message_types_by_name["SubscribeRequest"] = _SUBSCRIBEREQUEST
 DESCRIPTOR.message_types_by_name["UnsubscribeRequest"] = _UNSUBSCRIBEREQUEST
-DESCRIPTOR.message_types_by_name[
-    "PlaylistModificationInfo"] = _PLAYLISTMODIFICATIONINFO
+DESCRIPTOR.message_types_by_name["PlaylistModificationInfo"] = _PLAYLISTMODIFICATIONINFO
 DESCRIPTOR.enum_types_by_name["ListAttributeKind"] = _LISTATTRIBUTEKIND
 DESCRIPTOR.enum_types_by_name["ItemAttributeKind"] = _ITEMATTRIBUTEKIND
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Item = _reflection.GeneratedProtocolMessageType(
     "Item",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _ITEM,
         "__module__": "playlist4_external_pb2"
@@ -2926,7 +2920,7 @@ _sym_db.RegisterMessage(Item)
 
 MetaItem = _reflection.GeneratedProtocolMessageType(
     "MetaItem",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _METAITEM,
         "__module__": "playlist4_external_pb2"
@@ -2937,7 +2931,7 @@ _sym_db.RegisterMessage(MetaItem)
 
 ListItems = _reflection.GeneratedProtocolMessageType(
     "ListItems",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _LISTITEMS,
         "__module__": "playlist4_external_pb2"
@@ -2948,7 +2942,7 @@ _sym_db.RegisterMessage(ListItems)
 
 FormatListAttribute = _reflection.GeneratedProtocolMessageType(
     "FormatListAttribute",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _FORMATLISTATTRIBUTE,
         "__module__": "playlist4_external_pb2"
@@ -2959,7 +2953,7 @@ _sym_db.RegisterMessage(FormatListAttribute)
 
 ListAttributes = _reflection.GeneratedProtocolMessageType(
     "ListAttributes",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _LISTATTRIBUTES,
         "__module__": "playlist4_external_pb2"
@@ -2970,7 +2964,7 @@ _sym_db.RegisterMessage(ListAttributes)
 
 ItemAttributes = _reflection.GeneratedProtocolMessageType(
     "ItemAttributes",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _ITEMATTRIBUTES,
         "__module__": "playlist4_external_pb2"
@@ -2981,7 +2975,7 @@ _sym_db.RegisterMessage(ItemAttributes)
 
 Add = _reflection.GeneratedProtocolMessageType(
     "Add",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _ADD,
         "__module__": "playlist4_external_pb2"
@@ -2992,7 +2986,7 @@ _sym_db.RegisterMessage(Add)
 
 Rem = _reflection.GeneratedProtocolMessageType(
     "Rem",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _REM,
         "__module__": "playlist4_external_pb2"
@@ -3003,7 +2997,7 @@ _sym_db.RegisterMessage(Rem)
 
 Mov = _reflection.GeneratedProtocolMessageType(
     "Mov",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _MOV,
         "__module__": "playlist4_external_pb2"
@@ -3014,7 +3008,7 @@ _sym_db.RegisterMessage(Mov)
 
 ItemAttributesPartialState = _reflection.GeneratedProtocolMessageType(
     "ItemAttributesPartialState",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _ITEMATTRIBUTESPARTIALSTATE,
         "__module__": "playlist4_external_pb2"
@@ -3025,7 +3019,7 @@ _sym_db.RegisterMessage(ItemAttributesPartialState)
 
 ListAttributesPartialState = _reflection.GeneratedProtocolMessageType(
     "ListAttributesPartialState",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _LISTATTRIBUTESPARTIALSTATE,
         "__module__": "playlist4_external_pb2"
@@ -3036,7 +3030,7 @@ _sym_db.RegisterMessage(ListAttributesPartialState)
 
 UpdateItemAttributes = _reflection.GeneratedProtocolMessageType(
     "UpdateItemAttributes",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _UPDATEITEMATTRIBUTES,
         "__module__": "playlist4_external_pb2"
@@ -3047,7 +3041,7 @@ _sym_db.RegisterMessage(UpdateItemAttributes)
 
 UpdateListAttributes = _reflection.GeneratedProtocolMessageType(
     "UpdateListAttributes",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _UPDATELISTATTRIBUTES,
         "__module__": "playlist4_external_pb2"
@@ -3058,7 +3052,7 @@ _sym_db.RegisterMessage(UpdateListAttributes)
 
 Op = _reflection.GeneratedProtocolMessageType(
     "Op",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _OP,
         "__module__": "playlist4_external_pb2"
@@ -3069,7 +3063,7 @@ _sym_db.RegisterMessage(Op)
 
 OpList = _reflection.GeneratedProtocolMessageType(
     "OpList",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _OPLIST,
         "__module__": "playlist4_external_pb2"
@@ -3080,7 +3074,7 @@ _sym_db.RegisterMessage(OpList)
 
 ChangeInfo = _reflection.GeneratedProtocolMessageType(
     "ChangeInfo",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _CHANGEINFO,
         "__module__": "playlist4_external_pb2"
@@ -3091,7 +3085,7 @@ _sym_db.RegisterMessage(ChangeInfo)
 
 SourceInfo = _reflection.GeneratedProtocolMessageType(
     "SourceInfo",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _SOURCEINFO,
         "__module__": "playlist4_external_pb2"
@@ -3102,7 +3096,7 @@ _sym_db.RegisterMessage(SourceInfo)
 
 Delta = _reflection.GeneratedProtocolMessageType(
     "Delta",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _DELTA,
         "__module__": "playlist4_external_pb2"
@@ -3113,7 +3107,7 @@ _sym_db.RegisterMessage(Delta)
 
 Diff = _reflection.GeneratedProtocolMessageType(
     "Diff",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _DIFF,
         "__module__": "playlist4_external_pb2"
@@ -3124,7 +3118,7 @@ _sym_db.RegisterMessage(Diff)
 
 ListChanges = _reflection.GeneratedProtocolMessageType(
     "ListChanges",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _LISTCHANGES,
         "__module__": "playlist4_external_pb2"
@@ -3135,7 +3129,7 @@ _sym_db.RegisterMessage(ListChanges)
 
 SelectedListContent = _reflection.GeneratedProtocolMessageType(
     "SelectedListContent",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _SELECTEDLISTCONTENT,
         "__module__": "playlist4_external_pb2"
@@ -3146,7 +3140,7 @@ _sym_db.RegisterMessage(SelectedListContent)
 
 CreateListReply = _reflection.GeneratedProtocolMessageType(
     "CreateListReply",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _CREATELISTREPLY,
         "__module__": "playlist4_external_pb2"
@@ -3157,7 +3151,7 @@ _sym_db.RegisterMessage(CreateListReply)
 
 ModifyReply = _reflection.GeneratedProtocolMessageType(
     "ModifyReply",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _MODIFYREPLY,
         "__module__": "playlist4_external_pb2"
@@ -3168,7 +3162,7 @@ _sym_db.RegisterMessage(ModifyReply)
 
 SubscribeRequest = _reflection.GeneratedProtocolMessageType(
     "SubscribeRequest",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _SUBSCRIBEREQUEST,
         "__module__": "playlist4_external_pb2"
@@ -3179,7 +3173,7 @@ _sym_db.RegisterMessage(SubscribeRequest)
 
 UnsubscribeRequest = _reflection.GeneratedProtocolMessageType(
     "UnsubscribeRequest",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _UNSUBSCRIBEREQUEST,
         "__module__": "playlist4_external_pb2"
@@ -3190,7 +3184,7 @@ _sym_db.RegisterMessage(UnsubscribeRequest)
 
 PlaylistModificationInfo = _reflection.GeneratedProtocolMessageType(
     "PlaylistModificationInfo",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _PLAYLISTMODIFICATIONINFO,
         "__module__": "playlist4_external_pb2"

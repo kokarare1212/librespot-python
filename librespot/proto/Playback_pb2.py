@@ -141,13 +141,14 @@ _PLAYBACK = _descriptor.Descriptor(
 )
 
 _PLAYBACK.fields_by_name[
-    "current_track"].message_type = context__track__pb2._CONTEXTTRACK
+    "current_track"
+].message_type = context__track__pb2._CONTEXTTRACK
 DESCRIPTOR.message_types_by_name["Playback"] = _PLAYBACK
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Playback = _reflection.GeneratedProtocolMessageType(
     "Playback",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _PLAYBACK,
         "__module__": "playback_pb2"

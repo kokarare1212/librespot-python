@@ -224,30 +224,26 @@ _CONTEXT = _descriptor.Descriptor(
 
 _CONTEXT_METADATAENTRY.containing_type = _CONTEXT
 _CONTEXT.fields_by_name["metadata"].message_type = _CONTEXT_METADATAENTRY
-_CONTEXT.fields_by_name[
-    "restrictions"].message_type = restrictions__pb2._RESTRICTIONS
+_CONTEXT.fields_by_name["restrictions"].message_type = restrictions__pb2._RESTRICTIONS
 _CONTEXT.fields_by_name["pages"].message_type = context__page__pb2._CONTEXTPAGE
 DESCRIPTOR.message_types_by_name["Context"] = _CONTEXT
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Context = _reflection.GeneratedProtocolMessageType(
     "Context",
-    (_message.Message, ),
+    (_message.Message,),
     {
-        "MetadataEntry":
-        _reflection.GeneratedProtocolMessageType(
+        "MetadataEntry": _reflection.GeneratedProtocolMessageType(
             "MetadataEntry",
-            (_message.Message, ),
+            (_message.Message,),
             {
                 "DESCRIPTOR": _CONTEXT_METADATAENTRY,
                 "__module__": "context_pb2"
                 # @@protoc_insertion_point(class_scope:spotify.player.proto.Context.MetadataEntry)
             },
         ),
-        "DESCRIPTOR":
-        _CONTEXT,
-        "__module__":
-        "context_pb2"
+        "DESCRIPTOR": _CONTEXT,
+        "__module__": "context_pb2"
         # @@protoc_insertion_point(class_scope:spotify.player.proto.Context)
     },
 )

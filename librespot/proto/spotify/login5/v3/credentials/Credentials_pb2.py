@@ -394,20 +394,19 @@ _APPLESIGNINCREDENTIAL = _descriptor.Descriptor(
 )
 
 _PARENTCHILDCREDENTIAL.fields_by_name[
-    "parent_stored_credential"].message_type = _STOREDCREDENTIAL
+    "parent_stored_credential"
+].message_type = _STOREDCREDENTIAL
 DESCRIPTOR.message_types_by_name["StoredCredential"] = _STOREDCREDENTIAL
 DESCRIPTOR.message_types_by_name["Password"] = _PASSWORD
 DESCRIPTOR.message_types_by_name["FacebookAccessToken"] = _FACEBOOKACCESSTOKEN
 DESCRIPTOR.message_types_by_name["OneTimeToken"] = _ONETIMETOKEN
-DESCRIPTOR.message_types_by_name[
-    "ParentChildCredential"] = _PARENTCHILDCREDENTIAL
-DESCRIPTOR.message_types_by_name[
-    "AppleSignInCredential"] = _APPLESIGNINCREDENTIAL
+DESCRIPTOR.message_types_by_name["ParentChildCredential"] = _PARENTCHILDCREDENTIAL
+DESCRIPTOR.message_types_by_name["AppleSignInCredential"] = _APPLESIGNINCREDENTIAL
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 StoredCredential = _reflection.GeneratedProtocolMessageType(
     "StoredCredential",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _STOREDCREDENTIAL,
         "__module__": "spotify.login5.v3.credentials.credentials_pb2"
@@ -418,7 +417,7 @@ _sym_db.RegisterMessage(StoredCredential)
 
 Password = _reflection.GeneratedProtocolMessageType(
     "Password",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _PASSWORD,
         "__module__": "spotify.login5.v3.credentials.credentials_pb2"
@@ -429,7 +428,7 @@ _sym_db.RegisterMessage(Password)
 
 FacebookAccessToken = _reflection.GeneratedProtocolMessageType(
     "FacebookAccessToken",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _FACEBOOKACCESSTOKEN,
         "__module__": "spotify.login5.v3.credentials.credentials_pb2"
@@ -440,7 +439,7 @@ _sym_db.RegisterMessage(FacebookAccessToken)
 
 OneTimeToken = _reflection.GeneratedProtocolMessageType(
     "OneTimeToken",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _ONETIMETOKEN,
         "__module__": "spotify.login5.v3.credentials.credentials_pb2"
@@ -451,7 +450,7 @@ _sym_db.RegisterMessage(OneTimeToken)
 
 ParentChildCredential = _reflection.GeneratedProtocolMessageType(
     "ParentChildCredential",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _PARENTCHILDCREDENTIAL,
         "__module__": "spotify.login5.v3.credentials.credentials_pb2"
@@ -462,7 +461,7 @@ _sym_db.RegisterMessage(ParentChildCredential)
 
 AppleSignInCredential = _reflection.GeneratedProtocolMessageType(
     "AppleSignInCredential",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _APPLESIGNINCREDENTIAL,
         "__module__": "spotify.login5.v3.credentials.credentials_pb2"

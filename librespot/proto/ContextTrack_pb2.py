@@ -179,29 +179,25 @@ _CONTEXTTRACK = _descriptor.Descriptor(
 )
 
 _CONTEXTTRACK_METADATAENTRY.containing_type = _CONTEXTTRACK
-_CONTEXTTRACK.fields_by_name[
-    "metadata"].message_type = _CONTEXTTRACK_METADATAENTRY
+_CONTEXTTRACK.fields_by_name["metadata"].message_type = _CONTEXTTRACK_METADATAENTRY
 DESCRIPTOR.message_types_by_name["ContextTrack"] = _CONTEXTTRACK
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ContextTrack = _reflection.GeneratedProtocolMessageType(
     "ContextTrack",
-    (_message.Message, ),
+    (_message.Message,),
     {
-        "MetadataEntry":
-        _reflection.GeneratedProtocolMessageType(
+        "MetadataEntry": _reflection.GeneratedProtocolMessageType(
             "MetadataEntry",
-            (_message.Message, ),
+            (_message.Message,),
             {
                 "DESCRIPTOR": _CONTEXTTRACK_METADATAENTRY,
                 "__module__": "context_track_pb2"
                 # @@protoc_insertion_point(class_scope:spotify.player.proto.ContextTrack.MetadataEntry)
             },
         ),
-        "DESCRIPTOR":
-        _CONTEXTTRACK,
-        "__module__":
-        "context_track_pb2"
+        "DESCRIPTOR": _CONTEXTTRACK,
+        "__module__": "context_track_pb2"
         # @@protoc_insertion_point(class_scope:spotify.player.proto.ContextTrack)
     },
 )

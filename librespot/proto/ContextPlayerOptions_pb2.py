@@ -176,15 +176,15 @@ _CONTEXTPLAYEROPTIONOVERRIDES = _descriptor.Descriptor(
     serialized_end=266,
 )
 
+DESCRIPTOR.message_types_by_name["ContextPlayerOptions"] = _CONTEXTPLAYEROPTIONS
 DESCRIPTOR.message_types_by_name[
-    "ContextPlayerOptions"] = _CONTEXTPLAYEROPTIONS
-DESCRIPTOR.message_types_by_name[
-    "ContextPlayerOptionOverrides"] = _CONTEXTPLAYEROPTIONOVERRIDES
+    "ContextPlayerOptionOverrides"
+] = _CONTEXTPLAYEROPTIONOVERRIDES
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 ContextPlayerOptions = _reflection.GeneratedProtocolMessageType(
     "ContextPlayerOptions",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _CONTEXTPLAYEROPTIONS,
         "__module__": "context_player_options_pb2"
@@ -195,7 +195,7 @@ _sym_db.RegisterMessage(ContextPlayerOptions)
 
 ContextPlayerOptionOverrides = _reflection.GeneratedProtocolMessageType(
     "ContextPlayerOptionOverrides",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _CONTEXTPLAYEROPTIONOVERRIDES,
         "__module__": "context_player_options_pb2"

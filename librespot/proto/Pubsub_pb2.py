@@ -6,37 +6,38 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
-    name='pubsub.proto',
-    package='spotify',
-    syntax='proto2',
-    serialized_options=b'\n\013com.spotify',
+    name="pubsub.proto",
+    package="spotify",
+    syntax="proto2",
+    serialized_options=b"\n\013com.spotify",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x0cpubsub.proto\x12\x07spotify\"@\n\x0cSubscription\x12\x0b\n\x03uri\x18\x01 \x01(\t\x12\x0e\n\x06\x65xpiry\x18\x02 \x01(\x05\x12\x13\n\x0bstatus_code\x18\x03 \x01(\x05\x42\r\n\x0b\x63om.spotify'
+    serialized_pb=b'\n\x0cpubsub.proto\x12\x07spotify"@\n\x0cSubscription\x12\x0b\n\x03uri\x18\x01 \x01(\t\x12\x0e\n\x06\x65xpiry\x18\x02 \x01(\x05\x12\x13\n\x0bstatus_code\x18\x03 \x01(\x05\x42\r\n\x0b\x63om.spotify',
 )
 
 _SUBSCRIPTION = _descriptor.Descriptor(
-    name='Subscription',
-    full_name='spotify.Subscription',
+    name="Subscription",
+    full_name="spotify.Subscription",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name='uri',
-            full_name='spotify.Subscription.uri',
+            name="uri",
+            full_name="spotify.Subscription.uri",
             index=0,
             number=1,
             type=9,
             cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=b"".decode('utf-8'),
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -44,10 +45,11 @@ _SUBSCRIPTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='expiry',
-            full_name='spotify.Subscription.expiry',
+            name="expiry",
+            full_name="spotify.Subscription.expiry",
             index=1,
             number=2,
             type=5,
@@ -62,10 +64,11 @@ _SUBSCRIPTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
         _descriptor.FieldDescriptor(
-            name='status_code',
-            full_name='spotify.Subscription.status_code',
+            name="status_code",
+            full_name="spotify.Subscription.status_code",
             index=2,
             number=3,
             type=5,
@@ -80,31 +83,33 @@ _SUBSCRIPTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
-            create_key=_descriptor._internal_create_key),
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
-    syntax='proto2',
+    syntax="proto2",
     extension_ranges=[],
     oneofs=[],
     serialized_start=25,
     serialized_end=89,
 )
 
-DESCRIPTOR.message_types_by_name['Subscription'] = _SUBSCRIPTION
+DESCRIPTOR.message_types_by_name["Subscription"] = _SUBSCRIPTION
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Subscription = _reflection.GeneratedProtocolMessageType(
-    'Subscription',
-    (_message.Message, ),
+    "Subscription",
+    (_message.Message,),
     {
-        'DESCRIPTOR': _SUBSCRIPTION,
-        '__module__': 'pubsub_pb2'
+        "DESCRIPTOR": _SUBSCRIPTION,
+        "__module__": "pubsub_pb2"
         # @@protoc_insertion_point(class_scope:spotify.Subscription)
-    })
+    },
+)
 _sym_db.RegisterMessage(Subscription)
 
 DESCRIPTOR._options = None

@@ -383,14 +383,14 @@ _PLAYLISTANNOTATION = _descriptor.Descriptor(
     serialized_end=648,
 )
 
-_TAKEDOWNREQUEST.fields_by_name[
-    "abuse_report_state"].enum_type = _ABUSEREPORTSTATE
+_TAKEDOWNREQUEST.fields_by_name["abuse_report_state"].enum_type = _ABUSEREPORTSTATE
 _PLAYLISTANNOTATION.fields_by_name[
-    "deprecated_render_features"].enum_type = _RENDERFEATURES
+    "deprecated_render_features"
+].enum_type = _RENDERFEATURES
 _PLAYLISTANNOTATION.fields_by_name[
-    "transcoded_picture"].message_type = _TRANSCODEDPICTURE
-_PLAYLISTANNOTATION.fields_by_name[
-    "abuse_report_state"].enum_type = _ABUSEREPORTSTATE
+    "transcoded_picture"
+].message_type = _TRANSCODEDPICTURE
+_PLAYLISTANNOTATION.fields_by_name["abuse_report_state"].enum_type = _ABUSEREPORTSTATE
 DESCRIPTOR.message_types_by_name["TakedownRequest"] = _TAKEDOWNREQUEST
 DESCRIPTOR.message_types_by_name["AnnotateRequest"] = _ANNOTATEREQUEST
 DESCRIPTOR.message_types_by_name["TranscodedPicture"] = _TRANSCODEDPICTURE
@@ -401,7 +401,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 TakedownRequest = _reflection.GeneratedProtocolMessageType(
     "TakedownRequest",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _TAKEDOWNREQUEST,
         "__module__": "playlist_annotate3_pb2"
@@ -412,7 +412,7 @@ _sym_db.RegisterMessage(TakedownRequest)
 
 AnnotateRequest = _reflection.GeneratedProtocolMessageType(
     "AnnotateRequest",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _ANNOTATEREQUEST,
         "__module__": "playlist_annotate3_pb2"
@@ -423,7 +423,7 @@ _sym_db.RegisterMessage(AnnotateRequest)
 
 TranscodedPicture = _reflection.GeneratedProtocolMessageType(
     "TranscodedPicture",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _TRANSCODEDPICTURE,
         "__module__": "playlist_annotate3_pb2"
@@ -434,7 +434,7 @@ _sym_db.RegisterMessage(TranscodedPicture)
 
 PlaylistAnnotation = _reflection.GeneratedProtocolMessageType(
     "PlaylistAnnotation",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _PLAYLISTANNOTATION,
         "__module__": "playlist_annotate3_pb2"
@@ -444,6 +444,5 @@ PlaylistAnnotation = _reflection.GeneratedProtocolMessageType(
 _sym_db.RegisterMessage(PlaylistAnnotation)
 
 DESCRIPTOR._options = None
-_PLAYLISTANNOTATION.fields_by_name[
-    "deprecated_render_features"]._options = None
+_PLAYLISTANNOTATION.fields_by_name["deprecated_render_features"]._options = None
 # @@protoc_insertion_point(module_scope)

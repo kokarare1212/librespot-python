@@ -6,9 +6,9 @@ class StreamId:
     file_id: bytes = None
     episode_gid: bytes = None
 
-    def __init__(self,
-                 file: Metadata.AudioFile = None,
-                 episode: Metadata.Episode = None):
+    def __init__(
+        self, file: Metadata.AudioFile = None, episode: Metadata.Episode = None
+    ):
         if file is None and episode is None:
             return
         if file is not None:

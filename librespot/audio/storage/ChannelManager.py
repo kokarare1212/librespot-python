@@ -24,7 +24,8 @@ class ChannelManager(Closeable, PacketsReceiver.PacketsReceiver):
     _seqHolder: int = 0
     _seqHolderLock: threading.Condition = threading.Condition()
     _executorService: concurrent.futures.ThreadPoolExecutor = (
-        concurrent.futures.ThreadPoolExecutor())
+        concurrent.futures.ThreadPoolExecutor()
+    )
     _session: Session = None
 
     def __init__(self, session: Session):
@@ -57,7 +58,9 @@ class ChannelManager(Closeable, PacketsReceiver.PacketsReceiver):
             if channel is None:
                 self._LOGGER.warning(
                     "Couldn't find channel, id: {}, received: {}".format(
-                        chunk_id, len(packet.payload)))
+                        chunk_id, len(packet.payload)
+                    )
+                )
                 return
 
             channel._add_to_queue(payload)
@@ -67,14 +70,18 @@ class ChannelManager(Closeable, PacketsReceiver.PacketsReceiver):
             if channel is None:
                 self._LOGGER.warning(
                     "Dropping channel error, id: {}, code: {}".format(
-                        chunk_id, payload.read_short()))
+                        chunk_id, payload.read_short()
+                    )
+                )
                 return
 
             channel.stream_error(payload.read_short())
         else:
             self._LOGGER.warning(
                 "Couldn't handle packet, cmd: {}, payload: {}".format(
-                    packet.cmd, Utils.bytes_to_hex(packet.payload)))
+                    packet.cmd, Utils.bytes_to_hex(packet.payload)
+                )
+            )
 
     def close(self) -> None:
         self._executorService.shutdown()
@@ -88,8 +95,9 @@ class ChannelManager(Closeable, PacketsReceiver.PacketsReceiver):
         _buffer: BytesOutputStream = BytesOutputStream()
         _header: bool = True
 
-        def __init__(self, channel_manager: ChannelManager, file: AudioFile,
-                     chunk_index: int):
+        def __init__(
+            self, channel_manager: ChannelManager, file: AudioFile, chunk_index: int
+        ):
             self._channelManager = channel_manager
             self._file = file
             self._chunkIndex = chunk_index
@@ -98,17 +106,18 @@ class ChannelManager(Closeable, PacketsReceiver.PacketsReceiver):
                 self._channelManager._seqHolder += 1
 
             self._channelManager._executorService.submit(
-                lambda: ChannelManager.Channel.Handler(self))
+                lambda: ChannelManager.Channel.Handler(self)
+            )
 
         def _handle(self, payload: BytesInputStream) -> bool:
             if len(payload.buffer) == 0:
                 if not self._header:
-                    self._file.write_chunk(bytearray(payload.buffer),
-                                           self._chunkIndex, False)
+                    self._file.write_chunk(
+                        bytearray(payload.buffer), self._chunkIndex, False
+                    )
                     return True
 
-                self._channelManager._LOGGER.debug(
-                    "Received empty chunk, skipping.")
+                self._channelManager._LOGGER.debug("Received empty chunk, skipping.")
                 return False
 
             if self._header:
@@ -119,8 +128,9 @@ class ChannelManager(Closeable, PacketsReceiver.PacketsReceiver):
                         break
                     header_id = payload.read_byte()
                     header_data = payload.read(length - 1)
-                    self._file.write_header(int.from_bytes(header_id, "big"),
-                                            bytearray(header_data), False)
+                    self._file.write_header(
+                        int.from_bytes(header_id, "big"), bytearray(header_data), False
+                    )
                 self._header = False
             else:
                 self._buffer.write(payload.read(len(payload.buffer)))
@@ -141,11 +151,12 @@ class ChannelManager(Closeable, PacketsReceiver.PacketsReceiver):
 
             def run(self) -> None:
                 self._channel._channelManager._LOGGER.debug(
-                    "ChannelManager.Handler is starting")
+                    "ChannelManager.Handler is starting"
+                )
 
                 with self._channel._q.all_tasks_done:
-                    self._channel._channelManager._channels.pop(
-                        self._channel.chunkId)
+                    self._channel._channelManager._channels.pop(self._channel.chunkId)
 
                 self._channel._channelManager._LOGGER.debug(
-                    "ChannelManager.Handler is shutting down")
+                    "ChannelManager.Handler is shutting down"
+                )

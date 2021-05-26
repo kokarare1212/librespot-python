@@ -3,8 +3,7 @@
 # source: spotify/login5/v3/challenges/hashcash.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
-from google.protobuf import \
-    duration_pb2 as google_dot_protobuf_dot_duration__pb2
+from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb2
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -144,14 +143,15 @@ _HASHCASHSOLUTION = _descriptor.Descriptor(
 )
 
 _HASHCASHSOLUTION.fields_by_name[
-    "duration"].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
+    "duration"
+].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 DESCRIPTOR.message_types_by_name["HashcashChallenge"] = _HASHCASHCHALLENGE
 DESCRIPTOR.message_types_by_name["HashcashSolution"] = _HASHCASHSOLUTION
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 HashcashChallenge = _reflection.GeneratedProtocolMessageType(
     "HashcashChallenge",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _HASHCASHCHALLENGE,
         "__module__": "spotify.login5.v3.challenges.hashcash_pb2"
@@ -162,7 +162,7 @@ _sym_db.RegisterMessage(HashcashChallenge)
 
 HashcashSolution = _reflection.GeneratedProtocolMessageType(
     "HashcashSolution",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _HASHCASHSOLUTION,
         "__module__": "spotify.login5.v3.challenges.hashcash_pb2"

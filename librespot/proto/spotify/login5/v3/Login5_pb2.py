@@ -7,20 +7,24 @@ from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
 from google.protobuf.internal import enum_type_wrapper
-from spotify.login5.v3 import \
-    client_info_pb2 as spotify_dot_login5_dot_v3_dot_client__info__pb2
-from spotify.login5.v3 import \
-    user_info_pb2 as spotify_dot_login5_dot_v3_dot_user__info__pb2
-from spotify.login5.v3.challenges import \
-    code_pb2 as spotify_dot_login5_dot_v3_dot_challenges_dot_code__pb2
-from spotify.login5.v3.challenges import \
-    hashcash_pb2 as spotify_dot_login5_dot_v3_dot_challenges_dot_hashcash__pb2
-from spotify.login5.v3.credentials import \
-    credentials_pb2 as \
-    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2
-from spotify.login5.v3.identifiers import \
-    identifiers_pb2 as \
-    spotify_dot_login5_dot_v3_dot_identifiers_dot_identifiers__pb2
+from spotify.login5.v3 import (
+    client_info_pb2 as spotify_dot_login5_dot_v3_dot_client__info__pb2,
+)
+from spotify.login5.v3 import (
+    user_info_pb2 as spotify_dot_login5_dot_v3_dot_user__info__pb2,
+)
+from spotify.login5.v3.challenges import (
+    code_pb2 as spotify_dot_login5_dot_v3_dot_challenges_dot_code__pb2,
+)
+from spotify.login5.v3.challenges import (
+    hashcash_pb2 as spotify_dot_login5_dot_v3_dot_challenges_dot_hashcash__pb2,
+)
+from spotify.login5.v3.credentials import (
+    credentials_pb2 as spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2,
+)
+from spotify.login5.v3.identifiers import (
+    identifiers_pb2 as spotify_dot_login5_dot_v3_dot_identifiers_dot_identifiers__pb2,
+)
 
 # @@protoc_insertion_point(imports)
 
@@ -38,10 +42,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
         spotify_dot_login5_dot_v3_dot_user__info__pb2.DESCRIPTOR,
         spotify_dot_login5_dot_v3_dot_challenges_dot_code__pb2.DESCRIPTOR,
         spotify_dot_login5_dot_v3_dot_challenges_dot_hashcash__pb2.DESCRIPTOR,
-        spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2.
-        DESCRIPTOR,
-        spotify_dot_login5_dot_v3_dot_identifiers_dot_identifiers__pb2.
-        DESCRIPTOR,
+        spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2.DESCRIPTOR,
+        spotify_dot_login5_dot_v3_dot_identifiers_dot_identifiers__pb2.DESCRIPTOR,
     ],
 )
 
@@ -837,48 +839,69 @@ _LOGINRESPONSE = _descriptor.Descriptor(
 )
 
 _CHALLENGES.fields_by_name["challenges"].message_type = _CHALLENGE
-_CHALLENGE.fields_by_name["hashcash"].message_type = (
-    spotify_dot_login5_dot_v3_dot_challenges_dot_hashcash__pb2.
-    _HASHCASHCHALLENGE)
 _CHALLENGE.fields_by_name[
-    "code"].message_type = spotify_dot_login5_dot_v3_dot_challenges_dot_code__pb2._CODECHALLENGE
-_CHALLENGESOLUTIONS.fields_by_name[
-    "solutions"].message_type = _CHALLENGESOLUTION
-_CHALLENGESOLUTION.fields_by_name["hashcash"].message_type = (
-    spotify_dot_login5_dot_v3_dot_challenges_dot_hashcash__pb2.
-    _HASHCASHSOLUTION)
+    "hashcash"
+].message_type = (
+    spotify_dot_login5_dot_v3_dot_challenges_dot_hashcash__pb2._HASHCASHCHALLENGE
+)
+_CHALLENGE.fields_by_name[
+    "code"
+].message_type = spotify_dot_login5_dot_v3_dot_challenges_dot_code__pb2._CODECHALLENGE
+_CHALLENGESOLUTIONS.fields_by_name["solutions"].message_type = _CHALLENGESOLUTION
 _CHALLENGESOLUTION.fields_by_name[
-    "code"].message_type = spotify_dot_login5_dot_v3_dot_challenges_dot_code__pb2._CODESOLUTION
+    "hashcash"
+].message_type = (
+    spotify_dot_login5_dot_v3_dot_challenges_dot_hashcash__pb2._HASHCASHSOLUTION
+)
+_CHALLENGESOLUTION.fields_by_name[
+    "code"
+].message_type = spotify_dot_login5_dot_v3_dot_challenges_dot_code__pb2._CODESOLUTION
 _LOGINREQUEST.fields_by_name[
-    "client_info"].message_type = spotify_dot_login5_dot_v3_dot_client__info__pb2._CLIENTINFO
+    "client_info"
+].message_type = spotify_dot_login5_dot_v3_dot_client__info__pb2._CLIENTINFO
+_LOGINREQUEST.fields_by_name["challenge_solutions"].message_type = _CHALLENGESOLUTIONS
 _LOGINREQUEST.fields_by_name[
-    "challenge_solutions"].message_type = _CHALLENGESOLUTIONS
-_LOGINREQUEST.fields_by_name["stored_credential"].message_type = (
-    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2.
-    _STOREDCREDENTIAL)
-_LOGINREQUEST.fields_by_name["password"].message_type = (
-    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2._PASSWORD)
-_LOGINREQUEST.fields_by_name["facebook_access_token"].message_type = (
-    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2.
-    _FACEBOOKACCESSTOKEN)
-_LOGINREQUEST.fields_by_name["phone_number"].message_type = (
+    "stored_credential"
+].message_type = (
+    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2._STOREDCREDENTIAL
+)
+_LOGINREQUEST.fields_by_name[
+    "password"
+].message_type = (
+    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2._PASSWORD
+)
+_LOGINREQUEST.fields_by_name[
+    "facebook_access_token"
+].message_type = (
+    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2._FACEBOOKACCESSTOKEN
+)
+_LOGINREQUEST.fields_by_name[
+    "phone_number"
+].message_type = (
     spotify_dot_login5_dot_v3_dot_identifiers_dot_identifiers__pb2._PHONENUMBER
 )
-_LOGINREQUEST.fields_by_name["one_time_token"].message_type = (
-    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2.
-    _ONETIMETOKEN)
-_LOGINREQUEST.fields_by_name["parent_child_credential"].message_type = (
-    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2.
-    _PARENTCHILDCREDENTIAL)
-_LOGINREQUEST.fields_by_name["apple_sign_in_credential"].message_type = (
-    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2.
-    _APPLESIGNINCREDENTIAL)
+_LOGINREQUEST.fields_by_name[
+    "one_time_token"
+].message_type = (
+    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2._ONETIMETOKEN
+)
+_LOGINREQUEST.fields_by_name[
+    "parent_child_credential"
+].message_type = (
+    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2._PARENTCHILDCREDENTIAL
+)
+_LOGINREQUEST.fields_by_name[
+    "apple_sign_in_credential"
+].message_type = (
+    spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2._APPLESIGNINCREDENTIAL
+)
 _LOGINRESPONSE.fields_by_name["ok"].message_type = _LOGINOK
 _LOGINRESPONSE.fields_by_name["error"].enum_type = _LOGINERROR
 _LOGINRESPONSE.fields_by_name["challenges"].message_type = _CHALLENGES
 _LOGINRESPONSE.fields_by_name["warnings"].enum_type = _LOGINRESPONSE_WARNINGS
 _LOGINRESPONSE.fields_by_name[
-    "user_info"].message_type = spotify_dot_login5_dot_v3_dot_user__info__pb2._USERINFO
+    "user_info"
+].message_type = spotify_dot_login5_dot_v3_dot_user__info__pb2._USERINFO
 _LOGINRESPONSE_WARNINGS.containing_type = _LOGINRESPONSE
 DESCRIPTOR.message_types_by_name["Challenges"] = _CHALLENGES
 DESCRIPTOR.message_types_by_name["Challenge"] = _CHALLENGE
@@ -892,7 +915,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Challenges = _reflection.GeneratedProtocolMessageType(
     "Challenges",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _CHALLENGES,
         "__module__": "spotify.login5.v3.login5_pb2"
@@ -903,7 +926,7 @@ _sym_db.RegisterMessage(Challenges)
 
 Challenge = _reflection.GeneratedProtocolMessageType(
     "Challenge",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _CHALLENGE,
         "__module__": "spotify.login5.v3.login5_pb2"
@@ -914,7 +937,7 @@ _sym_db.RegisterMessage(Challenge)
 
 ChallengeSolutions = _reflection.GeneratedProtocolMessageType(
     "ChallengeSolutions",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _CHALLENGESOLUTIONS,
         "__module__": "spotify.login5.v3.login5_pb2"
@@ -925,7 +948,7 @@ _sym_db.RegisterMessage(ChallengeSolutions)
 
 ChallengeSolution = _reflection.GeneratedProtocolMessageType(
     "ChallengeSolution",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _CHALLENGESOLUTION,
         "__module__": "spotify.login5.v3.login5_pb2"
@@ -936,7 +959,7 @@ _sym_db.RegisterMessage(ChallengeSolution)
 
 LoginRequest = _reflection.GeneratedProtocolMessageType(
     "LoginRequest",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _LOGINREQUEST,
         "__module__": "spotify.login5.v3.login5_pb2"
@@ -947,7 +970,7 @@ _sym_db.RegisterMessage(LoginRequest)
 
 LoginOk = _reflection.GeneratedProtocolMessageType(
     "LoginOk",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _LOGINOK,
         "__module__": "spotify.login5.v3.login5_pb2"
@@ -958,7 +981,7 @@ _sym_db.RegisterMessage(LoginOk)
 
 LoginResponse = _reflection.GeneratedProtocolMessageType(
     "LoginResponse",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _LOGINRESPONSE,
         "__module__": "spotify.login5.v3.login5_pb2"

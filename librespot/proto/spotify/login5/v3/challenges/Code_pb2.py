@@ -198,7 +198,7 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 CodeChallenge = _reflection.GeneratedProtocolMessageType(
     "CodeChallenge",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _CODECHALLENGE,
         "__module__": "spotify.login5.v3.challenges.code_pb2"
@@ -209,7 +209,7 @@ _sym_db.RegisterMessage(CodeChallenge)
 
 CodeSolution = _reflection.GeneratedProtocolMessageType(
     "CodeSolution",
-    (_message.Message, ),
+    (_message.Message,),
     {
         "DESCRIPTOR": _CODESOLUTION,
         "__module__": "spotify.login5.v3.challenges.code_pb2"
