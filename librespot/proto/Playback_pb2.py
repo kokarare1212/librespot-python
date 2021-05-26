@@ -18,8 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto2",
     serialized_options=b"\n\024com.spotify.transferH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=
-    b'\n\x0eplayback.proto\x12\x1dspotify.player.proto.transfer\x1a\x13\x63ontext_track.proto"\xa5\x01\n\x08Playback\x12\x11\n\ttimestamp\x18\x01 \x01(\x03\x12 \n\x18position_as_of_timestamp\x18\x02 \x01(\x05\x12\x16\n\x0eplayback_speed\x18\x03 \x01(\x01\x12\x11\n\tis_paused\x18\x04 \x01(\x08\x12\x39\n\rcurrent_track\x18\x05 \x01(\x0b\x32".spotify.player.proto.ContextTrackB\x18\n\x14\x63om.spotify.transferH\x02',
+    serialized_pb=b'\n\x0eplayback.proto\x12\x1dspotify.player.proto.transfer\x1a\x13\x63ontext_track.proto"\xa5\x01\n\x08Playback\x12\x11\n\ttimestamp\x18\x01 \x01(\x03\x12 \n\x18position_as_of_timestamp\x18\x02 \x01(\x05\x12\x16\n\x0eplayback_speed\x18\x03 \x01(\x01\x12\x11\n\tis_paused\x18\x04 \x01(\x08\x12\x39\n\rcurrent_track\x18\x05 \x01(\x0b\x32".spotify.player.proto.ContextTrackB\x18\n\x14\x63om.spotify.transferH\x02',
     dependencies=[
         context__track__pb2.DESCRIPTOR,
     ],
@@ -54,8 +53,7 @@ _PLAYBACK = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="position_as_of_timestamp",
-            full_name=
-            "spotify.player.proto.transfer.Playback.position_as_of_timestamp",
+            full_name="spotify.player.proto.transfer.Playback.position_as_of_timestamp",
             index=1,
             number=2,
             type=5,

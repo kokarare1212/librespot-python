@@ -17,8 +17,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto2",
     serialized_options=b"\n\023com.spotify.contextH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=
-    b'\n\x13\x63ontext_track.proto\x12\x14spotify.player.proto"\xaa\x01\n\x0c\x43ontextTrack\x12\x0b\n\x03uri\x18\x01 \x01(\t\x12\x0b\n\x03uid\x18\x02 \x01(\t\x12\x0b\n\x03gid\x18\x03 \x01(\x0c\x12\x42\n\x08metadata\x18\x04 \x03(\x0b\x32\x30.spotify.player.proto.ContextTrack.MetadataEntry\x1a/\n\rMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x17\n\x13\x63om.spotify.contextH\x02',
+    serialized_pb=b'\n\x13\x63ontext_track.proto\x12\x14spotify.player.proto"\xaa\x01\n\x0c\x43ontextTrack\x12\x0b\n\x03uri\x18\x01 \x01(\t\x12\x0b\n\x03uid\x18\x02 \x01(\t\x12\x0b\n\x03gid\x18\x03 \x01(\x0c\x12\x42\n\x08metadata\x18\x04 \x03(\x0b\x32\x30.spotify.player.proto.ContextTrack.MetadataEntry\x1a/\n\rMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x17\n\x13\x63om.spotify.contextH\x02',
 )
 
 _CONTEXTTRACK_METADATAENTRY = _descriptor.Descriptor(

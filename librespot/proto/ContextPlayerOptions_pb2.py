@@ -17,8 +17,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto2",
     serialized_options=b"\n\023com.spotify.contextH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=
-    b'\n\x1c\x63ontext_player_options.proto\x12\x14spotify.player.proto"e\n\x14\x43ontextPlayerOptions\x12\x19\n\x11shuffling_context\x18\x01 \x01(\x08\x12\x19\n\x11repeating_context\x18\x02 \x01(\x08\x12\x17\n\x0frepeating_track\x18\x03 \x01(\x08"m\n\x1c\x43ontextPlayerOptionOverrides\x12\x19\n\x11shuffling_context\x18\x01 \x01(\x08\x12\x19\n\x11repeating_context\x18\x02 \x01(\x08\x12\x17\n\x0frepeating_track\x18\x03 \x01(\x08\x42\x17\n\x13\x63om.spotify.contextH\x02',
+    serialized_pb=b'\n\x1c\x63ontext_player_options.proto\x12\x14spotify.player.proto"e\n\x14\x43ontextPlayerOptions\x12\x19\n\x11shuffling_context\x18\x01 \x01(\x08\x12\x19\n\x11repeating_context\x18\x02 \x01(\x08\x12\x17\n\x0frepeating_track\x18\x03 \x01(\x08"m\n\x1c\x43ontextPlayerOptionOverrides\x12\x19\n\x11shuffling_context\x18\x01 \x01(\x08\x12\x19\n\x11repeating_context\x18\x02 \x01(\x08\x12\x17\n\x0frepeating_track\x18\x03 \x01(\x08\x42\x17\n\x13\x63om.spotify.contextH\x02',
 )
 
 _CONTEXTPLAYEROPTIONS = _descriptor.Descriptor(
@@ -31,8 +30,7 @@ _CONTEXTPLAYEROPTIONS = _descriptor.Descriptor(
     fields=[
         _descriptor.FieldDescriptor(
             name="shuffling_context",
-            full_name=
-            "spotify.player.proto.ContextPlayerOptions.shuffling_context",
+            full_name="spotify.player.proto.ContextPlayerOptions.shuffling_context",
             index=0,
             number=1,
             type=8,
@@ -51,8 +49,7 @@ _CONTEXTPLAYEROPTIONS = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="repeating_context",
-            full_name=
-            "spotify.player.proto.ContextPlayerOptions.repeating_context",
+            full_name="spotify.player.proto.ContextPlayerOptions.repeating_context",
             index=1,
             number=2,
             type=8,
@@ -71,8 +68,7 @@ _CONTEXTPLAYEROPTIONS = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="repeating_track",
-            full_name=
-            "spotify.player.proto.ContextPlayerOptions.repeating_track",
+            full_name="spotify.player.proto.ContextPlayerOptions.repeating_track",
             index=2,
             number=3,
             type=8,
@@ -112,8 +108,7 @@ _CONTEXTPLAYEROPTIONOVERRIDES = _descriptor.Descriptor(
     fields=[
         _descriptor.FieldDescriptor(
             name="shuffling_context",
-            full_name=
-            "spotify.player.proto.ContextPlayerOptionOverrides.shuffling_context",
+            full_name="spotify.player.proto.ContextPlayerOptionOverrides.shuffling_context",
             index=0,
             number=1,
             type=8,
@@ -132,8 +127,7 @@ _CONTEXTPLAYEROPTIONOVERRIDES = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="repeating_context",
-            full_name=
-            "spotify.player.proto.ContextPlayerOptionOverrides.repeating_context",
+            full_name="spotify.player.proto.ContextPlayerOptionOverrides.repeating_context",
             index=1,
             number=2,
             type=8,
@@ -152,8 +146,7 @@ _CONTEXTPLAYEROPTIONOVERRIDES = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="repeating_track",
-            full_name=
-            "spotify.player.proto.ContextPlayerOptionOverrides.repeating_track",
+            full_name="spotify.player.proto.ContextPlayerOptionOverrides.repeating_track",
             index=2,
             number=3,
             type=8,

@@ -16,8 +16,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax='proto3',
     serialized_options=b'\n\030com.spotify.connectstateH\002',
     create_key=_descriptor._internal_create_key,
-    serialized_pb=
-    b'\n\x0cplayer.proto\x12\x0c\x63onnectstate\"\xea\x08\n\x0bPlayerState\x12\x11\n\ttimestamp\x18\x01 \x01(\x03\x12\x13\n\x0b\x63ontext_uri\x18\x02 \x01(\t\x12\x13\n\x0b\x63ontext_url\x18\x03 \x01(\t\x12\x38\n\x14\x63ontext_restrictions\x18\x04 \x01(\x0b\x32\x1a.connectstate.Restrictions\x12-\n\x0bplay_origin\x18\x05 \x01(\x0b\x32\x18.connectstate.PlayOrigin\x12)\n\x05index\x18\x06 \x01(\x0b\x32\x1a.connectstate.ContextIndex\x12*\n\x05track\x18\x07 \x01(\x0b\x32\x1b.connectstate.ProvidedTrack\x12\x13\n\x0bplayback_id\x18\x08 \x01(\t\x12\x16\n\x0eplayback_speed\x18\t \x01(\x01\x12 \n\x18position_as_of_timestamp\x18\n \x01(\x03\x12\x10\n\x08\x64uration\x18\x0b \x01(\x03\x12\x12\n\nis_playing\x18\x0c \x01(\x08\x12\x11\n\tis_paused\x18\r \x01(\x08\x12\x14\n\x0cis_buffering\x18\x0e \x01(\x08\x12\x1b\n\x13is_system_initiated\x18\x0f \x01(\x08\x12\x33\n\x07options\x18\x10 \x01(\x0b\x32\".connectstate.ContextPlayerOptions\x12\x30\n\x0crestrictions\x18\x11 \x01(\x0b\x32\x1a.connectstate.Restrictions\x12\x30\n\x0csuppressions\x18\x12 \x01(\x0b\x32\x1a.connectstate.Suppressions\x12\x30\n\x0bprev_tracks\x18\x13 \x03(\x0b\x32\x1b.connectstate.ProvidedTrack\x12\x30\n\x0bnext_tracks\x18\x14 \x03(\x0b\x32\x1b.connectstate.ProvidedTrack\x12H\n\x10\x63ontext_metadata\x18\x15 \x03(\x0b\x32..connectstate.PlayerState.ContextMetadataEntry\x12\x42\n\rpage_metadata\x18\x16 \x03(\x0b\x32+.connectstate.PlayerState.PageMetadataEntry\x12\x12\n\nsession_id\x18\x17 \x01(\t\x12\x16\n\x0equeue_revision\x18\x18 \x01(\t\x12\x10\n\x08position\x18\x19 \x01(\x03\x12\x12\n\nentity_uri\x18\x1a \x01(\t\x12,\n\x07reverse\x18\x1b \x03(\x0b\x32\x1b.connectstate.ProvidedTrack\x12+\n\x06\x66uture\x18\x1c \x03(\x0b\x32\x1b.connectstate.ProvidedTrack\x1a\x36\n\x14\x43ontextMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x33\n\x11PageMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xda\x02\n\rProvidedTrack\x12\x0b\n\x03uri\x18\x01 \x01(\t\x12\x0b\n\x03uid\x18\x02 \x01(\t\x12;\n\x08metadata\x18\x03 \x03(\x0b\x32).connectstate.ProvidedTrack.MetadataEntry\x12\x0f\n\x07removed\x18\x04 \x03(\t\x12\x0f\n\x07\x62locked\x18\x05 \x03(\t\x12\x10\n\x08provider\x18\x06 \x01(\t\x12\x30\n\x0crestrictions\x18\x07 \x01(\x0b\x32\x1a.connectstate.Restrictions\x12\x11\n\talbum_uri\x18\x08 \x01(\t\x12\x18\n\x10\x64isallow_reasons\x18\t \x03(\t\x12\x12\n\nartist_uri\x18\n \x01(\t\x12\x1a\n\x12\x64isallow_undecided\x18\x0b \x03(\t\x1a/\n\rMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"+\n\x0c\x43ontextIndex\x12\x0c\n\x04page\x18\x01 \x01(\r\x12\r\n\x05track\x18\x02 \x01(\r\"\x80\x08\n\x0cRestrictions\x12 \n\x18\x64isallow_pausing_reasons\x18\x01 \x03(\t\x12!\n\x19\x64isallow_resuming_reasons\x18\x02 \x03(\t\x12 \n\x18\x64isallow_seeking_reasons\x18\x03 \x03(\t\x12%\n\x1d\x64isallow_peeking_prev_reasons\x18\x04 \x03(\t\x12%\n\x1d\x64isallow_peeking_next_reasons\x18\x05 \x03(\t\x12&\n\x1e\x64isallow_skipping_prev_reasons\x18\x06 \x03(\t\x12&\n\x1e\x64isallow_skipping_next_reasons\x18\x07 \x03(\t\x12\x30\n(disallow_toggling_repeat_context_reasons\x18\x08 \x03(\t\x12.\n&disallow_toggling_repeat_track_reasons\x18\t \x03(\t\x12)\n!disallow_toggling_shuffle_reasons\x18\n \x03(\t\x12\"\n\x1a\x64isallow_set_queue_reasons\x18\x0b \x03(\t\x12.\n&disallow_interrupting_playback_reasons\x18\x0c \x03(\t\x12.\n&disallow_transferring_playback_reasons\x18\r \x03(\t\x12\'\n\x1f\x64isallow_remote_control_reasons\x18\x0e \x03(\t\x12\x33\n+disallow_inserting_into_next_tracks_reasons\x18\x0f \x03(\t\x12\x36\n.disallow_inserting_into_context_tracks_reasons\x18\x10 \x03(\t\x12\x32\n*disallow_reordering_in_next_tracks_reasons\x18\x11 \x03(\t\x12\x35\n-disallow_reordering_in_context_tracks_reasons\x18\x12 \x03(\t\x12\x32\n*disallow_removing_from_next_tracks_reasons\x18\x13 \x03(\t\x12\x35\n-disallow_removing_from_context_tracks_reasons\x18\x14 \x03(\t\x12)\n!disallow_updating_context_reasons\x18\x15 \x03(\t\x12 \n\x18\x64isallow_playing_reasons\x18\x16 \x03(\t\x12!\n\x19\x64isallow_stopping_reasons\x18\x17 \x03(\t\"\xbf\x01\n\nPlayOrigin\x12\x1a\n\x12\x66\x65\x61ture_identifier\x18\x01 \x01(\t\x12\x17\n\x0f\x66\x65\x61ture_version\x18\x02 \x01(\t\x12\x10\n\x08view_uri\x18\x03 \x01(\t\x12\x19\n\x11\x65xternal_referrer\x18\x04 \x01(\t\x12\x1b\n\x13referrer_identifier\x18\x05 \x01(\t\x12\x19\n\x11\x64\x65vice_identifier\x18\x06 \x01(\t\x12\x17\n\x0f\x66\x65\x61ture_classes\x18\x07 \x03(\t\"e\n\x14\x43ontextPlayerOptions\x12\x19\n\x11shuffling_context\x18\x01 \x01(\x08\x12\x19\n\x11repeating_context\x18\x02 \x01(\x08\x12\x17\n\x0frepeating_track\x18\x03 \x01(\x08\"!\n\x0cSuppressions\x12\x11\n\tproviders\x18\x01 \x03(\tB\x1c\n\x18\x63om.spotify.connectstateH\x02\x62\x06proto3'
+    serialized_pb=b'\n\x0cplayer.proto\x12\x0c\x63onnectstate\"\xea\x08\n\x0bPlayerState\x12\x11\n\ttimestamp\x18\x01 \x01(\x03\x12\x13\n\x0b\x63ontext_uri\x18\x02 \x01(\t\x12\x13\n\x0b\x63ontext_url\x18\x03 \x01(\t\x12\x38\n\x14\x63ontext_restrictions\x18\x04 \x01(\x0b\x32\x1a.connectstate.Restrictions\x12-\n\x0bplay_origin\x18\x05 \x01(\x0b\x32\x18.connectstate.PlayOrigin\x12)\n\x05index\x18\x06 \x01(\x0b\x32\x1a.connectstate.ContextIndex\x12*\n\x05track\x18\x07 \x01(\x0b\x32\x1b.connectstate.ProvidedTrack\x12\x13\n\x0bplayback_id\x18\x08 \x01(\t\x12\x16\n\x0eplayback_speed\x18\t \x01(\x01\x12 \n\x18position_as_of_timestamp\x18\n \x01(\x03\x12\x10\n\x08\x64uration\x18\x0b \x01(\x03\x12\x12\n\nis_playing\x18\x0c \x01(\x08\x12\x11\n\tis_paused\x18\r \x01(\x08\x12\x14\n\x0cis_buffering\x18\x0e \x01(\x08\x12\x1b\n\x13is_system_initiated\x18\x0f \x01(\x08\x12\x33\n\x07options\x18\x10 \x01(\x0b\x32\".connectstate.ContextPlayerOptions\x12\x30\n\x0crestrictions\x18\x11 \x01(\x0b\x32\x1a.connectstate.Restrictions\x12\x30\n\x0csuppressions\x18\x12 \x01(\x0b\x32\x1a.connectstate.Suppressions\x12\x30\n\x0bprev_tracks\x18\x13 \x03(\x0b\x32\x1b.connectstate.ProvidedTrack\x12\x30\n\x0bnext_tracks\x18\x14 \x03(\x0b\x32\x1b.connectstate.ProvidedTrack\x12H\n\x10\x63ontext_metadata\x18\x15 \x03(\x0b\x32..connectstate.PlayerState.ContextMetadataEntry\x12\x42\n\rpage_metadata\x18\x16 \x03(\x0b\x32+.connectstate.PlayerState.PageMetadataEntry\x12\x12\n\nsession_id\x18\x17 \x01(\t\x12\x16\n\x0equeue_revision\x18\x18 \x01(\t\x12\x10\n\x08position\x18\x19 \x01(\x03\x12\x12\n\nentity_uri\x18\x1a \x01(\t\x12,\n\x07reverse\x18\x1b \x03(\x0b\x32\x1b.connectstate.ProvidedTrack\x12+\n\x06\x66uture\x18\x1c \x03(\x0b\x32\x1b.connectstate.ProvidedTrack\x1a\x36\n\x14\x43ontextMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x33\n\x11PageMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\xda\x02\n\rProvidedTrack\x12\x0b\n\x03uri\x18\x01 \x01(\t\x12\x0b\n\x03uid\x18\x02 \x01(\t\x12;\n\x08metadata\x18\x03 \x03(\x0b\x32).connectstate.ProvidedTrack.MetadataEntry\x12\x0f\n\x07removed\x18\x04 \x03(\t\x12\x0f\n\x07\x62locked\x18\x05 \x03(\t\x12\x10\n\x08provider\x18\x06 \x01(\t\x12\x30\n\x0crestrictions\x18\x07 \x01(\x0b\x32\x1a.connectstate.Restrictions\x12\x11\n\talbum_uri\x18\x08 \x01(\t\x12\x18\n\x10\x64isallow_reasons\x18\t \x03(\t\x12\x12\n\nartist_uri\x18\n \x01(\t\x12\x1a\n\x12\x64isallow_undecided\x18\x0b \x03(\t\x1a/\n\rMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"+\n\x0c\x43ontextIndex\x12\x0c\n\x04page\x18\x01 \x01(\r\x12\r\n\x05track\x18\x02 \x01(\r\"\x80\x08\n\x0cRestrictions\x12 \n\x18\x64isallow_pausing_reasons\x18\x01 \x03(\t\x12!\n\x19\x64isallow_resuming_reasons\x18\x02 \x03(\t\x12 \n\x18\x64isallow_seeking_reasons\x18\x03 \x03(\t\x12%\n\x1d\x64isallow_peeking_prev_reasons\x18\x04 \x03(\t\x12%\n\x1d\x64isallow_peeking_next_reasons\x18\x05 \x03(\t\x12&\n\x1e\x64isallow_skipping_prev_reasons\x18\x06 \x03(\t\x12&\n\x1e\x64isallow_skipping_next_reasons\x18\x07 \x03(\t\x12\x30\n(disallow_toggling_repeat_context_reasons\x18\x08 \x03(\t\x12.\n&disallow_toggling_repeat_track_reasons\x18\t \x03(\t\x12)\n!disallow_toggling_shuffle_reasons\x18\n \x03(\t\x12\"\n\x1a\x64isallow_set_queue_reasons\x18\x0b \x03(\t\x12.\n&disallow_interrupting_playback_reasons\x18\x0c \x03(\t\x12.\n&disallow_transferring_playback_reasons\x18\r \x03(\t\x12\'\n\x1f\x64isallow_remote_control_reasons\x18\x0e \x03(\t\x12\x33\n+disallow_inserting_into_next_tracks_reasons\x18\x0f \x03(\t\x12\x36\n.disallow_inserting_into_context_tracks_reasons\x18\x10 \x03(\t\x12\x32\n*disallow_reordering_in_next_tracks_reasons\x18\x11 \x03(\t\x12\x35\n-disallow_reordering_in_context_tracks_reasons\x18\x12 \x03(\t\x12\x32\n*disallow_removing_from_next_tracks_reasons\x18\x13 \x03(\t\x12\x35\n-disallow_removing_from_context_tracks_reasons\x18\x14 \x03(\t\x12)\n!disallow_updating_context_reasons\x18\x15 \x03(\t\x12 \n\x18\x64isallow_playing_reasons\x18\x16 \x03(\t\x12!\n\x19\x64isallow_stopping_reasons\x18\x17 \x03(\t\"\xbf\x01\n\nPlayOrigin\x12\x1a\n\x12\x66\x65\x61ture_identifier\x18\x01 \x01(\t\x12\x17\n\x0f\x66\x65\x61ture_version\x18\x02 \x01(\t\x12\x10\n\x08view_uri\x18\x03 \x01(\t\x12\x19\n\x11\x65xternal_referrer\x18\x04 \x01(\t\x12\x1b\n\x13referrer_identifier\x18\x05 \x01(\t\x12\x19\n\x11\x64\x65vice_identifier\x18\x06 \x01(\t\x12\x17\n\x0f\x66\x65\x61ture_classes\x18\x07 \x03(\t\"e\n\x14\x43ontextPlayerOptions\x12\x19\n\x11shuffling_context\x18\x01 \x01(\x08\x12\x19\n\x11repeating_context\x18\x02 \x01(\x08\x12\x17\n\x0frepeating_track\x18\x03 \x01(\x08\"!\n\x0cSuppressions\x12\x11\n\tproviders\x18\x01 \x03(\tB\x1c\n\x18\x63om.spotify.connectstateH\x02\x62\x06proto3'
 )
 
 _PLAYERSTATE_CONTEXTMETADATAENTRY = _descriptor.Descriptor(
@@ -1097,8 +1096,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_skipping_prev_reasons',
-            full_name=
-            'connectstate.Restrictions.disallow_skipping_prev_reasons',
+            full_name='connectstate.Restrictions.disallow_skipping_prev_reasons',
             index=5,
             number=6,
             type=9,
@@ -1116,8 +1114,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_skipping_next_reasons',
-            full_name=
-            'connectstate.Restrictions.disallow_skipping_next_reasons',
+            full_name='connectstate.Restrictions.disallow_skipping_next_reasons',
             index=6,
             number=7,
             type=9,
@@ -1135,8 +1132,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_toggling_repeat_context_reasons',
-            full_name=
-            'connectstate.Restrictions.disallow_toggling_repeat_context_reasons',
+            full_name='connectstate.Restrictions.disallow_toggling_repeat_context_reasons',
             index=7,
             number=8,
             type=9,
@@ -1154,8 +1150,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_toggling_repeat_track_reasons',
-            full_name=
-            'connectstate.Restrictions.disallow_toggling_repeat_track_reasons',
+            full_name='connectstate.Restrictions.disallow_toggling_repeat_track_reasons',
             index=8,
             number=9,
             type=9,
@@ -1173,8 +1168,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_toggling_shuffle_reasons',
-            full_name=
-            'connectstate.Restrictions.disallow_toggling_shuffle_reasons',
+            full_name='connectstate.Restrictions.disallow_toggling_shuffle_reasons',
             index=9,
             number=10,
             type=9,
@@ -1210,8 +1204,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_interrupting_playback_reasons',
-            full_name=
-            'connectstate.Restrictions.disallow_interrupting_playback_reasons',
+            full_name='connectstate.Restrictions.disallow_interrupting_playback_reasons',
             index=11,
             number=12,
             type=9,
@@ -1229,8 +1222,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_transferring_playback_reasons',
-            full_name=
-            'connectstate.Restrictions.disallow_transferring_playback_reasons',
+            full_name='connectstate.Restrictions.disallow_transferring_playback_reasons',
             index=12,
             number=13,
             type=9,
@@ -1248,8 +1240,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_remote_control_reasons',
-            full_name=
-            'connectstate.Restrictions.disallow_remote_control_reasons',
+            full_name='connectstate.Restrictions.disallow_remote_control_reasons',
             index=13,
             number=14,
             type=9,
@@ -1267,8 +1258,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_inserting_into_next_tracks_reasons',
-            full_name=
-            'connectstate.Restrictions.disallow_inserting_into_next_tracks_reasons',
+            full_name='connectstate.Restrictions.disallow_inserting_into_next_tracks_reasons',
             index=14,
             number=15,
             type=9,
@@ -1286,8 +1276,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_inserting_into_context_tracks_reasons',
-            full_name=
-            'connectstate.Restrictions.disallow_inserting_into_context_tracks_reasons',
+            full_name='connectstate.Restrictions.disallow_inserting_into_context_tracks_reasons',
             index=15,
             number=16,
             type=9,
@@ -1305,8 +1294,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_reordering_in_next_tracks_reasons',
-            full_name=
-            'connectstate.Restrictions.disallow_reordering_in_next_tracks_reasons',
+            full_name='connectstate.Restrictions.disallow_reordering_in_next_tracks_reasons',
             index=16,
             number=17,
             type=9,
@@ -1324,8 +1312,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_reordering_in_context_tracks_reasons',
-            full_name=
-            'connectstate.Restrictions.disallow_reordering_in_context_tracks_reasons',
+            full_name='connectstate.Restrictions.disallow_reordering_in_context_tracks_reasons',
             index=17,
             number=18,
             type=9,
@@ -1343,8 +1330,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_removing_from_next_tracks_reasons',
-            full_name=
-            'connectstate.Restrictions.disallow_removing_from_next_tracks_reasons',
+            full_name='connectstate.Restrictions.disallow_removing_from_next_tracks_reasons',
             index=18,
             number=19,
             type=9,
@@ -1362,8 +1348,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_removing_from_context_tracks_reasons',
-            full_name=
-            'connectstate.Restrictions.disallow_removing_from_context_tracks_reasons',
+            full_name='connectstate.Restrictions.disallow_removing_from_context_tracks_reasons',
             index=19,
             number=20,
             type=9,
@@ -1381,8 +1366,7 @@ _RESTRICTIONS = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key),
         _descriptor.FieldDescriptor(
             name='disallow_updating_context_reasons',
-            full_name=
-            'connectstate.Restrictions.disallow_updating_context_reasons',
+            full_name='connectstate.Restrictions.disallow_updating_context_reasons',
             index=20,
             number=21,
             type=9,

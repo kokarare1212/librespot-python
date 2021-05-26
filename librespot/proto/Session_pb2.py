@@ -20,8 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto2",
     serialized_options=b"\n\024com.spotify.transferH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=
-    b'\n\rsession.proto\x12\x1dspotify.player.proto.transfer\x1a\rcontext.proto\x1a\x1c\x63ontext_player_options.proto\x1a\x11play_origin.proto"\xd3\x01\n\x07Session\x12\x35\n\x0bplay_origin\x18\x01 \x01(\x0b\x32 .spotify.player.proto.PlayOrigin\x12.\n\x07\x63ontext\x18\x02 \x01(\x0b\x32\x1d.spotify.player.proto.Context\x12\x13\n\x0b\x63urrent_uid\x18\x03 \x01(\t\x12L\n\x10option_overrides\x18\x04 \x01(\x0b\x32\x32.spotify.player.proto.ContextPlayerOptionOverridesB\x18\n\x14\x63om.spotify.transferH\x02',
+    serialized_pb=b'\n\rsession.proto\x12\x1dspotify.player.proto.transfer\x1a\rcontext.proto\x1a\x1c\x63ontext_player_options.proto\x1a\x11play_origin.proto"\xd3\x01\n\x07Session\x12\x35\n\x0bplay_origin\x18\x01 \x01(\x0b\x32 .spotify.player.proto.PlayOrigin\x12.\n\x07\x63ontext\x18\x02 \x01(\x0b\x32\x1d.spotify.player.proto.Context\x12\x13\n\x0b\x63urrent_uid\x18\x03 \x01(\t\x12L\n\x10option_overrides\x18\x04 \x01(\x0b\x32\x32.spotify.player.proto.ContextPlayerOptionOverridesB\x18\n\x14\x63om.spotify.transferH\x02',
     dependencies=[
         context__pb2.DESCRIPTOR,
         context__player__options__pb2.DESCRIPTOR,

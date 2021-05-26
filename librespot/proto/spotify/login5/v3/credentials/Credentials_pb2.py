@@ -17,8 +17,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto3",
     serialized_options=b"\n\024com.spotify.login5v3",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=
-    b'\n/spotify/login5/v3/credentials/credentials.proto\x12\x1dspotify.login5.v3.credentials"2\n\x10StoredCredential\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c"9\n\x08Password\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x0f\n\x07padding\x18\x03 \x01(\x0c";\n\x13\x46\x61\x63\x65\x62ookAccessToken\x12\x0e\n\x06\x66\x62_uid\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x02 \x01(\t"\x1d\n\x0cOneTimeToken\x12\r\n\x05token\x18\x01 \x01(\t"|\n\x15ParentChildCredential\x12\x10\n\x08\x63hild_id\x18\x01 \x01(\t\x12Q\n\x18parent_stored_credential\x18\x02 \x01(\x0b\x32/.spotify.login5.v3.credentials.StoredCredential"S\n\x15\x41ppleSignInCredential\x12\x11\n\tauth_code\x18\x01 \x01(\t\x12\x14\n\x0credirect_uri\x18\x02 \x01(\t\x12\x11\n\tbundle_id\x18\x03 \x01(\tB\x16\n\x14\x63om.spotify.login5v3b\x06proto3',
+    serialized_pb=b'\n/spotify/login5/v3/credentials/credentials.proto\x12\x1dspotify.login5.v3.credentials"2\n\x10StoredCredential\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\x0c"9\n\x08Password\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x0f\n\x07padding\x18\x03 \x01(\x0c";\n\x13\x46\x61\x63\x65\x62ookAccessToken\x12\x0e\n\x06\x66\x62_uid\x18\x01 \x01(\t\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x02 \x01(\t"\x1d\n\x0cOneTimeToken\x12\r\n\x05token\x18\x01 \x01(\t"|\n\x15ParentChildCredential\x12\x10\n\x08\x63hild_id\x18\x01 \x01(\t\x12Q\n\x18parent_stored_credential\x18\x02 \x01(\x0b\x32/.spotify.login5.v3.credentials.StoredCredential"S\n\x15\x41ppleSignInCredential\x12\x11\n\tauth_code\x18\x01 \x01(\t\x12\x14\n\x0credirect_uri\x18\x02 \x01(\t\x12\x11\n\tbundle_id\x18\x03 \x01(\tB\x16\n\x14\x63om.spotify.login5v3b\x06proto3',
 )
 
 _STOREDCREDENTIAL = _descriptor.Descriptor(
@@ -168,8 +167,7 @@ _FACEBOOKACCESSTOKEN = _descriptor.Descriptor(
     fields=[
         _descriptor.FieldDescriptor(
             name="fb_uid",
-            full_name=
-            "spotify.login5.v3.credentials.FacebookAccessToken.fb_uid",
+            full_name="spotify.login5.v3.credentials.FacebookAccessToken.fb_uid",
             index=0,
             number=1,
             type=9,
@@ -188,8 +186,7 @@ _FACEBOOKACCESSTOKEN = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="access_token",
-            full_name=
-            "spotify.login5.v3.credentials.FacebookAccessToken.access_token",
+            full_name="spotify.login5.v3.credentials.FacebookAccessToken.access_token",
             index=1,
             number=2,
             type=9,
@@ -269,8 +266,7 @@ _PARENTCHILDCREDENTIAL = _descriptor.Descriptor(
     fields=[
         _descriptor.FieldDescriptor(
             name="child_id",
-            full_name=
-            "spotify.login5.v3.credentials.ParentChildCredential.child_id",
+            full_name="spotify.login5.v3.credentials.ParentChildCredential.child_id",
             index=0,
             number=1,
             type=9,
@@ -289,8 +285,7 @@ _PARENTCHILDCREDENTIAL = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="parent_stored_credential",
-            full_name=
-            "spotify.login5.v3.credentials.ParentChildCredential.parent_stored_credential",
+            full_name="spotify.login5.v3.credentials.ParentChildCredential.parent_stored_credential",
             index=1,
             number=2,
             type=11,
@@ -330,8 +325,7 @@ _APPLESIGNINCREDENTIAL = _descriptor.Descriptor(
     fields=[
         _descriptor.FieldDescriptor(
             name="auth_code",
-            full_name=
-            "spotify.login5.v3.credentials.AppleSignInCredential.auth_code",
+            full_name="spotify.login5.v3.credentials.AppleSignInCredential.auth_code",
             index=0,
             number=1,
             type=9,
@@ -350,8 +344,7 @@ _APPLESIGNINCREDENTIAL = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="redirect_uri",
-            full_name=
-            "spotify.login5.v3.credentials.AppleSignInCredential.redirect_uri",
+            full_name="spotify.login5.v3.credentials.AppleSignInCredential.redirect_uri",
             index=1,
             number=2,
             type=9,
@@ -370,8 +363,7 @@ _APPLESIGNINCREDENTIAL = _descriptor.Descriptor(
         ),
         _descriptor.FieldDescriptor(
             name="bundle_id",
-            full_name=
-            "spotify.login5.v3.credentials.AppleSignInCredential.bundle_id",
+            full_name="spotify.login5.v3.credentials.AppleSignInCredential.bundle_id",
             index=2,
             number=3,
             type=9,

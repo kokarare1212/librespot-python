@@ -18,8 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto2",
     serialized_options=b"\n\023com.spotify.contextH\002",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=
-    b'\n\x12\x63ontext_page.proto\x12\x14spotify.player.proto\x1a\x13\x63ontext_track.proto"\xef\x01\n\x0b\x43ontextPage\x12\x10\n\x08page_url\x18\x01 \x01(\t\x12\x15\n\rnext_page_url\x18\x02 \x01(\t\x12\x41\n\x08metadata\x18\x03 \x03(\x0b\x32/.spotify.player.proto.ContextPage.MetadataEntry\x12\x32\n\x06tracks\x18\x04 \x03(\x0b\x32".spotify.player.proto.ContextTrack\x12\x0f\n\x07loading\x18\x05 \x01(\x08\x1a/\n\rMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x17\n\x13\x63om.spotify.contextH\x02',
+    serialized_pb=b'\n\x12\x63ontext_page.proto\x12\x14spotify.player.proto\x1a\x13\x63ontext_track.proto"\xef\x01\n\x0b\x43ontextPage\x12\x10\n\x08page_url\x18\x01 \x01(\t\x12\x15\n\rnext_page_url\x18\x02 \x01(\t\x12\x41\n\x08metadata\x18\x03 \x03(\x0b\x32/.spotify.player.proto.ContextPage.MetadataEntry\x12\x32\n\x06tracks\x18\x04 \x03(\x0b\x32".spotify.player.proto.ContextTrack\x12\x0f\n\x07loading\x18\x05 \x01(\x08\x1a/\n\rMetadataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x17\n\x13\x63om.spotify.contextH\x02',
     dependencies=[
         context__track__pb2.DESCRIPTOR,
     ],
