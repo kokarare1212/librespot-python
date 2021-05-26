@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import re
 
-from librespot.common import Base62, Utils
+from librespot.common import Base62
+from librespot.common import Utils
 from librespot.proto.ContextTrack_pb2 import ContextTrack
 
 
