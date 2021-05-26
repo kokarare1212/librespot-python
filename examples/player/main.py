@@ -35,7 +35,7 @@ def client():
             track_uri_search = re.search(
                 r"^spotify:track:(?P<TrackID>[0-9a-zA-Z]{22})$", args[1])
             track_url_search = re.search(
-                r"^(https?://)?open.spotify.com/track/(?P<TrackID>[0-9a-zA-Z]{22})(\?si=.+?)?$",
+                r"^(https?://)?open\.spotify\.com/track/(?P<TrackID>[0-9a-zA-Z]{22})(\?si=.+?)?$",
                 args[1],
             )
             if track_uri_search is not None or track_url_search is not None:
