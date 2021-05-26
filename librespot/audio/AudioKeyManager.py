@@ -52,8 +52,7 @@ class AudioKeyManager(PacketsReceiver):
                 return self.get_audio_key(gid, file_id, False)
             raise RuntimeError(
                 "Failed fetching audio key! gid: {}, fileId: {}".format(
-                    Utils.bytes_to_hex(gid),
-                    Utils.bytes_to_hex(file_id)))
+                    Utils.bytes_to_hex(gid), Utils.bytes_to_hex(file_id)))
 
         return key
 

@@ -166,8 +166,7 @@ class EpisodeId(SpotifyId, PlayableId):
         if matcher is not None:
             episode_id = matcher.group(1)
             return EpisodeId(
-                Utils.bytes_to_hex(
-                    PlayableId.BASE62.decode(episode_id, 16)))
+                Utils.bytes_to_hex(PlayableId.BASE62.decode(episode_id, 16)))
         TypeError("Not a Spotify episode ID: {}".format(uri))
 
     @staticmethod
