@@ -1,2 +1,1 @@
-from librespot.player.codecs.VorbisOnlyAudioQuality import \
-    VorbisOnlyAudioQuality
+from librespot.player.codecs.VorbisOnlyAudioQuality import VorbisOnlyAudioQuality

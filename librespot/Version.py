@@ -1,4 +1,4 @@
-from librespot.proto.Keyexchange import *
+from librespot.proto.Keyexchange_pb2 import *
 import platform
 
 

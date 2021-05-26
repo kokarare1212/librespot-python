@@ -4,7 +4,7 @@ import re
 
 from librespot.common import Base62
 from librespot.common import Utils
-from librespot.proto.ContextTrack import ContextTrack
+from librespot.proto.ContextTrack_pb2 import ContextTrack
 
 
 class SpotifyId:
@@ -166,14 +166,14 @@ class EpisodeId(SpotifyId, PlayableId):
         if matcher is not None:
             episode_id = matcher.group(1)
             return EpisodeId(
-                Utils.Utils.bytes_to_hex(
+                Utils.bytes_to_hex(
                     PlayableId.BASE62.decode(episode_id, 16)))
         TypeError("Not a Spotify episode ID: {}".format(uri))
 
     @staticmethod
     def from_base62(base62: str) -> EpisodeId:
         return EpisodeId(
-            Utils.Utils.bytes_to_hex(PlayableId.BASE62.decode(base62, 16)))
+            Utils.bytes_to_hex(PlayableId.BASE62.decode(base62, 16)))
 
     @staticmethod
     def from_hex(hex_str: str) -> EpisodeId:
@@ -184,13 +184,13 @@ class EpisodeId(SpotifyId, PlayableId):
 
     def to_spotify_uri(self) -> str:
         return "Spotify:episode:{}".format(
-            PlayableId.BASE62.encode(Utils.Utils.hex_to_bytes(self._hexId)))
+            PlayableId.BASE62.encode(Utils.hex_to_bytes(self._hexId)))
 
     def hex_id(self) -> str:
         return self._hexId
 
     def get_gid(self) -> bytes:
-        return Utils.Utils.hex_to_bytes(self._hexId)
+        return Utils.hex_to_bytes(self._hexId)
 
 
 class ShowId(SpotifyId):

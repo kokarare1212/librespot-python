@@ -74,7 +74,7 @@ class ChannelManager(Closeable, PacketsReceiver.PacketsReceiver):
         else:
             self._LOGGER.warning(
                 "Couldn't handle packet, cmd: {}, payload: {}".format(
-                    packet.cmd, Utils.Utils.bytes_to_hex(packet.payload)))
+                    packet.cmd, Utils.bytes_to_hex(packet.payload)))
 
     def close(self) -> None:
         self._executorService.shutdown()

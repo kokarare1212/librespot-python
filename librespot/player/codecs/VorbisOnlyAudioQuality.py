@@ -6,7 +6,7 @@ import typing
 from librespot.audio.decoders.AudioQuality import AudioQuality
 from librespot.audio.format.AudioQualityPicker import AudioQualityPicker
 from librespot.audio.format.SuperAudioFormat import SuperAudioFormat
-from librespot.proto import Metadata
+from librespot.proto import Metadata_pb2 as Metadata
 
 
 class VorbisOnlyAudioQuality(AudioQualityPicker):

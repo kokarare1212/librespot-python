@@ -1,4 +1,4 @@
-from librespot.proto import Metadata
+from librespot.proto import Metadata_pb2 as Metadata
 import enum
 
 

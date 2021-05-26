@@ -1,6 +1,6 @@
 import typing
 
-from librespot.proto import Mercury
+from librespot.proto import Mercury_pb2 as Mercury
 
 
 class RawMercuryRequest:

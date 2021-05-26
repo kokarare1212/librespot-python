@@ -11,8 +11,8 @@ import urllib.parse
 from librespot.common import Utils
 from librespot.core import Session
 from librespot.player import PlayerConfiguration
-from librespot.proto import Connect
-from librespot.proto import Player
+from librespot.proto import Connect_pb2 as Connect
+from librespot.proto import Player_pb2 as Player
 
 
 class DeviceStateHandler:

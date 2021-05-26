@@ -10,8 +10,8 @@ from librespot.audio import NormalizationData
 from librespot.audio import PlayableContentFeeder
 from librespot.common import Utils
 from librespot.core import Session
-from librespot.proto import Metadata
-from librespot.proto import StorageResolve
+from librespot.proto import Metadata_pb2 as Metadata
+from librespot.proto import StorageResolve_pb2 as StorageResolve
 
 
 class CdnFeedHelper:
@@ -28,7 +28,7 @@ class CdnFeedHelper:
         file: Metadata.AudioFile,
         resp_or_url: typing.Union[StorageResolve.StorageResolveResponse, str],
         preload: bool,
-        halt_listener: HaltListener,
+        halt_listener: HaltListener.HaltListener,
     ) -> PlayableContentFeeder.PlayableContentFeeder.LoadedStream:
         if type(resp_or_url) is str:
             url = resp_or_url
@@ -55,7 +55,7 @@ class CdnFeedHelper:
     @staticmethod
     def load_episode_external(
         session: Session, episode: Metadata.Episode,
-        halt_listener: HaltListener
+        halt_listener: HaltListener.HaltListener
     ) -> PlayableContentFeeder.PlayableContentFeeder.LoadedStream:
         resp = session.client().head(episode.external_url)
 
@@ -64,7 +64,7 @@ class CdnFeedHelper:
 
         url = resp.url
         CdnFeedHelper._LOGGER.debug("Fetched external url for {}: {}".format(
-            Utils.Utils.bytes_to_hex(episode.gid), url))
+            Utils.bytes_to_hex(episode.gid), url))
 
         streamer = session.cdn().stream_external_episode(
             episode, url, halt_listener)
@@ -82,7 +82,7 @@ class CdnFeedHelper:
         episode: Metadata.Episode,
         file: Metadata.AudioFile,
         resp_or_url: typing.Union[StorageResolve.StorageResolveResponse, str],
-        halt_listener: HaltListener,
+        halt_listener: HaltListener.HaltListener,
     ) -> PlayableContentFeeder.PlayableContentFeeder.LoadedStream:
         if type(resp_or_url) is str:
             url = resp_or_url
@@ -94,7 +94,7 @@ class CdnFeedHelper:
 
         streamer = session.cdn().stream_file(file, key, url, halt_listener)
         input_stream = streamer.stream()
-        normalization_data = NormalizationData.read(input_stream)
+        normalization_data = NormalizationData.NormalizationData.read(input_stream)
         if input_stream.skip(0xA7) != 0xA7:
             raise IOError("Couldn't skip 0xa7 bytes!")
         return PlayableContentFeeder.PlayableContentFeeder.LoadedStream(

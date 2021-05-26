@@ -17,14 +17,14 @@ from librespot.audio.decrypt import NoopAudioDecrypt
 from librespot.audio.format import SuperAudioFormat
 from librespot.audio.storage import ChannelManager
 from librespot.common import Utils
-from librespot.proto import StorageResolve
+from librespot.proto import StorageResolve_pb2 as StorageResolve
 
 if typing.TYPE_CHECKING:
     from librespot.audio.decrypt.AudioDecrypt import AudioDecrypt
     from librespot.audio.HaltListener import HaltListener
     from librespot.cache.CacheManager import CacheManager
     from librespot.core.Session import Session
-    from librespot.proto import Metadata
+    from librespot.proto import Metadata_pb2 as Metadata
 
 
 class CdnManager:
@@ -55,7 +55,7 @@ class CdnManager:
                                 halt_listener: HaltListener):
         return CdnManager.Streamer(
             self._session,
-            StreamId(episode),
+            StreamId.StreamId(episode),
             SuperAudioFormat.MP3,
             CdnManager.CdnUrl(self, None, external_url),
             self._session.cache(),
@@ -188,7 +188,7 @@ class CdnManager:
             GeneralWritableStream.GeneralWritableStream,
     ):
         _session: Session = None
-        _streamId: StreamId = None
+        _streamId: StreamId.StreamId = None
         _executorService = concurrent.futures.ThreadPoolExecutor()
         _audioFormat: SuperAudioFormat = None
         _audioDecrypt: AudioDecrypt = None
@@ -204,7 +204,7 @@ class CdnManager:
         def __init__(
             self,
             session: Session,
-            stream_id: StreamId,
+            stream_id: StreamId.StreamId,
             audio_format: SuperAudioFormat,
             cdn_url,
             cache: CacheManager,

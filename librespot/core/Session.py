@@ -35,10 +35,10 @@ from librespot.dealer import ApiClient
 from librespot.dealer import DealerClient
 from librespot.mercury import MercuryClient
 from librespot.mercury import SubListener
-from librespot.proto import Authentication
-from librespot.proto import Connect
-from librespot.proto import Keyexchange
-from librespot.proto.ExplicitContentPubsub import UserAttributesUpdate
+from librespot.proto import Authentication_pb2 as Authentication
+from librespot.proto import Connect_pb2 as Connect
+from librespot.proto import Keyexchange_pb2 as Keyexchange
+from librespot.proto.ExplicitContentPubsub_pb2 import UserAttributesUpdate
 from librespot.standard import BytesInputStream
 from librespot.standard import Closeable
 from librespot.standard import Proxy
@@ -321,7 +321,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
     _receiver: Session.Receiver = None
     _apWelcome: Authentication.APWelcome = None
     _mercuryClient: MercuryClient = None
-    _audioKeyManager: AudioKeyManager = None
+    _audioKeyManager: AudioKeyManager.AudioKeyManager = None
     _channelManager: ChannelManager = None
     _tokenProvider: TokenProvider = None
     _cdnManager: CdnManager = None
@@ -329,7 +329,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
     _dealer: DealerClient = None
     _api: ApiClient = None
     _search: SearchManager = None
-    _contentFeeder: PlayableContentFeeder = None
+    _contentFeeder: PlayableContentFeeder.PlayableContentFeeder = None
     _eventService: EventService = None
     _countryCode: str = None
     _closed: bool = False
@@ -348,16 +348,13 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
     @staticmethod
     def _create_client(conf: Session.Configuration) -> requests.Session:
         client = requests.Session()
-        if conf.proxyAuth and conf.proxyType is not Proxy.Type.DIRECT:
-            if conf.proxyAuth:
-                proxy_setting = [
-                    conf.proxyUsername,
-                    conf.proxyPassword,
-                    conf.proxyAddress,
-                    conf.proxyPort,
-                ]
-            else:
-                proxy_setting = [conf.proxyAddress, conf.proxyPort]
+        if conf.proxyAddress and conf.proxyPort and conf.proxyType is not Proxy.Type.DIRECT:
+            proxy_setting = [
+                conf.proxyUsername,
+                conf.proxyPassword,
+                conf.proxyAddress,
+                conf.proxyPort,
+            ]
             client.proxies = {
                 "http": "{}:{}@{}:{}".format(*proxy_setting),
                 "https": "{}:{}@{}:{}".format(*proxy_setting),
@@ -686,7 +683,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             raise RuntimeError("Session isn't authenticated!")
         return self._mercuryClient
 
-    def audio_key(self) -> AudioKeyManager:
+    def audio_key(self) -> AudioKeyManager.AudioKeyManager:
         self._wait_auth_lock()
         if self._audioKeyManager is None:
             raise RuntimeError("Session isn't authenticated!")
@@ -728,7 +725,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             raise RuntimeError("Session isn't authenticated!")
         return self._api
 
-    def content_feeder(self) -> PlayableContentFeeder:
+    def content_feeder(self) -> PlayableContentFeeder.PlayableContentFeeder:
         if self._contentFeeder is None:
             raise RuntimeError("Session isn't authenticated!")
         return self._contentFeeder

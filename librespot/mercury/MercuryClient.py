@@ -13,8 +13,8 @@ from librespot.crypto import Packet
 from librespot.mercury import JsonMercuryRequest
 from librespot.mercury import RawMercuryRequest
 from librespot.mercury import SubListener
-from librespot.proto import Mercury
-from librespot.proto import Pubsub
+from librespot.proto import Mercury_pb2 as Mercury
+from librespot.proto import Pubsub_pb2 as Pubsub
 from librespot.standard import BytesInputStream
 from librespot.standard import BytesOutputStream
 from librespot.standard import Closeable
