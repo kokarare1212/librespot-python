@@ -1,7 +1,7 @@
 import time
 
-from Crypto.Cipher import AES
-from Crypto.Util import Counter
+from Cryptodome.Cipher import AES
+from Cryptodome.Util import Counter
 
 from librespot.audio.decrypt.AudioDecrypt import AudioDecrypt
 from librespot.audio.storage import ChannelManager

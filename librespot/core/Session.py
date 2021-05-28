@@ -13,10 +13,10 @@ import typing
 
 import defusedxml.ElementTree
 import requests
-from Crypto.Hash import HMAC
-from Crypto.Hash import SHA1
-from Crypto.PublicKey import RSA
-from Crypto.Signature import PKCS1_v1_5
+from Cryptodome.Hash import HMAC
+from Cryptodome.Hash import SHA1
+from Cryptodome.PublicKey import RSA
+from Cryptodome.Signature import PKCS1_v1_5
 
 from librespot.audio import AudioKeyManager
 from librespot.audio import PlayableContentFeeder
