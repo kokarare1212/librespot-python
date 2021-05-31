@@ -81,6 +81,8 @@ def client():
             position = -1
             while True:
                 num_str = input("Select [1-5]: ")
+                if num_str == "exit" or num_str == "quit":
+                    return
                 try:
                     num = int(num_str)
                 except ValueError:
