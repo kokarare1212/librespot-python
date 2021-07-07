@@ -116,7 +116,7 @@ def login():
 def play(track_id_str: str):
     track_id = TrackId.from_base62(track_id_str)
     stream = session.content_feeder().load(
-        track_id, VorbisOnlyAudioQuality(AudioQuality.VERY_HIGH), False, None)
+        track_id, VorbisOnlyAudioQuality(quality), False, None)
     ffplay = subprocess.Popen(
         ["ffplay", "-"],
         stdin=subprocess.PIPE,
