@@ -30,7 +30,7 @@ class PlayableContentFeeder:
         if len(track.file) > 0:
             return track
 
-        for alt in track.alternative_list:
+        for alt in track.alternative:
             if len(alt.file) > 0:
                 return Metadata.Track(file=alt.file)
 
