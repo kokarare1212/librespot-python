@@ -1,4 +1,4 @@
 defusedxml==0.7.1
 protobuf==3.17.3
 pycryptodomex==3.10.1
-requests==2.25.1
+requests==2.26.0
