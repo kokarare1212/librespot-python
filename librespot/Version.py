@@ -3,7 +3,7 @@ import platform
 
 
 class Version:
-    version = "0.0.1-SNAPSHOT"
+    version = "0.0.1"
 
     @staticmethod
     def platform() -> Platform:
