@@ -117,4 +117,4 @@ for more information.
 
 ## Special thanks
 
-<img src="https://github.com/kokarare1212/librespot-python/blob/main/img/jetbrains.png?raw=true" width="100" height="100" alt="JetBrains">
+<a href="https://www.jetbrains.com/"><img src="https://github.com/kokarare1212/librespot-python/blob/main/img/jetbrains.png?raw=true" width="100" height="100" alt="JetBrains"></a>
