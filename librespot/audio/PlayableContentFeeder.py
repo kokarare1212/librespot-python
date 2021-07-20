@@ -32,7 +32,26 @@ class PlayableContentFeeder:
 
         for alt in track.alternative:
             if len(alt.file) > 0:
-                return Metadata.Track(gid=track.gid,name=track.name,album=track.album,artist=track.artist,number=track.number,disc_number=track.disc_number,duration=track.duration,popularity=track.popularity,explicit=track.explicit,external_id=track.external_id,restriction=track.restriction,file=alt.file,sale_period=track.sale_period,preview=track.preview,tags=track.tags,earliest_live_timestamp=track.earliest_live_timestamp,has_lyrics=track.has_lyrics,availability=track.availability,licensor=track.licensor)
+                return Metadata.Track(
+                    gid=track.gid,
+                    name=track.name,
+                    album=track.album,
+                    artist=track.artist,
+                    number=track.number,
+                    disc_number=track.disc_number,
+                    duration=track.duration,
+                    popularity=track.popularity,
+                    explicit=track.explicit,
+                    external_id=track.external_id,
+                    restriction=track.restriction,
+                    file=alt.file,
+                    sale_period=track.sale_period,
+                    preview=track.preview,
+                    tags=track.tags,
+                    earliest_live_timestamp=track.earliest_live_timestamp,
+                    has_lyrics=track.has_lyrics,
+                    availability=track.availability,
+                    licensor=track.licensor)
 
         return None
 
