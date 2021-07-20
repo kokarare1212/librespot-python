@@ -117,4 +117,4 @@ for more information.
 
 ## Special thanks
 
-Coming soon
+![JetBrains](https://github.com/kokarare1212/librespot-python/blob/main/img/jetbrains.png?raw=true)
