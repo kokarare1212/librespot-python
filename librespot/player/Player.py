@@ -19,15 +19,15 @@ class Player(Closeable, PlayerSession.Listener, AudioSink.Listener):
     VOLUME_MAX: int = 65536
     _LOGGER: logging = logging.getLogger(__name__)
     _scheduler: sched.scheduler = sched.scheduler(time.time)
-    _session: Session = None
-    _conf: PlayerConfiguration = None
-    _events: Player.EventsDispatcher = None
-    _sink: AudioSink = None
+    _session: Session
+    _conf: PlayerConfiguration
+    _events: Player.EventsDispatcher
+    _sink: AudioSink
     _metrics: typing.Dict[str, PlaybackMetrics] = {}
-    _state: StateWrapper = None
-    _playerSession: PlayerSession = None
+    _state: StateWrapper
+    _playerSession: PlayerSession
     _releaseLineFuture = None
-    _deviceStateListener: DeviceStateHandler.Listener = None
+    _deviceStateListener: DeviceStateHandler.Listener
 
     def __init__(self, conf: PlayerConfiguration, session: Session):
         self._conf = conf

@@ -31,7 +31,7 @@ class AesAudioDecrypt(AudioDecrypt):
     cipher = None
     decrypt_count = 0
     decrypt_total_time = 0
-    key: bytes = None
+    key: bytes
 
     def __init__(self, key: bytes):
         self.key = key
@@ -57,7 +57,7 @@ class AesAudioDecrypt(AudioDecrypt):
 
             iv += self.iv_diff
 
-        self.decrypt_total_time += time.time_ns()
+        self.decrypt_total_time += time.time_ns() - start
         self.decrypt_count += 1
 
         return new_buffer

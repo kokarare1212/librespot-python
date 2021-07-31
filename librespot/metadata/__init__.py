@@ -36,7 +36,6 @@ class PlayableId:
 
     @staticmethod
     def from_uri(uri: str) -> PlayableId:
-        pass
         if not PlayableId.is_supported(uri):
             return UnsupportedId(uri)
 
@@ -167,7 +166,7 @@ class EpisodeId(SpotifyId, PlayableId):
             episode_id = matcher.group(1)
             return EpisodeId(
                 Utils.bytes_to_hex(PlayableId.BASE62.decode(episode_id, 16)))
-        TypeError("Not a Spotify episode ID: {}".format(uri))
+        raise TypeError("Not a Spotify episode ID: {}".format(uri))
 
     @staticmethod
     def from_base62(base62: str) -> EpisodeId:

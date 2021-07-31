@@ -61,10 +61,10 @@ class ZeroconfServer(Closeable):
             )
 
     class Inner:
-        device_type: Connect.DeviceType = None
-        device_name: str = None
-        device_id: str = None
-        preferred_locale: str = None
+        device_type: Connect.DeviceType
+        device_name: str
+        device_id: str
+        preferred_locale: str
         conf = None
 
         def __init__(

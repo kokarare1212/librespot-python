@@ -17,7 +17,7 @@ from librespot.standard import Closeable
 class ApiClient(Closeable):
     _LOGGER: logging = logging.getLogger(__name__)
     _session = None
-    _baseUrl: str = None
+    _baseUrl: str
 
     def __init__(self, session):
         self._session = session

@@ -12,7 +12,6 @@ class Version:
         if platform.system() == "Darwin":
             return Platform.PLATFORM_OSX_X86
         return Platform.PLATFORM_LINUX_X86
-        pass
 
     @staticmethod
     def version_string():

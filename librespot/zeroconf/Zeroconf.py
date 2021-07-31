@@ -24,7 +24,7 @@ class Zeroconf(Closeable):
             self.__BROADCAST6 = socket.socket(socket.AF_INET6,
                                               socket.SOCK_DGRAM)
             self.__BROADCAST6.connect(("FF02::FB", 5353))
-        except Exception as e:
+        except Exception:
             pass
         self.set_domain(".local")
         self.set_local_host_name(Zeroconf.get_or_create_local_host_name())

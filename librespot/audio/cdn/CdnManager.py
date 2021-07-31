@@ -29,7 +29,7 @@ if typing.TYPE_CHECKING:
 
 class CdnManager:
     _LOGGER: logging = logging.getLogger(__name__)
-    _session: Session = None
+    _session: Session
 
     def __init__(self, session: Session):
         self._session = session
@@ -118,14 +118,14 @@ class CdnManager:
             self._headers = headers
 
     class CdnUrl:
-        _cdnManager = None
-        _fileId: bytes
+        __cdnManager = None
+        __fileId: bytes
         _expiration: int
         _url: str
 
         def __init__(self, cdn_manager, file_id: bytes, url: str):
-            self._cdnManager: CdnManager = cdn_manager
-            self._fileId = file_id
+            self.__cdnManager: CdnManager = cdn_manager
+            self.__fileId = file_id
             self.set_url(url)
 
         def url(self):
@@ -133,14 +133,14 @@ class CdnManager:
                 return self._url
 
             if self._expiration <= int(time.time() * 1000) + 5 * 60 * 1000:
-                self._url = self._cdnManager.get_audio_url(self._fileId)
+                self._url = self.__cdnManager.get_audio_url(self.__fileId)
 
             return self.url
 
         def set_url(self, url: str):
             self._url = url
 
-            if self._fileId is not None:
+            if self.__fileId is not None:
                 token_url = urllib.parse.urlparse(url)
                 token_query = urllib.parse.parse_qs(token_url.query)
                 token_list = token_query.get("__token__")
@@ -163,7 +163,7 @@ class CdnManager:
 
                     if expire_at is None:
                         self._expiration = -1
-                        self._cdnManager._LOGGER.warning(
+                        self.__cdnManager._LOGGER.warning(
                             "Invalid __token__ in CDN url: {}".format(url))
                         return
 
@@ -173,8 +173,8 @@ class CdnManager:
                         i = token_url.query.index("_")
                     except ValueError:
                         self._expiration = -1
-                        self._cdnManager._LOGGER.warning(
-                            "Couldn't extract expiration, invalid parameter in CDN url: "
+                        self.__cdnManager._LOGGER.warning(
+                            "Couldn't extract expiration, invalid parameter in CDN url: {}"
                             .format(url))
                         return
 
@@ -187,19 +187,19 @@ class CdnManager:
             GeneralAudioStream.GeneralAudioStream,
             GeneralWritableStream.GeneralWritableStream,
     ):
-        _session: Session = None
-        _streamId: StreamId.StreamId = None
+        _session: Session
+        _streamId: StreamId.StreamId
         _executorService = concurrent.futures.ThreadPoolExecutor()
-        _audioFormat: SuperAudioFormat = None
-        _audioDecrypt: AudioDecrypt = None
+        _audioFormat: SuperAudioFormat
+        _audioDecrypt: AudioDecrypt
         _cdnUrl = None
         _size: int
         _buffer: typing.List[bytearray]
         _available: typing.List[bool]
         _requested: typing.List[bool]
         _chunks: int
-        _internalStream: CdnManager.Streamer.InternalStream = None
-        _haltListener: HaltListener = None
+        _internalStream: CdnManager.Streamer.InternalStream
+        _haltListener: HaltListener
 
         def __init__(
             self,

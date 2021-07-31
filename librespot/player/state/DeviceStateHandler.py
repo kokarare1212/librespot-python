@@ -17,13 +17,13 @@ from librespot.proto import Player_pb2 as Player
 
 class DeviceStateHandler:
     _LOGGER: logging = logging.getLogger(__name__)
-    _session: Session = None
-    _deviceInfo: Connect.DeviceInfo = None
+    _session: Session
+    _deviceInfo: Connect.DeviceInfo
     _listeners: typing.List[DeviceStateHandler.Listener] = []
-    _putState: Connect.PutStateRequest = None
+    _putState: Connect.PutStateRequest
     _putStateWorker: concurrent.futures.ThreadPoolExecutor = (
         concurrent.futures.ThreadPoolExecutor())
-    _connectionId: str = None
+    _connectionId: str
 
     def __init__(self, session: Session, player, conf: PlayerConfiguration):
         self._session = session
@@ -101,9 +101,9 @@ class DeviceStateHandler:
             pass
 
     class CommandBody:
-        _obj: typing.Any = None
-        _data: bytes = None
-        _value: str = None
+        _obj: typing.Any
+        _data: bytes
+        _value: str
 
         def __init__(self, obj: typing.Any):
             self._obj = obj

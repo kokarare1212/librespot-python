@@ -249,7 +249,7 @@ class MercuryClient(PacketsReceiver.PacketsReceiver, Closeable):
         code: int
 
         def __init__(self, response):
-            super("status: {}".format(response.status_code))
+            super().__init__("status: {}".format(response.status_code))
             self.code = response.status_code
 
     class Response:

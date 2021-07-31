@@ -55,7 +55,7 @@ class Base62:
 
         if len(out) < estimated_length:
             size = len(out)
-            for i in range(estimated_length - size):
+            for _ in range(estimated_length - size):
                 out += bytes([0])
 
             return self.reverse(out)

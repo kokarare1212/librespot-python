@@ -42,7 +42,7 @@ class EventService:
         elif type(event_or_builder) is EventService.EventBuilder:
             builder = event_or_builder
         else:
-            TypeError()
+            raise TypeError()
         self._worker.submit(lambda: self._worker_callback(builder))
 
     def language(self, lang: str):

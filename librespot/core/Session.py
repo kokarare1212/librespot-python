@@ -331,7 +331,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
     _search: SearchManager = None
     _contentFeeder: PlayableContentFeeder.PlayableContentFeeder = None
     _eventService: EventService = None
-    _countryCode: str = None
+    _countryCode: str
     _closed: bool = False
     _closing: bool = False
     _scheduledReconnect: sched.Event = None
@@ -869,10 +869,10 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
 
     class Inner:
         device_type: Connect.DeviceType = None
-        device_name: str = None
-        device_id: str = None
+        device_name: str
+        device_id: str
         conf = None
-        preferred_locale: str = None
+        preferred_locale: str
 
         def __init__(
             self,
@@ -1035,17 +1035,17 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
         class Builder:
             # Proxy
             proxyEnabled: bool = False
-            proxyType: Proxy.Type = None
-            proxyAddress: str = None
-            proxyPort: int = None
-            proxyAuth: bool = None
-            proxyUsername: str = None
-            proxyPassword: str = None
+            proxyType: Proxy.Type
+            proxyAddress: str
+            proxyPort: int
+            proxyAuth: bool
+            proxyUsername: str
+            proxyPassword: str
 
             # Cache
             cache_enabled: bool = True
             cache_dir: str = os.path.join(os.getcwd(), "cache")
-            do_cache_clean_up: bool = None
+            do_cache_clean_up: bool
 
             # Stored credentials
             store_credentials: bool = True
@@ -1053,7 +1053,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                 os.getcwd(), "credentials.json")
 
             # Fetching
-            retry_on_chunk_error: bool = None
+            retry_on_chunk_error: bool
 
             def set_proxy_enabled(
                     self,
@@ -1230,7 +1230,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             return 2
 
     class Receiver:
-        session: Session = None
+        session: Session
         thread: threading.Thread
         running: bool = True
 
