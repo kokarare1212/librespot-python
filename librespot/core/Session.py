@@ -1037,10 +1037,10 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             proxyEnabled: bool = False
             proxyType: Proxy.Type = Proxy.Type.DIRECT
             proxyAddress: str = None
-            proxyPort: int
-            proxyAuth: bool
-            proxyUsername: str
-            proxyPassword: str
+            proxyPort: int = None
+            proxyAuth: bool = None
+            proxyUsername: str = None
+            proxyPassword: str = None
 
             # Cache
             cache_enabled: bool = True
