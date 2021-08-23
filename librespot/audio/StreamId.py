@@ -3,8 +3,8 @@ from librespot.proto import Metadata_pb2 as Metadata
 
 
 class StreamId:
-    file_id: bytes
-    episode_gid: bytes
+    file_id: bytes = None
+    episode_gid: bytes = None
 
     def __init__(self,
                  file: Metadata.AudioFile = None,
