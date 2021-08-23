@@ -1035,8 +1035,8 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
         class Builder:
             # Proxy
             proxyEnabled: bool = False
-            proxyType: Proxy.Type
-            proxyAddress: str
+            proxyType: Proxy.Type = Proxy.Type.DIRECT
+            proxyAddress: str = None
             proxyPort: int
             proxyAuth: bool
             proxyUsername: str
@@ -1045,7 +1045,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
             # Cache
             cache_enabled: bool = True
             cache_dir: str = os.path.join(os.getcwd(), "cache")
-            do_cache_clean_up: bool
+            do_cache_clean_up: bool = True
 
             # Stored credentials
             store_credentials: bool = True
@@ -1053,7 +1053,7 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                 os.getcwd(), "credentials.json")
 
             # Fetching
-            retry_on_chunk_error: bool
+            retry_on_chunk_error: bool = True
 
             def set_proxy_enabled(
                     self,
