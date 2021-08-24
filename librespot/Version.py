@@ -1,4 +1,4 @@
-from librespot.proto.Keyexchange_pb2 import *
+from librespot.proto.Keyexchange_pb2 import BuildInfo, Platform, Product, ProductFlags
 import platform
 
 
