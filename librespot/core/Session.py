@@ -1309,14 +1309,15 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                     self.session._LOGGER.debug("Received 0x10: {}".format(
                         Utils.bytes_to_hex(packet.payload)))
                 elif cmd in [
-                        Packet.Type.mercury_sub,
-                        Packet.Type.mercury_unsub,
-                        Packet.Type.mercury_event,
-                        Packet.Type.mercury_req]:
+                        Packet.Type.mercury_sub, Packet.Type.mercury_unsub,
+                        Packet.Type.mercury_event, Packet.Type.mercury_req
+                ]:
                     self.session.mercury().dispatch(packet)
                 elif cmd in [Packet.Type.aes_key, Packet.Type.aes_key_error]:
                     self.session.audio_key().dispatch(packet)
-                elif cmd in [Packet.Type.channel_error, Packet.Type.stream_chunk_res]:
+                elif cmd in [
+                        Packet.Type.channel_error, Packet.Type.stream_chunk_res
+                ]:
                     self.session.channel().dispatch(packet)
                 elif cmd == Packet.Type.product_info:
                     # noinspection PyProtectedMember
