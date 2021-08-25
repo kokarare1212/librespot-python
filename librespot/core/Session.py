@@ -1287,16 +1287,14 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                     self.session.scheduled_reconnect = self.session._scheduler.enter(
                         2 * 60 + 5, 1, anonymous)
                     self.session.send(Packet.Type.pong, packet.payload)
+                elif cmd == Packet.Type.pong_ack:
                     continue
-                if cmd == Packet.Type.pong_ack:
-                    continue
-                if cmd == Packet.Type.country_code:
+                elif cmd == Packet.Type.country_code:
                     self.session.country_code = packet.payload.decode()
                     self.session._LOGGER.info(
                         "Received country_code: {}".format(
                             self.session.country_code))
-                    continue
-                if cmd == Packet.Type.license_version:
+                elif cmd == Packet.Type.license_version:
                     license_version = BytesInputStream(packet.payload)
                     license_id = license_version.read_short()
                     if license_id != 0:
@@ -1307,29 +1305,24 @@ class Session(Closeable, SubListener, DealerClient.MessageListener):
                     else:
                         self.session._LOGGER.info(
                             "Received license_version: {}".format(license_id))
-                    continue
-                if cmd == Packet.Type.unknown_0x10:
+                elif cmd == Packet.Type.unknown_0x10:
                     self.session._LOGGER.debug("Received 0x10: {}".format(
                         Utils.bytes_to_hex(packet.payload)))
-                    continue
-                if (cmd == Packet.Type.mercury_sub
-                        or cmd == Packet.Type.mercury_unsub
-                        or cmd == Packet.Type.mercury_event
-                        or cmd == Packet.Type.mercury_req):
+                elif cmd in [
+                        Packet.Type.mercury_sub,
+                        Packet.Type.mercury_unsub,
+                        Packet.Type.mercury_event,
+                        Packet.Type.mercury_req]:
                     self.session.mercury().dispatch(packet)
-                    continue
-                if cmd == Packet.Type.aes_key or cmd == Packet.Type.aes_key_error:
+                elif cmd in [Packet.Type.aes_key, Packet.Type.aes_key_error]:
                     self.session.audio_key().dispatch(packet)
-                    continue
-                if (cmd == Packet.Type.channel_error
-                        or cmd == Packet.Type.stream_chunk_res):
+                elif cmd in [Packet.Type.channel_error, Packet.Type.stream_chunk_res]:
                     self.session.channel().dispatch(packet)
-                    continue
-                if cmd == Packet.Type.product_info:
+                elif cmd == Packet.Type.product_info:
                     # noinspection PyProtectedMember
                     self.session._parse_product_info(packet.payload)
-                    continue
-                self.session._LOGGER.info("Skipping {}".format(
-                    Utils.bytes_to_hex(cmd)))
+                else:
+                    self.session._LOGGER.info("Skipping {}".format(
+                        Utils.bytes_to_hex(cmd)))
 
             self.session._LOGGER.debug("Session.Receiver stopped")
