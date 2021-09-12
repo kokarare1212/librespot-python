@@ -10,7 +10,7 @@ setuptools.setup(
     url="https://github.com/kokarare1212/librespot-python",
     license="Apache-2.0",
     packages=setuptools.find_packages("."),
-    install_requires=["defusedxml", "protobuf", "pycryptodomex", "requests"],
+    install_requires=["defusedxml", "protobuf", "pycryptodomex", "pyogg", "requests"],
     classifiers=[
         "Development Status :: 1 - Planning",
         "License :: OSI Approved :: Apache Software License",

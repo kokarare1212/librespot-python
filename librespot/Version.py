@@ -3,7 +3,7 @@ import platform
 
 
 class Version:
-    version = "0.0.1"
+    version_name = "0.0.1"
 
     @staticmethod
     def platform() -> Platform:
@@ -15,16 +15,19 @@ class Version:
 
     @staticmethod
     def version_string():
-        return "librespot-python " + Version.version
+        return "librespot-python " + Version.version_name
 
     @staticmethod
     def system_info_string():
-        return Version.version_string(
-        ) + "; Python " + platform.python_version() + "; " + platform.system()
+        return Version.version_string() + \
+               "; Python " + platform.python_version() + \
+               "; " + platform.system()
 
     @staticmethod
     def standard_build_info() -> BuildInfo:
-        return BuildInfo(product=Product.PRODUCT_CLIENT,
-                         product_flags=[ProductFlags.PRODUCT_FLAG_NONE],
-                         platform=Version.platform(),
-                         version=112800721)
+        return BuildInfo(
+            product=Product.PRODUCT_CLIENT,
+            product_flags=[ProductFlags.PRODUCT_FLAG_NONE],
+            platform=Version.platform(),
+            version=112800721
+        )
