@@ -182,7 +182,7 @@ class MercuryClient(Closeable, PacketsReceiver):
     def send_sync_json(self, request: JsonMercuryRequest) -> typing.Any:
         response = self.send_sync(request.request)
         if 200 <= response.status_code < 300:
-            return json.loads(response.payload[0])
+            return json.loads(response.payload)
         raise MercuryClient.MercuryException(response)
 
     def subscribe(self, uri: str, listener: SubListener) -> None:
@@ -266,14 +266,14 @@ class MercuryClient(Closeable, PacketsReceiver):
 
     class Response:
         uri: str
-        payload: typing.List[bytes]
+        payload: bytes
         status_code: int
 
         def __init__(self, header: Mercury.Header,
-                     payload: typing.List[bytes]):
+                     payload: list[bytes]):
             self.uri = header.uri
             self.status_code = header.status_code
-            self.payload = payload[1:]
+            self.payload = b"".join(payload[1:])
 
     class SyncCallback(Callback):
         __reference = queue.Queue()
