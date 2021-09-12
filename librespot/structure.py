@@ -4,6 +4,7 @@ import typing
 if typing.TYPE_CHECKING:
     from librespot.audio import AbsChunkedInputStream
     from librespot.audio.format import SuperAudioFormat
+    from librespot.core import DealerClient
     from librespot.crypto import Packet
     from librespot.mercury import MercuryClient
     from librespot.proto import Metadata_pb2 as Metadata
@@ -55,6 +56,11 @@ class HaltListener:
         raise NotImplementedError
 
 
+class MessageListener:
+    def on_message(self, uri: str, headers: typing.Dict[str, str], payload: bytes):
+        raise NotImplementedError
+
+
 class NoopAudioDecrypt(AudioDecrypt):
     def decrypt_chunk(self, chunk_index: int, buffer: bytes):
         raise NotImplementedError
@@ -65,6 +71,11 @@ class NoopAudioDecrypt(AudioDecrypt):
 
 class PacketsReceiver:
     def dispatch(self, packet: Packet):
+        raise NotImplementedError
+
+
+class RequestListener:
+    def on_request(self, mid: str, pid: int, sender: str, command: typing.Any) -> DealerClient.RequestResult:
         raise NotImplementedError
 
 
