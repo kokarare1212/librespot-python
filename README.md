@@ -16,17 +16,14 @@ on any device.
 
 This repository has been completely rewritten from the transplant.<br>
 There may be some functions that are not implemented yet.<br>
-If so, please feel free to open an issue.
+If so, please feel free to open an issue.<br>
 
 ## Note
 
 It is still in the idea stage, so there is a possibility of unintended behavior
-or major specification changes.
-We **DO NOT** encourage piracy and **DO NOT** support any form of
-downloader/recorder designed with the help of this repository and in general
-anything that goes against the Spotify ToS.
-For other guidelines, please see
-[CODE_OF_CONDUCT.md](https://github.com/kokarare1212/librespot-python/blob/main/CODE_OF_CONDUCT.md).
+or major specification changes.<br>
+We **DO NOT** encourage piracy and **DO NOT** support any form of downloader/recorder designed with the help of this repository and in general anything that goes against the Spotify ToS.<br>
+For other guidelines, please see [CODE_OF_CONDUCT.md](https://github.com/kokarare1212/librespot-python/blob/main/CODE_OF_CONDUCT.md).<br>
 
 ## Getting Started
 
@@ -65,7 +62,7 @@ aceess_token = session.tokens().get("playlist-read")
 
 ### Get Music Stream
 
-\*Currently, music streaming is supported, but it may cause unintended behavior.
+*Currently, music streaming is supported, but it may cause unintended behavior.<br>
 
 ```python
 from librespot.core import Session
@@ -73,15 +70,13 @@ from librespot.metadata import TrackId
 from librespot.player.codecs import VorbisOnlyAudioQuality
 from librespot.audio.decoders import AudioQuality
 
-session = Session.Builder()
-    .user_pass("Username", "Password")
+session = Session.Builder() \
+    .user_pass("Username", "Password") \
     .create()
 
 track_id = TrackId.from_uri("spotify:track:xxxxxxxxxxxxxxxxxxxxxx")
-stream = session.content_feeder().load(track_id, VorbisOnlyAudioQuality(AudioQuality.AudioQuality.VERY_HIGH), False,
-                                       None)
+stream = session.content_feeder().load(track_id, VorbisOnlyAudioQuality(AudioQuality.AudioQuality.VERY_HIGH), False, None)
 # stream.input_stream.stream().read() to get one byte of the music stream.
-# ex: 1 (If there is no more voice data, -1 is received as the result.)
 ```
 
 Other uses are
@@ -100,11 +95,6 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 ```
-
-## Roadmap
-
-Please read
-[ROADMAP.md](https://github.com/kokarare1212/librespot-python/blob/main/ROADMAP.md).
 
 ## Contributing
 

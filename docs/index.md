@@ -14,29 +14,23 @@
 ## What's librespot-python?
 
 librespot-python is a python port of Spotify's open source client library
-[librespot](https://github.com/librespot-org/librespot).
-
-It was created to play Spotify on various platforms and devices.
+[librespot](https://github.com/librespot-org/librespot). <br>
+It was created to play Spotify on various platforms and devices.<br>
 
 ## What do you need?
 
-In order to develop with this library, you need to use Python.
-
-Python can be downloaded from [the official website here](https://python.org/).
+In order to develop with this library, you need to use Python.<br>
+Python can be downloaded from [the official website here](https://python.org/). <br>
 
 ## Disclaimer
 
-Please keep in mind that this library is not like Spotify approved.
-
-Therefore, the worst that can happen is that you will be banned from Spotify.
-
-Also, please keep in mind that this library is in alpha and may behave in
-unintended ways.
+Please keep in mind that this library is not like Spotify approved.<br>
+Therefore, the worst that can happen is that you will be banned from Spotify.<br>
+Also, please keep in mind that this library is in alpha and may behave in unintended ways.<br>
 
 ## Installation
 
-You can download this library in the following way.
-
+You can download this library in the following way.<br><br>
 Stable Version **\*still not working.**
 
 ```commandline
@@ -66,7 +60,7 @@ aceess_token = session.tokens().get("playlist-read")
 
 ### Get Music Stream
 
-\*Currently, music streaming is supported, but it may cause unintended behavior.
+*Currently, music streaming is supported, but it may cause unintended behavior.<br>
 
 ```python
 from librespot.core import Session
@@ -74,8 +68,8 @@ from librespot.metadata import TrackId
 from librespot.player.codecs import VorbisOnlyAudioQuality
 from librespot.audio.decoders import AudioQuality
 
-session = Session.Builder()
-    .user_pass("Username", "Password")
+session = Session.Builder() \
+    .user_pass("Username", "Password") \
     .create()
 
 track_id = TrackId.from_uri("spotify:track:xxxxxxxxxxxxxxxxxxxxxx")
