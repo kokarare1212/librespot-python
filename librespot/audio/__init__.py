@@ -5,7 +5,7 @@ from librespot.audio.format import SuperAudioFormat
 from librespot.audio.storage import ChannelManager
 from librespot.cache import CacheManager
 from librespot.crypto import Packet
-from librespot.metadata import PlayableId, TrackId
+from librespot.metadata import EpisodeId, PlayableId, TrackId
 from librespot.proto import Metadata_pb2 as Metadata, StorageResolve_pb2 as StorageResolve
 from librespot.structure import AudioDecrypt, AudioQualityPicker, Closeable, GeneralAudioStream, GeneralWritableStream, HaltListener, NoopAudioDecrypt, PacketsReceiver
 import concurrent.futures
@@ -161,11 +161,13 @@ class AbsChunkedInputStream(io.BytesIO, HaltListener):
             self.check_availability(chunk, True, False)
             buffer.write(self.buffer()[chunk][chunk_off:])
             chunk += 1
-            while chunk <= chunk_total - 1:
-                self.check_availability(chunk, True, False)
-                buffer.write(self.buffer()[chunk])
-                chunk += 1
+            if chunk != chunk_total:
+                while chunk <= chunk_total - 1:
+                    self.check_availability(chunk, True, False)
+                    buffer.write(self.buffer()[chunk])
+                    chunk += 1
             buffer.seek(0)
+            self.__pos += buffer.getbuffer().nbytes
             return buffer.read()
         else:
             buffer = io.BytesIO()
@@ -176,17 +178,22 @@ class AbsChunkedInputStream(io.BytesIO, HaltListener):
             if chunk_end > self.size():
                 chunk_end = int(self.size() / (128 * 1024))
                 chunk_end_off = int(self.size() % (128 * 1024))
-            self.check_availability(chunk, True, False)
-            buffer.write(self.buffer()[chunk][chunk_off:])
-            chunk += 1
-            while chunk <= chunk_end:
+            if chunk_off + __size > len(self.buffer()[chunk]):
                 self.check_availability(chunk, True, False)
-                if chunk == chunk_end:
-                    buffer.write(self.buffer()[chunk][:chunk_end_off])
-                else:
-                    buffer.write(self.buffer()[chunk])
+                buffer.write(self.buffer()[chunk][chunk_off:])
                 chunk += 1
+                while chunk <= chunk_end:
+                    self.check_availability(chunk, True, False)
+                    if chunk == chunk_end:
+                        buffer.write(self.buffer()[chunk][:chunk_end_off])
+                    else:
+                        buffer.write(self.buffer()[chunk])
+                    chunk += 1
+            else:
+                self.check_availability(chunk, True, False)
+                buffer.write(self.buffer()[chunk][chunk_off:chunk_off + __size])
             buffer.seek(0)
+            self.__pos += buffer.getbuffer().nbytes
             return buffer.read()
 
     def notify_chunk_available(self, index: int) -> None:
@@ -369,7 +376,7 @@ class CdnFeedHelper:
         session: Session,
         episode: Metadata.Episode,
         file: Metadata.AudioFile,
-        resp_or_url: typing.Union[StorageResolve.StorageResolveResponse, str],
+        resp_or_url: typing.Union[StorageResolve.StorageResolveResponse, str], preload: bool,
         halt_listener: HaltListener,
     ) -> PlayableContentFeeder.LoadedStream:
         if type(resp_or_url) is str:
@@ -389,7 +396,7 @@ class CdnFeedHelper:
             episode,
             streamer,
             normalization_data,
-            PlayableContentFeeder.Metrics(file.file_id, False, audio_key_time),
+            PlayableContentFeeder.Metrics(file.file_id, preload, -1 if preload else audio_key_time),
         )
 
 
@@ -672,10 +679,10 @@ class NormalizationData:
             .format(track_gain_db, track_peak, album_gain_db, album_peak))
 
     @staticmethod
-    def read(input_stream: io.BytesIO) -> NormalizationData:
+    def read(input_stream: AbsChunkedInputStream) -> NormalizationData:
         input_stream.seek(144)
         data = input_stream.read(4 * 4)
-        input_stream.seek(16)
+        input_stream.seek(0)
         buffer = io.BytesIO(data)
         return NormalizationData(
             struct.unpack("<f", buffer.read(4))[0],
@@ -708,6 +715,8 @@ class PlayableContentFeeder:
         if type(playable_id) is TrackId:
             return self.load_track(playable_id, audio_quality_picker, preload,
                                    halt_listener)
+        elif type(playable_id) is EpisodeId:
+            return self.load_episode(playable_id, audio_quality_picker, preload, halt_listener)
 
     def load_stream(self, file: Metadata.AudioFile, track: Metadata.Track,
                     episode: Metadata.Episode, preload: bool,
@@ -730,6 +739,16 @@ class PlayableContentFeeder:
             raise RuntimeError("Content is unrecognized!")
         else:
             raise RuntimeError("Unknown result: {}".format(response.result))
+
+    def load_episode(self, episode_id: EpisodeId, audio_quality_picker: AudioQualityPicker, preload: bool, halt_listener: HaltListener) -> LoadedStream:
+        episode = self.__session.api().get_metadata_4_episode(episode_id)
+        if episode.external_url:
+            pass
+        else:
+            file = audio_quality_picker.get_file(episode.audio)
+            if file is None:
+                self.logger.fatal("Couldn't find any suitable audio file, available: {}".format(episode.audio))
+            return self.load_stream(file, None, episode, preload, halt_listener)
 
     def load_track(self, track_id_or_track: typing.Union[TrackId,
                                                          Metadata.Track],
