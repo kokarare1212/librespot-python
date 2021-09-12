@@ -1607,8 +1607,9 @@ class SearchManager:
             request.set_country(self.__session.country_code)
         if request.get_locale() == "":
             request.set_locale(self.__session.preferred_locale())
-        response = self.__session.mercury().send_sync(RawMercuryRequest.new_builder()
-                                                      .set_method("GET").set_uri(request.build_url()).build())
+        response = self.__session.mercury().send_sync(
+            RawMercuryRequest.new_builder().set_method("GET").set_uri(
+                request.build_url()).build())
         if response.status_code != 200:
             raise SearchManager.SearchException(response.status_code)
         return json.loads(response.payload)
@@ -1668,7 +1669,8 @@ class SearchManager:
             self.__country = country
             return self
 
-        def set_image_size(self, image_size: str) -> SearchManager.SearchRequest:
+        def set_image_size(self,
+                           image_size: str) -> SearchManager.SearchRequest:
             self.__image_size = image_size
             return self
 
