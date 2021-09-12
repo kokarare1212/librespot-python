@@ -85,4 +85,3 @@ class PlayerConfiguration:
                 self.initial_volume,
                 self.volume_steps,
             )
-

@@ -9,5 +9,3 @@ import typing
 
 if typing.TYPE_CHECKING:
     from librespot.core import Session
-
-
