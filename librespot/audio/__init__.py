@@ -22,7 +22,6 @@ import urllib.parse
 
 if typing.TYPE_CHECKING:
     from librespot.core import Session
-    from librespot.crypto import Packet
 
 
 class AbsChunkedInputStream(io.BytesIO, HaltListener):
