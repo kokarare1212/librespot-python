@@ -57,7 +57,8 @@ class HaltListener:
 
 
 class MessageListener:
-    def on_message(self, uri: str, headers: typing.Dict[str, str], payload: bytes):
+    def on_message(self, uri: str, headers: typing.Dict[str, str],
+                   payload: bytes):
         raise NotImplementedError
 
 
@@ -75,7 +76,8 @@ class PacketsReceiver:
 
 
 class RequestListener:
-    def on_request(self, mid: str, pid: int, sender: str, command: typing.Any) -> DealerClient.RequestResult:
+    def on_request(self, mid: str, pid: int, sender: str,
+                   command: typing.Any) -> DealerClient.RequestResult:
         raise NotImplementedError
 
 
