@@ -25,9 +25,7 @@ class Version:
 
     @staticmethod
     def standard_build_info() -> BuildInfo:
-        return BuildInfo(
-            product=Product.PRODUCT_CLIENT,
-            product_flags=[ProductFlags.PRODUCT_FLAG_NONE],
-            platform=Version.platform(),
-            version=112800721
-        )
+        return BuildInfo(product=Product.PRODUCT_CLIENT,
+                         product_flags=[ProductFlags.PRODUCT_FLAG_NONE],
+                         platform=Version.platform(),
+                         version=112800721)

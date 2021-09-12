@@ -18,7 +18,8 @@ class AudioDecrypt:
 
 
 class AudioQualityPicker:
-    def get_file(self, files: typing.List[Metadata.AudioFile]) -> Metadata.AudioFile:
+    def get_file(self,
+                 files: typing.List[Metadata.AudioFile]) -> Metadata.AudioFile:
         raise NotImplementedError
 
 

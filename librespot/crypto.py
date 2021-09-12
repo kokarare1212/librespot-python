@@ -22,7 +22,8 @@ class CipherPair:
         self.__receive_cipher = Shannon()
         self.__receive_cipher.key(receive_key)
 
-    def send_encoded(self, connection: Session.ConnectionHolder, cmd: bytes, payload: bytes) -> None:
+    def send_encoded(self, connection: Session.ConnectionHolder, cmd: bytes,
+                     payload: bytes) -> None:
         """
         Send decrypted data to the socket
         :param connection:
@@ -57,7 +58,8 @@ class CipherPair:
             header_bytes = self.__receive_cipher.decrypt(connection.read(3))
             cmd = struct.pack(">s", bytes([header_bytes[0]]))
             payload_length = (header_bytes[1] << 8) | (header_bytes[2] & 0xff)
-            payload_bytes = self.__receive_cipher.decrypt(connection.read(payload_length))
+            payload_bytes = self.__receive_cipher.decrypt(
+                connection.read(payload_length))
             mac = connection.read(4)
             expected_mac = self.__receive_cipher.finish(4)
             if mac != expected_mac:
@@ -78,7 +80,8 @@ class DiffieHellman:
         b'\x13\x9b"QJ\x08y\x8e4\x04\xdd\xef\x95\x19'
         b'\xb3\xcd:C\x1b0+\nm\xf2_\x147O\xe15mmQ\xc2'
         b'E\xe4\x85\xb5vb^~\xc6\xf4LB\xe9\xa6:6 \xff'
-        b'\xff\xff\xff\xff\xff\xff\xff', byteorder="big")
+        b'\xff\xff\xff\xff\xff\xff\xff',
+        byteorder="big")
     __private_key: int
     __public_key: int
 

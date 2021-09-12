@@ -135,8 +135,7 @@ class ArtistId(SpotifyId):
 
     @staticmethod
     def from_base62(base62: str) -> ArtistId:
-        return ArtistId(util.bytes_to_hex(ArtistId.base62.decode(base62,
-                                                                 16)))
+        return ArtistId(util.bytes_to_hex(ArtistId.base62.decode(base62, 16)))
 
     @staticmethod
     def from_hex(hex_str: str) -> ArtistId:
@@ -205,8 +204,7 @@ class ShowId(SpotifyId):
         matcher = ShowId.pattern.search(uri)
         if matcher is not None:
             show_id = matcher.group(1)
-            return ShowId(
-                util.bytes_to_hex(ShowId.base62.decode(show_id, 16)))
+            return ShowId(util.bytes_to_hex(ShowId.base62.decode(show_id, 16)))
         raise TypeError("Not a Spotify show ID: {}".format(uri))
 
     @staticmethod

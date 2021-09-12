@@ -52,20 +52,24 @@ class Base62:
         return Base62(Base62.CharacterSets.inverted)
 
     def encode(self, message: bytes, length: int = -1):
-        indices = self.convert(message, self.standard_base, self.target_base, length)
+        indices = self.convert(message, self.standard_base, self.target_base,
+                               length)
         return self.translate(indices, self.alphabet)
 
     def decode(self, encoded: bytes, length: int = -1):
         prepared = self.translate(encoded, self.lookup)
-        return self.convert(prepared, self.target_base, self.standard_base, length)
+        return self.convert(prepared, self.target_base, self.standard_base,
+                            length)
 
     def translate(self, indices: bytes, dictionary: bytes):
         translation = bytearray(len(indices))
         for i in range(len(indices)):
-            translation[i] = dictionary[int.from_bytes(indices[i].encode(),"big")]
+            translation[i] = dictionary[int.from_bytes(indices[i].encode(),
+                                                       "big")]
         return translation
 
-    def convert(self, message: bytes, source_base: int, target_base: int, length: int):
+    def convert(self, message: bytes, source_base: int, target_base: int,
+                length: int):
         estimated_length = self.estimate_output_length(
             len(message), source_base, target_base) if length == -1 else length
         out = b""
@@ -91,9 +95,11 @@ class Base62:
             return self.reverse(out[:estimated_length])
         return self.reverse(out)
 
-    def estimate_output_length(self, input_length: int, source_base: int, target_base: int):
+    def estimate_output_length(self, input_length: int, source_base: int,
+                               target_base: int):
         return int(
-            math.ceil((math.log(source_base) / math.log(target_base)) * input_length))
+            math.ceil((math.log(source_base) / math.log(target_base)) *
+                      input_length))
 
     def reverse(self, arr: bytes):
         length = len(arr)
