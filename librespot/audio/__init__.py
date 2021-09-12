@@ -191,7 +191,8 @@ class AbsChunkedInputStream(io.BytesIO, HaltListener):
                     chunk += 1
             else:
                 self.check_availability(chunk, True, False)
-                buffer.write(self.buffer()[chunk][chunk_off:chunk_off + __size])
+                buffer.write(self.buffer()[chunk][chunk_off:chunk_off +
+                                                  __size])
             buffer.seek(0)
             self.__pos += buffer.getbuffer().nbytes
             return buffer.read()
@@ -376,7 +377,8 @@ class CdnFeedHelper:
         session: Session,
         episode: Metadata.Episode,
         file: Metadata.AudioFile,
-        resp_or_url: typing.Union[StorageResolve.StorageResolveResponse, str], preload: bool,
+        resp_or_url: typing.Union[StorageResolve.StorageResolveResponse, str],
+        preload: bool,
         halt_listener: HaltListener,
     ) -> PlayableContentFeeder.LoadedStream:
         if type(resp_or_url) is str:
@@ -396,7 +398,8 @@ class CdnFeedHelper:
             episode,
             streamer,
             normalization_data,
-            PlayableContentFeeder.Metrics(file.file_id, preload, -1 if preload else audio_key_time),
+            PlayableContentFeeder.Metrics(file.file_id, preload,
+                                          -1 if preload else audio_key_time),
         )
 
 
@@ -716,7 +719,8 @@ class PlayableContentFeeder:
             return self.load_track(playable_id, audio_quality_picker, preload,
                                    halt_listener)
         elif type(playable_id) is EpisodeId:
-            return self.load_episode(playable_id, audio_quality_picker, preload, halt_listener)
+            return self.load_episode(playable_id, audio_quality_picker,
+                                     preload, halt_listener)
 
     def load_stream(self, file: Metadata.AudioFile, track: Metadata.Track,
                     episode: Metadata.Episode, preload: bool,
@@ -740,15 +744,20 @@ class PlayableContentFeeder:
         else:
             raise RuntimeError("Unknown result: {}".format(response.result))
 
-    def load_episode(self, episode_id: EpisodeId, audio_quality_picker: AudioQualityPicker, preload: bool, halt_listener: HaltListener) -> LoadedStream:
+    def load_episode(self, episode_id: EpisodeId,
+                     audio_quality_picker: AudioQualityPicker, preload: bool,
+                     halt_listener: HaltListener) -> LoadedStream:
         episode = self.__session.api().get_metadata_4_episode(episode_id)
         if episode.external_url:
             pass
         else:
             file = audio_quality_picker.get_file(episode.audio)
             if file is None:
-                self.logger.fatal("Couldn't find any suitable audio file, available: {}".format(episode.audio))
-            return self.load_stream(file, None, episode, preload, halt_listener)
+                self.logger.fatal(
+                    "Couldn't find any suitable audio file, available: {}".
+                    format(episode.audio))
+            return self.load_stream(file, None, episode, preload,
+                                    halt_listener)
 
     def load_track(self, track_id_or_track: typing.Union[TrackId,
                                                          Metadata.Track],
