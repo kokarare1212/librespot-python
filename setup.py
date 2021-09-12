@@ -11,7 +11,7 @@ setuptools.setup(name="librespot",
                  packages=setuptools.find_packages("."),
                  install_requires=[
                      "defusedxml", "protobuf", "pycryptodomex", "pyogg",
-                     "requests"
+                     "requests", "zeroconf"
                  ],
                  classifiers=[
                      "Development Status :: 1 - Planning",

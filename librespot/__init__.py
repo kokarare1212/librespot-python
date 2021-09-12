@@ -1,3 +1,4 @@
+from __future__ import annotations
 from librespot.proto.Keyexchange_pb2 import BuildInfo, Platform, Product, ProductFlags
 import platform
 

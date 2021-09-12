@@ -1,12 +1,9 @@
 from __future__ import annotations
-
-import urllib.parse
-
 from Cryptodome import Random
 from Cryptodome.Hash import HMAC, SHA1
 from Cryptodome.PublicKey import RSA
 from Cryptodome.Signature import PKCS1_v1_5
-from librespot import util
+from librespot import util, Version
 from librespot.audio import AudioKeyManager, CdnManager, PlayableContentFeeder
 from librespot.audio.storage import ChannelManager
 from librespot.cache import CacheManager
@@ -16,7 +13,6 @@ from librespot.metadata import AlbumId, ArtistId, EpisodeId, ShowId, TrackId
 from librespot.proto import Authentication_pb2 as Authentication, Connect_pb2 as Connect, Keyexchange_pb2 as Keyexchange, Metadata_pb2 as Metadata
 from librespot.proto.ExplicitContentPubsub_pb2 import UserAttributesUpdate
 from librespot.structure import Closeable, MessageListener, RequestListener, SubListener
-from librespot.version import Version
 import base64
 import concurrent.futures
 import defusedxml.ElementTree
@@ -35,6 +31,7 @@ import struct
 import threading
 import time
 import typing
+import urllib.parse
 import websocket
 
 
