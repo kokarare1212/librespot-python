@@ -12,6 +12,12 @@ Open Source Spotify Client
 This project was developed to make the music streaming service Spotify available
 on any device.
 
+## Attention!
+
+This repository has been completely rewritten from the transplant.<br>
+There may be some functions that are not implemented yet.<br>
+If so, please feel free to open an issue.
+
 ## Note
 
 It is still in the idea stage, so there is a possibility of unintended behavior
