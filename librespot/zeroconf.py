@@ -198,7 +198,6 @@ class ZeroconfServer(Closeable):
         def run(self):
             while not self.__should_stop:
                 __socket, address = self.__socket.accept()
-                print("Received request!")
 
                 def anonymous():
                     self.__handle(__socket)
