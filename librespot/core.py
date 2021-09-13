@@ -1,6 +1,8 @@
 from __future__ import annotations
 from Cryptodome import Random
+from Cryptodome.Cipher import AES
 from Cryptodome.Hash import HMAC, SHA1
+from Cryptodome.Protocol.KDF import PBKDF2
 from Cryptodome.PublicKey import RSA
 from Cryptodome.Signature import PKCS1_v1_5
 from librespot import util, Version
@@ -1091,6 +1093,47 @@ class Session(Closeable, MessageListener, SubListener):
 
     class Builder(AbsBuilder):
         login_credentials: Authentication.LoginCredentials = None
+
+        def blob(self, username: str, blob: bytes) -> Session.Builder:
+            if self.device_id is None:
+                raise TypeError("You must specify the device ID first.")
+            self.login_credentials = self.decrypt_blob(self.device_id, username, blob)
+            return self
+
+        def decrypt_blob(self, device_id: str, username: str, encrypted_blob: bytes) -> Authentication.LoginCredentials:
+            encrypted_blob = base64.b64decode(encrypted_blob)
+            sha1 = SHA1.new()
+            sha1.update(device_id.encode())
+            secret = sha1.digest()
+            base_key = PBKDF2(secret.decode(), username.encode(), 20, 0x100)
+            aes = AES.new(base_key, AES.MODE_ECB)
+            decrypted_blob = aes.decrypt(encrypted_blob)
+            l = len(decrypted_blob)
+            for i in range(0, l - 0x10):
+                decrypted_blob[l - i - 1] ^= decrypted_blob[l - i - 0x11]
+            blob = io.BytesIO(decrypted_blob)
+            blob.read(1)
+            le = self.read_blob_int(blob)
+            blob.read(le)
+            blob.read(1)
+            type_int = self.read_blob_int(blob)
+            type_ = Authentication.AuthenticationType.Name(type_int)
+            if type_ is None:
+                raise IOError(TypeError("Unknown AuthenticationType: {}".format(type_int)))
+            le = self.read_blob_int(blob)
+            auth_data = blob.read(le)
+            return Authentication.LoginCredentials(
+                auth_data=auth_data,
+                typ=type_,
+                username=username,
+            )
+
+        def read_blob_int(self, buffer: io.BytesIO) -> int:
+            lo = buffer.read(1)
+            if (int(lo[0]) & 0x80) == 0:
+                return int(lo[0])
+            hi = buffer.read(1)
+            return int(lo[0]) & 0x7f | int(hi[0]) << 7
 
         def stored(self):
             """

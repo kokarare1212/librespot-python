@@ -1,5 +1,7 @@
 from __future__ import annotations
+from librespot.crypto import DiffieHellman
 from librespot.proto.Keyexchange_pb2 import BuildInfo, Platform, Product, ProductFlags
+from librespot.structure import Closeable, Runnable
 import platform
 
 

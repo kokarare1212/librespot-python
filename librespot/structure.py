@@ -81,6 +81,11 @@ class RequestListener:
         raise NotImplementedError
 
 
+class Runnable:
+    def run(self):
+        raise NotImplementedError
+
+
 class SubListener:
     def event(self, resp: MercuryClient.Response) -> None:
         raise NotImplementedError
