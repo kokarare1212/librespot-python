@@ -71,8 +71,8 @@ class ZeroconfServer(Closeable):
                 "CPath": "/",
                 "VERSION": "1.0",
                 "STACK": "SP",
-            },
-            inner.device_name,
+            }, self.get_useful_hostname() + ".",
+            addresses=[socket.inet_aton(socket.gethostbyname(self.get_useful_hostname()))]
         )
         self.__zeroconf.register_service(self.__service_info)
         threading.Thread(target=self.__zeroconf.start, name="zeroconf-multicast-dns-server").start()
@@ -80,6 +80,13 @@ class ZeroconfServer(Closeable):
     def close(self) -> None:
         self.__zeroconf.close()
         self.__runner.close()
+
+    def get_useful_hostname(self) -> str:
+        host = socket.gethostname()
+        if host == "localhost":
+            pass
+        else:
+            return host
 
     def handle_add_user(self, __socket: socket.socket, params: dict[str, str], http_version: str) -> None:
         username = params.get("userName")
@@ -191,6 +198,7 @@ class ZeroconfServer(Closeable):
         def run(self):
             while not self.__should_stop:
                 __socket, address = self.__socket.accept()
+                print("Received request!")
 
                 def anonymous():
                     self.__handle(__socket)
