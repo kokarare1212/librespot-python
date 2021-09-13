@@ -1097,10 +1097,13 @@ class Session(Closeable, MessageListener, SubListener):
         def blob(self, username: str, blob: bytes) -> Session.Builder:
             if self.device_id is None:
                 raise TypeError("You must specify the device ID first.")
-            self.login_credentials = self.decrypt_blob(self.device_id, username, blob)
+            self.login_credentials = self.decrypt_blob(self.device_id,
+                                                       username, blob)
             return self
 
-        def decrypt_blob(self, device_id: str, username: str, encrypted_blob: bytes) -> Authentication.LoginCredentials:
+        def decrypt_blob(
+                self, device_id: str, username: str,
+                encrypted_blob: bytes) -> Authentication.LoginCredentials:
             encrypted_blob = base64.b64decode(encrypted_blob)
             sha1 = SHA1.new()
             sha1.update(device_id.encode())
@@ -1119,7 +1122,9 @@ class Session(Closeable, MessageListener, SubListener):
             type_int = self.read_blob_int(blob)
             type_ = Authentication.AuthenticationType.Name(type_int)
             if type_ is None:
-                raise IOError(TypeError("Unknown AuthenticationType: {}".format(type_int)))
+                raise IOError(
+                    TypeError(
+                        "Unknown AuthenticationType: {}".format(type_int)))
             le = self.read_blob_int(blob)
             auth_data = blob.read(le)
             return Authentication.LoginCredentials(
