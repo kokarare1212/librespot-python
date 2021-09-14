@@ -4,7 +4,7 @@ import typing
 if typing.TYPE_CHECKING:
     from librespot.audio import AbsChunkedInputStream
     from librespot.audio.format import SuperAudioFormat
-    from librespot.core import DealerClient
+    from librespot.core import DealerClient, Session
     from librespot.crypto import Packet
     from librespot.mercury import MercuryClient
     from librespot.proto import Metadata_pb2 as Metadata
@@ -83,6 +83,14 @@ class RequestListener:
 
 class Runnable:
     def run(self):
+        raise NotImplementedError
+
+
+class SessionListener:
+    def session_closing(self, session: Session) -> None:
+        raise NotImplementedError
+
+    def session_changed(self, session: Session) -> None:
         raise NotImplementedError
 
 

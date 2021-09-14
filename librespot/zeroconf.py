@@ -6,7 +6,7 @@ from librespot import util, Version
 from librespot.core import Session
 from librespot.crypto import DiffieHellman
 from librespot.proto import Connect_pb2 as Connect
-from librespot.structure import Closeable, Runnable
+from librespot.structure import Closeable, Runnable, SessionListener
 import base64
 import concurrent.futures
 import copy
@@ -54,7 +54,7 @@ class ZeroconfServer(Closeable):
     __runner: HttpRunner
     __service_info: zeroconf.ServiceInfo
     __session: typing.Union[Session, None] = None
-    __session_listeners = []
+    __session_listeners: typing.List[SessionListener] = []
     __zeroconf: zeroconf.Zeroconf
 
     def __init__(self, inner: Inner, listen_port):
@@ -85,9 +85,20 @@ class ZeroconfServer(Closeable):
         threading.Thread(target=self.__zeroconf.start,
                          name="zeroconf-multicast-dns-server").start()
 
+    def add_session_listener(self, listener: ZeroconfServer):
+        self.__session_listeners.append(listener)
+
     def close(self) -> None:
         self.__zeroconf.close()
         self.__runner.close()
+
+    def close_session(self) -> None:
+        if self.__session is None:
+            return
+        for session_listener in self.__session_listeners:
+            session_listener.session_closing(self.__session)
+        self.__session.close()
+        self.__session = None
 
     def get_useful_hostname(self) -> str:
         host = socket.gethostname()
@@ -100,18 +111,18 @@ class ZeroconfServer(Closeable):
                         http_version: str) -> None:
         username = params.get("userName")
         if not username:
-            logging.error("Missing userName!")
+            self.logger.error("Missing userName!")
             return
         blob_str = params.get("blob")
         if not blob_str:
-            logging.error("Missing blob!")
+            self.logger.error("Missing blob!")
             return
         client_key_str = params.get("clientKey")
         if not client_key_str:
-            logging.error("Missing clientKey!")
+            self.logger.error("Missing clientKey!")
         with self.__connection_lock:
             if username == self.__connecting_username:
-                logging.info(
+                self.logger.info(
                     "{} is already trying to connect.".format(username))
                 __socket.send(http_version.encode())
                 __socket.send(b" 403 Forbidden")
@@ -138,7 +149,7 @@ class ZeroconfServer(Closeable):
         hmac.update(encrypted)
         mac = hmac.digest()
         if mac != checksum:
-            logging.error("Mac and checksum don't match!")
+            self.logger.error("Mac and checksum don't match!")
             __socket.send(http_version.encode())
             __socket.send(b" 400 Bad Request")
             __socket.send(self.__eol)
@@ -146,9 +157,10 @@ class ZeroconfServer(Closeable):
             return
         aes = AES.new(encryption_key[:16], AES.MODE_CTR, counter=Counter.new(128, initial_value=int.from_bytes(iv, "big")))
         decrypted = aes.decrypt(encrypted)
+        self.close_session()
         with self.__connection_lock:
             self.__connecting_username = username
-        logging.info("Accepted new user from {}. [deviceId: {}]".format(
+        self.logger.info("Accepted new user from {}. [deviceId: {}]".format(
             params.get("deviceName"), self.__inner.device_id))
         response = json.dumps(self.__default_successful_add_user)
         __socket.send(http_version.encode())
@@ -168,6 +180,8 @@ class ZeroconfServer(Closeable):
             .create()
         with self.__connection_lock:
             self.__connecting_username = None
+        for session_listener in self.__session_listeners:
+            session_listener.session_changed(self.__session)
 
     def handle_get_info(self, __socket: socket.socket,
                         http_version: str) -> None:
@@ -204,6 +218,19 @@ class ZeroconfServer(Closeable):
                 parsed[key] = value
         return parsed
 
+    def remove_session_listener(self, listener: SessionListener):
+        self.__session_listeners.remove(listener)
+
+    class Builder(Session.Builder):
+        listen_port: int = -1
+
+        def set_listen_port(self, listen_port: int):
+            self.listen_port = listen_port
+            return self
+
+        def create(self) -> ZeroconfServer:
+            return ZeroconfServer(ZeroconfServer.Inner(self.device_type, self.device_name, self.device_id, self.preferred_locale, self.conf), self.listen_port)
+
     class HttpRunner(Closeable, Runnable):
         __should_stop = False
         __socket: socket.socket
@@ -215,7 +242,7 @@ class ZeroconfServer(Closeable):
             self.__socket.bind((".".join(["0"] * 4), port))
             self.__socket.listen(5)
             self.__zeroconf_server = zeroconf_server
-            logging.info("Zeroconf HTTP server started successfully on port {}!".format(port))
+            self.__zeroconf_server.logger.info("Zeroconf HTTP server started successfully on port {}!".format(port))
 
         def close(self) -> None:
             pass
@@ -234,7 +261,7 @@ class ZeroconfServer(Closeable):
             request = io.BytesIO(__socket.recv(1024 * 1024))
             request_line = request.readline().strip().split(b" ")
             if len(request_line) != 3:
-                logging.warning(
+                self.__zeroconf_server.logger.warning(
                     "Unexpected request line: {}".format(request_line))
             method = request_line[0].decode()
             path = request_line[1].decode()
@@ -247,18 +274,18 @@ class ZeroconfServer(Closeable):
                 split = header.split(b":")
                 headers[split[0].decode()] = split[1].strip().decode()
             if not self.__zeroconf_server.has_valid_session():
-                logging.debug(
+                self.__zeroconf_server.logger.debug(
                     "Handling request: {}, {}, {}, headers: {}".format(
                         method, path, http_version, headers))
             params = {}
             if method == "POST":
                 content_type = headers.get("Content-Type")
                 if content_type != "application/x-www-form-urlencoded":
-                    logging.error("Bad Content-Type: {}".format(content_type))
+                    self.__zeroconf_server.logger.error("Bad Content-Type: {}".format(content_type))
                     return
                 content_length_str = headers.get("Content-Length")
                 if content_length_str is None:
-                    logging.error("Missing Content-Length header!")
+                    self.__zeroconf_server.logger.error("Missing Content-Length header!")
                     return
                 content_length = int(content_length_str)
                 body = request.read(content_length).decode()
@@ -271,7 +298,7 @@ class ZeroconfServer(Closeable):
                 params = self.__zeroconf_server.parse_path(path)
             action = params.get("action")
             if action is None:
-                logging.debug("Request is missing action.")
+                self.__zeroconf_server.logger.debug("Request is missing action.")
                 return
             self.handle_request(__socket, http_version, action, params)
 
@@ -284,17 +311,7 @@ class ZeroconfServer(Closeable):
             elif action == "getInfo":
                 self.__zeroconf_server.handle_get_info(__socket, http_version)
             else:
-                logging.warning("Unknown action: {}".format(action))
-
-    class Builder(Session.Builder):
-        listen_port: int = -1
-
-        def set_listen_port(self, listen_port: int):
-            self.listen_port = listen_port
-            return self
-
-        def create(self) -> ZeroconfServer:
-            return ZeroconfServer(ZeroconfServer.Inner(self.device_type, self.device_name, self.device_id, self.preferred_locale, self.conf), self.listen_port)
+                self.__zeroconf_server.logger.warning("Unknown action: {}".format(action))
 
     class Inner:
         conf: typing.Final[Session.Configuration]
