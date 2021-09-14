@@ -834,6 +834,12 @@ class Session(Closeable, MessageListener, SubListener):
     def device_id(self) -> str:
         return self.__inner.device_id
 
+    def device_name(self) -> str:
+        return self.__inner.device_name
+
+    def device_type(self) -> Connect.DeviceType:
+        return self.__inner.device_type
+
     def event(self, resp: MercuryClient.Response) -> None:
         if resp.uri == "spotify:user:attributes:update":
             attributes_update = UserAttributesUpdate()
