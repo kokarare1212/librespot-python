@@ -47,6 +47,14 @@ pip install git+https://github.com/kokarare1212/librespot-python
 
 ## Usage
 
+### Use Zeroconf for Login
+
+```python
+from librespot.zeroconf import ZeroconfServer
+
+zeroconf = ZeroconfServer.Builder().create()
+```
+
 ### Get Spotify's OAuth token
 
 ```python
