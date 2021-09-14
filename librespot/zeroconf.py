@@ -144,7 +144,11 @@ class ZeroconfServer(Closeable):
             __socket.send(self.__eol)
             __socket.send(self.__eol)
             return
-        aes = AES.new(encryption_key[:16], AES.MODE_CTR, counter=Counter.new(128, initial_value=int.from_bytes(iv, "big")))
+        aes = AES.new(encryption_key[:16],
+                      AES.MODE_CTR,
+                      counter=Counter.new(128,
+                                          initial_value=int.from_bytes(
+                                              iv, "big")))
         decrypted = aes.decrypt(encrypted)
         with self.__connection_lock:
             self.__connecting_username = username
@@ -180,7 +184,7 @@ class ZeroconfServer(Closeable):
         with self.__connection_lock:
             info[
                 "activeUser"] = self.__connecting_username if self.__connecting_username is not None else self.__session.username(
-            ) if self.has_valid_session() else ""
+                ) if self.has_valid_session() else ""
         __socket.send(http_version.encode())
         __socket.send(b" 200 OK")
         __socket.send(self.__eol)
@@ -215,7 +219,9 @@ class ZeroconfServer(Closeable):
             self.__socket.bind((".".join(["0"] * 4), port))
             self.__socket.listen(5)
             self.__zeroconf_server = zeroconf_server
-            logging.info("Zeroconf HTTP server started successfully on port {}!".format(port))
+            logging.info(
+                "Zeroconf HTTP server started successfully on port {}!".format(
+                    port))
 
         def close(self) -> None:
             pass
@@ -280,7 +286,8 @@ class ZeroconfServer(Closeable):
             if action == "addUser":
                 if params is None:
                     raise RuntimeError
-                self.__zeroconf_server.handle_add_user(__socket, params, http_version)
+                self.__zeroconf_server.handle_add_user(__socket, params,
+                                                       http_version)
             elif action == "getInfo":
                 self.__zeroconf_server.handle_get_info(__socket, http_version)
             else:
@@ -294,7 +301,10 @@ class ZeroconfServer(Closeable):
             return self
 
         def create(self) -> ZeroconfServer:
-            return ZeroconfServer(ZeroconfServer.Inner(self.device_type, self.device_name, self.device_id, self.preferred_locale, self.conf), self.listen_port)
+            return ZeroconfServer(
+                ZeroconfServer.Inner(self.device_type, self.device_name,
+                                     self.device_id, self.preferred_locale,
+                                     self.conf), self.listen_port)
 
     class Inner:
         conf: typing.Final[Session.Configuration]
