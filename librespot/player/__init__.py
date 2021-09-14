@@ -24,13 +24,16 @@ class DeviceStateHandler(Closeable, MessageListener, RequestListener):
         self.__session = session
         self.__device_info = self.initialize_device_info(session, conf)
         self.__put_state = Connect.PutStateRequest(
-            device=Connect.Device(
-                device_info=self.__device_info,
-            ),
+            device=Connect.Device(device_info=self.__device_info, ),
             member_type=Connect.MemberType.CONNECT_STATE,
         )
-        self.__session.dealer().add_message_listener(self, ["hm://pusher/v1/connections/", "hm://connect-state/v1/connect/volume", "hm://connect-state/v1/cluster"])
-        self.__session.dealer().add_request_listener(self, "hm://connect-state/v1/")
+        self.__session.dealer().add_message_listener(self, [
+            "hm://pusher/v1/connections/",
+            "hm://connect-state/v1/connect/volume",
+            "hm://connect-state/v1/cluster"
+        ])
+        self.__session.dealer().add_request_listener(self,
+                                                     "hm://connect-state/v1/")
 
     def close(self) -> None:
         self.__closing = True
@@ -38,7 +41,8 @@ class DeviceStateHandler(Closeable, MessageListener, RequestListener):
         self.__session.dealer().remove_request_listener(self)
         self.__put_state_worker.shutdown()
 
-    def initialize_device_info(self, session: Session, conf: PlayerConfiguration) -> Connect.Device:
+    def initialize_device_info(self, session: Session,
+                               conf: PlayerConfiguration) -> Connect.Device:
         return Connect.DeviceInfo(
             can_play=True,
             capabilities=Connect.Capabilities(
@@ -68,14 +72,16 @@ class DeviceStateHandler(Closeable, MessageListener, RequestListener):
 
     def put_connect_state(self, request: Connect.PutStateRequest):
         self.__session.api().put_connect_state(self.__connection_id, request)
-        self.logger.info("Put state. [ts: {}, connId: {}, reason: {}]".format(request.client_side_timestamp, self.__connection_id, request.put_state_reason))
+        self.logger.info("Put state. [ts: {}, connId: {}, reason: {}]".format(
+            request.client_side_timestamp, self.__connection_id,
+            request.put_state_reason))
 
     def update_connection_id(self, newer: str) -> None:
         newer = urllib.parse.unquote(newer)
         if self.__connection_id is None or self.__connection_id != newer:
             self.__connection_id = newer
-            self.logger.debug("Updated Spotify-Connection-Id: {}".format(newer))
-
+            self.logger.debug(
+                "Updated Spotify-Connection-Id: {}".format(newer))
 
 
 class Player:
@@ -183,12 +189,17 @@ class StateWrapper(MessageListener):
     __player: Player
     __session: Session
 
-    def __init__(self, session: Session, player: Player, conf: PlayerConfiguration):
+    def __init__(self, session: Session, player: Player,
+                 conf: PlayerConfiguration):
         self.__session = session
         self.__player = player
         self.__device = DeviceStateHandler(session, conf)
         self.__conf = conf
-        session.dealer().add_message_listener(self, ["spotify:user:attributes:update", "hm://playlist/", "hm://collection/collection/" + session.username() + "/json"])
+        session.dealer().add_message_listener(self, [
+            "spotify:user:attributes:update", "hm://playlist/",
+            "hm://collection/collection/" + session.username() + "/json"
+        ])
 
-    def on_message(self, uri: str, headers: typing.Dict[str, str], payload: bytes):
+    def on_message(self, uri: str, headers: typing.Dict[str, str],
+                   payload: bytes):
         pass
