@@ -286,6 +286,16 @@ class ZeroconfServer(Closeable):
             else:
                 logging.warning("Unknown action: {}".format(action))
 
+    class Builder(Session.Builder):
+        listen_port: int = -1
+
+        def set_listen_port(self, listen_port: int):
+            self.listen_port = listen_port
+            return self
+
+        def create(self) -> ZeroconfServer:
+            return ZeroconfServer(ZeroconfServer.Inner(self.device_type, self.device_name, self.device_id, self.preferred_locale, self.conf), self.listen_port)
+
     class Inner:
         conf: typing.Final[Session.Configuration]
         device_name: typing.Final[str]
