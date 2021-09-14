@@ -1018,7 +1018,7 @@ class Session(Closeable, MessageListener, SubListener):
     class AbsBuilder:
         conf = None
         device_id = None
-        device_name = "libretto-python"
+        device_name = "librespot-python"
         device_type = Connect.DeviceType.COMPUTER
         preferred_locale = "en"
 
