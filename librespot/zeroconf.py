@@ -1,6 +1,7 @@
 from __future__ import annotations
 from Cryptodome.Cipher import AES
 from Cryptodome.Hash import HMAC, SHA1
+from Cryptodome.Util import Counter
 from librespot import util, Version
 from librespot.core import Session
 from librespot.crypto import DiffieHellman
@@ -52,7 +53,7 @@ class ZeroconfServer(Closeable):
     __min_port = 1024
     __runner: HttpRunner
     __service_info: zeroconf.ServiceInfo
-    __session: typing.Union[Session, None]
+    __session: typing.Union[Session, None] = None
     __session_listeners = []
     __zeroconf: zeroconf.Zeroconf
 
@@ -143,7 +144,7 @@ class ZeroconfServer(Closeable):
             __socket.send(self.__eol)
             __socket.send(self.__eol)
             return
-        aes = AES.new(encryption_key[:16], AES.MODE_CTR, iv)
+        aes = AES.new(encryption_key[:16], AES.MODE_CTR, counter=Counter.new(128, initial_value=int.from_bytes(iv, "big")))
         decrypted = aes.decrypt(encrypted)
         with self.__connection_lock:
             self.__connecting_username = username
@@ -171,7 +172,7 @@ class ZeroconfServer(Closeable):
     def handle_get_info(self, __socket: socket.socket,
                         http_version: str) -> None:
         info = copy.deepcopy(self.__default_get_info_fields)
-        info["device_id"] = self.__inner.device_id
+        info["deviceID"] = self.__inner.device_id
         info["remoteName"] = self.__inner.device_name
         info["publicKey"] = base64.b64encode(
             self.__keys.public_key_bytes()).decode()
@@ -179,7 +180,14 @@ class ZeroconfServer(Closeable):
         with self.__connection_lock:
             info[
                 "activeUser"] = self.__connecting_username if self.__connecting_username is not None else self.__session.username(
-                ) if self.has_valid_session() else ""
+            ) if self.has_valid_session() else ""
+        __socket.send(http_version.encode())
+        __socket.send(b" 200 OK")
+        __socket.send(self.__eol)
+        __socket.send(b"Content-Type: application/json")
+        __socket.send(self.__eol)
+        __socket.send(self.__eol)
+        __socket.send(json.dumps(info).encode())
 
     def has_valid_session(self) -> bool:
         valid = self.__session and self.__session.is_valid()
@@ -188,10 +196,10 @@ class ZeroconfServer(Closeable):
         return valid
 
     def parse_path(self, path: str) -> dict[str, str]:
-        url = "http://host" + path
+        url = "https://host" + path
         parsed = {}
-        map = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
-        for key, values in map.items():
+        params = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
+        for key, values in params.items():
             for value in values:
                 parsed[key] = value
         return parsed
@@ -207,6 +215,7 @@ class ZeroconfServer(Closeable):
             self.__socket.bind((".".join(["0"] * 4), port))
             self.__socket.listen(5)
             self.__zeroconf_server = zeroconf_server
+            logging.info("Zeroconf HTTP server started successfully on port {}!".format(port))
 
         def close(self) -> None:
             pass
@@ -223,7 +232,7 @@ class ZeroconfServer(Closeable):
 
         def __handle(self, __socket: socket.socket) -> None:
             request = io.BytesIO(__socket.recv(1024 * 1024))
-            request_line = request.readline().split(b" ")
+            request_line = request.readline().strip().split(b" ")
             if len(request_line) != 3:
                 logging.warning(
                     "Unexpected request line: {}".format(request_line))
@@ -232,7 +241,7 @@ class ZeroconfServer(Closeable):
             http_version = request_line[2].decode()
             headers = {}
             while True:
-                header = request.readline()
+                header = request.readline().strip()
                 if not header:
                     break
                 split = header.split(b":")
@@ -271,6 +280,11 @@ class ZeroconfServer(Closeable):
             if action == "addUser":
                 if params is None:
                     raise RuntimeError
+                self.__zeroconf_server.handle_add_user(__socket, params, http_version)
+            elif action == "getInfo":
+                self.__zeroconf_server.handle_get_info(__socket, http_version)
+            else:
+                logging.warning("Unknown action: {}".format(action))
 
     class Inner:
         conf: typing.Final[Session.Configuration]
@@ -285,6 +299,6 @@ class ZeroconfServer(Closeable):
             self.conf = conf
             self.device_name = device_name
             self.device_id = util.random_hex_string(
-                40).lower() if device_id else device_id
+                40).lower() if not device_id else device_id
             self.device_type = device_type
             self.preferred_locale = preferred_locale

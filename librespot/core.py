@@ -27,7 +27,6 @@ import os
 import random
 import requests
 import sched
-import signal
 import socket
 import struct
 import threading
@@ -616,8 +615,6 @@ class Session(Closeable, MessageListener, SubListener):
     __user_attributes = {}
 
     def __init__(self, inner: Inner, address: str) -> None:
-        signal.signal(signal.SIGINT, lambda _1, _2: self.close())
-        signal.signal(signal.SIGTERM, lambda _1, _2: self.close())
         self.__client = Session.create_client(inner.conf)
         self.connection = Session.ConnectionHolder.create(address, None)
         self.__inner = inner
@@ -1108,9 +1105,12 @@ class Session(Closeable, MessageListener, SubListener):
             sha1 = SHA1.new()
             sha1.update(device_id.encode())
             secret = sha1.digest()
-            base_key = PBKDF2(secret.decode(), username.encode(), 20, 0x100)
-            aes = AES.new(base_key, AES.MODE_ECB)
-            decrypted_blob = aes.decrypt(encrypted_blob)
+            base_key = PBKDF2(secret, username.encode(), 20, 0x100, hmac_hash_module=SHA1)
+            sha1 = SHA1.new()
+            sha1.update(base_key)
+            key = sha1.digest() + b"\x00\x00\x00\x14"
+            aes = AES.new(key, AES.MODE_ECB)
+            decrypted_blob = bytearray(aes.decrypt(encrypted_blob))
             l = len(decrypted_blob)
             for i in range(0, l - 0x10):
                 decrypted_blob[l - i - 1] ^= decrypted_blob[l - i - 0x11]
@@ -1125,8 +1125,9 @@ class Session(Closeable, MessageListener, SubListener):
                 raise IOError(
                     TypeError(
                         "Unknown AuthenticationType: {}".format(type_int)))
-            le = self.read_blob_int(blob)
-            auth_data = blob.read(le)
+            blob.read(1)
+            l = self.read_blob_int(blob)
+            auth_data = blob.read(l)
             return Authentication.LoginCredentials(
                 auth_data=auth_data,
                 typ=type_,
