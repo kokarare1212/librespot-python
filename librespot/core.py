@@ -1105,7 +1105,11 @@ class Session(Closeable, MessageListener, SubListener):
             sha1 = SHA1.new()
             sha1.update(device_id.encode())
             secret = sha1.digest()
-            base_key = PBKDF2(secret, username.encode(), 20, 0x100, hmac_hash_module=SHA1)
+            base_key = PBKDF2(secret,
+                              username.encode(),
+                              20,
+                              0x100,
+                              hmac_hash_module=SHA1)
             sha1 = SHA1.new()
             sha1.update(base_key)
             key = sha1.digest() + b"\x00\x00\x00\x14"
