@@ -1,5 +1,5 @@
 defusedxml==0.7.1
-protobuf==3.18.0
+protobuf==3.18.1
 pycryptodomex==3.10.4
 pyogg==0.6.14a.1
 requests==2.26.0
