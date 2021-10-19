@@ -721,6 +721,8 @@ class PlayableContentFeeder:
         elif type(playable_id) is EpisodeId:
             return self.load_episode(playable_id, audio_quality_picker,
                                      preload, halt_listener)
+        else:
+            raise TypeError("Unknown content: {}".format(playable_id))
 
     def load_stream(self, file: Metadata.AudioFile, track: Metadata.Track,
                     episode: Metadata.Episode, preload: bool,
@@ -749,7 +751,7 @@ class PlayableContentFeeder:
                      halt_listener: HaltListener) -> LoadedStream:
         episode = self.__session.api().get_metadata_4_episode(episode_id)
         if episode.external_url:
-            pass
+            return CdnFeedHelper.load_episode_external(self.__session, episode, halt_listener)
         else:
             file = audio_quality_picker.get_file(episode.audio)
             if file is None:
