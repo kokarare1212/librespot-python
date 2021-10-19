@@ -751,7 +751,8 @@ class PlayableContentFeeder:
                      halt_listener: HaltListener) -> LoadedStream:
         episode = self.__session.api().get_metadata_4_episode(episode_id)
         if episode.external_url:
-            return CdnFeedHelper.load_episode_external(self.__session, episode, halt_listener)
+            return CdnFeedHelper.load_episode_external(self.__session, episode,
+                                                       halt_listener)
         else:
             file = audio_quality_picker.get_file(episode.audio)
             if file is None:
