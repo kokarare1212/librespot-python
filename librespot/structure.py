@@ -64,7 +64,7 @@ class MessageListener:
 
 class NoopAudioDecrypt(AudioDecrypt):
     def decrypt_chunk(self, chunk_index: int, buffer: bytes):
-        pass
+        return buffer
 
     def decrypt_time_ms(self):
         return 0
