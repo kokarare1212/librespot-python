@@ -426,7 +426,7 @@ class CdnManager:
                                 halt_listener: HaltListener):
         return CdnManager.Streamer(
             self.__session,
-            StreamId(episode),
+            StreamId(episode=episode),
             SuperAudioFormat.MP3,
             CdnManager.CdnUrl(self, None, external_url),
             self.__session.cache(),
@@ -438,7 +438,7 @@ class CdnManager:
                     halt_listener: HaltListener):
         return CdnManager.Streamer(
             self.__session,
-            StreamId(file),
+            StreamId(file=file),
             SuperAudioFormat.get(file.format),
             CdnManager.CdnUrl(self, file.file_id, url),
             self.__session.cache(),
