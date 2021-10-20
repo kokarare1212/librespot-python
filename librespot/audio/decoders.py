@@ -51,7 +51,7 @@ class VorbisOnlyAudioQuality(AudioQualityPicker):
     @staticmethod
     def get_vorbis_file(files: typing.List[Metadata.AudioFile]):
         for file in files:
-            if hasattr(file, "format") and SuperAudioFormat.get(
+            if file.HasField("format") and SuperAudioFormat.get(
                     file.format) == SuperAudioFormat.VORBIS:
                 return file
         return None
