@@ -777,7 +777,8 @@ class PlayableContentFeeder:
         file = audio_quality_picker.get_file(track.file)
         if file is None:
             self.logger.fatal(
-                "Couldn't find any suitable audio file, available: {}".format(track.file))
+                "Couldn't find any suitable audio file, available: {}".format(
+                    track.file))
             raise
         return self.load_stream(file, track, None, preload, halt_listener)
 
