@@ -67,7 +67,7 @@ class VorbisOnlyAudioQuality(AudioQualityPicker):
             if vorbis is not None:
                 self.logger.warning(
                     "Using {} because preferred {} couldn't be found.".format(
-                        vorbis.format, self.preferred))
+                        Metadata.AudioFile.Format.Name(vorbis.format), self.preferred))
             else:
                 self.logger.fatal(
                     "Couldn't find any Vorbis file, available: {}")
