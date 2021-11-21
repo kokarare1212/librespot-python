@@ -518,9 +518,10 @@ class EventService(Closeable):
             raise NotImplementedError
 
     class EventBuilder:
-        body = io.BytesIO()
+        body: io.BytesIO
 
         def __init__(self, event_type: EventService.Type):
+            self.body = io.BytesIO()
             self.append_no_delimiter(event_type.value[0])
             self.append(event_type.value[1])
 
@@ -580,21 +581,21 @@ class Session(Closeable, MessageListener, SubListener):
     scheduler = sched.scheduler(time.time)
     __api: ApiClient
     __ap_welcome: Authentication.APWelcome
-    __audio_key_manager: typing.Union[AudioKeyManager, None]
+    __audio_key_manager: typing.Union[AudioKeyManager, None] = None
     __auth_lock = threading.Condition()
     __auth_lock_bool = False
     __cache_manager: typing.Union[CacheManager, None]
     __cdn_manager: typing.Union[CdnManager, None]
-    __channel_manager: typing.Union[ChannelManager, None]
+    __channel_manager: typing.Union[ChannelManager, None] = None
     __client: typing.Union[requests.Session, None]
     __closed = False
     __closing = False
     __content_feeder: typing.Union[PlayableContentFeeder, None]
-    __dealer_client: typing.Union[DealerClient, None]
-    __event_service: typing.Union[EventService, None]
+    __dealer_client: typing.Union[DealerClient, None] = None
+    __event_service: typing.Union[EventService, None] = None
     __keys: DiffieHellman
     __mercury_client: MercuryClient
-    __receiver: typing.Union[Receiver, None]
+    __receiver: typing.Union[Receiver, None] = None
     __search: typing.Union[SearchManager, None]
     __server_key = b"\xac\xe0F\x0b\xff\xc20\xaf\xf4k\xfe\xc3\xbf\xbf\x86=" \
                    b"\xa1\x91\xc6\xcc3l\x93\xa1O\xb3\xb0\x16\x12\xac\xacj" \
@@ -1004,6 +1005,7 @@ class Session(Closeable, MessageListener, SubListener):
         elif packet.is_cmd(Packet.Type.auth_failure):
             ap_login_failed = Keyexchange.APLoginFailed()
             ap_login_failed.ParseFromString(packet.payload)
+            self.close()
             raise Session.SpotifyAuthenticationException(ap_login_failed)
         else:
             raise RuntimeError("Unknown CMD 0x" + packet.cmd.hex())
@@ -1056,7 +1058,10 @@ class Session(Closeable, MessageListener, SubListener):
             return self
 
     class Accumulator:
-        __buffer = io.BytesIO()
+        __buffer: io.BytesIO
+
+        def __init__(self):
+            self.__buffer = io.BytesIO()
 
         def read(self) -> bytes:
             """
@@ -1433,10 +1438,11 @@ class Session(Closeable, MessageListener, SubListener):
                 )
 
     class ConnectionHolder:
-        __buffer = io.BytesIO()
+        __buffer: io.BytesIO
         __socket: socket.socket
 
         def __init__(self, sock: socket.socket):
+            self.__buffer = io.BytesIO()
             self.__socket = sock
 
         @staticmethod

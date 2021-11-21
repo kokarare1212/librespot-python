@@ -77,13 +77,14 @@ class ChannelManager(Closeable, PacketsReceiver):
         channel_manager: ChannelManager
         chunk_id: int
         q = queue.Queue()
-        __buffer = io.BytesIO()
+        __buffer: io.BytesIO
         __chunk_index: int
         __file: AudioFile
         __header: bool = True
 
         def __init__(self, channel_manager: ChannelManager, file: AudioFile,
                      chunk_index: int):
+            self.__buffer = io.BytesIO()
             self.channel_manager = channel_manager
             self.__file = file
             self.__chunk_index = chunk_index
