@@ -16,23 +16,23 @@ class AudioQuality(enum.Enum):
     @staticmethod
     def get_quality(audio_format: AudioFile.Format) -> AudioQuality:
         if audio_format in [
-            AudioFile.MP3_96,
-            AudioFile.OGG_VORBIS_96,
-            audio_format == AudioFile.AAC_24_NORMAL,
+                AudioFile.MP3_96,
+                AudioFile.OGG_VORBIS_96,
+                audio_format == AudioFile.AAC_24_NORMAL,
         ]:
             return AudioQuality.NORMAL
         if audio_format in [
-            AudioFile.MP3_160,
-            AudioFile.MP3_160_ENC,
-            AudioFile.OGG_VORBIS_160,
-            AudioFile.AAC_24,
+                AudioFile.MP3_160,
+                AudioFile.MP3_160_ENC,
+                AudioFile.OGG_VORBIS_160,
+                AudioFile.AAC_24,
         ]:
             return AudioQuality.HIGH
         if audio_format in [
-            AudioFile.MP3_320,
-            AudioFile.MP3_256,
-            AudioFile.OGG_VORBIS_320,
-            AudioFile.AAC_48,
+                AudioFile.MP3_320,
+                AudioFile.MP3_256,
+                AudioFile.OGG_VORBIS_320,
+                AudioFile.AAC_48,
         ]:
             return AudioQuality.VERY_HIGH
         raise RuntimeError("Unknown format: {}".format(format))
