@@ -3,5 +3,5 @@ protobuf==3.19.1
 pycryptodomex==3.12.0
 pyogg==0.6.14a.1
 requests==2.26.0
-websocket-client==1.2.2
+websocket-client==1.2.3
 zeroconf==0.37.0
