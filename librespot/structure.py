@@ -29,6 +29,10 @@ class Closeable:
         raise NotImplementedError
 
 
+class FeederException(Exception):
+    pass
+
+
 class GeneralAudioStream:
     def stream(self) -> AbsChunkedInputStream:
         raise NotImplementedError

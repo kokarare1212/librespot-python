@@ -343,10 +343,11 @@ class DealerClient(Closeable):
 
     def remove_request_listener(self, listener: RequestListener) -> None:
         with self.__request_listeners_lock:
+            request_listeners = {}
             for key, value in self.__request_listeners.items():
-                if value == listener:
-                    self.__request_listeners.pop(key)
-                    break
+                if value != listener:
+                    request_listeners[key] = value
+            self.__request_listeners = request_listeners
 
     def wait_for_listener(self) -> None:
         with self.__message_listeners_lock:

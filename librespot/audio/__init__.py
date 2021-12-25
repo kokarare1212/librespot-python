@@ -7,7 +7,7 @@ from librespot.cache import CacheManager
 from librespot.crypto import Packet
 from librespot.metadata import EpisodeId, PlayableId, TrackId
 from librespot.proto import Metadata_pb2 as Metadata, StorageResolve_pb2 as StorageResolve
-from librespot.structure import AudioDecrypt, AudioQualityPicker, Closeable, GeneralAudioStream, GeneralWritableStream, HaltListener, NoopAudioDecrypt, PacketsReceiver
+from librespot.structure import AudioDecrypt, AudioQualityPicker, Closeable, FeederException, GeneralAudioStream, GeneralWritableStream, HaltListener, NoopAudioDecrypt, PacketsReceiver
 import concurrent.futures
 import io
 import logging
@@ -779,7 +779,7 @@ class PlayableContentFeeder:
             self.logger.fatal(
                 "Couldn't find any suitable audio file, available: {}".format(
                     track.file))
-            raise
+            raise FeederException()
         return self.load_stream(file, track, None, preload, halt_listener)
 
     def pick_alternative_if_necessary(
