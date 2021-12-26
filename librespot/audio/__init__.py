@@ -190,8 +190,7 @@ class AbsChunkedInputStream(io.BytesIO, HaltListener):
                 chunk += 1
         else:
             self.check_availability(chunk, True, False)
-            buffer.write(self.buffer()[chunk][chunk_off:chunk_off +
-                                              __size])
+            buffer.write(self.buffer()[chunk][chunk_off:chunk_off + __size])
         buffer.seek(0)
         self.__pos += buffer.getbuffer().nbytes
         return buffer.read()
@@ -754,10 +753,9 @@ class PlayableContentFeeder:
         file = audio_quality_picker.get_file(episode.audio)
         if file is None:
             self.logger.fatal(
-                "Couldn't find any suitable audio file, available: {}".
-                format(episode.audio))
-        return self.load_stream(file, None, episode, preload,
-                                halt_listener)
+                "Couldn't find any suitable audio file, available: {}".format(
+                    episode.audio))
+        return self.load_stream(file, None, episode, preload, halt_listener)
 
     def load_track(self, track_id_or_track: typing.Union[TrackId,
                                                          Metadata.Track],
