@@ -563,14 +563,13 @@ class MessageType(enum.Enum):
     def parse(_typ: str):
         if _typ == MessageType.MESSAGE.value:
             return MessageType.MESSAGE
-        elif _typ == MessageType.PING.value:
+        if _typ == MessageType.PING.value:
             return MessageType.PING
-        elif _typ == MessageType.PONG.value:
+        if _typ == MessageType.PONG.value:
             return MessageType.PONG
-        elif _typ == MessageType.REQUEST.value:
+        if _typ == MessageType.REQUEST.value:
             return MessageType.REQUEST
-        else:
-            raise TypeError("Unknown MessageType: {}".format(_typ))
+        raise TypeError("Unknown MessageType: {}".format(_typ))
 
 
 class Session(Closeable, MessageListener, SubListener):
