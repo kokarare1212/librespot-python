@@ -38,10 +38,9 @@ class PlayableId:
             return UnsupportedId(uri)
         if TrackId.pattern.search(uri) is not None:
             return TrackId.from_uri(uri)
-        elif EpisodeId.pattern.search(uri) is not None:
+        if EpisodeId.pattern.search(uri) is not None:
             return EpisodeId.from_uri(uri)
-        else:
-            raise TypeError("Unknown uri: {}".format(uri))
+        raise TypeError("Unknown uri: {}".format(uri))
 
     @staticmethod
     def is_supported(uri: str):
