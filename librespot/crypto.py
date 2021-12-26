@@ -168,8 +168,7 @@ class Packet:
         @staticmethod
         def parse(val: typing.Union[bytes, None]) -> typing.Union[bytes, None]:
             for cmd in [
-                    Packet.Type.__dict__[attr]
-                    for attr in Packet.Type.__dict__
+                    Packet.Type.__dict__[attr] for attr in Packet.Type.__dict__
                     if re.search("__.+?__", attr) is None
                     and type(Packet.Type.__dict__[attr]) is bytes
             ]:
