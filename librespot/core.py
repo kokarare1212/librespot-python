@@ -237,7 +237,7 @@ class DealerClient(Closeable):
     def add_message_listener(self, listener: MessageListener,
                              uris: list[str]) -> None:
         with self.__message_listeners_lock:
-            if listener in self.__message_listeners.keys():
+            if listener in self.__message_listeners:
                 raise TypeError(
                     "A listener for {} has already been added.".format(uris))
             self.__message_listeners[listener] = uris
@@ -245,7 +245,7 @@ class DealerClient(Closeable):
 
     def add_request_listener(self, listener: RequestListener, uri: str):
         with self.__request_listeners_lock:
-            if uri in self.__request_listeners.keys():
+            if uri in self.__request_listeners:
                 raise TypeError(
                     "A listener for '{}' has already been added.".format(uri))
             self.__request_listeners[uri] = listener
@@ -289,7 +289,7 @@ class DealerClient(Closeable):
             decoded_payloads = b""
         interesting = False
         with self.__message_listeners_lock:
-            for listener in self.__message_listeners.keys():
+            for listener in self.__message_listeners:
                 dispatched = False
                 keys = self.__message_listeners.get(listener)
                 for key in keys:
@@ -320,7 +320,7 @@ class DealerClient(Closeable):
             .format(mid, key, pid, sender, command))
         interesting = False
         with self.__request_listeners_lock:
-            for mid_prefix in self.__request_listeners.keys():
+            for mid_prefix in self.__request_listeners:
                 if mid.startswith(mid_prefix):
                     listener = self.__request_listeners.get(mid_prefix)
                     interesting = True
