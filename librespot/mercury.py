@@ -261,8 +261,7 @@ class MercuryClient(Closeable, PacketsReceiver):
             self.code = response.status_code
 
     class PubSubException(MercuryException):
-        def __init__(self, response: MercuryClient.Response):
-            super().__init__(response)
+        pass
 
     class Response:
         uri: str
