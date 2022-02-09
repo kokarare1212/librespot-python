@@ -33,7 +33,7 @@ For other guidelines, please see [CODE_OF_CONDUCT.md](https://github.com/kokarar
 
 ### Installation
 
-Stable Version **\*still not working.**
+Stable Version
 
 ```commandline
 pip install librespot

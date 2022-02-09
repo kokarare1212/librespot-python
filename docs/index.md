@@ -31,7 +31,7 @@ Also, please keep in mind that this library is in alpha and may behave in uninte
 ## Installation
 
 You can download this library in the following way.<br><br>
-Stable Version **\*still not working.**
+Stable Version
 
 ```commandline
 pip install librespot
