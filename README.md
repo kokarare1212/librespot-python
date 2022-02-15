@@ -65,7 +65,7 @@ session = Session.Builder() \
     .user_pass("Username", "Password") \
     .create()
 
-aceess_token = session.tokens().get("playlist-read")
+access_token = session.tokens().get("playlist-read")
 ```
 
 ### Get Music Stream
