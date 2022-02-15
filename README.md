@@ -70,7 +70,7 @@ access_token = session.tokens().get("playlist-read")
 
 ### Get Music Stream
 
-*Currently, music streaming is supported, but it may cause unintended behavior.<br>
+\*Currently, music streaming is supported, but it may cause unintended behavior.<br>
 
 ```python
 from librespot.core import Session
