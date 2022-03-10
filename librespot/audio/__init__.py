@@ -216,6 +216,7 @@ class AbsChunkedInputStream(io.BytesIO, HaltListener):
         return self.__decoded_length
 
     class ChunkException(IOError):
+
         @staticmethod
         def from_stream_error(stream_error: int):
             return AbsChunkedInputStream \
@@ -280,6 +281,7 @@ class AudioKeyManager(PacketsReceiver, Closeable):
         return key
 
     class Callback:
+
         def key(self, key: bytes) -> None:
             raise NotImplementedError
 
