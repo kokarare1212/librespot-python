@@ -18,13 +18,20 @@ from librespot.audio.format import SuperAudioFormat
 from librespot.audio.storage import ChannelManager
 from librespot.cache import CacheManager
 from librespot.crypto import Packet
-from librespot.metadata import EpisodeId, PlayableId, TrackId
+from librespot.metadata import EpisodeId
+from librespot.metadata import PlayableId
+from librespot.metadata import TrackId
 from librespot.proto import Metadata_pb2 as Metadata
 from librespot.proto import StorageResolve_pb2 as StorageResolve
-from librespot.structure import (AudioDecrypt, AudioQualityPicker, Closeable,
-                                 FeederException, GeneralAudioStream,
-                                 GeneralWritableStream, HaltListener,
-                                 NoopAudioDecrypt, PacketsReceiver)
+from librespot.structure import AudioDecrypt
+from librespot.structure import AudioQualityPicker
+from librespot.structure import Closeable
+from librespot.structure import FeederException
+from librespot.structure import GeneralAudioStream
+from librespot.structure import GeneralWritableStream
+from librespot.structure import HaltListener
+from librespot.structure import NoopAudioDecrypt
+from librespot.structure import PacketsReceiver
 
 if typing.TYPE_CHECKING:
     from librespot.core import Session
