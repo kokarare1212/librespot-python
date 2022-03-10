@@ -1,26 +1,5 @@
 from __future__ import annotations
-from librespot import util
-from librespot.audio.decrypt import AesAudioDecrypt
-from librespot.audio.format import SuperAudioFormat
-from librespot.audio.storage import ChannelManager
-from librespot.cache import CacheManager
-from librespot.crypto import Packet
-from librespot.metadata import EpisodeId, PlayableId, TrackId
-from librespot.proto import (
-    Metadata_pb2 as Metadata,
-    StorageResolve_pb2 as StorageResolve,
-)
-from librespot.structure import (
-    AudioDecrypt,
-    AudioQualityPicker,
-    Closeable,
-    FeederException,
-    GeneralAudioStream,
-    GeneralWritableStream,
-    HaltListener,
-    NoopAudioDecrypt,
-    PacketsReceiver,
-)
+
 import concurrent.futures
 import io
 import logging
@@ -32,6 +11,20 @@ import threading
 import time
 import typing
 import urllib.parse
+
+from librespot import util
+from librespot.audio.decrypt import AesAudioDecrypt
+from librespot.audio.format import SuperAudioFormat
+from librespot.audio.storage import ChannelManager
+from librespot.cache import CacheManager
+from librespot.crypto import Packet
+from librespot.metadata import EpisodeId, PlayableId, TrackId
+from librespot.proto import Metadata_pb2 as Metadata
+from librespot.proto import StorageResolve_pb2 as StorageResolve
+from librespot.structure import (AudioDecrypt, AudioQualityPicker, Closeable,
+                                 FeederException, GeneralAudioStream,
+                                 GeneralWritableStream, HaltListener,
+                                 NoopAudioDecrypt, PacketsReceiver)
 
 if typing.TYPE_CHECKING:
     from librespot.core import Session
