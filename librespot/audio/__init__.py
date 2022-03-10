@@ -177,8 +177,8 @@ class AbsChunkedInputStream(io.BytesIO, HaltListener):
         if chunk_end > self.size():
             chunk_end = int(self.size() / (128 * 1024))
             chunk_end_off = int(self.size() % (128 * 1024))
+        self.check_availability(chunk, True, False)
         if chunk_off + __size > len(self.buffer()[chunk]):
-            self.check_availability(chunk, True, False)
             buffer.write(self.buffer()[chunk][chunk_off:])
             chunk += 1
             while chunk <= chunk_end:
@@ -189,7 +189,6 @@ class AbsChunkedInputStream(io.BytesIO, HaltListener):
                     buffer.write(self.buffer()[chunk])
                 chunk += 1
         else:
-            self.check_availability(chunk, True, False)
             buffer.write(self.buffer()[chunk][chunk_off:chunk_off + __size])
         buffer.seek(0)
         self.__pos += buffer.getbuffer().nbytes
