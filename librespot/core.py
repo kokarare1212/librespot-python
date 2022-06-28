@@ -12,7 +12,7 @@ from librespot.cache import CacheManager
 from librespot.crypto import CipherPair, DiffieHellman, Packet
 from librespot.mercury import MercuryClient, MercuryRequests, RawMercuryRequest
 from librespot.metadata import AlbumId, ArtistId, EpisodeId, ShowId, TrackId
-from librespot.proto import Authentication_pb2 as Authentication, Connect_pb2 as Connect, Keyexchange_pb2 as Keyexchange, Metadata_pb2 as Metadata
+from librespot.proto import Authentication_pb2 as Authentication, ClientToken_pb2 as ClientToken, Connect_pb2 as Connect, Connectivity_pb2 as Connectivity, Keyexchange_pb2 as Keyexchange, Metadata_pb2 as Metadata
 from librespot.proto.ExplicitContentPubsub_pb2 import UserAttributesUpdate
 from librespot.structure import Closeable, MessageListener, RequestListener, SubListener
 import base64
@@ -39,6 +39,7 @@ import websocket
 class ApiClient(Closeable):
     logger = logging.getLogger("Librespot:ApiClient")
     __base_url: str
+    __client_token_str: str = None
     __session: Session
 
     def __init__(self, session: Session):
@@ -49,6 +50,11 @@ class ApiClient(Closeable):
             self, method: str, suffix: str,
             headers: typing.Union[None, typing.Dict[str, str]],
             body: typing.Union[None, bytes]) -> requests.PreparedRequest:
+        if self.__client_token_str is None:
+            resp = self.__client_token()
+            self.__client_token_str = resp.granted_token.token
+            self.logger.debug("Updated client token: {}".format(self.__client_token_str))
+
         request = requests.PreparedRequest()
         request.method = method
         request.data = body
@@ -146,6 +152,45 @@ class ApiClient(Closeable):
         proto = Metadata.Show()
         proto.ParseFromString(body)
         return proto
+
+    def set_client_token(self, client_token):
+        self.__client_token_str = client_token
+
+    def __client_token(self):
+        proto_req = ClientToken.ClientTokenRequest(
+            request_type=ClientToken.ClientTokenRequestType.REQUEST_CLIENT_DATA_REQUEST,
+            client_data=ClientToken.ClientDataRequest(
+                client_id=MercuryRequests.keymaster_client_id,
+                client_version=Version.version_name,
+                connectivity_sdk_data=Connectivity.ConnectivitySdkData(
+                    device_id=self.__session.device_id(),
+                    platform_specific_data=Connectivity.PlatformSpecificData(
+                        windows=Connectivity.NativeWindowsData(
+                            something1=10,
+                            something3=21370,
+                            something4=2,
+                            something6=9,
+                            something7=332,
+                            something8=33404,
+                            something10=True,
+                        ),
+                    ),
+                ),
+            ),
+        )
+
+        resp = requests.post("https://clienttoken.spotify.com/v1/clienttoken",
+                            proto_req.SerializeToString(),
+                            headers={
+                                "Accept": "application/x-protobuf",
+                                "Content-Encoding": "",
+                            })
+
+        ApiClient.StatusCodeException.check_status(resp)
+
+        proto_resp = ClientToken.ClientTokenResponse()
+        proto_resp.ParseFromString(resp.content)
+        return proto_resp
 
     class StatusCodeException(IOError):
         code: int
