@@ -63,6 +63,7 @@ class ApiClient(Closeable):
             request.headers = headers
         request.headers["Authorization"] = "Bearer {}".format(
             self.__session.tokens().get("playlist-read"))
+        request.headers["client-token"] = self.__client_token_str
         request.url = self.__base_url + suffix
         return request
 
