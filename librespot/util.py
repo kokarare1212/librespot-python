@@ -64,8 +64,7 @@ class Base62:
     def translate(self, indices: bytes, dictionary: bytes):
         translation = bytearray(len(indices))
         for i in range(len(indices)):
-            translation[i] = dictionary[int.from_bytes(indices[i].encode(),
-                                                       "big")]
+            translation[i] = dictionary[int.from_bytes(bytes([indices[i]]), "big")]
         return translation
 
     def convert(self, message: bytes, source_base: int, target_base: int,
