@@ -638,6 +638,10 @@ class CdnManager:
             def size(self) -> int:
                 return self.streamer.size
 
+            def close(self) -> None:
+                super().close()
+                del self.streamer.buffer
+
             def requested_chunks(self) -> typing.List[bool]:
                 return self.streamer.requested
 
