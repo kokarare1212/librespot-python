@@ -133,7 +133,7 @@ class AbsChunkedInputStream(io.BytesIO, HaltListener):
                     self.stream_read_halted(chunk, int(time.time() * 1000))
                 self.chunk_exception = None
                 self.wait_for_chunk = chunk
-                self.wait_lock.wait()
+                self.wait_lock.wait_for(lambda: self.available_chunks()[chunk])
                 if self.closed:
                     return
                 if self.chunk_exception is not None:
