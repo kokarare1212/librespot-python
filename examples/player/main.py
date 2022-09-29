@@ -124,7 +124,7 @@ def play(track_id_str: str):
         stderr=subprocess.DEVNULL,
     )
     while True:
-        byte = stream.input_stream.stream().read()
+        byte = stream.input_stream.stream().read(1)
         if byte == -1:
             return
         ffplay.stdin.write(bytes([byte]))

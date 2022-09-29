@@ -110,7 +110,7 @@ def response(client: socket.socket, uri: str, header: dict,
             if (stream.input_stream.stream().pos() >=
                     stream.input_stream.stream().size()):
                 break
-            byte = stream.input_stream.stream().read()
+            byte = stream.input_stream.stream().read(1)
             client.send(bytes([byte]))
         return "", [], b"", True
     else:
