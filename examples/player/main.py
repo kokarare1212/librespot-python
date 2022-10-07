@@ -127,7 +127,7 @@ def play(track_id_str: str):
         byte = stream.input_stream.stream().read(1)
         if byte == -1:
             return
-        ffplay.stdin.write(bytes([byte]))
+        ffplay.stdin.write(byte)
 
 
 def splash():

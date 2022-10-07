@@ -111,7 +111,7 @@ def response(client: socket.socket, uri: str, header: dict,
                     stream.input_stream.stream().size()):
                 break
             byte = stream.input_stream.stream().read(1)
-            client.send(bytes([byte]))
+            client.send(byte)
         return "", [], b"", True
     else:
         return HttpCode.http_404, [], HttpCode.http_404.encode(), False
