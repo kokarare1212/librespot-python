@@ -1518,9 +1518,12 @@ class Session(Closeable, MessageListener, SubListener):
             """
             Flush data to socket
             """
-            self.__buffer.seek(0)
-            self.__socket.send(self.__buffer.read())
-            self.__buffer = io.BytesIO()
+            try:
+                self.__buffer.seek(0)
+                self.__socket.send(self.__buffer.read())
+                self.__buffer = io.BytesIO()
+            except BrokenPipeError:
+                pass
 
         def read(self, length: int) -> bytes:
             """
@@ -1610,8 +1613,8 @@ class Session(Closeable, MessageListener, SubListener):
         def __init__(self, session):
             self.__session = session
             self.__thread = threading.Thread(target=self.run)
-            self.__thread.setDaemon(True)
-            self.__thread.setName("session-packet-receiver")
+            self.__thread.daemon = True
+            self.__thread.name = "session-packet-receiver"
             self.__thread.start()
 
         def stop(self) -> None:
