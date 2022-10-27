@@ -4,4 +4,4 @@ pycryptodomex==3.15.0
 pyogg==0.6.14a.1
 requests==2.28.1
 websocket-client==1.4.1
-zeroconf==0.39.2
+zeroconf==0.39.3
