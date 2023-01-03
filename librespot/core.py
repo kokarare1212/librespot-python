@@ -154,7 +154,7 @@ class ApiClient(Closeable):
         proto.ParseFromString(body)
         return proto
 
-    def get_playlist(self, _id: PlaylistId) -> Playlist4External.SelectedListContent:
+    def get_metadata_4_playlist(self, _id: PlaylistId) -> Playlist4External.SelectedListContent:
         response = self.send("GET",
                              "/playlist/v2/playlist/{}".format(_id.id()), None,
                              None)
