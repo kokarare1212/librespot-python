@@ -114,7 +114,7 @@ class AlbumId(SpotifyId):
         matcher = AlbumId.pattern.search(uri)
         if matcher is not None:
             album_id = matcher.group(1)
-            return AlbumId(util.bytes_to_hex(AlbumId.base62.decode(album_id.encode())))
+            return AlbumId(util.bytes_to_hex(AlbumId.base62.decode(album_id.encode(), 16)))
         raise TypeError("Not a Spotify album ID: {}.".format(uri))
 
     @staticmethod
