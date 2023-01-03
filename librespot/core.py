@@ -11,8 +11,8 @@ from librespot.audio.storage import ChannelManager
 from librespot.cache import CacheManager
 from librespot.crypto import CipherPair, DiffieHellman, Packet
 from librespot.mercury import MercuryClient, MercuryRequests, RawMercuryRequest
-from librespot.metadata import AlbumId, ArtistId, EpisodeId, ShowId, TrackId
-from librespot.proto import Authentication_pb2 as Authentication, ClientToken_pb2 as ClientToken, Connect_pb2 as Connect, Connectivity_pb2 as Connectivity, Keyexchange_pb2 as Keyexchange, Metadata_pb2 as Metadata
+from librespot.metadata import AlbumId, ArtistId, EpisodeId, ShowId, TrackId, PlaylistId
+from librespot.proto import Authentication_pb2 as Authentication, ClientToken_pb2 as ClientToken, Connect_pb2 as Connect, Connectivity_pb2 as Connectivity, Keyexchange_pb2 as Keyexchange, Metadata_pb2 as Metadata, Playlist4External_pb2 as Playlist4External
 from librespot.proto.ExplicitContentPubsub_pb2 import UserAttributesUpdate
 from librespot.structure import Closeable, MessageListener, RequestListener, SubListener
 import base64
@@ -151,6 +151,18 @@ class ApiClient(Closeable):
         if body is None:
             raise IOError()
         proto = Metadata.Show()
+        proto.ParseFromString(body)
+        return proto
+
+    def get_playlist(self, _id: PlaylistId) -> Playlist4External.SelectedListContent:
+        response = self.send("GET",
+                             "/playlist/v2/playlist/{}".format(_id.id()), None,
+                             None)
+        ApiClient.StatusCodeException.check_status(response)
+        body = response.content
+        if body is None:
+            raise IOError()
+        proto = Playlist4External.SelectedListContent()
         proto.ParseFromString(body)
         return proto
 

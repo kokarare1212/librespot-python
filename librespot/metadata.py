@@ -62,6 +62,29 @@ class PlayableId:
         raise NotImplementedError
 
 
+class PlaylistId(SpotifyId):
+    base62 = Base62.create_instance_with_inverted_character_set()
+    pattern = re.compile(r"spotify:playlist:(.{22})")
+    __id: str
+
+    def __init__(self, _id: str):
+        self.__id = _id
+
+    @staticmethod
+    def from_uri(uri: str) -> PlaylistId:
+        matcher = PlaylistId.pattern.search(uri)
+        if matcher is not None:
+            playlist_id = matcher.group(1)
+            return PlaylistId(playlist_id)
+        raise TypeError("Not a Spotify playlist ID: {}.".format(uri))
+
+    def id(self) -> str:
+        return self.__id
+
+    def to_spotify_uri(self) -> str:
+        return "spotify:playlist:" + self.__id
+
+
 class UnsupportedId(PlayableId):
     uri: str
 
