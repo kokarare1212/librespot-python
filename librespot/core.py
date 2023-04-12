@@ -1650,7 +1650,7 @@ class Session(Closeable, MessageListener, SubListener):
                             format(util.bytes_to_hex(packet.cmd),
                                    packet.payload))
                         continue
-                except RuntimeError as ex:
+                except (RuntimeError, ConnectionResetError) as ex:
                     if self.__running:
                         self.__session.logger.fatal(
                             "Failed reading packet! {}".format(ex))
