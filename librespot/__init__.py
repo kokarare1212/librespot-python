@@ -31,4 +31,4 @@ class Version:
         return BuildInfo(product=Product.PRODUCT_CLIENT,
                          product_flags=[ProductFlags.PRODUCT_FLAG_NONE],
                          platform=Version.platform(),
-                         version=112800721)
+                         version=117300517)
