@@ -16,6 +16,7 @@ from librespot.proto import Authentication_pb2 as Authentication, ClientToken_pb
 from librespot.proto.ExplicitContentPubsub_pb2 import UserAttributesUpdate
 from librespot.structure import Closeable, MessageListener, RequestListener, SubListener
 import base64
+import binascii
 import concurrent.futures
 import defusedxml.ElementTree
 import enum
@@ -670,6 +671,7 @@ class Session(Closeable, MessageListener, SubListener):
                    b"\x9dH%\xf8\xb3\x9d\xd0\xe8j\xf9HM\xa1\xc2\xba\x860B\xea" \
                    b"\x9d\xb3\x08l\x19\x0eH\xb3\x9df\xeb\x00\x06\xa2Z\xee\xa1" \
                    b"\x1b\x13\x87<\xd7\x19\xe6U\xbd"
+    __stored_str: str = ""
     __token_provider: typing.Union[TokenProvider, None]
     __user_attributes = {}
 
@@ -1005,6 +1007,9 @@ class Session(Closeable, MessageListener, SubListener):
     def username(self):
         return self.__ap_welcome.canonical_username
 
+    def stored(self):
+        return self.__stored_str
+
     def __authenticate_partial(self,
                                credential: Authentication.LoginCredentials,
                                remove_lock: bool) -> None:
@@ -1052,6 +1057,11 @@ class Session(Closeable, MessageListener, SubListener):
                 if self.__inner.conf.stored_credentials_file is None:
                     raise TypeError(
                         "The file path to be saved is not specified")
+                self.__stored_str = base64.b64encode(json.dumps({
+                    "username": self.__ap_welcome.canonical_username,
+                    "credentials": base64.b64encode(reusable).decode(),
+                    "type": reusable_type,
+                }).encode()).decode()
                 with open(self.__inner.conf.stored_credentials_file, "w") as f:
                     json.dump(
                         {
@@ -1214,11 +1224,31 @@ class Session(Closeable, MessageListener, SubListener):
             hi = buffer.read(1)
             return int(lo[0]) & 0x7f | int(hi[0]) << 7
 
-        def stored(self):
+        def stored(self, stored_credentials_str: str):
             """
-            TODO: implement function
+            Create credential from stored string
+            Args:
+                stored_credentials: credential string
+            Returns:
+                Builder
             """
-            pass
+            try:
+                obj = json.loads(base64.b64decode(stored_credentials_str))
+            except binascii.Error:
+                pass
+            except json.JSONDecodeError:
+                pass
+            else:
+                try:
+                    self.login_credentials = Authentication.LoginCredentials(
+                        typ=Authentication.AuthenticationType.Value(
+                            obj["type"]),
+                        username=obj["username"],
+                        auth_data=base64.b64decode(obj["credentials"]),
+                    )
+                except KeyError:
+                    pass
+            return self
 
         def stored_file(self,
                         stored_credentials: str = None) -> Session.Builder:
