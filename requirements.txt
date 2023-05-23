@@ -2,6 +2,6 @@ defusedxml==0.7.1
 protobuf==3.20.1
 pycryptodomex==3.18.0
 pyogg==0.6.14a.1
-requests==2.30.0
+requests==2.31.0
 websocket-client==1.5.2
 zeroconf==0.62.0
