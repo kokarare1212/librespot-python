@@ -233,6 +233,11 @@ class ApResolver:
         """
         response = requests.get("{}?type={}".format(ApResolver.base_url,
                                                     service_type))
+        if response.status_code != 200:
+            if response.status_code == 502:
+                raise RuntimeError("ApResolve request failed: maybe rate limited?")
+            else:
+                raise RuntimeError("ApResolve request failed")
         return response.json()
 
     @staticmethod
