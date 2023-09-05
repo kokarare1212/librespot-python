@@ -23,19 +23,31 @@ import requests
 import websocket
 from Cryptodome import Random
 from Cryptodome.Cipher import AES
-from Cryptodome.Hash import HMAC, SHA1
+from Cryptodome.Hash import HMAC
+from Cryptodome.Hash import SHA1
 from Cryptodome.Protocol.KDF import PBKDF2
 from Cryptodome.PublicKey import RSA
 from Cryptodome.Signature import PKCS1_v1_5
 
-from librespot import Version, util
-from librespot.audio import AudioKeyManager, CdnManager, PlayableContentFeeder
+from librespot import util
+from librespot import Version
+from librespot.audio import AudioKeyManager
+from librespot.audio import CdnManager
+from librespot.audio import PlayableContentFeeder
 from librespot.audio.storage import ChannelManager
 from librespot.cache import CacheManager
-from librespot.crypto import CipherPair, DiffieHellman, Packet
-from librespot.mercury import MercuryClient, MercuryRequests, RawMercuryRequest
-from librespot.metadata import (AlbumId, ArtistId, EpisodeId, PlaylistId,
-                                ShowId, TrackId)
+from librespot.crypto import CipherPair
+from librespot.crypto import DiffieHellman
+from librespot.crypto import Packet
+from librespot.mercury import MercuryClient
+from librespot.mercury import MercuryRequests
+from librespot.mercury import RawMercuryRequest
+from librespot.metadata import AlbumId
+from librespot.metadata import ArtistId
+from librespot.metadata import EpisodeId
+from librespot.metadata import PlaylistId
+from librespot.metadata import ShowId
+from librespot.metadata import TrackId
 from librespot.proto import Authentication_pb2 as Authentication
 from librespot.proto import ClientToken_pb2 as ClientToken
 from librespot.proto import Connect_pb2 as Connect
@@ -44,8 +56,10 @@ from librespot.proto import Keyexchange_pb2 as Keyexchange
 from librespot.proto import Metadata_pb2 as Metadata
 from librespot.proto import Playlist4External_pb2 as Playlist4External
 from librespot.proto.ExplicitContentPubsub_pb2 import UserAttributesUpdate
-from librespot.structure import (Closeable, MessageListener, RequestListener,
-                                 SubListener)
+from librespot.structure import Closeable
+from librespot.structure import MessageListener
+from librespot.structure import RequestListener
+from librespot.structure import SubListener
 
 
 class ApiClient(Closeable):
