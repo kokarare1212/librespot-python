@@ -1,32 +1,8 @@
 from __future__ import annotations
-from Cryptodome import Random
-from Cryptodome.Cipher import AES
-from Cryptodome.Hash import HMAC, SHA1
-from Cryptodome.Protocol.KDF import PBKDF2
-from Cryptodome.PublicKey import RSA
-from Cryptodome.Signature import PKCS1_v1_5
-from librespot import util, Version
-from librespot.audio import AudioKeyManager, CdnManager, PlayableContentFeeder
-from librespot.audio.storage import ChannelManager
-from librespot.cache import CacheManager
-from librespot.crypto import CipherPair, DiffieHellman, Packet
-from librespot.mercury import MercuryClient, MercuryRequests, RawMercuryRequest
-from librespot.metadata import AlbumId, ArtistId, EpisodeId, ShowId, TrackId, PlaylistId
-from librespot.proto import (
-    Authentication_pb2 as Authentication,
-    ClientToken_pb2 as ClientToken,
-    Connect_pb2 as Connect,
-    Connectivity_pb2 as Connectivity,
-    Keyexchange_pb2 as Keyexchange,
-    Metadata_pb2 as Metadata,
-    Playlist4External_pb2 as Playlist4External,
-)
-from librespot.proto.ExplicitContentPubsub_pb2 import UserAttributesUpdate
-from librespot.structure import Closeable, MessageListener, RequestListener, SubListener
+
 import base64
 import binascii
 import concurrent.futures
-import defusedxml.ElementTree
 import enum
 import gzip
 import io
@@ -34,7 +10,6 @@ import json
 import logging
 import os
 import random
-import requests
 import sched
 import socket
 import struct
@@ -42,7 +17,35 @@ import threading
 import time
 import typing
 import urllib.parse
+
+import defusedxml.ElementTree
+import requests
 import websocket
+from Cryptodome import Random
+from Cryptodome.Cipher import AES
+from Cryptodome.Hash import HMAC, SHA1
+from Cryptodome.Protocol.KDF import PBKDF2
+from Cryptodome.PublicKey import RSA
+from Cryptodome.Signature import PKCS1_v1_5
+
+from librespot import Version, util
+from librespot.audio import AudioKeyManager, CdnManager, PlayableContentFeeder
+from librespot.audio.storage import ChannelManager
+from librespot.cache import CacheManager
+from librespot.crypto import CipherPair, DiffieHellman, Packet
+from librespot.mercury import MercuryClient, MercuryRequests, RawMercuryRequest
+from librespot.metadata import (AlbumId, ArtistId, EpisodeId, PlaylistId,
+                                ShowId, TrackId)
+from librespot.proto import Authentication_pb2 as Authentication
+from librespot.proto import ClientToken_pb2 as ClientToken
+from librespot.proto import Connect_pb2 as Connect
+from librespot.proto import Connectivity_pb2 as Connectivity
+from librespot.proto import Keyexchange_pb2 as Keyexchange
+from librespot.proto import Metadata_pb2 as Metadata
+from librespot.proto import Playlist4External_pb2 as Playlist4External
+from librespot.proto.ExplicitContentPubsub_pb2 import UserAttributesUpdate
+from librespot.structure import (Closeable, MessageListener, RequestListener,
+                                 SubListener)
 
 
 class ApiClient(Closeable):
