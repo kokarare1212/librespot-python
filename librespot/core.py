@@ -54,7 +54,8 @@ class ApiClient(Closeable):
         if self.__client_token_str is None:
             resp = self.__client_token()
             self.__client_token_str = resp.granted_token.token
-            self.logger.debug("Updated client token: {}".format(self.__client_token_str))
+            self.logger.debug("Updated client token: {}".format(
+                self.__client_token_str))
 
         request = requests.PreparedRequest()
         request.method = method
@@ -194,11 +195,11 @@ class ApiClient(Closeable):
         )
 
         resp = requests.post("https://clienttoken.spotify.com/v1/clienttoken",
-                            proto_req.SerializeToString(),
-                            headers={
-                                "Accept": "application/x-protobuf",
-                                "Content-Encoding": "",
-                            })
+                             proto_req.SerializeToString(),
+                             headers={
+                                 "Accept": "application/x-protobuf",
+                                 "Content-Encoding": "",
+                             })
 
         ApiClient.StatusCodeException.check_status(resp)
 
@@ -235,7 +236,8 @@ class ApResolver:
                                                     service_type))
         if response.status_code != 200:
             if response.status_code == 502:
-                raise RuntimeError(f"ApResolve request failed with the following return value: {response.content}. Servers might be down!")
+                raise RuntimeError(
+                    f"ApResolve request failed with the following return value: {response.content}. Servers might be down!")
         return response.json()
 
     @staticmethod
