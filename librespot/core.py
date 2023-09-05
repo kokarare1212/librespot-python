@@ -82,13 +82,13 @@ class ApiClient(Closeable):
     ) -> requests.PreparedRequest:
         """
 
-        :param method: str: 
-        :param suffix: str: 
-        :param headers: typing.Union[None: 
-        :param typing.Dict[str: 
-        :param str]]: 
-        :param body: typing.Union[None: 
-        :param bytes]: 
+        :param method: str:
+        :param suffix: str:
+        :param headers: typing.Union[None:
+        :param typing.Dict[str:
+        :param str]]:
+        :param body: typing.Union[None:
+        :param bytes]:
 
         """
         if self.__client_token_str is None:
@@ -120,13 +120,13 @@ class ApiClient(Closeable):
     ) -> requests.Response:
         """
 
-        :param method: str: 
-        :param suffix: str: 
-        :param headers: typing.Union[None: 
-        :param typing.Dict[str: 
-        :param str]]: 
-        :param body: typing.Union[None: 
-        :param bytes]: 
+        :param method: str:
+        :param suffix: str:
+        :param headers: typing.Union[None:
+        :param typing.Dict[str:
+        :param str]]:
+        :param body: typing.Union[None:
+        :param bytes]:
 
         """
         response = self.__session.client().send(
@@ -139,8 +139,8 @@ class ApiClient(Closeable):
     ) -> None:
         """
 
-        :param connection_id: str: 
-        :param proto: Connect.PutStateRequest: 
+        :param connection_id: str:
+        :param proto: Connect.PutStateRequest:
 
         """
         response = self.send(
@@ -168,7 +168,7 @@ class ApiClient(Closeable):
     def get_metadata_4_track(self, track: TrackId) -> Metadata.Track:
         """
 
-        :param track: TrackId: 
+        :param track: TrackId:
 
         """
         response = self.send(
@@ -185,7 +185,7 @@ class ApiClient(Closeable):
     def get_metadata_4_episode(self, episode: EpisodeId) -> Metadata.Episode:
         """
 
-        :param episode: EpisodeId: 
+        :param episode: EpisodeId:
 
         """
         response = self.send(
@@ -202,7 +202,7 @@ class ApiClient(Closeable):
     def get_metadata_4_album(self, album: AlbumId) -> Metadata.Album:
         """
 
-        :param album: AlbumId: 
+        :param album: AlbumId:
 
         """
         response = self.send(
@@ -220,7 +220,7 @@ class ApiClient(Closeable):
     def get_metadata_4_artist(self, artist: ArtistId) -> Metadata.Artist:
         """
 
-        :param artist: ArtistId: 
+        :param artist: ArtistId:
 
         """
         response = self.send(
@@ -237,7 +237,7 @@ class ApiClient(Closeable):
     def get_metadata_4_show(self, show: ShowId) -> Metadata.Show:
         """
 
-        :param show: ShowId: 
+        :param show: ShowId:
 
         """
         response = self.send(
@@ -254,7 +254,7 @@ class ApiClient(Closeable):
     def get_playlist(self, _id: PlaylistId) -> Playlist4External.SelectedListContent:
         """
 
-        :param _id: PlaylistId: 
+        :param _id: PlaylistId:
 
         """
         response = self.send(
@@ -271,7 +271,7 @@ class ApiClient(Closeable):
     def set_client_token(self, client_token):
         """
 
-        :param client_token: 
+        :param client_token:
 
         """
         self.__client_token_str = client_token
@@ -326,7 +326,7 @@ class ApiClient(Closeable):
         def check_status(response: requests.Response) -> None:
             """
 
-            :param response: requests.Response: 
+            :param response: requests.Response:
 
             """
             if response.status_code != 200:
@@ -341,7 +341,7 @@ class ApResolver:
     def request(service_type: str) -> typing.Any:
         """Gets the specified ApResolve
 
-        :param service_type: str: 
+        :param service_type: str:
         :returns: The resulting object will be returned
 
         """
@@ -357,7 +357,7 @@ class ApResolver:
     def get_random_of(service_type: str) -> str:
         """Gets the specified random ApResolve url
 
-        :param service_type: str: 
+        :param service_type: str:
         :returns: A random ApResolve url will be returned
 
         """
@@ -417,8 +417,8 @@ class DealerClient(Closeable):
     def add_message_listener(self, listener: MessageListener, uris: list[str]) -> None:
         """
 
-        :param listener: MessageListener: 
-        :param uris: list[str]: 
+        :param listener: MessageListener:
+        :param uris: list[str]:
 
         """
         with self.__message_listeners_lock:
@@ -432,8 +432,8 @@ class DealerClient(Closeable):
     def add_request_listener(self, listener: RequestListener, uri: str):
         """
 
-        :param listener: RequestListener: 
-        :param uri: str: 
+        :param listener: RequestListener:
+        :param uri: str:
 
         """
         with self.__request_listeners_lock:
@@ -474,7 +474,7 @@ class DealerClient(Closeable):
     def handle_message(self, obj: typing.Any) -> None:
         """
 
-        :param obj: typing.Any: 
+        :param obj: typing.Any:
 
         """
         uri = obj.get("uri")
@@ -513,7 +513,7 @@ class DealerClient(Closeable):
     def handle_request(self, obj: typing.Any) -> None:
         """
 
-        :param obj: typing.Any: 
+        :param obj: typing.Any:
 
         """
         mid = obj.get("message_ident")
@@ -554,7 +554,7 @@ class DealerClient(Closeable):
     def remove_message_listener(self, listener: MessageListener) -> None:
         """
 
-        :param listener: MessageListener: 
+        :param listener: MessageListener:
 
         """
         with self.__message_listeners_lock:
@@ -563,7 +563,7 @@ class DealerClient(Closeable):
     def remove_request_listener(self, listener: RequestListener) -> None:
         """
 
-        :param listener: RequestListener: 
+        :param listener: RequestListener:
 
         """
         with self.__request_listeners_lock:
@@ -614,8 +614,8 @@ class DealerClient(Closeable):
         def on_failure(self, ws: websocket.WebSocketApp, error):
             """
 
-            :param ws: websocket.WebSocketApp: 
-            :param error: 
+            :param ws: websocket.WebSocketApp:
+            :param error:
 
             """
             if self.__closed:
@@ -628,8 +628,8 @@ class DealerClient(Closeable):
         def on_message(self, ws: websocket.WebSocketApp, text: str):
             """
 
-            :param ws: websocket.WebSocketApp: 
-            :param text: str: 
+            :param ws: websocket.WebSocketApp:
+            :param text: str:
 
             """
             obj = json.loads(text)
@@ -649,7 +649,7 @@ class DealerClient(Closeable):
         def on_open(self, ws: websocket.WebSocketApp):
             """
 
-            :param ws: websocket.WebSocketApp: 
+            :param ws: websocket.WebSocketApp:
 
             """
             if self.__closed:
@@ -691,8 +691,8 @@ class DealerClient(Closeable):
         def send_reply(self, key: str, result: DealerClient.RequestResult):
             """
 
-            :param key: str: 
-            :param result: DealerClient.RequestResult: 
+            :param key: str:
+            :param result: DealerClient.RequestResult:
 
             """
             success = (
@@ -744,8 +744,8 @@ class EventService(Closeable):
     def send_event(self, event_or_builder: typing.Union[GenericEvent, EventBuilder]):
         """
 
-        :param event_or_builder: typing.Union[GenericEvent: 
-        :param EventBuilder]: 
+        :param event_or_builder: typing.Union[GenericEvent:
+        :param EventBuilder]:
 
         """
         if type(event_or_builder) is EventService.GenericEvent:
@@ -759,7 +759,7 @@ class EventService(Closeable):
     def language(self, lang: str):
         """
 
-        :param lang: str: 
+        :param lang: str:
 
         """
         event = EventService.EventBuilder(EventService.Type.LANGUAGE)
@@ -849,7 +849,7 @@ class MessageType(enum.Enum):
     def parse(_typ: str):
         """
 
-        :param _typ: str: 
+        :param _typ: str:
 
         """
         if _typ == MessageType.MESSAGE.value:
@@ -946,7 +946,7 @@ class Session(Closeable, MessageListener, SubListener):
         """Log in to Spotify
 
         :param credential: Spotify account login information
-        :param credential: Authentication.LoginCredentials: 
+        :param credential: Authentication.LoginCredentials:
 
         """
         self.__authenticate_partial(credential, False)
@@ -1133,7 +1133,7 @@ class Session(Closeable, MessageListener, SubListener):
     def create_client(conf: Configuration) -> requests.Session:
         """
 
-        :param conf: Configuration: 
+        :param conf: Configuration:
 
         """
         client = requests.Session()
@@ -1161,7 +1161,7 @@ class Session(Closeable, MessageListener, SubListener):
     def event(self, resp: MercuryClient.Response) -> None:
         """
 
-        :param resp: MercuryClient.Response: 
+        :param resp: MercuryClient.Response:
 
         """
         if resp.uri == "spotify:user:attributes:update":
@@ -1176,7 +1176,7 @@ class Session(Closeable, MessageListener, SubListener):
     def get_user_attribute(self, key: str, fallback: str = None) -> str:
         """
 
-        :param key: str: 
+        :param key: str:
         :param fallback: str:  (Default value = None)
 
         """
@@ -1203,10 +1203,10 @@ class Session(Closeable, MessageListener, SubListener):
     def on_message(self, uri: str, headers: typing.Dict[str, str], payload: bytes):
         """
 
-        :param uri: str: 
-        :param headers: typing.Dict[str: 
-        :param str]: 
-        :param payload: bytes: 
+        :param uri: str:
+        :param headers: typing.Dict[str:
+        :param str]:
+        :param payload: bytes:
 
         """
         if uri == "hm://connect-state/v1/connect/logout":
@@ -1269,8 +1269,8 @@ class Session(Closeable, MessageListener, SubListener):
 
         :param cmd: Command
         :param payload: Payload
-        :param cmd: bytes: 
-        :param payload: bytes: 
+        :param cmd: bytes:
+        :param payload: bytes:
 
         """
         if self.__closing and self.connection is None:
@@ -1403,7 +1403,7 @@ class Session(Closeable, MessageListener, SubListener):
         def set_preferred_locale(self, locale: str) -> Session.AbsBuilder:
             """
 
-            :param locale: str: 
+            :param locale: str:
 
             """
             if len(locale) != 2:
@@ -1414,7 +1414,7 @@ class Session(Closeable, MessageListener, SubListener):
         def set_device_name(self, device_name: str) -> Session.AbsBuilder:
             """
 
-            :param device_name: str: 
+            :param device_name: str:
 
             """
             self.device_name = device_name
@@ -1423,7 +1423,7 @@ class Session(Closeable, MessageListener, SubListener):
         def set_device_id(self, device_id: str) -> Session.AbsBuilder:
             """
 
-            :param device_id: str: 
+            :param device_id: str:
 
             """
             if self.device_id is not None and len(device_id) != 40:
@@ -1436,7 +1436,7 @@ class Session(Closeable, MessageListener, SubListener):
         ) -> Session.AbsBuilder:
             """
 
-            :param device_type: Connect.DeviceType: 
+            :param device_type: Connect.DeviceType:
 
             """
             self.device_type = device_type
@@ -1466,7 +1466,7 @@ class Session(Closeable, MessageListener, SubListener):
             """Write data to buffer
 
             :param data: Bytes to be written
-            :param data: bytes: 
+            :param data: bytes:
 
             """
             self.__buffer.write(data)
@@ -1475,7 +1475,7 @@ class Session(Closeable, MessageListener, SubListener):
             """Write data to buffer
 
             :param data: Integer to be written
-            :param data: int: 
+            :param data: int:
 
             """
             self.write(struct.pack(">i", data))
@@ -1484,7 +1484,7 @@ class Session(Closeable, MessageListener, SubListener):
             """Write data to buffer
 
             :param data: Short integer to be written
-            :param data: int: 
+            :param data: int:
 
             """
             self.write(struct.pack(">h", data))
@@ -1496,8 +1496,8 @@ class Session(Closeable, MessageListener, SubListener):
         def blob(self, username: str, blob: bytes) -> Session.Builder:
             """
 
-            :param username: str: 
-            :param blob: bytes: 
+            :param username: str:
+            :param blob: bytes:
 
             """
             if self.device_id is None:
@@ -1510,9 +1510,9 @@ class Session(Closeable, MessageListener, SubListener):
         ) -> Authentication.LoginCredentials:
             """
 
-            :param device_id: str: 
-            :param username: str: 
-            :param encrypted_blob: bytes: 
+            :param device_id: str:
+            :param username: str:
+            :param encrypted_blob: bytes:
 
             """
             encrypted_blob = base64.b64decode(encrypted_blob)
@@ -1553,7 +1553,7 @@ class Session(Closeable, MessageListener, SubListener):
         def read_blob_int(self, buffer: io.BytesIO) -> int:
             """
 
-            :param buffer: io.BytesIO: 
+            :param buffer: io.BytesIO:
 
             """
             lo = buffer.read(1)
@@ -1565,7 +1565,7 @@ class Session(Closeable, MessageListener, SubListener):
         def stored(self, stored_credentials_str: str):
             """Create credential from stored string
 
-            :param stored_credentials_str: str: 
+            :param stored_credentials_str: str:
             :returns: Builder
 
             """
@@ -1616,8 +1616,8 @@ class Session(Closeable, MessageListener, SubListener):
             """Create credential from username and password
 
             :param username: Spotify's account username
-            :param username: str: 
-            :param password: str: 
+            :param username: str:
+            :param password: str:
             :returns: Builder
 
             """
@@ -1766,7 +1766,7 @@ class Session(Closeable, MessageListener, SubListener):
             ) -> Session.Configuration.Builder:
                 """Set cache_enabled
 
-                :param cache_enabled: bool: 
+                :param cache_enabled: bool:
                 :returns: Builder
 
                 """
@@ -1776,7 +1776,7 @@ class Session(Closeable, MessageListener, SubListener):
             def set_cache_dir(self, cache_dir: str) -> Session.Configuration.Builder:
                 """Set cache_dir
 
-                :param cache_dir: str: 
+                :param cache_dir: str:
                 :returns: Builder
 
                 """
@@ -1788,7 +1788,7 @@ class Session(Closeable, MessageListener, SubListener):
             ) -> Session.Configuration.Builder:
                 """Set do_cache_clean_up
 
-                :param do_cache_clean_up: bool: 
+                :param do_cache_clean_up: bool:
                 :returns: Builder
 
                 """
@@ -1800,7 +1800,7 @@ class Session(Closeable, MessageListener, SubListener):
             ) -> Session.Configuration.Builder:
                 """Set store_credentials
 
-                :param store_credentials: bool: 
+                :param store_credentials: bool:
                 :returns: Builder
 
                 """
@@ -1812,7 +1812,7 @@ class Session(Closeable, MessageListener, SubListener):
             ) -> Session.Configuration.Builder:
                 """Set stored_credential_file
 
-                :param stored_credential_file: str: 
+                :param stored_credential_file: str:
                 :returns: Builder
 
                 """
@@ -1824,7 +1824,7 @@ class Session(Closeable, MessageListener, SubListener):
             ) -> Session.Configuration.Builder:
                 """Set retry_on_chunk_error
 
-                :param retry_on_chunk_error: bool: 
+                :param retry_on_chunk_error: bool:
                 :returns: Builder
 
                 """
@@ -1868,8 +1868,8 @@ class Session(Closeable, MessageListener, SubListener):
             """Create the ConnectionHolder instance
 
             :param address: Address to connect
-            :param address: str: 
-            :param conf: 
+            :param address: str:
+            :param conf:
             :returns: ConnectionHolder instance
 
             """
@@ -1895,7 +1895,7 @@ class Session(Closeable, MessageListener, SubListener):
         def read(self, length: int) -> bytes:
             """Read data from socket
 
-            :param length: int: 
+            :param length: int:
             :returns: Bytes data from socket
 
             """
@@ -1923,7 +1923,7 @@ class Session(Closeable, MessageListener, SubListener):
             """Set socket's timeout
 
             :param seconds: Number of seconds until timeout
-            :param seconds: float: 
+            :param seconds: float:
 
             """
             self.__socket.settimeout(None if seconds == 0 else seconds)
@@ -1932,7 +1932,7 @@ class Session(Closeable, MessageListener, SubListener):
             """Write data to buffer
 
             :param data: Bytes to be written
-            :param data: bytes: 
+            :param data: bytes:
 
             """
             self.__buffer.write(data)
@@ -1941,7 +1941,7 @@ class Session(Closeable, MessageListener, SubListener):
             """Write data to buffer
 
             :param data: Integer to be written
-            :param data: int: 
+            :param data: int:
 
             """
             self.write(struct.pack(">i", data))
@@ -1950,7 +1950,7 @@ class Session(Closeable, MessageListener, SubListener):
             """Write data to buffer
 
             :param data: Short integer to be written
-            :param data: int: 
+            :param data: int:
 
             """
             self.write(struct.pack(">h", data))
@@ -2102,7 +2102,7 @@ class SearchManager:
     def request(self, request: SearchRequest) -> typing.Any:
         """
 
-        :param request: SearchRequest: 
+        :param request: SearchRequest:
 
         """
         if request.get_username() == "":
@@ -2180,7 +2180,7 @@ class SearchManager:
         def set_catalogue(self, catalogue: str) -> SearchManager.SearchRequest:
             """
 
-            :param catalogue: str: 
+            :param catalogue: str:
 
             """
             self.__catalogue = catalogue
@@ -2189,7 +2189,7 @@ class SearchManager:
         def set_country(self, country: str) -> SearchManager.SearchRequest:
             """
 
-            :param country: str: 
+            :param country: str:
 
             """
             self.__country = country
@@ -2198,7 +2198,7 @@ class SearchManager:
         def set_image_size(self, image_size: str) -> SearchManager.SearchRequest:
             """
 
-            :param image_size: str: 
+            :param image_size: str:
 
             """
             self.__image_size = image_size
@@ -2207,7 +2207,7 @@ class SearchManager:
         def set_limit(self, limit: int) -> SearchManager.SearchRequest:
             """
 
-            :param limit: int: 
+            :param limit: int:
 
             """
             self.__limit = limit
@@ -2216,7 +2216,7 @@ class SearchManager:
         def set_locale(self, locale: str) -> SearchManager.SearchRequest:
             """
 
-            :param locale: str: 
+            :param locale: str:
 
             """
             self.__locale = locale
@@ -2225,7 +2225,7 @@ class SearchManager:
         def set_username(self, username: str) -> SearchManager.SearchRequest:
             """
 
-            :param username: str: 
+            :param username: str:
 
             """
             self.__username = username
@@ -2247,7 +2247,7 @@ class TokenProvider:
     ) -> typing.Union[StoredToken, None]:
         """
 
-        :param scopes: typing.List[str]: 
+        :param scopes: typing.List[str]:
 
         """
         for token in self.__tokens:
@@ -2258,7 +2258,7 @@ class TokenProvider:
     def get(self, scope: str) -> str:
         """
 
-        :param scope: str: 
+        :param scope: str:
 
         """
         return self.get_token(scope).access_token
@@ -2266,7 +2266,7 @@ class TokenProvider:
     def get_token(self, *scopes) -> StoredToken:
         """
 
-        :param *scopes: 
+        :param *scopes:
 
         """
         scopes = list(scopes)
@@ -2317,7 +2317,7 @@ class TokenProvider:
         def has_scope(self, scope: str) -> bool:
             """
 
-            :param scope: str: 
+            :param scope: str:
 
             """
             for s in self.scopes:
@@ -2328,7 +2328,7 @@ class TokenProvider:
         def has_scopes(self, sc: typing.List[str]) -> bool:
             """
 
-            :param sc: typing.List[str]: 
+            :param sc: typing.List[str]:
 
             """
             for s in sc:
