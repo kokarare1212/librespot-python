@@ -235,9 +235,7 @@ class ApResolver:
                                                     service_type))
         if response.status_code != 200:
             if response.status_code == 502:
-                raise RuntimeError("ApResolve request failed: maybe rate limited?")
-            else:
-                raise RuntimeError("ApResolve request failed")
+                raise RuntimeError(f"ApResolve request failed with the following return value: {response.content}. Servers might be down!")
         return response.json()
 
     @staticmethod
