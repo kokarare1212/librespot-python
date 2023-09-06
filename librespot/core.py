@@ -1,24 +1,8 @@
 from __future__ import annotations
-from Cryptodome import Random
-from Cryptodome.Cipher import AES
-from Cryptodome.Hash import HMAC, SHA1
-from Cryptodome.Protocol.KDF import PBKDF2
-from Cryptodome.PublicKey import RSA
-from Cryptodome.Signature import PKCS1_v1_5
-from librespot import util, Version
-from librespot.audio import AudioKeyManager, CdnManager, PlayableContentFeeder
-from librespot.audio.storage import ChannelManager
-from librespot.cache import CacheManager
-from librespot.crypto import CipherPair, DiffieHellman, Packet
-from librespot.mercury import MercuryClient, MercuryRequests, RawMercuryRequest
-from librespot.metadata import AlbumId, ArtistId, EpisodeId, ShowId, TrackId, PlaylistId
-from librespot.proto import Authentication_pb2 as Authentication, ClientToken_pb2 as ClientToken, Connect_pb2 as Connect, Connectivity_pb2 as Connectivity, Keyexchange_pb2 as Keyexchange, Metadata_pb2 as Metadata, Playlist4External_pb2 as Playlist4External
-from librespot.proto.ExplicitContentPubsub_pb2 import UserAttributesUpdate
-from librespot.structure import Closeable, MessageListener, RequestListener, SubListener
+
 import base64
 import binascii
 import concurrent.futures
-import defusedxml.ElementTree
 import enum
 import gzip
 import io
@@ -26,7 +10,6 @@ import json
 import logging
 import os
 import random
-import requests
 import sched
 import socket
 import struct
@@ -34,10 +17,53 @@ import threading
 import time
 import typing
 import urllib.parse
+
+import defusedxml.ElementTree
+import requests
 import websocket
+from Cryptodome import Random
+from Cryptodome.Cipher import AES
+from Cryptodome.Hash import HMAC
+from Cryptodome.Hash import SHA1
+from Cryptodome.Protocol.KDF import PBKDF2
+from Cryptodome.PublicKey import RSA
+from Cryptodome.Signature import PKCS1_v1_5
+
+from librespot import util
+from librespot import Version
+from librespot.audio import AudioKeyManager
+from librespot.audio import CdnManager
+from librespot.audio import PlayableContentFeeder
+from librespot.audio.storage import ChannelManager
+from librespot.cache import CacheManager
+from librespot.crypto import CipherPair
+from librespot.crypto import DiffieHellman
+from librespot.crypto import Packet
+from librespot.mercury import MercuryClient
+from librespot.mercury import MercuryRequests
+from librespot.mercury import RawMercuryRequest
+from librespot.metadata import AlbumId
+from librespot.metadata import ArtistId
+from librespot.metadata import EpisodeId
+from librespot.metadata import PlaylistId
+from librespot.metadata import ShowId
+from librespot.metadata import TrackId
+from librespot.proto import Authentication_pb2 as Authentication
+from librespot.proto import ClientToken_pb2 as ClientToken
+from librespot.proto import Connect_pb2 as Connect
+from librespot.proto import Connectivity_pb2 as Connectivity
+from librespot.proto import Keyexchange_pb2 as Keyexchange
+from librespot.proto import Metadata_pb2 as Metadata
+from librespot.proto import Playlist4External_pb2 as Playlist4External
+from librespot.proto.ExplicitContentPubsub_pb2 import UserAttributesUpdate
+from librespot.structure import Closeable
+from librespot.structure import MessageListener
+from librespot.structure import RequestListener
+from librespot.structure import SubListener
 
 
 class ApiClient(Closeable):
+    """ """
     logger = logging.getLogger("Librespot:ApiClient")
     __base_url: str
     __client_token_str: str = None
@@ -48,13 +74,28 @@ class ApiClient(Closeable):
         self.__base_url = "https://{}".format(ApResolver.get_random_spclient())
 
     def build_request(
-            self, method: str, suffix: str,
-            headers: typing.Union[None, typing.Dict[str, str]],
-            body: typing.Union[None, bytes]) -> requests.PreparedRequest:
+        self,
+        method: str,
+        suffix: str,
+        headers: typing.Union[None, typing.Dict[str, str]],
+        body: typing.Union[None, bytes],
+    ) -> requests.PreparedRequest:
+        """
+
+        :param method: str:
+        :param suffix: str:
+        :param headers: typing.Union[None:
+        :param typing.Dict[str:
+        :param str]]:
+        :param body: typing.Union[None:
+        :param bytes]:
+
+        """
         if self.__client_token_str is None:
             resp = self.__client_token()
             self.__client_token_str = resp.granted_token.token
-            self.logger.debug("Updated client token: {}".format(self.__client_token_str))
+            self.logger.debug("Updated client token: {}".format(
+                self.__client_token_str))
 
         request = requests.PreparedRequest()
         request.method = method
@@ -68,21 +109,42 @@ class ApiClient(Closeable):
         request.url = self.__base_url + suffix
         return request
 
-    def send(self, method: str, suffix: str,
-             headers: typing.Union[None, typing.Dict[str, str]],
-             body: typing.Union[None, bytes]) -> requests.Response:
+    def send(
+        self,
+        method: str,
+        suffix: str,
+        headers: typing.Union[None, typing.Dict[str, str]],
+        body: typing.Union[None, bytes],
+    ) -> requests.Response:
+        """
+
+        :param method: str:
+        :param suffix: str:
+        :param headers: typing.Union[None:
+        :param typing.Dict[str:
+        :param str]]:
+        :param body: typing.Union[None:
+        :param bytes]:
+
+        """
         response = self.__session.client().send(
             self.build_request(method, suffix, headers, body))
         return response
 
     def put_connect_state(self, connection_id: str,
                           proto: Connect.PutStateRequest) -> None:
+        """
+
+        :param connection_id: str:
+        :param proto: Connect.PutStateRequest:
+
+        """
         response = self.send(
             "PUT",
             "/connect-state/v1/devices/{}".format(self.__session.device_id()),
             {
                 "Content-Type": "application/protobuf",
-                "X-Spotify-Connection-Id": connection_id
+                "X-Spotify-Connection-Id": connection_id,
             },
             proto.SerializeToString(),
         )
@@ -95,6 +157,11 @@ class ApiClient(Closeable):
                 response.status_code, response.headers))
 
     def get_metadata_4_track(self, track: TrackId) -> Metadata.Track:
+        """
+
+        :param track: TrackId:
+
+        """
         response = self.send("GET",
                              "/metadata/4/track/{}".format(track.hex_id()),
                              None, None)
@@ -107,6 +174,11 @@ class ApiClient(Closeable):
         return proto
 
     def get_metadata_4_episode(self, episode: EpisodeId) -> Metadata.Episode:
+        """
+
+        :param episode: EpisodeId:
+
+        """
         response = self.send("GET",
                              "/metadata/4/episode/{}".format(episode.hex_id()),
                              None, None)
@@ -119,6 +191,11 @@ class ApiClient(Closeable):
         return proto
 
     def get_metadata_4_album(self, album: AlbumId) -> Metadata.Album:
+        """
+
+        :param album: AlbumId:
+
+        """
         response = self.send("GET",
                              "/metadata/4/album/{}".format(album.hex_id()),
                              None, None)
@@ -132,6 +209,11 @@ class ApiClient(Closeable):
         return proto
 
     def get_metadata_4_artist(self, artist: ArtistId) -> Metadata.Artist:
+        """
+
+        :param artist: ArtistId:
+
+        """
         response = self.send("GET",
                              "/metadata/4/artist/{}".format(artist.hex_id()),
                              None, None)
@@ -144,6 +226,11 @@ class ApiClient(Closeable):
         return proto
 
     def get_metadata_4_show(self, show: ShowId) -> Metadata.Show:
+        """
+
+        :param show: ShowId:
+
+        """
         response = self.send("GET",
                              "/metadata/4/show/{}".format(show.hex_id()), None,
                              None)
@@ -155,7 +242,13 @@ class ApiClient(Closeable):
         proto.ParseFromString(body)
         return proto
 
-    def get_playlist(self, _id: PlaylistId) -> Playlist4External.SelectedListContent:
+    def get_playlist(self,
+                     _id: PlaylistId) -> Playlist4External.SelectedListContent:
+        """
+
+        :param _id: PlaylistId:
+
+        """
         response = self.send("GET",
                              "/playlist/v2/playlist/{}".format(_id.id()), None,
                              None)
@@ -168,11 +261,17 @@ class ApiClient(Closeable):
         return proto
 
     def set_client_token(self, client_token):
+        """
+
+        :param client_token:
+
+        """
         self.__client_token_str = client_token
 
     def __client_token(self):
         proto_req = ClientToken.ClientTokenRequest(
-            request_type=ClientToken.ClientTokenRequestType.REQUEST_CLIENT_DATA_REQUEST,
+            request_type=ClientToken.ClientTokenRequestType.
+            REQUEST_CLIENT_DATA_REQUEST,
             client_data=ClientToken.ClientDataRequest(
                 client_id=MercuryRequests.keymaster_client_id,
                 client_version=Version.version_name,
@@ -187,18 +286,19 @@ class ApiClient(Closeable):
                             something7=332,
                             something8=33404,
                             something10=True,
-                        ),
-                    ),
+                        ), ),
                 ),
             ),
         )
 
-        resp = requests.post("https://clienttoken.spotify.com/v1/clienttoken",
-                            proto_req.SerializeToString(),
-                            headers={
-                                "Accept": "application/x-protobuf",
-                                "Content-Encoding": "",
-                            })
+        resp = requests.post(
+            "https://clienttoken.spotify.com/v1/clienttoken",
+            proto_req.SerializeToString(),
+            headers={
+                "Accept": "application/x-protobuf",
+                "Content-Encoding": "",
+            },
+        )
 
         ApiClient.StatusCodeException.check_status(resp)
 
@@ -207,6 +307,7 @@ class ApiClient(Closeable):
         return proto_resp
 
     class StatusCodeException(IOError):
+        """ """
         code: int
 
         def __init__(self, response: requests.Response):
@@ -215,39 +316,43 @@ class ApiClient(Closeable):
 
         @staticmethod
         def check_status(response: requests.Response) -> None:
+            """
+
+            :param response: requests.Response:
+
+            """
             if response.status_code != 200:
                 raise ApiClient.StatusCodeException(response)
 
 
 class ApResolver:
+    """ """
     base_url = "https://apresolve.spotify.com/"
 
     @staticmethod
     def request(service_type: str) -> typing.Any:
-        """
-        Gets the specified ApResolve
-        Args:
-            service_type: Unique ID for service name
-        Returns:
-            The resulting object will be returned
+        """Gets the specified ApResolve
+
+        :param service_type: str:
+        :returns: The resulting object will be returned
+
         """
         response = requests.get("{}?type={}".format(ApResolver.base_url,
                                                     service_type))
         if response.status_code != 200:
             if response.status_code == 502:
-                raise RuntimeError("ApResolve request failed: maybe rate limited?")
-            else:
-                raise RuntimeError("ApResolve request failed")
+                raise RuntimeError(
+                    f"ApResolve request failed with the following return value: {response.content}. Servers might be down!"
+                )
         return response.json()
 
     @staticmethod
     def get_random_of(service_type: str) -> str:
-        """
-        Gets the specified random ApResolve url
-        Args:
-            service_type: Unique ID for service name
-        Returns:
-            A random ApResolve url will be returned
+        """Gets the specified random ApResolve url
+
+        :param service_type: str:
+        :returns: A random ApResolve url will be returned
+
         """
         pool = ApResolver.request(service_type)
         urls = pool.get(service_type)
@@ -257,33 +362,37 @@ class ApResolver:
 
     @staticmethod
     def get_random_dealer() -> str:
-        """
-        Get dealer endpoint url
-        Returns:
-            dealer endpoint url
+        """Get dealer endpoint url
+
+
+        :returns: dealer endpoint url
+
         """
         return ApResolver.get_random_of("dealer")
 
     @staticmethod
     def get_random_spclient() -> str:
-        """
-        Get spclient endpoint url
-        Returns:
-            spclient endpoint url
+        """Get spclient endpoint url
+
+
+        :returns: spclient endpoint url
+
         """
         return ApResolver.get_random_of("spclient")
 
     @staticmethod
     def get_random_accesspoint() -> str:
-        """
-        Get accesspoint endpoint url
-        Returns:
-            accesspoint endpoint url
+        """Get accesspoint endpoint url
+
+
+        :returns: accesspoint endpoint url
+
         """
         return ApResolver.get_random_of("accesspoint")
 
 
 class DealerClient(Closeable):
+    """ """
     logger = logging.getLogger("Librespot:DealerClient")
     __connection: typing.Union[ConnectionHolder, None]
     __last_scheduled_reconnection: typing.Union[sched.Event, None]
@@ -300,6 +409,12 @@ class DealerClient(Closeable):
 
     def add_message_listener(self, listener: MessageListener,
                              uris: list[str]) -> None:
+        """
+
+        :param listener: MessageListener:
+        :param uris: list[str]:
+
+        """
         with self.__message_listeners_lock:
             if listener in self.__message_listeners:
                 raise TypeError(
@@ -308,6 +423,12 @@ class DealerClient(Closeable):
             self.__message_listeners_lock.notify_all()
 
     def add_request_listener(self, listener: RequestListener, uri: str):
+        """
+
+        :param listener: RequestListener:
+        :param uri: str:
+
+        """
         with self.__request_listeners_lock:
             if uri in self.__request_listeners:
                 raise TypeError(
@@ -316,19 +437,27 @@ class DealerClient(Closeable):
             self.__request_listeners_lock.notify_all()
 
     def close(self) -> None:
+        """ """
         self.__worker.shutdown()
 
     def connect(self) -> None:
+        """ """
         self.__connection = DealerClient.ConnectionHolder(
-            self.__session, self, "wss://{}/?access_token={}".format(
+            self.__session,
+            self,
+            "wss://{}/?access_token={}".format(
                 ApResolver.get_random_dealer(),
-                self.__session.tokens().get("playlist-read")))
+                self.__session.tokens().get("playlist-read"),
+            ),
+        )
 
     def connection_invalided(self) -> None:
+        """ """
         self.__connection = None
         self.logger.debug("Scheduled reconnection attempt in 10 seconds...")
 
         def anonymous():
+            """ """
             self.__last_scheduled_reconnection = None
             self.connect()
 
@@ -336,6 +465,11 @@ class DealerClient(Closeable):
             10, 1, anonymous)
 
     def handle_message(self, obj: typing.Any) -> None:
+        """
+
+        :param obj: typing.Any:
+
+        """
         uri = obj.get("uri")
         headers = self.__get_headers(obj)
         payloads = obj.get("payloads")
@@ -361,6 +495,7 @@ class DealerClient(Closeable):
                         interesting = True
 
                         def anonymous():
+                            """ """
                             listener.on_message(uri, headers, decoded_payloads)
 
                         self.__worker.submit(anonymous)
@@ -369,6 +504,11 @@ class DealerClient(Closeable):
             self.logger.debug("Couldn't dispatch message: {}".format(uri))
 
     def handle_request(self, obj: typing.Any) -> None:
+        """
+
+        :param obj: typing.Any:
+
+        """
         mid = obj.get("message_ident")
         key = obj.get("key")
         headers = self.__get_headers(obj)
@@ -390,6 +530,7 @@ class DealerClient(Closeable):
                     interesting = True
 
                     def anonymous():
+                        """ """
                         result = listener.on_request(mid, pid, sender, command)
                         if self.__connection is not None:
                             self.__connection.send_reply(key, result)
@@ -402,10 +543,20 @@ class DealerClient(Closeable):
             self.logger.debug("Couldn't dispatch request: {}".format(mid))
 
     def remove_message_listener(self, listener: MessageListener) -> None:
+        """
+
+        :param listener: MessageListener:
+
+        """
         with self.__message_listeners_lock:
             self.__message_listeners.pop(listener)
 
     def remove_request_listener(self, listener: RequestListener) -> None:
+        """
+
+        :param listener: RequestListener:
+
+        """
         with self.__request_listeners_lock:
             request_listeners = {}
             for key, value in self.__request_listeners.items():
@@ -414,6 +565,7 @@ class DealerClient(Closeable):
             self.__request_listeners = request_listeners
 
     def wait_for_listener(self) -> None:
+        """ """
         with self.__message_listeners_lock:
             if self.__message_listeners == {}:
                 return
@@ -426,6 +578,7 @@ class DealerClient(Closeable):
         return headers
 
     class ConnectionHolder(Closeable):
+        """ """
         __closed = False
         __dealer_client: DealerClient
         __last_scheduled_ping: sched.Event
@@ -443,6 +596,7 @@ class DealerClient(Closeable):
             self.__ws = websocket.WebSocketApp(url)
 
         def close(self):
+            """ """
             if not self.__closed:
                 self.__ws.close()
                 self.__closed = True
@@ -450,6 +604,12 @@ class DealerClient(Closeable):
                 self.__scheduler.cancel(self.__last_scheduled_ping)
 
         def on_failure(self, ws: websocket.WebSocketApp, error):
+            """
+
+            :param ws: websocket.WebSocketApp:
+            :param error:
+
+            """
             if self.__closed:
                 return
             self.__dealer_client.logger.warning(
@@ -457,6 +617,12 @@ class DealerClient(Closeable):
             self.close()
 
         def on_message(self, ws: websocket.WebSocketApp, text: str):
+            """
+
+            :param ws: websocket.WebSocketApp:
+            :param text: str:
+
+            """
             obj = json.loads(text)
             self.__dealer_client.wait_for_listener()
             typ = MessageType.parse(obj.get("type"))
@@ -473,6 +639,11 @@ class DealerClient(Closeable):
                     typ.value))
 
         def on_open(self, ws: websocket.WebSocketApp):
+            """
+
+            :param ws: websocket.WebSocketApp:
+
+            """
             if self.__closed:
                 self.__dealer_client.logger.fatal(
                     "I wonder what happened here... Terminating. [closed: {}]".
@@ -481,10 +652,12 @@ class DealerClient(Closeable):
                 "Dealer connected! [url: {}]".format(self.__url))
 
             def anonymous():
+                """ """
                 self.send_ping()
                 self.__received_pong = False
 
                 def anonymous2():
+                    """ """
                     if self.__last_scheduled_ping is None:
                         return
                     if not self.__received_pong:
@@ -503,15 +676,24 @@ class DealerClient(Closeable):
                 30, 1, anonymous)
 
         def send_ping(self):
-            self.__ws.send("{\"type\":\"ping\"}")
+            """ """
+            self.__ws.send('{"type":"ping"}')
 
         def send_reply(self, key: str, result: DealerClient.RequestResult):
-            success = "true" if result == DealerClient.RequestResult.SUCCESS else "false"
+            """
+
+            :param key: str:
+            :param result: DealerClient.RequestResult:
+
+            """
+            success = ("true" if result == DealerClient.RequestResult.SUCCESS
+                       else "false")
             self.__ws.send(
-                "{\"type\":\"reply\",\"key\":\"%s\",\"payload\":{\"success\":%s}"
-                % (key, success))
+                '{"type":"reply","key":"%s","payload":{"success":%s}' %
+                (key, success))
 
     class RequestResult(enum.Enum):
+        """ """
         UNKNOWN_SEND_COMMAND_RESULT = 0
         SUCCESS = 1
         DEVICE_NOT_FOUND = 2
@@ -523,6 +705,7 @@ class DealerClient(Closeable):
 
 
 class EventService(Closeable):
+    """ """
     logger = logging.getLogger("Librespot:EventService")
     __session: Session
     __worker = concurrent.futures.ThreadPoolExecutor()
@@ -547,6 +730,12 @@ class EventService(Closeable):
 
     def send_event(self, event_or_builder: typing.Union[GenericEvent,
                                                         EventBuilder]):
+        """
+
+        :param event_or_builder: typing.Union[GenericEvent:
+        :param EventBuilder]:
+
+        """
         if type(event_or_builder) is EventService.GenericEvent:
             builder = event_or_builder.build()
         elif type(event_or_builder) is EventService.EventBuilder:
@@ -556,13 +745,20 @@ class EventService(Closeable):
         self.__worker.submit(lambda: self.__worker_callback(builder))
 
     def language(self, lang: str):
+        """
+
+        :param lang: str:
+
+        """
         event = EventService.EventBuilder(EventService.Type.LANGUAGE)
         event.append(s=lang)
 
     def close(self):
+        """ """
         self.__worker.shutdown()
 
     class Type(enum.Enum):
+        """ """
         LANGUAGE = ("812", 1)
         FETCHED_FILE_ID = ("274", 3)
         NEW_SESSION_ID = ("557", 3)
@@ -579,10 +775,14 @@ class EventService(Closeable):
             self.unknown = unknown
 
     class GenericEvent:
+        """ """
+
         def build(self) -> EventService.EventBuilder:
+            """ """
             raise NotImplementedError
 
     class EventBuilder:
+        """ """
         body: io.BytesIO
 
         def __init__(self, event_type: EventService.Type):
@@ -591,6 +791,11 @@ class EventService(Closeable):
             self.append(event_type.value[1])
 
         def append_no_delimiter(self, s: str = None) -> None:
+            """
+
+            :param s: str:  (Default value = None)
+
+            """
             if s is None:
                 s = ""
             self.body.write(s.encode())
@@ -598,6 +803,12 @@ class EventService(Closeable):
         def append(self,
                    c: int = None,
                    s: str = None) -> EventService.EventBuilder:
+            """
+
+            :param c: int:  (Default value = None)
+            :param s: str:  (Default value = None)
+
+            """
             if c is None and s is None or c is not None and s is not None:
                 raise TypeError()
             if c is not None:
@@ -610,6 +821,7 @@ class EventService(Closeable):
                 return self
 
         def to_array(self) -> bytes:
+            """ """
             pos = self.body.tell()
             self.body.seek(0)
             data = self.body.read()
@@ -618,6 +830,7 @@ class EventService(Closeable):
 
 
 class MessageType(enum.Enum):
+    """ """
     MESSAGE = "message"
     PING = "ping"
     PONG = "pong"
@@ -625,6 +838,11 @@ class MessageType(enum.Enum):
 
     @staticmethod
     def parse(_typ: str):
+        """
+
+        :param _typ: str:
+
+        """
         if _typ == MessageType.MESSAGE.value:
             return MessageType.MESSAGE
         if _typ == MessageType.PING.value:
@@ -637,6 +855,7 @@ class MessageType(enum.Enum):
 
 
 class Session(Closeable, MessageListener, SubListener):
+    """ """
     cipher_pair: typing.Union[CipherPair, None]
     country_code: str = "EN"
     connection: typing.Union[ConnectionHolder, None]
@@ -661,21 +880,21 @@ class Session(Closeable, MessageListener, SubListener):
     __mercury_client: MercuryClient
     __receiver: typing.Union[Receiver, None] = None
     __search: typing.Union[SearchManager, None]
-    __server_key = b"\xac\xe0F\x0b\xff\xc20\xaf\xf4k\xfe\xc3\xbf\xbf\x86=" \
-                   b"\xa1\x91\xc6\xcc3l\x93\xa1O\xb3\xb0\x16\x12\xac\xacj" \
-                   b"\xf1\x80\xe7\xf6\x14\xd9B\x9d\xbe.4fC\xe3b\xd22z\x1a" \
-                   b"\r\x92;\xae\xdd\x14\x02\xb1\x81U\x05a\x04\xd5,\x96\xa4" \
-                   b"L\x1e\xcc\x02J\xd4\xb2\x0c\x00\x1f\x17\xed\xc2/\xc45" \
-                   b"!\xc8\xf0\xcb\xae\xd2\xad\xd7+\x0f\x9d\xb3\xc52\x1a*" \
-                   b"\xfeY\xf3Z\r\xach\xf1\xfab\x1e\xfb,\x8d\x0c\xb79-\x92" \
-                   b"G\xe3\xd75\x1am\xbd$\xc2\xae%[\x88\xff\xabs)\x8a\x0b" \
-                   b"\xcc\xcd\x0cXg1\x89\xe8\xbd4\x80xJ_\xc9k\x89\x9d\x95k" \
-                   b"\xfc\x86\xd7O3\xa6x\x17\x96\xc9\xc3-\r2\xa5\xab\xcd\x05'" \
-                   b"\xe2\xf7\x10\xa3\x96\x13\xc4/\x99\xc0'\xbf\xed\x04\x9c" \
-                   b"<'X\x04\xb6\xb2\x19\xf9\xc1/\x02\xe9Hc\xec\xa1\xb6B\xa0" \
-                   b"\x9dH%\xf8\xb3\x9d\xd0\xe8j\xf9HM\xa1\xc2\xba\x860B\xea" \
-                   b"\x9d\xb3\x08l\x19\x0eH\xb3\x9df\xeb\x00\x06\xa2Z\xee\xa1" \
-                   b"\x1b\x13\x87<\xd7\x19\xe6U\xbd"
+    __server_key = (b"\xac\xe0F\x0b\xff\xc20\xaf\xf4k\xfe\xc3\xbf\xbf\x86="
+                    b"\xa1\x91\xc6\xcc3l\x93\xa1O\xb3\xb0\x16\x12\xac\xacj"
+                    b"\xf1\x80\xe7\xf6\x14\xd9B\x9d\xbe.4fC\xe3b\xd22z\x1a"
+                    b"\r\x92;\xae\xdd\x14\x02\xb1\x81U\x05a\x04\xd5,\x96\xa4"
+                    b"L\x1e\xcc\x02J\xd4\xb2\x0c\x00\x1f\x17\xed\xc2/\xc45"
+                    b"!\xc8\xf0\xcb\xae\xd2\xad\xd7+\x0f\x9d\xb3\xc52\x1a*"
+                    b"\xfeY\xf3Z\r\xach\xf1\xfab\x1e\xfb,\x8d\x0c\xb79-\x92"
+                    b"G\xe3\xd75\x1am\xbd$\xc2\xae%[\x88\xff\xabs)\x8a\x0b"
+                    b"\xcc\xcd\x0cXg1\x89\xe8\xbd4\x80xJ_\xc9k\x89\x9d\x95k"
+                    b"\xfc\x86\xd7O3\xa6x\x17\x96\xc9\xc3-\r2\xa5\xab\xcd\x05'"
+                    b"\xe2\xf7\x10\xa3\x96\x13\xc4/\x99\xc0'\xbf\xed\x04\x9c"
+                    b"<'X\x04\xb6\xb2\x19\xf9\xc1/\x02\xe9Hc\xec\xa1\xb6B\xa0"
+                    b"\x9dH%\xf8\xb3\x9d\xd0\xe8j\xf9HM\xa1\xc2\xba\x860B\xea"
+                    b"\x9d\xb3\x08l\x19\x0eH\xb3\x9df\xeb\x00\x06\xa2Z\xee\xa1"
+                    b"\x1b\x13\x87<\xd7\x19\xe6U\xbd")
     __stored_str: str = ""
     __token_provider: typing.Union[TokenProvider, None]
     __user_attributes = {}
@@ -689,18 +908,21 @@ class Session(Closeable, MessageListener, SubListener):
             inner.device_id, address))
 
     def api(self) -> ApiClient:
+        """ """
         self.__wait_auth_lock()
         if self.__api is None:
             raise RuntimeError("Session isn't authenticated!")
         return self.__api
 
     def ap_welcome(self):
+        """ """
         self.__wait_auth_lock()
         if self.__ap_welcome is None:
             raise RuntimeError("Session isn't authenticated!")
         return self.__ap_welcome
 
     def audio_key(self) -> AudioKeyManager:
+        """ """
         self.__wait_auth_lock()
         if self.__audio_key_manager is None:
             raise RuntimeError("Session isn't authenticated!")
@@ -708,10 +930,11 @@ class Session(Closeable, MessageListener, SubListener):
 
     def authenticate(self,
                      credential: Authentication.LoginCredentials) -> None:
-        """
-        Log in to Spotify
-        Args:
-            credential: Spotify account login information
+        """Log in to Spotify
+
+        :param credential: Spotify account login information
+        :param credential: Authentication.LoginCredentials:
+
         """
         self.__authenticate_partial(credential, False)
         with self.__auth_lock:
@@ -736,30 +959,32 @@ class Session(Closeable, MessageListener, SubListener):
             self, ["hm://connect-state/v1/connect/logout"])
 
     def cache(self) -> CacheManager:
+        """ """
         self.__wait_auth_lock()
         if self.__cache_manager is None:
             raise RuntimeError("Session isn't authenticated!")
         return self.__cache_manager
 
     def cdn(self) -> CdnManager:
+        """ """
         self.__wait_auth_lock()
         if self.__cdn_manager is None:
             raise RuntimeError("Session isn't authenticated!")
         return self.__cdn_manager
 
     def channel(self) -> ChannelManager:
+        """ """
         self.__wait_auth_lock()
         if self.__channel_manager is None:
             raise RuntimeError("Session isn't authenticated!")
         return self.__channel_manager
 
     def client(self) -> requests.Session:
+        """ """
         return self.__client
 
     def close(self) -> None:
-        """
-        Close instance
-        """
+        """Close instance"""
         self.logger.info("Closing session. device_id: {}".format(
             self.__inner.device_id))
         self.__closing = True
@@ -791,9 +1016,7 @@ class Session(Closeable, MessageListener, SubListener):
             self.__inner.device_id))
 
     def connect(self) -> None:
-        """
-        Connect to the Spotify Server
-        """
+        """Connect to the Spotify Server"""
         acc = Session.Accumulator()
         # Send ClientHello
         nonce = Random.get_random_bytes(0x10)
@@ -835,8 +1058,10 @@ class Session(Closeable, MessageListener, SubListener):
         sha1.update(ap_response_message_proto.challenge.login_crypto_challenge.
                     diffie_hellman.gs)
         if not pkcs1_v1_5.verify(
-                sha1, ap_response_message_proto.challenge.
-                login_crypto_challenge.diffie_hellman.gs_signature):
+                sha1,
+                ap_response_message_proto.challenge.login_crypto_challenge.
+                diffie_hellman.gs_signature,
+        ):
             raise RuntimeError("Failed signature check!")
         # Solve challenge
         buffer = io.BytesIO()
@@ -856,8 +1081,8 @@ class Session(Closeable, MessageListener, SubListener):
                     hmac=challenge)),
             pow_response=Keyexchange.PoWResponseUnion(),
         )
-        client_response_plaintext_bytes = client_response_plaintext_proto.SerializeToString(
-        )
+        client_response_plaintext_bytes = (
+            client_response_plaintext_proto.SerializeToString())
         self.connection.write_int(4 + len(client_response_plaintext_bytes))
         self.connection.write(client_response_plaintext_bytes)
         self.connection.flush()
@@ -881,6 +1106,7 @@ class Session(Closeable, MessageListener, SubListener):
         self.logger.info("Connection successfully!")
 
     def content_feeder(self) -> PlayableContentFeeder:
+        """ """
         self.__wait_auth_lock()
         if self.__content_feeder is None:
             raise RuntimeError("Session isn't authenticated!")
@@ -888,25 +1114,39 @@ class Session(Closeable, MessageListener, SubListener):
 
     @staticmethod
     def create_client(conf: Configuration) -> requests.Session:
+        """
+
+        :param conf: Configuration:
+
+        """
         client = requests.Session()
         return client
 
     def dealer(self) -> DealerClient:
+        """ """
         self.__wait_auth_lock()
         if self.__dealer_client is None:
             raise RuntimeError("Session isn't authenticated!")
         return self.__dealer_client
 
     def device_id(self) -> str:
+        """ """
         return self.__inner.device_id
 
     def device_name(self) -> str:
+        """ """
         return self.__inner.device_name
 
     def device_type(self) -> Connect.DeviceType:
+        """ """
         return self.__inner.device_type
 
     def event(self, resp: MercuryClient.Response) -> None:
+        """
+
+        :param resp: MercuryClient.Response:
+
+        """
         if resp.uri == "spotify:user:attributes:update":
             attributes_update = UserAttributesUpdate()
             attributes_update.ParseFromString(resp.payload)
@@ -916,16 +1156,24 @@ class Session(Closeable, MessageListener, SubListener):
                     pair.key, pair.value))
 
     def get_user_attribute(self, key: str, fallback: str = None) -> str:
-        return self.__user_attributes.get(key) if self.__user_attributes.get(
-            key) is not None else fallback
+        """
+
+        :param key: str:
+        :param fallback: str:  (Default value = None)
+
+        """
+        return (self.__user_attributes.get(key)
+                if self.__user_attributes.get(key) is not None else fallback)
 
     def is_valid(self) -> bool:
+        """ """
         if self.__closed:
             return False
         self.__wait_auth_lock()
         return self.__ap_welcome is not None and self.connection is not None
 
     def mercury(self) -> MercuryClient:
+        """ """
         self.__wait_auth_lock()
         if self.__mercury_client is None:
             raise RuntimeError("Session isn't authenticated!")
@@ -933,14 +1181,22 @@ class Session(Closeable, MessageListener, SubListener):
 
     def on_message(self, uri: str, headers: typing.Dict[str, str],
                    payload: bytes):
+        """
+
+        :param uri: str:
+        :param headers: typing.Dict[str:
+        :param str]:
+        :param payload: bytes:
+
+        """
         if uri == "hm://connect-state/v1/connect/logout":
             self.close()
 
     def parse_product_info(self, data) -> None:
-        """
-        Parse product information
-        Args:
-            data: Raw product information
+        """Parse product information
+
+        :param data: Raw product information
+
         """
         products = defusedxml.ElementTree.fromstring(data)
         if products is None:
@@ -954,12 +1210,11 @@ class Session(Closeable, MessageListener, SubListener):
             self.__user_attributes))
 
     def preferred_locale(self) -> str:
+        """ """
         return self.__inner.preferred_locale
 
     def reconnect(self) -> None:
-        """
-        Reconnect to the Spotify Server
-        """
+        """Reconnect to the Spotify Server"""
         if self.connection is not None:
             self.connection.close()
             self.__receiver.stop()
@@ -978,20 +1233,24 @@ class Session(Closeable, MessageListener, SubListener):
             self.__ap_welcome.canonical_username))
 
     def reconnecting(self) -> bool:
+        """ """
         return not self.__closing and not self.__closed and self.connection is None
 
     def search(self) -> SearchManager:
+        """ """
         self.__wait_auth_lock()
         if self.__search is None:
             raise RuntimeError("Session isn't authenticated!")
         return self.__search
 
     def send(self, cmd: bytes, payload: bytes):
-        """
-        Send data to socket using send_unchecked
-        Args:
-            cmd: Command
-            payload: Payload
+        """Send data to socket using send_unchecked
+
+        :param cmd: Command
+        :param payload: Payload
+        :param cmd: bytes:
+        :param payload: bytes:
+
         """
         if self.__closing and self.connection is None:
             self.logger.debug("Connection was broken while closing.")
@@ -1004,15 +1263,18 @@ class Session(Closeable, MessageListener, SubListener):
             self.__send_unchecked(cmd, payload)
 
     def tokens(self) -> TokenProvider:
+        """ """
         self.__wait_auth_lock()
         if self.__token_provider is None:
             raise RuntimeError("Session isn't authenticated!")
         return self.__token_provider
 
     def username(self):
+        """ """
         return self.__ap_welcome.canonical_username
 
     def stored(self):
+        """ """
         return self.__stored_str
 
     def __authenticate_partial(self,
@@ -1062,18 +1324,24 @@ class Session(Closeable, MessageListener, SubListener):
                 if self.__inner.conf.stored_credentials_file is None:
                     raise TypeError(
                         "The file path to be saved is not specified")
-                self.__stored_str = base64.b64encode(json.dumps({
-                    "username": self.__ap_welcome.canonical_username,
-                    "credentials": base64.b64encode(reusable).decode(),
-                    "type": reusable_type,
-                }).encode()).decode()
+                self.__stored_str = base64.b64encode(
+                    json.dumps({
+                        "username":
+                        self.__ap_welcome.canonical_username,
+                        "credentials":
+                        base64.b64encode(reusable).decode(),
+                        "type":
+                        reusable_type,
+                    }).encode()).decode()
                 with open(self.__inner.conf.stored_credentials_file, "w") as f:
                     json.dump(
                         {
                             "username": self.__ap_welcome.canonical_username,
                             "credentials": base64.b64encode(reusable).decode(),
                             "type": reusable_type,
-                        }, f)
+                        },
+                        f,
+                    )
 
         elif packet.is_cmd(Packet.Type.auth_failure):
             ap_login_failed = Keyexchange.APLoginFailed()
@@ -1097,6 +1365,7 @@ class Session(Closeable, MessageListener, SubListener):
                 self.__auth_lock.wait()
 
     class AbsBuilder:
+        """ """
         conf = None
         device_id = None
         device_name = "librespot-python"
@@ -1110,16 +1379,31 @@ class Session(Closeable, MessageListener, SubListener):
                 self.conf = conf
 
         def set_preferred_locale(self, locale: str) -> Session.AbsBuilder:
+            """
+
+            :param locale: str:
+
+            """
             if len(locale) != 2:
                 raise TypeError("Invalid locale: {}".format(locale))
             self.preferred_locale = locale
             return self
 
         def set_device_name(self, device_name: str) -> Session.AbsBuilder:
+            """
+
+            :param device_name: str:
+
+            """
             self.device_name = device_name
             return self
 
         def set_device_id(self, device_id: str) -> Session.AbsBuilder:
+            """
+
+            :param device_id: str:
+
+            """
             if self.device_id is not None and len(device_id) != 40:
                 raise TypeError("Device ID must be 40 chars long.")
             self.device_id = device_id
@@ -1127,20 +1411,27 @@ class Session(Closeable, MessageListener, SubListener):
 
         def set_device_type(
                 self, device_type: Connect.DeviceType) -> Session.AbsBuilder:
+            """
+
+            :param device_type: Connect.DeviceType:
+
+            """
             self.device_type = device_type
             return self
 
     class Accumulator:
+        """ """
         __buffer: io.BytesIO
 
         def __init__(self):
             self.__buffer = io.BytesIO()
 
         def read(self) -> bytes:
-            """
-            Read all buffer
-            Returns:
-                All buffer
+            """Read all buffer
+
+
+            :returns: All buffer
+
             """
             pos = self.__buffer.tell()
             self.__buffer.seek(0)
@@ -1149,33 +1440,43 @@ class Session(Closeable, MessageListener, SubListener):
             return data
 
         def write(self, data: bytes) -> None:
-            """
-            Write data to buffer
-            Args:
-                data: Bytes to be written
+            """Write data to buffer
+
+            :param data: Bytes to be written
+            :param data: bytes:
+
             """
             self.__buffer.write(data)
 
         def write_int(self, data: int) -> None:
-            """
-            Write data to buffer
-            Args:
-                data: Integer to be written
+            """Write data to buffer
+
+            :param data: Integer to be written
+            :param data: int:
+
             """
             self.write(struct.pack(">i", data))
 
         def write_short(self, data: int) -> None:
-            """
-            Write data to buffer
-            Args:
-                data: Short integer to be written
+            """Write data to buffer
+
+            :param data: Short integer to be written
+            :param data: int:
+
             """
             self.write(struct.pack(">h", data))
 
     class Builder(AbsBuilder):
+        """ """
         login_credentials: Authentication.LoginCredentials = None
 
         def blob(self, username: str, blob: bytes) -> Session.Builder:
+            """
+
+            :param username: str:
+            :param blob: bytes:
+
+            """
             if self.device_id is None:
                 raise TypeError("You must specify the device ID first.")
             self.login_credentials = self.decrypt_blob(self.device_id,
@@ -1185,6 +1486,13 @@ class Session(Closeable, MessageListener, SubListener):
         def decrypt_blob(
                 self, device_id: str, username: str,
                 encrypted_blob: bytes) -> Authentication.LoginCredentials:
+            """
+
+            :param device_id: str:
+            :param username: str:
+            :param encrypted_blob: bytes:
+
+            """
             encrypted_blob = base64.b64decode(encrypted_blob)
             sha1 = SHA1.new()
             sha1.update(device_id.encode())
@@ -1223,19 +1531,23 @@ class Session(Closeable, MessageListener, SubListener):
             )
 
         def read_blob_int(self, buffer: io.BytesIO) -> int:
+            """
+
+            :param buffer: io.BytesIO:
+
+            """
             lo = buffer.read(1)
             if (int(lo[0]) & 0x80) == 0:
                 return int(lo[0])
             hi = buffer.read(1)
-            return int(lo[0]) & 0x7f | int(hi[0]) << 7
+            return int(lo[0]) & 0x7F | int(hi[0]) << 7
 
         def stored(self, stored_credentials_str: str):
-            """
-            Create credential from stored string
-            Args:
-                stored_credentials: credential string
-            Returns:
-                Builder
+            """Create credential from stored string
+
+            :param stored_credentials_str: str:
+            :returns: Builder
+
             """
             try:
                 obj = json.loads(base64.b64decode(stored_credentials_str))
@@ -1257,12 +1569,11 @@ class Session(Closeable, MessageListener, SubListener):
 
         def stored_file(self,
                         stored_credentials: str = None) -> Session.Builder:
-            """
-            Create credential from stored file
-            Args:
-                stored_credentials: credential file path
-            Returns:
-                Builder
+            """Create credential from stored file
+
+            :param stored_credentials: str:  (Default value = None)
+            :returns: Builder
+
             """
             if stored_credentials is None:
                 stored_credentials = self.conf.stored_credentials_file
@@ -1285,13 +1596,13 @@ class Session(Closeable, MessageListener, SubListener):
             return self
 
         def user_pass(self, username: str, password: str) -> Session.Builder:
-            """
-            Create credential from username and password
-            Args:
-                username: Spotify's account username
-                password: Spotify's account password
-            Returns:
-                Builder
+            """Create credential from username and password
+
+            :param username: Spotify's account username
+            :param username: str:
+            :param password: str:
+            :returns: Builder
+
             """
             self.login_credentials = Authentication.LoginCredentials(
                 username=username,
@@ -1301,10 +1612,11 @@ class Session(Closeable, MessageListener, SubListener):
             return self
 
         def create(self) -> Session:
-            """
-            Create the Session instance
-            Returns:
-                Session instance
+            """Create the Session instance
+
+
+            :returns: Session instance
+
             """
             if self.login_credentials is None:
                 raise RuntimeError("You must select an authentication method.")
@@ -1323,6 +1635,7 @@ class Session(Closeable, MessageListener, SubListener):
             return session
 
     class Configuration:
+        """ """
         # Proxy
         # proxyEnabled: bool
         # proxyType: Proxy.Type
@@ -1375,6 +1688,7 @@ class Session(Closeable, MessageListener, SubListener):
             self.retry_on_chunk_error = retry_on_chunk_error
 
         class Builder:
+            """ """
             # Proxy
             # proxyEnabled: bool = False
             # proxyType: Proxy.Type = Proxy.Type.DIRECT
@@ -1434,24 +1748,22 @@ class Session(Closeable, MessageListener, SubListener):
             def set_cache_enabled(
                     self,
                     cache_enabled: bool) -> Session.Configuration.Builder:
-                """
-                Set cache_enabled
-                Args:
-                    cache_enabled: Cache enabled
-                Returns:
-                    Builder
+                """Set cache_enabled
+
+                :param cache_enabled: bool:
+                :returns: Builder
+
                 """
                 self.cache_enabled = cache_enabled
                 return self
 
             def set_cache_dir(self,
                               cache_dir: str) -> Session.Configuration.Builder:
-                """
-                Set cache_dir
-                Args:
-                    cache_dir: Cache directory
-                Returns:
-                    Builder
+                """Set cache_dir
+
+                :param cache_dir: str:
+                :returns: Builder
+
                 """
                 self.cache_dir = cache_dir
                 return self
@@ -1459,12 +1771,11 @@ class Session(Closeable, MessageListener, SubListener):
             def set_do_cache_clean_up(
                     self,
                     do_cache_clean_up: bool) -> Session.Configuration.Builder:
-                """
-                Set do_cache_clean_up
-                Args:
-                    do_cache_clean_up: Do cache clean up
-                Returns:
-                    Builder
+                """Set do_cache_clean_up
+
+                :param do_cache_clean_up: bool:
+                :returns: Builder
+
                 """
                 self.do_cache_clean_up = do_cache_clean_up
                 return self
@@ -1472,12 +1783,11 @@ class Session(Closeable, MessageListener, SubListener):
             def set_store_credentials(
                     self,
                     store_credentials: bool) -> Session.Configuration.Builder:
-                """
-                Set store_credentials
-                Args:
-                    store_credentials: Store credentials
-                Returns:
-                    Builder
+                """Set store_credentials
+
+                :param store_credentials: bool:
+                :returns: Builder
+
                 """
                 self.store_credentials = store_credentials
                 return self
@@ -1485,12 +1795,11 @@ class Session(Closeable, MessageListener, SubListener):
             def set_stored_credential_file(
                     self, stored_credential_file: str
             ) -> Session.Configuration.Builder:
-                """
-                Set stored_credential_file
-                Args:
-                    stored_credential_file: Stored credential file
-                Returns:
-                    Builder
+                """Set stored_credential_file
+
+                :param stored_credential_file: str:
+                :returns: Builder
+
                 """
                 self.stored_credentials_file = stored_credential_file
                 return self
@@ -1498,21 +1807,21 @@ class Session(Closeable, MessageListener, SubListener):
             def set_retry_on_chunk_error(
                     self, retry_on_chunk_error: bool
             ) -> Session.Configuration.Builder:
-                """
-                Set retry_on_chunk_error
-                Args:
-                    retry_on_chunk_error: Retry on chunk error
-                Returns:
-                    Builder
+                """Set retry_on_chunk_error
+
+                :param retry_on_chunk_error: bool:
+                :returns: Builder
+
                 """
                 self.retry_on_chunk_error = retry_on_chunk_error
                 return self
 
             def build(self) -> Session.Configuration:
-                """
-                Build Configuration instance
-                Returns:
-                    Session.Configuration
+                """Build Configuration instance
+
+
+                :returns: Session.Configuration
+
                 """
                 return Session.Configuration(
                     # self.proxyEnabled,
@@ -1531,6 +1840,7 @@ class Session(Closeable, MessageListener, SubListener):
                 )
 
     class ConnectionHolder:
+        """ """
         __buffer: io.BytesIO
         __socket: socket.socket
 
@@ -1539,15 +1849,14 @@ class Session(Closeable, MessageListener, SubListener):
             self.__socket = sock
 
         @staticmethod
-        def create(address: str, conf) \
-                -> Session.ConnectionHolder:
-            """
-            Create the ConnectionHolder instance
-            Args:
-                address: Address to connect
-                conf: Configuration
-            Returns:
-                ConnectionHolder instance
+        def create(address: str, conf) -> Session.ConnectionHolder:
+            """Create the ConnectionHolder instance
+
+            :param address: Address to connect
+            :param address: str:
+            :param conf:
+            :returns: ConnectionHolder instance
+
             """
             ap_address = address.split(":")[0]
             ap_port = int(address.split(":")[1])
@@ -1556,15 +1865,11 @@ class Session(Closeable, MessageListener, SubListener):
             return Session.ConnectionHolder(sock)
 
         def close(self) -> None:
-            """
-            Close the connection
-            """
+            """Close the connection"""
             self.__socket.close()
 
         def flush(self) -> None:
-            """
-            Flush data to socket
-            """
+            """Flush data to socket"""
             try:
                 self.__buffer.seek(0)
                 self.__socket.send(self.__buffer.read())
@@ -1573,64 +1878,70 @@ class Session(Closeable, MessageListener, SubListener):
                 pass
 
         def read(self, length: int) -> bytes:
-            """
-            Read data from socket
-            Args:
-                length: Reading length
-            Returns:
-                Bytes data from socket
+            """Read data from socket
+
+            :param length: int:
+            :returns: Bytes data from socket
+
             """
             return self.__socket.recv(length)
 
         def read_int(self) -> int:
-            """
-            Read integer from socket
-            Returns:
-                integer from socket
+            """Read integer from socket
+
+
+            :returns: integer from socket
+
             """
             return struct.unpack(">i", self.read(4))[0]
 
         def read_short(self) -> int:
-            """
-            Read short integer from socket
-            Returns:
-                short integer from socket
+            """Read short integer from socket
+
+
+            :returns: short integer from socket
+
             """
             return struct.unpack(">h", self.read(2))[0]
 
         def set_timeout(self, seconds: float) -> None:
-            """
-            Set socket's timeout
-            Args:
-                seconds: Number of seconds until timeout
+            """Set socket's timeout
+
+            :param seconds: Number of seconds until timeout
+            :param seconds: float:
+
             """
             self.__socket.settimeout(None if seconds == 0 else seconds)
 
         def write(self, data: bytes) -> None:
-            """
-            Write data to buffer
-            Args:
-                data: Bytes to be written
+            """Write data to buffer
+
+            :param data: Bytes to be written
+            :param data: bytes:
+
             """
             self.__buffer.write(data)
 
         def write_int(self, data: int) -> None:
-            """
-            Write data to buffer
-            Args:
-                data: Integer to be written
+            """Write data to buffer
+
+            :param data: Integer to be written
+            :param data: int:
+
             """
             self.write(struct.pack(">i", data))
 
         def write_short(self, data: int) -> None:
-            """
-            Write data to buffer
-            Args:
-                data: Short integer to be written
+            """Write data to buffer
+
+            :param data: Short integer to be written
+            :param data: int:
+
             """
             self.write(struct.pack(">h", data))
 
     class Inner:
+        """ """
         device_type: Connect.DeviceType = None
         device_name: str
         device_id: str
@@ -1653,6 +1964,7 @@ class Session(Closeable, MessageListener, SubListener):
                               util.random_hex_string(40))
 
     class Receiver:
+        """ """
         __session: Session
         __thread: threading.Thread
         __running: bool = True
@@ -1665,12 +1977,11 @@ class Session(Closeable, MessageListener, SubListener):
             self.__thread.start()
 
         def stop(self) -> None:
+            """ """
             self.__running = False
 
         def run(self) -> None:
-            """
-            Receive Packet thread function
-            """
+            """Receive Packet thread function"""
             self.__session.logger.info("Session.Receiver started")
             while self.__running:
                 packet: Packet
@@ -1699,6 +2010,7 @@ class Session(Closeable, MessageListener, SubListener):
                             self.__session.scheduled_reconnect)
 
                     def anonymous():
+                        """ """
                         self.__session.logger.warning(
                             "Socket timed out. Reconnecting...")
                         self.__session.reconnect()
@@ -1729,8 +2041,10 @@ class Session(Closeable, MessageListener, SubListener):
                     self.__session.logger.debug("Received 0x10: {}".format(
                         util.bytes_to_hex(packet.payload)))
                 elif cmd in [
-                        Packet.Type.mercury_sub, Packet.Type.mercury_unsub,
-                        Packet.Type.mercury_event, Packet.Type.mercury_req
+                        Packet.Type.mercury_sub,
+                        Packet.Type.mercury_unsub,
+                        Packet.Type.mercury_event,
+                        Packet.Type.mercury_req,
                 ]:
                     self.__session.mercury().dispatch(packet)
                 elif cmd in [Packet.Type.aes_key, Packet.Type.aes_key_error]:
@@ -1746,12 +2060,15 @@ class Session(Closeable, MessageListener, SubListener):
                         util.bytes_to_hex(cmd)))
 
     class SpotifyAuthenticationException(Exception):
+        """ """
+
         def __init__(self, login_failed: Keyexchange.APLoginFailed):
             super().__init__(
                 Keyexchange.ErrorCode.Name(login_failed.error_code))
 
 
 class SearchManager:
+    """ """
     base_url = "hm://searchview/km/v4/search/"
     __session: Session
 
@@ -1759,6 +2076,11 @@ class SearchManager:
         self.__session = session
 
     def request(self, request: SearchRequest) -> typing.Any:
+        """
+
+        :param request: SearchRequest:
+
+        """
         if request.get_username() == "":
             request.set_username(self.__session.username())
         if request.get_country() == "":
@@ -1773,10 +2095,13 @@ class SearchManager:
         return json.loads(response.payload)
 
     class SearchException(Exception):
+        """ """
+
         def __init__(self, status_code: int):
             super().__init__("Search failed with code {}.".format(status_code))
 
     class SearchRequest:
+        """ """
         query: typing.Final[str]
         __catalogue = ""
         __country = ""
@@ -1791,6 +2116,7 @@ class SearchManager:
                 raise TypeError
 
         def build_url(self) -> str:
+            """ """
             url = SearchManager.base_url + urllib.parse.quote(self.query)
             url += "?entityVersion=2"
             url += "&catalogue=" + urllib.parse.quote(self.__catalogue)
@@ -1802,50 +2128,87 @@ class SearchManager:
             return url
 
         def get_catalogue(self) -> str:
+            """ """
             return self.__catalogue
 
         def get_country(self) -> str:
+            """ """
             return self.__country
 
         def get_image_size(self) -> str:
+            """ """
             return self.__image_size
 
         def get_limit(self) -> int:
+            """ """
             return self.__limit
 
         def get_locale(self) -> str:
+            """ """
             return self.__locale
 
         def get_username(self) -> str:
+            """ """
             return self.__username
 
         def set_catalogue(self, catalogue: str) -> SearchManager.SearchRequest:
+            """
+
+            :param catalogue: str:
+
+            """
             self.__catalogue = catalogue
             return self
 
         def set_country(self, country: str) -> SearchManager.SearchRequest:
+            """
+
+            :param country: str:
+
+            """
             self.__country = country
             return self
 
         def set_image_size(self,
                            image_size: str) -> SearchManager.SearchRequest:
+            """
+
+            :param image_size: str:
+
+            """
             self.__image_size = image_size
             return self
 
         def set_limit(self, limit: int) -> SearchManager.SearchRequest:
+            """
+
+            :param limit: int:
+
+            """
             self.__limit = limit
             return self
 
         def set_locale(self, locale: str) -> SearchManager.SearchRequest:
+            """
+
+            :param locale: str:
+
+            """
             self.__locale = locale
             return self
 
         def set_username(self, username: str) -> SearchManager.SearchRequest:
+            """
+
+            :param username: str:
+
+            """
             self.__username = username
             return self
 
 
 class TokenProvider:
+    """ """
     logger = logging.getLogger("Librespot:TokenProvider")
     token_expire_threshold = 10
     __session: Session
@@ -1856,15 +2219,30 @@ class TokenProvider:
 
     def find_token_with_all_scopes(
             self, scopes: typing.List[str]) -> typing.Union[StoredToken, None]:
+        """
+
+        :param scopes: typing.List[str]:
+
+        """
         for token in self.__tokens:
             if token.has_scopes(scopes):
                 return token
         return None
 
     def get(self, scope: str) -> str:
+        """
+
+        :param scope: str:
+
+        """
         return self.get_token(scope).access_token
 
     def get_token(self, *scopes) -> StoredToken:
+        """
+
+        :param *scopes:
+
+        """
         scopes = list(scopes)
         if len(scopes) == 0:
             raise RuntimeError("The token doesn't have any scope")
@@ -1888,6 +2266,7 @@ class TokenProvider:
         return token
 
     class StoredToken:
+        """ """
         expires_in: int
         access_token: str
         scopes: typing.List[str]
@@ -1900,18 +2279,28 @@ class TokenProvider:
             self.scopes = obj["scope"]
 
         def expired(self) -> bool:
-            return (
-                self.timestamp +
-                (self.expires_in - TokenProvider.token_expire_threshold) * 1000
-                < int(time.time_ns() / 1000))
+            """ """
+            return self.timestamp + (self.expires_in - TokenProvider.
+                                     token_expire_threshold) * 1000 < int(
+                                         time.time_ns() / 1000)
 
         def has_scope(self, scope: str) -> bool:
+            """
+
+            :param scope: str:
+
+            """
             for s in self.scopes:
                 if s == scope:
                     return True
             return False
 
         def has_scopes(self, sc: typing.List[str]) -> bool:
+            """
+
+            :param sc: typing.List[str]:
+
+            """
             for s in sc:
                 if not self.has_scope(s):
                     return False
