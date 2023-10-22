@@ -503,6 +503,11 @@ class CdnManager:
                     token_str = str(token_list[0])
                 except TypeError:
                     token_str = ""
+                expires_list = token_query.get("Expires")
+                try:
+                    expires_str = str(expires_list[0])
+                except TypeError:
+                    expires_str = ""
                 if token_str != "None" and len(token_str) != 0:
                     expire_at = None
                     split = token_str.split("~")
@@ -520,6 +525,15 @@ class CdnManager:
                             "Invalid __token__ in CDN url: {}".format(url))
                         return
                     self.__expiration = expire_at * 1000
+                elif expires_str != "None" and len(expires_str) != 0:
+                    expires_at = None
+                    expires_str = expires_str.split("~")[0]
+                    expires_at = int(expires_str)
+                    if expires_at is None:
+                        self.__expiration = -1
+                        self.__cdn_manager.logger.warning("Invalid Expires param in CDN url: {}".format(url))
+                        return
+                    self.__expiration = expires_at * 1000
                 else:
                     try:
                         i = token_url.query.index("_")
