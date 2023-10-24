@@ -7,7 +7,8 @@ from librespot.cache import CacheManager
 from librespot.crypto import Packet
 from librespot.metadata import EpisodeId, PlayableId, TrackId
 from librespot.proto import Metadata_pb2 as Metadata, StorageResolve_pb2 as StorageResolve
-from librespot.structure import AudioDecrypt, AudioQualityPicker, Closeable, FeederException, GeneralAudioStream, GeneralWritableStream, HaltListener, NoopAudioDecrypt, PacketsReceiver
+from librespot.structure import AudioDecrypt, AudioQualityPicker, Closeable, FeederException, GeneralAudioStream, \
+    GeneralWritableStream, HaltListener, NoopAudioDecrypt, PacketsReceiver
 import concurrent.futures
 import io
 import logging
@@ -19,6 +20,11 @@ import threading
 import time
 import typing
 import urllib.parse
+import re
+import urllib3
+
+# Suppress InsecureRequestWarning, we don't care about SSL verification
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 if typing.TYPE_CHECKING:
     from librespot.core import Session
@@ -325,7 +331,7 @@ class CdnFeedHelper:
     def load_track(
             session: Session, track: Metadata.Track, file: Metadata.AudioFile,
             resp_or_url: typing.Union[StorageResolve.StorageResolveResponse,
-                                      str], preload: bool,
+            str], preload: bool,
             halt_listener: HaltListener) -> PlayableContentFeeder.LoadedStream:
         if type(resp_or_url) is str:
             url = resp_or_url
@@ -373,12 +379,12 @@ class CdnFeedHelper:
 
     @staticmethod
     def load_episode(
-        session: Session,
-        episode: Metadata.Episode,
-        file: Metadata.AudioFile,
-        resp_or_url: typing.Union[StorageResolve.StorageResolveResponse, str],
-        preload: bool,
-        halt_listener: HaltListener,
+            session: Session,
+            episode: Metadata.Episode,
+            file: Metadata.AudioFile,
+            resp_or_url: typing.Union[StorageResolve.StorageResolveResponse, str],
+            preload: bool,
+            halt_listener: HaltListener,
     ) -> PlayableContentFeeder.LoadedStream:
         if type(resp_or_url) is str:
             url = resp_or_url
@@ -411,7 +417,7 @@ class CdnManager:
 
     def get_head(self, file_id: bytes):
         response = self.__session.client() \
-                .get(self.__session.get_user_attribute("head-files-url", "https://heads-fa.spotify.com/head/{file_id}")
+            .get(self.__session.get_user_attribute("head-files-url", "https://heads-fa.spotify.com/head/{file_id}")
                  .replace("{file_id}", util.bytes_to_hex(file_id)))
         if response.status_code != 200:
             raise IOError(f"{response.status_code}")
@@ -546,7 +552,10 @@ class CdnManager:
                             f"Couldn't extract expiration, invalid parameter in CDN url: {url}"
                         )
                         return
-                    self.__expiration = int(token_url.query[:i]) * 1000
+                    try:
+                        self.__expiration = int(token_url.query[:i]) * 1000
+                    except:
+                        self.__expiration = int(re.search(r'\d{10}', token_url.query[:i]).group(0)) * 1000
 
             else:
                 self.__expiration = -1
@@ -622,7 +631,8 @@ class CdnManager:
             response = self.request(index)
             self.write_chunk(response.buffer, index, False)
 
-        def request(self, chunk: int = None, range_start: int = None, range_end: int = None) -> CdnManager.InternalResponse:
+        def request(self, chunk: int = None, range_start: int = None,
+                    range_end: int = None) -> CdnManager.InternalResponse:
             if chunk is None and range_start is None and range_end is None:
                 raise TypeError()
             if chunk is not None:
@@ -671,7 +681,7 @@ class CdnManager:
 
             def stream_read_halted(self, chunk: int, _time: int) -> None:
                 if self.streamer.halt_listener is not None:
-                    self.streamer.executor_service\
+                    self.streamer.executor_service \
                         .submit(lambda: self.streamer.halt_listener.stream_read_halted(chunk, _time))
 
             def stream_read_resumed(self, chunk: int, _time: int) -> None:
@@ -776,7 +786,7 @@ class PlayableContentFeeder:
         return self.load_stream(file, None, episode, preload, halt_listener)
 
     def load_track(self, track_id_or_track: typing.Union[TrackId,
-                                                         Metadata.Track],
+    Metadata.Track],
                    audio_quality_picker: AudioQualityPicker, preload: bool,
                    halt_listener: HaltListener):
         if type(track_id_or_track) is TrackId:
@@ -835,7 +845,7 @@ class PlayableContentFeeder:
             "GET",
             (self.storage_resolve_interactive_prefetch
              if preload else self.storage_resolve_interactive).format(
-                 util.bytes_to_hex(file_id)),
+                util.bytes_to_hex(file_id)),
             None,
             None,
         )
@@ -856,7 +866,7 @@ class PlayableContentFeeder:
         metrics: PlayableContentFeeder.Metrics
 
         def __init__(self, track_or_episode: typing.Union[Metadata.Track,
-                                                          Metadata.Episode],
+        Metadata.Episode],
                      input_stream: GeneralAudioStream,
                      normalization_data: typing.Union[NormalizationData, None],
                      metrics: PlayableContentFeeder.Metrics):
