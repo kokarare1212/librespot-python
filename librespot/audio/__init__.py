@@ -545,18 +545,15 @@ class CdnManager:
                     self.__expiration = expires_at * 1000
                 else:
                     try:
-                        i = token_url.query.index("_")
+                        self.__expiration = int(re.search(r'16\d{8}', token_url.query).group(0)) * 1000
+                        return
                     except ValueError:
                         self.__expiration = -1
                         self.__cdn_manager.logger.warning(
                             f"Couldn't extract expiration, invalid parameter in CDN url: {url}"
                         )
                         return
-                    try:
-                        self.__expiration = int(token_url.query[:i]) * 1000
-                    except:
-                        self.__expiration = int(re.search(r'\d{10}', token_url.query[:i]).group(0)) * 1000
-
+                    
             else:
                 self.__expiration = -1
 
