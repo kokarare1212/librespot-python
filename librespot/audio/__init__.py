@@ -553,7 +553,7 @@ class CdnManager:
                             f"Couldn't extract expiration, invalid parameter in CDN url: {url}"
                         )
                         return
-                    
+
             else:
                 self.__expiration = -1
 
