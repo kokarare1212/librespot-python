@@ -28,9 +28,9 @@ def client():
         splash()
         cmd = input("Player >>> ")
         args = cmd.split(" ")
-        if args[0] == "exit" or args[0] == "quit":
+        if args[0] in ["exit", "quit"]:
             return
-        if (args[0] == "p" or args[0] == "play") and len(args) == 2:
+        if args[0] in ["p", "play"] and len(args) == 2:
             track_uri_search = re.search(
                 r"^spotify:track:(?P<TrackID>[0-9a-zA-Z]{22})$", args[1])
             track_url_search = re.search(
@@ -43,44 +43,37 @@ def client():
                                 track_url_search).group("TrackID")
                 play(track_id_str)
                 wait()
-        if args[0] == "q" or args[0] == "quality":
+        if args[0] in ["q", "quality"]:
             if len(args) == 1:
-                print("Current Quality: " + quality.name)
+                print(f"Current Quality: {quality.name}")
                 wait()
             elif len(args) == 2:
-                if args[1] == "normal" or args[1] == "96":
+                if args[1] in ["normal", "96"]:
                     quality = AudioQuality.NORMAL
-                elif args[1] == "high" or args[1] == "160":
+                elif args[1] in ["high", "160"]:
                     quality = AudioQuality.HIGH
-                elif args[1] == "veryhigh" or args[1] == "320":
+                elif args[1] in ["veryhigh", "320"]:
                     quality = AudioQuality.VERY_HIGH
-                print("Set Quality to %s" % quality.name)
+                print(f"Set Quality to {quality.name}")
                 wait()
-        if (args[0] == "s" or args[0] == "search") and len(args) >= 2:
+        if args[0] in ["s", "search"] and len(args) >= 2:
             token = session.tokens().get("user-read-email")
             resp = requests.get(
                 "https://api.spotify.com/v1/search",
-                {
-                    "limit": "5",
-                    "offset": "0",
-                    "q": cmd[2:],
-                    "type": "track"
-                },
-                headers={"Authorization": "Bearer %s" % token},
+                {"limit": "5", "offset": "0", "q": cmd[2:], "type": "track"},
+                headers={"Authorization": f"Bearer {token}"},
             )
-            i = 1
             tracks = resp.json()["tracks"]["items"]
-            for track in tracks:
+            for i, track in enumerate(tracks, start=1):
                 print("%d, %s | %s" % (
                     i,
                     track["name"],
                     ",".join([artist["name"] for artist in track["artists"]]),
                 ))
-                i += 1
             position = -1
             while True:
                 num_str = input("Select [1-5]: ")
-                if num_str == "exit" or num_str == "quit":
+                if num_str in ["exit", "quit"]:
                     return
                 try:
                     num = int(num_str)

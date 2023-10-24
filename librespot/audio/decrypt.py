@@ -32,8 +32,8 @@ class AesAudioDecrypt(AudioDecrypt):
             new_buffer.write(decrypted_buffer)
             if count != len(decrypted_buffer):
                 raise RuntimeError(
-                    "Couldn't process all data, actual: {}, expected: {}".
-                    format(len(decrypted_buffer), count))
+                    f"Couldn't process all data, actual: {len(decrypted_buffer)}, expected: {count}"
+                )
             iv += self.iv_diff
         self.decrypt_total_time += time.time_ns() - start
         self.decrypt_count += 1

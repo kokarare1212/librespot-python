@@ -75,46 +75,52 @@ def main():
 
 def response(client: socket.socket, uri: str, header: dict,
              body: bytes) -> tuple[str, list, bytes, bool]:
-    if re.search(r"^/audio/track/([0-9a-zA-Z]{22})$", uri) is not None:
-        track_id_search = re.search(
-            r"^/audio/track/(?P<TrackID>[0-9a-zA-Z]{22})$", uri)
-        track_id_str = track_id_search.group("TrackID")
-        track_id = TrackId.from_base62(track_id_str)
-        stream = session.content_feeder().load(
-            track_id, VorbisOnlyAudioQuality(AudioQuality.VERY_HIGH), False,
-            None)
-        start = 0
-        end = stream.input_stream.stream().size()
-        if header.get("range") is not None:
-            range_search = re.search(
-                "^bytes=(?P<start>[0-9]+?)-(?P<end>[0-9]+?)$",
-                header.get("range"))
-            if range_search is not None:
-                start = int(range_search.group("start"))
-                end = (int(range_search.group("end"))
-                       if int(range_search.group("end")) <=
-                       stream.input_stream.stream().size() else
-                       stream.input_stream.stream().size())
-                stream.input_stream.stream().skip(start)
-        client.send(b"HTTP/1.0 200 OK\r\n")
-        client.send(b"Access-Control-Allow-Origin: *\r\n")
-        client.send(b"Content-Length: " +
-                    (str(stream.input_stream.stream().size()).encode() if
-                     stream.input_stream.stream().size() == end else "{}-{}/{}"
-                     .format(start, end,
-                             stream.input_stream.stream().size()).encode()) +
-                    b"\r\n")
-        client.send(b"Content-Type: audio/ogg\r\n")
-        client.send(b"\r\n")
-        while True:
-            if (stream.input_stream.stream().pos() >=
-                    stream.input_stream.stream().size()):
-                break
-            byte = stream.input_stream.stream().read(1)
-            client.send(byte)
-        return "", [], b"", True
-    else:
+    if re.search(r"^/audio/track/([0-9a-zA-Z]{22})$", uri) is None:
         return HttpCode.http_404, [], HttpCode.http_404.encode(), False
+    track_id_search = re.search(
+        r"^/audio/track/(?P<TrackID>[0-9a-zA-Z]{22})$", uri)
+    track_id_str = track_id_search.group("TrackID")
+    track_id = TrackId.from_base62(track_id_str)
+    stream = session.content_feeder().load(
+        track_id, VorbisOnlyAudioQuality(AudioQuality.VERY_HIGH), False,
+        None)
+    start = 0
+    end = stream.input_stream.stream().size()
+    if header.get("range") is not None:
+        range_search = re.search(
+            "^bytes=(?P<start>[0-9]+?)-(?P<end>[0-9]+?)$",
+            header.get("range"))
+        if range_search is not None:
+            start = int(range_search.group("start"))
+            end = (int(range_search.group("end"))
+                   if int(range_search.group("end")) <=
+                   stream.input_stream.stream().size() else
+                   stream.input_stream.stream().size())
+            stream.input_stream.stream().skip(start)
+    client.send(b"HTTP/1.0 200 OK\r\n")
+    client.send(b"Access-Control-Allow-Origin: *\r\n")
+    client.send(
+        (
+            (
+                b"Content-Length: "
+                + (
+                    str(stream.input_stream.stream().size()).encode()
+                    if stream.input_stream.stream().size() == end
+                    else f"{start}-{end}/{stream.input_stream.stream().size()}".encode()
+                )
+            )
+            + b"\r\n"
+        )
+    )
+    client.send(b"Content-Type: audio/ogg\r\n")
+    client.send(b"\r\n")
+    while True:
+        if (stream.input_stream.stream().pos() >=
+                stream.input_stream.stream().size()):
+            break
+        byte = stream.input_stream.stream().read(1)
+        client.send(byte)
+    return "", [], b"", True
 
 
 if __name__ == "__main__":

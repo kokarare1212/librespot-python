@@ -18,7 +18,7 @@ class Version:
 
     @staticmethod
     def version_string():
-        return "librespot-python " + Version.version_name
+        return f"librespot-python {Version.version_name}"
 
     @staticmethod
     def system_info_string():

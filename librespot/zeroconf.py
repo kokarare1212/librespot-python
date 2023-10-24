@@ -68,19 +68,20 @@ class ZeroconfServer(Closeable):
         self.__zeroconf = zeroconf.Zeroconf()
         self.__service_info = zeroconf.ServiceInfo(
             ZeroconfServer.service,
-            inner.device_name + "." + ZeroconfServer.service,
+            f"{inner.device_name}.{ZeroconfServer.service}",
             listen_port,
             0,
-            0, {
+            0,
+            {
                 "CPath": "/",
                 "VERSION": "1.0",
                 "STACK": "SP",
             },
-            self.get_useful_hostname() + ".",
+            f"{self.get_useful_hostname()}.",
             addresses=[
-                socket.inet_aton(
-                    socket.gethostbyname(self.get_useful_hostname()))
-            ])
+                socket.inet_aton(socket.gethostbyname(self.get_useful_hostname()))
+            ],
+        )
         self.__zeroconf.register_service(self.__service_info)
         threading.Thread(target=self.__zeroconf.start,
                          name="zeroconf-multicast-dns-server").start()
@@ -102,9 +103,7 @@ class ZeroconfServer(Closeable):
 
     def get_useful_hostname(self) -> str:
         host = socket.gethostname()
-        if host == "localhost":
-            pass
-        else:
+        if host != "localhost":
             return host
 
     def handle_add_user(self, __socket: socket.socket, params: dict[str, str],
@@ -122,8 +121,7 @@ class ZeroconfServer(Closeable):
             self.logger.error("Missing clientKey!")
         with self.__connection_lock:
             if username == self.__connecting_username:
-                self.logger.info(
-                    "{} is already trying to connect.".format(username))
+                self.logger.info(f"{username} is already trying to connect.")
                 __socket.send(http_version.encode())
                 __socket.send(b" 403 Forbidden")
                 __socket.send(self.__eol)
@@ -164,8 +162,9 @@ class ZeroconfServer(Closeable):
         self.close_session()
         with self.__connection_lock:
             self.__connecting_username = username
-        self.logger.info("Accepted new user from {}. [deviceId: {}]".format(
-            params.get("deviceName"), self.__inner.device_id))
+        self.logger.info(
+            f'Accepted new user from {params.get("deviceName")}. [deviceId: {self.__inner.device_id}]'
+        )
         response = json.dumps(self.__default_successful_add_user)
         __socket.send(http_version.encode())
         __socket.send(b" 200 OK")
@@ -176,12 +175,12 @@ class ZeroconfServer(Closeable):
         __socket.send(self.__eol)
         __socket.send(response.encode())
         self.__session = Session.Builder(self.__inner.conf) \
-            .set_device_id(self.__inner.device_id) \
-            .set_device_name(self.__inner.device_name) \
-            .set_device_type(self.__inner.device_type) \
-            .set_preferred_locale(self.__inner.preferred_locale) \
-            .blob(username, decrypted) \
-            .create()
+                .set_device_id(self.__inner.device_id) \
+                .set_device_name(self.__inner.device_name) \
+                .set_device_type(self.__inner.device_type) \
+                .set_preferred_locale(self.__inner.preferred_locale) \
+                .blob(username, decrypted) \
+                .create()
         with self.__connection_lock:
             self.__connecting_username = None
         for session_listener in self.__session_listeners:
@@ -214,7 +213,7 @@ class ZeroconfServer(Closeable):
         return valid
 
     def parse_path(self, path: str) -> dict[str, str]:
-        url = "https://host" + path
+        url = f"https://host{path}"
         parsed = {}
         params = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
         for key, values in params.items():
@@ -250,8 +249,8 @@ class ZeroconfServer(Closeable):
             self.__socket.listen(5)
             self.__zeroconf_server = zeroconf_server
             self.__zeroconf_server.logger.info(
-                "Zeroconf HTTP server started successfully on port {}!".format(
-                    port))
+                f"Zeroconf HTTP server started successfully on port {port}!"
+            )
 
         def close(self) -> None:
             pass
@@ -271,7 +270,8 @@ class ZeroconfServer(Closeable):
             request_line = request.readline().strip().split(b" ")
             if len(request_line) != 3:
                 self.__zeroconf_server.logger.warning(
-                    "Unexpected request line: {}".format(request_line))
+                    f"Unexpected request line: {request_line}"
+                )
             method = request_line[0].decode()
             path = request_line[1].decode()
             http_version = request_line[2].decode()
@@ -284,14 +284,13 @@ class ZeroconfServer(Closeable):
                 headers[split[0].decode()] = split[1].strip().decode()
             if not self.__zeroconf_server.has_valid_session():
                 self.__zeroconf_server.logger.debug(
-                    "Handling request: {}, {}, {}, headers: {}".format(
-                        method, path, http_version, headers))
+                    f"Handling request: {method}, {path}, {http_version}, headers: {headers}"
+                )
             params = {}
             if method == "POST":
                 content_type = headers.get("Content-Type")
                 if content_type != "application/x-www-form-urlencoded":
-                    self.__zeroconf_server.logger.error(
-                        "Bad Content-Type: {}".format(content_type))
+                    self.__zeroconf_server.logger.error(f"Bad Content-Type: {content_type}")
                     return
                 content_length_str = headers.get("Content-Length")
                 if content_length_str is None:
@@ -324,8 +323,7 @@ class ZeroconfServer(Closeable):
             elif action == "getInfo":
                 self.__zeroconf_server.handle_get_info(__socket, http_version)
             else:
-                self.__zeroconf_server.logger.warning(
-                    "Unknown action: {}".format(action))
+                self.__zeroconf_server.logger.warning(f"Unknown action: {action}")
 
     class Inner:
         conf: typing.Final[Session.Configuration]

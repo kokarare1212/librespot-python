@@ -71,7 +71,7 @@ class ApiClient(Closeable):
 
     def __init__(self, session: Session):
         self.__session = session
-        self.__base_url = "https://{}".format(ApResolver.get_random_spclient())
+        self.__base_url = f"https://{ApResolver.get_random_spclient()}"
 
     def build_request(
         self,
@@ -94,8 +94,7 @@ class ApiClient(Closeable):
         if self.__client_token_str is None:
             resp = self.__client_token()
             self.__client_token_str = resp.granted_token.token
-            self.logger.debug("Updated client token: {}".format(
-                self.__client_token_str))
+            self.logger.debug(f"Updated client token: {self.__client_token_str}")
 
         request = requests.PreparedRequest()
         request.method = method
@@ -103,8 +102,9 @@ class ApiClient(Closeable):
         request.headers = {}
         if headers is not None:
             request.headers = headers
-        request.headers["Authorization"] = "Bearer {}".format(
-            self.__session.tokens().get("playlist-read"))
+        request.headers[
+            "Authorization"
+        ] = f'Bearer {self.__session.tokens().get("playlist-read")}'
         request.headers["client-token"] = self.__client_token_str
         request.url = self.__base_url + suffix
         return request
@@ -127,9 +127,9 @@ class ApiClient(Closeable):
         :param bytes]:
 
         """
-        response = self.__session.client().send(
-            self.build_request(method, suffix, headers, body))
-        return response
+        return self.__session.client().send(
+            self.build_request(method, suffix, headers, body)
+        )
 
     def put_connect_state(self, connection_id: str,
                           proto: Connect.PutStateRequest) -> None:
@@ -141,7 +141,7 @@ class ApiClient(Closeable):
         """
         response = self.send(
             "PUT",
-            "/connect-state/v1/devices/{}".format(self.__session.device_id()),
+            f"/connect-state/v1/devices/{self.__session.device_id()}",
             {
                 "Content-Type": "application/protobuf",
                 "X-Spotify-Connection-Id": connection_id,
@@ -150,11 +150,12 @@ class ApiClient(Closeable):
         )
         if response.status_code == 413:
             self.logger.warning(
-                "PUT state payload is too large: {} bytes uncompressed.".
-                format(len(proto.SerializeToString())))
+                f"PUT state payload is too large: {len(proto.SerializeToString())} bytes uncompressed."
+            )
         elif response.status_code != 200:
-            self.logger.warning("PUT state returned {}. headers: {}".format(
-                response.status_code, response.headers))
+            self.logger.warning(
+                f"PUT state returned {response.status_code}. headers: {response.headers}"
+            )
 
     def get_metadata_4_track(self, track: TrackId) -> Metadata.Track:
         """
@@ -162,9 +163,7 @@ class ApiClient(Closeable):
         :param track: TrackId:
 
         """
-        response = self.send("GET",
-                             "/metadata/4/track/{}".format(track.hex_id()),
-                             None, None)
+        response = self.send("GET", f"/metadata/4/track/{track.hex_id()}", None, None)
         ApiClient.StatusCodeException.check_status(response)
         body = response.content
         if body is None:
@@ -179,9 +178,9 @@ class ApiClient(Closeable):
         :param episode: EpisodeId:
 
         """
-        response = self.send("GET",
-                             "/metadata/4/episode/{}".format(episode.hex_id()),
-                             None, None)
+        response = self.send(
+            "GET", f"/metadata/4/episode/{episode.hex_id()}", None, None
+        )
         ApiClient.StatusCodeException.check_status(response)
         body = response.content
         if body is None:
@@ -196,9 +195,7 @@ class ApiClient(Closeable):
         :param album: AlbumId:
 
         """
-        response = self.send("GET",
-                             "/metadata/4/album/{}".format(album.hex_id()),
-                             None, None)
+        response = self.send("GET", f"/metadata/4/album/{album.hex_id()}", None, None)
         ApiClient.StatusCodeException.check_status(response)
 
         body = response.content
@@ -214,9 +211,9 @@ class ApiClient(Closeable):
         :param artist: ArtistId:
 
         """
-        response = self.send("GET",
-                             "/metadata/4/artist/{}".format(artist.hex_id()),
-                             None, None)
+        response = self.send(
+            "GET", f"/metadata/4/artist/{artist.hex_id()}", None, None
+        )
         ApiClient.StatusCodeException.check_status(response)
         body = response.content
         if body is None:
@@ -231,9 +228,7 @@ class ApiClient(Closeable):
         :param show: ShowId:
 
         """
-        response = self.send("GET",
-                             "/metadata/4/show/{}".format(show.hex_id()), None,
-                             None)
+        response = self.send("GET", f"/metadata/4/show/{show.hex_id()}", None, None)
         ApiClient.StatusCodeException.check_status(response)
         body = response.content
         if body is None:
@@ -249,9 +244,7 @@ class ApiClient(Closeable):
         :param _id: PlaylistId:
 
         """
-        response = self.send("GET",
-                             "/playlist/v2/playlist/{}".format(_id.id()), None,
-                             None)
+        response = self.send("GET", f"/playlist/v2/playlist/{_id.id()}", None, None)
         ApiClient.StatusCodeException.check_status(response)
         body = response.content
         if body is None:
@@ -337,8 +330,7 @@ class ApResolver:
         :returns: The resulting object will be returned
 
         """
-        response = requests.get("{}?type={}".format(ApResolver.base_url,
-                                                    service_type))
+        response = requests.get(f"{ApResolver.base_url}?type={service_type}")
         if response.status_code != 200:
             if response.status_code == 502:
                 raise RuntimeError(
@@ -417,8 +409,7 @@ class DealerClient(Closeable):
         """
         with self.__message_listeners_lock:
             if listener in self.__message_listeners:
-                raise TypeError(
-                    "A listener for {} has already been added.".format(uris))
+                raise TypeError(f"A listener for {uris} has already been added.")
             self.__message_listeners[listener] = uris
             self.__message_listeners_lock.notify_all()
 
@@ -431,8 +422,7 @@ class DealerClient(Closeable):
         """
         with self.__request_listeners_lock:
             if uri in self.__request_listeners:
-                raise TypeError(
-                    "A listener for '{}' has already been added.".format(uri))
+                raise TypeError(f"A listener for '{uri}' has already been added.")
             self.__request_listeners[uri] = listener
             self.__request_listeners_lock.notify_all()
 
@@ -445,10 +435,7 @@ class DealerClient(Closeable):
         self.__connection = DealerClient.ConnectionHolder(
             self.__session,
             self,
-            "wss://{}/?access_token={}".format(
-                ApResolver.get_random_dealer(),
-                self.__session.tokens().get("playlist-read"),
-            ),
+            f'wss://{ApResolver.get_random_dealer()}/?access_token={self.__session.tokens().get("playlist-read")}',
         )
 
     def connection_invalided(self) -> None:
@@ -558,10 +545,11 @@ class DealerClient(Closeable):
 
         """
         with self.__request_listeners_lock:
-            request_listeners = {}
-            for key, value in self.__request_listeners.items():
-                if value != listener:
-                    request_listeners[key] = value
+            request_listeners = {
+                key: value
+                for key, value in self.__request_listeners.items()
+                if value != listener
+            }
             self.__request_listeners = request_listeners
 
     def wait_for_listener(self) -> None:
@@ -573,9 +561,7 @@ class DealerClient(Closeable):
 
     def __get_headers(self, obj: typing.Any) -> dict[str, str]:
         headers = obj.get("headers")
-        if headers is None:
-            return {}
-        return headers
+        return {} if headers is None else headers
 
     class ConnectionHolder(Closeable):
         """ """
@@ -632,11 +618,8 @@ class DealerClient(Closeable):
                 self.__dealer_client.handle_request(obj)
             elif typ == MessageType.PONG:
                 self.__received_pong = True
-            elif typ == MessageType.PING:
-                pass
-            else:
-                raise RuntimeError("Unknown message type for {}".format(
-                    typ.value))
+            elif typ != MessageType.PING:
+                raise RuntimeError(f"Unknown message type for {typ.value}")
 
         def on_open(self, ws: websocket.WebSocketApp):
             """
@@ -722,11 +705,9 @@ class EventService(Closeable):
                 add_user_field("Accept-Language", "en").add_user_field(
                     "X-ClientTimeStamp",
                     int(time.time() * 1000)).add_payload_part(body).build())
-            self.logger.debug("Event sent. body: {}, result: {}".format(
-                body, resp.status_code))
+            self.logger.debug(f"Event sent. body: {body}, result: {resp.status_code}")
         except IOError as ex:
-            self.logger.error("Failed sending event: {} {}".format(
-                event_builder, ex))
+            self.logger.error(f"Failed sending event: {event_builder} {ex}")
 
     def send_event(self, event_or_builder: typing.Union[GenericEvent,
                                                         EventBuilder]):
@@ -815,10 +796,9 @@ class EventService(Closeable):
                 self.body.write(b"\x09")
                 self.body.write(bytes([c]))
                 return self
-            if s is not None:
-                self.body.write(b"\x09")
-                self.append_no_delimiter(s)
-                return self
+            self.body.write(b"\x09")
+            self.append_no_delimiter(s)
+            return self
 
         def to_array(self) -> bytes:
             """ """
@@ -851,7 +831,7 @@ class MessageType(enum.Enum):
             return MessageType.PONG
         if _typ == MessageType.REQUEST.value:
             return MessageType.REQUEST
-        raise TypeError("Unknown MessageType: {}".format(_typ))
+        raise TypeError(f"Unknown MessageType: {_typ}")
 
 
 class Session(Closeable, MessageListener, SubListener):
@@ -904,8 +884,9 @@ class Session(Closeable, MessageListener, SubListener):
         self.connection = Session.ConnectionHolder.create(address, None)
         self.__inner = inner
         self.__keys = DiffieHellman()
-        self.logger.info("Created new session! device_id: {}, ap: {}".format(
-            inner.device_id, address))
+        self.logger.info(
+            f"Created new session! device_id: {inner.device_id}, ap: {address}"
+        )
 
     def api(self) -> ApiClient:
         """ """
@@ -952,8 +933,7 @@ class Session(Closeable, MessageListener, SubListener):
             self.__auth_lock_bool = False
             self.__auth_lock.notify_all()
         self.dealer().connect()
-        self.logger.info("Authenticated as {}!".format(
-            self.__ap_welcome.canonical_username))
+        self.logger.info(f"Authenticated as {self.__ap_welcome.canonical_username}!")
         self.mercury().interested_in("spotify:user:attributes:update", self)
         self.dealer().add_message_listener(
             self, ["hm://connect-state/v1/connect/logout"])
@@ -985,8 +965,7 @@ class Session(Closeable, MessageListener, SubListener):
 
     def close(self) -> None:
         """Close instance"""
-        self.logger.info("Closing session. device_id: {}".format(
-            self.__inner.device_id))
+        self.logger.info(f"Closing session. device_id: {self.__inner.device_id}")
         self.__closing = True
         if self.__dealer_client is not None:
             self.__dealer_client.close()
@@ -1012,8 +991,7 @@ class Session(Closeable, MessageListener, SubListener):
             self.__ap_welcome = None
             self.cipher_pair = None
             self.__closed = True
-        self.logger.info("Closed session. device_id: {}".format(
-            self.__inner.device_id))
+        self.logger.info(f"Closed session. device_id: {self.__inner.device_id}")
 
     def connect(self) -> None:
         """Connect to the Spotify Server"""
@@ -1119,8 +1097,7 @@ class Session(Closeable, MessageListener, SubListener):
         :param conf: Configuration:
 
         """
-        client = requests.Session()
-        return client
+        return requests.Session()
 
     def dealer(self) -> DealerClient:
         """ """
@@ -1152,8 +1129,7 @@ class Session(Closeable, MessageListener, SubListener):
             attributes_update.ParseFromString(resp.payload)
             for pair in attributes_update.pairs_list:
                 self.__user_attributes[pair.key] = pair.value
-                self.logger.info("Updated user attribute: {} -> {}".format(
-                    pair.key, pair.value))
+                self.logger.info(f"Updated user attribute: {pair.key} -> {pair.value}")
 
     def get_user_attribute(self, key: str, fallback: str = None) -> str:
         """
@@ -1206,8 +1182,7 @@ class Session(Closeable, MessageListener, SubListener):
             return
         for i in range(len(product)):
             self.__user_attributes[product[i].tag] = product[i].text
-        self.logger.debug("Parsed product info: {}".format(
-            self.__user_attributes))
+        self.logger.debug(f"Parsed product info: {self.__user_attributes}")
 
     def preferred_locale(self) -> str:
         """ """
@@ -1229,8 +1204,9 @@ class Session(Closeable, MessageListener, SubListener):
             ),
             True,
         )
-        self.logger.info("Re-authenticated as {}!".format(
-            self.__ap_welcome.canonical_username))
+        self.logger.info(
+            f"Re-authenticated as {self.__ap_welcome.canonical_username}!"
+        )
 
     def reconnecting(self) -> bool:
         """ """
@@ -1349,7 +1325,7 @@ class Session(Closeable, MessageListener, SubListener):
             self.close()
             raise Session.SpotifyAuthenticationException(ap_login_failed)
         else:
-            raise RuntimeError("Unknown CMD 0x" + packet.cmd.hex())
+            raise RuntimeError(f"Unknown CMD 0x{packet.cmd.hex()}")
 
     def __send_unchecked(self, cmd: bytes, payload: bytes) -> None:
         self.cipher_pair.send_encoded(self.connection, cmd, payload)
@@ -1373,10 +1349,7 @@ class Session(Closeable, MessageListener, SubListener):
         preferred_locale = "en"
 
         def __init__(self, conf: Session.Configuration = None):
-            if conf is None:
-                self.conf = Session.Configuration.Builder().build()
-            else:
-                self.conf = conf
+            self.conf = Session.Configuration.Builder().build() if conf is None else conf
 
         def set_preferred_locale(self, locale: str) -> Session.AbsBuilder:
             """
@@ -1385,7 +1358,7 @@ class Session(Closeable, MessageListener, SubListener):
 
             """
             if len(locale) != 2:
-                raise TypeError("Invalid locale: {}".format(locale))
+                raise TypeError(f"Invalid locale: {locale}")
             self.preferred_locale = locale
             return self
 
@@ -1518,9 +1491,7 @@ class Session(Closeable, MessageListener, SubListener):
             type_int = self.read_blob_int(blob)
             type_ = Authentication.AuthenticationType.Name(type_int)
             if type_ is None:
-                raise IOError(
-                    TypeError(
-                        "Unknown AuthenticationType: {}".format(type_int)))
+                raise IOError(TypeError(f"Unknown AuthenticationType: {type_int}"))
             blob.read(1)
             l = self.read_blob_int(blob)
             auth_data = blob.read(l)
@@ -2098,7 +2069,7 @@ class SearchManager:
         """ """
 
         def __init__(self, status_code: int):
-            super().__init__("Search failed with code {}.".format(status_code))
+            super().__init__(f"Search failed with code {status_code}.")
 
     class SearchRequest:
         """ """
@@ -2112,19 +2083,19 @@ class SearchManager:
 
         def __init__(self, query: str):
             self.query = query
-            if query == "":
+            if not query:
                 raise TypeError
 
         def build_url(self) -> str:
             """ """
             url = SearchManager.base_url + urllib.parse.quote(self.query)
             url += "?entityVersion=2"
-            url += "&catalogue=" + urllib.parse.quote(self.__catalogue)
-            url += "&country=" + urllib.parse.quote(self.__country)
-            url += "&imageSize=" + urllib.parse.quote(self.__image_size)
-            url += "&limit=" + str(self.__limit)
-            url += "&locale=" + urllib.parse.quote(self.__locale)
-            url += "&username=" + urllib.parse.quote(self.__username)
+            url += f"&catalogue={urllib.parse.quote(self.__catalogue)}"
+            url += f"&country={urllib.parse.quote(self.__country)}"
+            url += f"&imageSize={urllib.parse.quote(self.__image_size)}"
+            url += f"&limit={str(self.__limit)}"
+            url += f"&locale={urllib.parse.quote(self.__locale)}"
+            url += f"&username={urllib.parse.quote(self.__username)}"
             return url
 
         def get_catalogue(self) -> str:
@@ -2224,10 +2195,9 @@ class TokenProvider:
         :param scopes: typing.List[str]:
 
         """
-        for token in self.__tokens:
-            if token.has_scopes(scopes):
-                return token
-        return None
+        return next(
+            (token for token in self.__tokens if token.has_scopes(scopes)), None
+        )
 
     def get(self, scope: str) -> str:
         """
@@ -2244,7 +2214,7 @@ class TokenProvider:
 
         """
         scopes = list(scopes)
-        if len(scopes) == 0:
+        if not scopes:
             raise RuntimeError("The token doesn't have any scope")
         token = self.find_token_with_all_scopes(scopes)
         if token is not None:
@@ -2253,15 +2223,15 @@ class TokenProvider:
             else:
                 return token
         self.logger.debug(
-            "Token expired or not suitable, requesting again. scopes: {}, old_token: {}"
-            .format(scopes, token))
+            f"Token expired or not suitable, requesting again. scopes: {scopes}, old_token: {token}"
+        )
         response = self._session.mercury().send_sync_json(
             MercuryRequests.request_token(self._session.device_id(),
                                           ",".join(scopes)))
         token = TokenProvider.StoredToken(response)
         self.logger.debug(
-            "Updated token successfully! scopes: {}, new_token: {}".format(
-                scopes, token))
+            f"Updated token successfully! scopes: {scopes}, new_token: {token}"
+        )
         self.__tokens.append(token)
         return token
 
@@ -2290,10 +2260,7 @@ class TokenProvider:
             :param scope: str:
 
             """
-            for s in self.scopes:
-                if s == scope:
-                    return True
-            return False
+            return any(s == scope for s in self.scopes)
 
         def has_scopes(self, sc: typing.List[str]) -> bool:
             """
@@ -2301,7 +2268,4 @@ class TokenProvider:
             :param sc: typing.List[str]:
 
             """
-            for s in sc:
-                if not self.has_scope(s):
-                    return False
-            return True
+            return all(self.has_scope(s) for s in sc)

@@ -35,16 +35,16 @@ class AudioQuality(enum.Enum):
                 AudioFile.AAC_48,
         ]:
             return AudioQuality.VERY_HIGH
-        raise RuntimeError("Unknown format: {}".format(format))
+        raise RuntimeError(f"Unknown format: {format}")
 
     def get_matches(self,
                     files: typing.List[AudioFile]) -> typing.List[AudioFile]:
-        file_list = []
-        for file in files:
-            if hasattr(file, "format") and AudioQuality.get_quality(
-                    file.format) == self:
-                file_list.append(file)
-        return file_list
+        return [
+            file
+            for file in files
+            if hasattr(file, "format")
+            and AudioQuality.get_quality(file.format) == self
+        ]
 
 
 class VorbisOnlyAudioQuality(AudioQualityPicker):
@@ -56,11 +56,15 @@ class VorbisOnlyAudioQuality(AudioQualityPicker):
 
     @staticmethod
     def get_vorbis_file(files: typing.List[Metadata.AudioFile]):
-        for file in files:
-            if file.HasField("format") and SuperAudioFormat.get(
-                    file.format) == SuperAudioFormat.VORBIS:
-                return file
-        return None
+        return next(
+            (
+                file
+                for file in files
+                if file.HasField("format")
+                and SuperAudioFormat.get(file.format) == SuperAudioFormat.VORBIS
+            ),
+            None,
+        )
 
     def get_file(self, files: typing.List[Metadata.AudioFile]):
         matches: typing.List[Metadata.AudioFile] = self.preferred.get_matches(
@@ -72,9 +76,8 @@ class VorbisOnlyAudioQuality(AudioQualityPicker):
                 files)
             if vorbis is not None:
                 self.logger.warning(
-                    "Using {} because preferred {} couldn't be found.".format(
-                        Metadata.AudioFile.Format.Name(vorbis.format),
-                        self.preferred))
+                    f"Using {Metadata.AudioFile.Format.Name(vorbis.format)} because preferred {self.preferred} couldn't be found."
+                )
             else:
                 self.logger.fatal(
                     "Couldn't find any Vorbis file, available: {}")

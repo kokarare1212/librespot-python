@@ -51,8 +51,8 @@ class ChannelManager(Closeable, PacketsReceiver):
             channel = self.channels.get(chunk_id)
             if channel is None:
                 self.logger.warning(
-                    "Couldn't find channel, id: {}, received: {}".format(
-                        chunk_id, len(packet.payload)))
+                    f"Couldn't find channel, id: {chunk_id}, received: {len(packet.payload)}"
+                )
                 return
             channel.add_to_queue(payload)
         elif packet.is_cmd(Packet.Type.channel_error):
@@ -60,15 +60,14 @@ class ChannelManager(Closeable, PacketsReceiver):
             channel = self.channels.get(chunk_id)
             if channel is None:
                 self.logger.warning(
-                    "Dropping channel error, id: {}, code: {}".format(
-                        chunk_id,
-                        struct.unpack(">H", payload.read(2))[0]))
+                    f'Dropping channel error, id: {chunk_id}, code: {struct.unpack(">H", payload.read(2))[0]}'
+                )
                 return
             channel.stream_error(struct.unpack(">H", payload.read(2))[0])
         else:
             self.logger.warning(
-                "Couldn't handle packet, cmd: {}, payload: {}".format(
-                    packet.cmd, util.bytes_to_hex(packet.payload)))
+                f"Couldn't handle packet, cmd: {packet.cmd}, payload: {util.bytes_to_hex(packet.payload)}"
+            )
 
     def close(self) -> None:
         self.executor_service.shutdown()
@@ -95,7 +94,7 @@ class ChannelManager(Closeable, PacketsReceiver):
                 lambda: ChannelManager.Channel.Handler(self))
 
         def _handle(self, payload: bytes) -> bool:
-            if len(payload) == 0:
+            if not payload:
                 if not self.__header:
                     self.__file.write_chunk(payload, self.__chunk_index, False)
                     return True
@@ -106,7 +105,7 @@ class ChannelManager(Closeable, PacketsReceiver):
                 length: int
                 while len(payload.buffer) > 0:
                     length = payload.read_short()
-                    if not length > 0:
+                    if length <= 0:
                         break
                     header_id = payload.read_byte()
                     header_data = payload.read(length - 1)

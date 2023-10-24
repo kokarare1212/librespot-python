@@ -62,7 +62,7 @@ class MercuryClient(Closeable, PacketsReceiver):
         elif seq_length == 8:
             seq = struct.unpack(">q", payload.read(8))[0]
         else:
-            raise RuntimeError("Unknown seq length: {}".format(seq_length))
+            raise RuntimeError(f"Unknown seq length: {seq_length}")
         flags = payload.read(1)
         parts = struct.unpack(">H", payload.read(2))[0]
         partial = self.__partials.get(seq)
@@ -70,8 +70,8 @@ class MercuryClient(Closeable, PacketsReceiver):
             partial = []
             self.__partials[seq] = partial
         self.logger.debug(
-            "Handling packet, cmd: 0x{}, seq: {}, flags: {}, parts: {}".format(
-                util.bytes_to_hex(packet.cmd), seq, flags, parts))
+            f"Handling packet, cmd: 0x{util.bytes_to_hex(packet.cmd)}, seq: {seq}, flags: {flags}, parts: {parts}"
+        )
         for _ in range(parts):
             size = struct.unpack(">H", payload.read(2))[0]
             buffer = payload.read(size)
@@ -92,9 +92,8 @@ class MercuryClient(Closeable, PacketsReceiver):
                         dispatched = True
             if not dispatched:
                 self.logger.debug(
-                    "Couldn't dispatch Mercury event seq: {}, uri: {}, code: {}, payload: {}"
-                    .format(seq, header.uri, header.status_code,
-                            response.payload))
+                    f"Couldn't dispatch Mercury event seq: {seq}, uri: {header.uri}, code: {header.status_code}, payload: {response.payload}"
+                )
         elif (packet.is_cmd(Packet.Type.mercury_req)
               or packet.is_cmd(Packet.Type.mercury_sub)
               or packet.is_cmd(Packet.Type.mercury_sub)):
@@ -104,14 +103,14 @@ class MercuryClient(Closeable, PacketsReceiver):
                 callback.response(response)
             else:
                 self.logger.warning(
-                    "Skipped Mercury response, seq: {}, uri: {}, code: {}".
-                    format(seq, response.uri, response.status_code))
+                    f"Skipped Mercury response, seq: {seq}, uri: {response.uri}, code: {response.status_code}"
+                )
             with self.__remove_callback_lock:
                 self.__remove_callback_lock.notify_all()
         else:
             self.logger.warning(
-                "Couldn't handle packet, seq: {}, uri: {}, code: {}".format(
-                    seq, header.uri, header.status_code))
+                f"Couldn't handle packet, seq: {seq}, uri: {header.uri}, code: {header.status_code}"
+            )
 
     def interested_in(self, uri: str, listener: SubListener) -> None:
         self.__subscriptions.append(
@@ -141,8 +140,8 @@ class MercuryClient(Closeable, PacketsReceiver):
             seq = self.__seq_holder
             self.__seq_holder += 1
         self.logger.debug(
-            "Send Mercury request, seq: {}, uri: {}, method: {}".format(
-                seq, request.header.uri, request.header.method))
+            f"Send Mercury request, seq: {seq}, uri: {request.header.uri}, method: {request.header.method}"
+        )
         buffer.write(struct.pack(">H", 4))
         buffer.write(struct.pack(">i", seq))
         buffer.write(b"\x01")
@@ -173,8 +172,8 @@ class MercuryClient(Closeable, PacketsReceiver):
             response = callback.wait_response()
             if response is None:
                 raise IOError(
-                    "Request timeout out, {} passed, yet no response. seq: {}".
-                    format(self.mercury_request_timeout, seq))
+                    f"Request timeout out, {self.mercury_request_timeout} passed, yet no response. seq: {seq}"
+                )
             return response
         except queue.Empty as e:
             raise IOError(e)
@@ -204,7 +203,7 @@ class MercuryClient(Closeable, PacketsReceiver):
         else:
             self.__subscriptions.append(
                 MercuryClient.InternalSubListener(uri, listener, True))
-        self.logger.debug("Subscribed successfully to {}!".format(uri))
+        self.logger.debug(f"Subscribed successfully to {uri}!")
 
     def unsubscribe(self, uri) -> None:
         """
@@ -219,7 +218,7 @@ class MercuryClient(Closeable, PacketsReceiver):
             if subscription.matches(uri):
                 self.__subscriptions.remove(subscription)
                 break
-        self.logger.debug("Unsubscribed successfully from {}!".format(uri))
+        self.logger.debug(f"Unsubscribed successfully from {uri}!")
 
     class Callback:
         def response(self, response: MercuryClient.Response) -> None:
@@ -257,7 +256,7 @@ class MercuryClient(Closeable, PacketsReceiver):
         code: int
 
         def __init__(self, response: MercuryClient.Response):
-            super().__init__("status: {}".format(response.status_code))
+            super().__init__(f"status: {response.status_code}")
             self.code = response.status_code
 
     class PubSubException(MercuryException):
@@ -303,9 +302,9 @@ class MercuryRequests:
     def request_token(device_id, scope):
         return JsonMercuryRequest(
             RawMercuryRequest.get(
-                "hm://keymaster/token/authenticated?scope={}&client_id={}&device_id={}"
-                .format(scope, MercuryRequests.keymaster_client_id,
-                        device_id)))
+                f"hm://keymaster/token/authenticated?scope={scope}&client_id={MercuryRequests.keymaster_client_id}&device_id={device_id}"
+            )
+        )
 
 
 class RawMercuryRequest:
