@@ -72,16 +72,15 @@ class DeviceStateHandler(Closeable, MessageListener, RequestListener):
 
     def put_connect_state(self, request: Connect.PutStateRequest):
         self.__session.api().put_connect_state(self.__connection_id, request)
-        self.logger.info("Put state. [ts: {}, connId: {}, reason: {}]".format(
-            request.client_side_timestamp, self.__connection_id,
-            request.put_state_reason))
+        self.logger.info(
+            f"Put state. [ts: {request.client_side_timestamp}, connId: {self.__connection_id}, reason: {request.put_state_reason}]"
+        )
 
     def update_connection_id(self, newer: str) -> None:
         newer = urllib.parse.unquote(newer)
         if self.__connection_id is None or self.__connection_id != newer:
             self.__connection_id = newer
-            self.logger.debug(
-                "Updated Spotify-Connection-Id: {}".format(newer))
+            self.logger.debug(f"Updated Spotify-Connection-Id: {newer}")
 
 
 class Player:
@@ -195,10 +194,14 @@ class StateWrapper(MessageListener):
         self.__player = player
         self.__device = DeviceStateHandler(session, conf)
         self.__conf = conf
-        session.dealer().add_message_listener(self, [
-            "spotify:user:attributes:update", "hm://playlist/",
-            "hm://collection/collection/" + session.username() + "/json"
-        ])
+        session.dealer().add_message_listener(
+            self,
+            [
+                "spotify:user:attributes:update",
+                "hm://playlist/",
+                f"hm://collection/collection/{session.username()}/json",
+            ],
+        )
 
     def on_message(self, uri: str, headers: typing.Dict[str, str],
                    payload: bytes):

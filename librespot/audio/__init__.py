@@ -219,8 +219,9 @@ class AbsChunkedInputStream(io.BytesIO, HaltListener):
 
         @staticmethod
         def from_stream_error(stream_error: int):
-            return AbsChunkedInputStream \
-                .ChunkException("Failed due to stream error, code: {}".format(stream_error))
+            return AbsChunkedInputStream.ChunkException(
+                f"Failed due to stream error, code: {stream_error}"
+            )
 
 
 class AudioKeyManager(PacketsReceiver, Closeable):
@@ -240,8 +241,7 @@ class AudioKeyManager(PacketsReceiver, Closeable):
         seq = struct.unpack(">i", payload.read(4))[0]
         callback = self.__callbacks.get(seq)
         if callback is None:
-            self.logger.warning(
-                "Couldn't find callback for seq: {}".format(seq))
+            self.logger.warning(f"Couldn't find callback for seq: {seq}")
             return
         if packet.is_cmd(Packet.Type.aes_key):
             key = payload.read(16)
@@ -251,8 +251,8 @@ class AudioKeyManager(PacketsReceiver, Closeable):
             callback.error(code)
         else:
             self.logger.warning(
-                "Couldn't handle packet, cmd: {}, length: {}".format(
-                    packet.cmd, len(packet.payload)))
+                f"Couldn't handle packet, cmd: {packet.cmd}, length: {len(packet.payload)}"
+            )
 
     def get_audio_key(self,
                       gid: bytes,
@@ -276,8 +276,8 @@ class AudioKeyManager(PacketsReceiver, Closeable):
             if retry:
                 return self.get_audio_key(gid, file_id, False)
             raise RuntimeError(
-                "Failed fetching audio key! gid: {}, fileId: {}".format(
-                    util.bytes_to_hex(gid), util.bytes_to_hex(file_id)))
+                f"Failed fetching audio key! gid: {util.bytes_to_hex(gid)}, fileId: {util.bytes_to_hex(file_id)}"
+            )
         return key
 
     class Callback:
@@ -302,8 +302,7 @@ class AudioKeyManager(PacketsReceiver, Closeable):
                 self.__reference_lock.notify_all()
 
         def error(self, code: int) -> None:
-            self.__audio_key_manager.logger.fatal(
-                "Audio key error, code: {}".format(code))
+            self.__audio_key_manager.logger.fatal(f"Audio key error, code: {code}")
             with self.__reference_lock:
                 self.__reference.put(None)
                 self.__reference_lock.notify_all()
@@ -359,8 +358,9 @@ class CdnFeedHelper:
             CdnFeedHelper._LOGGER.warning("Couldn't resolve redirect!")
 
         url = resp.url
-        CdnFeedHelper._LOGGER.debug("Fetched external url for {}: {}".format(
-            util.bytes_to_hex(episode.gid), url))
+        CdnFeedHelper._LOGGER.debug(
+            f"Fetched external url for {util.bytes_to_hex(episode.gid)}: {url}"
+        )
 
         streamer = session.cdn().stream_external_episode(
             episode, url, halt_listener)
@@ -411,10 +411,10 @@ class CdnManager:
 
     def get_head(self, file_id: bytes):
         response = self.__session.client() \
-            .get(self.__session.get_user_attribute("head-files-url", "https://heads-fa.spotify.com/head/{file_id}")
+                .get(self.__session.get_user_attribute("head-files-url", "https://heads-fa.spotify.com/head/{file_id}")
                  .replace("{file_id}", util.bytes_to_hex(file_id)))
         if response.status_code != 200:
-            raise IOError("{}".format(response.status_code))
+            raise IOError(f"{response.status_code}")
         body = response.content
         if body is None:
             raise IOError("Response body is empty!")
@@ -446,8 +446,12 @@ class CdnManager:
         )
 
     def get_audio_url(self, file_id: bytes):
-        response = self.__session.api()\
-            .send("GET", "/storage-resolve/files/audio/interactive/{}".format(util.bytes_to_hex(file_id)), None, None)
+        response = self.__session.api().send(
+            "GET",
+            f"/storage-resolve/files/audio/interactive/{util.bytes_to_hex(file_id)}",
+            None,
+            None,
+        )
         if response.status_code != 200:
             raise IOError(response.status_code)
         body = response.content
@@ -457,11 +461,11 @@ class CdnManager:
         proto.ParseFromString(body)
         if proto.result == StorageResolve.StorageResolveResponse.Result.CDN:
             url = random.choice(proto.cdnurl)
-            self.logger.debug("Fetched CDN url for {}: {}".format(
-                util.bytes_to_hex(file_id), url))
+            self.logger.debug(f"Fetched CDN url for {util.bytes_to_hex(file_id)}: {url}")
             return url
         raise CdnManager.CdnException(
-            "Could not retrieve CDN url! result: {}".format(proto.result))
+            f"Could not retrieve CDN url! result: {proto.result}"
+        )
 
     class CdnException(Exception):
         pass
@@ -508,7 +512,7 @@ class CdnManager:
                     expires_str = str(expires_list[0])
                 except TypeError:
                     expires_str = ""
-                if token_str != "None" and len(token_str) != 0:
+                if token_str not in ["None", ""]:
                     expire_at = None
                     split = token_str.split("~")
                     for s in split:
@@ -521,17 +525,16 @@ class CdnManager:
                             break
                     if expire_at is None:
                         self.__expiration = -1
-                        self.__cdn_manager.logger.warning(
-                            "Invalid __token__ in CDN url: {}".format(url))
+                        self.__cdn_manager.logger.warning(f"Invalid __token__ in CDN url: {url}")
                         return
                     self.__expiration = expire_at * 1000
-                elif expires_str != "None" and len(expires_str) != 0:
+                elif expires_str not in ["None", ""]:
                     expires_at = None
                     expires_str = expires_str.split("~")[0]
                     expires_at = int(expires_str)
                     if expires_at is None:
                         self.__expiration = -1
-                        self.__cdn_manager.logger.warning("Invalid Expires param in CDN url: {}".format(url))
+                        self.__cdn_manager.logger.warning(f"Invalid Expires param in CDN url: {url}")
                         return
                     self.__expiration = expires_at * 1000
                 else:
@@ -539,8 +542,9 @@ class CdnManager:
                         i = token_url.query.index("_")
                     except ValueError:
                         self.__expiration = -1
-                        self.__cdn_manager.logger \
-                            .warning("Couldn't extract expiration, invalid parameter in CDN url: {}".format(url))
+                        self.__cdn_manager.logger.warning(
+                            f"Couldn't extract expiration, invalid parameter in CDN url: {url}"
+                        )
                         return
                     self.__expiration = int(token_url.query[:i]) * 1000
 
@@ -594,8 +598,8 @@ class CdnManager:
             if self.__internal_stream.is_closed():
                 return
             self.__session.logger.debug(
-                "Chunk {}/{} completed, cached: {}, stream: {}".format(
-                    chunk_index + 1, self.chunks, cached, self.describe()))
+                f"Chunk {chunk_index + 1}/{self.chunks} completed, cached: {cached}, stream: {self.describe()}"
+            )
             self.buffer[chunk_index] = self.__audio_decrypt.decrypt_chunk(
                 chunk_index, chunk)
             self.__internal_stream.notify_chunk_available(chunk_index)
@@ -608,9 +612,8 @@ class CdnManager:
 
         def describe(self) -> str:
             if self.__stream_id.is_episode():
-                return "episode_gid: {}".format(
-                    self.__stream_id.get_episode_gid())
-            return "file_id: {}".format(self.__stream_id.get_file_id())
+                return f"episode_gid: {self.__stream_id.get_episode_gid()}"
+            return f"file_id: {self.__stream_id.get_file_id()}"
 
         def decrypt_time_ms(self) -> int:
             return self.__audio_decrypt.decrypt_time_ms()
@@ -619,8 +622,7 @@ class CdnManager:
             response = self.request(index)
             self.write_chunk(response.buffer, index, False)
 
-        def request(self, chunk: int = None, range_start: int = None, range_end: int = None)\
-                -> CdnManager.InternalResponse:
+        def request(self, chunk: int = None, range_start: int = None, range_end: int = None) -> CdnManager.InternalResponse:
             if chunk is None and range_start is None and range_end is None:
                 raise TypeError()
             if chunk is not None:
@@ -628,9 +630,7 @@ class CdnManager:
                 range_end = (chunk + 1) * ChannelManager.chunk_size - 1
             response = self.__session.client().get(
                 self.__cdn_url.url,
-                headers={
-                    "Range": "bytes={}-{}".format(range_start, range_end)
-                },
+                headers={"Range": f"bytes={range_start}-{range_end}"},
             )
             if response.status_code != 206:
                 raise IOError(response.status_code)
@@ -695,8 +695,8 @@ class NormalizationData:
         self.album_peak = album_peak
 
         self._LOGGER.debug(
-            "Loaded normalization data, track_gain: {}, track_peak: {}, album_gain: {}, album_peak: {}"
-            .format(track_gain_db, track_peak, album_gain_db, album_peak))
+            f"Loaded normalization data, track_gain: {track_gain_db}, track_peak: {track_peak}, album_gain: {album_gain_db}, album_peak: {album_peak}"
+        )
 
     @staticmethod
     def read(input_stream: AbsChunkedInputStream) -> NormalizationData:
@@ -738,7 +738,7 @@ class PlayableContentFeeder:
         if type(playable_id) is EpisodeId:
             return self.load_episode(playable_id, audio_quality_picker,
                                      preload, halt_listener)
-        raise TypeError("Unknown content: {}".format(playable_id))
+        raise TypeError(f"Unknown content: {playable_id}")
 
     def load_stream(self, file: Metadata.AudioFile, track: Metadata.Track,
                     episode: Metadata.Episode, preload: bool,
@@ -753,14 +753,13 @@ class PlayableContentFeeder:
             return CdnFeedHelper.load_episode(self.__session, episode, file,
                                               response, preload, halt_lister)
         if response.result == StorageResolve.StorageResolveResponse.Result.STORAGE:
-            if track is None:
-                pass
+            pass
         elif response.result == StorageResolve.StorageResolveResponse.Result.RESTRICTED:
             raise RuntimeError("Content is restricted!")
         elif response.result == StorageResolve.StorageResolveResponse.Response.UNRECOGNIZED:
             raise RuntimeError("Content is unrecognized!")
         else:
-            raise RuntimeError("Unknown result: {}".format(response.result))
+            raise RuntimeError(f"Unknown result: {response.result}")
 
     def load_episode(self, episode_id: EpisodeId,
                      audio_quality_picker: AudioQualityPicker, preload: bool,
@@ -772,8 +771,8 @@ class PlayableContentFeeder:
         file = audio_quality_picker.get_file(episode.audio)
         if file is None:
             self.logger.fatal(
-                "Couldn't find any suitable audio file, available: {}".format(
-                    episode.audio))
+                f"Couldn't find any suitable audio file, available: {episode.audio}"
+            )
         return self.load_stream(file, None, episode, preload, halt_listener)
 
     def load_track(self, track_id_or_track: typing.Union[TrackId,
@@ -791,8 +790,8 @@ class PlayableContentFeeder:
         file = audio_quality_picker.get_file(track.file)
         if file is None:
             self.logger.fatal(
-                "Couldn't find any suitable audio file, available: {}".format(
-                    track.file))
+                f"Couldn't find any suitable audio file, available: {track.file}"
+            )
             raise FeederException()
         return self.load_stream(file, track, None, preload, halt_listener)
 
@@ -800,9 +799,9 @@ class PlayableContentFeeder:
             self, track: Metadata.Track) -> typing.Union[Metadata.Track, None]:
         if len(track.file) > 0:
             return track
-        for alt in track.alternative:
-            if len(alt.file) > 0:
-                return Metadata.Track(
+        return next(
+            (
+                Metadata.Track(
                     gid=track.gid,
                     name=track.name,
                     album=track.album,
@@ -821,8 +820,13 @@ class PlayableContentFeeder:
                     earliest_live_timestamp=track.earliest_live_timestamp,
                     has_lyrics=track.has_lyrics,
                     availability=track.availability,
-                    licensor=track.licensor)
-        return None
+                    licensor=track.licensor,
+                )
+                for alt in track.alternative
+                if len(alt.file) > 0
+            ),
+            None,
+        )
 
     def resolve_storage_interactive(
             self, file_id: bytes,

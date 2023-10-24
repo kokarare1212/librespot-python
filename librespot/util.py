@@ -33,7 +33,7 @@ def int_to_bytes(i: int):
 
 
 def random_hex_string(length: int):
-    buffer = Random.get_random_bytes(int(length / 2))
+    buffer = Random.get_random_bytes(length // 2)
     return bytes_to_hex(buffer)
 
 
@@ -73,7 +73,7 @@ class Base62:
             len(message), source_base, target_base) if length == -1 else length
         out = b""
         source = message
-        while len(source) > 0:
+        while source:
             quotient = b""
             remainder = 0
             for b in source:

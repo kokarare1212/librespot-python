@@ -29,4 +29,4 @@ class SuperAudioFormat(enum.Enum):
                 Metadata.AudioFile.Format.AAC_24_NORM,
         ]:
             return SuperAudioFormat.AAC
-        raise RuntimeError("Unknown audio format: {}".format(audio_format))
+        raise RuntimeError(f"Unknown audio format: {audio_format}")
