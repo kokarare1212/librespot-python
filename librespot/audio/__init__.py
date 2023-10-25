@@ -638,7 +638,7 @@ class CdnManager:
             response = self.__session.client().get(
                 self.__cdn_url.url,
                 headers={"Range": f"bytes={range_start}-{range_end}"},
-                verify=False,
+                verify=True,
             )
             if response.status_code != 206:
                 raise IOError(response.status_code)
