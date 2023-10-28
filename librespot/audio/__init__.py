@@ -320,7 +320,10 @@ class CdnFeedHelper:
 
     @staticmethod
     def get_url(resp: StorageResolve.StorageResolveResponse) -> str:
-        return random.choice(resp.cdnurl)
+        selected_url = random.choice(resp.cdnurl)
+        while not "audio4-gm-fb" in selected_url:
+            selected_url = random.choice(resp.cdnurl)
+        return selected_url
 
     @staticmethod
     def load_track(
