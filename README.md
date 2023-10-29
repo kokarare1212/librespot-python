@@ -3,9 +3,16 @@
 ![Forks](https://img.shields.io/github/forks/kokarare1212/librespot-python.svg)
 [![DeepSource](https://deepsource.io/gh/kokarare1212/librespot-python.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/kokarare1212/librespot-python/?ref=repository-badge)
 
+![Counter](https://count.getloli.com/get/@librespot-python?theme=moebooru)
+
 # Librespot-Python
 
 Open Source Spotify Client
+
+## Support Project
+If you find our project useful and want to support its development, please consider making a donation. Your contribution will help us maintain and improve the project, ensuring that it remains free and accessible to everyone.<br><br>
+[![GitHub Sponsor](https://img.shields.io/github/sponsors/kokarare1212?label=GitHub%20Sponsor&logo=GitHub)](https://github.com/sponsors/kokarare1212)
+[![Liberapay receiving](https://img.shields.io/liberapay/receives/kokarare1212?label=Liberapay&logo=Liberapay)](https://liberapay.com/kokarare1212/)
 
 ## About The Project
 
@@ -117,7 +124,3 @@ for more information.
 
 - [Librespot](https://github.com/librespot-org/librespot) (Concept)
 - [Librespot-Java](https://github.com/librespot-org/librespot-java) (Core)
-
-## Special thanks
-
-<a href="https://www.jetbrains.com/"><img src="https://github.com/kokarare1212/librespot-python/blob/main/img/jetbrains.png?raw=true" width="100" height="100" alt="JetBrains"></a>
