@@ -2281,7 +2281,7 @@ class TokenProvider:
         def expired(self) -> bool:
             """ """
             return self.timestamp + (self.expires_in - TokenProvider.
-                                     token_expire_threshold) * 1000 < int(
+                                     token_expire_threshold) * 1000 * 1000 < int(
                                          time.time_ns() / 1000)
 
         def has_scope(self, scope: str) -> bool:
