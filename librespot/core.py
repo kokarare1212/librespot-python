@@ -36,6 +36,7 @@ from librespot.audio import CdnManager
 from librespot.audio import PlayableContentFeeder
 from librespot.audio.storage import ChannelManager
 from librespot.cache import CacheManager
+from librespot.config import PROXY_URL
 from librespot.crypto import CipherPair
 from librespot.crypto import DiffieHellman
 from librespot.crypto import Packet
@@ -1120,6 +1121,21 @@ class Session(Closeable, MessageListener, SubListener):
 
         """
         client = requests.Session()
+
+        if PROXY_URL:
+            proxy_schemes = {
+                "http://": "http",
+                "https://": "https",
+                "socks5://": "socks5",
+            }
+
+            for prefix, scheme in proxy_schemes.items():
+                if PROXY_URL.startswith(prefix):
+                    client.proxies.update({
+                        "http": PROXY_URL,
+                        "https": PROXY_URL
+                    })
+                    break
         return client
 
     def dealer(self) -> DealerClient:
@@ -1635,16 +1651,6 @@ class Session(Closeable, MessageListener, SubListener):
             return session
 
     class Configuration:
-        """ """
-        # Proxy
-        # proxyEnabled: bool
-        # proxyType: Proxy.Type
-        # proxyAddress: str
-        # proxyPort: int
-        # proxyAuth: bool
-        # proxyUsername: str
-        # proxyPassword: str
-
         # Cache
         cache_enabled: bool
         cache_dir: str
@@ -1659,27 +1665,13 @@ class Session(Closeable, MessageListener, SubListener):
 
         def __init__(
             self,
-            # proxy_enabled: bool,
-            # proxy_type: Proxy.Type,
-            # proxy_address: str,
-            # proxy_port: int,
-            # proxy_auth: bool,
-            # proxy_username: str,
-            # proxy_password: str,
             cache_enabled: bool,
             cache_dir: str,
             do_cache_clean_up: bool,
             store_credentials: bool,
             stored_credentials_file: str,
-            retry_on_chunk_error: bool,
+            retry_on_chunk_error: bool
         ):
-            # self.proxyEnabled = proxy_enabled
-            # self.proxyType = proxy_type
-            # self.proxyAddress = proxy_address
-            # self.proxyPort = proxy_port
-            # self.proxyAuth = proxy_auth
-            # self.proxyUsername = proxy_username
-            # self.proxyPassword = proxy_password
             self.cache_enabled = cache_enabled
             self.cache_dir = cache_dir
             self.do_cache_clean_up = do_cache_clean_up
@@ -1689,15 +1681,6 @@ class Session(Closeable, MessageListener, SubListener):
 
         class Builder:
             """ """
-            # Proxy
-            # proxyEnabled: bool = False
-            # proxyType: Proxy.Type = Proxy.Type.DIRECT
-            # proxyAddress: str = None
-            # proxyPort: int = None
-            # proxyAuth: bool = None
-            # proxyUsername: str = None
-            # proxyPassword: str = None
-
             # Cache
             cache_enabled: bool = True
             cache_dir: str = os.path.join(os.getcwd(), "cache")
@@ -1710,40 +1693,6 @@ class Session(Closeable, MessageListener, SubListener):
 
             # Fetching
             retry_on_chunk_error: bool = True
-
-            # def set_proxy_enabled(
-            #         self,
-            #         proxy_enabled: bool) -> Session.Configuration.Builder:
-            #     self.proxyEnabled = proxy_enabled
-            #     return self
-
-            # def set_proxy_type(
-            #         self,
-            #         proxy_type: Proxy.Type) -> Session.Configuration.Builder:
-            #     self.proxyType = proxy_type
-            #     return self
-
-            # def set_proxy_address(
-            #         self, proxy_address: str) -> Session.Configuration.Builder:
-            #     self.proxyAddress = proxy_address
-            #     return self
-
-            # def set_proxy_auth(
-            #         self, proxy_auth: bool) -> Session.Configuration.Builder:
-            #     self.proxyAuth = proxy_auth
-            #     return self
-
-            # def set_proxy_username(
-            #         self,
-            #         proxy_username: str) -> Session.Configuration.Builder:
-            #     self.proxyUsername = proxy_username
-            #     return self
-
-            # def set_proxy_password(
-            #         self,
-            #         proxy_password: str) -> Session.Configuration.Builder:
-            #     self.proxyPassword = proxy_password
-            #     return self
 
             def set_cache_enabled(
                     self,
@@ -1824,19 +1773,12 @@ class Session(Closeable, MessageListener, SubListener):
 
                 """
                 return Session.Configuration(
-                    # self.proxyEnabled,
-                    # self.proxyType,
-                    # self.proxyAddress,
-                    # self.proxyPort,
-                    # self.proxyAuth,
-                    # self.proxyUsername,
-                    # self.proxyPassword,
                     self.cache_enabled,
                     self.cache_dir,
                     self.do_cache_clean_up,
                     self.store_credentials,
                     self.stored_credentials_file,
-                    self.retry_on_chunk_error,
+                    self.retry_on_chunk_error
                 )
 
     class ConnectionHolder:
