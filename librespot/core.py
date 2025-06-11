@@ -1601,7 +1601,7 @@ class Session(Closeable, MessageListener, SubListener):
             Login via OAuth
 
             You can supply an oauth_url_callback method that takes a string and returns the OAuth URL.
-            When oauth_url_callback is None, this will block until logged in.
+            When oauth_url_callback is None, this will only log the auth url to the console.
             """
             if os.path.isfile(self.conf.stored_credentials_file):
                 return self.stored_file(None)
