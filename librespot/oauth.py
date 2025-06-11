@@ -21,10 +21,12 @@ class OAuth:
     __code = ""
     __token = ""
     __server = None
+    __oauth_url_callback = None
 
-    def __init__(self, client_id, redirect_url):
+    def __init__(self, client_id, redirect_url, oauth_url_callback):
         self.__client_id = client_id
         self.__redirect_url = redirect_url
+        self.__oauth_url_callback = oauth_url_callback
 
     def __generate_generate_code_verifier(self):
         possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
@@ -39,7 +41,10 @@ class OAuth:
 
     def get_auth_url(self):
         self.__code_verifier = self.__generate_generate_code_verifier()
-        return self.__spotify_auth % (self.__client_id, self.__redirect_url, self.__generate_code_challenge(self.__code_verifier), "+".join(self.__scopes))
+        auth_url = self.__spotify_auth % (self.__client_id, self.__redirect_url, self.__generate_code_challenge(self.__code_verifier), "+".join(self.__scopes))
+        if self.__oauth_url_callback:
+            self.__oauth_url_callback(auth_url)
+        return auth_url
 
     def set_code(self, code):
         self.__code = code
