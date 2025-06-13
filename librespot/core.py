@@ -29,7 +29,7 @@ from Cryptodome.Protocol.KDF import PBKDF2
 from Cryptodome.PublicKey import RSA
 from Cryptodome.Signature import PKCS1_v1_5
 
-from librespot import util
+from librespot import util, oauth
 from librespot import Version
 from librespot.audio import AudioKeyManager
 from librespot.audio import CdnManager
@@ -48,6 +48,7 @@ from librespot.metadata import EpisodeId
 from librespot.metadata import PlaylistId
 from librespot.metadata import ShowId
 from librespot.metadata import TrackId
+from librespot.oauth import OAuth
 from librespot.proto import Authentication_pb2 as Authentication
 from librespot.proto import ClientToken_pb2 as ClientToken
 from librespot.proto import Connect_pb2 as Connect
@@ -1593,6 +1594,18 @@ class Session(Closeable, MessageListener, SubListener):
                         )
                     except KeyError:
                         pass
+            return self
+
+        def oauth(self, oauth_url_callback) -> Session.Builder:
+            """
+            Login via OAuth
+
+            You can supply an oauth_url_callback method that takes a string and returns the OAuth URL.
+            When oauth_url_callback is None, this will only log the auth url to the console.
+            """
+            if os.path.isfile(self.conf.stored_credentials_file):
+                return self.stored_file(None)
+            self.login_credentials = OAuth(MercuryRequests.keymaster_client_id, "http://127.0.0.1:5588/login", oauth_url_callback).flow()
             return self
 
         def user_pass(self, username: str, password: str) -> Session.Builder:

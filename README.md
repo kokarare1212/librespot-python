@@ -62,6 +62,35 @@ from librespot.zeroconf import ZeroconfServer
 zeroconf = ZeroconfServer.Builder().create()
 ```
 
+### Use OAuth for Login
+
+#### Without auth url callback
+
+```python
+from librespot.core import Session
+
+# This will log an url in the terminal that you have to open
+
+session = Session.Builder() \
+    .oauth(None) \
+    .create()
+```
+
+#### With auth url callback
+
+```python
+from librespot.core import Session
+
+# This will pass the auth url to the method
+
+def auth_url_callback(url):
+    print(url)
+
+session = Session.Builder() \
+    .oauth(auth_url_callback) \
+    .create()
+```
+
 ### Get Spotify's OAuth token
 
 ```python
@@ -69,7 +98,7 @@ from librespot.core import Session
 
 
 session = Session.Builder() \
-    .user_pass("Username", "Password") \
+    .oauth(None) \
     .create()
 
 access_token = session.tokens().get("playlist-read")
@@ -85,7 +114,7 @@ from librespot.metadata import TrackId
 from librespot.audio.decoders import AudioQuality, VorbisOnlyAudioQuality
 
 session = Session.Builder() \
-    .user_pass("Username", "Password") \
+    .oauth(None) \
     .create()
 
 track_id = TrackId.from_uri("spotify:track:xxxxxxxxxxxxxxxxxxxxxx")
