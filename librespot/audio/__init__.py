@@ -579,6 +579,8 @@ class CdnManager:
                                     range_end=ChannelManager.chunk_size - 1)
             content_range = response.headers.get("Content-Range")
             if content_range is None:
+                content_range = response.headers.get("content-range")
+            if content_range is None:
                 raise IOError("Missing Content-Range header!")
             split = content_range.split("/")
             self.size = int(split[1])
