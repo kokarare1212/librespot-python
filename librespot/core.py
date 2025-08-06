@@ -80,6 +80,7 @@ class ApiClient(Closeable):
         suffix: str,
         headers: typing.Union[None, typing.Dict[str, str]],
         body: typing.Union[None, bytes],
+        url: typing.Union[None, str],
     ) -> requests.PreparedRequest:
         """
 
@@ -90,6 +91,8 @@ class ApiClient(Closeable):
         :param str]]:
         :param body: typing.Union[None:
         :param bytes]:
+        :param url: typing.Union[None:
+        :param str]:
 
         """
         if self.__client_token_str is None:
@@ -107,7 +110,10 @@ class ApiClient(Closeable):
         request.headers["Authorization"] = "Bearer {}".format(
             self.__session.tokens().get("playlist-read"))
         request.headers["client-token"] = self.__client_token_str
-        request.url = self.__base_url + suffix
+        if url is None:
+            request.url = self.__base_url + suffix
+        else:
+            request.url = url + suffix
         return request
 
     def send(
@@ -129,7 +135,31 @@ class ApiClient(Closeable):
 
         """
         response = self.__session.client().send(
-            self.build_request(method, suffix, headers, body))
+            self.build_request(method, suffix, headers, body, None))
+        return response
+
+    def sendToUrl(
+        self,
+        method: str,
+        url: str,
+        suffix: str,
+        headers: typing.Union[None, typing.Dict[str, str]],
+        body: typing.Union[None, bytes],
+    ) -> requests.Response:
+        """
+
+        :param method: str:
+        :param url: str:
+        :param suffix: str:
+        :param headers: typing.Union[None:
+        :param typing.Dict[str:
+        :param str]]:
+        :param body: typing.Union[None:
+        :param bytes]:
+
+        """
+        response = self.__session.client().send(
+            self.build_request(method, suffix, headers, body, url))
         return response
 
     def put_connect_state(self, connection_id: str,
@@ -163,7 +193,7 @@ class ApiClient(Closeable):
         :param track: TrackId:
 
         """
-        response = self.send("GET",
+        response = self.sendToUrl("GET", "https://spclient.wg.spotify.com",
                              "/metadata/4/track/{}".format(track.hex_id()),
                              None, None)
         ApiClient.StatusCodeException.check_status(response)
@@ -180,7 +210,7 @@ class ApiClient(Closeable):
         :param episode: EpisodeId:
 
         """
-        response = self.send("GET",
+        response = self.sendToUrl("GET", "https://spclient.wg.spotify.com",
                              "/metadata/4/episode/{}".format(episode.hex_id()),
                              None, None)
         ApiClient.StatusCodeException.check_status(response)
