@@ -12,7 +12,7 @@ from . import UserInfo_pb2 as spotify_dot_login5_dot_v3_dot_user__info__pb2
 from ..v3.challenges import Code_pb2 as spotify_dot_login5_dot_v3_dot_challenges_dot_code__pb2
 from ..v3.challenges import Hashcash_pb2 as spotify_dot_login5_dot_v3_dot_challenges_dot_hashcash__pb2
 from ..v3.credentials import Credentials_pb2 as spotify_dot_login5_dot_v3_dot_credentials_dot_credentials__pb2
-from ..v3.identifiers import Identifiers as spotify_dot_login5_dot_v3_dot_identifiers_dot_identifiers__pb2
+from ..v3.identifiers import Identifiers_pb2 as spotify_dot_login5_dot_v3_dot_identifiers_dot_identifiers__pb2
 
 # @@protoc_insertion_point(imports)
 
