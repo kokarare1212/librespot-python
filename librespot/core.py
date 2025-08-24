@@ -229,7 +229,7 @@ class ApiClient(Closeable):
         :param album: AlbumId:
 
         """
-        response = self.send("GET",
+        response = self.sendToUrl("GET", "https://spclient.wg.spotify.com",
                              "/metadata/4/album/{}".format(album.hex_id()),
                              None, None)
         ApiClient.StatusCodeException.check_status(response)
@@ -247,7 +247,7 @@ class ApiClient(Closeable):
         :param artist: ArtistId:
 
         """
-        response = self.send("GET",
+        response = self.sendToUrl("GET", "https://spclient.wg.spotify.com",
                              "/metadata/4/artist/{}".format(artist.hex_id()),
                              None, None)
         ApiClient.StatusCodeException.check_status(response)
@@ -264,7 +264,7 @@ class ApiClient(Closeable):
         :param show: ShowId:
 
         """
-        response = self.send("GET",
+        response = self.sendToUrl("GET", "https://spclient.wg.spotify.com",
                              "/metadata/4/show/{}".format(show.hex_id()), None,
                              None)
         ApiClient.StatusCodeException.check_status(response)
