@@ -5,6 +5,7 @@ import subprocess
 import time
 
 import requests
+from requests.structures import CaseInsensitiveDict
 
 from librespot.audio.decoders import AudioQuality, VorbisOnlyAudioQuality
 from librespot.core import Session
@@ -66,7 +67,7 @@ def client():
                     "q": cmd[2:],
                     "type": "track"
                 },
-                headers={"Authorization": "Bearer %s" % token},
+                headers=CaseInsensitiveDict({"Authorization": "Bearer %s" % token}),
             )
             i = 1
             tracks = resp.json()["tracks"]["items"]

@@ -3,6 +3,7 @@ from librespot import util
 from librespot.crypto import Packet
 from librespot.proto import Mercury_pb2 as Mercury, Pubsub_pb2 as Pubsub
 from librespot.structure import Closeable, PacketsReceiver, SubListener
+from requests.structures import CaseInsensitiveDict
 import io
 import json
 import logging
@@ -346,11 +347,11 @@ class RawMercuryRequest:
         return RawMercuryRequest.Builder()
 
     class Builder:
-        header_dict: dict
+        header_dict: CaseInsensitiveDict
         payload: typing.List[bytes]
 
         def __init__(self):
-            self.header_dict = {}
+            self.header_dict = CaseInsensitiveDict()
             self.payload = []
 
         def set_uri(self, uri: str):

@@ -8,6 +8,7 @@ if typing.TYPE_CHECKING:
     from librespot.crypto import Packet
     from librespot.mercury import MercuryClient
     from librespot.proto import Metadata_pb2 as Metadata
+    from requests.structures import CaseInsensitiveDict
 
 
 class AudioDecrypt:
@@ -61,7 +62,7 @@ class HaltListener:
 
 
 class MessageListener:
-    def on_message(self, uri: str, headers: typing.Dict[str, str],
+    def on_message(self, uri: str, headers: CaseInsensitiveDict[str, str],
                    payload: bytes):
         raise NotImplementedError
 

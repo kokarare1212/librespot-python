@@ -28,6 +28,7 @@ from Cryptodome.Hash import SHA1
 from Cryptodome.Protocol.KDF import PBKDF2
 from Cryptodome.PublicKey import RSA
 from Cryptodome.Signature import PKCS1_v1_5
+from requests.structures import CaseInsensitiveDict
 
 from librespot import util
 from librespot import Version
@@ -80,7 +81,7 @@ class ApiClient(Closeable):
         self,
         method: str,
         suffix: str,
-        headers: typing.Union[None, typing.Dict[str, str]],
+        headers: typing.Union[None, CaseInsensitiveDict[str, str]],
         body: typing.Union[None, bytes],
         url: typing.Union[None, str],
     ) -> requests.PreparedRequest:
@@ -89,7 +90,7 @@ class ApiClient(Closeable):
         :param method: str:
         :param suffix: str:
         :param headers: typing.Union[None:
-        :param typing.Dict[str:
+        :param CaseInsensitiveDict[str:
         :param str]]:
         :param body: typing.Union[None:
         :param bytes]:
@@ -106,7 +107,7 @@ class ApiClient(Closeable):
         request = requests.PreparedRequest()
         request.method = method
         request.data = body
-        request.headers = {}
+        request.headers = CaseInsensitiveDict()
         if headers is not None:
             request.headers = headers
         request.headers["Authorization"] = "Bearer {}".format(
@@ -122,7 +123,7 @@ class ApiClient(Closeable):
         self,
         method: str,
         suffix: str,
-        headers: typing.Union[None, typing.Dict[str, str]],
+        headers: typing.Union[None, CaseInsensitiveDict[str, str]],
         body: typing.Union[None, bytes],
     ) -> requests.Response:
         """
@@ -130,7 +131,7 @@ class ApiClient(Closeable):
         :param method: str:
         :param suffix: str:
         :param headers: typing.Union[None:
-        :param typing.Dict[str:
+        :param CaseInsensitiveDict[str:
         :param str]]:
         :param body: typing.Union[None:
         :param bytes]:
@@ -145,7 +146,7 @@ class ApiClient(Closeable):
         method: str,
         url: str,
         suffix: str,
-        headers: typing.Union[None, typing.Dict[str, str]],
+        headers: typing.Union[None, CaseInsensitiveDict[str, str]],
         body: typing.Union[None, bytes],
     ) -> requests.Response:
         """
@@ -154,7 +155,7 @@ class ApiClient(Closeable):
         :param url: str:
         :param suffix: str:
         :param headers: typing.Union[None:
-        :param typing.Dict[str:
+        :param CaseInsensitiveDict[str:
         :param str]]:
         :param body: typing.Union[None:
         :param bytes]:
@@ -327,10 +328,10 @@ class ApiClient(Closeable):
         resp = requests.post(
             "https://clienttoken.spotify.com/v1/clienttoken",
             proto_req.SerializeToString(),
-            headers={
+            headers=CaseInsensitiveDict({
                 "Accept": "application/x-protobuf",
                 "Content-Encoding": "",
-            },
+            }),
         )
 
         ApiClient.StatusCodeException.check_status(resp)
@@ -604,10 +605,10 @@ class DealerClient(Closeable):
                 return
             self.__message_listeners_lock.wait()
 
-    def __get_headers(self, obj: typing.Any) -> dict[str, str]:
+    def __get_headers(self, obj: typing.Any) -> CaseInsensitiveDict[str, str]:
         headers = obj.get("headers")
         if headers is None:
-            return {}
+            return CaseInsensitiveDict()
         return headers
 
     class ConnectionHolder(Closeable):
@@ -1212,12 +1213,12 @@ class Session(Closeable, MessageListener, SubListener):
             raise RuntimeError("Session isn't authenticated!")
         return self.__mercury_client
 
-    def on_message(self, uri: str, headers: typing.Dict[str, str],
+    def on_message(self, uri: str, headers: CaseInsensitiveDict[str, str],
                    payload: bytes):
         """
 
         :param uri: str:
-        :param headers: typing.Dict[str:
+        :param headers: CaseInsensitiveDict[str:
         :param str]:
         :param payload: bytes:
 
@@ -2331,10 +2332,10 @@ class TokenProvider:
             response = requests.post(
                 "https://login5.spotify.com/v3/login",
                 data=login5_request.SerializeToString(),
-                headers={
+                headers=CaseInsensitiveDict({
                     "Content-Type": "application/x-protobuf",
                     "Accept": "application/x-protobuf"
-                    })
+                    }))
 
             if response.status_code == 200:
                 login5_response = Login5.LoginResponse()
