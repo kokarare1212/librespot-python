@@ -1618,6 +1618,7 @@ class Session(Closeable, MessageListener, SubListener):
                     pass
                 else:
                     try:
+                        # Try Python librespot format first
                         self.login_credentials = Authentication.LoginCredentials(
                             typ=Authentication.AuthenticationType.Value(
                                 obj["type"]),
@@ -1625,7 +1626,15 @@ class Session(Closeable, MessageListener, SubListener):
                             auth_data=base64.b64decode(obj["credentials"]),
                         )
                     except KeyError:
-                        pass
+                        # Try Rust librespot format (auth_type as int, auth_data instead of credentials)
+                        try:
+                            self.login_credentials = Authentication.LoginCredentials(
+                                typ=obj["auth_type"],
+                                username=obj["username"],
+                                auth_data=base64.b64decode(obj["auth_data"]),
+                            )
+                        except KeyError:
+                            pass
             return self
 
         def oauth(self, oauth_url_callback) -> Session.Builder:
