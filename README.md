@@ -91,6 +91,18 @@ session = Session.Builder() \
     .create()
 ```
 
+### Use Stored Credentials for Login
+
+```python
+from librespot.core import Session
+
+# Supports both Python and Rust librespot credential formats
+
+session = Session.Builder() \
+    .stored_file("/path/to/credentials.json") \
+    .create()
+```
+
 ### Get Spotify's OAuth token
 
 ```python
