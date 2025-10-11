@@ -270,7 +270,8 @@ message AudioFile {
         MP3_160_ENC = 7;
         AAC_24 = 8;
         AAC_48 = 9;
-        AAC_24_NORM = 16;
+        FLAC_FLAC = 16;
+        FLAC_FLAC_24BIT = 22;
     }
 }
 
