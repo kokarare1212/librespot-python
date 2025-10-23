@@ -8,6 +8,7 @@ from librespot.crypto import Packet
 from librespot.metadata import EpisodeId, PlayableId, TrackId
 from librespot.proto import Metadata_pb2 as Metadata, StorageResolve_pb2 as StorageResolve
 from librespot.structure import AudioDecrypt, AudioQualityPicker, Closeable, FeederException, GeneralAudioStream, GeneralWritableStream, HaltListener, NoopAudioDecrypt, PacketsReceiver
+from requests.structures import CaseInsensitiveDict
 import concurrent.futures
 import io
 import logging
@@ -471,9 +472,9 @@ class CdnManager:
 
     class InternalResponse:
         buffer: bytes
-        headers: typing.Dict[str, str]
+        headers: CaseInsensitiveDict[str, str]
 
-        def __init__(self, buffer: bytes, headers: typing.Dict[str, str]):
+        def __init__(self, buffer: bytes, headers: CaseInsensitiveDict[str, str]):
             self.buffer = buffer
             self.headers = headers
 
@@ -579,8 +580,6 @@ class CdnManager:
                                     range_end=ChannelManager.chunk_size - 1)
             content_range = response.headers.get("Content-Range")
             if content_range is None:
-                content_range = response.headers.get("content-range")
-            if content_range is None:
                 raise IOError("Missing Content-Range header!")
             split = content_range.split("/")
             self.size = int(split[1])
@@ -633,16 +632,16 @@ class CdnManager:
                 range_end = (chunk + 1) * ChannelManager.chunk_size - 1
             response = self.__session.client().get(
                 self.__cdn_url.url,
-                headers={
+                headers=CaseInsensitiveDict({
                     "Range": "bytes={}-{}".format(range_start, range_end)
-                },
+                }),
             )
             if response.status_code != 206:
                 raise IOError(response.status_code)
             body = response.content
             if body is None:
                 raise IOError("Response body is empty!")
-            return CdnManager.InternalResponse(body, dict(response.headers))
+            return CdnManager.InternalResponse(body, response.headers)
 
         class InternalStream(AbsChunkedInputStream):
             streamer: CdnManager.Streamer

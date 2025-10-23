@@ -2,6 +2,7 @@ import os
 import re
 import socket
 import threading
+from requests.structures import CaseInsensitiveDict
 
 from librespot.audio.decoders import AudioQuality, VorbisOnlyAudioQuality
 from librespot.core import Session
@@ -23,7 +24,7 @@ def handler(client: socket.socket, address: str):
     req_method = req_http_arr[0]
     req_uri = req_http_arr[1]
     req_http_version = req_http_arr[2]
-    req_header = {}
+    req_header = CaseInsensitiveDict()
     for header in req_header_str.split(b"\r\n"):
         try:
             key, value = header.split(b": ")
@@ -73,7 +74,7 @@ def main():
         threading.Thread(target=handler, args=sock.accept()).start()
 
 
-def response(client: socket.socket, uri: str, header: dict,
+def response(client: socket.socket, uri: str, header: CaseInsensitiveDict,
              body: bytes) -> tuple[str, list, bytes, bool]:
     if re.search(r"^/audio/track/([0-9a-zA-Z]{22})$", uri) is not None:
         track_id_search = re.search(

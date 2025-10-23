@@ -7,6 +7,7 @@ from librespot.core import Session
 from librespot.crypto import DiffieHellman
 from librespot.proto import Connect_pb2 as Connect
 from librespot.structure import Closeable, Runnable, SessionListener
+from requests.structures import CaseInsensitiveDict
 import base64
 import concurrent.futures
 import copy
@@ -275,7 +276,7 @@ class ZeroconfServer(Closeable):
             method = request_line[0].decode()
             path = request_line[1].decode()
             http_version = request_line[2].decode()
-            headers = {}
+            headers = CaseInsensitiveDict()
             while True:
                 header = request.readline().strip()
                 if not header:

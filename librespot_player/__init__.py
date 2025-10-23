@@ -5,6 +5,7 @@ from librespot.core import Session
 from librespot.mercury import MercuryRequests
 from librespot.proto import Connect_pb2 as Connect
 from librespot.structure import Closeable, MessageListener, RequestListener
+from requests.structures import CaseInsensitiveDict
 import concurrent.futures
 import logging
 import typing
@@ -200,6 +201,6 @@ class StateWrapper(MessageListener):
             "hm://collection/collection/" + session.username() + "/json"
         ])
 
-    def on_message(self, uri: str, headers: typing.Dict[str, str],
+    def on_message(self, uri: str, headers: CaseInsensitiveDict[str, str],
                    payload: bytes):
         pass
