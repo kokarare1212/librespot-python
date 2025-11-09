@@ -57,7 +57,7 @@ from librespot.proto import Connectivity_pb2 as Connectivity
 from librespot.proto import Keyexchange_pb2 as Keyexchange
 from librespot.proto import Metadata_pb2 as Metadata
 from librespot.proto import Playlist4External_pb2 as Playlist4External
-from librespot.proto.ExtendedMetadata_pb2 import EntityRequest, BatchedEntityRequest, ExtensionQuery
+from librespot.proto.ExtendedMetadata_pb2 import EntityRequest, BatchedEntityRequest, ExtensionQuery, BatchedExtensionResponse
 from librespot.proto.ExtensionKind_pb2 import ExtensionKind
 from librespot.proto.ExplicitContentPubsub_pb2 import UserAttributesUpdate
 from librespot.proto.spotify.login5.v3 import Login5_pb2 as Login5
@@ -193,13 +193,21 @@ class ApiClient(Closeable):
                 response.status_code, response.headers))
 
     def get_ext_metadata(self, extension_kind: ExtensionKind, uri: str):
-        query = ExtensionQuery(extension_kind=extension_kind)
-        req = EntityRequest(entity_uri=uri, query=[query,])
-        batch = BatchedEntityRequest(entity_request=[req,])
         headers = CaseInsensitiveDict({"content-type": "application/x-protobuf"})
+        req = EntityRequest(entity_uri=uri, query=[ExtensionQuery(extension_kind=extension_kind),])
+
         response = self.send("POST", "/extended-metadata/v0/extended-metadata",
-                             headers, batch.SerializeToString())
-        return response
+                             headers, BatchedEntityRequest(entity_request=[req,]).SerializeToString())
+        ApiClient.StatusCodeException.check_status(response)
+
+        body = response.content
+        if body is None:
+            raise RuntimeError()
+        
+        proto = BatchedExtensionResponse()
+        proto.ParseFromString(body)
+        mdb: bytes = proto.extended_metadata.pop().extension_data.pop().extension_data.value
+        return mdb
 
     def get_metadata_4_track(self, track: TrackId) -> Metadata.Track:
         """
@@ -207,15 +215,10 @@ class ApiClient(Closeable):
         :param track: TrackId:
 
         """
-        response = self.get_ext_metadata(ExtensionKind.TRACK_V4, track.to_spotify_uri())
-        ApiClient.StatusCodeException.check_status(response)
-        body = response.content
-        if body is None:
-            raise RuntimeError()
-        # TODO: update parsing of successful response
-        proto = Metadata.Track()
-        proto.ParseFromString(body)
-        return proto
+        mdb = self.get_ext_metadata(ExtensionKind.TRACK_V4, track.to_spotify_uri())
+        md = Metadata.Track()
+        md.ParseFromString(mdb)
+        return md
 
     def get_metadata_4_episode(self, episode: EpisodeId) -> Metadata.Episode:
         """
@@ -223,16 +226,10 @@ class ApiClient(Closeable):
         :param episode: EpisodeId:
 
         """
-        response = self.sendToUrl("GET", "https://spclient.wg.spotify.com",
-                             "/metadata/4/episode/{}".format(episode.hex_id()),
-                             None, None)
-        ApiClient.StatusCodeException.check_status(response)
-        body = response.content
-        if body is None:
-            raise IOError()
-        proto = Metadata.Episode()
-        proto.ParseFromString(body)
-        return proto
+        mdb = self.get_ext_metadata(ExtensionKind.EPISODE_V4, episode.to_spotify_uri())
+        md = Metadata.Episode()
+        md.ParseFromString(mdb)
+        return md
 
     def get_metadata_4_album(self, album: AlbumId) -> Metadata.Album:
         """
@@ -240,17 +237,10 @@ class ApiClient(Closeable):
         :param album: AlbumId:
 
         """
-        response = self.sendToUrl("GET", "https://spclient.wg.spotify.com",
-                             "/metadata/4/album/{}".format(album.hex_id()),
-                             None, None)
-        ApiClient.StatusCodeException.check_status(response)
-
-        body = response.content
-        if body is None:
-            raise IOError()
-        proto = Metadata.Album()
-        proto.ParseFromString(body)
-        return proto
+        mdb = self.get_ext_metadata(ExtensionKind.ALBUM_V4, album.to_spotify_uri())
+        md = Metadata.Album()
+        md.ParseFromString(mdb)
+        return md
 
     def get_metadata_4_artist(self, artist: ArtistId) -> Metadata.Artist:
         """
@@ -258,16 +248,10 @@ class ApiClient(Closeable):
         :param artist: ArtistId:
 
         """
-        response = self.sendToUrl("GET", "https://spclient.wg.spotify.com",
-                             "/metadata/4/artist/{}".format(artist.hex_id()),
-                             None, None)
-        ApiClient.StatusCodeException.check_status(response)
-        body = response.content
-        if body is None:
-            raise IOError()
-        proto = Metadata.Artist()
-        proto.ParseFromString(body)
-        return proto
+        mdb = self.get_ext_metadata(ExtensionKind.ARTIST_V4, artist.to_spotify_uri())
+        md = Metadata.Artist()
+        md.ParseFromString(mdb)
+        return md
 
     def get_metadata_4_show(self, show: ShowId) -> Metadata.Show:
         """
@@ -275,16 +259,10 @@ class ApiClient(Closeable):
         :param show: ShowId:
 
         """
-        response = self.sendToUrl("GET", "https://spclient.wg.spotify.com",
-                             "/metadata/4/show/{}".format(show.hex_id()), None,
-                             None)
-        ApiClient.StatusCodeException.check_status(response)
-        body = response.content
-        if body is None:
-            raise IOError()
-        proto = Metadata.Show()
-        proto.ParseFromString(body)
-        return proto
+        mdb = self.get_ext_metadata(ExtensionKind.SHOW_V4, show.to_spotify_uri())
+        md = Metadata.Show()
+        md.ParseFromString(mdb)
+        return md
 
     def get_playlist(self,
                      _id: PlaylistId) -> Playlist4External.SelectedListContent:
