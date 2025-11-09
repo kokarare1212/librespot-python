@@ -22,11 +22,16 @@ class OAuth:
     __token = ""
     __server = None
     __oauth_url_callback = None
+    __success_page_content = None
 
     def __init__(self, client_id, redirect_url, oauth_url_callback):
         self.__client_id = client_id
         self.__redirect_url = redirect_url
         self.__oauth_url_callback = oauth_url_callback
+    
+    def set_success_page_content(self, content):
+        self.__success_page_content = content
+        return self
 
     def __generate_generate_code_verifier(self):
         possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
@@ -76,9 +81,10 @@ class OAuth:
     class CallbackServer(HTTPServer):
         callback_path = None
 
-        def __init__(self, server_address, RequestHandlerClass, callback_path, set_code):
+        def __init__(self, server_address, RequestHandlerClass, callback_path, set_code, success_page_content):
             self.callback_path = callback_path
             self.set_code = set_code
+            self.success_page_content = success_page_content
             super().__init__(server_address, RequestHandlerClass)
 
     class CallbackRequestHandler(BaseHTTPRequestHandler):
@@ -86,11 +92,22 @@ class OAuth:
             if(self.path.startswith(self.server.callback_path)):
                 query = urllib.parse.parse_qs(urlparse(self.path).query)
                 if not query.__contains__("code"):
+                    self.send_response(400)
+                    self.send_header('Content-type', 'text/html')
+                    self.end_headers()
                     self.wfile.write(b"Request doesn't contain 'code'")
                     return
                 self.server.set_code(query.get("code")[0])
-                self.wfile.write(b"librespot-python received callback")
+                self.send_response(200)
+                self.send_header('Content-type', 'text/html')
+                self.end_headers()
+                success_page = self.server.success_page_content or "librespot-python received callback"
+                self.wfile.write(success_page.encode('utf-8'))
             pass
+
+        # Suppress logging
+        def log_message(self, format, *args) -> None:
+            return
 
     def __start_server(self):
         try:
@@ -106,7 +123,8 @@ class OAuth:
             (url.hostname, url.port),
             self.CallbackRequestHandler,
             url.path,
-            self.set_code
+            self.set_code,
+            self.__success_page_content,
         )
         logging.info("OAuth: Waiting for callback on %s", url.hostname + ":" + str(url.port))
         self.__start_server()

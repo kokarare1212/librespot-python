@@ -1638,7 +1638,7 @@ class Session(Closeable, MessageListener, SubListener):
                             pass
             return self
 
-        def oauth(self, oauth_url_callback) -> Session.Builder:
+        def oauth(self, oauth_url_callback, success_page_content = None) -> Session.Builder:
             """
             Login via OAuth
 
@@ -1647,7 +1647,7 @@ class Session(Closeable, MessageListener, SubListener):
             """
             if os.path.isfile(self.conf.stored_credentials_file):
                 return self.stored_file(None)
-            self.login_credentials = OAuth(MercuryRequests.keymaster_client_id, "http://127.0.0.1:5588/login", oauth_url_callback).flow()
+            self.login_credentials = OAuth(MercuryRequests.keymaster_client_id, "http://127.0.0.1:5588/login", oauth_url_callback).set_success_page_content(success_page_content).flow()
             return self
 
         def user_pass(self, username: str, password: str) -> Session.Builder:
