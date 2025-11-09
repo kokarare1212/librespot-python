@@ -106,20 +106,20 @@ class ApiClient(Closeable):
             self.logger.debug("Updated client token: {}".format(
                 self.__client_token_str))
 
-        request = requests.PreparedRequest()
-        request.method = method
-        request.data = body
-        request.headers = CaseInsensitiveDict()
-        if headers is not None:
-            request.headers = headers
-        request.headers["Authorization"] = "Bearer {}".format(
-            self.__session.tokens().get("playlist-read"))
-        request.headers["client-token"] = self.__client_token_str
         if url is None:
-            request.url = self.__base_url + suffix
+            url = self.__base_url + suffix
         else:
-            request.url = url + suffix
-        return request
+            url = url + suffix
+
+        if headers is None:
+            headers = {}
+        headers["Authorization"] = "Bearer {}".format(
+            self.__session.tokens().get("playlist-read"))
+        headers["client-token"] = self.__client_token_str
+
+        request = requests.Request(method, url, headers=headers, data=body)
+
+        return request.prepare()
 
     def send(
         self,
