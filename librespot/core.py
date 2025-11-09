@@ -57,6 +57,8 @@ from librespot.proto import Connectivity_pb2 as Connectivity
 from librespot.proto import Keyexchange_pb2 as Keyexchange
 from librespot.proto import Metadata_pb2 as Metadata
 from librespot.proto import Playlist4External_pb2 as Playlist4External
+from librespot.proto.ExtendedMetadata_pb2 import EntityRequest, BatchedEntityRequest, ExtensionQuery
+from librespot.proto.ExtensionKind_pb2 import ExtensionKind
 from librespot.proto.ExplicitContentPubsub_pb2 import UserAttributesUpdate
 from librespot.proto.spotify.login5.v3 import Login5_pb2 as Login5
 from librespot.proto.spotify.login5.v3.credentials import Credentials_pb2 as Login5Credentials
@@ -190,19 +192,27 @@ class ApiClient(Closeable):
             self.logger.warning("PUT state returned {}. headers: {}".format(
                 response.status_code, response.headers))
 
+    def get_ext_metadata(self, extension_kind: ExtensionKind, uri: str):
+        query = ExtensionQuery(extension_kind=extension_kind)
+        req = EntityRequest(entity_uri=uri, query=[query,])
+        batch = BatchedEntityRequest(entity_request=[req,])
+        headers = CaseInsensitiveDict({"content-type": "application/x-protobuf"})
+        response = self.send("POST", "/extended-metadata/v0/extended-metadata",
+                             headers, batch.SerializeToString())
+        return response
+
     def get_metadata_4_track(self, track: TrackId) -> Metadata.Track:
         """
 
         :param track: TrackId:
 
         """
-        response = self.sendToUrl("GET", "https://spclient.wg.spotify.com",
-                             "/metadata/4/track/{}".format(track.hex_id()),
-                             None, None)
+        response = self.get_ext_metadata(ExtensionKind.TRACK_V4, track.to_spotify_uri())
         ApiClient.StatusCodeException.check_status(response)
         body = response.content
         if body is None:
             raise RuntimeError()
+        # TODO: update parsing of successful response
         proto = Metadata.Track()
         proto.ParseFromString(body)
         return proto
