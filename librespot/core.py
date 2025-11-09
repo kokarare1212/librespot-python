@@ -112,7 +112,7 @@ class ApiClient(Closeable):
             url = url + suffix
 
         if headers is None:
-            headers = {}
+            headers = CaseInsensitiveDict()
         headers["Authorization"] = "Bearer {}".format(
             self.__session.tokens().get("playlist-read"))
         headers["client-token"] = self.__client_token_str
