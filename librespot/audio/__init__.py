@@ -778,6 +778,7 @@ class PlayableContentFeeder:
             self.logger.fatal(
                 "Couldn't find any suitable audio file, available: {}".format(
                     episode.audio))
+            raise FeederException("Cannot find suitable audio file")
         return self.load_stream(file, None, episode, preload, halt_listener)
 
     def load_track(self, track_id_or_track: typing.Union[TrackId,
@@ -797,7 +798,7 @@ class PlayableContentFeeder:
             self.logger.fatal(
                 "Couldn't find any suitable audio file, available: {}".format(
                     track.file))
-            raise FeederException()
+            raise FeederException("Cannot find suitable audio file")
         return self.load_stream(file, track, None, preload, halt_listener)
 
     def pick_alternative_if_necessary(
