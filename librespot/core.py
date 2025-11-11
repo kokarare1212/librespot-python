@@ -202,11 +202,14 @@ class ApiClient(Closeable):
 
         body = response.content
         if body is None:
-            raise RuntimeError()
-        
+            raise ConnectionError("Extended Metadata request failed: No response body")
+
         proto = BatchedExtensionResponse()
         proto.ParseFromString(body)
-        mdb: bytes = proto.extended_metadata.pop().extension_data.pop().extension_data.value
+        entityextd = proto.extended_metadata.pop().extension_data.pop()
+        if entityextd.header.status_code != 200:
+            raise ConnectionError("Extended Metadata request failed: Status code {}".format(entityextd.header.status_code))
+        mdb: bytes = entityextd.extension_data.value
         return mdb
 
     def get_metadata_4_track(self, track: TrackId) -> Metadata.Track:
