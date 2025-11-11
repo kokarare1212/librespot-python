@@ -748,7 +748,9 @@ class PlayableContentFeeder:
                     episode: Metadata.Episode, preload: bool,
                     halt_lister: HaltListener):
         if track is None and episode is None:
-            raise RuntimeError()
+            raise RuntimeError("No content passed!")
+        elif file is None:
+            raise RuntimeError("Content has no audio file!")
         response = self.resolve_storage_interactive(file.file_id, preload)
         if response.result == StorageResolve.StorageResolveResponse.Result.CDN:
             if track is not None:
