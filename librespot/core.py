@@ -80,12 +80,12 @@ class ApiClient(Closeable):
         self.__base_url = "https://{}".format(ApResolver.get_random_spclient())
 
     def build_request(
-        self,
-        method: str,
-        suffix: str,
-        headers: typing.Union[None, CaseInsensitiveDict[str, str]],
-        body: typing.Union[None, bytes],
-        url: typing.Union[None, str],
+            self,
+            method: str,
+            suffix: str,
+            headers: typing.Union[None, CaseInsensitiveDict[str, str]],
+            body: typing.Union[None, bytes],
+            url: typing.Union[None, str],
     ) -> requests.PreparedRequest:
         """
 
@@ -122,11 +122,11 @@ class ApiClient(Closeable):
         return request.prepare()
 
     def send(
-        self,
-        method: str,
-        suffix: str,
-        headers: typing.Union[None, CaseInsensitiveDict[str, str]],
-        body: typing.Union[None, bytes],
+            self,
+            method: str,
+            suffix: str,
+            headers: typing.Union[None, CaseInsensitiveDict[str, str]],
+            body: typing.Union[None, bytes],
     ) -> requests.Response:
         """
 
@@ -144,12 +144,12 @@ class ApiClient(Closeable):
         return response
 
     def sendToUrl(
-        self,
-        method: str,
-        url: str,
-        suffix: str,
-        headers: typing.Union[None, CaseInsensitiveDict[str, str]],
-        body: typing.Union[None, bytes],
+            self,
+            method: str,
+            url: str,
+            suffix: str,
+            headers: typing.Union[None, CaseInsensitiveDict[str, str]],
+            body: typing.Union[None, bytes],
     ) -> requests.Response:
         """
 
@@ -194,10 +194,10 @@ class ApiClient(Closeable):
 
     def get_ext_metadata(self, extension_kind: ExtensionKind, uri: str):
         headers = CaseInsensitiveDict({"content-type": "application/x-protobuf"})
-        req = EntityRequest(entity_uri=uri, query=[ExtensionQuery(extension_kind=extension_kind),])
+        req = EntityRequest(entity_uri=uri, query=[ExtensionQuery(extension_kind=extension_kind), ])
 
         response = self.send("POST", "/extended-metadata/v0/extended-metadata",
-                             headers, BatchedEntityRequest(entity_request=[req,]).SerializeToString())
+                             headers, BatchedEntityRequest(entity_request=[req, ]).SerializeToString())
         ApiClient.StatusCodeException.check_status(response)
 
         body = response.content
@@ -208,7 +208,8 @@ class ApiClient(Closeable):
         proto.ParseFromString(body)
         entityextd = proto.extended_metadata.pop().extension_data.pop()
         if entityextd.header.status_code != 200:
-            raise ConnectionError("Extended Metadata request failed: Status code {}".format(entityextd.header.status_code))
+            raise ConnectionError(
+                "Extended Metadata request failed: Status code {}".format(entityextd.header.status_code))
         mdb: bytes = entityextd.extension_data.value
         return mdb
 
@@ -754,7 +755,7 @@ class EventService(Closeable):
                 event_builder, ex))
 
     def send_event(self, event_or_builder: typing.Union[GenericEvent,
-                                                        EventBuilder]):
+    EventBuilder]):
         """
 
         :param event_or_builder: typing.Union[GenericEvent:
@@ -892,6 +893,7 @@ class Session(Closeable, MessageListener, SubListener):
     __audio_key_manager: typing.Union[AudioKeyManager, None] = None
     __auth_lock = threading.Condition()
     __auth_lock_bool = False
+    __is_active = False
     __cache_manager: typing.Union[CacheManager, None]
     __cdn_manager: typing.Union[CdnManager, None]
     __channel_manager: typing.Union[ChannelManager, None] = None
@@ -975,6 +977,7 @@ class Session(Closeable, MessageListener, SubListener):
             self.__search = SearchManager(self)
             self.__event_service = EventService(self)
             self.__auth_lock_bool = False
+            self.__is_active = True
             self.__auth_lock.notify_all()
         self.dealer().connect()
         self.logger.info("Authenticated as {}!".format(
@@ -1085,7 +1088,7 @@ class Session(Closeable, MessageListener, SubListener):
         if not pkcs1_v1_5.verify(
                 sha1,
                 ap_response_message_proto.challenge.login_crypto_challenge.
-                diffie_hellman.gs_signature,
+                        diffie_hellman.gs_signature,
         ):
             raise RuntimeError("Failed signature check!")
         # Solve challenge
@@ -1192,10 +1195,11 @@ class Session(Closeable, MessageListener, SubListener):
 
     def is_valid(self) -> bool:
         """ """
-        if self.__closed:
+        if self.__closed or not self.__is_active:
             return False
-        self.__wait_auth_lock()
-        return self.__ap_welcome is not None and self.connection is not None
+        # Do not wait for lock if we just want to check validity to avoid blocking
+        # self.__wait_auth_lock()
+        return self.__ap_welcome is not None and self.connection is not None and self.__receiver is not None and self.__receiver._Receiver__running
 
     def mercury(self) -> MercuryClient:
         """ """
@@ -1352,11 +1356,11 @@ class Session(Closeable, MessageListener, SubListener):
                 self.__stored_str = base64.b64encode(
                     json.dumps({
                         "username":
-                        self.__ap_welcome.canonical_username,
+                            self.__ap_welcome.canonical_username,
                         "credentials":
-                        base64.b64encode(reusable).decode(),
+                            base64.b64encode(reusable).decode(),
                         "type":
-                        reusable_type,
+                            reusable_type,
                     }).encode()).decode()
                 with open(self.__inner.conf.stored_credentials_file, "w") as f:
                     json.dump(
@@ -1629,7 +1633,7 @@ class Session(Closeable, MessageListener, SubListener):
                             pass
             return self
 
-        def oauth(self, oauth_url_callback, success_page_content = None) -> Session.Builder:
+        def oauth(self, oauth_url_callback, success_page_content=None) -> Session.Builder:
             """
             Login via OAuth
 
@@ -1638,7 +1642,8 @@ class Session(Closeable, MessageListener, SubListener):
             """
             if os.path.isfile(self.conf.stored_credentials_file):
                 return self.stored_file(None)
-            self.login_credentials = OAuth(MercuryRequests.keymaster_client_id, "http://127.0.0.1:5588/login", oauth_url_callback).set_success_page_content(success_page_content).flow()
+            self.login_credentials = OAuth(MercuryRequests.keymaster_client_id, "http://127.0.0.1:5588/login",
+                                           oauth_url_callback).set_success_page_content(success_page_content).flow()
             return self
 
         def user_pass(self, username: str, password: str) -> Session.Builder:
@@ -1704,20 +1709,20 @@ class Session(Closeable, MessageListener, SubListener):
         retry_on_chunk_error: bool
 
         def __init__(
-            self,
-            # proxy_enabled: bool,
-            # proxy_type: Proxy.Type,
-            # proxy_address: str,
-            # proxy_port: int,
-            # proxy_auth: bool,
-            # proxy_username: str,
-            # proxy_password: str,
-            cache_enabled: bool,
-            cache_dir: str,
-            do_cache_clean_up: bool,
-            store_credentials: bool,
-            stored_credentials_file: str,
-            retry_on_chunk_error: bool,
+                self,
+                # proxy_enabled: bool,
+                # proxy_type: Proxy.Type,
+                # proxy_address: str,
+                # proxy_port: int,
+                # proxy_auth: bool,
+                # proxy_username: str,
+                # proxy_password: str,
+                cache_enabled: bool,
+                cache_dir: str,
+                do_cache_clean_up: bool,
+                store_credentials: bool,
+                stored_credentials_file: str,
+                retry_on_chunk_error: bool,
         ):
             # self.proxyEnabled = proxy_enabled
             # self.proxyType = proxy_type
@@ -2009,12 +2014,12 @@ class Session(Closeable, MessageListener, SubListener):
         preferred_locale: str
 
         def __init__(
-            self,
-            device_type: Connect.DeviceType,
-            device_name: str,
-            preferred_locale: str,
-            conf: Session.Configuration,
-            device_id: str = None,
+                self,
+                device_type: Connect.DeviceType,
+                device_name: str,
+                preferred_locale: str,
+                conf: Session.Configuration,
+                device_id: str = None,
         ):
             self.preferred_locale = preferred_locale
             self.conf = conf
@@ -2061,7 +2066,12 @@ class Session(Closeable, MessageListener, SubListener):
                     if self.__running:
                         self.__session.logger.fatal(
                             "Failed reading packet! {}".format(ex))
-                        self.__session.reconnect()
+                        try:
+                            self.__session.reconnect()
+                        except Exception as e:
+                            self.__session.logger.fatal(f"Reconnection failed: {e}")
+                            self.__session._Session__is_active = False
+                            self.__running = False
                     break
                 if not self.__running:
                     break
@@ -2102,16 +2112,16 @@ class Session(Closeable, MessageListener, SubListener):
                     self.__session.logger.debug("Received 0x10: {}".format(
                         util.bytes_to_hex(packet.payload)))
                 elif cmd in [
-                        Packet.Type.mercury_sub,
-                        Packet.Type.mercury_unsub,
-                        Packet.Type.mercury_event,
-                        Packet.Type.mercury_req,
+                    Packet.Type.mercury_sub,
+                    Packet.Type.mercury_unsub,
+                    Packet.Type.mercury_event,
+                    Packet.Type.mercury_req,
                 ]:
                     self.__session.mercury().dispatch(packet)
                 elif cmd in [Packet.Type.aes_key, Packet.Type.aes_key_error]:
                     self.__session.audio_key().dispatch(packet)
                 elif cmd in [
-                        Packet.Type.channel_error, Packet.Type.stream_chunk_res
+                    Packet.Type.channel_error, Packet.Type.stream_chunk_res
                 ]:
                     self.__session.channel().dispatch(packet)
                 elif cmd == Packet.Type.product_info:
@@ -2324,7 +2334,7 @@ class TokenProvider:
 
     def login5(self, scopes: typing.List[str]) -> typing.Union[StoredToken, None]:
         """Submit Login5 request for a fresh access token"""
-        
+
         if self.__session.ap_welcome():
             login5_request = Login5.LoginRequest()
             login5_request.client_info.client_id = MercuryRequests.keymaster_client_id
@@ -2341,20 +2351,21 @@ class TokenProvider:
                 headers=CaseInsensitiveDict({
                     "Content-Type": "application/x-protobuf",
                     "Accept": "application/x-protobuf"
-                    }))
+                }))
 
             if response.status_code == 200:
                 login5_response = Login5.LoginResponse()
                 login5_response.ParseFromString(response.content)
 
                 if login5_response.HasField('ok'):
-                    self.logger.info("Login5 authentication successful, got access token".format(login5_response.ok.access_token))
+                    self.logger.info(
+                        "Login5 authentication successful, got access token".format(login5_response.ok.access_token))
                     token = TokenProvider.StoredToken({
-                        "expiresIn": login5_response.ok.access_token_expires_in, # approximately one hour
+                        "expiresIn": login5_response.ok.access_token_expires_in,  # approximately one hour
                         "accessToken": login5_response.ok.access_token,
                         "scope": scopes
                     })
-                    return token 
+                    return token
                 else:
                     self.logger.warning("Login5 authentication failed: {}".format(login5_response.error))
             else:
@@ -2379,7 +2390,7 @@ class TokenProvider:
             """ """
             return self.timestamp + (self.expires_in - TokenProvider.
                                      token_expire_threshold) * 1000 * 1000 < int(
-                                         time.time_ns() / 1000)
+                time.time_ns() / 1000)
 
         def has_scope(self, scope: str) -> bool:
             """

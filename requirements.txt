@@ -1,7 +1,7 @@
 defusedxml>=0.7.1
-protobuf==3.20.1
-pycryptodomex>=3.22.0
+protobuf==6.33.4
+pycryptodomex>=3.23.0
 pyogg>=0.6.14a.1
-requests>=2.32.3
-websocket-client>=1.8.0
+requests
+websocket-client>=1.9.0
 zeroconf>=0.146.4
