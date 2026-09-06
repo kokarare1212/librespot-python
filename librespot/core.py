@@ -43,6 +43,7 @@ from librespot.crypto import Packet
 from librespot.mercury import MercuryClient
 from librespot.mercury import MercuryRequests
 from librespot.mercury import RawMercuryRequest
+from librespot.metadata import Id
 from librespot.metadata import AlbumId
 from librespot.metadata import ArtistId
 from librespot.metadata import EpisodeId
@@ -192,6 +193,64 @@ class ApiClient(Closeable):
             self.logger.warning("PUT state returned {}. headers: {}".format(
                 response.status_code, response.headers))
 
+    def get_ext_metadata_batched(self, extension_kinds: list[ExtensionKind], uris: list[str]) -> list[typing.Optional[bytes]]:
+        reqs = []
+        for ext, uri in zip(extension_kinds, uris):
+            reqs.append(EntityRequest(entity_uri=uri, query=[ExtensionQuery(extension_kind=ext),]))
+
+        headers = CaseInsensitiveDict({"content-type": "application/x-protobuf"})
+        response = self.send("POST", "/extended-metadata/v0/extended-metadata",
+                             headers, BatchedEntityRequest(entity_request=reqs).SerializeToString())
+        ApiClient.StatusCodeException.check_status(response)
+
+        body = response.content
+        if body is None:
+            raise ConnectionError("Extended Metadata request for batch failed: No response body")
+
+        proto = BatchedExtensionResponse()
+        proto.ParseFromString(body)
+
+        mdbs: list[bytes] = [None]*len(uris)
+        for extension_kind in proto.extended_metadata:
+            for query_resp in extension_kind.extension_data:
+                uri = query_resp.entity_uri
+                status_code = query_resp.header.status_code
+                if status_code != 200:
+                    # raise ConnectionError("Extended Metadata request for {} failed: Status code {}".format(uri, status_code))
+                    continue
+                mdbs[uris.index(uri)] = query_resp.extension_data.value
+        return mdbs
+
+    def get_metadata_4_multiple(self, items: list[Id]) -> list:
+        if any(isinstance(item, PlaylistId) for item in items):
+            raise NotImplementedError("PlaylsitId cannot retreive metadata via batched endpoint")
+
+        extension_kind_map = {
+            TrackId: ExtensionKind.TRACK_V4,
+            EpisodeId: ExtensionKind.EPISODE_V4,
+            AlbumId: ExtensionKind.ALBUM_V4,
+            ArtistId: ExtensionKind.ARTIST_V4,
+            ShowId: ExtensionKind.SHOW_V4,
+        }
+
+        extension_kinds = [extension_kind_map[item.__class__] for item in items]
+        item_uris = [item.to_spotify_uri() for item in items]
+        mdbs = self.get_ext_metadata_batched(extension_kinds, item_uris)
+
+        metadata_kind_map = {
+            TrackId: Metadata.Track,
+            EpisodeId: Metadata.Episode,
+            AlbumId: Metadata.Album,
+            ArtistId: Metadata.Artist,
+            ShowId: Metadata.Show,
+        }
+
+        mds = [metadata_kind_map[item.__class__]() for item in items]
+        for md, mdb in zip(mds, mdbs):
+            if mdb:
+                md.ParseFromString(mdb)
+        return mds
+
     def get_ext_metadata(self, extension_kind: ExtensionKind, uri: str):
         headers = CaseInsensitiveDict({"content-type": "application/x-protobuf"})
         req = EntityRequest(entity_uri=uri, query=[ExtensionQuery(extension_kind=extension_kind),])
@@ -202,13 +261,13 @@ class ApiClient(Closeable):
 
         body = response.content
         if body is None:
-            raise ConnectionError("Extended Metadata request failed: No response body")
+            raise ConnectionError("Extended Metadata request for {} failed: No response body".format(uri))
 
         proto = BatchedExtensionResponse()
         proto.ParseFromString(body)
         entityextd = proto.extended_metadata.pop().extension_data.pop()
         if entityextd.header.status_code != 200:
-            raise ConnectionError("Extended Metadata request failed: Status code {}".format(entityextd.header.status_code))
+            raise ConnectionError("Extended Metadata request for {} failed: Status code {}".format(uri, entityextd.header.status_code))
         mdb: bytes = entityextd.extension_data.value
         return mdb
 
@@ -267,23 +326,51 @@ class ApiClient(Closeable):
         md.ParseFromString(mdb)
         return md
 
-    def get_playlist(self,
-                     _id: PlaylistId) -> Playlist4External.SelectedListContent:
+    def get_playlist(self, playlist: PlaylistId) -> Playlist4External.SelectedListContent:
         """
 
-        :param _id: PlaylistId:
+        :param playlist: PlaylistId:
 
         """
-        response = self.send("GET",
-                             "/playlist/v2/playlist/{}".format(_id.id()), None,
-                             None)
+        response = self.send("GET", "/playlist/v2/playlist/{}".format(playlist.id()),
+                             None, None)
         ApiClient.StatusCodeException.check_status(response)
+        
         body = response.content
         if body is None:
-            raise IOError()
+            raise ConnectionError("Playlist Metadata request for {} failed: No response body".format(playlist.to_spotify_uri()))
+        
         proto = Playlist4External.SelectedListContent()
         proto.ParseFromString(body)
         return proto
+
+    def get_user_profile(self, username: str, playlist_limit: int = None, artist_limit: int = None) -> dict[str, typing.Any]:
+        """
+
+        :param user: str:
+        :param playlist_limit: int:  (Default value = None)
+        :param artist_limit: int:  (Default value = None)
+
+        """
+
+        suffix = "/user-profile-view/v3/profile/{}".format(username)
+        if playlist_limit is not None or artist_limit is not None:
+            suffix += "?"
+            if playlist_limit is not None:
+                suffix += "playlist_limit={}".format(playlist_limit)
+                if artist_limit is not None:
+                    suffix += "&"
+            if artist_limit is not None:
+                suffix += "artist_limit={}".format(artist_limit)
+
+        response = self.send("GET", suffix, None, None)
+        ApiClient.StatusCodeException.check_status(response)
+
+        body = response.content
+        if body is None:
+            raise ConnectionError("User Profile request for {} failed: No response body".format(username))
+
+        return response.json()
 
     def set_client_token(self, client_token):
         """
@@ -1065,7 +1152,11 @@ class Session(Closeable, MessageListener, SubListener):
         acc.write_int(2 + 4 + len(client_hello_bytes))
         acc.write(client_hello_bytes)
         # Read APResponseMessage
-        ap_response_message_length = self.connection.read_int()
+        try:
+            ap_response_message_length = self.connection.read_int()
+        except struct.error:
+            time.sleep(1)
+            ap_response_message_length = self.connection.read_int()
         acc.write_int(ap_response_message_length)
         ap_response_message_bytes = self.connection.read(
             ap_response_message_length - 4)
@@ -1146,6 +1237,20 @@ class Session(Closeable, MessageListener, SubListener):
         """
         client = requests.Session()
         return client
+
+    def credentials(self) -> dict:
+        ap_welcome = self.ap_welcome()
+        reusable = ap_welcome.reusable_auth_credentials
+        reusable_type = Authentication.AuthenticationType.Name(
+            ap_welcome.reusable_auth_credentials_type)
+        return {
+            "username":
+            ap_welcome.canonical_username,
+            "credentials":
+            base64.b64encode(reusable).decode(),
+            "type":
+            reusable_type,
+        }
 
     def dealer(self) -> DealerClient:
         """ """
@@ -1343,28 +1448,15 @@ class Session(Closeable, MessageListener, SubListener):
                     self.__auth_lock_bool = False
                     self.__auth_lock.notify_all()
             if self.__inner.conf.store_credentials:
-                reusable = self.__ap_welcome.reusable_auth_credentials
-                reusable_type = Authentication.AuthenticationType.Name(
-                    self.__ap_welcome.reusable_auth_credentials_type)
+                self.__stored_str = base64.b64encode(
+                    json.dumps(self.credentials()).encode()
+                    ).decode()
                 if self.__inner.conf.stored_credentials_file is None:
                     raise TypeError(
                         "The file path to be saved is not specified")
-                self.__stored_str = base64.b64encode(
-                    json.dumps({
-                        "username":
-                        self.__ap_welcome.canonical_username,
-                        "credentials":
-                        base64.b64encode(reusable).decode(),
-                        "type":
-                        reusable_type,
-                    }).encode()).decode()
                 with open(self.__inner.conf.stored_credentials_file, "w") as f:
                     json.dump(
-                        {
-                            "username": self.__ap_welcome.canonical_username,
-                            "credentials": base64.b64encode(reusable).decode(),
-                            "type": reusable_type,
-                        },
+                        self.credentials(),
                         f,
                     )
 

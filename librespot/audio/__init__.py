@@ -327,32 +327,6 @@ class CdnFeedHelper:
         return selected_url
 
     @staticmethod
-    def load_track(
-            session: Session, track: Metadata.Track, file: Metadata.AudioFile,
-            resp_or_url: typing.Union[StorageResolve.StorageResolveResponse,
-                                      str], preload: bool,
-            halt_listener: HaltListener) -> LoadedStream:
-        if type(resp_or_url) is str:
-            url = resp_or_url
-        else:
-            url = CdnFeedHelper.get_url(resp_or_url)
-        start = int(time.time() * 1000)
-        key = session.audio_key().get_audio_key(track.gid, file.file_id)
-        audio_key_time = int(time.time() * 1000) - start
-
-        streamer = session.cdn().stream_file(file, key, url, halt_listener)
-        input_stream = streamer.stream()
-        normalization_data = NormalizationData.read(input_stream)
-        if input_stream.skip(0xA7) != 0xA7:
-            raise IOError("Couldn't skip 0xa7 bytes!")
-        return LoadedStream(
-            track,
-            streamer,
-            normalization_data,
-            file.file_id, preload, audio_key_time
-        )
-
-    @staticmethod
     def load_episode_external(
             session: Session, episode: Metadata.Episode,
             halt_listener: HaltListener) -> LoadedStream:
@@ -375,9 +349,9 @@ class CdnFeedHelper:
         )
 
     @staticmethod
-    def load_episode(
+    def load_content(
         session: Session,
-        episode: Metadata.Episode,
+        track_or_episode: typing.Union[Metadata.Track, Metadata.Episode],
         file: Metadata.AudioFile,
         resp_or_url: typing.Union[StorageResolve.StorageResolveResponse, str],
         preload: bool,
@@ -388,7 +362,7 @@ class CdnFeedHelper:
         else:
             url = CdnFeedHelper.get_url(resp_or_url)
         start = int(time.time() * 1000)
-        key = session.audio_key().get_audio_key(episode.gid, file.file_id)
+        key = session.audio_key().get_audio_key(track_or_episode.gid, file.file_id)
         audio_key_time = int(time.time() * 1000) - start
 
         streamer = session.cdn().stream_file(file, key, url, halt_listener)
@@ -397,7 +371,7 @@ class CdnFeedHelper:
         if input_stream.skip(0xA7) != 0xA7:
             raise IOError("Couldn't skip 0xa7 bytes!")
         return LoadedStream(
-            episode,
+            track_or_episode,
             streamer,
             normalization_data,
             file.file_id, preload, audio_key_time
@@ -742,22 +716,19 @@ class PlayableContentFeeder:
                                      preload, halt_listener)
         raise TypeError("Unknown content: {}".format(playable_id))
 
-    def load_stream(self, file: Metadata.AudioFile, track: Metadata.Track,
-                    episode: Metadata.Episode, preload: bool,
-                    halt_lister: HaltListener):
-        if track is None and episode is None:
+    def load_stream(self, file: Metadata.AudioFile, 
+                    track_or_episode: typing.Union[Metadata.Track, Metadata.Episode],
+                    preload: bool, halt_lister: HaltListener):
+        if track_or_episode is None:
             raise RuntimeError("No content passed!")
         elif file is None:
             raise RuntimeError("Content has no audio file!")
         response = self.resolve_storage_interactive(file.file_id, preload)
         if response.result == StorageResolve.StorageResolveResponse.Result.CDN:
-            if track is not None:
-                return CdnFeedHelper.load_track(self.__session, track, file,
-                                                response, preload, halt_lister)
-            return CdnFeedHelper.load_episode(self.__session, episode, file,
-                                              response, preload, halt_lister)
+            return CdnFeedHelper.load_content(self.__session, track_or_episode, file,
+                                            response, preload, halt_lister)
         if response.result == StorageResolve.StorageResolveResponse.Result.STORAGE:
-            if track is None:
+            if track_or_episode is None:
                 pass
         elif response.result == StorageResolve.StorageResolveResponse.Result.RESTRICTED:
             raise RuntimeError("Content is restricted!")
@@ -779,7 +750,7 @@ class PlayableContentFeeder:
                 "Couldn't find any suitable audio file, available: {}".format(
                     episode.audio))
             raise FeederException("Cannot find suitable audio file")
-        return self.load_stream(file, None, episode, preload, halt_listener)
+        return self.load_stream(file, episode, preload, halt_listener)
 
     def load_track(self, track_id_or_track: typing.Union[TrackId,
                                                          Metadata.Track],
@@ -799,7 +770,7 @@ class PlayableContentFeeder:
                 "Couldn't find any suitable audio file, available: {}".format(
                     track.file))
             raise FeederException("Cannot find suitable audio file")
-        return self.load_stream(file, track, None, preload, halt_listener)
+        return self.load_stream(file, track, preload, halt_listener)
 
     def pick_alternative_if_necessary(
             self, track: Metadata.Track) -> typing.Union[Metadata.Track, None]:
